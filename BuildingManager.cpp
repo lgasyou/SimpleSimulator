@@ -40,8 +40,8 @@ BaseBuilding *BuildingManager::setItemType(BaseBuilding *building, const QString
     BaseBuilding *newBuilding = nullptr;
     if (type == "Foundation")
         newBuilding = new BaseBuilding(*building);
-    else if (type == "Factory")
-        newBuilding = new Factory(*building);
+    else if (type.contains("Factory"))
+        newBuilding = new Factory(*building, type);
     else
         newBuilding = new Residence(*building);
 

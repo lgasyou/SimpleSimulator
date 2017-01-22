@@ -29,9 +29,6 @@ public:
     QGridLayout *gridLayout;
     QVBoxLayout *verticalLayout_Cargo;
     QLabel *label_CargoSum;
-    QVBoxLayout *verticalLayout_Build;
-    QPushButton *pushButton_Build_Factory;
-    QPushButton *pushButton_Build_residence;
     QVBoxLayout *verticalLayout_Main;
     QPushButton *pushButton_Buy;
     QPushButton *pushButton_Sell;
@@ -46,6 +43,11 @@ public:
     QLabel *label_Type;
     QSpacerItem *verticalSpacer_3;
     QLabel *label_Owner;
+    QVBoxLayout *verticalLayout_Build;
+    QPushButton *pushButton_Build_IronMine;
+    QPushButton *pushButton_Build_CoalMine;
+    QPushButton *pushButton_Build_SteelFactory;
+    QPushButton *pushButton_Build_residence;
 
     void setupUi(QDialog *BuildingDetailDialog)
     {
@@ -63,21 +65,6 @@ public:
 
 
         gridLayout->addLayout(verticalLayout_Cargo, 1, 3, 1, 1);
-
-        verticalLayout_Build = new QVBoxLayout();
-        verticalLayout_Build->setObjectName(QStringLiteral("verticalLayout_Build"));
-        pushButton_Build_Factory = new QPushButton(BuildingDetailDialog);
-        pushButton_Build_Factory->setObjectName(QStringLiteral("pushButton_Build_Factory"));
-
-        verticalLayout_Build->addWidget(pushButton_Build_Factory);
-
-        pushButton_Build_residence = new QPushButton(BuildingDetailDialog);
-        pushButton_Build_residence->setObjectName(QStringLiteral("pushButton_Build_residence"));
-
-        verticalLayout_Build->addWidget(pushButton_Build_residence);
-
-
-        gridLayout->addLayout(verticalLayout_Build, 1, 2, 1, 1);
 
         verticalLayout_Main = new QVBoxLayout();
         verticalLayout_Main->setObjectName(QStringLiteral("verticalLayout_Main"));
@@ -107,7 +94,7 @@ public:
         verticalLayout_Main->addWidget(pushButton_Dismantle);
 
 
-        gridLayout->addLayout(verticalLayout_Main, 1, 1, 1, 1);
+        gridLayout->addLayout(verticalLayout_Main, 1, 4, 1, 1);
 
         verticalLayout_Info = new QVBoxLayout();
         verticalLayout_Info->setObjectName(QStringLiteral("verticalLayout_Info"));
@@ -146,6 +133,31 @@ public:
 
         gridLayout->addLayout(verticalLayout_Info, 1, 0, 1, 1);
 
+        verticalLayout_Build = new QVBoxLayout();
+        verticalLayout_Build->setObjectName(QStringLiteral("verticalLayout_Build"));
+        pushButton_Build_IronMine = new QPushButton(BuildingDetailDialog);
+        pushButton_Build_IronMine->setObjectName(QStringLiteral("pushButton_Build_IronMine"));
+
+        verticalLayout_Build->addWidget(pushButton_Build_IronMine);
+
+        pushButton_Build_CoalMine = new QPushButton(BuildingDetailDialog);
+        pushButton_Build_CoalMine->setObjectName(QStringLiteral("pushButton_Build_CoalMine"));
+
+        verticalLayout_Build->addWidget(pushButton_Build_CoalMine);
+
+        pushButton_Build_SteelFactory = new QPushButton(BuildingDetailDialog);
+        pushButton_Build_SteelFactory->setObjectName(QStringLiteral("pushButton_Build_SteelFactory"));
+
+        verticalLayout_Build->addWidget(pushButton_Build_SteelFactory);
+
+        pushButton_Build_residence = new QPushButton(BuildingDetailDialog);
+        pushButton_Build_residence->setObjectName(QStringLiteral("pushButton_Build_residence"));
+
+        verticalLayout_Build->addWidget(pushButton_Build_residence);
+
+
+        gridLayout->addLayout(verticalLayout_Build, 1, 5, 1, 1);
+
 
         retranslateUi(BuildingDetailDialog);
 
@@ -156,8 +168,6 @@ public:
     {
         BuildingDetailDialog->setWindowTitle(QApplication::translate("BuildingDetailDialog", "Dialog", Q_NULLPTR));
         label_CargoSum->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", Q_NULLPTR));
-        pushButton_Build_Factory->setText(QApplication::translate("BuildingDetailDialog", "Factory", Q_NULLPTR));
-        pushButton_Build_residence->setText(QApplication::translate("BuildingDetailDialog", "Residence", Q_NULLPTR));
         pushButton_Buy->setText(QApplication::translate("BuildingDetailDialog", "Buy", Q_NULLPTR));
         pushButton_Sell->setText(QApplication::translate("BuildingDetailDialog", "Sell", Q_NULLPTR));
         pushButton_Build->setText(QApplication::translate("BuildingDetailDialog", "Build", Q_NULLPTR));
@@ -167,6 +177,10 @@ public:
         label_Value->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", Q_NULLPTR));
         label_Type->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", Q_NULLPTR));
         label_Owner->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", Q_NULLPTR));
+        pushButton_Build_IronMine->setText(QApplication::translate("BuildingDetailDialog", "Iron Mine", Q_NULLPTR));
+        pushButton_Build_CoalMine->setText(QApplication::translate("BuildingDetailDialog", "Coal Mine", Q_NULLPTR));
+        pushButton_Build_SteelFactory->setText(QApplication::translate("BuildingDetailDialog", "Steel Factory", Q_NULLPTR));
+        pushButton_Build_residence->setText(QApplication::translate("BuildingDetailDialog", "Residence", Q_NULLPTR));
     } // retranslateUi
 
 };

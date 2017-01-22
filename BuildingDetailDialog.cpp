@@ -40,7 +40,9 @@ void BuildingDetailDialog::updateDisplay() {
     if (this->isHidden())
         return;
 
-    ui->pushButton_Build_Factory->hide();
+    ui->pushButton_Build_IronMine->hide();
+	ui->pushButton_Build_CoalMine->hide();
+	ui->pushButton_Build_SteelFactory->hide();
     ui->pushButton_Build_residence->hide();
 	factoryCargoTableWidget->hide();
 	ui->label_CargoSum->hide();
@@ -69,6 +71,19 @@ void BuildingDetailDialog::updateDisplay() {
         ui->pushButton_Manage->hide();
         ui->pushButton_Dismantle->hide();
     } else {
+		if (building_->type().contains("Factory")) {
+			Factory *factory = dynamic_cast<Factory *>(building_);
+			ui->label_CargoSum->setText(toString(factory->cargo()->curVolume()) + "t / " + toString(factory->cargo()->maxVolume()) + "t");
+			factoryCargoTableWidget->setCargo(factory->cargo());
+			factoryCargoTableWidget->updateDisplay();
+
+			factoryCargoTableWidget->show();
+			ui->label_CargoSum->show();
+		} else {
+			factoryCargoTableWidget->hide();
+			ui->label_CargoSum->hide();
+		}
+
         ui->pushButton_Build->hide();
         ui->pushButton_Manage->show();
         ui->pushButton_Dismantle->show();
@@ -84,23 +99,13 @@ void BuildingDetailDialog::on_pushButton_Sell_clicked() {
 }
 
 void BuildingDetailDialog::on_pushButton_Build_clicked() {
-    ui->pushButton_Build_Factory->show();
+	ui->pushButton_Build_IronMine->show();
+	ui->pushButton_Build_CoalMine->show();
+	ui->pushButton_Build_SteelFactory->show();
     ui->pushButton_Build_residence->show();
 }
 
 void BuildingDetailDialog::on_pushButton_Manage_clicked() {
-    if (building_->type() == "Factory") {
-		Factory *factory = dynamic_cast<Factory *>(building_);
-		ui->label_CargoSum->setText(toString(factory->cargo()->curVolume()) + "t / " + toString(factory->cargo()->maxVolume()) + "t");
-		factoryCargoTableWidget->setCargo(factory->cargo());
-		factoryCargoTableWidget->updateDisplay();
-
-		factoryCargoTableWidget->show();
-		ui->label_CargoSum->show();
-    } else {
-		factoryCargoTableWidget->hide();
-		ui->label_CargoSum->hide();
-    }
     //emit manageSignal(building_, order);
 }
 
@@ -108,8 +113,16 @@ void BuildingDetailDialog::on_pushButton_Dismantle_clicked() {
     emit changeTypeSignal(building_, "Foundation");
 }
 
-void BuildingDetailDialog::on_pushButton_Build_Factory_clicked() {
-    emit changeTypeSignal(building_, "Factory");
+void BuildingDetailDialog::on_pushButton_Build_IronMine_clicked() {
+    emit changeTypeSignal(building_, "Iron Mine Factory");
+}
+
+void BuildingDetailDialog::on_pushButton_Build_CoalMine_clicked() {
+	emit changeTypeSignal(building_, "Coal Mine Factory");
+}
+
+void BuildingDetailDialog::on_pushButton_Build_SteelFactory_clicked() {
+	emit changeTypeSignal(building_, "Steel Factory");
 }
 
 void BuildingDetailDialog::on_pushButton_Build_residence_clicked() {

@@ -36,7 +36,9 @@ private slots:
     void on_pushButton_Dismantle_clicked();
 
 	void on_pushButton_Build_clicked();
-    void on_pushButton_Build_Factory_clicked();
+    void on_pushButton_Build_IronMine_clicked();
+	void on_pushButton_Build_CoalMine_clicked();
+	void on_pushButton_Build_SteelFactory_clicked();
     void on_pushButton_Build_residence_clicked();
 
 private:

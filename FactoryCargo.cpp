@@ -5,7 +5,7 @@ FactoryCargo::FactoryCargo() :
     curVolume_(0)
 { }
 
-inline bool FactoryCargo::add(const QString &item, double volume) {
+bool FactoryCargo::add(const QString &item, double volume) {
     if (curVolume_ + volume > maxVolume_)
         return false;
 
@@ -14,7 +14,7 @@ inline bool FactoryCargo::add(const QString &item, double volume) {
     return true;
 }
 
-inline void FactoryCargo::remove(const QString &item, double volume) {
+void FactoryCargo::remove(const QString &item, double volume) {
 	if ((cargo_[item] -= volume) == 0)
 		cargo_.remove(item);
     curVolume_ -= volume;

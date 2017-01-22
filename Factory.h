@@ -9,7 +9,7 @@ class Factory : public BaseBuilding {
 public:
     Factory(double value);
 
-    Factory(const BaseBuilding &);
+    Factory(const BaseBuilding &, const QString &);
 
 	// manual manage building
     void manage(const QString &) override;
