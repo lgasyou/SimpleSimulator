@@ -124,13 +124,17 @@ void MainWindow::updateDisplay() {
 
 void MainWindow::updateCompanyInfo() {
     ui->label_CompanyName->setText(company->name());
-    QString cash = QString::number(company->cash(), 10, 2);
+    QString cash = toString(company->cash());
     ui->label_CompanyCash->setText(tr("Cash: $") + cash);
-    QString totalValue = QString::number(company->totalValue(), 10, 2);
+    QString totalValue = toString(company->totalValue());
     ui->label_CompanyTotalValue->setText(tr("Total Value: $") + totalValue);
     ui->label_Turns->setText(tr("Turn ") + QString::number(GameTimer::currentTime()));
 }
 
 inline void MainWindow::updateStatusBar(const QString &msg) {
     ui->statusBar->showMessage(msg);
+}
+
+QString MainWindow::toString(double value) {
+	return QString::number(value, 10, 2);
 }

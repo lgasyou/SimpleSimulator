@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'CompanyDetailDialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.7.0
+** Created by: Qt User Interface Compiler version 5.7.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -64,11 +64,11 @@ public:
 
     void retranslateUi(QDialog *CompanyDetailDialog)
     {
-        CompanyDetailDialog->setWindowTitle(QApplication::translate("CompanyDetailDialog", "Dialog", 0));
-        label_Name->setText(QApplication::translate("CompanyDetailDialog", "TextLabel", 0));
-        label_Cash->setText(QApplication::translate("CompanyDetailDialog", "TextLabel", 0));
-        label_TotalValue->setText(QApplication::translate("CompanyDetailDialog", "TextLabel", 0));
-        label_Liability->setText(QApplication::translate("CompanyDetailDialog", "TextLabel", 0));
+        CompanyDetailDialog->setWindowTitle(QApplication::translate("CompanyDetailDialog", "Dialog", Q_NULLPTR));
+        label_Name->setText(QApplication::translate("CompanyDetailDialog", "TextLabel", Q_NULLPTR));
+        label_Cash->setText(QApplication::translate("CompanyDetailDialog", "TextLabel", Q_NULLPTR));
+        label_TotalValue->setText(QApplication::translate("CompanyDetailDialog", "TextLabel", Q_NULLPTR));
+        label_Liability->setText(QApplication::translate("CompanyDetailDialog", "TextLabel", Q_NULLPTR));
     } // retranslateUi
 
 };

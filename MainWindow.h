@@ -40,6 +40,8 @@ private:
     void updateCompanyInfo();
     void updateStatusBar(const QString &msg);
 
+	QString toString(double value);
+
     BuildingManager *buildingManager;
     Company *company;
     BankDialog *bankDialog;

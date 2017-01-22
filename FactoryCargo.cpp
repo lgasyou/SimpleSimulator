@@ -1,7 +1,7 @@
 #include "FactoryCargo.h"
 
 FactoryCargo::FactoryCargo() :
-    maxVolume_(0),
+    maxVolume_(100),
     curVolume_(0)
 { }
 
@@ -15,6 +15,7 @@ inline bool FactoryCargo::add(const QString &item, double volume) {
 }
 
 inline void FactoryCargo::remove(const QString &item, double volume) {
-    cargo_[item] -= volume;
+	if ((cargo_[item] -= volume) == 0)
+		cargo_.remove(item);
     curVolume_ -= volume;
 }

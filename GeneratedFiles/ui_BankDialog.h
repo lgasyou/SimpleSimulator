@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'BankDialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.7.0
+** Created by: Qt User Interface Compiler version 5.7.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -118,12 +118,12 @@ public:
 
     void retranslateUi(QDialog *BankDialog)
     {
-        BankDialog->setWindowTitle(QApplication::translate("BankDialog", "Dialog", 0));
-        label_Repay->setText(QApplication::translate("BankDialog", "TextLabel", 0));
-        label_Borrow->setText(QApplication::translate("BankDialog", "TextLabel", 0));
-        label_InterestRate->setText(QApplication::translate("BankDialog", "TextLabel", 0));
-        label_Liability->setText(QApplication::translate("BankDialog", "TextLabel", 0));
-        pushButton_Accept->setText(QApplication::translate("BankDialog", "Accept", 0));
+        BankDialog->setWindowTitle(QApplication::translate("BankDialog", "Dialog", Q_NULLPTR));
+        label_Repay->setText(QApplication::translate("BankDialog", "TextLabel", Q_NULLPTR));
+        label_Borrow->setText(QApplication::translate("BankDialog", "TextLabel", Q_NULLPTR));
+        label_InterestRate->setText(QApplication::translate("BankDialog", "TextLabel", Q_NULLPTR));
+        label_Liability->setText(QApplication::translate("BankDialog", "TextLabel", Q_NULLPTR));
+        pushButton_Accept->setText(QApplication::translate("BankDialog", "Accept", Q_NULLPTR));
     } // retranslateUi
 
 };

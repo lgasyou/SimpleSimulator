@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'BuildingDetailDialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.7.0
+** Created by: Qt User Interface Compiler version 5.7.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -27,6 +27,11 @@ class Ui_BuildingDetailDialog
 {
 public:
     QGridLayout *gridLayout;
+    QVBoxLayout *verticalLayout_Cargo;
+    QLabel *label_CargoSum;
+    QVBoxLayout *verticalLayout_Build;
+    QPushButton *pushButton_Build_Factory;
+    QPushButton *pushButton_Build_residence;
     QVBoxLayout *verticalLayout_Main;
     QPushButton *pushButton_Buy;
     QPushButton *pushButton_Sell;
@@ -41,18 +46,39 @@ public:
     QLabel *label_Type;
     QSpacerItem *verticalSpacer_3;
     QLabel *label_Owner;
-    QVBoxLayout *verticalLayout_Build;
-    QPushButton *pushButton_Build_Factory;
-    QPushButton *pushButton_Build_residence;
-    QVBoxLayout *verticalLayout_Cargo;
 
     void setupUi(QDialog *BuildingDetailDialog)
     {
         if (BuildingDetailDialog->objectName().isEmpty())
             BuildingDetailDialog->setObjectName(QStringLiteral("BuildingDetailDialog"));
-        BuildingDetailDialog->resize(470, 144);
+        BuildingDetailDialog->resize(594, 159);
         gridLayout = new QGridLayout(BuildingDetailDialog);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        verticalLayout_Cargo = new QVBoxLayout();
+        verticalLayout_Cargo->setObjectName(QStringLiteral("verticalLayout_Cargo"));
+        label_CargoSum = new QLabel(BuildingDetailDialog);
+        label_CargoSum->setObjectName(QStringLiteral("label_CargoSum"));
+
+        verticalLayout_Cargo->addWidget(label_CargoSum);
+
+
+        gridLayout->addLayout(verticalLayout_Cargo, 1, 3, 1, 1);
+
+        verticalLayout_Build = new QVBoxLayout();
+        verticalLayout_Build->setObjectName(QStringLiteral("verticalLayout_Build"));
+        pushButton_Build_Factory = new QPushButton(BuildingDetailDialog);
+        pushButton_Build_Factory->setObjectName(QStringLiteral("pushButton_Build_Factory"));
+
+        verticalLayout_Build->addWidget(pushButton_Build_Factory);
+
+        pushButton_Build_residence = new QPushButton(BuildingDetailDialog);
+        pushButton_Build_residence->setObjectName(QStringLiteral("pushButton_Build_residence"));
+
+        verticalLayout_Build->addWidget(pushButton_Build_residence);
+
+
+        gridLayout->addLayout(verticalLayout_Build, 1, 2, 1, 1);
+
         verticalLayout_Main = new QVBoxLayout();
         verticalLayout_Main->setObjectName(QStringLiteral("verticalLayout_Main"));
         pushButton_Buy = new QPushButton(BuildingDetailDialog);
@@ -81,7 +107,7 @@ public:
         verticalLayout_Main->addWidget(pushButton_Dismantle);
 
 
-        gridLayout->addLayout(verticalLayout_Main, 0, 1, 1, 1);
+        gridLayout->addLayout(verticalLayout_Main, 1, 1, 1, 1);
 
         verticalLayout_Info = new QVBoxLayout();
         verticalLayout_Info->setObjectName(QStringLiteral("verticalLayout_Info"));
@@ -118,27 +144,7 @@ public:
         verticalLayout_Info->addWidget(label_Owner);
 
 
-        gridLayout->addLayout(verticalLayout_Info, 0, 0, 1, 1);
-
-        verticalLayout_Build = new QVBoxLayout();
-        verticalLayout_Build->setObjectName(QStringLiteral("verticalLayout_Build"));
-        pushButton_Build_Factory = new QPushButton(BuildingDetailDialog);
-        pushButton_Build_Factory->setObjectName(QStringLiteral("pushButton_Build_Factory"));
-
-        verticalLayout_Build->addWidget(pushButton_Build_Factory);
-
-        pushButton_Build_residence = new QPushButton(BuildingDetailDialog);
-        pushButton_Build_residence->setObjectName(QStringLiteral("pushButton_Build_residence"));
-
-        verticalLayout_Build->addWidget(pushButton_Build_residence);
-
-
-        gridLayout->addLayout(verticalLayout_Build, 0, 2, 1, 1);
-
-        verticalLayout_Cargo = new QVBoxLayout();
-        verticalLayout_Cargo->setObjectName(QStringLiteral("verticalLayout_Cargo"));
-
-        gridLayout->addLayout(verticalLayout_Cargo, 0, 3, 1, 1);
+        gridLayout->addLayout(verticalLayout_Info, 1, 0, 1, 1);
 
 
         retranslateUi(BuildingDetailDialog);
@@ -148,18 +154,19 @@ public:
 
     void retranslateUi(QDialog *BuildingDetailDialog)
     {
-        BuildingDetailDialog->setWindowTitle(QApplication::translate("BuildingDetailDialog", "Dialog", 0));
-        pushButton_Buy->setText(QApplication::translate("BuildingDetailDialog", "Buy", 0));
-        pushButton_Sell->setText(QApplication::translate("BuildingDetailDialog", "Sell", 0));
-        pushButton_Build->setText(QApplication::translate("BuildingDetailDialog", "Build", 0));
-        pushButton_Manage->setText(QApplication::translate("BuildingDetailDialog", "Manage", 0));
-        pushButton_Dismantle->setText(QApplication::translate("BuildingDetailDialog", "Dismantle", 0));
-        label_Name->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", 0));
-        label_Value->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", 0));
-        label_Type->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", 0));
-        label_Owner->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", 0));
-        pushButton_Build_Factory->setText(QApplication::translate("BuildingDetailDialog", "Factory", 0));
-        pushButton_Build_residence->setText(QApplication::translate("BuildingDetailDialog", "Residence", 0));
+        BuildingDetailDialog->setWindowTitle(QApplication::translate("BuildingDetailDialog", "Dialog", Q_NULLPTR));
+        label_CargoSum->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", Q_NULLPTR));
+        pushButton_Build_Factory->setText(QApplication::translate("BuildingDetailDialog", "Factory", Q_NULLPTR));
+        pushButton_Build_residence->setText(QApplication::translate("BuildingDetailDialog", "Residence", Q_NULLPTR));
+        pushButton_Buy->setText(QApplication::translate("BuildingDetailDialog", "Buy", Q_NULLPTR));
+        pushButton_Sell->setText(QApplication::translate("BuildingDetailDialog", "Sell", Q_NULLPTR));
+        pushButton_Build->setText(QApplication::translate("BuildingDetailDialog", "Build", Q_NULLPTR));
+        pushButton_Manage->setText(QApplication::translate("BuildingDetailDialog", "Manage", Q_NULLPTR));
+        pushButton_Dismantle->setText(QApplication::translate("BuildingDetailDialog", "Dismantle", Q_NULLPTR));
+        label_Name->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", Q_NULLPTR));
+        label_Value->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", Q_NULLPTR));
+        label_Type->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", Q_NULLPTR));
+        label_Owner->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", Q_NULLPTR));
     } // retranslateUi
 
 };

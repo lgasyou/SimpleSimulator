@@ -14,6 +14,8 @@ public:
 
 	void setCargo(FactoryCargo *cargo) { this->cargo_ = cargo; }
 
+	QString toString(double value);
+
 private:
 	FactoryCargo *cargo_;
 };

@@ -30,6 +30,8 @@ private slots:
     void getBuildingAndSendSignal(MyPushButton *button);
 
 private:
+	QString toString(double value);
+
 	BuildingManager *buildingManager_;
     Company *company_;
 };

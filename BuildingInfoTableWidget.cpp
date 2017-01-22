@@ -48,8 +48,8 @@ void BuildingInfoTableWidget::updateDisplay() {
         auto building = buildingManager_->getBuildingById(i);
 
         this->setItem(i, 0, new QTableWidgetItem(building->name()));
-        QString deltaValue = " " + QString::number(building->deltaValue(), 10, 2);
-        QString value = "$" + QString::number(building->value(), 10, 2) + deltaValue;
+        QString deltaValue = " " + toString(building->deltaValue());
+        QString value = "$" + toString(building->value()) + deltaValue;
         this->setItem(i, 1, new QTableWidgetItem(value));
         this->setItem(i, 2, new QTableWidgetItem(building->type()));
         QString owner = building->owner() ? building->owner()->name() : tr("Government");
@@ -66,6 +66,10 @@ void BuildingInfoTableWidget::updateDisplay() {
                 this, SLOT(getBuildingAndSendSignal(MyPushButton*)));
         this->setCellWidget(i, 5, detailBtn);
     }
+}
+
+QString BuildingInfoTableWidget::toString(double value) {
+	return QString::number(value, 10, 2);
 }
 
 void BuildingInfoTableWidget::getBuildingAndSendSignal(MyPushButton *button) {

@@ -6,15 +6,44 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>470</width>
-    <height>144</height>
+    <width>594</width>
+    <height>159</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="1">
+   <item row="1" column="3">
+    <layout class="QVBoxLayout" name="verticalLayout_Cargo">
+     <item>
+      <widget class="QLabel" name="label_CargoSum">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="2">
+    <layout class="QVBoxLayout" name="verticalLayout_Build">
+     <item>
+      <widget class="QPushButton" name="pushButton_Build_Factory">
+       <property name="text">
+        <string>Factory</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Build_residence">
+       <property name="text">
+        <string>Residence</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="1">
     <layout class="QVBoxLayout" name="verticalLayout_Main">
      <item>
       <widget class="QPushButton" name="pushButton_Buy">
@@ -53,7 +82,7 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="0">
+   <item row="1" column="0">
     <layout class="QVBoxLayout" name="verticalLayout_Info">
      <item>
       <widget class="QLabel" name="label_Name">
@@ -123,27 +152,6 @@
       </widget>
      </item>
     </layout>
-   </item>
-   <item row="0" column="2">
-    <layout class="QVBoxLayout" name="verticalLayout_Build">
-     <item>
-      <widget class="QPushButton" name="pushButton_Build_Factory">
-       <property name="text">
-        <string>Factory</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_Build_residence">
-       <property name="text">
-        <string>Residence</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="0" column="3">
-    <layout class="QVBoxLayout" name="verticalLayout_Cargo"/>
    </item>
   </layout>
  </widget>

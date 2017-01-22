@@ -44,6 +44,8 @@ private slots:
     void on_pushButton_Build_residence_clicked();
 
 private:
+	QString toString(double value);
+
     BaseBuilding *building_;
     Company *visitor_;
 

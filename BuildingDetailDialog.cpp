@@ -1,6 +1,7 @@
 #include "BuildingDetailDialog.h"
 #include "BaseBuilding.h"
 #include "Factory.h"
+#include "FactoryCargo.h"
 #include "Company.h"
 #include "FactoryCargoTableWidget.h"
 #include "ui_BuildingDetailDialog.h"
@@ -28,6 +29,7 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
             this, SLOT(updateDisplay()));
 
     factoryCargoTableWidget->hide();
+	ui->label_CargoSum->hide();
 }
 
 BuildingDetailDialog::~BuildingDetailDialog() {
@@ -41,6 +43,7 @@ void BuildingDetailDialog::updateDisplay() {
     ui->pushButton_Build_Factory->hide();
     ui->pushButton_Build_residence->hide();
 	factoryCargoTableWidget->hide();
+	ui->label_CargoSum->hide();
 
     setWindowTitle(building_->name());
     ui->label_Name->setText(tr("Name:  ") + building_->name());
@@ -87,12 +90,16 @@ void BuildingDetailDialog::on_pushButton_Build_clicked() {
 
 void BuildingDetailDialog::on_pushButton_Manage_clicked() {
     if (building_->type() == "Factory") {
-		Factory *building = dynamic_cast<Factory *>(building_);
-		factoryCargoTableWidget->setCargo(building->cargo());
+		Factory *factory = dynamic_cast<Factory *>(building_);
+		ui->label_CargoSum->setText(toString(factory->cargo()->curVolume()) + "t / " + toString(factory->cargo()->maxVolume()) + "t");
+		factoryCargoTableWidget->setCargo(factory->cargo());
 		factoryCargoTableWidget->updateDisplay();
+
 		factoryCargoTableWidget->show();
+		ui->label_CargoSum->show();
     } else {
 		factoryCargoTableWidget->hide();
+		ui->label_CargoSum->hide();
     }
     //emit manageSignal(building_, order);
 }
@@ -107,4 +114,8 @@ void BuildingDetailDialog::on_pushButton_Build_Factory_clicked() {
 
 void BuildingDetailDialog::on_pushButton_Build_residence_clicked() {
     emit changeTypeSignal(building_, "Residence");
+}
+
+QString BuildingDetailDialog::toString(double value) {
+	return QString::number(value, 10, 2);
 }

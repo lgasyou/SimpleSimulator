@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'MainWindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.7.0
+** Created by: Qt User Interface Compiler version 5.7.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -157,22 +157,22 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
-        action_Open->setText(QApplication::translate("MainWindow", "&Open", 0));
-        action_Save->setText(QApplication::translate("MainWindow", "&Save", 0));
-        action_SaveAndExit->setText(QApplication::translate("MainWindow", "Save and &Exit", 0));
-        action_Load->setText(QApplication::translate("MainWindow", "&Load", 0));
-        actionExit_without_Save->setText(QApplication::translate("MainWindow", "Exit without Save", 0));
-        action_New->setText(QApplication::translate("MainWindow", "&New", 0));
-        pushButton_Bank->setText(QApplication::translate("MainWindow", "Bank", 0));
-        pushButton_Company->setText(QApplication::translate("MainWindow", "Company", 0));
-        label_CompanyName->setText(QApplication::translate("MainWindow", "TextLabel", 0));
-        label_CompanyCash->setText(QApplication::translate("MainWindow", "TextLabel", 0));
-        label_CompanyTotalValue->setText(QApplication::translate("MainWindow", "TextLabel", 0));
-        label_Turns->setText(QApplication::translate("MainWindow", "TextLabel", 0));
-        pushButton_EndTurn->setText(QApplication::translate("MainWindow", "End Turn", 0));
-        menu_Files->setTitle(QApplication::translate("MainWindow", "&Files", 0));
-        menu_Help->setTitle(QApplication::translate("MainWindow", "&Help", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
+        action_Open->setText(QApplication::translate("MainWindow", "&Open", Q_NULLPTR));
+        action_Save->setText(QApplication::translate("MainWindow", "&Save", Q_NULLPTR));
+        action_SaveAndExit->setText(QApplication::translate("MainWindow", "Save and &Exit", Q_NULLPTR));
+        action_Load->setText(QApplication::translate("MainWindow", "&Load", Q_NULLPTR));
+        actionExit_without_Save->setText(QApplication::translate("MainWindow", "Exit without Save", Q_NULLPTR));
+        action_New->setText(QApplication::translate("MainWindow", "&New", Q_NULLPTR));
+        pushButton_Bank->setText(QApplication::translate("MainWindow", "Bank", Q_NULLPTR));
+        pushButton_Company->setText(QApplication::translate("MainWindow", "Company", Q_NULLPTR));
+        label_CompanyName->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
+        label_CompanyCash->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
+        label_CompanyTotalValue->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
+        label_Turns->setText(QApplication::translate("MainWindow", "TextLabel", Q_NULLPTR));
+        pushButton_EndTurn->setText(QApplication::translate("MainWindow", "End Turn", Q_NULLPTR));
+        menu_Files->setTitle(QApplication::translate("MainWindow", "&Files", Q_NULLPTR));
+        menu_Help->setTitle(QApplication::translate("MainWindow", "&Help", Q_NULLPTR));
     } // retranslateUi
 
 };

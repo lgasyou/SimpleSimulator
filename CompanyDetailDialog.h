@@ -21,6 +21,8 @@ public slots:
     void updateDisplay();
 
 private:
+	QString toString(double value);
+
     Company *company_;
     Ui::CompanyDetailDialog *ui;
 };
