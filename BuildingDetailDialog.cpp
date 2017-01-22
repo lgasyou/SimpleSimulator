@@ -1,0 +1,110 @@
+#include "BuildingDetailDialog.h"
+#include "BaseBuilding.h"
+#include "Company.h"
+#include "FactoryCargoTableWidget.h"
+#include "ui_BuildingDetailDialog.h"
+
+BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
+    QDialog(parent),
+    building_(nullptr),
+    visitor_(nullptr),
+	factoryCargoTableWidget(new FactoryCargoTableWidget(this)),
+    ui(new Ui::BuildingDetailDialog)
+{
+    ui->setupUi(this);
+
+    connect(this, SIGNAL(buySignal(BaseBuilding*)),
+            parent, SLOT(buy(BaseBuilding*)));
+    connect(this, SIGNAL(sellSignal(BaseBuilding*)),
+            parent, SLOT(sell(BaseBuilding*)));
+    connect(this, SIGNAL(changeTypeSignal(BaseBuilding*,QString)),
+            parent, SLOT(changeType(BaseBuilding*,QString)));
+    connect(this, SIGNAL(manageSignal(BaseBuilding*,QString)),
+            parent, SLOT(manage(BaseBuilding*,QString)));
+
+    connect(parent, SIGNAL(dataChanged(bool)),
+            this, SLOT(updateDisplay()));
+
+    factoryCargoTableWidget->hide();
+}
+
+BuildingDetailDialog::~BuildingDetailDialog() {
+    delete ui;
+}
+
+void BuildingDetailDialog::updateDisplay() {
+    if (this->isHidden())
+        return;
+
+    ui->pushButton_Build_Factory->hide();
+    ui->pushButton_Build_residence->hide();
+
+    setWindowTitle(building_->name());
+    ui->label_Name->setText(tr("Name:  ") + building_->name());
+    ui->label_Value->setText(tr("Value: $") + QString::number(building_->value(), 10, 2));
+    ui->label_Type->setText(tr("Type:  ") + building_->type());
+    QString owner = building_->owner() ? building_->owner()->name() : tr("Government");
+    ui->label_Owner->setText(tr("Owner: ") + owner);
+
+    bool isVisitorOwner = (building_->owner() == visitor_);
+    if (!isVisitorOwner) {
+        ui->pushButton_Buy->show();
+        ui->pushButton_Sell->hide();
+        ui->pushButton_Manage->hide();
+        ui->pushButton_Build->hide();
+        ui->pushButton_Dismantle->hide();
+        return;
+    }
+
+    ui->pushButton_Sell->show();
+    ui->pushButton_Buy->hide();
+    if (building_->type() == "Foundation") {
+        ui->pushButton_Build->show();
+        ui->pushButton_Manage->hide();
+        ui->pushButton_Dismantle->hide();
+    } else {
+        ui->pushButton_Build->hide();
+        ui->pushButton_Manage->show();
+        ui->pushButton_Dismantle->show();
+    }
+}
+
+void BuildingDetailDialog::on_pushButton_Buy_clicked() {
+    emit buySignal(building_);
+}
+
+void BuildingDetailDialog::on_pushButton_Sell_clicked() {
+    emit sellSignal(building_);
+}
+
+void BuildingDetailDialog::on_pushButton_Build_clicked() {
+    ui->pushButton_Build_Factory->show();
+    ui->pushButton_Build_residence->show();
+}
+
+void BuildingDetailDialog::on_pushButton_Manage_clicked() {
+    QString order("");
+    if (building_->type() == "Factory") {
+		factoryCargoTableWidget->show();
+        QStringList list;
+        list << "Hello" << "World";
+        factoryCargoTableWidget->setRowCount(2);
+        factoryCargoTableWidget->setColumnCount(2);
+        factoryCargoTableWidget->setHorizontalHeaderLabels(list);
+    } else {
+		factoryCargoTableWidget->hide();
+    }
+    emit manageSignal(building_, order);
+}
+
+void BuildingDetailDialog::on_pushButton_Dismantle_clicked() {
+    emit changeTypeSignal(building_, "Foundation");
+}
+
+void BuildingDetailDialog::on_pushButton_Build_Factory_clicked() {
+    emit changeTypeSignal(building_, "Factory");
+}
+
+void BuildingDetailDialog::on_pushButton_Build_residence_clicked() {
+    emit changeTypeSignal(building_, "Residence");
+}
