@@ -13,6 +13,8 @@ public:
 
     void manage(const QString &) override;
 
+	FactoryCargo *cargo() const { return this->cargo_; }
+
 private:
     FactoryCargo *cargo_;
 };

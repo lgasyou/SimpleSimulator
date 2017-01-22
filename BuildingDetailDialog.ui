@@ -14,6 +14,45 @@
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="1">
+    <layout class="QVBoxLayout" name="verticalLayout_Main">
+     <item>
+      <widget class="QPushButton" name="pushButton_Buy">
+       <property name="text">
+        <string>Buy</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Sell">
+       <property name="text">
+        <string>Sell</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Build">
+       <property name="text">
+        <string>Build</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Manage">
+       <property name="text">
+        <string>Manage</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Dismantle">
+       <property name="text">
+        <string>Dismantle</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout_Info">
      <item>
@@ -103,44 +142,8 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="1">
-    <layout class="QVBoxLayout" name="verticalLayout_Main">
-     <item>
-      <widget class="QPushButton" name="pushButton_Buy">
-       <property name="text">
-        <string>Buy</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_Sell">
-       <property name="text">
-        <string>Sell</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_Build">
-       <property name="text">
-        <string>Build</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_Manage">
-       <property name="text">
-        <string>Manage</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_Dismantle">
-       <property name="text">
-        <string>Dismantle</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+   <item row="0" column="3">
+    <layout class="QVBoxLayout" name="verticalLayout_Cargo"/>
    </item>
   </layout>
  </widget>

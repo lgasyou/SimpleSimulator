@@ -45,15 +45,27 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="Header Files\Utilities">
+      <UniqueIdentifier>{d0c12fa8-260c-47c8-bb96-35de75b39864}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilities">
+      <UniqueIdentifier>{e3080b51-61d9-4aeb-98aa-1a5c49cd1ac1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Buildings">
+      <UniqueIdentifier>{10843058-44a4-414c-8e65-f2e483721e92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Buildings">
+      <UniqueIdentifier>{c05c5f96-bcef-432a-acee-daeaf38be9cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\BuildingDetailDialog">
+      <UniqueIdentifier>{c2f2fa05-ef7e-420a-800d-3b67f9ed76f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BuildingDetailDialog">
+      <UniqueIdentifier>{60da3154-9917-43e2-a6a8-76de195a0ef0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BankDialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseBuilding.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BuildingDetailDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BuildingInfoTableWidget.cpp">
@@ -68,28 +80,10 @@
     <ClCompile Include="CompanyDetailDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Factory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FactoryCargo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="FactoryCargoTableWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameTimer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MainWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MyPushButton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Residence.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ValueGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -137,15 +131,33 @@
     <ClCompile Include="Release\moc_MyPushButton.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="GameTimer.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="ValueGenerator.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseBuilding.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="Factory.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="Residence.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="BuildingDetailDialog.cpp">
+      <Filter>Source Files\BuildingDetailDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="FactoryCargoTableWidget.cpp">
+      <Filter>Source Files\BuildingDetailDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="FactoryCargo.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="BankDialog.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <ClInclude Include="BaseBuilding.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <CustomBuild Include="BuildingDetailDialog.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="BuildingInfoTableWidget.h">
@@ -160,30 +172,18 @@
     <CustomBuild Include="CompanyDetailDialog.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <ClInclude Include="Factory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FactoryCargo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <CustomBuild Include="FactoryCargoTableWidget.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <ClInclude Include="GameTimer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <CustomBuild Include="MainWindow.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="MyPushButton.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <ClInclude Include="Residence.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ValueGenerator.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <CustomBuild Include="BuildingDetailDialog.h">
+      <Filter>Header Files\BuildingDetailDialog</Filter>
+    </CustomBuild>
+    <CustomBuild Include="FactoryCargoTableWidget.h">
+      <Filter>Header Files\BuildingDetailDialog</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="BankDialog.ui">
@@ -211,6 +211,24 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ValueGenerator.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="GameTimer.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseBuilding.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Factory.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Residence.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="FactoryCargo.h">
+      <Filter>Header Files\Buildings</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

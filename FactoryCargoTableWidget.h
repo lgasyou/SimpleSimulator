@@ -10,6 +10,8 @@ class FactoryCargoTableWidget : public QTableWidget {
 public:
 	FactoryCargoTableWidget(QWidget *parent = nullptr, FactoryCargo *cargo = nullptr);
 
+	void updateDisplay();
+
 	void setCargo(FactoryCargo *cargo) { this->cargo_ = cargo; }
 
 private:

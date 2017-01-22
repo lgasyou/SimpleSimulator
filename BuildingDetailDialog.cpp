@@ -1,5 +1,6 @@
 #include "BuildingDetailDialog.h"
 #include "BaseBuilding.h"
+#include "Factory.h"
 #include "Company.h"
 #include "FactoryCargoTableWidget.h"
 #include "ui_BuildingDetailDialog.h"
@@ -12,6 +13,7 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
     ui(new Ui::BuildingDetailDialog)
 {
     ui->setupUi(this);
+	ui->verticalLayout_Cargo->addWidget(factoryCargoTableWidget);
 
     connect(this, SIGNAL(buySignal(BaseBuilding*)),
             parent, SLOT(buy(BaseBuilding*)));
@@ -38,6 +40,7 @@ void BuildingDetailDialog::updateDisplay() {
 
     ui->pushButton_Build_Factory->hide();
     ui->pushButton_Build_residence->hide();
+	factoryCargoTableWidget->hide();
 
     setWindowTitle(building_->name());
     ui->label_Name->setText(tr("Name:  ") + building_->name());
@@ -83,18 +86,15 @@ void BuildingDetailDialog::on_pushButton_Build_clicked() {
 }
 
 void BuildingDetailDialog::on_pushButton_Manage_clicked() {
-    QString order("");
     if (building_->type() == "Factory") {
+		Factory *building = dynamic_cast<Factory *>(building_);
+		factoryCargoTableWidget->setCargo(building->cargo());
+		factoryCargoTableWidget->updateDisplay();
 		factoryCargoTableWidget->show();
-        QStringList list;
-        list << "Hello" << "World";
-        factoryCargoTableWidget->setRowCount(2);
-        factoryCargoTableWidget->setColumnCount(2);
-        factoryCargoTableWidget->setHorizontalHeaderLabels(list);
     } else {
 		factoryCargoTableWidget->hide();
     }
-    emit manageSignal(building_, order);
+    //emit manageSignal(building_, order);
 }
 
 void BuildingDetailDialog::on_pushButton_Dismantle_clicked() {

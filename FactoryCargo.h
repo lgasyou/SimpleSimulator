@@ -10,6 +10,8 @@ public:
     bool add(const QString &, double);
     void remove(const QString &, double);
 
+	const QMap<QString, double> &cargo() const { return this->cargo_; }
+
     const double curVolume() const { return this->curVolume_; }
 
     void setMaxVolume(double max) { this->maxVolume_ = max; }

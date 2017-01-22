@@ -9,7 +9,11 @@ BuildingInfoTableWidget::BuildingInfoTableWidget(QWidget *parent) :
     QTableWidget(parent),
     buildingManager_(nullptr),
     company_(nullptr)
-{ }
+{
+	this->setColumnCount(BaseBuilding::numberOfProperties + 2);
+	QStringList header{ tr("Name"),tr("Value"),tr("Type"), tr("Ownership"),tr("Option"), tr("Option") };
+	this->setHorizontalHeaderLabels(header);
+}
 
 bool BuildingInfoTableWidget::writeFile(const QString &fileName) {
     QFile file(fileName);
@@ -39,11 +43,6 @@ bool BuildingInfoTableWidget::readFile(const QString &fileName) {
 void BuildingInfoTableWidget::updateDisplay() {
     int buildingNumber = buildingManager_->buildingNumber();
     this->setRowCount(buildingNumber);
-    this->setColumnCount(BaseBuilding::numberOfProperties + 2);
-
-    QStringList header;
-    header << tr("Name") << tr("Value") << tr("Type") << tr("Ownership") << tr("Option") << tr("Option");
-    this->setHorizontalHeaderLabels(header);
 
     for (int i = 0; i != buildingNumber; ++i) {
         auto building = buildingManager_->getBuildingById(i);
