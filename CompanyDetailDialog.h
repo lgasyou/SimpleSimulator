@@ -21,6 +21,7 @@ public slots:
     void updateDisplay();
 
 private:
+	// transforms double into QString
 	QString toString(double value);
 
     Company *company_;

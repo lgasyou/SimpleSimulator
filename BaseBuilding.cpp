@@ -19,3 +19,5 @@ BaseBuilding::BaseBuilding(const BaseBuilding &rhs) :
 void BaseBuilding::manage(const QString &cmd) {
 
 }
+
+void BaseBuilding::update() { }

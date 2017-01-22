@@ -47,7 +47,7 @@ void BuildingDetailDialog::updateDisplay() {
 
     setWindowTitle(building_->name());
     ui->label_Name->setText(tr("Name:  ") + building_->name());
-    ui->label_Value->setText(tr("Value: $") + QString::number(building_->value(), 10, 2));
+    ui->label_Value->setText(tr("Value: $") + toString(building_->value()));
     ui->label_Type->setText(tr("Type:  ") + building_->type());
     QString owner = building_->owner() ? building_->owner()->name() : tr("Government");
     ui->label_Owner->setText(tr("Owner: ") + owner);

@@ -11,7 +11,13 @@ public:
 
     Factory(const BaseBuilding &);
 
+	// manual manage building
     void manage(const QString &) override;
+
+	// updates data after each turn
+	void update() override;
+
+	void manufacture();
 
 	FactoryCargo *cargo() const { return this->cargo_; }
 

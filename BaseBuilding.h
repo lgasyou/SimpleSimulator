@@ -15,7 +15,11 @@ public:
 
     virtual ~BaseBuilding() { }
 
+	// manual manage building
     virtual void manage(const QString &);
+	
+	// updates data after each turn
+	virtual void update();
 
     inline void setValue(double value) { this->value_ = value; }
 	inline const double value() const { return this->value_; }

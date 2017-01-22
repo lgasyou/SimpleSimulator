@@ -12,5 +12,20 @@ Factory::Factory(const BaseBuilding &rhs) :
 { }
 
 void Factory::manage(const QString &cmd) {
+}
 
+void Factory::update() { 
+	manufacture();
+}
+
+void Factory::manufacture() {
+	if (this->type() == "Iron Mine") {
+		cargo_->add("Iron", 1);
+	} else if (this->type() == "Coal Mine") {
+		cargo_->add("Coal", 2);
+	} else if (this->type() == "Steel Factory") {
+		cargo_->add("Stell", 1);
+		cargo_->remove("Iron", 1);
+		cargo_->remove("Coal", 2);
+	}
 }

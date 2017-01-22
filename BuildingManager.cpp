@@ -70,5 +70,7 @@ void BuildingManager::update() {
         double finalValue = deltaValue + building->value();
         building->setDeltaValue(deltaValue);
         building->setValue(finalValue);
+
+		building->update();
     }
 }

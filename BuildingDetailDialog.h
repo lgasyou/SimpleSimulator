@@ -29,21 +29,18 @@ signals:
     void manageSignal(BaseBuilding *, const QString &cmd);
 
 private slots:
-    void on_pushButton_Build_clicked();
-
     void on_pushButton_Buy_clicked();
-
-    void on_pushButton_Manage_clicked();
-
     void on_pushButton_Sell_clicked();
 
+    void on_pushButton_Manage_clicked();
     void on_pushButton_Dismantle_clicked();
 
+	void on_pushButton_Build_clicked();
     void on_pushButton_Build_Factory_clicked();
-
     void on_pushButton_Build_residence_clicked();
 
 private:
+	// transforms double into QString
 	QString toString(double value);
 
     BaseBuilding *building_;

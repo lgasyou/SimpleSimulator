@@ -30,6 +30,7 @@ private slots:
     void getBuildingAndSendSignal(MyPushButton *button);
 
 private:
+	// transforms double into QString
 	QString toString(double value);
 
 	BuildingManager *buildingManager_;
