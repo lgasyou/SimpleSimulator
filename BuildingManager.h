@@ -7,7 +7,7 @@
 class BuildingManager {
 public:
     BuildingManager();
-    BuildingManager(int number);
+    BuildingManager(int);
 
     BuildingBase *getBuildingById(unsigned id);
     const int buildingNumber() const { return buildingList_.size(); }

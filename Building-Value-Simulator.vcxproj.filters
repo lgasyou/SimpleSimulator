@@ -63,9 +63,6 @@
     <Filter Include="Header Files\Dialogs">
       <UniqueIdentifier>{75f0809b-5420-45c3-9f73-aaad1d258a59}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\QtComponents">
-      <UniqueIdentifier>{49fed835-c971-4571-b744-e39f69e5f68a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Company">
       <UniqueIdentifier>{ea6b5ddd-bb06-4665-a28d-27395d619c3b}</UniqueIdentifier>
     </Filter>
@@ -74,6 +71,9 @@
     </Filter>
     <Filter Include="Source Files\Dialogs">
       <UniqueIdentifier>{d17210c1-5901-475d-88b4-7bfd538075b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\QtComponents">
+      <UniqueIdentifier>{49fed835-c971-4571-b744-e39f69e5f68a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

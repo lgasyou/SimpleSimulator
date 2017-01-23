@@ -27,6 +27,8 @@ public:
 	// updates data after each turn
 	virtual void update();
 
+	void changeBaseValue();
+
     inline void setValue(double value) { this->value_ = value; }
 	inline const double value() const { return this->value_; }
 

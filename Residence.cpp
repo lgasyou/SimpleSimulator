@@ -12,4 +12,6 @@ void Residence::manage(const QString &cmd) {
 
 }
 
-void Residence::update() { }
+void Residence::update() {
+	changeBaseValue();
+}

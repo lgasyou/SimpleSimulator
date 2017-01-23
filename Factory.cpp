@@ -16,6 +16,7 @@ void Factory::manage(const QString &cmd) {
 }
 
 void Factory::update() { 
+	changeBaseValue();
 	manufacture();
 }
 

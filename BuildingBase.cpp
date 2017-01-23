@@ -1,4 +1,5 @@
 #include "BuildingBase.h"
+#include "ValueGenerator.h"
 
 BuildingBase::BuildingBase(double value) :
     BuildingBase("Hello", value, "Foundation", nullptr)
@@ -20,4 +21,14 @@ void BuildingBase::manage(const QString &cmd) {
 
 }
 
-void BuildingBase::update() { }
+void BuildingBase::update() { 
+	changeBaseValue();
+}
+
+void BuildingBase::changeBaseValue() {
+	double sigma = value_ * 0.1 / 3;
+	double deltaValue = ValueGenerator::normalDistribution(0, sigma);
+	double finalValue = deltaValue + value_;
+	setDeltaValue(deltaValue);
+	setValue(finalValue);
+}

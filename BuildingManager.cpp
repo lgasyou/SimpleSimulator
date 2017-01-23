@@ -19,7 +19,7 @@ BuildingManager::BuildingManager() :
     }
 }
 
-BuildingManager::BuildingManager(int number) :
+BuildingManager::BuildingManager(int) :
     totalDeltaValue_(0)
 { }
 
@@ -64,13 +64,6 @@ void BuildingManager::removeItem(BuildingBase *building) {
 }
 
 void BuildingManager::update() {
-    for (auto &building : buildingList_) {
-        double sigma = building->value() * 0.1 / 3;
-        double deltaValue = ValueGenerator::normalDistribution(0, sigma);
-        double finalValue = deltaValue + building->value();
-        building->setDeltaValue(deltaValue);
-        building->setValue(finalValue);
-
+    for (auto &building : buildingList_)
 		building->update();
-    }
 }
