@@ -8,7 +8,7 @@ BuildingManager::BuildingManager() :
     totalDeltaValue_(0)
 {
     double value = ValueGenerator::normalDistribution(50, 25);
-    buildingList_.push_back(new BaseBuilding(value));
+    buildingList_.push_back(new BuildingBase(value));
     for (int i = 0; i != 5; ++i) {
         double value = ValueGenerator::normalDistribution(100, 25);
         buildingList_.push_back(new Factory(value));
@@ -23,7 +23,7 @@ BuildingManager::BuildingManager(int number) :
     totalDeltaValue_(0)
 { }
 
-BaseBuilding *BuildingManager::getBuildingById(unsigned id) {
+BuildingBase *BuildingManager::getBuildingById(unsigned id) {
     return buildingList_[id];
 }
 
@@ -35,11 +35,11 @@ const double BuildingManager::totalDeltaValue() {
     return totalDeltaValue_;
 }
 
-BaseBuilding *BuildingManager::setItemType(BaseBuilding *building, const QString &type) {
+BuildingBase *BuildingManager::setItemType(BuildingBase *building, const QString &type) {
     int id = buildingList_.indexOf(building);
-    BaseBuilding *newBuilding = nullptr;
+    BuildingBase *newBuilding = nullptr;
     if (type == "Foundation")
-        newBuilding = new BaseBuilding(*building);
+        newBuilding = new BuildingBase(*building);
     else if (type.contains("Factory"))
         newBuilding = new Factory(*building, type);
     else
@@ -51,15 +51,15 @@ BaseBuilding *BuildingManager::setItemType(BaseBuilding *building, const QString
     return newBuilding;
 }
 
-void BuildingManager::manage(BaseBuilding *building, const QString &cmd) {
+void BuildingManager::manage(BuildingBase *building, const QString &cmd) {
     building->manage(cmd);
 }
 
-void BuildingManager::addItem(BaseBuilding *building) {
+void BuildingManager::addItem(BuildingBase *building) {
     buildingList_.push_back(building);
 }
 
-void BuildingManager::removeItem(BaseBuilding *building) {
+void BuildingManager::removeItem(BuildingBase *building) {
     buildingList_.removeOne(building);
 }
 

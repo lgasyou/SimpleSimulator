@@ -4,16 +4,22 @@
 #include <QString>
 class Company;
 
-class BaseBuilding {
+/*	the base of building classes.
+	three types of building:
+	* Residence,
+	* Commerce,
+	* Factory.
+*/
+class BuildingBase {
 public:
     static const int numberOfProperties = 4;
 
-    BaseBuilding(double value);
-    BaseBuilding(const QString &name, double value, const QString &type, Company *owner, double deltaValue = 0);
+    BuildingBase(double value);
+    BuildingBase(const QString &name, double value, const QString &type, Company *owner, double deltaValue = 0);
 
-    BaseBuilding(const BaseBuilding &);
+    BuildingBase(const BuildingBase &);
 
-    virtual ~BaseBuilding() { }
+    virtual ~BuildingBase() { }
 
 	// manual manage building
     virtual void manage(const QString &);

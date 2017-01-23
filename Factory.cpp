@@ -2,12 +2,12 @@
 #include "FactoryCargo.h"
 
 Factory::Factory(double value) :
-    BaseBuilding("Factory", value, "Factory", nullptr),
+	BuildingBase("Factory", value, "Factory", nullptr),
     cargo_(new FactoryCargo)
 { }
 
-Factory::Factory(const BaseBuilding &rhs, const QString &type) :
-    BaseBuilding(rhs.name(), rhs.value(), type, rhs.owner(), rhs.deltaValue()),
+Factory::Factory(const BuildingBase &rhs, const QString &type) :
+	BuildingBase(rhs.name(), rhs.value(), type, rhs.owner(), rhs.deltaValue()),
     cargo_(new FactoryCargo)
 { }
 

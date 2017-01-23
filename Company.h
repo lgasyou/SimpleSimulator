@@ -2,15 +2,15 @@
 #define COMPANY_H
 
 #include <QString>
-class BaseBuilding;
+class BuildingBase;
 class BuildingManager;
 
 class Company {
 public:
     Company();
 
-    bool buy(BaseBuilding *building);
-    bool sell(BaseBuilding *building);
+    bool buy(BuildingBase *building);
+    bool sell(BuildingBase *building);
 
     void update();
 

@@ -5,7 +5,7 @@
 class BuildingManager;
 class Company;
 class MyPushButton;
-class BaseBuilding;
+class BuildingBase;
 class BuildingDetailDialog;
 class BuildingInfoTableWidget;
 class CompanyDetailDialog;
@@ -28,13 +28,13 @@ signals:
 private slots:
     void goBank();
     void endTurns();
-    void showBuildingDetail(BaseBuilding *building);
+    void showBuildingDetail(BuildingBase *building);
     void showCompanyDetail();
     void updateDisplay();
-    void buy(BaseBuilding *building);
-    void sell(BaseBuilding *building);
-    void changeType(BaseBuilding *, const QString &);
-    void manage(BaseBuilding *, const QString &);
+    void buy(BuildingBase *building);
+    void sell(BuildingBase *building);
+    void changeType(BuildingBase *, const QString &);
+    void manage(BuildingBase *, const QString &);
 
 private:
     void updateCompanyInfo();

@@ -2,7 +2,7 @@
 #define BUILDINGINFOTABLE_H
 
 class BuildingManager;
-class BaseBuilding;
+class BuildingBase;
 class Company;
 class MyPushButton;
 #include <QTableWidget>
@@ -22,9 +22,9 @@ public:
     void setCompany(Company *company) { this->company_ = company; }
 
 signals:
-    void buySignal(BaseBuilding *);
-    void sellSignal(BaseBuilding *);
-    void showDetailSignal(BaseBuilding *);
+    void buySignal(BuildingBase *);
+    void sellSignal(BuildingBase *);
+    void showDetailSignal(BuildingBase *);
 
 private slots:
     void getBuildingAndSendSignal(MyPushButton *button);

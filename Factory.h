@@ -2,14 +2,14 @@
 #define FACTORY_H
 
 class FactoryCargo;
-#include "BaseBuilding.h"
+#include "BuildingBase.h"
 #include <QMap>
 
-class Factory : public BaseBuilding {
+class Factory : public BuildingBase {
 public:
     Factory(double value);
 
-    Factory(const BaseBuilding &, const QString &);
+    Factory(const BuildingBase &, const QString &);
 
 	// manual manage building
     void manage(const QString &) override;

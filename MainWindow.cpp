@@ -35,12 +35,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_Company, SIGNAL(clicked(bool)),
             this, SLOT(showCompanyDetail()));
 
-    connect(buildingInfoTableWidget, SIGNAL(buySignal(BaseBuilding*)),
-            this, SLOT(buy(BaseBuilding*)));
-    connect(buildingInfoTableWidget, SIGNAL(sellSignal(BaseBuilding*)),
-            this, SLOT(sell(BaseBuilding*)));
-    connect(buildingInfoTableWidget, SIGNAL(showDetailSignal(BaseBuilding*)),
-            this, SLOT(showBuildingDetail(BaseBuilding*)));
+    connect(buildingInfoTableWidget, SIGNAL(buySignal(BuildingBase*)),
+            this, SLOT(buy(BuildingBase*)));
+    connect(buildingInfoTableWidget, SIGNAL(sellSignal(BuildingBase*)),
+            this, SLOT(sell(BuildingBase*)));
+    connect(buildingInfoTableWidget, SIGNAL(showDetailSignal(BuildingBase*)),
+            this, SLOT(showBuildingDetail(BuildingBase*)));
 
     connect(this, SIGNAL(dataChanged(bool)),
             this, SLOT(updateDisplay()));
@@ -69,7 +69,7 @@ void MainWindow::endTurns() {
     emit dataChanged(true);
 }
 
-void MainWindow::showBuildingDetail(BaseBuilding *building) {
+void MainWindow::showBuildingDetail(BuildingBase *building) {
     if (!buildingDetailDialog)
         buildingDetailDialog = new BuildingDetailDialog(this);
     buildingDetailDialog->setBuilding(building);
@@ -90,7 +90,7 @@ void MainWindow::showCompanyDetail() {
     companyDetailDialog->updateDisplay();
 }
 
-void MainWindow::buy(BaseBuilding *building) {
+void MainWindow::buy(BuildingBase *building) {
     if (company->buy(building)) {
         emit dataChanged(true);
         updateStatusBar(building->type()+ " " + building->name() + " bought.");
@@ -98,21 +98,21 @@ void MainWindow::buy(BaseBuilding *building) {
         updateStatusBar("Cannot Afford it.");
 }
 
-void MainWindow::sell(BaseBuilding *building) {
+void MainWindow::sell(BuildingBase *building) {
     if (company->sell(building)) {
         emit dataChanged(true);
         updateStatusBar(building->type()+ " " + building->name() + " sold.");
     }
 }
 
-void MainWindow::changeType(BaseBuilding *building, const QString &type) {
-    BaseBuilding *newBuilding = buildingManager->setItemType(building, type);
+void MainWindow::changeType(BuildingBase *building, const QString &type) {
+	BuildingBase *newBuilding = buildingManager->setItemType(building, type);
     buildingDetailDialog->setBuilding(newBuilding);
     updateStatusBar(newBuilding->name() + " has been changed into " + type + ".");
     emit dataChanged(true);
 }
 
-void MainWindow::manage(BaseBuilding *building, const QString &cmd) {
+void MainWindow::manage(BuildingBase *building, const QString &cmd) {
     buildingManager->manage(building, cmd);
     emit dataChanged(true);
 }

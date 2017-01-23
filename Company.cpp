@@ -1,5 +1,5 @@
 #include "Company.h"
-#include "BaseBuilding.h"
+#include "BuildingBase.h"
 #include "BuildingManager.h"
 
 Company::Company() :
@@ -10,7 +10,7 @@ Company::Company() :
     properties_(new BuildingManager(0))
 { }
 
-bool Company::buy(BaseBuilding *building) {
+bool Company::buy(BuildingBase *building) {
     double buildingValue = building->value();
     if (buildingValue > this->cash_)
         return false;
@@ -21,7 +21,7 @@ bool Company::buy(BaseBuilding *building) {
     return true;
 }
 
-bool Company::sell(BaseBuilding *building) {
+bool Company::sell(BuildingBase *building) {
     this->setCash(cash_ + building->value());
     properties_->removeItem(building);
     building->setOwner(nullptr);

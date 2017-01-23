@@ -2,27 +2,27 @@
 #define BUILDINGMANAGER_H
 
 #include <QList>
-#include "BaseBuilding.h"
+#include "BuildingBase.h"
 
 class BuildingManager {
 public:
     BuildingManager();
     BuildingManager(int number);
 
-    BaseBuilding *getBuildingById(unsigned id);
+    BuildingBase *getBuildingById(unsigned id);
     const int buildingNumber() const { return buildingList_.size(); }
     const double totalDeltaValue();
 
-    BaseBuilding *setItemType(BaseBuilding *, const QString &);
-    void manage(BaseBuilding *, const QString &);
+    BuildingBase *setItemType(BuildingBase *, const QString &);
+    void manage(BuildingBase *, const QString &);
 
-    void addItem(BaseBuilding *);
-    void removeItem(BaseBuilding *);
+    void addItem(BuildingBase *);
+    void removeItem(BuildingBase *);
 
     void update();
 
 private:
-    QList<BaseBuilding *> buildingList_;
+    QList<BuildingBase *> buildingList_;
     double totalDeltaValue_;
 };
 

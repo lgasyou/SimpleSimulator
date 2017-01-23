@@ -1,13 +1,13 @@
 #ifndef RESIDENCE_H
 #define RESIDENCE_H
 
-#include "BaseBuilding.h"
+#include "BuildingBase.h"
 
-class Residence : public BaseBuilding {
+class Residence : public BuildingBase {
 public:
     Residence(double value);
 
-    Residence(const BaseBuilding &);
+    Residence(const BuildingBase &);
 
 	// manual manage building
     void manage(const QString &) override;

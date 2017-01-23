@@ -1,5 +1,5 @@
 #include "BuildingDetailDialog.h"
-#include "BaseBuilding.h"
+#include "BuildingBase.h"
 #include "Factory.h"
 #include "FactoryCargo.h"
 #include "Company.h"
@@ -16,14 +16,14 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
     ui->setupUi(this);
 	ui->verticalLayout_Cargo->addWidget(factoryCargoTableWidget);
 
-    connect(this, SIGNAL(buySignal(BaseBuilding*)),
-            parent, SLOT(buy(BaseBuilding*)));
-    connect(this, SIGNAL(sellSignal(BaseBuilding*)),
-            parent, SLOT(sell(BaseBuilding*)));
-    connect(this, SIGNAL(changeTypeSignal(BaseBuilding*,QString)),
-            parent, SLOT(changeType(BaseBuilding*,QString)));
-    connect(this, SIGNAL(manageSignal(BaseBuilding*,QString)),
-            parent, SLOT(manage(BaseBuilding*,QString)));
+    connect(this, SIGNAL(buySignal(BuildingBase*)),
+            parent, SLOT(buy(BuildingBase*)));
+    connect(this, SIGNAL(sellSignal(BuildingBase*)),
+            parent, SLOT(sell(BuildingBase*)));
+    connect(this, SIGNAL(changeTypeSignal(BuildingBase*,QString)),
+            parent, SLOT(changeType(BuildingBase*,QString)));
+    connect(this, SIGNAL(manageSignal(BuildingBase*,QString)),
+            parent, SLOT(manage(BuildingBase*,QString)));
 
     connect(parent, SIGNAL(dataChanged(bool)),
             this, SLOT(updateDisplay()));

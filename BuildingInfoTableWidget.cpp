@@ -10,7 +10,7 @@ BuildingInfoTableWidget::BuildingInfoTableWidget(QWidget *parent) :
     buildingManager_(nullptr),
     company_(nullptr)
 {
-	this->setColumnCount(BaseBuilding::numberOfProperties + 2);
+	this->setColumnCount(BuildingBase::numberOfProperties + 2);
 	QStringList header{ tr("Name"),tr("Value"),tr("Type"), tr("Ownership"),tr("Option"), tr("Option") };
 	this->setHorizontalHeaderLabels(header);
 }
@@ -77,7 +77,7 @@ void BuildingInfoTableWidget::getBuildingAndSendSignal(MyPushButton *button) {
         y = button->frameGeometry().y();
     QModelIndex index = this->indexAt(QPoint(x, y));
     int id = index.row();
-    BaseBuilding *building = buildingManager_->getBuildingById(id);
+    BuildingBase *building = buildingManager_->getBuildingById(id);
 
     if (button->text() == "Buy") {
         emit buySignal(building);
