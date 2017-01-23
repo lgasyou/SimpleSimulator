@@ -31,7 +31,6 @@ private:
     double cash_;
     double totalValue_;
     double liability_;
-    BuildingManager *properties_;
 };
 
 #endif // COMPANY_H

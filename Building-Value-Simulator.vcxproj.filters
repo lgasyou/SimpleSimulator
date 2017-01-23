@@ -107,12 +107,6 @@
     <ClCompile Include="Release\moc_CompanyDetailDialog.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="Debug\moc_FactoryCargoTableWidget.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="Release\moc_FactoryCargoTableWidget.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="Debug\moc_MainWindow.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
@@ -131,13 +125,7 @@
     <ClCompile Include="ValueGenerator.cpp">
       <Filter>Source Files\Utilities</Filter>
     </ClCompile>
-    <ClCompile Include="Factory.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
     <ClCompile Include="Residence.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
-    <ClCompile Include="FactoryCargo.cpp">
       <Filter>Source Files\Buildings</Filter>
     </ClCompile>
     <ClCompile Include="Commerce.cpp">
@@ -148,9 +136,6 @@
     </ClCompile>
     <ClCompile Include="BuildingDetailDialog.cpp">
       <Filter>Source Files\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="FactoryCargoTableWidget.cpp">
-      <Filter>Source Files\QtComponents</Filter>
     </ClCompile>
     <ClCompile Include="BuildingManager.cpp">
       <Filter>Source Files\Buildings</Filter>
@@ -170,6 +155,21 @@
     <ClCompile Include="MyPushButton.cpp">
       <Filter>Source Files\QtComponents</Filter>
     </ClCompile>
+    <ClCompile Include="Industry.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="IndustryWarehouse.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="IndustryWareHouseTableWidget.cpp">
+      <Filter>Source Files\QtComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_IndustryWarehouseTableWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Release\moc_IndustryWarehouseTableWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="MainWindow.h">
@@ -181,9 +181,6 @@
     <CustomBuild Include="MyPushButton.h">
       <Filter>Header Files\QtComponents</Filter>
     </CustomBuild>
-    <CustomBuild Include="FactoryCargoTableWidget.h">
-      <Filter>Header Files\QtComponents</Filter>
-    </CustomBuild>
     <CustomBuild Include="BuildingDetailDialog.h">
       <Filter>Header Files\Dialogs</Filter>
     </CustomBuild>
@@ -192,6 +189,9 @@
     </CustomBuild>
     <CustomBuild Include="BankDialog.h">
       <Filter>Header Files\Dialogs</Filter>
+    </CustomBuild>
+    <CustomBuild Include="IndustryWarehouseTableWidget.h">
+      <Filter>Header Files\QtComponents</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -227,13 +227,7 @@
     <ClInclude Include="GameTimer.h">
       <Filter>Header Files\Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="Factory.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
     <ClInclude Include="Residence.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
-    <ClInclude Include="FactoryCargo.h">
       <Filter>Header Files\Buildings</Filter>
     </ClInclude>
     <ClInclude Include="Commerce.h">
@@ -246,6 +240,15 @@
       <Filter>Header Files\Company</Filter>
     </ClInclude>
     <ClInclude Include="BuildingManager.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="GameConstant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Industry.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="IndustryWarehouse.h">
       <Filter>Header Files\Buildings</Filter>
     </ClInclude>
   </ItemGroup>

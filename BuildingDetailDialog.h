@@ -3,7 +3,7 @@
 
 class BuildingBase;
 class Company;
-class FactoryCargoTableWidget;
+class IndustryWarehouseTableWidget;
 #include <QDialog>
 namespace Ui {
 class BuildingDetailDialog;
@@ -38,7 +38,8 @@ private slots:
 	void on_pushButton_Build_clicked();
     void on_pushButton_Build_IronMine_clicked();
 	void on_pushButton_Build_CoalMine_clicked();
-	void on_pushButton_Build_SteelFactory_clicked();
+	void on_pushButton_Build_SteelIndustry_clicked();
+	void on_pushButton_Build_Commerce_clicked();
     void on_pushButton_Build_residence_clicked();
 
 private:
@@ -48,7 +49,7 @@ private:
     BuildingBase *building_;
     Company *visitor_;
 
-    FactoryCargoTableWidget *factoryCargoTableWidget;
+    IndustryWarehouseTableWidget *industryWarehouseTableWidget;
     Ui::BuildingDetailDialog *ui;
 };
 

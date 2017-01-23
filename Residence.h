@@ -5,9 +5,9 @@
 
 class Residence : public BuildingBase {
 public:
-    Residence(double value);
+    Residence(const QString & = "Residence");
 
-    Residence(const BuildingBase &);
+    Residence(const BuildingBase &, const QString &);
 
 	// manual manage building
     void manage(const QString &) override;

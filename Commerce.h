@@ -4,7 +4,8 @@
 
 class Commerce : public BuildingBase {
 public:
-	Commerce(double value);
+	Commerce(const QString & = "Commerce");
+
 	Commerce(const BuildingBase &, const QString &);
 
 	~Commerce();

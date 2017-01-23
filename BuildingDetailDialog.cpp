@@ -1,20 +1,20 @@
 #include "BuildingDetailDialog.h"
 #include "BuildingBase.h"
-#include "Factory.h"
-#include "FactoryCargo.h"
+#include "Industry.h"
+#include "IndustryWarehouse.h"
 #include "Company.h"
-#include "FactoryCargoTableWidget.h"
+#include "IndustryWarehouseTableWidget.h"
 #include "ui_BuildingDetailDialog.h"
 
 BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
     QDialog(parent),
     building_(nullptr),
     visitor_(nullptr),
-	factoryCargoTableWidget(new FactoryCargoTableWidget(this)),
+	industryWarehouseTableWidget(new IndustryWarehouseTableWidget(this)),
     ui(new Ui::BuildingDetailDialog)
 {
     ui->setupUi(this);
-	ui->verticalLayout_Cargo->addWidget(factoryCargoTableWidget);
+	ui->verticalLayout_Warehouse->addWidget(industryWarehouseTableWidget);
 
     connect(this, SIGNAL(buySignal(BuildingBase*)),
             parent, SLOT(buy(BuildingBase*)));
@@ -28,8 +28,8 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
     connect(parent, SIGNAL(dataChanged(bool)),
             this, SLOT(updateDisplay()));
 
-    factoryCargoTableWidget->hide();
-	ui->label_CargoSum->hide();
+    industryWarehouseTableWidget->hide();
+	ui->label_WarehouseSum->hide();
 }
 
 BuildingDetailDialog::~BuildingDetailDialog() {
@@ -42,10 +42,11 @@ void BuildingDetailDialog::updateDisplay() {
 
     ui->pushButton_Build_IronMine->hide();
 	ui->pushButton_Build_CoalMine->hide();
-	ui->pushButton_Build_SteelFactory->hide();
+	ui->pushButton_Build_SteelIndustry->hide();
+	ui->pushButton_Build_Commerce->hide();
     ui->pushButton_Build_residence->hide();
-	factoryCargoTableWidget->hide();
-	ui->label_CargoSum->hide();
+	industryWarehouseTableWidget->hide();
+	ui->label_WarehouseSum->hide();
 
     setWindowTitle(building_->name());
     ui->label_Name->setText(tr("Name:  ") + building_->name());
@@ -72,16 +73,16 @@ void BuildingDetailDialog::updateDisplay() {
         ui->pushButton_Dismantle->hide();
     } else {
 		if (building_->type().contains("Factory")) {
-			Factory *factory = dynamic_cast<Factory *>(building_);
-			ui->label_CargoSum->setText(toString(factory->cargo()->curVolume()) + "t / " + toString(factory->cargo()->maxVolume()) + "t");
-			factoryCargoTableWidget->setCargo(factory->cargo());
-			factoryCargoTableWidget->updateDisplay();
+			Industry *industry = dynamic_cast<Industry *>(building_);
+			ui->label_WarehouseSum->setText(toString(industry->warehouse()->curVolume()) + "t / " + toString(industry->warehouse()->maxVolume()) + "t");
+			industryWarehouseTableWidget->setWarehouse(industry->warehouse());
+			industryWarehouseTableWidget->updateDisplay();
 
-			factoryCargoTableWidget->show();
-			ui->label_CargoSum->show();
+			industryWarehouseTableWidget->show();
+			ui->label_WarehouseSum->show();
 		} else {
-			factoryCargoTableWidget->hide();
-			ui->label_CargoSum->hide();
+			industryWarehouseTableWidget->hide();
+			ui->label_WarehouseSum->hide();
 		}
 
         ui->pushButton_Build->hide();
@@ -101,7 +102,8 @@ void BuildingDetailDialog::on_pushButton_Sell_clicked() {
 void BuildingDetailDialog::on_pushButton_Build_clicked() {
 	ui->pushButton_Build_IronMine->show();
 	ui->pushButton_Build_CoalMine->show();
-	ui->pushButton_Build_SteelFactory->show();
+	ui->pushButton_Build_SteelIndustry->show();
+	ui->pushButton_Build_Commerce->show();
     ui->pushButton_Build_residence->show();
 }
 
@@ -121,8 +123,12 @@ void BuildingDetailDialog::on_pushButton_Build_CoalMine_clicked() {
 	emit changeTypeSignal(building_, "Coal Mine Factory");
 }
 
-void BuildingDetailDialog::on_pushButton_Build_SteelFactory_clicked() {
+void BuildingDetailDialog::on_pushButton_Build_SteelIndustry_clicked() {
 	emit changeTypeSignal(building_, "Steel Factory");
+}
+
+void BuildingDetailDialog::on_pushButton_Build_Commerce_clicked() {
+	emit changeTypeSignal(building_, "Commerce");
 }
 
 void BuildingDetailDialog::on_pushButton_Build_residence_clicked() {

@@ -65,6 +65,8 @@ void MainWindow::goBank() {
 void MainWindow::endTurns() {
     buildingManager->update();
     company->update();
+	double deltaValue = buildingManager->deltaValueOfCompanyProperties(company);
+	company->setTotalValue(company->totalValue() + deltaValue);
     GameTimer::increaseTime();
     emit dataChanged(true);
 }

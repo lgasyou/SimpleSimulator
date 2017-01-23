@@ -27,8 +27,8 @@ class Ui_BuildingDetailDialog
 {
 public:
     QGridLayout *gridLayout;
-    QVBoxLayout *verticalLayout_Cargo;
-    QLabel *label_CargoSum;
+    QVBoxLayout *verticalLayout_Warehouse;
+    QLabel *label_WarehouseSum;
     QVBoxLayout *verticalLayout_Main;
     QPushButton *pushButton_Buy;
     QPushButton *pushButton_Sell;
@@ -46,7 +46,8 @@ public:
     QVBoxLayout *verticalLayout_Build;
     QPushButton *pushButton_Build_IronMine;
     QPushButton *pushButton_Build_CoalMine;
-    QPushButton *pushButton_Build_SteelFactory;
+    QPushButton *pushButton_Build_SteelIndustry;
+    QPushButton *pushButton_Build_Commerce;
     QPushButton *pushButton_Build_residence;
 
     void setupUi(QDialog *BuildingDetailDialog)
@@ -56,15 +57,15 @@ public:
         BuildingDetailDialog->resize(594, 159);
         gridLayout = new QGridLayout(BuildingDetailDialog);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        verticalLayout_Cargo = new QVBoxLayout();
-        verticalLayout_Cargo->setObjectName(QStringLiteral("verticalLayout_Cargo"));
-        label_CargoSum = new QLabel(BuildingDetailDialog);
-        label_CargoSum->setObjectName(QStringLiteral("label_CargoSum"));
+        verticalLayout_Warehouse = new QVBoxLayout();
+        verticalLayout_Warehouse->setObjectName(QStringLiteral("verticalLayout_Warehouse"));
+        label_WarehouseSum = new QLabel(BuildingDetailDialog);
+        label_WarehouseSum->setObjectName(QStringLiteral("label_WarehouseSum"));
 
-        verticalLayout_Cargo->addWidget(label_CargoSum);
+        verticalLayout_Warehouse->addWidget(label_WarehouseSum);
 
 
-        gridLayout->addLayout(verticalLayout_Cargo, 1, 3, 1, 1);
+        gridLayout->addLayout(verticalLayout_Warehouse, 1, 3, 1, 1);
 
         verticalLayout_Main = new QVBoxLayout();
         verticalLayout_Main->setObjectName(QStringLiteral("verticalLayout_Main"));
@@ -145,10 +146,15 @@ public:
 
         verticalLayout_Build->addWidget(pushButton_Build_CoalMine);
 
-        pushButton_Build_SteelFactory = new QPushButton(BuildingDetailDialog);
-        pushButton_Build_SteelFactory->setObjectName(QStringLiteral("pushButton_Build_SteelFactory"));
+        pushButton_Build_SteelIndustry = new QPushButton(BuildingDetailDialog);
+        pushButton_Build_SteelIndustry->setObjectName(QStringLiteral("pushButton_Build_SteelIndustry"));
 
-        verticalLayout_Build->addWidget(pushButton_Build_SteelFactory);
+        verticalLayout_Build->addWidget(pushButton_Build_SteelIndustry);
+
+        pushButton_Build_Commerce = new QPushButton(BuildingDetailDialog);
+        pushButton_Build_Commerce->setObjectName(QStringLiteral("pushButton_Build_Commerce"));
+
+        verticalLayout_Build->addWidget(pushButton_Build_Commerce);
 
         pushButton_Build_residence = new QPushButton(BuildingDetailDialog);
         pushButton_Build_residence->setObjectName(QStringLiteral("pushButton_Build_residence"));
@@ -167,7 +173,7 @@ public:
     void retranslateUi(QDialog *BuildingDetailDialog)
     {
         BuildingDetailDialog->setWindowTitle(QApplication::translate("BuildingDetailDialog", "Dialog", Q_NULLPTR));
-        label_CargoSum->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", Q_NULLPTR));
+        label_WarehouseSum->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", Q_NULLPTR));
         pushButton_Buy->setText(QApplication::translate("BuildingDetailDialog", "Buy", Q_NULLPTR));
         pushButton_Sell->setText(QApplication::translate("BuildingDetailDialog", "Sell", Q_NULLPTR));
         pushButton_Build->setText(QApplication::translate("BuildingDetailDialog", "Build", Q_NULLPTR));
@@ -179,7 +185,8 @@ public:
         label_Owner->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", Q_NULLPTR));
         pushButton_Build_IronMine->setText(QApplication::translate("BuildingDetailDialog", "Iron Mine", Q_NULLPTR));
         pushButton_Build_CoalMine->setText(QApplication::translate("BuildingDetailDialog", "Coal Mine", Q_NULLPTR));
-        pushButton_Build_SteelFactory->setText(QApplication::translate("BuildingDetailDialog", "Steel Factory", Q_NULLPTR));
+        pushButton_Build_SteelIndustry->setText(QApplication::translate("BuildingDetailDialog", "Steel Industry", Q_NULLPTR));
+        pushButton_Build_Commerce->setText(QApplication::translate("BuildingDetailDialog", "Commerce", Q_NULLPTR));
         pushButton_Build_residence->setText(QApplication::translate("BuildingDetailDialog", "Residence", Q_NULLPTR));
     } // retranslateUi
 

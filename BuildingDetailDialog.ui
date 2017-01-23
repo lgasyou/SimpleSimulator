@@ -15,9 +15,9 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="3">
-    <layout class="QVBoxLayout" name="verticalLayout_Cargo">
+    <layout class="QVBoxLayout" name="verticalLayout_Warehouse">
      <item>
-      <widget class="QLabel" name="label_CargoSum">
+      <widget class="QLabel" name="label_WarehouseSum">
        <property name="text">
         <string>TextLabel</string>
        </property>
@@ -152,9 +152,16 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_Build_SteelFactory">
+      <widget class="QPushButton" name="pushButton_Build_SteelIndustry">
        <property name="text">
-        <string>Steel Factory</string>
+        <string>Steel Industry</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Build_Commerce">
+       <property name="text">
+        <string>Commerce</string>
        </property>
       </widget>
      </item>

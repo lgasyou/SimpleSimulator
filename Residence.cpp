@@ -1,11 +1,11 @@
 #include "Residence.h"
 
-Residence::Residence(double value) :
-	BuildingBase("World", value, "Residence", nullptr)
+Residence::Residence(const QString &type) :
+	BuildingBase("World", type, nullptr)
 { }
 
-Residence::Residence(const BuildingBase &rhs) :
-	BuildingBase(rhs.name(), rhs.value(), "Residence", rhs.owner(), rhs.deltaValue())
+Residence::Residence(const BuildingBase &rhs, const QString &type) :
+	BuildingBase(rhs, type)
 { }
 
 void Residence::manage(const QString &cmd) {

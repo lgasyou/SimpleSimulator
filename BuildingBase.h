@@ -8,16 +8,15 @@ class Company;
 	three types of building:
 	* Residence,
 	* Commerce,
-	* Factory.
+	* Industry.
 */
 class BuildingBase {
 public:
     static const int numberOfProperties = 4;
 
-    BuildingBase(double value);
-    BuildingBase(const QString &name, double value, const QString &type, Company *owner, double deltaValue = 0);
+	BuildingBase(const QString &name = "Foundation", const QString &type = "Foundation", Company *owner = nullptr, double deltaValue = 0.0);
 
-    BuildingBase(const BuildingBase &);
+    BuildingBase(const BuildingBase &, const QString &);
 
     virtual ~BuildingBase() { }
 
@@ -43,6 +42,9 @@ public:
 
     inline void setOwner(Company *const owner) { this->owner_ = owner; }
     inline Company *const owner() const { return this->owner_; }
+
+protected:
+	void initBasicValue();
 
 private:
     QString name_;

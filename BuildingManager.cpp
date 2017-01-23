@@ -1,49 +1,45 @@
 #include "BuildingManager.h"
 #include "ValueGenerator.h"
 #include "Residence.h"
-#include "Factory.h"
+#include "Commerce.h"
+#include "Industry.h"
 #include "Company.h"
 
-BuildingManager::BuildingManager() :
-    totalDeltaValue_(0)
+BuildingManager::BuildingManager()
 {
-    double value = ValueGenerator::normalDistribution(50, 25);
-    buildingList_.push_back(new BuildingBase(value));
-    for (int i = 0; i != 5; ++i) {
-        double value = ValueGenerator::normalDistribution(100, 25);
-        buildingList_.push_back(new Factory(value));
-    }
-    for (int i = 0; i != 5; ++i) {
-        double value = ValueGenerator::normalDistribution(200, 36);
-        buildingList_.push_back(new Residence(value));
-    }
+    buildingList_.push_back(new BuildingBase);
+    for (int i = 0; i != 2; ++i)
+        buildingList_.push_back(new Industry);
+	for (int i = 0; i != 3; ++i)
+		buildingList_.push_back(new Commerce);
+    for (int i = 0; i != 5; ++i)
+        buildingList_.push_back(new Residence);
 }
-
-BuildingManager::BuildingManager(int) :
-    totalDeltaValue_(0)
-{ }
 
 BuildingBase *BuildingManager::getBuildingById(unsigned id) {
     return buildingList_[id];
 }
 
-const double BuildingManager::totalDeltaValue() {
-    totalDeltaValue_ = 0;
+const double BuildingManager::deltaValueOfCompanyProperties(Company *company) {
+    double totalDeltaValue = 0;
     for (auto &building : buildingList_) {
-        totalDeltaValue_ += building->deltaValue();
+		if (building->owner() == company)
+			totalDeltaValue += building->deltaValue();
     }
-    return totalDeltaValue_;
+    return totalDeltaValue;
 }
 
 BuildingBase *BuildingManager::setItemType(BuildingBase *building, const QString &type) {
     int id = buildingList_.indexOf(building);
     BuildingBase *newBuilding = nullptr;
     if (type == "Foundation")
-        newBuilding = new BuildingBase(*building);
-    else if (type.contains("Factory"))
-        newBuilding = new Factory(*building, type);
-    else
-        newBuilding = new Residence(*building);
+        newBuilding = new BuildingBase(*building, type);
+	else if (type.contains("Factory"))
+		newBuilding = new Industry(*building, type);
+	else if (type.contains("Commerce"))
+		newBuilding = new Commerce(*building, type);
+	else
+        newBuilding = new Residence(*building, type);
 
     delete buildingList_[id];
     buildingList_.removeAt(id);

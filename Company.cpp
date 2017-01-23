@@ -6,8 +6,7 @@ Company::Company() :
     name_("Xenon Inc."),
     cash_(1000),
     totalValue_(1000),
-    liability_(0),
-    properties_(new BuildingManager(0))
+    liability_(0)
 { }
 
 bool Company::buy(BuildingBase *building) {
@@ -15,19 +14,17 @@ bool Company::buy(BuildingBase *building) {
     if (buildingValue > this->cash_)
         return false;
 
-    this->setCash(cash_ - buildingValue);
-    properties_->addItem(building);
+    cash_ -= buildingValue;
     building->setOwner(this);
     return true;
 }
 
 bool Company::sell(BuildingBase *building) {
-    this->setCash(cash_ + building->value());
-    properties_->removeItem(building);
+    cash_ += building->value();
     building->setOwner(nullptr);
     return true;
 }
 
 void Company::update() {
-    totalValue_ += properties_->totalDeltaValue();
+    
 }

@@ -28,9 +28,11 @@ signals:
 private slots:
     void goBank();
     void endTurns();
+
     void showBuildingDetail(BuildingBase *building);
     void showCompanyDetail();
     void updateDisplay();
+
     void buy(BuildingBase *building);
     void sell(BuildingBase *building);
     void changeType(BuildingBase *, const QString &);
