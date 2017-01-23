@@ -21,12 +21,13 @@ void Industry::update() {
 }
 
 void Industry::manufacture() {
-	if (this->type() == "Iron Mine Factory") {
+	const QString &type = this->type();
+	if (type == "Iron Mine Factory") {
 		warehouse_->addItem("Iron", 1);
-	} else if (this->type() == "Coal Mine Factory") {
+	} else if (type == "Coal Mine Factory") {
 		warehouse_->addItem("Coal", 2);
-	} else if (this->type() == "Steel Factory") {
-		warehouse_->addItem("Stell", 1);
+	} else if (type == "Steel Factory") {
+		warehouse_->addItem("Steel", 1);
 		warehouse_->removeItem("Iron", 1);
 		warehouse_->removeItem("Coal", 2);
 	} else {

@@ -1,11 +1,13 @@
 #include "IndustryWarehouse.h"
+#include "GameConstant.h"
 
 IndustryWarehouse::IndustryWarehouse() :
-    maxVolume_(100),
+    maxVolume_(GameConstant::maxVolumeOfWarehouses),
     curVolume_(0)
 { }
 
 bool IndustryWarehouse::addItem(const QString &item, double volume) {
+	// the space is full
     if (curVolume_ + volume > maxVolume_)
         return false;
 
