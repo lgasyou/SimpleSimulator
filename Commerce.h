@@ -16,4 +16,3 @@ public:
 	// update data after each turn
 	void update() override;
 };
-

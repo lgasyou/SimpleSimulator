@@ -1,8 +1,8 @@
-#include "IndustryWarehouseTableWidget.h"
-#include "IndustryWarehouse.h"
+#include "WarehouseTableWidget.h"
+#include "Warehouse.h"
 #include <map>
 
-IndustryWarehouseTableWidget::IndustryWarehouseTableWidget(QWidget *parent, IndustryWarehouse *warehouse) :
+WarehouseTableWidget::WarehouseTableWidget(QWidget *parent, Warehouse *warehouse) :
 	QTableWidget(parent),
 	warehouse_(warehouse)
 { 
@@ -11,7 +11,7 @@ IndustryWarehouseTableWidget::IndustryWarehouseTableWidget(QWidget *parent, Indu
 	this->setHorizontalHeaderLabels(header);
 }
 
-void IndustryWarehouseTableWidget::updateDisplay() {
+void WarehouseTableWidget::updateDisplay() {
 	const QMap<QString, double> &warehouse = warehouse_->warehouse();
 	this->setRowCount(warehouse.size());
 
@@ -22,6 +22,6 @@ void IndustryWarehouseTableWidget::updateDisplay() {
 	}
 }
 
-QString IndustryWarehouseTableWidget::toString(double value) {
+QString WarehouseTableWidget::toString(double value) {
 	return QString::number(value, 10, 2);
 }

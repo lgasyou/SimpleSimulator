@@ -75,6 +75,12 @@
     <Filter Include="Header Files\QtComponents">
       <UniqueIdentifier>{49fed835-c971-4571-b744-e39f69e5f68a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Transportations">
+      <UniqueIdentifier>{039bad84-2c3a-4c15-862f-870453e2e3f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Transportations">
+      <UniqueIdentifier>{9e67b31d-2e62-4223-a21f-a6042f1a836c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainWindow.cpp">
@@ -158,17 +164,32 @@
     <ClCompile Include="Industry.cpp">
       <Filter>Source Files\Buildings</Filter>
     </ClCompile>
-    <ClCompile Include="IndustryWarehouse.cpp">
-      <Filter>Source Files\Buildings</Filter>
+    <ClCompile Include="Garage.cpp">
+      <Filter>Source Files\Transportations</Filter>
     </ClCompile>
-    <ClCompile Include="IndustryWareHouseTableWidget.cpp">
-      <Filter>Source Files\QtComponents</Filter>
+    <ClCompile Include="Vihicle.cpp">
+      <Filter>Source Files\Transportations</Filter>
     </ClCompile>
-    <ClCompile Include="Debug\moc_IndustryWarehouseTableWidget.cpp">
+    <ClCompile Include="Truck.cpp">
+      <Filter>Source Files\Transportations</Filter>
+    </ClCompile>
+    <ClCompile Include="Order.cpp">
+      <Filter>Source Files\Transportations</Filter>
+    </ClCompile>
+    <ClCompile Include="GoodsContainer.cpp">
+      <Filter>Source Files\Transportations</Filter>
+    </ClCompile>
+    <ClCompile Include="Warehouse.cpp">
+      <Filter>Source Files\Transportations</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_WarehouseTableWidget.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
-    <ClCompile Include="Release\moc_IndustryWarehouseTableWidget.cpp">
+    <ClCompile Include="Release\moc_WarehouseTableWidget.cpp">
       <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="WareHouseTableWidget.cpp">
+      <Filter>Source Files\QtComponents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -190,7 +211,7 @@
     <CustomBuild Include="BankDialog.h">
       <Filter>Header Files\Dialogs</Filter>
     </CustomBuild>
-    <CustomBuild Include="IndustryWarehouseTableWidget.h">
+    <CustomBuild Include="WarehouseTableWidget.h">
       <Filter>Header Files\QtComponents</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -248,8 +269,23 @@
     <ClInclude Include="Industry.h">
       <Filter>Header Files\Buildings</Filter>
     </ClInclude>
-    <ClInclude Include="IndustryWarehouse.h">
-      <Filter>Header Files\Buildings</Filter>
+    <ClInclude Include="Garage.h">
+      <Filter>Header Files\Transportations</Filter>
+    </ClInclude>
+    <ClInclude Include="Vihicle.h">
+      <Filter>Header Files\Transportations</Filter>
+    </ClInclude>
+    <ClInclude Include="Truck.h">
+      <Filter>Header Files\Transportations</Filter>
+    </ClInclude>
+    <ClInclude Include="Order.h">
+      <Filter>Header Files\Transportations</Filter>
+    </ClInclude>
+    <ClInclude Include="GoodsContainer.h">
+      <Filter>Header Files\Transportations</Filter>
+    </ClInclude>
+    <ClInclude Include="Warehouse.h">
+      <Filter>Header Files\Transportations</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

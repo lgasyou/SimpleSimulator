@@ -3,7 +3,7 @@
 
 class BuildingBase;
 class Company;
-class IndustryWarehouseTableWidget;
+class WarehouseTableWidget;
 #include <QDialog>
 namespace Ui {
 class BuildingDetailDialog;
@@ -49,7 +49,7 @@ private:
     BuildingBase *building_;
     Company *visitor_;
 
-    IndustryWarehouseTableWidget *industryWarehouseTableWidget;
+    WarehouseTableWidget *warehouseTableWidget;
     Ui::BuildingDetailDialog *ui;
 };
 

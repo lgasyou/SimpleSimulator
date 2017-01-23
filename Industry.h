@@ -1,7 +1,8 @@
 #ifndef Industry_H
 #define Industry_H
 
-class IndustryWarehouse;
+class Warehouse;
+class Garage;
 #include "BuildingBase.h"
 #include <QMap>
 
@@ -19,10 +20,15 @@ public:
 
 	void manufacture();
 
-	IndustryWarehouse *warehouse() const { return this->warehouse_; }
+	void putInStorage(const QString &, double);
+
+	void putOutStorage(const QString &, double);
+
+	Warehouse *warehouse() const { return this->warehouse_; }
 
 private:
-    IndustryWarehouse *warehouse_;
+    Warehouse *warehouse_;
+	Garage *garage_;
 };
 
 #endif // Industry_H

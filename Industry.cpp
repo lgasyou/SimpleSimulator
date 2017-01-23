@@ -1,14 +1,17 @@
 #include "Industry.h"
-#include "IndustryWarehouse.h"
+#include "Warehouse.h"
+#include "Garage.h"
 
 Industry::Industry(const QString &type) :
 	BuildingBase("Factory", type, nullptr),
-	warehouse_(new IndustryWarehouse)
+	warehouse_(new Warehouse),
+	garage_(new Garage)
 { }
 
 Industry::Industry(const BuildingBase &rhs, const QString &type) :
 	BuildingBase(rhs, type),
-    warehouse_(new IndustryWarehouse)
+    warehouse_(new Warehouse),
+	garage_(new Garage)
 { }
 
 void Industry::manage(const QString &cmd) {
@@ -18,6 +21,7 @@ void Industry::manage(const QString &cmd) {
 void Industry::update() { 
 	changeBaseValue();
 	manufacture();
+	garage_->update();
 }
 
 void Industry::manufacture() {
@@ -27,10 +31,22 @@ void Industry::manufacture() {
 	} else if (type == "Coal Mine Factory") {
 		warehouse_->addItem("Coal", 2);
 	} else if (type == "Steel Factory") {
+		if (warehouse_->warehouse()["Iron"] < 1 || 
+			warehouse_->warehouse()["Coal"] < 2)
+			return;
+
 		warehouse_->addItem("Steel", 1);
 		warehouse_->removeItem("Iron", 1);
 		warehouse_->removeItem("Coal", 2);
 	} else {
 		warehouse_->addItem("Goods", 1);
 	}
+}
+
+void Industry::putInStorage(const QString &item, double volume) {
+	warehouse_->addItem(item, volume);
+}
+
+void Industry::putOutStorage(const QString &item, double volume) {
+	warehouse_->removeItem(item, volume);
 }
