@@ -3,6 +3,7 @@
 #include "Vihicle.h"
 #include "GoodsContainer.h"
 class Industry;
+class Order;
 #include <QMap>
 
 class Truck : public Vihicle, public GoodsContainer {
@@ -10,13 +11,17 @@ public:
 	Truck();
 	~Truck();
 
-	void setDest(Industry *dest) { this->dest_ = dest; }
-	Industry *const dest() const { return this->dest_; }
+	void load();
 
-	void setOccupied(bool isOccupied) { this->isOccupied_ = isOccupied; }
-	const bool isOccupied() const { return this->isOccupied_; }
+	void unload();
+
+	void setOrder(Order *order) { this->order_ = order; }
+	Order *const order() const { return this->order_; }
+
+	void setOccupied(bool occupied) { this->occupied_ = occupied; }
+	const bool occupied() const { return this->occupied_; }
 
 private:
-	Industry *dest_;
-	bool isOccupied_;
+	Order *order_;
+	bool occupied_;
 };

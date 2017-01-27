@@ -11,16 +11,27 @@ void Garage::addNewVihicle(const QString &type) {
 		vihicleList_.push_back(new Truck);
 }
 
-void Garage::send(Order *order) {
-	// todo
-	orders_.push(nullptr);
+void Garage::sendVihicle(Order *order) {
+	Truck *truck = selectFreeTruck();
+	if (!truck)
+		return;
+
+	truck->setOrder(order);
+	truck->load();
+	transitingTrucks_.push(truck);
 }
 
 void Garage::update() {
-	while (!orders_.empty()) {
-		Order *order = orders_.front();
-		orders_.pop();
-		Industry *dest = order->dest;
-
+	while (!transitingTrucks_.empty()) {
+		Truck *truck = transitingTrucks_.front();
+		transitingTrucks_.pop();
+		truck->unload();
 	}
+}
+
+Truck *Garage::selectFreeTruck() {
+	for (auto &truck : vihicleList_)
+		if (!truck->occupied())
+			return truck;
+	return nullptr;
 }

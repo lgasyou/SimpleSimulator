@@ -43,8 +43,10 @@ public:
     inline void setOwner(Company *const owner) { this->owner_ = owner; }
     inline Company *const owner() const { return this->owner_; }
 
+
 protected:
 	void initBasicValue();
+
 
 private:
     QString name_;

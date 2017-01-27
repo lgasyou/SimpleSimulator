@@ -6,7 +6,7 @@ class Truck;
 
 class Order {
 public:
-	QString item;
+	QString goods;
 	double weight;
 	Industry *src;
 	Industry *dest;

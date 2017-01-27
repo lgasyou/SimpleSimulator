@@ -13,11 +13,13 @@ public:
 
 	void addNewVihicle(const QString &);
 
-	void send(Order *order);
+	void sendVihicle(Order *order);
 
 	void update();
 
 private:
+	Truck *selectFreeTruck();
+
 	QList<Truck *> vihicleList_;
-	std::queue<Order *> orders_;
+	std::queue<Truck *> transitingTrucks_;
 };
