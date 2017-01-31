@@ -7,6 +7,8 @@ class GoodsContainer {
 public:
 	GoodsContainer();
 
+	virtual ~GoodsContainer();
+
 	bool addItem(const QString &, double);
 	void removeItem(const QString &, double);
 

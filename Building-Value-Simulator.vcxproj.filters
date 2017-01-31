@@ -191,6 +191,15 @@
     <ClCompile Include="WareHouseTableWidget.cpp">
       <Filter>Source Files\QtComponents</Filter>
     </ClCompile>
+    <ClCompile Include="GarageTableWidget.cpp">
+      <Filter>Source Files\QtComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_GarageTableWidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Release\moc_GarageTableWidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="MainWindow.h">
@@ -212,6 +221,9 @@
       <Filter>Header Files\Dialogs</Filter>
     </CustomBuild>
     <CustomBuild Include="WarehouseTableWidget.h">
+      <Filter>Header Files\QtComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GarageTableWidget.h">
       <Filter>Header Files\QtComponents</Filter>
     </CustomBuild>
   </ItemGroup>

@@ -7,6 +7,8 @@ Truck::Truck() :
 	occupied_(false)
 { }
 
+Truck::~Truck() { }
+
 void Truck::load() {
 	QString &goods = order_->goods;
 	double weight = order_->weight;

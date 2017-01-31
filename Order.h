@@ -6,8 +6,10 @@ class Truck;
 
 class Order {
 public:
+	Order(const QString &_goods, double _weight, Industry *_dest, Industry *_src);
+
 	QString goods;
 	double weight;
-	Industry *src;
 	Industry *dest;
+	Industry *src;
 };

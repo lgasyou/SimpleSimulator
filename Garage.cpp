@@ -2,9 +2,13 @@
 #include "Truck.h"
 #include "Order.h"
 
-Garage::Garage() { }
+Garage::Garage() { init(); }
 
 Garage::~Garage() { }
+
+void Garage::init() {
+	addNewVihicle("truck");
+}
 
 void Garage::addNewVihicle(const QString &type) {
 	if (type == "truck")

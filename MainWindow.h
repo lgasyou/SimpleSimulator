@@ -43,7 +43,7 @@ private:
     void updateStatusBar(const QString &msg);
 
 	// transforms double into QString
-	QString toString(double value);
+	static QString toString(double value);
 
     BuildingManager *buildingManager;
     Company *company;

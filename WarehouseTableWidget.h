@@ -16,7 +16,7 @@ public:
 
 private:
 	// transforms double into QString
-	QString toString(double value);
+	static QString toString(double value);
 
 	Warehouse *warehouse_;
 };

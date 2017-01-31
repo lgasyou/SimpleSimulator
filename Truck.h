@@ -9,6 +9,7 @@ class Order;
 class Truck : public Vihicle, public GoodsContainer {
 public:
 	Truck();
+
 	~Truck();
 
 	void load();

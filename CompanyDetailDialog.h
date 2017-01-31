@@ -22,7 +22,7 @@ public slots:
 
 private:
 	// transforms double into QString
-	QString toString(double value);
+	static QString toString(double value);
 
     Company *company_;
     Ui::CompanyDetailDialog *ui;

@@ -31,7 +31,7 @@ private slots:
 
 private:
 	// transforms double into QString
-	QString toString(double value);
+	static QString toString(double value);
 
 	BuildingManager *buildingManager_;
     Company *company_;

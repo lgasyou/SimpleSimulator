@@ -9,7 +9,10 @@ class Truck;
 class Garage {
 public:
 	Garage();
+
 	~Garage();
+
+	void init();
 
 	void addNewVihicle(const QString &);
 

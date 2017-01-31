@@ -6,6 +6,8 @@ GoodsContainer::GoodsContainer() :
 	curVolume_(0)
 { }
 
+GoodsContainer::~GoodsContainer() { }
+
 bool GoodsContainer::addItem(const QString &item, double volume) {
 	// the space is full
 	if (curVolume_ + volume > maxVolume_)

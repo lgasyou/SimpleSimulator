@@ -3,5 +3,6 @@
 class Vihicle {
 public:
 	Vihicle();
-	~Vihicle();
+
+	virtual ~Vihicle();
 };
