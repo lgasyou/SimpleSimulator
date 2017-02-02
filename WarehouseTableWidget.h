@@ -10,6 +10,8 @@ class WarehouseTableWidget : public QTableWidget {
 public:
 	WarehouseTableWidget(QWidget *parent = nullptr, Warehouse *warehouse = nullptr);
 
+	void init();
+
 	void updateDisplay();
 
 	void setWarehouse(Warehouse *warehouse) { this->warehouse_ = warehouse; }

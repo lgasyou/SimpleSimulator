@@ -1,12 +1,16 @@
 #include "GoodsContainer.h"
-#include "GameConstant.h"
+#include "GameConstants.h"
 
 GoodsContainer::GoodsContainer() :
-	maxVolume_(GameConstant::maxVolumeOfWarehouses),
+	maxVolume_(GameConstants::defaultMaxVolOfWarehouses),
 	curVolume_(0)
 { }
 
 GoodsContainer::~GoodsContainer() { }
+
+const double GoodsContainer::query(const QString &item) {
+	return container_[item];
+}
 
 bool GoodsContainer::addItem(const QString &item, double volume) {
 	// the space is full

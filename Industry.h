@@ -4,6 +4,7 @@
 class Warehouse;
 class Garage;
 #include "BuildingBase.h"
+#include <QString>
 #include <QMap>
 
 class Industry : public BuildingBase {
@@ -19,6 +20,8 @@ public:
 	void update() override;
 
 	void manufacture();
+
+	void transit(const QString &goods, double weight, Industry *dest);
 
 	void putInStorage(const QString &, double);
 

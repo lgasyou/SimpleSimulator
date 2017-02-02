@@ -45,12 +45,12 @@ private:
 	// transforms double into QString
 	static QString toString(double value);
 
-    BuildingManager *buildingManager;
-    Company *company;
-    BankDialog *bankDialog;
-    BuildingDetailDialog *buildingDetailDialog;
-    BuildingInfoTableWidget *buildingInfoTableWidget;
-    CompanyDetailDialog *companyDetailDialog;
+    BuildingManager *buildingManager_;
+    Company *company_;
+    BankDialog *bankDialog_;
+    BuildingDetailDialog *buildingDetailDialog_;
+    BuildingInfoTableWidget *buildingInfoTableWidget_;
+    CompanyDetailDialog *companyDetailDialog_;
     Ui::MainWindow *ui;
 };
 

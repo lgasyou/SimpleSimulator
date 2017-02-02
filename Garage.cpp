@@ -7,17 +7,17 @@ Garage::Garage() { init(); }
 Garage::~Garage() { }
 
 void Garage::init() {
-	addNewVihicle("truck");
+	addNewVihicle("Truck");
 }
 
 void Garage::addNewVihicle(const QString &type) {
-	if (type == "truck")
+	if (type == "Truck")
 		vihicleList_.push_back(new Truck);
 }
 
 void Garage::sendVihicle(Order *order) {
 	Truck *truck = selectFreeTruck();
-	if (!truck)
+	if (truck == nullptr)
 		return;
 
 	truck->setOrder(order);

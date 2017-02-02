@@ -49,7 +49,7 @@ private:
     BuildingBase *building_;
     Company *visitor_;
 
-    WarehouseTableWidget *warehouseTableWidget;
+    WarehouseTableWidget *warehouseTableWidget_;
     Ui::BuildingDetailDialog *ui;
 };
 

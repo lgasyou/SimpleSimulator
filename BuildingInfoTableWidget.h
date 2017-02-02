@@ -13,6 +13,8 @@ class BuildingInfoTableWidget : public QTableWidget {
 public:
     BuildingInfoTableWidget(QWidget *parent = 0);
 
+	void init();
+
     bool writeFile(const QString &fileName);
     bool readFile(const QString &fileName);
 

@@ -200,6 +200,9 @@
     <ClCompile Include="Release\moc_GarageTableWidget.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="GameConstants.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="MainWindow.h">
@@ -275,9 +278,6 @@
     <ClInclude Include="BuildingManager.h">
       <Filter>Header Files\Buildings</Filter>
     </ClInclude>
-    <ClInclude Include="GameConstant.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Industry.h">
       <Filter>Header Files\Buildings</Filter>
     </ClInclude>
@@ -298,6 +298,9 @@
     </ClInclude>
     <ClInclude Include="Warehouse.h">
       <Filter>Header Files\Transportations</Filter>
+    </ClInclude>
+    <ClInclude Include="GameConstants.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

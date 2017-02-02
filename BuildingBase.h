@@ -4,16 +4,13 @@
 #include <QString>
 class Company;
 
-/*	the base of building classes.
-	three types of building:
-	* Residence,
-	* Commerce,
-	* Industry.
-*/
+//	the base of building classes.
+//	three types of building:
+//	* Residence,
+//	* Commerce,
+//	* Industry.
 class BuildingBase {
 public:
-    static const int numberOfProperties = 4;
-
 	BuildingBase(const QString &name = "Foundation", const QString &type = "Foundation", Company *owner = nullptr, double deltaValue = 0.0);
 
     BuildingBase(const BuildingBase &, const QString &);

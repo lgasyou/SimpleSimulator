@@ -1,7 +1,7 @@
 #pragma once
 
 class Industry;
-class Order;
+struct Order;
 class Truck;
 #include <QList>
 #include <queue>
@@ -21,6 +21,7 @@ public:
 	void update();
 
 private:
+	// If there's no free truck, returns nullptr
 	Truck *selectFreeTruck();
 
 	QList<Truck *> vihicleList_;

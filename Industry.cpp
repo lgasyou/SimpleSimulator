@@ -1,6 +1,7 @@
 #include "Industry.h"
 #include "Warehouse.h"
 #include "Garage.h"
+#include "Order.h"
 
 Industry::Industry(const QString &type) :
 	BuildingBase("Factory", type, nullptr),
@@ -31,8 +32,8 @@ void Industry::manufacture() {
 	} else if (type == "Coal Mine Factory") {
 		warehouse_->addItem("Coal", 2);
 	} else if (type == "Steel Factory") {
-		if (warehouse_->warehouse()["Iron"] < 1 || 
-			warehouse_->warehouse()["Coal"] < 2)
+		if (warehouse_->query("Iron") < 1 || 
+			warehouse_->query("Coal") < 2)
 			return;
 
 		warehouse_->addItem("Steel", 1);
@@ -41,6 +42,11 @@ void Industry::manufacture() {
 	} else {
 		warehouse_->addItem("Goods", 1);
 	}
+}
+
+void Industry::transit(const QString &goods, double weight, Industry *dest) {
+	Order *order = new Order(goods, weight, dest, this);
+	garage_->sendVihicle(order);
 }
 
 void Industry::putInStorage(const QString &item, double volume) {

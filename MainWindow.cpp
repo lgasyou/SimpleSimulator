@@ -13,20 +13,20 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    buildingManager(new BuildingManager),
-    company(new Company),
-    bankDialog(nullptr),
-    buildingDetailDialog(nullptr),
-    buildingInfoTableWidget(new BuildingInfoTableWidget(this)),
-    companyDetailDialog(nullptr),
+    buildingManager_(new BuildingManager),
+    company_(new Company),
+    bankDialog_(nullptr),
+    buildingDetailDialog_(nullptr),
+    buildingInfoTableWidget_(new BuildingInfoTableWidget(this)),
+    companyDetailDialog_(nullptr),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->BuildingInfoTableWidget->addWidget(buildingInfoTableWidget);
+    ui->BuildingInfoTableWidget->addWidget(buildingInfoTableWidget_);
     setWindowTitle(tr("Building Value Simulator"));
 
-    buildingInfoTableWidget->setBuildingManager(buildingManager);
-    buildingInfoTableWidget->setCompany(company);
+    buildingInfoTableWidget_->setBuildingManager(buildingManager_);
+    buildingInfoTableWidget_->setCompany(company_);
 
     connect(ui->pushButton_EndTurn, SIGNAL(clicked(bool)),
             this, SLOT(endTurns()));
@@ -35,11 +35,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_Company, SIGNAL(clicked(bool)),
             this, SLOT(showCompanyDetail()));
 
-    connect(buildingInfoTableWidget, SIGNAL(buySignal(BuildingBase*)),
+    connect(buildingInfoTableWidget_, SIGNAL(buySignal(BuildingBase*)),
             this, SLOT(buy(BuildingBase*)));
-    connect(buildingInfoTableWidget, SIGNAL(sellSignal(BuildingBase*)),
+    connect(buildingInfoTableWidget_, SIGNAL(sellSignal(BuildingBase*)),
             this, SLOT(sell(BuildingBase*)));
-    connect(buildingInfoTableWidget, SIGNAL(showDetailSignal(BuildingBase*)),
+    connect(buildingInfoTableWidget_, SIGNAL(showDetailSignal(BuildingBase*)),
             this, SLOT(showBuildingDetail(BuildingBase*)));
 
     connect(this, SIGNAL(dataChanged(bool)),
@@ -53,47 +53,47 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::goBank() {
-    if (!bankDialog)
-        bankDialog = new BankDialog(company, this);
-    bankDialog->updateDisplay();
-    if (bankDialog->exec() == QDialog::Accepted) {
+    if (!bankDialog_)
+        bankDialog_ = new BankDialog(company_, this);
+    bankDialog_->updateDisplay();
+    if (bankDialog_->exec() == QDialog::Accepted) {
         updateStatusBar("Back.");
         emit dataChanged(true);
     }
 }
 
 void MainWindow::endTurns() {
-    buildingManager->update();
-    company->update();
-	double deltaValue = buildingManager->deltaValueOfCompanyProperties(company);
-	company->setTotalValue(company->totalValue() + deltaValue);
+    buildingManager_->update();
+    company_->update();
+	double deltaValue = buildingManager_->deltaValueOfCompanyProperties(company_);
+	company_->setTotalValue(company_->totalValue() + deltaValue);
     GameTimer::increaseTime();
     emit dataChanged(true);
 }
 
 void MainWindow::showBuildingDetail(BuildingBase *building) {
-    if (!buildingDetailDialog)
-        buildingDetailDialog = new BuildingDetailDialog(this);
-    buildingDetailDialog->setBuilding(building);
-    buildingDetailDialog->setVisitor(company);
-    buildingDetailDialog->show();
-    buildingDetailDialog->raise();
-    buildingDetailDialog->activateWindow();
-    buildingDetailDialog->updateDisplay();
+    if (!buildingDetailDialog_)
+        buildingDetailDialog_ = new BuildingDetailDialog(this);
+    buildingDetailDialog_->setBuilding(building);
+    buildingDetailDialog_->setVisitor(company_);
+    buildingDetailDialog_->show();
+    buildingDetailDialog_->raise();
+    buildingDetailDialog_->activateWindow();
+    buildingDetailDialog_->updateDisplay();
 }
 
 void MainWindow::showCompanyDetail() {
-    if (!companyDetailDialog)
-        companyDetailDialog = new CompanyDetailDialog(this);
-    companyDetailDialog->setCompany(company);
-    companyDetailDialog->show();
-    companyDetailDialog->raise();
-    companyDetailDialog->activateWindow();
-    companyDetailDialog->updateDisplay();
+    if (!companyDetailDialog_)
+        companyDetailDialog_ = new CompanyDetailDialog(this);
+    companyDetailDialog_->setCompany(company_);
+    companyDetailDialog_->show();
+    companyDetailDialog_->raise();
+    companyDetailDialog_->activateWindow();
+    companyDetailDialog_->updateDisplay();
 }
 
 void MainWindow::buy(BuildingBase *building) {
-    if (company->buy(building)) {
+    if (company_->buy(building)) {
         emit dataChanged(true);
         updateStatusBar(building->type()+ " " + building->name() + " bought.");
     } else
@@ -101,34 +101,34 @@ void MainWindow::buy(BuildingBase *building) {
 }
 
 void MainWindow::sell(BuildingBase *building) {
-    if (company->sell(building)) {
+    if (company_->sell(building)) {
         emit dataChanged(true);
         updateStatusBar(building->type()+ " " + building->name() + " sold.");
     }
 }
 
 void MainWindow::changeType(BuildingBase *building, const QString &type) {
-	BuildingBase *newBuilding = buildingManager->setItemType(building, type);
-    buildingDetailDialog->setBuilding(newBuilding);
+	BuildingBase *newBuilding = buildingManager_->resetItemType(building, type);
+    buildingDetailDialog_->setBuilding(newBuilding);
     updateStatusBar(newBuilding->name() + " has been changed into " + type + ".");
     emit dataChanged(true);
 }
 
 void MainWindow::manage(BuildingBase *building, const QString &cmd) {
-    buildingManager->manage(building, cmd);
+    buildingManager_->manage(building, cmd);
     emit dataChanged(true);
 }
 
 void MainWindow::updateDisplay() {
     updateCompanyInfo();
-    buildingInfoTableWidget->updateDisplay();
+    buildingInfoTableWidget_->updateDisplay();
 }
 
 void MainWindow::updateCompanyInfo() {
-    ui->label_CompanyName->setText(company->name());
-    QString cash = toString(company->cash());
+    ui->label_CompanyName->setText(company_->name());
+    QString cash = toString(company_->cash());
     ui->label_CompanyCash->setText(tr("Cash: $") + cash);
-    QString totalValue = toString(company->totalValue());
+    QString totalValue = toString(company_->totalValue());
     ui->label_CompanyTotalValue->setText(tr("Total Value: $") + totalValue);
     ui->label_Turns->setText(tr("Turn ") + QString::number(GameTimer::currentTime()));
 }

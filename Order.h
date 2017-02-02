@@ -4,8 +4,7 @@ class Industry;
 class Truck;
 #include <QString>
 
-class Order {
-public:
+struct Order {
 	Order(const QString &_goods, double _weight, Industry *_dest, Industry *_src);
 
 	QString goods;

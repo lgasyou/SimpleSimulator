@@ -1,6 +1,7 @@
 #include "BuildingInfoTableWidget.h"
 #include "BuildingManager.h"
 #include "Company.h"
+#include "GameConstants.h"
 #include "MyPushButton.h"
 #include <QFile>
 #include <QApplication>
@@ -9,8 +10,12 @@ BuildingInfoTableWidget::BuildingInfoTableWidget(QWidget *parent) :
     QTableWidget(parent),
     buildingManager_(nullptr),
     company_(nullptr)
-{
-	this->setColumnCount(BuildingBase::numberOfProperties + 2);
+{ 
+	init(); 
+}
+
+void BuildingInfoTableWidget::init() {
+	this->setColumnCount(GameConstants::colOfBuildingInfoTableWidget);
 	QStringList header{ tr("Name"),tr("Value"),tr("Type"), tr("Ownership"),tr("Option"), tr("Option") };
 	this->setHorizontalHeaderLabels(header);
 }
@@ -26,7 +31,7 @@ bool BuildingInfoTableWidget::writeFile(const QString &fileName) {
 
     QApplication::setOverrideCursor(Qt::WaitCursor);
 //    for (int row = 0; row != buildingManager_->buildingNumber(); ++row) {
-//        for (int col = 0; col != BaseBuilding::numberOfProperties; ++ col) {
+//        for (int col = 0; col != BaseBuilding::numberOfPropertiesOfBuildings; ++ col) {
 //            QString str;
 
 //        }

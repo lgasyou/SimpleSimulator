@@ -2,6 +2,7 @@
 #include "BuildingBase.h"
 #include "Industry.h"
 #include "Warehouse.h"
+#include "GoodsContainer.h"
 #include "Company.h"
 #include "WarehouseTableWidget.h"
 #include "ui_BuildingDetailDialog.h"
@@ -10,11 +11,11 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
     QDialog(parent),
     building_(nullptr),
     visitor_(nullptr),
-	warehouseTableWidget(new WarehouseTableWidget(this)),
+	warehouseTableWidget_(new WarehouseTableWidget(this)),
     ui(new Ui::BuildingDetailDialog)
 {
     ui->setupUi(this);
-	ui->verticalLayout_Warehouse->addWidget(warehouseTableWidget);
+	ui->verticalLayout_Warehouse->addWidget(warehouseTableWidget_);
 
     connect(this, SIGNAL(buySignal(BuildingBase*)),
             parent, SLOT(buy(BuildingBase*)));
@@ -28,7 +29,7 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
     connect(parent, SIGNAL(dataChanged(bool)),
             this, SLOT(updateDisplay()));
 
-    warehouseTableWidget->hide();
+    warehouseTableWidget_->hide();
 	ui->label_WarehouseSum->hide();
 }
 
@@ -45,7 +46,7 @@ void BuildingDetailDialog::updateDisplay() {
 	ui->pushButton_Build_SteelIndustry->hide();
 	ui->pushButton_Build_Commerce->hide();
     ui->pushButton_Build_residence->hide();
-	warehouseTableWidget->hide();
+	warehouseTableWidget_->hide();
 	ui->label_WarehouseSum->hide();
 
     setWindowTitle(building_->name());
@@ -75,13 +76,13 @@ void BuildingDetailDialog::updateDisplay() {
 		if (building_->type().contains("Factory")) {
 			Industry *industry = dynamic_cast<Industry *>(building_);
 			ui->label_WarehouseSum->setText(toString(industry->warehouse()->curVolume()) + "t / " + toString(industry->warehouse()->maxVolume()) + "t");
-			warehouseTableWidget->setWarehouse(industry->warehouse());
-			warehouseTableWidget->updateDisplay();
+			warehouseTableWidget_->setWarehouse(industry->warehouse());
+			warehouseTableWidget_->updateDisplay();
 
-			warehouseTableWidget->show();
+			warehouseTableWidget_->show();
 			ui->label_WarehouseSum->show();
 		} else {
-			warehouseTableWidget->hide();
+			warehouseTableWidget_->hide();
 			ui->label_WarehouseSum->hide();
 		}
 

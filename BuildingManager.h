@@ -13,7 +13,7 @@ public:
     const int buildingNumber() const { return buildingList_.size(); }
     const double deltaValueOfCompanyProperties(Company *);
 
-    BuildingBase *setItemType(BuildingBase *, const QString &);
+    BuildingBase *resetItemType(BuildingBase *, const QString &);
     void manage(BuildingBase *, const QString &);
 
     void addItem(BuildingBase *);
@@ -22,6 +22,8 @@ public:
     void update();
 
 private:
+	QList<BuildingBase *>::iterator iteratorOf(BuildingBase *);
+
     QList<BuildingBase *> buildingList_;
 };
 

@@ -9,6 +9,8 @@ public:
 
 	virtual ~GoodsContainer();
 
+	const double query(const QString &item);
+
 	bool addItem(const QString &, double);
 	void removeItem(const QString &, double);
 
@@ -16,6 +18,8 @@ public:
 
 	void setMaxVolume(double max) { this->maxVolume_ = max; }
 	const double maxVolume() const { return this->maxVolume_; }
+
+	const QMap<QString, double> &container() const { return this->container_; }
 
 protected:
 	QMap<QString, double> container_;

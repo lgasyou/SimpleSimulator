@@ -1,5 +1,6 @@
 #include "Warehouse.h"
-#include "GameConstant.h"
+#include "GameConstants.h"
+#include "GoodsContainer.h"
 
 Warehouse::Warehouse() :
 	GoodsContainer()

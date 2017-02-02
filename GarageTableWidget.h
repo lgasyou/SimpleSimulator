@@ -10,6 +10,8 @@ public:
 
 	~GarageTableWidget();
 
+	void init();
+
 	void updateDisplay();
 
 	void setGarage(Garage *garage) { this->garage_ = garage; }

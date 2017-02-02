@@ -5,8 +5,7 @@
 #include "Industry.h"
 #include "Company.h"
 
-BuildingManager::BuildingManager()
-{
+BuildingManager::BuildingManager() {
     buildingList_.push_back(new BuildingBase);
     for (int i = 0; i != 2; ++i)
         buildingList_.push_back(new Industry);
@@ -29,9 +28,10 @@ const double BuildingManager::deltaValueOfCompanyProperties(Company *company) {
     return totalDeltaValue;
 }
 
-BuildingBase *BuildingManager::setItemType(BuildingBase *building, const QString &type) {
-    int id = buildingList_.indexOf(building);
+BuildingBase *BuildingManager::resetItemType(BuildingBase *building, const QString &type) {
+	auto &iter = iteratorOf(building);
     BuildingBase *newBuilding = nullptr;
+
     if (type == "Foundation")
         newBuilding = new BuildingBase(*building, type);
 	else if (type.contains("Factory"))
@@ -41,9 +41,8 @@ BuildingBase *BuildingManager::setItemType(BuildingBase *building, const QString
 	else
         newBuilding = new Residence(*building, type);
 
-    delete buildingList_[id];
-    buildingList_.removeAt(id);
-    buildingList_.insert(id, newBuilding);
+    delete *iter;
+	*iter = newBuilding;
     return newBuilding;
 }
 
@@ -62,4 +61,11 @@ void BuildingManager::removeItem(BuildingBase *building) {
 void BuildingManager::update() {
     for (auto &building : buildingList_)
 		building->update();
+}
+
+QList<BuildingBase *>::iterator BuildingManager::iteratorOf(BuildingBase *building) {
+	auto &iterator = buildingList_.begin();
+	while (iterator != buildingList_.end() && *iterator != building)
+		++iterator;
+	return iterator;
 }

@@ -1,6 +1,6 @@
 #include "BuildingBase.h"
 #include "ValueGenerator.h"
-#include "GameConstant.h"
+#include "GameConstants.h"
 
 BuildingBase::BuildingBase(const QString &name, const QString &type, Company *owner, double deltaValue) :
 	name_(name),
@@ -36,8 +36,8 @@ void BuildingBase::changeBaseValue() {
 }
 
 void BuildingBase::initBasicValue() {
-	double basicValue = GameConstant::basicValueOfBuildings,
-		sigma = GameConstant::sigmaOfBasicValueOfBuildings;
+	double basicValue = GameConstants::defaultBaseValueOfBuildings,
+		sigma = GameConstants::sigmaOfdefaultBaseValueOfBuildings;
 	double value = ValueGenerator::normalDistribution(basicValue, sigma);
 	this->value_ = value;
 }
