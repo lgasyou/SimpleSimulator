@@ -9,9 +9,9 @@ BuildingManager::BuildingManager() {
     buildingList_.push_back(new BuildingBase);
     for (int i = 0; i != 2; ++i)
         buildingList_.push_back(new Industry);
-	for (int i = 0; i != 3; ++i)
+	for (int i = 0; i != 1; ++i)
 		buildingList_.push_back(new Commerce);
-    for (int i = 0; i != 5; ++i)
+    for (int i = 0; i != 3; ++i)
         buildingList_.push_back(new Residence);
 }
 
@@ -20,7 +20,7 @@ BuildingBase *BuildingManager::getBuildingById(unsigned id) {
 }
 
 const double BuildingManager::deltaValueOfCompanyProperties(Company *company) {
-    double totalDeltaValue = 0;
+    double totalDeltaValue = 0.0;
     for (auto &building : buildingList_) {
 		if (building->owner() == company)
 			totalDeltaValue += building->deltaValue();

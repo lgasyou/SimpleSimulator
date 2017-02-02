@@ -21,6 +21,8 @@ public:
 
     void update();
 
+	const QList<BuildingBase *> &buildingList() const { return this->buildingList_; }
+
 private:
 	QList<BuildingBase *>::iterator iteratorOf(BuildingBase *);
 

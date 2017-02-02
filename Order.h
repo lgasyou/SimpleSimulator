@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ORDER_H
+#define ORDER_H
 
 class Industry;
 class Truck;
@@ -12,3 +13,5 @@ struct Order {
 	Industry *dest;
 	Industry *src;
 };
+
+#endif // !ORDER_H

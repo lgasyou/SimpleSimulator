@@ -19,6 +19,8 @@ public:
     bool readFile(const QString &fileName);
 
     void updateDisplay();
+	void updateItem(int index, BuildingBase *building);
+	void updateWidget(int index, BuildingBase *building);
 
     void setBuildingManager(BuildingManager *buildingManager) { this->buildingManager_ = buildingManager; }
     void setCompany(Company *company) { this->company_ = company; }

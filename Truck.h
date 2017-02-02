@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TRUCK_H
+#define TRUCK_H
 
 #include "Vihicle.h"
 class GoodsContainer;
@@ -33,3 +34,5 @@ private:
 	GoodsContainer *freightHouse_;
 	bool occupied_;
 };
+
+#endif // !TRUCK_H

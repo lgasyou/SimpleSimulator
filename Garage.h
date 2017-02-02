@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GARAGE_H
+#define GARAGE_H
 
 class Industry;
 struct Order;
@@ -16,14 +17,19 @@ public:
 
 	void addNewVihicle(const QString &);
 
+	void removeVihicle(const QString &);
+
 	void sendVihicle(Order *order);
 
 	void update();
 
 private:
-	// If there's no free truck, returns nullptr
+	// Returns truck* if has free truck, 
+	// otherwise returns nullptr.
 	Truck *selectFreeTruck();
 
 	QList<Truck *> vihicleList_;
 	std::queue<Truck *> transitingTrucks_;
 };
+
+#endif // !GARAGE_H

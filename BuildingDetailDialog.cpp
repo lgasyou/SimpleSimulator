@@ -4,6 +4,7 @@
 #include "Warehouse.h"
 #include "GoodsContainer.h"
 #include "Company.h"
+#include "GarageTableWidget.h"
 #include "WarehouseTableWidget.h"
 #include "ui_BuildingDetailDialog.h"
 
@@ -11,6 +12,7 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
     QDialog(parent),
     building_(nullptr),
     visitor_(nullptr),
+	garageTableWidget_(new GarageTableWidget(this)),
 	warehouseTableWidget_(new WarehouseTableWidget(this)),
     ui(new Ui::BuildingDetailDialog)
 {
@@ -28,9 +30,6 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
 
     connect(parent, SIGNAL(dataChanged(bool)),
             this, SLOT(updateDisplay()));
-
-    warehouseTableWidget_->hide();
-	ui->label_WarehouseSum->hide();
 }
 
 BuildingDetailDialog::~BuildingDetailDialog() {
@@ -38,58 +37,91 @@ BuildingDetailDialog::~BuildingDetailDialog() {
 }
 
 void BuildingDetailDialog::updateDisplay() {
+	// Return if this window isn't showing.
     if (this->isHidden())
         return;
 
-    ui->pushButton_Build_IronMine->hide();
+	hideVariableWidget();
+
+	displayBasicInfo();
+
+	displayAccordingToVisitor();
+}
+
+void BuildingDetailDialog::hideVariableWidget() {
+	ui->pushButton_Build->hide();
+	ui->pushButton_Build_IronMine->hide();
 	ui->pushButton_Build_CoalMine->hide();
 	ui->pushButton_Build_SteelIndustry->hide();
 	ui->pushButton_Build_Commerce->hide();
-    ui->pushButton_Build_residence->hide();
+	ui->pushButton_Build_residence->hide();
+	ui->pushButton_Buy->hide();
+	ui->pushButton_Dismantle->hide();
+	ui->pushButton_Manage->hide();
+	ui->pushButton_Sell->hide();
+	garageTableWidget_->hide();
 	warehouseTableWidget_->hide();
 	ui->label_WarehouseSum->hide();
+}
 
-    setWindowTitle(building_->name());
-    ui->label_Name->setText(tr("Name:  ") + building_->name());
-    ui->label_Value->setText(tr("Value: $") + toString(building_->value()));
-    ui->label_Type->setText(tr("Type:  ") + building_->type());
-    QString owner = building_->owner() ? building_->owner()->name() : tr("Government");
-    ui->label_Owner->setText(tr("Owner: ") + owner);
+void BuildingDetailDialog::displayBasicInfo() {
+	setWindowTitle(building_->name());
+	ui->label_Name->setText(tr("Name:  ") + building_->name());
+	ui->label_Value->setText(tr("Value: $") + toString(building_->value()));
+	ui->label_Type->setText(tr("Type:  ") + building_->type());
+	QString owner = building_->owner() ? building_->owner()->name() : tr("Government");
+	ui->label_Owner->setText(tr("Owner: ") + owner);
+}
 
-    bool isVisitorOwner = (building_->owner() == visitor_);
-    if (!isVisitorOwner) {
-        ui->pushButton_Buy->show();
-        ui->pushButton_Sell->hide();
-        ui->pushButton_Manage->hide();
-        ui->pushButton_Build->hide();
-        ui->pushButton_Dismantle->hide();
-        return;
-    }
+void BuildingDetailDialog::displayAccordingToVisitor() {
+	bool isVisitorOwner = (building_->owner() == visitor_);
+	if (isVisitorOwner == false) {
+		ui->pushButton_Buy->show();
+		return;
+	}
+	ui->pushButton_Sell->show();
 
-    ui->pushButton_Sell->show();
-    ui->pushButton_Buy->hide();
-    if (building_->type() == "Foundation") {
-        ui->pushButton_Build->show();
-        ui->pushButton_Manage->hide();
-        ui->pushButton_Dismantle->hide();
-    } else {
-		if (building_->type().contains("Factory")) {
-			Industry *industry = dynamic_cast<Industry *>(building_);
-			ui->label_WarehouseSum->setText(toString(industry->warehouse()->curVolume()) + "t / " + toString(industry->warehouse()->maxVolume()) + "t");
-			warehouseTableWidget_->setWarehouse(industry->warehouse());
-			warehouseTableWidget_->updateDisplay();
+	const QString &type = building_->type();
+	if (type == "Foundation")
+		typeIsFoundation();
+	else if (type.contains("Factory"))
+		typeIsIndustry();
+	else if (type.contains("Commerce"))
+		typeIsCommerce();
+	else
+		typeIsResidence();
+}
 
-			warehouseTableWidget_->show();
-			ui->label_WarehouseSum->show();
-		} else {
-			warehouseTableWidget_->hide();
-			ui->label_WarehouseSum->hide();
-		}
+void BuildingDetailDialog::typeIsFoundation() {
+	ui->pushButton_Build->show();
+}
 
-        ui->pushButton_Build->hide();
-        ui->pushButton_Manage->show();
-        ui->pushButton_Dismantle->show();
-    }
+void BuildingDetailDialog::typeIsIndustry() {
+	Industry *industry = dynamic_cast<Industry *>(building_);
+	garageTableWidget_->setGarage(industry->garage());
+	garageTableWidget_->updateDisplay();
+
+	const double curVolume = industry->warehouse()->curVolume();
+	const double maxVolume = industry->warehouse()->maxVolume();
+	ui->label_WarehouseSum->setText(toString(curVolume) + "t / " + toString(maxVolume) + "t");
+	warehouseTableWidget_->setWarehouse(industry->warehouse());
+	warehouseTableWidget_->updateDisplay();
+
+	garageTableWidget_->show();
+	warehouseTableWidget_->show();
+	ui->label_WarehouseSum->show();
+	ui->pushButton_Manage->show();
+	ui->pushButton_Dismantle->show();
+}
+
+void BuildingDetailDialog::typeIsCommerce() {
+	ui->pushButton_Manage->show();
+	ui->pushButton_Dismantle->show();
+}
+
+void BuildingDetailDialog::typeIsResidence() {
+	ui->pushButton_Manage->show();
+	ui->pushButton_Dismantle->show();
 }
 
 void BuildingDetailDialog::on_pushButton_Buy_clicked() {

@@ -1,4 +1,6 @@
-﻿#pragma once
+﻿#ifndef GARAGETABLEWIDGET_H
+#define GARAGETABLEWIDGET_H
+
 #include <QTableWidget>
 class Garage;
 
@@ -19,3 +21,5 @@ public:
 private:
 	Garage *garage_;
 };
+
+#endif // !GARAGETABLEWIDGET_H

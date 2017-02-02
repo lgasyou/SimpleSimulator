@@ -5,7 +5,8 @@
 
 Truck::Truck() :
 	order_(nullptr), 
-	occupied_(false)
+	occupied_(false),
+	freightHouse_(new GoodsContainer)
 { }
 
 Truck::~Truck() { }

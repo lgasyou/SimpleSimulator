@@ -1,4 +1,5 @@
-#pragma once
+#ifndef COMMERCE_H
+#define COMMERCE_H
 
 #include "BuildingBase.h"
 
@@ -16,3 +17,5 @@ public:
 	// update data after each turn
 	void update() override;
 };
+
+#endif // COMMERCE_H

@@ -3,6 +3,7 @@
 
 class BuildingBase;
 class Company;
+class GarageTableWidget;
 class WarehouseTableWidget;
 #include <QDialog>
 namespace Ui {
@@ -21,6 +22,16 @@ public:
 
 public slots:
 	void updateDisplay();
+
+public:
+	void hideVariableWidget();
+	void displayBasicInfo();
+	void displayAccordingToVisitor();
+
+	void typeIsFoundation();
+	void typeIsIndustry();
+	void typeIsCommerce();
+	void typeIsResidence();
 
 signals:
     void buySignal(BuildingBase *);
@@ -49,6 +60,7 @@ private:
     BuildingBase *building_;
     Company *visitor_;
 
+	GarageTableWidget *garageTableWidget_;
     WarehouseTableWidget *warehouseTableWidget_;
     Ui::BuildingDetailDialog *ui;
 };

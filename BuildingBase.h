@@ -1,5 +1,5 @@
-#ifndef BASEBUILDING_H
-#define BASEBUILDING_H
+#ifndef BUILDINGBASE_H
+#define BUILDINGBASE_H
 
 #include <QString>
 class Company;
@@ -53,4 +53,4 @@ private:
     Company *owner_;
 };
 
-#endif // BASEBUILDING_H
+#endif // BUILDINGBASE_H

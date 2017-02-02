@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VIHICLE_H
+#define VIHICLE_H
 
 class Vihicle {
 public:
@@ -6,3 +7,5 @@ public:
 
 	virtual ~Vihicle();
 };
+
+#endif // !VIHICLE_H

@@ -15,6 +15,9 @@ void Garage::addNewVihicle(const QString &type) {
 		vihicleList_.push_back(new Truck);
 }
 
+// TODO
+void Garage::removeVihicle(const QString &) { }
+
 void Garage::sendVihicle(Order *order) {
 	Truck *truck = selectFreeTruck();
 	if (truck == nullptr)

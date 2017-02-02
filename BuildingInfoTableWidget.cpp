@@ -11,7 +11,7 @@ BuildingInfoTableWidget::BuildingInfoTableWidget(QWidget *parent) :
     buildingManager_(nullptr),
     company_(nullptr)
 { 
-	init(); 
+	init();
 }
 
 void BuildingInfoTableWidget::init() {
@@ -49,28 +49,36 @@ void BuildingInfoTableWidget::updateDisplay() {
     int buildingNumber = buildingManager_->buildingNumber();
     this->setRowCount(buildingNumber);
 
-    for (int i = 0; i != buildingNumber; ++i) {
-        auto building = buildingManager_->getBuildingById(i);
+	int index = 0;
+	auto &buildingList = buildingManager_->buildingList();
+	for (auto &iter = buildingList.constBegin(); iter != buildingList.constEnd(); ++iter, ++index) {
+		auto &building = *iter;
+		updateItem(index, building);
+		updateWidget(index, building);
+	}
+}
 
-        this->setItem(i, 0, new QTableWidgetItem(building->name()));
-        QString deltaValue = " " + toString(building->deltaValue());
-        QString value = "$" + toString(building->value()) + deltaValue;
-        this->setItem(i, 1, new QTableWidgetItem(value));
-        this->setItem(i, 2, new QTableWidgetItem(building->type()));
-        QString owner = building->owner() ? building->owner()->name() : tr("Government");
-        this->setItem(i, 3, new QTableWidgetItem(owner));
+void BuildingInfoTableWidget::updateItem(int index, BuildingBase *building) {
+	setItem(index, 0, new QTableWidgetItem(building->name()));
+	QString deltaValue = " " + toString(building->deltaValue());
+	QString value = "$" + toString(building->value()) + deltaValue;
+	setItem(index, 1, new QTableWidgetItem(value));
+	setItem(index, 2, new QTableWidgetItem(building->type()));
+	QString owner = building->owner() ? building->owner()->name() : tr("Government");
+	setItem(index, 3, new QTableWidgetItem(owner));
+}
 
-        QString btnText = (building->owner() != company_) ? tr("Buy") : tr("Sell");
-        MyPushButton *optionBtn = new MyPushButton(btnText);
-        connect(optionBtn, SIGNAL(sendPointer(MyPushButton*)),
-                this, SLOT(getBuildingAndSendSignal(MyPushButton*)));
-        this->setCellWidget(i, 4, optionBtn);
+void BuildingInfoTableWidget::updateWidget(int index, BuildingBase *building) {
+	QString btnText = (building->owner() != company_) ? tr("Buy") : tr("Sell");
+	MyPushButton *optionBtn = new MyPushButton(btnText);
+	connect(optionBtn, SIGNAL(sendPointer(MyPushButton*)),
+		this, SLOT(getBuildingAndSendSignal(MyPushButton*)));
+	setCellWidget(index, 4, optionBtn);
 
-        MyPushButton *detailBtn = new MyPushButton(tr("Details"));
-        connect(detailBtn, SIGNAL(sendPointer(MyPushButton*)),
-                this, SLOT(getBuildingAndSendSignal(MyPushButton*)));
-        this->setCellWidget(i, 5, detailBtn);
-    }
+	MyPushButton *detailBtn = new MyPushButton(tr("Details"));
+	connect(detailBtn, SIGNAL(sendPointer(MyPushButton*)),
+		this, SLOT(getBuildingAndSendSignal(MyPushButton*)));
+	setCellWidget(index, 5, detailBtn);
 }
 
 QString BuildingInfoTableWidget::toString(double value) {

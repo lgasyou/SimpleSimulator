@@ -3,7 +3,7 @@
 
 GoodsContainer::GoodsContainer() :
 	maxVolume_(GameConstants::defaultMaxVolOfWarehouses),
-	curVolume_(0)
+	curVolume_(0.0)
 { }
 
 GoodsContainer::~GoodsContainer() { }

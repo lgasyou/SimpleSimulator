@@ -19,10 +19,10 @@ void WarehouseTableWidget::updateDisplay() {
 	const QMap<QString, double> &warehouse = warehouse_->container();
 	this->setRowCount(warehouse.size());
 
-	unsigned int i = 0;
-	for (auto &iter = warehouse.constBegin(); iter != warehouse.constEnd(); ++iter, ++i) {
-		this->setItem(i, 0, new QTableWidgetItem(iter.key()));
-		this->setItem(i, 1, new QTableWidgetItem(toString(iter.value())));
+	unsigned int index = 0;
+	for (auto &iter = warehouse.constBegin(); iter != warehouse.constEnd(); ++iter, ++index) {
+		this->setItem(index, 0, new QTableWidgetItem(iter.key()));
+		this->setItem(index, 1, new QTableWidgetItem(toString(iter.value())));
 	}
 }
 

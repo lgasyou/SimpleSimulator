@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GOODSCONTAINER_H
+#define GOODSCONTAINER_H
 
 #include <QMap>
 #include <QString>
@@ -26,3 +27,5 @@ protected:
 	double maxVolume_;
 	double curVolume_;
 };
+
+#endif // !GOODSCONTAINER_H

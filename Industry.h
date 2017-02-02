@@ -29,6 +29,8 @@ public:
 
 	Warehouse *warehouse() const { return this->warehouse_; }
 
+	Garage *garage() const { return this->garage_; }
+
 private:
     Warehouse *warehouse_;
 	Garage *garage_;

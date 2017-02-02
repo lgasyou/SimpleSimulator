@@ -22,6 +22,7 @@ QString CompanyDetailDialog::toString(double value) {
 }
 
 void CompanyDetailDialog::updateDisplay() {
+	// Return if this window isn't showing.
     if (this->isHidden())
         return;
 
