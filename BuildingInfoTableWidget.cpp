@@ -71,11 +71,13 @@ void BuildingInfoTableWidget::displayBasicInfo(int index, BuildingBase *building
 void BuildingInfoTableWidget::displayAccordingToVisitor(int index, BuildingBase *building) {
 	const QString &btnText = (building->owner() != company_) ? tr("Buy") : tr("Sell");
 	MyPushButton *optionBtn = new MyPushButton(btnText);
+	optionBtn->setIndex(index);
 	connect(optionBtn, SIGNAL(sendPointer(MyPushButton*)),
 		this, SLOT(getBuildingAndSendSignal(MyPushButton*)));
 	setCellWidget(index, 4, optionBtn);
 
 	MyPushButton *detailBtn = new MyPushButton(tr("Details"));
+	detailBtn->setIndex(index);
 	connect(detailBtn, SIGNAL(sendPointer(MyPushButton*)),
 		this, SLOT(getBuildingAndSendSignal(MyPushButton*)));
 	setCellWidget(index, 5, detailBtn);
@@ -86,8 +88,7 @@ QString BuildingInfoTableWidget::toString(double value) {
 }
 
 void BuildingInfoTableWidget::getBuildingAndSendSignal(MyPushButton *button) {
-	QPoint location = button->getLocation();
-    int id = indexAt(location).row();
+    int id = button->index();
     BuildingBase *building = buildingManager_->getBuildingById(id);
 
     if (button->text() == "Buy") {

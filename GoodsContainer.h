@@ -10,22 +10,22 @@ public:
 
 	virtual ~GoodsContainer();
 
-	const double query(const QString &item);
+	const double query(const QString &item) const;
 
 	bool addItem(const QString &, double);
 	void removeItem(const QString &, double);
+
+	inline const QMap<QString, double> &container() const { return this->container_; }
 
 	inline const double curVolume() const { return this->curVolume_; }
 
 	inline void setMaxVolume(double max) { this->maxVolume_ = max; }
 	inline const double maxVolume() const { return this->maxVolume_; }
 
-	inline const QMap<QString, double> &container() const { return this->container_; }
-
 protected:
 	QMap<QString, double> container_;
-	double maxVolume_;
 	double curVolume_;
+	double maxVolume_;
 };
 
 #endif // !GOODSCONTAINER_H

@@ -32,7 +32,7 @@ signals:
     void showDetailSignal(BuildingBase *);
 
 private slots:
-    void getBuildingAndSendSignal(MyPushButton *button);
+    void getBuildingAndSendSignal(MyPushButton *);
 
 private:
 	// transforms double into QString

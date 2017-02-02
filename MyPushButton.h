@@ -3,6 +3,8 @@
 
 #include <QPushButton>
 
+// This PushButton cooperates with TableWidget.
+// It's easier to get index of item than before.
 class MyPushButton : public QPushButton {
     Q_OBJECT
 
@@ -11,13 +13,10 @@ public:
     MyPushButton(const QString &text);
 
 	inline void setIndex(int index) { this->index_ = index; }
-
-	QPoint getLocation() const;
+	inline int index() const { return this->index_; }
 
 signals:
     void sendPointer(MyPushButton *);
-
-	void sendLocation(int);
 
 public slots:
     void repeater(bool);

@@ -8,12 +8,12 @@ GoodsContainer::GoodsContainer() :
 
 GoodsContainer::~GoodsContainer() { }
 
-const double GoodsContainer::query(const QString &item) {
+const double GoodsContainer::query(const QString &item) const {
 	return container_[item];
 }
 
 bool GoodsContainer::addItem(const QString &item, double volume) {
-	// the space is full
+	// The space is full
 	if (curVolume_ + volume > maxVolume_)
 		return false;
 
