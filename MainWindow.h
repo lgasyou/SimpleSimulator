@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+
 class BuildingManager;
 class Company;
 class MyPushButton;

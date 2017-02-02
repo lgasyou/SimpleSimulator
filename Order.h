@@ -1,9 +1,10 @@
 #ifndef ORDER_H
 #define ORDER_H
 
+#include <QString>
+
 class Industry;
 class Truck;
-#include <QString>
 
 struct Order {
 	Order(const QString &_goods, double _weight, Industry *_dest, Industry *_src);

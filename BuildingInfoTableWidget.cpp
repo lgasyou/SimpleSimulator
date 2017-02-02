@@ -46,30 +46,30 @@ bool BuildingInfoTableWidget::readFile(const QString &fileName) {
 }
 
 void BuildingInfoTableWidget::updateDisplay() {
-    int buildingNumber = buildingManager_->buildingNumber();
-    this->setRowCount(buildingNumber);
+	auto &buildingList = buildingManager_->buildingList();
+    this->setRowCount(buildingList.size());
 
 	int index = 0;
-	auto &buildingList = buildingManager_->buildingList();
 	for (auto &iter = buildingList.constBegin(); iter != buildingList.constEnd(); ++iter, ++index) {
-		auto &building = *iter;
-		updateItem(index, building);
-		updateWidget(index, building);
+		displayBasicInfo(index, *iter);
+		displayAccordingToVisitor(index, *iter);
 	}
 }
 
-void BuildingInfoTableWidget::updateItem(int index, BuildingBase *building) {
-	setItem(index, 0, new QTableWidgetItem(building->name()));
-	QString deltaValue = " " + toString(building->deltaValue());
-	QString value = "$" + toString(building->value()) + deltaValue;
+void BuildingInfoTableWidget::displayBasicInfo(int index, BuildingBase *building) {
+	const QString &name = building->name();
+	const QString &deltaValue = " " + toString(building->deltaValue());
+	const QString &value = "$" + toString(building->value()) + deltaValue;
+	const QString &type = building->type();
+	const QString &owner = building->owner() ? building->owner()->name() : tr("Government");
+	setItem(index, 0, new QTableWidgetItem(name));
 	setItem(index, 1, new QTableWidgetItem(value));
-	setItem(index, 2, new QTableWidgetItem(building->type()));
-	QString owner = building->owner() ? building->owner()->name() : tr("Government");
+	setItem(index, 2, new QTableWidgetItem(type));
 	setItem(index, 3, new QTableWidgetItem(owner));
 }
 
-void BuildingInfoTableWidget::updateWidget(int index, BuildingBase *building) {
-	QString btnText = (building->owner() != company_) ? tr("Buy") : tr("Sell");
+void BuildingInfoTableWidget::displayAccordingToVisitor(int index, BuildingBase *building) {
+	const QString &btnText = (building->owner() != company_) ? tr("Buy") : tr("Sell");
 	MyPushButton *optionBtn = new MyPushButton(btnText);
 	connect(optionBtn, SIGNAL(sendPointer(MyPushButton*)),
 		this, SLOT(getBuildingAndSendSignal(MyPushButton*)));
@@ -86,10 +86,8 @@ QString BuildingInfoTableWidget::toString(double value) {
 }
 
 void BuildingInfoTableWidget::getBuildingAndSendSignal(MyPushButton *button) {
-    int x = button->frameGeometry().x(),
-        y = button->frameGeometry().y();
-    QModelIndex index = this->indexAt(QPoint(x, y));
-    int id = index.row();
+	QPoint location = button->getLocation();
+    int id = indexAt(location).row();
     BuildingBase *building = buildingManager_->getBuildingById(id);
 
     if (button->text() == "Buy") {

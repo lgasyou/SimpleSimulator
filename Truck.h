@@ -2,6 +2,7 @@
 #define TRUCK_H
 
 #include "Vihicle.h"
+
 class GoodsContainer;
 class Industry;
 struct Order;
@@ -21,11 +22,11 @@ public:
 	// Delete "order_"
 	void unload();
 
-	void setOrder(Order *order) { this->order_ = order; }
-	Order *const order() const { return this->order_; }
+	inline void setOrder(Order *order) { this->order_ = order; }
+	inline Order *const order() const { return this->order_; }
 
-	void setOccupied(bool occupied) { this->occupied_ = occupied; }
-	const bool occupied() const { return this->occupied_; }
+	inline void setOccupied(bool occupied) { this->occupied_ = occupied; }
+	inline const bool occupied() const { return this->occupied_; }
 
 	const GoodsContainer *freightHouse() const;
 

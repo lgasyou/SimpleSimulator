@@ -6,25 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>594</width>
-    <height>159</height>
+    <width>672</width>
+    <height>167</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="3">
-    <layout class="QVBoxLayout" name="verticalLayout_Warehouse">
-     <item>
-      <widget class="QLabel" name="label_WarehouseSum">
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
    <item row="1" column="4">
     <layout class="QVBoxLayout" name="verticalLayout_Main">
      <item>
@@ -59,6 +48,17 @@
       <widget class="QPushButton" name="pushButton_Dismantle">
        <property name="text">
         <string>Dismantle</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="3">
+    <layout class="QVBoxLayout" name="verticalLayout_Warehouse">
+     <item>
+      <widget class="QLabel" name="label_WarehouseSum">
+       <property name="text">
+        <string>TextLabel</string>
        </property>
       </widget>
      </item>
@@ -173,6 +173,9 @@
       </widget>
      </item>
     </layout>
+   </item>
+   <item row="2" column="3">
+    <layout class="QVBoxLayout" name="verticalLayout_Garage"/>
    </item>
   </layout>
  </widget>

@@ -1,8 +1,10 @@
 #ifndef WAREHOUSETABLEWIDGET_H
 #define WAREHOUSETABLEWIDGET_H
 
-class Warehouse;
 #include <QTableWidget>
+
+class Warehouse;
+class MyPushButton;
 
 class WarehouseTableWidget : public QTableWidget {
     Q_OBJECT
@@ -14,7 +16,9 @@ public:
 
 	void updateDisplay();
 
-	void setWarehouse(Warehouse *warehouse) { this->warehouse_ = warehouse; }
+	inline void setWarehouse(Warehouse *warehouse) { this->warehouse_ = warehouse; }
+
+	void sendSignal(MyPushButton *);
 
 private:
 	// transforms double into QString

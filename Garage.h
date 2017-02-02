@@ -1,11 +1,12 @@
 #ifndef GARAGE_H
 #define GARAGE_H
 
+#include <QList>
+#include <queue>
+
 class Industry;
 struct Order;
 class Truck;
-#include <QList>
-#include <queue>
 
 class Garage {
 public:
@@ -22,6 +23,8 @@ public:
 	void sendVihicle(Order *order);
 
 	void update();
+
+	inline const QList<Truck *> &vihicleList() const { return this->vihicleList_; }
 
 private:
 	// Returns truck* if has free truck, 

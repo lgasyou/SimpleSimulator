@@ -18,6 +18,7 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
 {
     ui->setupUi(this);
 	ui->verticalLayout_Warehouse->addWidget(warehouseTableWidget_);
+	ui->verticalLayout_Garage->addWidget(garageTableWidget_);
 
     connect(this, SIGNAL(buySignal(BuildingBase*)),
             parent, SLOT(buy(BuildingBase*)));
@@ -38,8 +39,7 @@ BuildingDetailDialog::~BuildingDetailDialog() {
 
 void BuildingDetailDialog::updateDisplay() {
 	// Return if this window isn't showing.
-    if (this->isHidden())
-        return;
+    if (this->isHidden())	return;
 
 	hideVariableWidget();
 
@@ -65,11 +65,14 @@ void BuildingDetailDialog::hideVariableWidget() {
 }
 
 void BuildingDetailDialog::displayBasicInfo() {
-	setWindowTitle(building_->name());
-	ui->label_Name->setText(tr("Name:  ") + building_->name());
-	ui->label_Value->setText(tr("Value: $") + toString(building_->value()));
-	ui->label_Type->setText(tr("Type:  ") + building_->type());
-	QString owner = building_->owner() ? building_->owner()->name() : tr("Government");
+	const QString &name = building_->name();
+	const QString &value = toString(building_->value());
+	const QString &type = building_->type();
+	const QString &owner = building_->owner() ? building_->owner()->name() : tr("Government");
+	setWindowTitle(name);
+	ui->label_Name->setText(tr("Name:  ") + name);
+	ui->label_Value->setText(tr("Value: $") + value);
+	ui->label_Type->setText(tr("Type:  ") + type);
 	ui->label_Owner->setText(tr("Owner: ") + owner);
 }
 
@@ -101,9 +104,9 @@ void BuildingDetailDialog::typeIsIndustry() {
 	garageTableWidget_->setGarage(industry->garage());
 	garageTableWidget_->updateDisplay();
 
-	const double curVolume = industry->warehouse()->curVolume();
-	const double maxVolume = industry->warehouse()->maxVolume();
-	ui->label_WarehouseSum->setText(toString(curVolume) + "t / " + toString(maxVolume) + "t");
+	const QString &curVolume = toString(industry->warehouse()->curVolume());
+	const QString &maxVolume = toString(industry->warehouse()->maxVolume());
+	ui->label_WarehouseSum->setText(curVolume + "t / " + maxVolume + "t");
 	warehouseTableWidget_->setWarehouse(industry->warehouse());
 	warehouseTableWidget_->updateDisplay();
 

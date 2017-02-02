@@ -2,6 +2,7 @@
 #define GARAGETABLEWIDGET_H
 
 #include <QTableWidget>
+
 class Garage;
 
 class GarageTableWidget : public QTableWidget {
@@ -16,9 +17,12 @@ public:
 
 	void updateDisplay();
 
-	void setGarage(Garage *garage) { this->garage_ = garage; }
+	inline void setGarage(Garage *garage) { this->garage_ = garage; }
 
 private:
+	// transforms double into QString
+	static QString toString(double value);
+
 	Garage *garage_;
 };
 

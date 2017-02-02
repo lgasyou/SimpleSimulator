@@ -1,9 +1,10 @@
 #ifndef BUILDINGMANAGER_H
 #define BUILDINGMANAGER_H
 
-class Company;
 #include <QList>
 #include "BuildingBase.h"
+
+class Company;
 
 class BuildingManager {
 public:
@@ -21,7 +22,7 @@ public:
 
     void update();
 
-	const QList<BuildingBase *> &buildingList() const { return this->buildingList_; }
+	inline const QList<BuildingBase *> &buildingList() const { return this->buildingList_; }
 
 private:
 	QList<BuildingBase *>::iterator iteratorOf(BuildingBase *);

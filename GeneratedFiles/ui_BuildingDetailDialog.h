@@ -27,14 +27,14 @@ class Ui_BuildingDetailDialog
 {
 public:
     QGridLayout *gridLayout;
-    QVBoxLayout *verticalLayout_Warehouse;
-    QLabel *label_WarehouseSum;
     QVBoxLayout *verticalLayout_Main;
     QPushButton *pushButton_Buy;
     QPushButton *pushButton_Sell;
     QPushButton *pushButton_Build;
     QPushButton *pushButton_Manage;
     QPushButton *pushButton_Dismantle;
+    QVBoxLayout *verticalLayout_Warehouse;
+    QLabel *label_WarehouseSum;
     QVBoxLayout *verticalLayout_Info;
     QLabel *label_Name;
     QSpacerItem *verticalSpacer;
@@ -49,24 +49,15 @@ public:
     QPushButton *pushButton_Build_SteelIndustry;
     QPushButton *pushButton_Build_Commerce;
     QPushButton *pushButton_Build_residence;
+    QVBoxLayout *verticalLayout_Garage;
 
     void setupUi(QDialog *BuildingDetailDialog)
     {
         if (BuildingDetailDialog->objectName().isEmpty())
             BuildingDetailDialog->setObjectName(QStringLiteral("BuildingDetailDialog"));
-        BuildingDetailDialog->resize(594, 159);
+        BuildingDetailDialog->resize(672, 167);
         gridLayout = new QGridLayout(BuildingDetailDialog);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        verticalLayout_Warehouse = new QVBoxLayout();
-        verticalLayout_Warehouse->setObjectName(QStringLiteral("verticalLayout_Warehouse"));
-        label_WarehouseSum = new QLabel(BuildingDetailDialog);
-        label_WarehouseSum->setObjectName(QStringLiteral("label_WarehouseSum"));
-
-        verticalLayout_Warehouse->addWidget(label_WarehouseSum);
-
-
-        gridLayout->addLayout(verticalLayout_Warehouse, 1, 3, 1, 1);
-
         verticalLayout_Main = new QVBoxLayout();
         verticalLayout_Main->setObjectName(QStringLiteral("verticalLayout_Main"));
         pushButton_Buy = new QPushButton(BuildingDetailDialog);
@@ -96,6 +87,16 @@ public:
 
 
         gridLayout->addLayout(verticalLayout_Main, 1, 4, 1, 1);
+
+        verticalLayout_Warehouse = new QVBoxLayout();
+        verticalLayout_Warehouse->setObjectName(QStringLiteral("verticalLayout_Warehouse"));
+        label_WarehouseSum = new QLabel(BuildingDetailDialog);
+        label_WarehouseSum->setObjectName(QStringLiteral("label_WarehouseSum"));
+
+        verticalLayout_Warehouse->addWidget(label_WarehouseSum);
+
+
+        gridLayout->addLayout(verticalLayout_Warehouse, 1, 3, 1, 1);
 
         verticalLayout_Info = new QVBoxLayout();
         verticalLayout_Info->setObjectName(QStringLiteral("verticalLayout_Info"));
@@ -164,6 +165,11 @@ public:
 
         gridLayout->addLayout(verticalLayout_Build, 1, 5, 1, 1);
 
+        verticalLayout_Garage = new QVBoxLayout();
+        verticalLayout_Garage->setObjectName(QStringLiteral("verticalLayout_Garage"));
+
+        gridLayout->addLayout(verticalLayout_Garage, 2, 3, 1, 1);
+
 
         retranslateUi(BuildingDetailDialog);
 
@@ -173,12 +179,12 @@ public:
     void retranslateUi(QDialog *BuildingDetailDialog)
     {
         BuildingDetailDialog->setWindowTitle(QApplication::translate("BuildingDetailDialog", "Dialog", Q_NULLPTR));
-        label_WarehouseSum->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", Q_NULLPTR));
         pushButton_Buy->setText(QApplication::translate("BuildingDetailDialog", "Buy", Q_NULLPTR));
         pushButton_Sell->setText(QApplication::translate("BuildingDetailDialog", "Sell", Q_NULLPTR));
         pushButton_Build->setText(QApplication::translate("BuildingDetailDialog", "Build", Q_NULLPTR));
         pushButton_Manage->setText(QApplication::translate("BuildingDetailDialog", "Manage", Q_NULLPTR));
         pushButton_Dismantle->setText(QApplication::translate("BuildingDetailDialog", "Dismantle", Q_NULLPTR));
+        label_WarehouseSum->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", Q_NULLPTR));
         label_Name->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", Q_NULLPTR));
         label_Value->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", Q_NULLPTR));
         label_Type->setText(QApplication::translate("BuildingDetailDialog", "TextLabel", Q_NULLPTR));

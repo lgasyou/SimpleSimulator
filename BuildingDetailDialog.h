@@ -1,11 +1,12 @@
 #ifndef BUILDINGDETAILDIALOG_H
 #define BUILDINGDETAILDIALOG_H
 
+#include <QDialog>
+
 class BuildingBase;
 class Company;
 class GarageTableWidget;
 class WarehouseTableWidget;
-#include <QDialog>
 namespace Ui {
 class BuildingDetailDialog;
 }

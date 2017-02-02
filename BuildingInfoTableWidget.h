@@ -1,11 +1,12 @@
 #ifndef BUILDINGINFOTABLE_H
 #define BUILDINGINFOTABLE_H
 
+#include <QTableWidget>
+
 class BuildingManager;
 class BuildingBase;
 class Company;
 class MyPushButton;
-#include <QTableWidget>
 
 class BuildingInfoTableWidget : public QTableWidget {
     Q_OBJECT
@@ -19,11 +20,11 @@ public:
     bool readFile(const QString &fileName);
 
     void updateDisplay();
-	void updateItem(int index, BuildingBase *building);
-	void updateWidget(int index, BuildingBase *building);
+	void displayBasicInfo(int index, BuildingBase *building);
+	void displayAccordingToVisitor(int index, BuildingBase *building);
 
-    void setBuildingManager(BuildingManager *buildingManager) { this->buildingManager_ = buildingManager; }
-    void setCompany(Company *company) { this->company_ = company; }
+    inline void setBuildingManager(BuildingManager *buildingManager) { this->buildingManager_ = buildingManager; }
+    inline void setCompany(Company *company) { this->company_ = company; }
 
 signals:
     void buySignal(BuildingBase *);

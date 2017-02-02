@@ -2,6 +2,7 @@
 #define COMPANY_H
 
 #include <QString>
+
 class BuildingBase;
 class BuildingManager;
 

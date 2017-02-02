@@ -20,8 +20,7 @@ void Garage::removeVihicle(const QString &) { }
 
 void Garage::sendVihicle(Order *order) {
 	Truck *truck = selectFreeTruck();
-	if (truck == nullptr)
-		return;
+	if (truck == nullptr)	return;
 
 	truck->setOrder(order);
 	truck->load();

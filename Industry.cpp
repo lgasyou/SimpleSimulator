@@ -44,7 +44,7 @@ void Industry::manufacture() {
 	}
 }
 
-void Industry::transit(const QString &goods, double weight, Industry *dest) {
+void Industry::deliverGoods(const QString &goods, double weight, Industry *dest) {
 	Order *order = new Order(goods, weight, dest, this);
 	garage_->sendVihicle(order);
 }

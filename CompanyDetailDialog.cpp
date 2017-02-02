@@ -23,17 +23,15 @@ QString CompanyDetailDialog::toString(double value) {
 
 void CompanyDetailDialog::updateDisplay() {
 	// Return if this window isn't showing.
-    if (this->isHidden())
-        return;
+    if (this->isHidden())	return;
 
-    setWindowTitle(company_->name());
-    ui->label_Name->setText(
-                tr("Name:        ") + company_->name());
-    ui->label_Cash->setText(
-                tr("Cash:        $") + toString(company_->cash()));
-    ui->label_TotalValue->setText(
-                tr("Total Value: $") + toString(company_->totalValue()));
-    ui->label_Liability->setText(company_->liability() > 0 ?
-                tr("<code style=\"color:red\">Liability: $%1</code>").arg(toString(company_->liability())) :
-                tr("Liability:   $0"));
+	const QString &name = company_->name();
+	const QString &cash = toString(company_->cash());
+	const QString &totalValue = toString(company_->totalValue());
+	const QString &liability = toString(company_->liability());
+    setWindowTitle(name);
+    ui->label_Name->setText(tr("Name:        ") + name);
+    ui->label_Cash->setText(tr("Cash:        $") + cash);
+    ui->label_TotalValue->setText(tr("Total Value: $") + totalValue);
+    ui->label_Liability->setText(tr("Liability:   $") + liability);
 }

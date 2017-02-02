@@ -2,6 +2,7 @@
 #define BUILDINGBASE_H
 
 #include <QString>
+
 class Company;
 
 //	the base of building classes.
@@ -16,6 +17,8 @@ public:
     BuildingBase(const BuildingBase &, const QString &);
 
     virtual ~BuildingBase() { }
+
+	void initBasicValue();
 
 	// manual manage building
     virtual void manage(const QString &);
@@ -39,11 +42,6 @@ public:
 
     inline void setOwner(Company *const owner) { this->owner_ = owner; }
     inline Company *const owner() const { return this->owner_; }
-
-
-protected:
-	void initBasicValue();
-
 
 private:
     QString name_;

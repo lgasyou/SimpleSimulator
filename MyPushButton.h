@@ -10,6 +10,8 @@ public:
     MyPushButton();
     MyPushButton(const QString &text);
 
+	QPoint getLocation() const;
+
 signals:
     void sendPointer(MyPushButton *);
 

@@ -19,6 +19,16 @@ BuildingBase::BuildingBase(const BuildingBase &rhs, const QString &type) :
 	deltaValue_(rhs.deltaValue())
 { }
 
+void BuildingBase::initBasicValue() {
+	const double basicValue = GameConstants::defaultBaseValueOfBuildings;
+	const double sigma = GameConstants::sigmaOfDefaultBaseValueOfBuildings;
+	double value = 0.0;
+	do {
+		value = ValueGenerator::normalDistribution(basicValue, sigma);
+	} while (value <= GameConstants::minBaseValueOfBuildings);
+	this->value_ = value;
+}
+
 void BuildingBase::manage(const QString &cmd) {
 
 }
@@ -33,11 +43,4 @@ void BuildingBase::changeBaseValue() {
 	double finalValue = deltaValue + value_;
 	this->deltaValue_ = deltaValue;
 	this->value_ = finalValue;
-}
-
-void BuildingBase::initBasicValue() {
-	double basicValue = GameConstants::defaultBaseValueOfBuildings,
-		sigma = GameConstants::sigmaOfdefaultBaseValueOfBuildings;
-	double value = ValueGenerator::normalDistribution(basicValue, sigma);
-	this->value_ = value;
 }
