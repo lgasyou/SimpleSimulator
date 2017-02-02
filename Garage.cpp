@@ -2,7 +2,10 @@
 #include "Truck.h"
 #include "Order.h"
 
-Garage::Garage() { init(); }
+Garage::Garage() :
+	vihicleCount_(0),
+	freeVihicleCount_(0)
+{ init(); }
 
 Garage::~Garage() { }
 
@@ -13,6 +16,8 @@ void Garage::init() {
 void Garage::addNewVihicle(const QString &type) {
 	if (type == "Truck")
 		vihicleList_.push_back(new Truck);
+	++vihicleCount_;
+	++freeVihicleCount_;
 }
 
 // TODO
@@ -25,6 +30,7 @@ void Garage::sendVihicle(Order *order) {
 	truck->setOrder(order);
 	truck->load();
 	transitingTrucks_.push(truck);
+	--freeVihicleCount_;
 }
 
 void Garage::update() {
@@ -32,6 +38,7 @@ void Garage::update() {
 		Truck *truck = transitingTrucks_.front();
 		transitingTrucks_.pop();
 		truck->unload();
+		++freeVihicleCount_;
 	}
 }
 

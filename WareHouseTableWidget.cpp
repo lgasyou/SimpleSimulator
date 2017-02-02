@@ -27,8 +27,8 @@ void WarehouseTableWidget::updateDisplay() {
 		this->setItem(index, 1, new QTableWidgetItem(weight));
 
 		MyPushButton *sellBtn = new MyPushButton(tr("Sell"));
-		connect(sellBtn, SIGNAL(sendPointer(MyPushButton*)),
-				this, SLOT());
+		//connect(sellBtn, SIGNAL(sendPointer(MyPushButton*)),
+		//		this, SLOT());
 		this->setCellWidget(index, 2, sellBtn);
 	}
 }

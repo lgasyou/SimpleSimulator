@@ -21,10 +21,6 @@ public:
     inline void setBuilding(BuildingBase *building) { this->building_ = building; }
     inline void setVisitor(Company *visitor) { this->visitor_ = visitor; }
 
-public slots:
-	void updateDisplay();
-
-public:
 	void hideVariableWidget();
 	void displayBasicInfo();
 	void displayAccordingToVisitor();
@@ -33,6 +29,11 @@ public:
 	void typeIsIndustry();
 	void typeIsCommerce();
 	void typeIsResidence();
+
+public slots:
+	void updateDisplay();
+
+	void switchIndustryDisplay(bool);
 
 signals:
     void buySignal(BuildingBase *);

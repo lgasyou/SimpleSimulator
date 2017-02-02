@@ -45,7 +45,7 @@ public:
     {
         if (BankDialog->objectName().isEmpty())
             BankDialog->setObjectName(QStringLiteral("BankDialog"));
-        BankDialog->resize(349, 129);
+        BankDialog->resize(357, 129);
         gridLayout = new QGridLayout(BankDialog);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         horizontalLayout_Repay = new QHBoxLayout();

@@ -9,6 +9,8 @@ MyPushButton::MyPushButton(const QString &text) :
 {
     connect(this, SIGNAL(clicked(bool)),
             this, SLOT(repeater(bool)));
+	connect(this, SIGNAL(clicked(bool)),
+			this, SLOT(repeater(bool)));
 }
 
 QPoint MyPushButton::getLocation() const {
@@ -19,4 +21,5 @@ QPoint MyPushButton::getLocation() const {
 
 void MyPushButton::repeater(bool) {
     emit sendPointer(this);
+	emit sendLocation(index_);
 }
