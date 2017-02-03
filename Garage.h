@@ -18,6 +18,8 @@ public:
 
 	void addNewVihicle(const QString &);
 
+	// TODO
+	// This function is not determined yet.
 	void removeVihicle(const QString &);
 
 	void sendVihicle(Order *order);

@@ -9,8 +9,10 @@ class MyPushButton : public QPushButton {
     Q_OBJECT
 
 public:
-    MyPushButton();
-    MyPushButton(const QString &text);
+    MyPushButton(QWidget *parent = nullptr);
+    MyPushButton(const QString &text, QWidget *parent = nullptr);
+
+	void init();
 
 	inline void setIndex(int index) { this->index_ = index; }
 	inline int index() const { return this->index_; }

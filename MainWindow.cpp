@@ -13,7 +13,6 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    buildingManager_(new BuildingManager),
     company_(new Company),
     bankDialog_(nullptr),
     buildingDetailDialog_(nullptr),
@@ -25,7 +24,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->BuildingInfoTableWidget->addWidget(buildingInfoTableWidget_);
     setWindowTitle(tr("Building Value Simulator"));
 
-    buildingInfoTableWidget_->setBuildingManager(buildingManager_);
     buildingInfoTableWidget_->setCompany(company_);
 
     connect(ui->pushButton_EndTurn, SIGNAL(clicked(bool)),
@@ -63,11 +61,11 @@ void MainWindow::goBank() {
 }
 
 void MainWindow::endTurns() {
-    buildingManager_->update();
+	BuildingManager::instance().update();
     company_->update();
-	double deltaValue = buildingManager_->deltaValueOfCompanyProperties(company_);
+	double deltaValue = BuildingManager::instance().deltaValueOfCompanyProperties(company_);
 	company_->setTotalValue(company_->totalValue() + deltaValue);
-    GameTimer::increaseTime();
+    GameTimer::instance().increaseTime();
     emit dataChanged(true);
 }
 
@@ -108,14 +106,14 @@ void MainWindow::sell(BuildingBase *building) {
 }
 
 void MainWindow::changeType(BuildingBase *building, const QString &type) {
-	BuildingBase *newBuilding = buildingManager_->resetItemType(building, type);
+	BuildingBase *newBuilding = BuildingManager::instance().resetItemType(building, type);
     buildingDetailDialog_->setBuilding(newBuilding);
     updateStatusBar(newBuilding->name() + " has been changed into " + type + ".");
     emit dataChanged(true);
 }
 
 void MainWindow::manage(BuildingBase *building, const QString &cmd) {
-    buildingManager_->manage(building, cmd);
+    BuildingManager::instance().manage(building, cmd);
     emit dataChanged(true);
 }
 
@@ -130,7 +128,7 @@ void MainWindow::updateCompanyInfo() {
     ui->label_CompanyCash->setText(tr("Cash: $") + cash);
     QString totalValue = toString(company_->totalValue());
     ui->label_CompanyTotalValue->setText(tr("Total Value: $") + totalValue);
-    ui->label_Turns->setText(tr("Turn ") + QString::number(GameTimer::currentTime()));
+    ui->label_Turns->setText(tr("Turn ") + QString::number(GameTimer::instance().currentTime()));
 }
 
 inline void MainWindow::updateStatusBar(const QString &msg) {

@@ -7,6 +7,7 @@
 #include "Garage.h"
 #include "GarageTableWidget.h"
 #include "WarehouseTableWidget.h"
+#include "MyPushButton.h"
 #include "ui_BuildingDetailDialog.h"
 
 BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
@@ -34,6 +35,18 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
 
     connect(parent, SIGNAL(dataChanged(bool)),
             this, SLOT(updateDisplay()));
+
+	// In order to change building's type by button's text
+	connect(ui->pushButton_Build_CoalMine, SIGNAL(sendPointer(MyPushButton*)),
+		this, SLOT(changeType(MyPushButton*)));
+	connect(ui->pushButton_Build_Commerce, SIGNAL(sendPointer(MyPushButton*)),
+		this, SLOT(changeType(MyPushButton*)));
+	connect(ui->pushButton_Build_IronMine, SIGNAL(sendPointer(MyPushButton*)),
+		this, SLOT(changeType(MyPushButton*)));
+	connect(ui->pushButton_Build_residence, SIGNAL(sendPointer(MyPushButton*)),
+		this, SLOT(changeType(MyPushButton*)));
+	connect(ui->pushButton_Build_SteelIndustry, SIGNAL(sendPointer(MyPushButton*)),
+		this, SLOT(changeType(MyPushButton*)));
 }
 
 BuildingDetailDialog::~BuildingDetailDialog() {
@@ -53,20 +66,20 @@ void BuildingDetailDialog::updateDisplay() {
 
 void BuildingDetailDialog::switchIndustryDisplay(bool toggled) {
 	QString text;
+	Industry *industry = dynamic_cast<Industry *>(building_);
 	if (toggled) {
-		warehouseTableWidget_->show();
-		ui->label_WarehouseSum->show();
-		garageTableWidget_->hide();
-		ui->label_GarageState->hide();
+		showWarehouse(industry);
 		text = tr("Warehouse");
 	} else {
-		garageTableWidget_->show();
-		ui->label_GarageState->show();
-		warehouseTableWidget_->hide();
-		ui->label_WarehouseSum->hide();
+		showGarage(industry);
 		text = tr("Garage");
 	}
 	ui->pushButton_Industry_SwitchInfo->setText(text);
+}
+
+void BuildingDetailDialog::changeType(MyPushButton *button) {
+	const QString &newType = button->text();
+	emit changeTypeSignal(building_, newType);
 }
 
 void BuildingDetailDialog::hideVariableWidget() {
@@ -124,25 +137,16 @@ void BuildingDetailDialog::typeIsFoundation() {
 
 void BuildingDetailDialog::typeIsIndustry() {
 	Industry *industry = dynamic_cast<Industry *>(building_);
-
-	const QString &curVolume = toString(industry->warehouse()->curVolume());
-	const QString &maxVolume = toString(industry->warehouse()->maxVolume());
-	ui->label_WarehouseSum->setText(curVolume + "t / " + maxVolume + "t");
 	warehouseTableWidget_->setWarehouse(industry->warehouse());
-	warehouseTableWidget_->updateDisplay();
-
-	const QString &freeVicleCount = QString::number(industry->garage()->freeVihicleCount());
-	const QString &vihicleCount = QString::number(industry->garage()->vihicleCount());
-	const QString &text = freeVicleCount + " / " + vihicleCount + tr(" Truck Free");
-	ui->label_GarageState->setText(text);
 	garageTableWidget_->setGarage(industry->garage());
-	garageTableWidget_->updateDisplay();
 
-	warehouseTableWidget_->show();
-	ui->label_WarehouseSum->show();
+	if (ui->pushButton_Industry_SwitchInfo->isChecked())
+		showWarehouse(industry);
+	else
+		showGarage(industry);
+
 	ui->pushButton_Manage->show();
 	ui->pushButton_Dismantle->show();
-	ui->pushButton_Industry_SwitchInfo->setChecked(true);
 	ui->pushButton_Industry_SwitchInfo->show();
 }
 
@@ -154,6 +158,31 @@ void BuildingDetailDialog::typeIsCommerce() {
 void BuildingDetailDialog::typeIsResidence() {
 	ui->pushButton_Manage->show();
 	ui->pushButton_Dismantle->show();
+}
+
+void BuildingDetailDialog::showGarage(Industry *industry) {
+	const QString &freeVicleCount = QString::number(industry->garage()->freeVihicleCount());
+	const QString &vihicleCount = QString::number(industry->garage()->vihicleCount());
+	const QString &text = freeVicleCount + " / " + vihicleCount + tr(" Truck Free");
+	ui->label_GarageState->setText(text);
+
+	garageTableWidget_->show();
+	ui->label_GarageState->show();
+	garageTableWidget_->updateDisplay();
+	warehouseTableWidget_->hide();
+	ui->label_WarehouseSum->hide();
+}
+
+void BuildingDetailDialog::showWarehouse(Industry *industry) {
+	const QString &curVolume = toString(industry->warehouse()->curVolume());
+	const QString &maxVolume = toString(industry->warehouse()->maxVolume());
+	ui->label_WarehouseSum->setText(curVolume + "t / " + maxVolume + "t");
+
+	warehouseTableWidget_->show();
+	ui->label_WarehouseSum->show();
+	warehouseTableWidget_->updateDisplay();
+	garageTableWidget_->hide();
+	ui->label_GarageState->hide();
 }
 
 void BuildingDetailDialog::on_pushButton_Buy_clicked() {
@@ -178,26 +207,6 @@ void BuildingDetailDialog::on_pushButton_Manage_clicked() {
 
 void BuildingDetailDialog::on_pushButton_Dismantle_clicked() {
     emit changeTypeSignal(building_, "Foundation");
-}
-
-void BuildingDetailDialog::on_pushButton_Build_IronMine_clicked() {
-    emit changeTypeSignal(building_, "Iron Mine Factory");
-}
-
-void BuildingDetailDialog::on_pushButton_Build_CoalMine_clicked() {
-	emit changeTypeSignal(building_, "Coal Mine Factory");
-}
-
-void BuildingDetailDialog::on_pushButton_Build_SteelIndustry_clicked() {
-	emit changeTypeSignal(building_, "Steel Factory");
-}
-
-void BuildingDetailDialog::on_pushButton_Build_Commerce_clicked() {
-	emit changeTypeSignal(building_, "Commerce");
-}
-
-void BuildingDetailDialog::on_pushButton_Build_residence_clicked() {
-    emit changeTypeSignal(building_, "Residence");
 }
 
 QString BuildingDetailDialog::toString(double value) {

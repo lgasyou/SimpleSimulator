@@ -12,7 +12,8 @@ class Company;
 //	* Industry.
 class BuildingBase {
 public:
-	BuildingBase(const QString &name = "Foundation", const QString &type = "Foundation", Company *owner = nullptr, double deltaValue = 0.0);
+	BuildingBase(const QString &name = "Foundation", const QString &type = "Foundation",
+		Company *owner = nullptr, double deltaValue = 0.0);
 
     BuildingBase(const BuildingBase &, const QString &);
 

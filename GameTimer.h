@@ -4,18 +4,23 @@
 
 class GameTimer {
 public:
-    GameTimer();
+	static GameTimer &instance();
 
-    static void setDeltaTime(double deltaTime) { deltaTime_ = deltaTime; }
-    static const double deltaTime() { return deltaTime_; }
+    void setDeltaTime(double deltaTime) { deltaTime_ = deltaTime; }
+    const double deltaTime() { return deltaTime_; }
 
-	static void increaseTime() { currentTime_ += frequence_; }
-    static const double currentTime() { return currentTime_; }
+	void increaseTime() { currentTime_ += frequence_; }
+    const double currentTime() { return currentTime_; }
 
-	static void setFrequence(double frequence) { frequence_ = frequence; }
-	static const double frequence() { return frequence_; }
+	void setFrequence(double frequence) { frequence_ = frequence; }
+	const double frequence() { return frequence_; }
 
 private:
+	GameTimer() { }
+	~GameTimer() { }
+	GameTimer(const GameTimer &) = delete;
+	GameTimer &operator=(const GameTimer &) = delete;
+
     static double deltaTime_;
     static double currentTime_;
 	static double frequence_;

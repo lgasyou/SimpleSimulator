@@ -8,7 +8,6 @@
 
 BuildingInfoTableWidget::BuildingInfoTableWidget(QWidget *parent) :
     QTableWidget(parent),
-    buildingManager_(nullptr),
     company_(nullptr)
 { 
 	init();
@@ -30,8 +29,8 @@ bool BuildingInfoTableWidget::writeFile(const QString &fileName) {
     out.setVersion(QDataStream::Qt_4_3);
 
     QApplication::setOverrideCursor(Qt::WaitCursor);
-//    for (int row = 0; row != buildingManager_->buildingNumber(); ++row) {
-//        for (int col = 0; col != BaseBuilding::numberOfPropertiesOfBuildings; ++ col) {
+//    for (int row = 0; row != BuildingManager::instance().buildingNumber(); ++row) {
+//        for (int col = 0; col != BaseBuilding::numberOfPropertiesOfBuilding; ++ col) {
 //            QString str;
 
 //        }
@@ -46,7 +45,7 @@ bool BuildingInfoTableWidget::readFile(const QString &fileName) {
 }
 
 void BuildingInfoTableWidget::updateDisplay() {
-	auto &buildingList = buildingManager_->buildingList();
+	auto &buildingList = BuildingManager::instance().buildingList();
     this->setRowCount(buildingList.size());
 
 	int index = 0;
@@ -89,7 +88,7 @@ QString BuildingInfoTableWidget::toString(double value) {
 
 void BuildingInfoTableWidget::getBuildingAndSendSignal(MyPushButton *button) {
     int id = button->index();
-    BuildingBase *building = buildingManager_->getBuildingById(id);
+    BuildingBase *building = BuildingManager::instance().getBuildingById(id);
 
     if (button->text() == "Buy") {
         emit buySignal(building);

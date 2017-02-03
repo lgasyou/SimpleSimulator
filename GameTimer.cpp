@@ -1,7 +1,9 @@
 #include "GameTimer.h"
 
-GameTimer::GameTimer()
-{ }
+GameTimer &GameTimer::instance() {
+	static GameTimer gameTimer;
+	return gameTimer;
+}
 
 double GameTimer::currentTime_ = 1;
 double GameTimer::deltaTime_ = 0;

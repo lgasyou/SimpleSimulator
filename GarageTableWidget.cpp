@@ -19,6 +19,8 @@ void GarageTableWidget::init() {
 }
 
 void GarageTableWidget::updateDisplay() {
+	if (this->isHidden())	return;
+
 	auto &vihicleList = garage_->vihicleList();
 	this->setRowCount(vihicleList.size());
 

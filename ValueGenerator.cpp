@@ -1,8 +1,10 @@
 #include "ValueGenerator.h"
 #include <ctime>
 
-ValueGenerator::ValueGenerator()
-{ }
+ValueGenerator &ValueGenerator::instance() {
+	static ValueGenerator valueGenerator;
+	return valueGenerator;
+}
 
 int ValueGenerator::uniformDistribution(int lowerBound, int upperBound) {
     std::uniform_int_distribution<int> range(lowerBound, upperBound);

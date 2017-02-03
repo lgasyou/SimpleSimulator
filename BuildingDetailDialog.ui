@@ -119,35 +119,35 @@
    <item row="1" column="5">
     <layout class="QVBoxLayout" name="verticalLayout_Build">
      <item>
-      <widget class="QPushButton" name="pushButton_Build_IronMine">
+      <widget class="MyPushButton" name="pushButton_Build_IronMine">
        <property name="text">
-        <string>Iron Mine</string>
+        <string>Iron Mine Factory</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_Build_CoalMine">
+      <widget class="MyPushButton" name="pushButton_Build_CoalMine">
        <property name="text">
-        <string>Coal Mine</string>
+        <string>Coal Mine Factory</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_Build_SteelIndustry">
+      <widget class="MyPushButton" name="pushButton_Build_SteelIndustry">
        <property name="text">
-        <string>Steel Industry</string>
+        <string>Steel Factory</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_Build_Commerce">
+      <widget class="MyPushButton" name="pushButton_Build_Commerce">
        <property name="text">
         <string>Commerce</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_Build_residence">
+      <widget class="MyPushButton" name="pushButton_Build_residence">
        <property name="text">
         <string>Residence</string>
        </property>
@@ -157,6 +157,13 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MyPushButton</class>
+   <extends>QPushButton</extends>
+   <header>MyPushButton.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

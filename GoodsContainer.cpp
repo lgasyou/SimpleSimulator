@@ -2,7 +2,7 @@
 #include "GameConstants.h"
 
 GoodsContainer::GoodsContainer() :
-	maxVolume_(GameConstants::defaultMaxVolOfWarehouses),
+	maxVolume_(GameConstants::defaultMaxVolOfWarehouse),
 	curVolume_(0.0)
 { }
 

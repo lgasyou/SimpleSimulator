@@ -16,6 +16,8 @@ void WarehouseTableWidget::init() {
 }
 
 void WarehouseTableWidget::updateDisplay() {
+	if (this->isHidden())	return;
+
 	const QMap<QString, double> &warehouse = warehouse_->container();
 	this->setRowCount(warehouse.size());
 

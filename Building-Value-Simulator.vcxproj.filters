@@ -199,6 +199,15 @@
     <ClCompile Include="Release\moc_MainWindow.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="SelectIndustryDialog.cpp">
+      <Filter>Source Files\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Debug\moc_SelectIndustryDialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Release\moc_SelectIndustryDialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="MainWindow.h">
@@ -224,6 +233,12 @@
     </CustomBuild>
     <CustomBuild Include="GarageTableWidget.h">
       <Filter>Header Files\QtComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="SelectIndustryDialog.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="SelectIndustryDialog.h">
+      <Filter>Header Files\Dialogs</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -259,9 +274,6 @@
     <ClInclude Include="Company.h">
       <Filter>Header Files\Company</Filter>
     </ClInclude>
-    <ClInclude Include="BuildingManager.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
     <ClInclude Include="Industry.h">
       <Filter>Header Files\Buildings</Filter>
     </ClInclude>
@@ -296,6 +308,12 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BuildingManager.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_SelectIndustryDialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>

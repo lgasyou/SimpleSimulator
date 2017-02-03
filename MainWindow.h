@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 
-class BuildingManager;
 class Company;
 class MyPushButton;
 class BuildingBase;
@@ -46,7 +45,6 @@ private:
 	// transforms double into QString
 	static QString toString(double value);
 
-    BuildingManager *buildingManager_;
     Company *company_;
     BankDialog *bankDialog_;
     BuildingDetailDialog *buildingDetailDialog_;

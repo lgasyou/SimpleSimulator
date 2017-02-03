@@ -8,6 +8,8 @@ class BuildingBase;
 class Company;
 class MyPushButton;
 
+// This class is used for showing information of Buildings.
+// Set buildingManager and Company before using it.
 class BuildingInfoTableWidget : public QTableWidget {
     Q_OBJECT
 
@@ -16,6 +18,7 @@ public:
 
 	void init();
 
+	// Those two functions are still in building.
     bool writeFile(const QString &fileName);
     bool readFile(const QString &fileName);
 
@@ -23,7 +26,6 @@ public:
 	void displayBasicInfo(int index, BuildingBase *building);
 	void displayAccordingToVisitor(int index, BuildingBase *building);
 
-    inline void setBuildingManager(BuildingManager *buildingManager) { this->buildingManager_ = buildingManager; }
     inline void setCompany(Company *company) { this->company_ = company; }
 
 signals:
@@ -32,13 +34,14 @@ signals:
     void showDetailSignal(BuildingBase *);
 
 private slots:
+	// Gets building by push button and sends 
+	// signals according to text of button.
     void getBuildingAndSendSignal(MyPushButton *);
 
 private:
 	// transforms double into QString
 	static QString toString(double value);
 
-	BuildingManager *buildingManager_;
     Company *company_;
 };
 

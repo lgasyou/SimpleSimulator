@@ -20,7 +20,6 @@ void Garage::addNewVihicle(const QString &type) {
 	++freeVihicleCount_;
 }
 
-// TODO
 void Garage::removeVihicle(const QString &) { }
 
 void Garage::sendVihicle(Order *order) {

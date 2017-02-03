@@ -39,8 +39,6 @@ void Industry::manufacture() {
 		warehouse_->addItem("Steel", 1);
 		warehouse_->removeItem("Iron", 1);
 		warehouse_->removeItem("Coal", 2);
-	} else {
-		warehouse_->addItem("Goods", 1);
 	}
 }
 

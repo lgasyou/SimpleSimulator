@@ -5,13 +5,18 @@
 
 class ValueGenerator {
 public:
-    ValueGenerator();
+	static ValueGenerator &instance();
 
-    static int uniformDistribution(int lowerBound, int upperBound);
+    int uniformDistribution(int lowerBound, int upperBound);
 
-    static double normalDistribution(double mu, double sigma);
+    double normalDistribution(double mu, double sigma);
 
 private:
+	ValueGenerator() { }
+	~ValueGenerator() { }
+	ValueGenerator(const ValueGenerator &) = delete;
+	ValueGenerator &operator=(const ValueGenerator &) = delete;
+
     static std::default_random_engine generator_;
 };
 

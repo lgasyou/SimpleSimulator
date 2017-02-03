@@ -7,12 +7,17 @@
 
 BuildingManager::BuildingManager() {
     buildingList_.push_back(new BuildingBase);
-    for (int i = 0; i != 2; ++i)
-        buildingList_.push_back(new Industry);
+	buildingList_.push_back(new Industry("Coal Mine Factory"));
+	buildingList_.push_back(new Industry("Iron Mine Factory"));
 	for (int i = 0; i != 1; ++i)
 		buildingList_.push_back(new Commerce);
     for (int i = 0; i != 3; ++i)
         buildingList_.push_back(new Residence);
+}
+
+BuildingManager &BuildingManager::instance() {
+	static BuildingManager buildingManager;
+	return buildingManager;
 }
 
 BuildingBase *BuildingManager::getBuildingById(unsigned id) {
