@@ -56,7 +56,7 @@ signals:
 	void sellSignal(BuildingBase *);
 	void changeTypeSignal(BuildingBase *, const QString &buildingType);
 	void manageSignal(BuildingBase *, const QString &cmd);
-	void dataChanged(bool);
+	void dataChanged();
 
 private slots:
 	void on_pushButton_Buy_clicked();

@@ -8,15 +8,19 @@ SelectIndustryDialog::SelectIndustryDialog(QWidget *parent) :
 	QDialog(parent),
 	ui(new Ui::SelectIndustryDialog)
 {
+	init();
+}
+
+SelectIndustryDialog::~SelectIndustryDialog() {
+	
+}
+
+void SelectIndustryDialog::init() {
 	ui->setupUi(this);
 	ui->tableWidget_industry->setColumnCount(3);
 	QStringList header{ tr("Name"), tr("Type"), tr("Option") };
 	ui->tableWidget_industry->setHorizontalHeaderLabels(header);
 	setWindowTitle(tr("Select Industrial Building:"));
-}
-
-SelectIndustryDialog::~SelectIndustryDialog() {
-	
 }
 
 void SelectIndustryDialog::updateDisplay() {

@@ -1,7 +1,7 @@
 #ifndef Industry_H
 #define Industry_H
 
-#include "BuildingBase.h"
+#include "buildingbase.h"
 #include "Goods.h"
 #include <QString>
 #include <QMap>

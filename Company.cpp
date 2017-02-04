@@ -1,5 +1,5 @@
 #include "Company.h"
-#include "BuildingBase.h"
+#include "buildingbase.h"
 #include "BuildingManager.h"
 
 Company::Company() :

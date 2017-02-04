@@ -1,7 +1,7 @@
 #ifndef RESIDENCE_H
 #define RESIDENCE_H
 
-#include "BuildingBase.h"
+#include "buildingbase.h"
 
 class Residence : public BuildingBase {
 public:

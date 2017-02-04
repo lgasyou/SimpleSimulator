@@ -1,5 +1,5 @@
 #include "BuildingDetailDialog.h"
-#include "BuildingBase.h"
+#include "buildingbase.h"
 #include "Industry.h"
 #include "Warehouse.h"
 #include "GoodsContainer.h"
@@ -34,11 +34,11 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
 	connect(ui->pushButton_Industry_SwitchInfo, SIGNAL(toggled(bool)),
 		this, SLOT(switchIndustryDisplay(bool)));
 
-    connect(parent, SIGNAL(dataChanged(bool)),
+    connect(parent, SIGNAL(dataChanged()),
             this, SLOT(updateDisplay()));
-	connect(this, SIGNAL(dataChanged(bool)),
+	connect(this, SIGNAL(dataChanged()),
 		warehouseTableWidget_, SLOT(updateDisplay()));
-	connect(this, SIGNAL(dataChanged(bool)),
+	connect(this, SIGNAL(dataChanged()),
 		garageTableWidget_, SLOT(updateDisplay()));
 
 	// In order to change building's type by button's text
@@ -93,7 +93,7 @@ void BuildingDetailDialog::changeType(MyPushButton *button) {
 void BuildingDetailDialog::deliverGoods(const Goods &goods, Industry *dest) {
 	Industry *industry = dynamic_cast<Industry *>(building_);
 	industry->deliverGoods(goods, dest);
-	emit dataChanged(true);
+	emit dataChanged();
 }
 
 void BuildingDetailDialog::hideVariableWidget() {

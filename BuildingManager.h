@@ -2,7 +2,7 @@
 #define BUILDINGMANAGER_H
 
 #include <QList>
-#include "BuildingBase.h"
+#include "buildingbase.h"
 
 class Company;
 

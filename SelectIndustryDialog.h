@@ -16,6 +16,8 @@ public:
 	SelectIndustryDialog(QWidget *parent = nullptr);
 	~SelectIndustryDialog();
 
+	void init();
+
 	void updateDisplay();
 
 	void displayTableWidget(int indexInWidget, int indexInManager, Industry *);

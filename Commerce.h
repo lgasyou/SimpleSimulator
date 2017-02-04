@@ -1,7 +1,7 @@
 #ifndef COMMERCE_H
 #define COMMERCE_H
 
-#include "BuildingBase.h"
+#include "buildingbase.h"
 
 class Commerce : public BuildingBase {
 public:

@@ -77,6 +77,12 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="Header Files\Objects">
+      <UniqueIdentifier>{5b8e80c3-5acc-4393-9f96-e9934a665f3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects">
+      <UniqueIdentifier>{2d1484c9-b4b9-4ee5-bb5f-08803ac39daa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainWindow.cpp">
@@ -134,9 +140,6 @@
       <Filter>Source Files\Transportations</Filter>
     </ClCompile>
     <ClCompile Include="Order.cpp">
-      <Filter>Source Files\Transportations</Filter>
-    </ClCompile>
-    <ClCompile Include="GoodsContainer.cpp">
       <Filter>Source Files\Transportations</Filter>
     </ClCompile>
     <ClCompile Include="Warehouse.cpp">
@@ -209,7 +212,10 @@
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="Goods.cpp">
-      <Filter>Source Files\Transportations</Filter>
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="GoodsContainer.cpp">
+      <Filter>Source Files\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -271,9 +277,6 @@
     <ClInclude Include="Commerce.h">
       <Filter>Header Files\Buildings</Filter>
     </ClInclude>
-    <ClInclude Include="BuildingBase.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
     <ClInclude Include="Company.h">
       <Filter>Header Files\Company</Filter>
     </ClInclude>
@@ -290,9 +293,6 @@
       <Filter>Header Files\Transportations</Filter>
     </ClInclude>
     <ClInclude Include="Order.h">
-      <Filter>Header Files\Transportations</Filter>
-    </ClInclude>
-    <ClInclude Include="GoodsContainer.h">
       <Filter>Header Files\Transportations</Filter>
     </ClInclude>
     <ClInclude Include="Warehouse.h">
@@ -320,7 +320,13 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="Goods.h">
-      <Filter>Header Files\Transportations</Filter>
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="GoodsContainer.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="buildingbase.h">
+      <Filter>Header Files\Buildings</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

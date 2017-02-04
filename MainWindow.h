@@ -19,11 +19,13 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+	void init();
+
 signals:
-    void dataChanged(bool);
+    void dataChanged();
 
 private slots:
     void goBank();
@@ -44,6 +46,8 @@ private:
 
 	// transforms double into QString
 	static QString toString(double value);
+
+	static void showDialog(QDialog *);
 
     Company *company_;
     BankDialog *bankDialog_;

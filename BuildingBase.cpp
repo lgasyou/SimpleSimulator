@@ -1,4 +1,4 @@
-#include "BuildingBase.h"
+#include "buildingbase.h"
 #include "ValueGenerator.h"
 #include "GameConstants.h"
 
