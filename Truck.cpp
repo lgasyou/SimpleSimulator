@@ -12,18 +12,14 @@ Truck::Truck() :
 Truck::~Truck() { }
 
 void Truck::load() {
-	const QString &goods = order_->goods;
-	const double weight = order_->weight;
-	order_->src->putOutStorage(goods, weight);
-	freightHouse_->addItem(goods, weight);
+	order_->src->putOutStorage(order_->goods);
+	freightHouse_->addItem(order_->goods);
 	occupied_ = true;
 }
 
 void Truck::unload() {
-	const QString &goods = order_->goods;
-	const double weight = order_->weight;
-	order_->dest->putInStorage(goods, weight);
-	freightHouse_->removeItem(goods, weight);
+	order_->dest->putInStorage(order_->goods);
+	freightHouse_->removeItem(order_->goods);
 	occupied_ = false;
 
 	delete order_;

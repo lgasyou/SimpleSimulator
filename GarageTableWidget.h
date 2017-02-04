@@ -15,9 +15,10 @@ public:
 
 	void init();
 
-	void updateDisplay();
-
 	inline void setGarage(Garage *garage) { this->garage_ = garage; }
+
+public slots:
+	void updateDisplay();
 
 private:
 	// transforms double into QString

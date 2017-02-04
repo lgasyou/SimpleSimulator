@@ -180,6 +180,7 @@
     <ClCompile Include="GameConstants.cpp" />
     <ClCompile Include="Garage.cpp" />
     <ClCompile Include="GarageTableWidget.cpp" />
+    <ClCompile Include="Goods.cpp" />
     <ClCompile Include="GoodsContainer.cpp" />
     <ClCompile Include="Industry.cpp" />
     <ClCompile Include="Release\moc_BankDialog.cpp">
@@ -238,6 +239,7 @@
     <ClInclude Include="GeneratedFiles\ui_CompanyDetailDialog.h" />
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h" />
     <ClInclude Include="GeneratedFiles\ui_SelectIndustryDialog.h" />
+    <ClInclude Include="Goods.h" />
     <ClInclude Include="GoodsContainer.h" />
     <ClInclude Include="Order.h" />
     <CustomBuild Include="SelectIndustryDialog.h">

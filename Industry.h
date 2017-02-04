@@ -2,6 +2,7 @@
 #define Industry_H
 
 #include "BuildingBase.h"
+#include "Goods.h"
 #include <QString>
 #include <QMap>
 
@@ -22,11 +23,11 @@ public:
 
 	void manufacture();
 
-	void deliverGoods(const QString &goods, double weight, Industry *dest);
+	void deliverGoods(const Goods &goods, Industry *dest);
 
-	void putInStorage(const QString &, double);
+	void putInStorage(const Goods &goods);
 
-	void putOutStorage(const QString &, double);
+	void putOutStorage(const Goods &goods);
 
 	inline Warehouse *warehouse() const { return this->warehouse_; }
 

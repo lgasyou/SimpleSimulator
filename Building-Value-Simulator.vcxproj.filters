@@ -208,6 +208,9 @@
     <ClCompile Include="Release\moc_SelectIndustryDialog.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Goods.cpp">
+      <Filter>Source Files\Transportations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="MainWindow.h">
@@ -315,6 +318,9 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_SelectIndustryDialog.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Goods.h">
+      <Filter>Header Files\Transportations</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

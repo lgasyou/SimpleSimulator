@@ -1,8 +1,9 @@
 #ifndef GOODSCONTAINER_H
 #define GOODSCONTAINER_H
 
-#include <QMap>
+#include <QList>
 #include <QString>
+#include "Goods.h"
 
 class GoodsContainer {
 public:
@@ -10,12 +11,14 @@ public:
 
 	virtual ~GoodsContainer();
 
-	const double query(const QString &item) const;
+	const double query(const QString &goodsName) const;
 
-	bool addItem(const QString &, double);
-	void removeItem(const QString &, double);
+	Goods *getGoodsById(int id);
 
-	inline const QMap<QString, double> &container() const { return this->container_; }
+	bool addItem(const Goods &goods);
+	void removeItem(const Goods &goods);
+
+	inline const QList<Goods *> &container() const { return this->container_; }
 
 	inline const double curVolume() const { return this->curVolume_; }
 
@@ -23,7 +26,9 @@ public:
 	inline const double maxVolume() const { return this->maxVolume_; }
 
 protected:
-	QMap<QString, double> container_;
+	Goods *getGoodsByName(const QString &goods);
+
+	QList<Goods *> container_;
 	double curVolume_;
 	double maxVolume_;
 };

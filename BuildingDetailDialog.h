@@ -2,12 +2,14 @@
 #define BUILDINGDETAILDIALOG_H
 
 #include <QDialog>
+#include "Goods.h"
 
 class BuildingBase;
 class Company;
+class Industry;
 class GarageTableWidget;
 class WarehouseTableWidget;
-class Industry;
+struct Goods;
 class MyPushButton;
 namespace Ui {
 class BuildingDetailDialog;
@@ -17,7 +19,7 @@ class BuildingDetailDialog : public QDialog {
     Q_OBJECT
 
 public:
-    BuildingDetailDialog(QWidget *parent);
+    BuildingDetailDialog(QWidget *parent = nullptr);
     ~BuildingDetailDialog();
 
     inline void setBuilding(BuildingBase *building) { this->building_ = building; }
@@ -30,6 +32,8 @@ public slots:
 
 	// Changes the type of building by button's text
 	void changeType(MyPushButton *);
+
+	void deliverGoods(const Goods &goods, Industry *dest);
 
 private:
 	void hideVariableWidget();
@@ -52,6 +56,7 @@ signals:
 	void sellSignal(BuildingBase *);
 	void changeTypeSignal(BuildingBase *, const QString &buildingType);
 	void manageSignal(BuildingBase *, const QString &cmd);
+	void dataChanged(bool);
 
 private slots:
 	void on_pushButton_Buy_clicked();

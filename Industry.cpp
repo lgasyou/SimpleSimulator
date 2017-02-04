@@ -28,29 +28,29 @@ void Industry::update() {
 void Industry::manufacture() {
 	const QString &type = this->type();
 	if (type == "Iron Mine Factory") {
-		warehouse_->addItem("Iron", 1);
+		warehouse_->addItem(Goods("Iron", 1));
 	} else if (type == "Coal Mine Factory") {
-		warehouse_->addItem("Coal", 2);
+		warehouse_->addItem(Goods("Coal", 2));
 	} else if (type == "Steel Factory") {
 		if (warehouse_->query("Iron") < 1 || 
 			warehouse_->query("Coal") < 2)
 			return;
 
-		warehouse_->addItem("Steel", 1);
-		warehouse_->removeItem("Iron", 1);
-		warehouse_->removeItem("Coal", 2);
+		warehouse_->addItem(Goods("Steel", 1));
+		warehouse_->removeItem(Goods("Iron", 1));
+		warehouse_->removeItem(Goods("Coal", 2));
 	}
 }
 
-void Industry::deliverGoods(const QString &goods, double weight, Industry *dest) {
-	Order *order = new Order(goods, weight, dest, this);
+void Industry::deliverGoods(const Goods &goods, Industry *dest) {
+	Order *order = new Order(goods, dest, this);
 	garage_->sendVihicle(order);
 }
 
-void Industry::putInStorage(const QString &item, double volume) {
-	warehouse_->addItem(item, volume);
+void Industry::putInStorage(const Goods &goods) {
+	warehouse_->addItem(goods);
 }
 
-void Industry::putOutStorage(const QString &item, double volume) {
-	warehouse_->removeItem(item, volume);
+void Industry::putOutStorage(const Goods &goods) {
+	warehouse_->removeItem(goods);
 }

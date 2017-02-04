@@ -1,17 +1,30 @@
-﻿#pragma once
-#include <QWidget>
-#include "ui_selectindustrydialog.h"
+﻿#ifndef SELECTINDUSTRYDIALOG_H
+#define SELECTINDUSTRYDIALOG_H
 
-class SelectIndustryDialog : public QWidget {
+#include <QDialog>
+
+class Industry;
+class MyPushButton;
+namespace Ui {
+class SelectIndustryDialog;
+}
+
+class SelectIndustryDialog : public QDialog {
 	Q_OBJECT
 
 public:
-	SelectIndustryDialog(QWidget * parent = Q_NULLPTR);
+	SelectIndustryDialog(QWidget *parent = nullptr);
 	~SelectIndustryDialog();
 
-signals:
+	void updateDisplay();
 
+	void displayTableWidget(int indexInWidget, int indexInManager, Industry *);
+
+signals:
+	void sendSelectedIndustry(Industry *);
 
 private:
-	Ui::SelectIndustryDialog ui;
+	Ui::SelectIndustryDialog *ui;
 };
+
+#endif // !SELECTINDUSTRYDIALOG_H

@@ -28,13 +28,17 @@ void GarageTableWidget::updateDisplay() {
 	for (auto &iter = vihicleList.constBegin(); iter != vihicleList.constEnd(); ++iter, ++index) {
 		auto &truck = *iter;
 		setItem(index, 0, new QTableWidgetItem(tr("Truck")));
-		if (truck->order()) {
+		if (truck->occupied()) {
 			const QString &dest = truck->order()->dest->name();
-			const QString &goods = truck->order()->goods;
-			const QString &weight = toString(truck->order()->weight);
+			const QString &goods = truck->order()->goods.goods;
+			const QString &weight = toString(truck->order()->goods.weight);
 			setItem(index, 1, new QTableWidgetItem(dest));
 			setItem(index, 2, new QTableWidgetItem(goods));
 			setItem(index, 3, new QTableWidgetItem(weight));
+		} else {
+			setItem(index, 1, new QTableWidgetItem);
+			setItem(index, 2, new QTableWidgetItem);
+			setItem(index, 3, new QTableWidgetItem);
 		}
 	}
 }

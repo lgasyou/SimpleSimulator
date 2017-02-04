@@ -2,15 +2,15 @@
 #define ORDER_H
 
 #include <QString>
+#include "Goods.h"
 
 class Industry;
 class Truck;
 
 struct Order {
-	Order(const QString &_goods, double _weight, Industry *_dest, Industry *_src);
+	Order(const Goods &goods_, Industry *dest_, Industry *src_);
 
-	QString goods;
-	double weight;
+	Goods goods;
 	Industry *dest;
 	Industry *src;
 };

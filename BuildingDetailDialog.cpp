@@ -7,6 +7,7 @@
 #include "Garage.h"
 #include "GarageTableWidget.h"
 #include "WarehouseTableWidget.h"
+#include "Goods.h"
 #include "MyPushButton.h"
 #include "ui_BuildingDetailDialog.h"
 
@@ -35,6 +36,10 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
 
     connect(parent, SIGNAL(dataChanged(bool)),
             this, SLOT(updateDisplay()));
+	connect(this, SIGNAL(dataChanged(bool)),
+		warehouseTableWidget_, SLOT(updateDisplay()));
+	connect(this, SIGNAL(dataChanged(bool)),
+		garageTableWidget_, SLOT(updateDisplay()));
 
 	// In order to change building's type by button's text
 	connect(ui->pushButton_Build_CoalMine, SIGNAL(sendPointer(MyPushButton*)),
@@ -47,6 +52,9 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
 		this, SLOT(changeType(MyPushButton*)));
 	connect(ui->pushButton_Build_SteelIndustry, SIGNAL(sendPointer(MyPushButton*)),
 		this, SLOT(changeType(MyPushButton*)));
+
+	connect(warehouseTableWidget_, SIGNAL(sendPreorder(const Goods&, Industry*)),
+		this, SLOT(deliverGoods(const Goods&, Industry*)));
 }
 
 BuildingDetailDialog::~BuildingDetailDialog() {
@@ -80,6 +88,12 @@ void BuildingDetailDialog::switchIndustryDisplay(bool toggled) {
 void BuildingDetailDialog::changeType(MyPushButton *button) {
 	const QString &newType = button->text();
 	emit changeTypeSignal(building_, newType);
+}
+
+void BuildingDetailDialog::deliverGoods(const Goods &goods, Industry *dest) {
+	Industry *industry = dynamic_cast<Industry *>(building_);
+	industry->deliverGoods(goods, dest);
+	emit dataChanged(true);
 }
 
 void BuildingDetailDialog::hideVariableWidget() {
