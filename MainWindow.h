@@ -48,7 +48,7 @@ private:
 
 	static void showDialog(QDialog *);
 
-    Company *company_;
+    Company *playerCompany_;
     BankDialog *bankDialog_;
     BuildingDetailDialog *buildingDetailDialog_;
     BuildingInfoTableWidget *buildingInfoTableWidget_;

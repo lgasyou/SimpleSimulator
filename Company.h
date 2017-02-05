@@ -10,6 +10,8 @@ class Company {
 public:
     Company();
 
+	~Company();
+
     bool buy(BaseBuilding *building);
     bool sell(BaseBuilding *building);
 

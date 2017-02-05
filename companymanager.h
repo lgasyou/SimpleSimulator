@@ -9,7 +9,11 @@ class CompanyManager {
 public:
 	static CompanyManager &instance();
 
-	Company *playerCompany() { return this->playerCompany_; }
+	void update();
+
+	inline Company *playerCompany() { return this->playerCompany_; }
+
+	inline QList<Company *> &aiCompanyList() { return aiCompanyList_; }
 
 private:
 	CompanyManager();
@@ -19,7 +23,7 @@ private:
 
 	Company *playerCompany_;
 
-	QList<Company *> aiCompany_;
+	QList<Company *> aiCompanyList_;
 };
 
 

@@ -11,3 +11,9 @@ CompanyManager &CompanyManager::instance() {
 	static CompanyManager companyManager;
 	return companyManager;
 }
+
+void CompanyManager::update() {
+	playerCompany_->update();
+	for (auto &aiCompany : aiCompanyList_)
+		aiCompany->update();
+}

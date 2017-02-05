@@ -9,6 +9,8 @@ Company::Company() :
     liability_(0)
 { }
 
+Company::~Company() { }
+
 bool Company::buy(BaseBuilding *building) {
     double buildingValue = building->value();
     if (buildingValue > this->cash_)
