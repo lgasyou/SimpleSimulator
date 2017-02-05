@@ -1,4 +1,4 @@
-#include "Goods.h"
+#include "goods.h"
 
 Goods::Goods(const QString & goods_, double weight_) :
 	goods(goods_),

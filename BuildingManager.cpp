@@ -1,30 +1,43 @@
-#include "BuildingManager.h"
-#include "ValueGenerator.h"
-#include "Residence.h"
-#include "Commerce.h"
-#include "Industry.h"
-#include "Company.h"
+#include "buildingmanager.h"
+#include "buildingfactory.h"
+
+#include "basebuilding.h"
+
+#include "industry.h"
+#include "coalmine.h"
+#include "ironmine.h"
+#include "steelfactory.h"
+
+#include "commerce.h"
+
+#include "residence.h"
+
+#include "company.h"
+#include "valuegenerator.h"
 
 BuildingManager::BuildingManager() {
-    buildingList_.push_back(new BuildingBase);
-	buildingList_.push_back(new Industry("Coal Mine Factory"));
-	buildingList_.push_back(new Industry("Iron Mine Factory"));
+    buildingList_.push_back(new BaseBuilding);
+	buildingList_.push_back(new CoalMine);
+	buildingList_.push_back(new IronMine);
+	buildingList_.push_back(new SteelFactory);
 	for (int i = 0; i != 1; ++i)
 		buildingList_.push_back(new Commerce);
     for (int i = 0; i != 3; ++i)
         buildingList_.push_back(new Residence);
 }
 
+BuildingManager::~BuildingManager() { }
+
 BuildingManager &BuildingManager::instance() {
 	static BuildingManager buildingManager;
 	return buildingManager;
 }
 
-BuildingBase *BuildingManager::getBuildingById(unsigned id) {
+BaseBuilding *BuildingManager::getBuildingById(unsigned id) {
     return buildingList_[id];
 }
 
-const double BuildingManager::deltaValueOfCompanyProperties(Company *company) {
+const double BuildingManager::deltaValueOfCompanyProperties(Company *company) const {
     double totalDeltaValue = 0.0;
     for (auto &building : buildingList_) {
 		if (building->owner() == company)
@@ -33,33 +46,22 @@ const double BuildingManager::deltaValueOfCompanyProperties(Company *company) {
     return totalDeltaValue;
 }
 
-BuildingBase *BuildingManager::resetItemType(BuildingBase *building, const QString &type) {
+BaseBuilding *BuildingManager::resetItemType(BaseBuilding *building, const QString &type) {
+	BuildingFactory buildingFactory;
+    BaseBuilding *newBuilding = buildingFactory.create(type);
+	newBuilding->copyInit(*building);
+
 	auto &iter = iteratorOf(building);
-    BuildingBase *newBuilding = nullptr;
-
-    if (type == "Foundation")
-        newBuilding = new BuildingBase(*building, type);
-	else if (type.contains("Factory"))
-		newBuilding = new Industry(*building, type);
-	else if (type.contains("Commerce"))
-		newBuilding = new Commerce(*building, type);
-	else
-        newBuilding = new Residence(*building, type);
-
     delete *iter;
 	*iter = newBuilding;
     return newBuilding;
 }
 
-void BuildingManager::manage(BuildingBase *building, const QString &cmd) {
-    building->manage(cmd);
-}
-
-void BuildingManager::addItem(BuildingBase *building) {
+void BuildingManager::addItem(BaseBuilding *building) {
     buildingList_.push_back(building);
 }
 
-void BuildingManager::removeItem(BuildingBase *building) {
+void BuildingManager::removeItem(BaseBuilding *building) {
     buildingList_.removeOne(building);
 }
 
@@ -68,7 +70,7 @@ void BuildingManager::update() {
 		building->update();
 }
 
-QList<BuildingBase *>::iterator BuildingManager::iteratorOf(BuildingBase *building) {
+QList<BaseBuilding *>::iterator BuildingManager::iteratorOf(BaseBuilding *building) {
 	auto &iterator = buildingList_.begin();
 	while (iterator != buildingList_.end() && *iterator != building)
 		++iterator;

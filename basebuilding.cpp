@@ -1,8 +1,8 @@
-#include "buildingbase.h"
-#include "ValueGenerator.h"
-#include "GameConstants.h"
+#include "basebuilding.h"
+#include "valuegenerator.h"
+#include "gameconstants.h"
 
-BuildingBase::BuildingBase(const QString &name, const QString &type, Company *owner, double deltaValue) :
+BaseBuilding::BaseBuilding(const QString &name, const QString &type, Company *owner, double deltaValue) :
 	name_(name),
 	type_(type),
 	owner_(owner),
@@ -11,15 +11,14 @@ BuildingBase::BuildingBase(const QString &name, const QString &type, Company *ow
 	initBasicValue();
 }
 
-BuildingBase::BuildingBase(const BuildingBase &rhs, const QString &type) :
-	name_(rhs.name()),
-	value_(rhs.value()),
-	type_(type),
-	owner_(rhs.owner()),
-	deltaValue_(rhs.deltaValue())
-{ }
+void BaseBuilding::copyInit(const BaseBuilding &rhs) {
+	name_ = rhs.name();
+	value_ = rhs.value();
+	owner_ = rhs.owner();
+	deltaValue_ = rhs.deltaValue();
+}
 
-void BuildingBase::initBasicValue() {
+void BaseBuilding::initBasicValue() {
 	const double basicValue = GameConstants::defaultBaseValueOfBuilding;
 	const double sigma = GameConstants::sigmaOfdefaultBaseValueOfBuilding;
 	double value = 0.0;
@@ -29,15 +28,11 @@ void BuildingBase::initBasicValue() {
 	this->value_ = value;
 }
 
-void BuildingBase::manage(const QString &cmd) {
-
-}
-
-void BuildingBase::update() { 
+void BaseBuilding::update() { 
 	changeBaseValue();
 }
 
-void BuildingBase::changeBaseValue() {
+void BaseBuilding::changeBaseValue() {
 	double sigma = value_ * 0.1 / 3;
 	double deltaValue = ValueGenerator::instance().normalDistribution(0, sigma);
 	double finalValue = deltaValue + value_;

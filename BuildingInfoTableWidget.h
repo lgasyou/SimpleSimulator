@@ -4,7 +4,7 @@
 #include <QTableWidget>
 
 class BuildingManager;
-class BuildingBase;
+class BaseBuilding;
 class Company;
 class MyPushButton;
 
@@ -23,15 +23,15 @@ public:
     bool readFile(const QString &fileName);
 
     void updateDisplay();
-	void displayBasicInfo(int index, BuildingBase *building);
-	void displayAccordingToVisitor(int index, BuildingBase *building);
+	void displayBasicInfo(int index, BaseBuilding *building);
+	void displayAccordingToVisitor(int index, BaseBuilding *building);
 
     inline void setCompany(Company *company) { this->company_ = company; }
 
 signals:
-    void buySignal(BuildingBase *);
-    void sellSignal(BuildingBase *);
-    void showDetailSignal(BuildingBase *);
+    void buySignal(BaseBuilding *);
+    void sellSignal(BaseBuilding *);
+    void showDetailSignal(BaseBuilding *);
 
 private slots:
 	// Gets building by push button and sends 

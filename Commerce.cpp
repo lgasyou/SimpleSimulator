@@ -1,18 +1,10 @@
-#include "Commerce.h"
+#include "commerce.h"
 
 Commerce::Commerce(const QString &type) :
-	BuildingBase("Commerce", type, nullptr)
-{ }
-
-Commerce::Commerce(const BuildingBase &rhs, const QString &type) :
-	BuildingBase(rhs, type)
+	BaseBuilding("Commerce", type, nullptr)
 { }
 
 Commerce::~Commerce() { }
-
-void Commerce::manage(const QString &cmd) {
-
-}
 
 void Commerce::update() {
 	changeBaseValue();

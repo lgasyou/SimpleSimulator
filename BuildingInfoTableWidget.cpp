@@ -1,8 +1,8 @@
-#include "BuildingInfoTableWidget.h"
-#include "BuildingManager.h"
-#include "Company.h"
-#include "GameConstants.h"
-#include "MyPushButton.h"
+#include "buildinginfotablewidget.h"
+#include "buildingmanager.h"
+#include "company.h"
+#include "gameconstants.h"
+#include "mypushbutton.h"
 #include <QFile>
 #include <QApplication>
 
@@ -55,7 +55,7 @@ void BuildingInfoTableWidget::updateDisplay() {
 	}
 }
 
-void BuildingInfoTableWidget::displayBasicInfo(int index, BuildingBase *building) {
+void BuildingInfoTableWidget::displayBasicInfo(int index, BaseBuilding *building) {
 	const QString &name = building->name();
 	const QString &deltaValue = " " + toString(building->deltaValue());
 	const QString &value = "$" + toString(building->value()) + deltaValue;
@@ -67,7 +67,7 @@ void BuildingInfoTableWidget::displayBasicInfo(int index, BuildingBase *building
 	setItem(index, 3, new QTableWidgetItem(owner));
 }
 
-void BuildingInfoTableWidget::displayAccordingToVisitor(int index, BuildingBase *building) {
+void BuildingInfoTableWidget::displayAccordingToVisitor(int index, BaseBuilding *building) {
 	const QString &btnText = (building->owner() != company_) ? tr("Buy") : tr("Sell");
 	MyPushButton *optionBtn = new MyPushButton(btnText);
 	optionBtn->setIndex(index);
@@ -88,7 +88,7 @@ QString BuildingInfoTableWidget::toString(double value) {
 
 void BuildingInfoTableWidget::getBuildingAndSendSignal(MyPushButton *button) {
     int id = button->index();
-    BuildingBase *building = BuildingManager::instance().getBuildingById(id);
+    BaseBuilding *building = BuildingManager::instance().getBuildingById(id);
 
     if (button->text() == "Buy") {
         emit buySignal(building);

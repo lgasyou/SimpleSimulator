@@ -2,9 +2,9 @@
 #define BUILDINGDETAILDIALOG_H
 
 #include <QDialog>
-#include "Goods.h"
+#include "goods.h"
 
-class BuildingBase;
+class BaseBuilding;
 class Company;
 class Industry;
 class GarageTableWidget;
@@ -22,7 +22,7 @@ public:
     BuildingDetailDialog(QWidget *parent = nullptr);
     ~BuildingDetailDialog();
 
-    inline void setBuilding(BuildingBase *building) { this->building_ = building; }
+    inline void setBuilding(BaseBuilding *building) { this->building_ = building; }
     inline void setVisitor(Company *visitor) { this->visitor_ = visitor; }
 
 public slots:
@@ -52,23 +52,22 @@ private:
 	static QString toString(double value);
 
 signals:
-	void buySignal(BuildingBase *);
-	void sellSignal(BuildingBase *);
-	void changeTypeSignal(BuildingBase *, const QString &buildingType);
-	void manageSignal(BuildingBase *, const QString &cmd);
+	void buySignal(BaseBuilding *);
+	void sellSignal(BaseBuilding *);
+	void changeTypeSignal(BaseBuilding *, const QString &buildingType);
+	void manageSignal(BaseBuilding *, const QString &cmd);
 	void dataChanged();
 
 private slots:
 	void on_pushButton_Buy_clicked();
 	void on_pushButton_Sell_clicked();
 
-	void on_pushButton_Manage_clicked();
 	void on_pushButton_Dismantle_clicked();
 
 	void on_pushButton_Build_clicked();
 
 private:
-    BuildingBase *building_;
+    BaseBuilding *building_;
     Company *visitor_;
 
 	GarageTableWidget *garageTableWidget_;

@@ -101,13 +101,6 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_Manage">
-       <property name="text">
-        <string>Manage</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QPushButton" name="pushButton_Dismantle">
        <property name="text">
         <string>Dismantle</string>
@@ -121,14 +114,14 @@
      <item>
       <widget class="MyPushButton" name="pushButton_Build_IronMine">
        <property name="text">
-        <string>Iron Mine Factory</string>
+        <string>Iron Mine</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="MyPushButton" name="pushButton_Build_CoalMine">
        <property name="text">
-        <string>Coal Mine Factory</string>
+        <string>Coal Mine</string>
        </property>
       </widget>
      </item>
@@ -161,7 +154,7 @@
   <customwidget>
    <class>MyPushButton</class>
    <extends>QPushButton</extends>
-   <header>MyPushButton.h</header>
+   <header>mypushbutton.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

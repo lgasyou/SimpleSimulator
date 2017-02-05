@@ -1,6 +1,6 @@
-#include "Company.h"
-#include "buildingbase.h"
-#include "BuildingManager.h"
+#include "company.h"
+#include "basebuilding.h"
+#include "buildingmanager.h"
 
 Company::Company() :
     name_("Xenon Inc."),
@@ -9,7 +9,7 @@ Company::Company() :
     liability_(0)
 { }
 
-bool Company::buy(BuildingBase *building) {
+bool Company::buy(BaseBuilding *building) {
     double buildingValue = building->value();
     if (buildingValue > this->cash_)
         return false;
@@ -19,7 +19,7 @@ bool Company::buy(BuildingBase *building) {
     return true;
 }
 
-bool Company::sell(BuildingBase *building) {
+bool Company::sell(BaseBuilding *building) {
     cash_ += building->value();
     building->setOwner(nullptr);
     return true;

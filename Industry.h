@@ -1,27 +1,24 @@
 #ifndef Industry_H
 #define Industry_H
 
-#include "buildingbase.h"
-#include "Goods.h"
+#include "basebuilding.h"
+#include "goods.h"
 #include <QString>
 #include <QMap>
 
 class Warehouse;
 class Garage;
 
-class Industry : public BuildingBase {
+class Industry : public BaseBuilding {
 public:
 	Industry(const QString & = "Factory");
 
-    Industry(const BuildingBase &, const QString &);
-
-	// manual manage building
-    void manage(const QString &) override;
+	virtual ~Industry();
 
 	// updates data after each turn
 	void update() override;
 
-	void manufacture();
+	virtual void manufacture();
 
 	void deliverGoods(const Goods &goods, Industry *dest);
 
@@ -33,7 +30,7 @@ public:
 
 	inline Garage *garage() const { return this->garage_; }
 
-private:
+protected:
     Warehouse *warehouse_;
 	Garage *garage_;
 };

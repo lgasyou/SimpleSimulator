@@ -14,7 +14,7 @@ class BankDialog : public QDialog {
     Q_OBJECT
 
 public:
-    explicit BankDialog(Company *client, QWidget *parent = 0);
+    explicit BankDialog(QWidget *parent = nullptr, Company *client = nullptr);
     ~BankDialog();
 
     void updateDisplay();

@@ -1,8 +1,8 @@
-﻿#include "GarageTableWidget.h"
-#include "Garage.h"
-#include "Truck.h"
-#include "Order.h"
-#include "Industry.h"
+﻿#include "garagetablewidget.h"
+#include "garage.h"
+#include "truck.h"
+#include "order.h"
+#include "industry.h"
 
 GarageTableWidget::GarageTableWidget(QWidget *parent) : 
 	QTableWidget(parent)

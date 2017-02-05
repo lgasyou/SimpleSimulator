@@ -1,22 +1,19 @@
-#include "Industry.h"
+#include "industry.h"
 #include "Warehouse.h"
-#include "Garage.h"
-#include "Order.h"
+#include "garage.h"
+#include "order.h"
 
 Industry::Industry(const QString &type) :
-	BuildingBase("Factory", type, nullptr),
+	BaseBuilding("Factory", type, nullptr),
 	warehouse_(new Warehouse),
 	garage_(new Garage)
 { }
 
-Industry::Industry(const BuildingBase &rhs, const QString &type) :
-	BuildingBase(rhs, type),
-    warehouse_(new Warehouse),
-	garage_(new Garage)
-{ }
-
-void Industry::manage(const QString &cmd) {
-
+Industry::~Industry() {
+	delete garage_;
+	delete warehouse_;
+	garage_ = nullptr;
+	warehouse_ = nullptr;
 }
 
 void Industry::update() { 
@@ -26,20 +23,7 @@ void Industry::update() {
 }
 
 void Industry::manufacture() {
-	const QString &type = this->type();
-	if (type == "Iron Mine Factory") {
-		warehouse_->addItem(Goods("Iron", 1));
-	} else if (type == "Coal Mine Factory") {
-		warehouse_->addItem(Goods("Coal", 2));
-	} else if (type == "Steel Factory") {
-		if (warehouse_->query("Iron") < 1 || 
-			warehouse_->query("Coal") < 2)
-			return;
-
-		warehouse_->addItem(Goods("Steel", 1));
-		warehouse_->removeItem(Goods("Iron", 1));
-		warehouse_->removeItem(Goods("Coal", 2));
-	}
+	warehouse_->addItem(Goods("Goods", 1));
 }
 
 void Industry::deliverGoods(const Goods &goods, Industry *dest) {

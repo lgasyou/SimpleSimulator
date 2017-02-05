@@ -1,10 +1,10 @@
-#ifndef GAMETIMER_H
-#define GAMETIMER_H
+#ifndef TIMEMANAGER_H
+#define TIMEMANAGER_H
 
 
-class GameTimer {
+class TimeManager {
 public:
-	static GameTimer &instance();
+	static TimeManager &instance();
 
     void setDeltaTime(double deltaTime) { deltaTime_ = deltaTime; }
     const double deltaTime() { return deltaTime_; }
@@ -16,14 +16,14 @@ public:
 	const double frequence() { return frequence_; }
 
 private:
-	GameTimer() { }
-	~GameTimer() { }
-	GameTimer(const GameTimer &) = delete;
-	GameTimer &operator=(const GameTimer &) = delete;
+	TimeManager() { }
+	~TimeManager() { }
+	TimeManager(const TimeManager &) = delete;
+	TimeManager &operator=(const TimeManager &) = delete;
 
     static double deltaTime_;
     static double currentTime_;
 	static double frequence_;
 };
 
-#endif // GAMETIMER_H
+#endif // TIMEMANAGER_H

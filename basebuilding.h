@@ -10,19 +10,16 @@ class Company;
 //	* Residence,
 //	* Commerce,
 //	* Industry.
-class BuildingBase {
+class BaseBuilding {
 public:
-	BuildingBase(const QString &name = "Foundation", const QString &type = "Foundation",
+	BaseBuilding(const QString &name = "Foundation", const QString &type = "Foundation",
 		Company *owner = nullptr, double deltaValue = 0.0);
 
-    BuildingBase(const BuildingBase &, const QString &);
+    virtual ~BaseBuilding() { }
 
-    virtual ~BuildingBase() { }
+	void copyInit(const BaseBuilding &);
 
 	void initBasicValue();
-
-	// manual manage building
-    virtual void manage(const QString &);
 	
 	// updates data after each turn
 	virtual void update();

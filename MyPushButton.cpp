@@ -1,4 +1,4 @@
-#include "MyPushButton.h"
+#include "mypushbutton.h"
 
 MyPushButton::MyPushButton(QWidget *parent) :
     QPushButton(parent)

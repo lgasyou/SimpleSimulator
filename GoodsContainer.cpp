@@ -1,5 +1,5 @@
-#include "GoodsContainer.h"
-#include "GameConstants.h"
+#include "goodscontainer.h"
+#include "gameconstants.h"
 
 GoodsContainer::GoodsContainer() :
 	maxVolume_(GameConstants::defaultMaxVolOfWarehouse),
@@ -13,6 +13,7 @@ const double GoodsContainer::query(const QString &goodsName) const {
 		if (item->goods == goodsName)
 			return item->weight;
 	}
+	return 0.0;
 }
 
 Goods *GoodsContainer::getGoodsById(int id) {

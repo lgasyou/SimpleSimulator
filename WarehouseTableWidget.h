@@ -2,7 +2,7 @@
 #define WAREHOUSETABLEWIDGET_H
 
 #include <QTableWidget>
-#include "Goods.h"
+#include "goods.h"
 
 class Warehouse;
 class Industry;

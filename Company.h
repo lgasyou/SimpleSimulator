@@ -3,15 +3,15 @@
 
 #include <QString>
 
-class BuildingBase;
+class BaseBuilding;
 class BuildingManager;
 
 class Company {
 public:
     Company();
 
-    bool buy(BuildingBase *building);
-    bool sell(BuildingBase *building);
+    bool buy(BaseBuilding *building);
+    bool sell(BaseBuilding *building);
 
     void update();
 

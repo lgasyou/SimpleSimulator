@@ -2,7 +2,7 @@
 #define ORDER_H
 
 #include <QString>
-#include "Goods.h"
+#include "goods.h"
 
 class Industry;
 class Truck;

@@ -1,6 +1,6 @@
-#include "Garage.h"
-#include "Truck.h"
-#include "Order.h"
+#include "garage.h"
+#include "truck.h"
+#include "order.h"
 
 Garage::Garage() :
 	vihicleCount_(0),

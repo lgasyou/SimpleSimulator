@@ -1,18 +1,13 @@
 #ifndef COMMERCE_H
 #define COMMERCE_H
 
-#include "buildingbase.h"
+#include "basebuilding.h"
 
-class Commerce : public BuildingBase {
+class Commerce : public BaseBuilding {
 public:
 	Commerce(const QString & = "Commerce");
 
-	Commerce(const BuildingBase &, const QString &);
-
 	~Commerce();
-
-	// manual manage building
-	void manage(const QString &cmd) override;
 
 	// update data after each turn
 	void update() override;

@@ -1,13 +1,14 @@
-#include "MainWindow.h"
-#include "BuildingManager.h"
-#include "Company.h"
-#include "GameTimer.h"
-#include "BankDialog.h"
-#include "BuildingDetailDialog.h"
-#include "BuildingInfoTableWidget.h"
-#include "CompanyDetailDialog.h"
-#include "MyPushButton.h"
-#include "ui_MainWindow.h"
+#include "mainwindow.h"
+#include "buildingmanager.h"
+#include "company.h"
+#include "timemanager.h"
+#include "bankdialog.h"
+#include "buildingdetaildialog.h"
+#include "buildinginfotablewidget.h"
+#include "companydetaildialog.h"
+
+#include "mypushbutton.h"
+#include "ui_mainwindow.h"
 #include <QTableWidget>
 #include <QStatusBar>
 
@@ -41,12 +42,12 @@ void MainWindow::init() {
 	connect(ui->pushButton_Company, SIGNAL(clicked(bool)),
 		this, SLOT(showCompanyDetail()));
 
-	connect(buildingInfoTableWidget_, SIGNAL(buySignal(BuildingBase*)),
-		this, SLOT(buy(BuildingBase*)));
-	connect(buildingInfoTableWidget_, SIGNAL(sellSignal(BuildingBase*)),
-		this, SLOT(sell(BuildingBase*)));
-	connect(buildingInfoTableWidget_, SIGNAL(showDetailSignal(BuildingBase*)),
-		this, SLOT(showBuildingDetail(BuildingBase*)));
+	connect(buildingInfoTableWidget_, SIGNAL(buySignal(BaseBuilding*)),
+		this, SLOT(buy(BaseBuilding*)));
+	connect(buildingInfoTableWidget_, SIGNAL(sellSignal(BaseBuilding*)),
+		this, SLOT(sell(BaseBuilding*)));
+	connect(buildingInfoTableWidget_, SIGNAL(showDetailSignal(BaseBuilding*)),
+		this, SLOT(showBuildingDetail(BaseBuilding*)));
 
 	connect(this, SIGNAL(dataChanged()),
 		this, SLOT(updateDisplay()));
@@ -56,7 +57,7 @@ void MainWindow::init() {
 
 void MainWindow::goBank() {
     if (!bankDialog_)
-        bankDialog_ = new BankDialog(company_, this);
+        bankDialog_ = new BankDialog(this, company_);
     bankDialog_->updateDisplay();
     if (bankDialog_->exec() == QDialog::Accepted) {
         updateStatusBar("Back.");
@@ -69,11 +70,11 @@ void MainWindow::endTurns() {
     company_->update();
 	double deltaValue = BuildingManager::instance().deltaValueOfCompanyProperties(company_);
 	company_->setTotalValue(company_->totalValue() + deltaValue);
-    GameTimer::instance().increaseTime();
+    TimeManager::instance().increaseTime();
     emit dataChanged();
 }
 
-void MainWindow::showBuildingDetail(BuildingBase *building) {
+void MainWindow::showBuildingDetail(BaseBuilding *building) {
     if (!buildingDetailDialog_)
         buildingDetailDialog_ = new BuildingDetailDialog(this);
     buildingDetailDialog_->setBuilding(building);
@@ -90,7 +91,7 @@ void MainWindow::showCompanyDetail() {
     companyDetailDialog_->updateDisplay();
 }
 
-void MainWindow::buy(BuildingBase *building) {
+void MainWindow::buy(BaseBuilding *building) {
     if (company_->buy(building)) {
         emit dataChanged();
         updateStatusBar(building->type()+ " " + building->name() + " bought.");
@@ -98,22 +99,17 @@ void MainWindow::buy(BuildingBase *building) {
         updateStatusBar("Cannot Afford it.");
 }
 
-void MainWindow::sell(BuildingBase *building) {
+void MainWindow::sell(BaseBuilding *building) {
     if (company_->sell(building)) {
         emit dataChanged();
         updateStatusBar(building->type()+ " " + building->name() + " sold.");
     }
 }
 
-void MainWindow::changeType(BuildingBase *building, const QString &type) {
-	BuildingBase *newBuilding = BuildingManager::instance().resetItemType(building, type);
+void MainWindow::changeType(BaseBuilding *building, const QString &type) {
+	BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, type);
     buildingDetailDialog_->setBuilding(newBuilding);
     updateStatusBar(newBuilding->name() + " has been changed into " + type + ".");
-    emit dataChanged();
-}
-
-void MainWindow::manage(BuildingBase *building, const QString &cmd) {
-    BuildingManager::instance().manage(building, cmd);
     emit dataChanged();
 }
 
@@ -128,7 +124,7 @@ void MainWindow::updateCompanyInfo() {
     ui->label_CompanyCash->setText(tr("Cash: $") + cash);
     QString totalValue = toString(company_->totalValue());
     ui->label_CompanyTotalValue->setText(tr("Total Value: $") + totalValue);
-    ui->label_Turns->setText(tr("Turn ") + QString::number(GameTimer::instance().currentTime()));
+    ui->label_Turns->setText(tr("Turn ") + QString::number(TimeManager::instance().currentTime()));
 }
 
 inline void MainWindow::updateStatusBar(const QString &msg) {

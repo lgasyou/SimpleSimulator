@@ -1,7 +1,7 @@
 #ifndef TRUCK_H
 #define TRUCK_H
 
-#include "Vihicle.h"
+#include "vihicle.h"
 
 class GoodsContainer;
 class Industry;

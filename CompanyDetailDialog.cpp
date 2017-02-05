@@ -1,6 +1,6 @@
-#include "CompanyDetailDialog.h"
-#include "Company.h"
-#include "ui_CompanyDetailDialog.h"
+#include "companydetaildialog.h"
+#include "company.h"
+#include "ui_companydetaildialog.h"
 
 CompanyDetailDialog::CompanyDetailDialog(QWidget *parent) :
     QDialog(parent),

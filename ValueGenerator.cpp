@@ -1,4 +1,4 @@
-#include "ValueGenerator.h"
+#include "valuegenerator.h"
 #include <ctime>
 
 ValueGenerator &ValueGenerator::instance() {

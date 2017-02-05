@@ -1,4 +1,4 @@
-#include "Order.h"
+#include "order.h"
 
 Order::Order(const Goods &goods_, Industry *dest_, Industry *src_):
 	goods(goods_),

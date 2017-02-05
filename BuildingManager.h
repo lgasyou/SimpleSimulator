@@ -2,7 +2,7 @@
 #define BUILDINGMANAGER_H
 
 #include <QList>
-#include "buildingbase.h"
+#include "basebuilding.h"
 
 class Company;
 
@@ -10,29 +10,28 @@ class BuildingManager {
 public:
 	static BuildingManager &instance();
 
-    BuildingBase *getBuildingById(unsigned id);
+    BaseBuilding *getBuildingById(unsigned id);
     const int buildingNumber() const { return buildingList_.size(); }
-    const double deltaValueOfCompanyProperties(Company *);
+    const double deltaValueOfCompanyProperties(Company *) const;
 
-    BuildingBase *resetItemType(BuildingBase *, const QString &);
-    void manage(BuildingBase *, const QString &);
+    BaseBuilding *resetItemType(BaseBuilding *, const QString &);
 
-    void addItem(BuildingBase *);
-    void removeItem(BuildingBase *);
+    void addItem(BaseBuilding *);
+    void removeItem(BaseBuilding *);
 
     void update();
 
-	inline const QList<BuildingBase *> &buildingList() const { return this->buildingList_; }
+	inline const QList<BaseBuilding *> &buildingList() const { return this->buildingList_; }
 
 private:
     BuildingManager();
-	~BuildingManager() { }
+	~BuildingManager();
 	BuildingManager(const BuildingManager &) = delete;
 	BuildingManager &operator=(const BuildingManager &) = delete;
 
-	QList<BuildingBase *>::iterator iteratorOf(BuildingBase *);
+	QList<BaseBuilding *>::iterator iteratorOf(BaseBuilding *);
 
-    QList<BuildingBase *> buildingList_;
+    QList<BaseBuilding *> buildingList_;
 };
 
 #endif // BUILDINGMANAGER_H

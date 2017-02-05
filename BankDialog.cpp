@@ -1,9 +1,9 @@
-#include "BankDialog.h"
-#include "Company.h"
-#include "ui_BankDialog.h"
+#include "bankdialog.h"
+#include "company.h"
+#include "ui_bankdialog.h"
 #include <QString>
 
-BankDialog::BankDialog(Company *client, QWidget *parent) :
+BankDialog::BankDialog(QWidget *parent, Company *client) :
     QDialog(parent),
     client_(client),
     ui(new Ui::BankDialog)

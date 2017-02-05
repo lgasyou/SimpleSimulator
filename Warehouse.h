@@ -2,7 +2,7 @@
 #define WAREHOUSE_H
 
 #include <QMap>
-#include "GoodsContainer.h"
+#include "goodscontainer.h"
 
 class Warehouse : public GoodsContainer {
 public:

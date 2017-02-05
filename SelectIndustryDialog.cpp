@@ -1,7 +1,7 @@
-﻿#include "SelectIndustryDialog.h"
-#include "BuildingManager.h"
-#include "Industry.h"
-#include "MyPushButton.h"
+﻿#include "selectindustrydialog.h"
+#include "buildingmanager.h"
+#include "industry.h"
+#include "mypushbutton.h"
 #include "ui_selectindustrydialog.h"
 
 SelectIndustryDialog::SelectIndustryDialog(QWidget *parent) : 

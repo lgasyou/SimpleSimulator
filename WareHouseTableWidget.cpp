@@ -1,9 +1,9 @@
-#include "WarehouseTableWidget.h"
+#include "warehousetablewidget.h"
 #include "Warehouse.h"
-#include "BuildingManager.h"
-#include "Industry.h"
-#include "MyPushButton.h"
-#include "SelectIndustryDialog.h"
+#include "buildingmanager.h"
+#include "industry.h"
+#include "mypushbutton.h"
+#include "selectindustrydialog.h"
 
 WarehouseTableWidget::WarehouseTableWidget(QWidget *parent, Warehouse *warehouse) :
 	QTableWidget(parent),
@@ -59,7 +59,7 @@ void WarehouseTableWidget::getGoods(MyPushButton *button) {
 
 void WarehouseTableWidget::getDestAndSendSignal(MyPushButton *destButton) {
 	int id = destButton->index();
-	BuildingBase *building = BuildingManager::instance().getBuildingById(id);
+	BaseBuilding *building = BuildingManager::instance().getBuildingById(id);
 	Industry *industry = dynamic_cast<Industry *>(building);
 
 	selectIndustryDialog_->hide();

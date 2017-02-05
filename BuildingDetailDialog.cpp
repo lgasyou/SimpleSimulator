@@ -1,15 +1,15 @@
-#include "BuildingDetailDialog.h"
-#include "buildingbase.h"
-#include "Industry.h"
+#include "buildingdetaildialog.h"
+#include "basebuilding.h"
+#include "industry.h"
 #include "Warehouse.h"
-#include "GoodsContainer.h"
-#include "Company.h"
-#include "Garage.h"
-#include "GarageTableWidget.h"
-#include "WarehouseTableWidget.h"
-#include "Goods.h"
-#include "MyPushButton.h"
-#include "ui_BuildingDetailDialog.h"
+#include "goodscontainer.h"
+#include "company.h"
+#include "garage.h"
+#include "garagetablewidget.h"
+#include "warehousetablewidget.h"
+#include "goods.h"
+#include "mypushbutton.h"
+#include "ui_buildingdetaildialog.h"
 
 BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
     QDialog(parent),
@@ -23,14 +23,14 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
 	ui->verticalLayout_ProperitiesOfIndustry->addWidget(warehouseTableWidget_);
 	ui->verticalLayout_ProperitiesOfIndustry->addWidget(garageTableWidget_);
 
-    connect(this, SIGNAL(buySignal(BuildingBase*)),
-            parent, SLOT(buy(BuildingBase*)));
-    connect(this, SIGNAL(sellSignal(BuildingBase*)),
-            parent, SLOT(sell(BuildingBase*)));
-    connect(this, SIGNAL(changeTypeSignal(BuildingBase*,QString)),
-            parent, SLOT(changeType(BuildingBase*,QString)));
-    connect(this, SIGNAL(manageSignal(BuildingBase*,QString)),
-            parent, SLOT(manage(BuildingBase*,QString)));
+    connect(this, SIGNAL(buySignal(BaseBuilding*)),
+            parent, SLOT(buy(BaseBuilding*)));
+    connect(this, SIGNAL(sellSignal(BaseBuilding*)),
+            parent, SLOT(sell(BaseBuilding*)));
+    connect(this, SIGNAL(changeTypeSignal(BaseBuilding*,QString)),
+            parent, SLOT(changeType(BaseBuilding*,QString)));
+    connect(this, SIGNAL(manageSignal(BaseBuilding*,QString)),
+            parent, SLOT(manage(BaseBuilding*,QString)));
 	connect(ui->pushButton_Industry_SwitchInfo, SIGNAL(toggled(bool)),
 		this, SLOT(switchIndustryDisplay(bool)));
 
@@ -106,7 +106,6 @@ void BuildingDetailDialog::hideVariableWidget() {
 	ui->pushButton_Buy->hide();
 	ui->pushButton_Dismantle->hide();
 	ui->pushButton_Industry_SwitchInfo->hide();
-	ui->pushButton_Manage->hide();
 	ui->pushButton_Sell->hide();
 	garageTableWidget_->hide();
 	ui->label_GarageState->hide();
@@ -137,7 +136,7 @@ void BuildingDetailDialog::displayAccordingToVisitor() {
 	const QString &type = building_->type();
 	if (type == "Foundation")
 		typeIsFoundation();
-	else if (type.contains("Factory"))
+	else if (type.contains("Factory") || type.contains("Mine"))
 		typeIsIndustry();
 	else if (type.contains("Commerce"))
 		typeIsCommerce();
@@ -159,18 +158,15 @@ void BuildingDetailDialog::typeIsIndustry() {
 	else
 		showGarage(industry);
 
-	ui->pushButton_Manage->show();
 	ui->pushButton_Dismantle->show();
 	ui->pushButton_Industry_SwitchInfo->show();
 }
 
 void BuildingDetailDialog::typeIsCommerce() {
-	ui->pushButton_Manage->show();
 	ui->pushButton_Dismantle->show();
 }
 
 void BuildingDetailDialog::typeIsResidence() {
-	ui->pushButton_Manage->show();
 	ui->pushButton_Dismantle->show();
 }
 
@@ -213,10 +209,6 @@ void BuildingDetailDialog::on_pushButton_Build_clicked() {
 	ui->pushButton_Build_SteelIndustry->show();
 	ui->pushButton_Build_Commerce->show();
     ui->pushButton_Build_residence->show();
-}
-
-void BuildingDetailDialog::on_pushButton_Manage_clicked() {
-    //emit manageSignal(building_, order);
 }
 
 void BuildingDetailDialog::on_pushButton_Dismantle_clicked() {

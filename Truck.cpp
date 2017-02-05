@@ -1,7 +1,7 @@
-#include "Truck.h"
-#include "Order.h"
-#include "Industry.h"
-#include "GoodsContainer.h"
+#include "truck.h"
+#include "order.h"
+#include "industry.h"
+#include "goodscontainer.h"
 
 Truck::Truck() :
 	order_(nullptr), 
