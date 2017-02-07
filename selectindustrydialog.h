@@ -3,7 +3,8 @@
 
 #include <QDialog>
 
-class Industry;
+class BaseIndustry;
+
 class MyPushButton;
 namespace Ui {
 class SelectIndustryDialog;
@@ -18,15 +19,23 @@ public:
 
 	void init();
 
+	inline void showAndRaise();
+
 	void updateDisplay();
 
-	void displayTableWidget(int indexInWidget, int indexInManager, Industry *);
+	void displayTableWidget(int indexInWidget, int indexInManager, BaseIndustry *);
 
 signals:
-	void sendSelectedIndustry(Industry *);
+	void sendSelectedBaseIndustry(BaseIndustry *);
 
 private:
 	Ui::SelectIndustryDialog *ui;
 };
+
+inline void SelectIndustryDialog::showAndRaise() {
+	this->show();
+	this->raise();
+	this->activateWindow();
+}
 
 #endif // !SELECTINDUSTRYDIALOG_H

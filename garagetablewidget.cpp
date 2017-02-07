@@ -2,7 +2,7 @@
 #include "garage.h"
 #include "truck.h"
 #include "order.h"
-#include "industry.h"
+#include "baseindustry.h"
 
 GarageTableWidget::GarageTableWidget(QWidget *parent) : 
 	QTableWidget(parent)

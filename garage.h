@@ -4,7 +4,7 @@
 #include <QList>
 #include <queue>
 
-class Industry;
+class BaseIndustry;
 struct Order;
 class Truck;
 

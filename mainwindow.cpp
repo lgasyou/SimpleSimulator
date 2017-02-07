@@ -4,6 +4,7 @@
 #include "timemanager.h"
 #include "uimanager.h"
 
+#include "basebuilding.h"
 #include "company.h"
 #include "bankdialog.h"
 #include "buildingdetaildialog.h"
@@ -132,8 +133,6 @@ QString MainWindow::toString(double value) {
 }
 
 void MainWindow::setupBuildingInfoTableWidget() {
-	buildingInfoTableWidget_->setCompany(playerCompany_);
-
 	connect(buildingInfoTableWidget_, SIGNAL(buySignal(BaseBuilding*)),
 		this, SLOT(buy(BaseBuilding*)));
 	connect(buildingInfoTableWidget_, SIGNAL(sellSignal(BaseBuilding*)),

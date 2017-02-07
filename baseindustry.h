@@ -1,26 +1,26 @@
-#ifndef INDUSTRY_H
-#define INDUSTRY_H
+#ifndef BASEINDUSTRY_H
+#define BASEINDUSTRY_H
 
 #include "basebuilding.h"
-#include "goods.h"
 #include <QString>
 #include <QMap>
 
 class Warehouse;
 class Garage;
+struct Goods;
 
-class Industry : public BaseBuilding {
+class BaseIndustry : public BaseBuilding {
 public:
-	Industry(const QString & = "Factory");
+	BaseIndustry(const QString & = "Factory");
 
-	virtual ~Industry();
+	virtual ~BaseIndustry();
 
 	// updates data after each turn
 	void update() override;
 
 	virtual void manufacture();
 
-	void deliverGoods(const Goods &goods, Industry *dest);
+	void deliverGoods(const Goods &goods, BaseIndustry *dest);
 
 	void putInStorage(const Goods &goods);
 
@@ -35,4 +35,4 @@ protected:
 	Garage *garage_;
 };
 
-#endif // INDUSTRY_H
+#endif // BASEINDUSTRY_H

@@ -1,9 +1,9 @@
 #ifndef IRONMINE_H
 #define IRONMINE_H
 
-#include "industry.h"
+#include "baseindustry.h"
 
-class IronMine : public Industry {
+class IronMine : public BaseIndustry {
 public:
 	IronMine();
 

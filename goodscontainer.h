@@ -3,7 +3,8 @@
 
 #include <QList>
 #include <QString>
-#include "goods.h"
+
+struct Goods;
 
 class GoodsContainer {
 public:

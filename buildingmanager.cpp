@@ -3,14 +3,14 @@
 
 #include "basebuilding.h"
 
-#include "industry.h"
+#include "baseindustry.h"
 #include "coalmine.h"
 #include "ironmine.h"
 #include "steelfactory.h"
 
-#include "commerce.h"
+#include "basecommerce.h"
 
-#include "residence.h"
+#include "baseresidence.h"
 
 #include "company.h"
 #include "valuegenerator.h"
@@ -21,9 +21,9 @@ BuildingManager::BuildingManager() {
 	buildingList_.push_back(new IronMine);
 	buildingList_.push_back(new SteelFactory);
 	for (int i = 0; i != 1; ++i)
-		buildingList_.push_back(new Commerce);
+		buildingList_.push_back(new BaseCommerce);
     for (int i = 0; i != 3; ++i)
-        buildingList_.push_back(new Residence);
+        buildingList_.push_back(new BaseResidence);
 }
 
 BuildingManager::~BuildingManager() { }

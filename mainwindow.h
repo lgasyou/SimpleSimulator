@@ -4,8 +4,9 @@
 #include <QMainWindow>
 
 class Company;
-class MyPushButton;
 class BaseBuilding;
+
+class MyPushButton;
 class BuildingInfoTableWidget;
 class BuildingDetailDialog;
 class CompanyDetailDialog;

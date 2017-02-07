@@ -6,10 +6,11 @@
 class BuildingManager;
 class BaseBuilding;
 class Company;
+
 class MyPushButton;
 
 // This class is used for showing information of Buildings.
-// Set buildingManager and Company before using it.
+// Set Company before use it.
 class BuildingInfoTableWidget : public QTableWidget {
     Q_OBJECT
 
@@ -26,8 +27,6 @@ public:
 	void displayBasicInfo(int index, BaseBuilding *building);
 	void displayAccordingToVisitor(int index, BaseBuilding *building);
 
-    inline void setCompany(Company *company) { this->company_ = company; }
-
 signals:
     void buySignal(BaseBuilding *);
     void sellSignal(BaseBuilding *);
@@ -41,8 +40,6 @@ private slots:
 private:
 	// transforms double into QString
 	static QString toString(double value);
-
-    Company *company_;
 };
 
 #endif // BUILDINGINFOTABLE_H

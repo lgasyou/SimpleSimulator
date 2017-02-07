@@ -149,7 +149,7 @@
     <ClCompile Include="buildinginfotablewidget.cpp" />
     <ClCompile Include="buildingmanager.cpp" />
     <ClCompile Include="coalmine.cpp" />
-    <ClCompile Include="commerce.cpp" />
+    <ClCompile Include="basecommerce.cpp" />
     <ClCompile Include="company.cpp" />
     <ClCompile Include="companydetaildialog.cpp" />
     <ClCompile Include="companymanager.cpp" />
@@ -212,13 +212,15 @@
     </ClCompile>
     <ClCompile Include="goods.cpp" />
     <ClCompile Include="goodscontainer.cpp" />
-    <ClCompile Include="industry.cpp" />
+    <ClCompile Include="baseindustry.cpp" />
+    <ClCompile Include="industrychainmanager.cpp" />
     <ClCompile Include="ironmine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
+    <ClCompile Include="mapmanager.cpp" />
     <ClCompile Include="mypushbutton.cpp" />
     <ClCompile Include="order.cpp" />
-    <ClCompile Include="residence.cpp" />
+    <ClCompile Include="baseresidence.cpp" />
     <ClCompile Include="selectindustrydialog.cpp" />
     <ClCompile Include="steelfactory.cpp" />
     <ClCompile Include="timemanager.cpp" />
@@ -235,10 +237,12 @@
     <ClInclude Include="companymanager.h" />
     <ClInclude Include="goods.h" />
     <ClInclude Include="goodscontainer.h" />
-    <ClInclude Include="industry.h" />
+    <ClInclude Include="baseindustry.h" />
+    <ClInclude Include="industrychainmanager.h" />
     <ClInclude Include="ironmine.h" />
+    <ClInclude Include="mapmanager.h" />
     <ClInclude Include="order.h" />
-    <ClInclude Include="residence.h" />
+    <ClInclude Include="baseresidence.h" />
     <ClInclude Include="steelfactory.h" />
     <ClInclude Include="timemanager.h" />
     <ClInclude Include="truck.h" />
@@ -318,7 +322,7 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
     <ClInclude Include="buildingmanager.h" />
-    <ClInclude Include="commerce.h" />
+    <ClInclude Include="basecommerce.h" />
     <ClInclude Include="company.h" />
     <CustomBuild Include="companydetaildialog.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>

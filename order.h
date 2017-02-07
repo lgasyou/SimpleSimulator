@@ -4,15 +4,15 @@
 #include <QString>
 #include "goods.h"
 
-class Industry;
+class BaseIndustry;
 class Truck;
 
 struct Order {
-	Order(const Goods &goods_, Industry *dest_, Industry *src_);
+	Order(const Goods &goods_, BaseIndustry *dest_, BaseIndustry *src_);
 
 	Goods goods;
-	Industry *dest;
-	Industry *src;
+	BaseIndustry *dest;
+	BaseIndustry *src;
 };
 
 #endif // !ORDER_H

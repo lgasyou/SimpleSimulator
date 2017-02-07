@@ -2,14 +2,14 @@
 
 #include "basebuilding.h"
 
-#include "industry.h"
+#include "baseindustry.h"
 #include "coalmine.h"
 #include "ironmine.h"
 #include "steelfactory.h"
 
-#include "commerce.h"
+#include "basecommerce.h"
 
-#include "residence.h"
+#include "baseresidence.h"
 
 #include <QString>
 
@@ -17,15 +17,15 @@ BaseBuilding *BuildingFactory::create(const QString &type) {
 	if (type == "Foundation")
 		return new BaseBuilding;
 	else if (type == "Factory")
-		return new Industry;
+		return new BaseIndustry;
 	else if (type == "Coal Mine")
 		return new CoalMine;
 	else if (type == "Iron Mine")
 		return new IronMine;
 	else if (type == "Steel Factory")
 		return new SteelFactory;
-	else if (type == "Commerce")
-		return new Commerce;
+	else if (type == "BaseCommerce")
+		return new BaseCommerce;
 	else
-		return new Residence;
+		return new BaseResidence;
 }

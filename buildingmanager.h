@@ -2,8 +2,8 @@
 #define BUILDINGMANAGER_H
 
 #include <QList>
-#include "basebuilding.h"
 
+class BaseBuilding;
 class Company;
 
 class BuildingManager {
@@ -11,7 +11,9 @@ public:
 	static BuildingManager &instance();
 
     BaseBuilding *getBuildingById(unsigned id);
-    const int buildingNumber() const { return buildingList_.size(); }
+
+    inline const int buildingNumber() const { return buildingList_.size(); }
+
     const double deltaValueOfCompanyProperties(Company *) const;
 
     BaseBuilding *resetItemType(BaseBuilding *, const QString &);

@@ -154,9 +154,6 @@
     <ClCompile Include="buildingmanager.cpp">
       <Filter>Source Files\Utilities</Filter>
     </ClCompile>
-    <ClCompile Include="commerce.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
     <ClCompile Include="company.cpp">
       <Filter>Source Files\Company</Filter>
     </ClCompile>
@@ -172,17 +169,11 @@
     <ClCompile Include="goods.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="industry.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
     <ClCompile Include="mypushbutton.cpp">
       <Filter>Source Files\QtComponents</Filter>
     </ClCompile>
     <ClCompile Include="order.cpp">
       <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="residence.cpp">
-      <Filter>Source Files\Buildings</Filter>
     </ClCompile>
     <ClCompile Include="selectindustrydialog.cpp">
       <Filter>Source Files\Dialogs</Filter>
@@ -228,6 +219,21 @@
     </ClCompile>
     <ClCompile Include="uimanager.cpp">
       <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="baseindustry.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="mapmanager.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="industrychainmanager.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="basecommerce.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="baseresidence.cpp">
+      <Filter>Source Files\Buildings</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -298,17 +304,8 @@
     <ClInclude Include="buildingmanager.h">
       <Filter>Header Files\Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="commerce.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
     <ClInclude Include="company.h">
       <Filter>Header Files\Company</Filter>
-    </ClInclude>
-    <ClInclude Include="industry.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
-    <ClInclude Include="residence.h">
-      <Filter>Header Files\Buildings</Filter>
     </ClInclude>
     <ClInclude Include="timemanager.h">
       <Filter>Header Files\Utilities</Filter>
@@ -357,6 +354,21 @@
     </ClInclude>
     <ClInclude Include="uimanager.h">
       <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="baseindustry.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="mapmanager.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="industrychainmanager.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="basecommerce.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="baseresidence.h">
+      <Filter>Header Files\Buildings</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

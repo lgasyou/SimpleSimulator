@@ -7,9 +7,9 @@ class Company;
 
 //	the base of building classes.
 //	three types of building:
-//	* Residence,
-//	* Commerce,
-//	* Industry.
+//	* BaseResidence,
+//	* BaseCommerce,
+//	* BaseIndustry.
 class BaseBuilding {
 public:
 	BaseBuilding(const QString &name = "Foundation", const QString &type = "Foundation",

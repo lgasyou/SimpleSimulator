@@ -1,9 +1,9 @@
 #ifndef COALMINE_H
 #define COALMINE_H
 
-#include "industry.h"
+#include "baseindustry.h"
 
-class CoalMine : public Industry {
+class CoalMine : public BaseIndustry {
 public:
 	CoalMine();
 

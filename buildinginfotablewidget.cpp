@@ -1,5 +1,7 @@
 #include "buildinginfotablewidget.h"
 #include "buildingmanager.h"
+#include "companymanager.h"
+#include "basebuilding.h"
 #include "company.h"
 #include "gameconstants.h"
 #include "mypushbutton.h"
@@ -7,8 +9,7 @@
 #include <QApplication>
 
 BuildingInfoTableWidget::BuildingInfoTableWidget(QWidget *parent) :
-    QTableWidget(parent),
-    company_(nullptr)
+    QTableWidget(parent)
 { 
 	init();
 }
@@ -68,7 +69,8 @@ void BuildingInfoTableWidget::displayBasicInfo(int index, BaseBuilding *building
 }
 
 void BuildingInfoTableWidget::displayAccordingToVisitor(int index, BaseBuilding *building) {
-	const QString &btnText = (building->owner() != company_) ? tr("Buy") : tr("Sell");
+	Company *playerCompany = CompanyManager::instance().playerCompany();
+	const QString &btnText = (building->owner() != playerCompany) ? tr("Buy") : tr("Sell");
 	MyPushButton *optionBtn = new MyPushButton(btnText);
 	optionBtn->setIndex(index);
 	connect(optionBtn, SIGNAL(sendPointer(MyPushButton*)),

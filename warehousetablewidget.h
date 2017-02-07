@@ -2,10 +2,11 @@
 #define WAREHOUSETABLEWIDGET_H
 
 #include <QTableWidget>
-#include "goods.h"
 
 class Warehouse;
-class Industry;
+class BaseIndustry;
+struct Goods;
+
 class MyPushButton;
 class SelectIndustryDialog;
 
@@ -20,10 +21,10 @@ public:
 	inline void setWarehouse(Warehouse *warehouse) { this->warehouse_ = warehouse; }
 
 signals:
-	void sendPreorder(const Goods &goods, Industry *dest);
+	void sendPreorder(const Goods &goods, BaseIndustry *dest);
 
 public slots:
-	void goSelectIndustry();
+	void goSelectBaseIndustry();
 
 	void getGoods(MyPushButton *);
 
@@ -36,7 +37,7 @@ private:
 	static QString toString(double value);
 
 	Warehouse *warehouse_;
-	SelectIndustryDialog *selectIndustryDialog_;
+	SelectIndustryDialog *selectBaseIndustryDialog_;
 	Goods *goods_;
 };
 

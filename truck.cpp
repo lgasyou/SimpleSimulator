@@ -1,6 +1,6 @@
 #include "truck.h"
 #include "order.h"
-#include "industry.h"
+#include "baseindustry.h"
 #include "goodscontainer.h"
 
 Truck::Truck() :

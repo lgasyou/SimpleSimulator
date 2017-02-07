@@ -1,9 +1,9 @@
 #ifndef STEELFACTORY_H
 #define STEELFACTORY_H
 
-#include "industry.h"
+#include "baseindustry.h"
 
-class SteelFactory : public Industry {
+class SteelFactory : public BaseIndustry {
 public:
 	SteelFactory();
 

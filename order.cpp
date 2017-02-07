@@ -1,6 +1,6 @@
 #include "order.h"
 
-Order::Order(const Goods &goods_, Industry *dest_, Industry *src_):
+Order::Order(const Goods &goods_, BaseIndustry *dest_, BaseIndustry *src_):
 	goods(goods_),
 	dest(dest_),
 	src(src_)

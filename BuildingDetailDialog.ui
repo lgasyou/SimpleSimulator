@@ -15,7 +15,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="3">
-    <layout class="QVBoxLayout" name="verticalLayout_ProperitiesOfIndustry">
+    <layout class="QVBoxLayout" name="verticalLayout_ProperitiesOfBaseIndustry">
      <item>
       <widget class="QLabel" name="label_WarehouseSum">
        <property name="text">
@@ -67,7 +67,7 @@
    <item row="1" column="4">
     <layout class="QVBoxLayout" name="verticalLayout_Main">
      <item>
-      <widget class="QPushButton" name="pushButton_Industry_SwitchInfo">
+      <widget class="QPushButton" name="pushButton_BaseIndustry_SwitchInfo">
        <property name="text">
         <string>Warehouse</string>
        </property>
@@ -126,23 +126,23 @@
       </widget>
      </item>
      <item>
-      <widget class="MyPushButton" name="pushButton_Build_SteelIndustry">
+      <widget class="MyPushButton" name="pushButton_Build_SteelBaseIndustry">
        <property name="text">
         <string>Steel Factory</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="MyPushButton" name="pushButton_Build_Commerce">
+      <widget class="MyPushButton" name="pushButton_Build_BaseCommerce">
        <property name="text">
-        <string>Commerce</string>
+        <string>BaseCommerce</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="MyPushButton" name="pushButton_Build_residence">
        <property name="text">
-        <string>Residence</string>
+        <string>BaseResidence</string>
        </property>
       </widget>
      </item>

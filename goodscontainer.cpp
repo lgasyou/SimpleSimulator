@@ -1,5 +1,6 @@
 #include "goodscontainer.h"
 #include "gameconstants.h"
+#include "goods.h"
 
 GoodsContainer::GoodsContainer() :
 	maxVolume_(GameConstants::defaultMaxVolOfWarehouse),
@@ -32,7 +33,7 @@ bool GoodsContainer::addItem(const Goods &goods) {
 
 void GoodsContainer::removeItem(const Goods &goods) {
 	Goods *curGoods = getGoodsByName(goods.goods);
-	if ((curGoods->weight -= goods.weight) == 0)
+	if ((curGoods->weight -= goods.weight) == 0.0)
 		container_.removeOne(curGoods);
 	curVolume_ -= goods.weight;
 }

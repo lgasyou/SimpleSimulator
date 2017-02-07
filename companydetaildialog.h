@@ -4,6 +4,7 @@
 #include <QDialog>
 
 class Company;
+
 namespace Ui {
 class CompanyDetailDialog;
 }

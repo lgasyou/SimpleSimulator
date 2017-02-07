@@ -1,8 +1,9 @@
 #include "ironmine.h"
 #include "warehouse.h"
+#include "goods.h"
 
 IronMine::IronMine() :
-	Industry("Iron Mine")
+	BaseIndustry("Iron Mine")
 { }
 
 IronMine::~IronMine() { }

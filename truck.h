@@ -4,7 +4,7 @@
 #include "vihicle.h"
 
 class GoodsContainer;
-class Industry;
+class BaseIndustry;
 struct Order;
 
 class Truck : public Vihicle {

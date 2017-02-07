@@ -1,14 +1,15 @@
 #include "warehousetablewidget.h"
 #include "Warehouse.h"
 #include "buildingmanager.h"
-#include "industry.h"
+#include "baseindustry.h"
+#include "goods.h"
 #include "mypushbutton.h"
 #include "selectindustrydialog.h"
 
 WarehouseTableWidget::WarehouseTableWidget(QWidget *parent, Warehouse *warehouse) :
 	QTableWidget(parent),
 	warehouse_(warehouse),
-	selectIndustryDialog_(nullptr),
+	selectBaseIndustryDialog_(nullptr),
 	goods_(nullptr)
 {
 	init();
@@ -36,20 +37,18 @@ void WarehouseTableWidget::updateDisplay() {
 		MyPushButton *sellBtn = new MyPushButton(tr("Sell"));
 		sellBtn->setIndex(index);
 		connect(sellBtn, SIGNAL(clicked()),
-			this, SLOT(goSelectIndustry()));
+			this, SLOT(goSelectBaseIndustry()));
 		connect(sellBtn, SIGNAL(sendPointer(MyPushButton*)),
 				this, SLOT(getGoods(MyPushButton*)));
 		this->setCellWidget(index, 2, sellBtn);
 	}
 }
 
-void WarehouseTableWidget::goSelectIndustry() {
-	if (!selectIndustryDialog_)
-		selectIndustryDialog_ = new SelectIndustryDialog(this);
-	selectIndustryDialog_->show();
-	selectIndustryDialog_->raise();
-	selectIndustryDialog_->activateWindow();
-	selectIndustryDialog_->updateDisplay();
+void WarehouseTableWidget::goSelectBaseIndustry() {
+	if (!selectBaseIndustryDialog_)
+		selectBaseIndustryDialog_ = new SelectIndustryDialog(this);
+	selectBaseIndustryDialog_->showAndRaise();
+	selectBaseIndustryDialog_->updateDisplay();
 }
 
 void WarehouseTableWidget::getGoods(MyPushButton *button) {
@@ -60,9 +59,9 @@ void WarehouseTableWidget::getGoods(MyPushButton *button) {
 void WarehouseTableWidget::getDestAndSendSignal(MyPushButton *destButton) {
 	int id = destButton->index();
 	BaseBuilding *building = BuildingManager::instance().getBuildingById(id);
-	Industry *industry = dynamic_cast<Industry *>(building);
+	BaseIndustry *industry = dynamic_cast<BaseIndustry *>(building);
 
-	selectIndustryDialog_->hide();
+	selectBaseIndustryDialog_->hide();
 	emit sendPreorder(*goods_, industry);
 }
 

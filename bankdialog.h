@@ -3,7 +3,6 @@
 
 #include <QDialog>
 
-class BankClient;
 class Company;
 
 namespace Ui {

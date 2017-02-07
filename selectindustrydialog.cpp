@@ -1,6 +1,6 @@
 ﻿#include "selectindustrydialog.h"
 #include "buildingmanager.h"
-#include "industry.h"
+#include "baseindustry.h"
 #include "mypushbutton.h"
 #include "ui_selectindustrydialog.h"
 
@@ -12,7 +12,7 @@ SelectIndustryDialog::SelectIndustryDialog(QWidget *parent) :
 }
 
 SelectIndustryDialog::~SelectIndustryDialog() {
-	
+	delete ui;
 }
 
 void SelectIndustryDialog::init() {
@@ -27,19 +27,19 @@ void SelectIndustryDialog::updateDisplay() {
 	auto &buildingList = BuildingManager::instance().buildingList();
 	ui->tableWidget_industry->setRowCount(buildingList.size());
 	int indexOfBuilding = 0;
-	int indexOfIndustry = 0;
+	int indexOfBaseIndustry = 0;
 	for (const auto &item : buildingList) {
 		if (item->type().contains("Factory")) {
-			Industry *industry = dynamic_cast<Industry *>(item);
-			displayTableWidget(indexOfIndustry, indexOfBuilding, industry);
-			++indexOfIndustry;
+			BaseIndustry *industry = dynamic_cast<BaseIndustry *>(item);
+			displayTableWidget(indexOfBaseIndustry, indexOfBuilding, industry);
+			++indexOfBaseIndustry;
 		}
 		++indexOfBuilding;
 	}
-	ui->tableWidget_industry->setRowCount(indexOfIndustry);
+	ui->tableWidget_industry->setRowCount(indexOfBaseIndustry);
 }
 
-void SelectIndustryDialog::displayTableWidget(int indexInWidget, int indexInManager, Industry *industry) {
+void SelectIndustryDialog::displayTableWidget(int indexInWidget, int indexInManager, BaseIndustry *industry) {
 	auto tableWidget = ui->tableWidget_industry;
 	const QString &name = industry->name();
 	const QString &type = industry->type();
