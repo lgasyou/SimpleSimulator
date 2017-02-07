@@ -226,6 +226,9 @@
     <ClCompile Include="companymanager.cpp">
       <Filter>Source Files\Utilities</Filter>
     </ClCompile>
+    <ClCompile Include="uimanager.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="SelectIndustryDialog.ui">
@@ -350,6 +353,9 @@
       <Filter>Header Files\Buildings</Filter>
     </ClInclude>
     <ClInclude Include="companymanager.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="uimanager.h">
       <Filter>Header Files\Utilities</Filter>
     </ClInclude>
   </ItemGroup>

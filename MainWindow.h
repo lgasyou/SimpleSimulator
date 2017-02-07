@@ -6,10 +6,9 @@
 class Company;
 class MyPushButton;
 class BaseBuilding;
-class BuildingDetailDialog;
 class BuildingInfoTableWidget;
+class BuildingDetailDialog;
 class CompanyDetailDialog;
-class BankDialog;
 
 namespace Ui {
 class MainWindow;
@@ -46,13 +45,15 @@ private:
 	// transforms double into QString
 	static QString toString(double value);
 
-	static void showDialog(QDialog *);
+	inline void setupBuildingInfoTableWidget();
+
+	inline void setupBuildingDetailDialog(BuildingDetailDialog *);
+
+	inline void setupCompanyDetailDialog(CompanyDetailDialog *);
 
     Company *playerCompany_;
-    BankDialog *bankDialog_;
-    BuildingDetailDialog *buildingDetailDialog_;
-    BuildingInfoTableWidget *buildingInfoTableWidget_;
-    CompanyDetailDialog *companyDetailDialog_;
+
+	BuildingInfoTableWidget *buildingInfoTableWidget_;
     Ui::MainWindow *ui;
 };
 

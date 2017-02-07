@@ -223,6 +223,7 @@
     <ClCompile Include="steelfactory.cpp" />
     <ClCompile Include="timemanager.cpp" />
     <ClCompile Include="truck.cpp" />
+    <ClCompile Include="uimanager.cpp" />
     <ClCompile Include="valuegenerator.cpp" />
     <ClCompile Include="vihicle.cpp" />
     <ClCompile Include="warehouse.cpp" />
@@ -241,6 +242,7 @@
     <ClInclude Include="steelfactory.h" />
     <ClInclude Include="timemanager.h" />
     <ClInclude Include="truck.h" />
+    <ClInclude Include="uimanager.h" />
     <ClInclude Include="valuegenerator.h" />
     <ClInclude Include="vihicle.h" />
     <ClInclude Include="warehouse.h" />

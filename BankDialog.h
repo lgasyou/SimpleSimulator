@@ -14,12 +14,14 @@ class BankDialog : public QDialog {
     Q_OBJECT
 
 public:
-    explicit BankDialog(QWidget *parent = nullptr, Company *client = nullptr);
+    explicit BankDialog(QWidget *parent = nullptr);
     ~BankDialog();
 
     void updateDisplay();
 
 	void displayAccordingToClientStatus();
+
+	inline void setClient(Company *client) { this->client_ = client; }
 
     static void setInterestRate(double interestRate) { interestRate_ = interestRate; }
     static const double interestRate() { return interestRate_; }

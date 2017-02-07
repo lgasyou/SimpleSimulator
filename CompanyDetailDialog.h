@@ -15,6 +15,8 @@ public:
     explicit CompanyDetailDialog(QWidget *parent = 0);
     ~CompanyDetailDialog();
 
+	inline void showAndRaise();
+
     inline void setCompany(Company *company) { this->company_ = company; }
 
 public slots:
@@ -27,5 +29,11 @@ private:
     Company *company_;
     Ui::CompanyDetailDialog *ui;
 };
+
+inline void CompanyDetailDialog::showAndRaise() {
+	this->show();
+	this->raise();
+	this->activateWindow();
+}
 
 #endif // COMPANYDETAILDIALOG_H

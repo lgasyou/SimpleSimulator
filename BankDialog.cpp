@@ -3,9 +3,9 @@
 #include "ui_bankdialog.h"
 #include <QString>
 
-BankDialog::BankDialog(QWidget *parent, Company *client) :
+BankDialog::BankDialog(QWidget *parent) :
     QDialog(parent),
-    client_(client),
+    client_(nullptr),
     ui(new Ui::BankDialog)
 {
     ui->setupUi(this);

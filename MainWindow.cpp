@@ -2,6 +2,8 @@
 #include "buildingmanager.h"
 #include "companymanager.h"
 #include "timemanager.h"
+#include "uimanager.h"
+
 #include "company.h"
 #include "bankdialog.h"
 #include "buildingdetaildialog.h"
@@ -15,10 +17,7 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    bankDialog_(nullptr),
-    buildingDetailDialog_(nullptr),
     buildingInfoTableWidget_(new BuildingInfoTableWidget(this)),
-    companyDetailDialog_(nullptr),
     ui(new Ui::MainWindow)
 {
 	init();
@@ -35,8 +34,6 @@ void MainWindow::init() {
 
 	playerCompany_ = CompanyManager::instance().playerCompany();
 
-	buildingInfoTableWidget_->setCompany(playerCompany_);
-
 	connect(ui->pushButton_EndTurn, SIGNAL(clicked(bool)),
 		this, SLOT(endTurns()));
 	connect(ui->pushButton_Bank, SIGNAL(clicked(bool)),
@@ -44,12 +41,7 @@ void MainWindow::init() {
 	connect(ui->pushButton_Company, SIGNAL(clicked(bool)),
 		this, SLOT(showCompanyDetail()));
 
-	connect(buildingInfoTableWidget_, SIGNAL(buySignal(BaseBuilding*)),
-		this, SLOT(buy(BaseBuilding*)));
-	connect(buildingInfoTableWidget_, SIGNAL(sellSignal(BaseBuilding*)),
-		this, SLOT(sell(BaseBuilding*)));
-	connect(buildingInfoTableWidget_, SIGNAL(showDetailSignal(BaseBuilding*)),
-		this, SLOT(showBuildingDetail(BaseBuilding*)));
+	setupBuildingInfoTableWidget();
 
 	connect(this, SIGNAL(dataChanged()),
 		this, SLOT(updateDisplay()));
@@ -58,8 +50,8 @@ void MainWindow::init() {
 }
 
 void MainWindow::goBank() {
-    if (!bankDialog_)
-        bankDialog_ = new BankDialog(this, playerCompany_);
+	BankDialog *bankDialog_ = UIManager::instance().bankDialog();
+	bankDialog_->setClient(playerCompany_);
     bankDialog_->updateDisplay();
     if (bankDialog_->exec() == QDialog::Accepted) {
         updateStatusBar("Back.");
@@ -77,20 +69,22 @@ void MainWindow::endTurns() {
 }
 
 void MainWindow::showBuildingDetail(BaseBuilding *building) {
-    if (!buildingDetailDialog_)
-        buildingDetailDialog_ = new BuildingDetailDialog(this);
-    buildingDetailDialog_->setBuilding(building);
-    buildingDetailDialog_->setVisitor(playerCompany_);
-	showDialog(buildingDetailDialog_);
-    buildingDetailDialog_->updateDisplay();
+	BuildingDetailDialog *buildingDetailDialog = UIManager::instance().buildingDetailDialog();
+	setupBuildingDetailDialog(buildingDetailDialog);
+
+    buildingDetailDialog->setBuilding(building);
+    buildingDetailDialog->setVisitor(playerCompany_);
+	buildingDetailDialog->showAndRaise();
+    buildingDetailDialog->updateDisplay();
 }
 
 void MainWindow::showCompanyDetail() {
-    if (!companyDetailDialog_)
-        companyDetailDialog_ = new CompanyDetailDialog(this);
-    companyDetailDialog_->setCompany(playerCompany_);
-	showDialog(companyDetailDialog_);
-    companyDetailDialog_->updateDisplay();
+	CompanyDetailDialog *companyDetailDialog = UIManager::instance().companyDetailDialog();
+	setupCompanyDetailDialog(companyDetailDialog);
+
+    companyDetailDialog->setCompany(playerCompany_);
+	companyDetailDialog->showAndRaise();
+    companyDetailDialog->updateDisplay();
 }
 
 void MainWindow::buy(BaseBuilding *building) {
@@ -110,7 +104,7 @@ void MainWindow::sell(BaseBuilding *building) {
 
 void MainWindow::changeType(BaseBuilding *building, const QString &type) {
 	BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, type);
-    buildingDetailDialog_->setBuilding(newBuilding);
+    UIManager::instance().buildingDetailDialog()->setBuilding(newBuilding);
     updateStatusBar(newBuilding->name() + " has been changed into " + type + ".");
     emit dataChanged();
 }
@@ -137,8 +131,40 @@ QString MainWindow::toString(double value) {
 	return QString::number(value, 10, 2);
 }
 
-void MainWindow::showDialog(QDialog *dialog) {
-	dialog->show();
-	dialog->raise();
-	dialog->activateWindow();
+void MainWindow::setupBuildingInfoTableWidget() {
+	buildingInfoTableWidget_->setCompany(playerCompany_);
+
+	connect(buildingInfoTableWidget_, SIGNAL(buySignal(BaseBuilding*)),
+		this, SLOT(buy(BaseBuilding*)));
+	connect(buildingInfoTableWidget_, SIGNAL(sellSignal(BaseBuilding*)),
+		this, SLOT(sell(BaseBuilding*)));
+	connect(buildingInfoTableWidget_, SIGNAL(showDetailSignal(BaseBuilding*)),
+		this, SLOT(showBuildingDetail(BaseBuilding*)));
+}
+
+void MainWindow::setupBuildingDetailDialog(BuildingDetailDialog *buildingDetailDialog) {
+	static bool isFirstTimeCallThisFunction = true;
+	if (isFirstTimeCallThisFunction == false)	return;
+
+	connect(buildingDetailDialog, SIGNAL(buySignal(BaseBuilding*)),
+		this, SLOT(buy(BaseBuilding*)));
+	connect(buildingDetailDialog, SIGNAL(sellSignal(BaseBuilding*)),
+		this, SLOT(sell(BaseBuilding*)));
+	connect(buildingDetailDialog, SIGNAL(changeTypeSignal(BaseBuilding*, QString)),
+		this, SLOT(changeType(BaseBuilding*, QString)));
+
+	connect(this, SIGNAL(dataChanged()),
+		buildingDetailDialog, SLOT(updateDisplay()));
+
+	isFirstTimeCallThisFunction = false;
+}
+
+void MainWindow::setupCompanyDetailDialog(CompanyDetailDialog *companyDetailDialog) {
+	static bool isFirstTimeCallThisFunction = true;
+	if (isFirstTimeCallThisFunction == false)	return;
+
+	connect(this, SIGNAL(dataChanged()),
+		companyDetailDialog, SLOT(updateDisplay()));
+
+	isFirstTimeCallThisFunction = false;
 }

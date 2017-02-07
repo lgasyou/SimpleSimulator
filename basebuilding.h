@@ -19,8 +19,6 @@ public:
 
 	void copyInit(const BaseBuilding &);
 
-	void initBasicValue();
-	
 	// updates data after each turn
 	virtual void update();
 
@@ -42,6 +40,8 @@ public:
     inline Company *const owner() const { return this->owner_; }
 
 private:
+	void initBasicValue();
+
     QString name_;
     double value_;
     double deltaValue_;

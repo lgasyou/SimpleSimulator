@@ -5,7 +5,9 @@ CompanyManager::CompanyManager() {
 	playerCompany_ = new Company;
 }
 
-CompanyManager::~CompanyManager() { }
+CompanyManager::~CompanyManager() {
+	delete playerCompany_;
+}
 
 CompanyManager &CompanyManager::instance() {
 	static CompanyManager companyManager;

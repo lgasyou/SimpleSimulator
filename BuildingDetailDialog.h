@@ -22,6 +22,8 @@ public:
     BuildingDetailDialog(QWidget *parent = nullptr);
     ~BuildingDetailDialog();
 
+	inline void showAndRaise();
+
     inline void setBuilding(BaseBuilding *building) { this->building_ = building; }
     inline void setVisitor(Company *visitor) { this->visitor_ = visitor; }
 
@@ -74,5 +76,11 @@ private:
     WarehouseTableWidget *warehouseTableWidget_;
     Ui::BuildingDetailDialog *ui;
 };
+
+inline void BuildingDetailDialog::showAndRaise() {
+	this->show();
+	this->raise();
+	this->activateWindow();
+}
 
 #endif // BUILDINGDETAILDIALOG_H

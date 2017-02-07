@@ -23,19 +23,9 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
 	ui->verticalLayout_ProperitiesOfIndustry->addWidget(warehouseTableWidget_);
 	ui->verticalLayout_ProperitiesOfIndustry->addWidget(garageTableWidget_);
 
-    connect(this, SIGNAL(buySignal(BaseBuilding*)),
-            parent, SLOT(buy(BaseBuilding*)));
-    connect(this, SIGNAL(sellSignal(BaseBuilding*)),
-            parent, SLOT(sell(BaseBuilding*)));
-    connect(this, SIGNAL(changeTypeSignal(BaseBuilding*,QString)),
-            parent, SLOT(changeType(BaseBuilding*,QString)));
-    connect(this, SIGNAL(manageSignal(BaseBuilding*,QString)),
-            parent, SLOT(manage(BaseBuilding*,QString)));
 	connect(ui->pushButton_Industry_SwitchInfo, SIGNAL(toggled(bool)),
 		this, SLOT(switchIndustryDisplay(bool)));
 
-    connect(parent, SIGNAL(dataChanged()),
-            this, SLOT(updateDisplay()));
 	connect(this, SIGNAL(dataChanged()),
 		warehouseTableWidget_, SLOT(updateDisplay()));
 	connect(this, SIGNAL(dataChanged()),

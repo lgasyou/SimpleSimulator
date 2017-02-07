@@ -8,9 +8,6 @@ CompanyDetailDialog::CompanyDetailDialog(QWidget *parent) :
     ui(new Ui::CompanyDetailDialog)
 {
     ui->setupUi(this);
-
-    connect(parent, SIGNAL(dataChanged()),
-            this, SLOT(updateDisplay()));
 }
 
 CompanyDetailDialog::~CompanyDetailDialog() {
