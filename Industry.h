@@ -1,5 +1,5 @@
-#ifndef Industry_H
-#define Industry_H
+#ifndef INDUSTRY_H
+#define INDUSTRY_H
 
 #include "basebuilding.h"
 #include "goods.h"
@@ -35,4 +35,4 @@ protected:
 	Garage *garage_;
 };
 
-#endif // Industry_H
+#endif // INDUSTRY_H

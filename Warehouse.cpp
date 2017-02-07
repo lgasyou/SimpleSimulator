@@ -1,4 +1,4 @@
-#include "Warehouse.h"
+#include "warehouse.h"
 #include "gameconstants.h"
 #include "goodscontainer.h"
 
