@@ -3,7 +3,7 @@
 
 #include "basebuilding.h"
 #include <QString>
-#include <QMap>
+#include <vector>
 
 class Warehouse;
 class Garage;
@@ -18,7 +18,7 @@ public:
 	// updates data after each turn
 	void update() override;
 
-	virtual void manufacture();
+	void manufacture();
 
 	void deliverGoods(const Goods &goods, BaseIndustry *dest);
 
@@ -33,6 +33,8 @@ public:
 protected:
     Warehouse *warehouse_;
 	Garage *garage_;
+	std::vector<Goods> products_;
+	std::vector<Goods> rawMaterials_;
 };
 
 #endif // BASEINDUSTRY_H

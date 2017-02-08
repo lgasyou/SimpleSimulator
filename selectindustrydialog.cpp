@@ -27,16 +27,16 @@ void SelectIndustryDialog::updateDisplay() {
 	auto &buildingList = BuildingManager::instance().buildingList();
 	ui->tableWidget_industry->setRowCount(buildingList.size());
 	int indexOfBuilding = 0;
-	int indexOfBaseIndustry = 0;
+	int indexOfIndustry = 0;
 	for (const auto &item : buildingList) {
-		if (item->type().contains("Factory")) {
+		if (item->type().contains("Factory") || item->type().contains("Mine")) {
 			BaseIndustry *industry = dynamic_cast<BaseIndustry *>(item);
-			displayTableWidget(indexOfBaseIndustry, indexOfBuilding, industry);
-			++indexOfBaseIndustry;
+			displayTableWidget(indexOfIndustry, indexOfBuilding, industry);
+			++indexOfIndustry;
 		}
 		++indexOfBuilding;
 	}
-	ui->tableWidget_industry->setRowCount(indexOfBaseIndustry);
+	ui->tableWidget_industry->setRowCount(indexOfIndustry);
 }
 
 void SelectIndustryDialog::displayTableWidget(int indexInWidget, int indexInManager, BaseIndustry *industry) {

@@ -16,14 +16,14 @@ public:
 	const double frequence() { return frequence_; }
 
 private:
-	TimeManager() { }
+	TimeManager();
 	~TimeManager() { }
 	TimeManager(const TimeManager &) = delete;
 	TimeManager &operator=(const TimeManager &) = delete;
 
-    static double deltaTime_;
-    static double currentTime_;
-	static double frequence_;
+    double deltaTime_;
+    double currentTime_;
+	double frequence_;
 };
 
 #endif // TIMEMANAGER_H

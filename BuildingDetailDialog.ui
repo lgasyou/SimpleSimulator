@@ -142,14 +142,14 @@
      <item>
       <widget class="MyPushButton" name="pushButton_Build_BaseCommerce">
        <property name="text">
-        <string>BaseCommerce</string>
+        <string>Commerce</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="MyPushButton" name="pushButton_Build_residence">
        <property name="text">
-        <string>BaseResidence</string>
+        <string>Residence</string>
        </property>
       </widget>
      </item>

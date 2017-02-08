@@ -6,11 +6,11 @@
 
 #include "basebuilding.h"
 #include "company.h"
+
 #include "bankdialog.h"
 #include "buildingdetaildialog.h"
 #include "buildinginfotablewidget.h"
 #include "companydetaildialog.h"
-
 #include "mypushbutton.h"
 #include "ui_mainwindow.h"
 #include <QTableWidget>

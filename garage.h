@@ -17,8 +17,6 @@ public:
 
 	void addNewVihicle(const QString &);
 
-	// TODO
-	// This function is not determined yet.
 	void removeVihicle(Truck *);
 
 	void sendVihicle(Order *order);
@@ -27,9 +25,9 @@ public:
 
 	inline const QList<Truck *> &vihicleList() const { return this->vihicleList_; }
 
-	inline unsigned vihicleCount() const { return this->vihicleCount_; }
+	inline int vihicleCount() const { return this->vihicleCount_; }
 
-	inline unsigned freeVihicleCount() const { return this->freeVihicleCount_; }
+	inline int freeVihicleCount() const { return this->freeVihicleCount_; }
 
 private:
 	// Returns truck* if has free truck, 
@@ -38,8 +36,8 @@ private:
 
 	QList<Truck *> vihicleList_;
 	QList<Truck *> transitingTrucks_;
-	unsigned vihicleCount_;
-	unsigned freeVihicleCount_;
+	int vihicleCount_;
+	int freeVihicleCount_;
 };
 
 #endif // !GARAGE_H

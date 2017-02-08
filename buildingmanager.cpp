@@ -22,9 +22,9 @@ BuildingManager::BuildingManager() {
 	buildingList_.push_back(factory.create("Iron Mine"));
 	buildingList_.push_back(factory.create("Steel Factory"));
 	for (int i = 0; i != 1; ++i)
-		buildingList_.push_back(factory.create("Base Commerce"));
+		buildingList_.push_back(factory.create("Commerce"));
     for (int i = 0; i != 5; ++i)
-        buildingList_.push_back(factory.create("Base Residence"));
+        buildingList_.push_back(factory.create("Residence"));
 }
 
 BuildingManager::~BuildingManager() { }

@@ -2,18 +2,14 @@
 #include "warehouse.h"
 #include "goods.h"
 
+#include "industrychainmanager.h"
+
 SteelFactory::SteelFactory() :
 	BaseIndustry("Steel Factory")
-{ }
+{ 
+	const QString &product = "Steel";
+	products_.push_back(Goods(product, 1));
+	rawMaterials_ = IndustryChainManager::instance().precursors(product);
+}
 
 SteelFactory::~SteelFactory() { }
-
-void SteelFactory::manufacture() {
-	if (warehouse_->query("Iron") < 1 || 
-		warehouse_->query("Coal") < 2)
-		return;
-
-	warehouse_->removeItem(Goods("Iron", 1));
-	warehouse_->removeItem(Goods("Coal", 2));
-	warehouse_->addItem(Goods("Steel", 1));
-}

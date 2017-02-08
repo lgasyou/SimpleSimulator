@@ -7,7 +7,7 @@ class BaseCommerce : public BaseBuilding {
 public:
 	BaseCommerce(const QString & = "Commerce");
 
-	~BaseCommerce();
+	virtual ~BaseCommerce();
 
 	// update data after each turn
 	void update() override;

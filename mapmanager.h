@@ -1,7 +1,7 @@
 #ifndef MAPMANAGER_H
 #define MAPMANAGER_H
 
-#include "vector2d.h"
+class Vector2D;
 
 // This class creates a map which contains all buildings.
 // This class is designed for working with transportations modules.
@@ -20,6 +20,5 @@ private:
 	MapManager &operator=(const MapManager &) = delete;
 
 	bool occupiedMap_[100][100];
-	Vector2D firstFree;
 };
 #endif // !MAPMANAGER_H

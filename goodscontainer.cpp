@@ -23,8 +23,11 @@ Goods *GoodsContainer::getGoodsById(int id) {
 
 bool GoodsContainer::addItem(const Goods &goods) {
 	// The space is full
-	if (curVolume_ + goods.weight > maxVolume_)
+	if (curVolume_ + goods.weight > maxVolume_) {
+		double canAdd = maxVolume_ - curVolume_;
+		getGoodsByName(goods.goods)->weight += canAdd;
 		return false;
+	}
 	
 	getGoodsByName(goods.goods)->weight += goods.weight;
 	curVolume_ += goods.weight;

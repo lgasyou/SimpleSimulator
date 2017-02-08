@@ -8,8 +8,6 @@ public:
 	CoalMine();
 
 	~CoalMine();
-
-	void manufacture() override;
 };
 
 #endif // !COALMINE_H

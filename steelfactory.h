@@ -8,7 +8,5 @@ public:
 	SteelFactory();
 
 	~SteelFactory();
-
-	void manufacture() override;
 };
 #endif // !STEELFACTORY_H

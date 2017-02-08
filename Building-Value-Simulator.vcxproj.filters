@@ -77,6 +77,12 @@
     <Filter Include="Source Files\Objects">
       <UniqueIdentifier>{2d1484c9-b4b9-4ee5-bb5f-08803ac39daa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Managers">
+      <UniqueIdentifier>{3b0b7c3c-60c4-4b99-ab5d-de8c1f99115f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Managers">
+      <UniqueIdentifier>{8a50976a-7560-42d8-96eb-cb8b0e45047f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeneratedFiles\Debug\moc_bankdialog.cpp">
@@ -151,9 +157,6 @@
     <ClCompile Include="buildinginfotablewidget.cpp">
       <Filter>Source Files\QtComponents</Filter>
     </ClCompile>
-    <ClCompile Include="buildingmanager.cpp">
-      <Filter>Source Files\Utilities</Filter>
-    </ClCompile>
     <ClCompile Include="company.cpp">
       <Filter>Source Files\Company</Filter>
     </ClCompile>
@@ -177,9 +180,6 @@
     </ClCompile>
     <ClCompile Include="selectindustrydialog.cpp">
       <Filter>Source Files\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="timemanager.cpp">
-      <Filter>Source Files\Utilities</Filter>
     </ClCompile>
     <ClCompile Include="valuegenerator.cpp">
       <Filter>Source Files\Utilities</Filter>
@@ -214,20 +214,8 @@
     <ClCompile Include="steelfactory.cpp">
       <Filter>Source Files\Buildings</Filter>
     </ClCompile>
-    <ClCompile Include="companymanager.cpp">
-      <Filter>Source Files\Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="uimanager.cpp">
-      <Filter>Source Files\Utilities</Filter>
-    </ClCompile>
     <ClCompile Include="baseindustry.cpp">
       <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
-    <ClCompile Include="mapmanager.cpp">
-      <Filter>Source Files\Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="industrychainmanager.cpp">
-      <Filter>Source Files\Utilities</Filter>
     </ClCompile>
     <ClCompile Include="basecommerce.cpp">
       <Filter>Source Files\Buildings</Filter>
@@ -240,6 +228,27 @@
     </ClCompile>
     <ClCompile Include="baseagriculture.cpp">
       <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="buildingmanager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="companymanager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="industrychainmanager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="mapmanager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="timemanager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="uimanager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="graph.cpp">
+      <Filter>Source Files\Utilities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -307,14 +316,8 @@
     <ClInclude Include="gameconstants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="buildingmanager.h">
-      <Filter>Header Files\Utilities</Filter>
-    </ClInclude>
     <ClInclude Include="company.h">
       <Filter>Header Files\Company</Filter>
-    </ClInclude>
-    <ClInclude Include="timemanager.h">
-      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="valuegenerator.h">
       <Filter>Header Files\Utilities</Filter>
@@ -355,20 +358,8 @@
     <ClInclude Include="steelfactory.h">
       <Filter>Header Files\Buildings</Filter>
     </ClInclude>
-    <ClInclude Include="companymanager.h">
-      <Filter>Header Files\Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="uimanager.h">
-      <Filter>Header Files\Utilities</Filter>
-    </ClInclude>
     <ClInclude Include="baseindustry.h">
       <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
-    <ClInclude Include="mapmanager.h">
-      <Filter>Header Files\Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="industrychainmanager.h">
-      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="basecommerce.h">
       <Filter>Header Files\Buildings</Filter>
@@ -381,6 +372,27 @@
     </ClInclude>
     <ClInclude Include="baseagriculture.h">
       <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="buildingmanager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="companymanager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="industrychainmanager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="mapmanager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="timemanager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="uimanager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="graph.h">
+      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

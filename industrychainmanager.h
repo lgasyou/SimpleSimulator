@@ -1,35 +1,32 @@
 #ifndef INDUSTRYCHAINMANAGER_H
 #define INDUSTRYCHAINMANAGER_H
 
+#include <vector>
+#include <QString>
+#include "graph.h"
+
 class BaseBuilding;
-
-struct Edge {
-	Edge(int cost_, Edge *nextEdge_) :
-		cost(cost_),
-		nextEdge(nextEdge_) { }
-
-	int cost;
-	Edge *nextEdge;
-};
-
-struct Vertex {
-	BaseBuilding *building;
-	Edge *firstEdge;
-};
+struct Goods;
 
 // This class contains the industry chain of this game.
 class IndustryChainManager {
 public:
 	static IndustryChainManager &instance();
 
-	int distance(BaseBuilding *, BaseBuilding *);
+	void init();
 
-	void addPath(BaseBuilding *, BaseBuilding *, int);
+	double cost(const QString &beg, const QString &end) const;
+
+	std::vector<Goods> precursors(const QString &item) const;
+
+	std::vector<Goods> successors(const QString &item) const;
 
 private:
-	IndustryChainManager();;
+	IndustryChainManager();
 	~IndustryChainManager();
 	IndustryChainManager(const IndustryChainManager &) = delete;
 	IndustryChainManager &operator=(const IndustryChainManager &) = delete;
+
+	Graph industryChain_;
 };
 #endif // !INDUSTRYCHAINMANAGER_H

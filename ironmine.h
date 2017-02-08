@@ -8,7 +8,5 @@ public:
 	IronMine();
 
 	~IronMine();
-
-	void manufacture() override;
 };
 #endif // !IRONMINE_H

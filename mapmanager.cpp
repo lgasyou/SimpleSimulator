@@ -1,6 +1,8 @@
 #include "mapmanager.h"
-#include "vector2d.h"
 #include "basebuilding.h"
+
+#include "vector2d.h"
+#include "valuegenerator.h"
 
 MapManager::MapManager() {
 	init();
@@ -14,24 +16,22 @@ MapManager &MapManager::instance() {
 }
 
 void MapManager::init() {
-	for (int i = 0; i != 100; ++i)
-		for (int j = 0; j != 100; ++j)
-			occupiedMap_[i][j] = false;
-	firstFree = Vector2D(0.0, 0.0);
+	for (int x = 0; x != 100; ++x)
+		for (int y = 0; y != 100; ++y)
+			occupiedMap_[x][y] = false;
 }
 
 Vector2D MapManager::allocate() {
-	int x = firstFree.x();
-	int y = firstFree.y();
-
-	if (x == 100)
-		return Vector2D();
-	if (y == 99) {
-		firstFree.setX(x + 1);
-		firstFree.setY(0);
-	} else {
-		firstFree.setY(y + 1);
-	}
+	int x = 0;
+	int y = 0;
+	do {
+		do {
+			x = ValueGenerator::instance().uniformDistribution(0, 99);
+		} while (x < 0 || x > 99);
+		do {
+			y = ValueGenerator::instance().uniformDistribution(0, 99);
+		} while (y < 0 || y > 99);
+	} while (occupiedMap_[x][y]);
 	occupiedMap_[x][y] = true;
 	return Vector2D(x, y);
 }

@@ -27,11 +27,11 @@ BaseBuilding *BuildingFactory::create(const QString &type) {
 		building = new IronMine;
 	else if (type == "Steel Factory")
 		building = new SteelFactory;
-	else if (type == "Base Commerce")
+	else if (type == "Commerce")
 		building = new BaseCommerce;
-	else if (type == "Base Residence")
+	else if (type == "Residence")
 		building = new BaseResidence;
-	else if (type == "Base Agriculture")
+	else if (type == "Agriculture")
 		building = new BaseAgriculture;
 	else
 		building = new BaseBuilding;

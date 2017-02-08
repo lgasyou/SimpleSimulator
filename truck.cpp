@@ -4,6 +4,7 @@
 #include "goodscontainer.h"
 
 Truck::Truck() :
+	Vihicle(),
 	order_(nullptr), 
 	occupied_(false),
 	remainTime_(0.0),

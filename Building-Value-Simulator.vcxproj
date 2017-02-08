@@ -214,6 +214,7 @@
     <ClCompile Include="goods.cpp" />
     <ClCompile Include="goodscontainer.cpp" />
     <ClCompile Include="baseindustry.cpp" />
+    <ClCompile Include="graph.cpp" />
     <ClCompile Include="industrychainmanager.cpp" />
     <ClCompile Include="ironmine.cpp" />
     <ClCompile Include="main.cpp" />
@@ -241,6 +242,7 @@
     <ClInclude Include="goods.h" />
     <ClInclude Include="goodscontainer.h" />
     <ClInclude Include="baseindustry.h" />
+    <ClInclude Include="graph.h" />
     <ClInclude Include="industrychainmanager.h" />
     <ClInclude Include="ironmine.h" />
     <ClInclude Include="mapmanager.h" />

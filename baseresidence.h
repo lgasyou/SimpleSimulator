@@ -7,6 +7,8 @@ class BaseResidence : public BaseBuilding {
 public:
     BaseResidence(const QString & = "Residence");
 
+	virtual ~BaseResidence();
+
 	// updates data after each turn
 	void update() override;
 };

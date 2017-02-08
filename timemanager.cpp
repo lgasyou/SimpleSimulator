@@ -5,6 +5,8 @@ TimeManager &TimeManager::instance() {
 	return gameTimer;
 }
 
-double TimeManager::currentTime_ = 1;
-double TimeManager::deltaTime_ = 0;
-double TimeManager::frequence_ = 1;
+TimeManager::TimeManager() :
+	currentTime_(1.0),
+	deltaTime_(0.0),
+	frequence_(1.0)
+{ }

@@ -37,7 +37,8 @@ void Garage::sendVihicle(Order *order) {
 	if (truck == nullptr)	return;
 
 	truck->setOrder(order);
-	double remainTime = order->dest->pos().distanceToPoint(order->src->pos());
+	double distance = order->dest->pos().distanceToPoint(order->src->pos());
+	double remainTime = distance / truck->speed();
 	truck->setRemainTime(remainTime);
 	truck->load();
 	transitingTrucks_.push_back(truck);

@@ -7,7 +7,7 @@ class BaseAgriculture : public BaseBuilding {
 public:
 	BaseAgriculture(const QString & = "Farm");
 
-	~BaseAgriculture();
+	virtual ~BaseAgriculture();
 
 	void update() override;
 };

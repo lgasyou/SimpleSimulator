@@ -1,24 +1,35 @@
 #include "industrychainmanager.h"
 
-IndustryChainManager::IndustryChainManager() { }
+IndustryChainManager::IndustryChainManager() {
+	init();
+}
 
 IndustryChainManager::~IndustryChainManager() { }
+
+void IndustryChainManager::init() {
+	// TODO
+	// Move this into a file like .xml
+	// then just read file.
+	industryChain_.addPath("Coal", "Steel", 2);
+	industryChain_.addPath("Iron", "Steel", 1);
+	industryChain_.addPath("Log", "Plank", 0.5);
+	industryChain_.addPath("Steel", "Product", 0.5);
+	industryChain_.addPath("Plank", "Product", 1);
+}
 
 IndustryChainManager &IndustryChainManager::instance() {
 	static IndustryChainManager industryChainManager;
 	return industryChainManager;
 }
 
-int IndustryChainManager::distance(BaseBuilding *start, BaseBuilding *dest) {
-	return 0;
+double IndustryChainManager::cost(const QString &beg, const QString &end) const {
+	return industryChain_.weight(beg, end);
 }
 
-void IndustryChainManager::addPath(BaseBuilding *start, BaseBuilding *dest, int distance) {
-	//for (auto &vertex : map_) {
-	//	if (vertex.building == start) {
-	//		Edge *p = vertex.firstEdge->nextEdge;
-	//		vertex.firstEdge->nextEdge = new Edge(distance, p);
-	//		break;
-	//	}
-	//}
+std::vector<Goods> IndustryChainManager::precursors(const QString & item) const {
+	return industryChain_.precursors(item);
+}
+
+std::vector<Goods> IndustryChainManager::successors(const QString & item) const {
+	return industryChain_.successors(item);
 }
