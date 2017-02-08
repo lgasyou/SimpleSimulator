@@ -1,7 +1,7 @@
 #include "baseresidence.h"
 
 BaseResidence::BaseResidence(const QString &type) :
-	BaseBuilding("World", type, nullptr)
+	BaseBuilding("World", type)
 { }
 
 void BaseResidence::update() {

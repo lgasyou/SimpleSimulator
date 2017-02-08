@@ -28,12 +28,16 @@ public:
 	inline void setOccupied(bool occupied) { this->occupied_ = occupied; }
 	inline const bool occupied() const { return this->occupied_; }
 
+	inline void setRemainTime(double remainTime) { this->remainTime_ = remainTime; }
+	inline const double remainTime() const { return this->remainTime_; }
+
 	const GoodsContainer *freightHouse() const;
 
 private:
 	Order *order_;
 	GoodsContainer *freightHouse_;
 	bool occupied_;
+	double remainTime_;
 };
 
 #endif // !TRUCK_H

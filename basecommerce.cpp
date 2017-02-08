@@ -1,7 +1,7 @@
 #include "basecommerce.h"
 
 BaseCommerce::BaseCommerce(const QString &type) :
-	BaseBuilding("BaseCommerce", type, nullptr)
+	BaseBuilding("Commerce", type)
 { }
 
 BaseCommerce::~BaseCommerce() { }

@@ -1,12 +1,14 @@
 #include "basebuilding.h"
+
 #include "valuegenerator.h"
 #include "gameconstants.h"
 
-BaseBuilding::BaseBuilding(const QString &name, const QString &type, Company *owner, double deltaValue) :
+BaseBuilding::BaseBuilding(const QString &name, const QString &type, double deltaValue, Company *owner, const Vector2D &pos) :
 	name_(name),
 	type_(type),
+	deltaValue_(deltaValue),
 	owner_(owner),
-	deltaValue_(deltaValue)
+	pos_(pos)
 {
 	initBasicValue();
 }
@@ -14,8 +16,9 @@ BaseBuilding::BaseBuilding(const QString &name, const QString &type, Company *ow
 void BaseBuilding::copyInit(const BaseBuilding &rhs) {
 	name_ = rhs.name();
 	value_ = rhs.value();
-	owner_ = rhs.owner();
 	deltaValue_ = rhs.deltaValue();
+	owner_ = rhs.owner();
+	pos_ = rhs.pos();
 }
 
 void BaseBuilding::initBasicValue() {

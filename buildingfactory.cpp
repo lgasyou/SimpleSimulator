@@ -11,21 +11,31 @@
 
 #include "baseresidence.h"
 
+#include "baseagriculture.h"
+
+#include "mapmanager.h"
+
 #include <QString>
 
 BaseBuilding *BuildingFactory::create(const QString &type) {
-	if (type == "Foundation")
-		return new BaseBuilding;
-	else if (type == "Factory")
-		return new BaseIndustry;
+	BaseBuilding *building = nullptr;
+	if (type == "Factory")
+		building = new BaseIndustry;
 	else if (type == "Coal Mine")
-		return new CoalMine;
+		building = new CoalMine;
 	else if (type == "Iron Mine")
-		return new IronMine;
+		building = new IronMine;
 	else if (type == "Steel Factory")
-		return new SteelFactory;
-	else if (type == "BaseCommerce")
-		return new BaseCommerce;
+		building = new SteelFactory;
+	else if (type == "Base Commerce")
+		building = new BaseCommerce;
+	else if (type == "Base Residence")
+		building = new BaseResidence;
+	else if (type == "Base Agriculture")
+		building = new BaseAgriculture;
 	else
-		return new BaseResidence;
+		building = new BaseBuilding;
+	Vector2D allocatedPos = MapManager::instance().allocate();
+	building->setPos(allocatedPos);
+	return building;
 }

@@ -1,5 +1,5 @@
 #include "warehousetablewidget.h"
-#include "Warehouse.h"
+#include "warehouse.h"
 #include "buildingmanager.h"
 #include "baseindustry.h"
 #include "goods.h"

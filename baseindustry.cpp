@@ -1,11 +1,11 @@
 #include "baseindustry.h"
-#include "Warehouse.h"
+#include "warehouse.h"
 #include "garage.h"
 #include "order.h"
 #include "goods.h"
 
 BaseIndustry::BaseIndustry(const QString &type) :
-	BaseBuilding("Factory", type, nullptr),
+	BaseBuilding("Factory", type),
 	warehouse_(new Warehouse),
 	garage_(new Garage)
 { }

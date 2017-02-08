@@ -1,13 +1,14 @@
 #include "buildingdetaildialog.h"
 #include "basebuilding.h"
 #include "baseindustry.h"
-#include "Warehouse.h"
+#include "warehouse.h"
 #include "goodscontainer.h"
 #include "company.h"
 #include "garage.h"
+#include "goods.h"
+
 #include "garagetablewidget.h"
 #include "warehousetablewidget.h"
-#include "goods.h"
 #include "mypushbutton.h"
 #include "ui_buildingdetaildialog.h"
 
@@ -108,11 +109,13 @@ void BuildingDetailDialog::displayBasicInfo() {
 	const QString &value = toString(building_->value());
 	const QString &type = building_->type();
 	const QString &owner = building_->owner() ? building_->owner()->name() : tr("Government");
+	const QString &pos = building_->pos().toString();
 	setWindowTitle(name);
 	ui->label_Name->setText(tr("Name:  ") + name);
 	ui->label_Value->setText(tr("Value: $") + value);
 	ui->label_Type->setText(tr("Type:  ") + type);
 	ui->label_Owner->setText(tr("Owner: ") + owner);
+	ui->label_Position->setText(tr("Position: ") + pos);
 }
 
 void BuildingDetailDialog::displayAccordingToVisitor() {

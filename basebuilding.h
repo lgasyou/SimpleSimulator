@@ -2,6 +2,7 @@
 #define BUILDINGBASE_H
 
 #include <QString>
+#include "vector2d.h"
 
 class Company;
 
@@ -13,7 +14,7 @@ class Company;
 class BaseBuilding {
 public:
 	BaseBuilding(const QString &name = "Foundation", const QString &type = "Foundation",
-		Company *owner = nullptr, double deltaValue = 0.0);
+		double deltaValue = 0.0, Company *owner = nullptr, const Vector2D & = Vector2D(0.0, 0.0));
 
     virtual ~BaseBuilding() { }
 
@@ -39,6 +40,9 @@ public:
     inline void setOwner(Company *const owner) { this->owner_ = owner; }
     inline Company *const owner() const { return this->owner_; }
 
+	inline void setPos(const Vector2D pos) { this->pos_ = pos; }
+	inline const Vector2D &pos() const { return this->pos_; }
+
 private:
 	void initBasicValue();
 
@@ -47,6 +51,7 @@ private:
     double deltaValue_;
     QString type_;
     Company *owner_;
+	Vector2D pos_;
 };
 
 #endif // BUILDINGBASE_H

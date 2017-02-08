@@ -143,6 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bankdialog.cpp" />
+    <ClCompile Include="baseagriculture.cpp" />
     <ClCompile Include="basebuilding.cpp" />
     <ClCompile Include="buildingdetaildialog.cpp" />
     <ClCompile Include="buildingfactory.cpp" />
@@ -227,11 +228,13 @@
     <ClCompile Include="truck.cpp" />
     <ClCompile Include="uimanager.cpp" />
     <ClCompile Include="valuegenerator.cpp" />
+    <ClCompile Include="vector2d.cpp" />
     <ClCompile Include="vihicle.cpp" />
     <ClCompile Include="warehouse.cpp" />
     <ClCompile Include="warehousetablewidget.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="baseagriculture.h" />
     <ClInclude Include="buildingfactory.h" />
     <ClInclude Include="coalmine.h" />
     <ClInclude Include="companymanager.h" />
@@ -248,6 +251,7 @@
     <ClInclude Include="truck.h" />
     <ClInclude Include="uimanager.h" />
     <ClInclude Include="valuegenerator.h" />
+    <ClInclude Include="vector2d.h" />
     <ClInclude Include="vihicle.h" />
     <ClInclude Include="warehouse.h" />
     <CustomBuild Include="warehousetablewidget.h">

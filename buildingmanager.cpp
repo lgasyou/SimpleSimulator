@@ -16,14 +16,15 @@
 #include "valuegenerator.h"
 
 BuildingManager::BuildingManager() {
-    buildingList_.push_back(new BaseBuilding);
-	buildingList_.push_back(new CoalMine);
-	buildingList_.push_back(new IronMine);
-	buildingList_.push_back(new SteelFactory);
+	BuildingFactory factory;
+    buildingList_.push_back(factory.create("Foundation"));
+	buildingList_.push_back(factory.create("Coal Mine"));
+	buildingList_.push_back(factory.create("Iron Mine"));
+	buildingList_.push_back(factory.create("Steel Factory"));
 	for (int i = 0; i != 1; ++i)
-		buildingList_.push_back(new BaseCommerce);
-    for (int i = 0; i != 3; ++i)
-        buildingList_.push_back(new BaseResidence);
+		buildingList_.push_back(factory.create("Base Commerce"));
+    for (int i = 0; i != 5; ++i)
+        buildingList_.push_back(factory.create("Base Residence"));
 }
 
 BuildingManager::~BuildingManager() { }

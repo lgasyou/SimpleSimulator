@@ -13,8 +13,8 @@ GarageTableWidget::GarageTableWidget(QWidget *parent) :
 GarageTableWidget::~GarageTableWidget() { }
 
 void GarageTableWidget::init() {
-	this->setColumnCount(4);
-	QStringList header{ tr("Name"), tr("Destination"), tr("Goods"), tr("Weight") };
+	this->setColumnCount(5);
+	QStringList header{ tr("Name"), tr("Destination"), tr("Goods"), tr("Weight"), tr("Remain Time") };
 	this->setHorizontalHeaderLabels(header);
 }
 
@@ -32,13 +32,16 @@ void GarageTableWidget::updateDisplay() {
 			const QString &dest = truck->order()->dest->name();
 			const QString &goods = truck->order()->goods.goods;
 			const QString &weight = toString(truck->order()->goods.weight);
+			const QString &remainTime = toString(truck->remainTime());
 			setItem(index, 1, new QTableWidgetItem(dest));
 			setItem(index, 2, new QTableWidgetItem(goods));
 			setItem(index, 3, new QTableWidgetItem(weight));
+			setItem(index, 4, new QTableWidgetItem(remainTime));
 		} else {
 			setItem(index, 1, new QTableWidgetItem);
 			setItem(index, 2, new QTableWidgetItem);
 			setItem(index, 3, new QTableWidgetItem);
+			setItem(index, 4, new QTableWidgetItem);
 		}
 	}
 }

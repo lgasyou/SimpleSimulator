@@ -6,6 +6,7 @@
 Truck::Truck() :
 	order_(nullptr), 
 	occupied_(false),
+	remainTime_(0.0),
 	freightHouse_(new GoodsContainer)
 { }
 

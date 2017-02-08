@@ -2,7 +2,6 @@
 #define GARAGE_H
 
 #include <QList>
-#include <queue>
 
 class BaseIndustry;
 struct Order;
@@ -20,7 +19,7 @@ public:
 
 	// TODO
 	// This function is not determined yet.
-	void removeVihicle(const QString &);
+	void removeVihicle(Truck *);
 
 	void sendVihicle(Order *order);
 
@@ -38,7 +37,7 @@ private:
 	Truck *selectFreeTruck();
 
 	QList<Truck *> vihicleList_;
-	std::queue<Truck *> transitingTrucks_;
+	QList<Truck *> transitingTrucks_;
 	unsigned vihicleCount_;
 	unsigned freeVihicleCount_;
 };

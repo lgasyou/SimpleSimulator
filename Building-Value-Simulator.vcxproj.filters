@@ -235,6 +235,12 @@
     <ClCompile Include="baseresidence.cpp">
       <Filter>Source Files\Buildings</Filter>
     </ClCompile>
+    <ClCompile Include="vector2d.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="baseagriculture.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="SelectIndustryDialog.ui">
@@ -368,6 +374,12 @@
       <Filter>Header Files\Buildings</Filter>
     </ClInclude>
     <ClInclude Include="baseresidence.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="vector2d.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="baseagriculture.h">
       <Filter>Header Files\Buildings</Filter>
     </ClInclude>
   </ItemGroup>
