@@ -52,9 +52,9 @@ BaseBuilding *BuildingManager::resetItemType(BaseBuilding *building, const QStri
     BaseBuilding *newBuilding = buildingFactory.create(type);
 	newBuilding->copyInit(*building);
 
-	auto &position = iteratorOf(building);
-    delete *position;
-	*position = newBuilding;
+	auto &iterator = iteratorOf(building);
+    delete *iterator;
+	*iterator = newBuilding;
     return newBuilding;
 }
 

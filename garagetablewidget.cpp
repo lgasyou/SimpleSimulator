@@ -1,8 +1,9 @@
 ﻿#include "garagetablewidget.h"
 #include "garage.h"
 #include "truck.h"
-#include "order.h"
+#include "route.h"
 #include "baseindustry.h"
+#include "goodscontainer.h"
 
 #include "uimanager.h"
 
@@ -19,7 +20,7 @@ GarageTableWidget::~GarageTableWidget() { }
 
 void GarageTableWidget::init() {
 	this->setColumnCount(6);
-	QStringList header{ tr("Name"), tr("Destination"), tr("Goods"), tr("Weight"), tr("Remain Time"), tr("Option") };
+	QStringList header{ tr("Name"), tr("State"), tr("Destination"), tr("Plan"),  tr("Remain Time"), tr("Option") };
 	this->setHorizontalHeaderLabels(header);
 }
 
@@ -38,36 +39,58 @@ void GarageTableWidget::updateDisplay() {
 
 void GarageTableWidget::updateEachLine(int index, Truck *truck) {
 	setItem(index, 0, new QTableWidgetItem(tr("Truck")));
+	const QString &curVolume = toString(truck->freightHouse()->curVolume());
+	const QString &maxVolume = toString(truck->freightHouse()->maxVolume());
+	setItem(index, 1, new QTableWidgetItem(curVolume + " / " + maxVolume));
 	if (truck->occupied()) {
-		const QString &dest = truck->order()->dest->name();
-		const QString &goods = truck->order()->goods.goods;
-		const QString &weight = toString(truck->order()->goods.weight);
+		const QString &dest = truck->route()->dest->name();
+		const QString &goods = truck->route()->goods.name;
+		const QString &volume = toString(truck->route()->goods.volume);
 		const QString &remainTime = toString(truck->remainTime());
-		setItem(index, 1, new QTableWidgetItem(dest));
-		setItem(index, 2, new QTableWidgetItem(goods));
-		setItem(index, 3, new QTableWidgetItem(weight));
+		setItem(index, 2, new QTableWidgetItem(dest));
+		setItem(index, 3, new QTableWidgetItem(goods + " / " + volume));
 		setItem(index, 4, new QTableWidgetItem(remainTime));
-	} else {
-		MyPushButton *routeBtn = new MyPushButton(tr("Route"));
-		routeBtn->setIndex(index);
-		setCellWidget(index, 5, routeBtn);
+	}
 
-		connect(routeBtn, SIGNAL(sendPointer(MyPushButton*)),
-			this, SLOT(showSetRouteDialog(MyPushButton*)));
+	const QString &text = truck->occupied() ? tr("Stop") : tr("Route");
+	MyPushButton *routeBtn = new MyPushButton(text);
+	routeBtn->setIndex(index);
+	setCellWidget(index, 5, routeBtn);
+
+	connect(routeBtn, SIGNAL(sendPointer(MyPushButton*)),
+		this, SLOT(buttonClicked(MyPushButton*)));
+}
+
+void GarageTableWidget::buttonClicked(MyPushButton *button) {
+	if (button->text() == "Route")
+		showSetRouteDialog(button);
+	else if (button->text() == "Stop") {
+		int id = button->index();
+		Truck *truck = garage_->getTruckById(id);
+		garage_->stopVihicle(truck);
+		emit dataChanged();
 	}
 }
 
 void GarageTableWidget::showSetRouteDialog(MyPushButton *truckBtn) {
-	int truckId = truckBtn->index();
+	selectedTruckId_ = truckBtn->index();
 
 	SetRouteDialog *setRouteDialog = UIManager::instance().setRouteDialog();
-	setRouteDialog->setParent(this, Qt::Window);
+	setRouteDialog->createNewRoute();
+	static bool isTheFirstTimeCall = true;
+	if (isTheFirstTimeCall) {
+		connect(setRouteDialog, SIGNAL(sendRoute(Route*)),
+			this, SLOT(setRoute(Route*)));
+		setRouteDialog->setParent(this, Qt::Window);
+		isTheFirstTimeCall = false;
+	}
 	setRouteDialog->showAndRaise();
 	setRouteDialog->updateDisplay();
 }
 
-void GarageTableWidget::setRoute(BaseBuilding *building) {
-
+void GarageTableWidget::setRoute(Route *route) {
+	garage_->sendVihicle(route, selectedTruckId_);
+	emit dataChanged();
 }
 
 QString GarageTableWidget::toString(double value) {

@@ -22,14 +22,16 @@ public:
 	inline void setWarehouse(Warehouse *warehouse) { this->warehouse_ = warehouse; }
 
 signals:
-	void sendPreorder(const Goods &goods, BaseIndustry *dest);
+	void sendPreroute(const Goods &goods, BaseIndustry *dest);
+
+	void dataChanged();
 
 public slots:
 	void goSelectIndustry();
 
 	void getGoods(MyPushButton *);
 
-	void getDestAndSendPreorder(BaseBuilding *dest);
+	void getDestAndSendPreroute(BaseBuilding *dest);
 
 	void updateDisplay();
 

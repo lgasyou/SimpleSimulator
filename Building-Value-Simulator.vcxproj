@@ -227,7 +227,7 @@
     <ClCompile Include="mainwindow.cpp" />
     <ClCompile Include="mapmanager.cpp" />
     <ClCompile Include="mypushbutton.cpp" />
-    <ClCompile Include="order.cpp" />
+    <ClCompile Include="route.cpp" />
     <ClCompile Include="baseresidence.cpp" />
     <ClCompile Include="selecttablewidget.cpp" />
     <ClCompile Include="setroutedialog.cpp" />
@@ -255,7 +255,7 @@
     <ClInclude Include="industrychainmanager.h" />
     <ClInclude Include="ironmine.h" />
     <ClInclude Include="mapmanager.h" />
-    <ClInclude Include="order.h" />
+    <ClInclude Include="route.h" />
     <ClInclude Include="baseresidence.h" />
     <CustomBuild Include="setroutedialog.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>

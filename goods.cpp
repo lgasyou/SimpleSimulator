@@ -1,6 +1,6 @@
 #include "goods.h"
 
-Goods::Goods(const QString & goods_, double weight_) :
-	goods(goods_),
-	weight(weight_)
+Goods::Goods(const QString &name_, double volume_) :
+	name(name_),
+	volume(volume_)
 { }

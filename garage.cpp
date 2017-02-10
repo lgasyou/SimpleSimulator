@@ -1,6 +1,6 @@
 #include "garage.h"
 #include "truck.h"
-#include "order.h"
+#include "route.h"
 
 #include "baseindustry.h"
 #include "vector2d.h"
@@ -13,6 +13,7 @@ Garage::Garage() :
 Garage::~Garage() { }
 
 void Garage::init() {
+	addNewVihicle("Truck");
 	addNewVihicle("Truck");
 }
 
@@ -32,28 +33,41 @@ void Garage::removeVihicle(Truck *truck) {
 	--freeVihicleCount_;
 }
 
-void Garage::sendVihicle(Order *order) {
-	Truck *truck = selectFreeTruck();
+void Garage::sendVihicle(Route *route, int id) {
+	Truck *truck = (id < 0) ?
+		selectFreeTruck() : vihicleList_[id];
 	if (truck == nullptr)	return;
 
-	truck->setOrder(order);
-	double distance = order->dest->pos().distanceToPoint(order->src->pos());
-	double remainTime = distance / truck->speed();
-	truck->setRemainTime(remainTime);
+	truck->setRoute(route);
 	truck->load();
 	transitingTrucks_.push_back(truck);
 	--freeVihicleCount_;
+}
+
+void Garage::stopVihicle(Truck *truck) {
+	transitingTrucks_.removeOne(truck);
+	truck->setOccupied(false);
+	++freeVihicleCount_;
 }
 
 void Garage::update() {
 	for (auto iter = transitingTrucks_.begin(); iter != transitingTrucks_.end(); ++iter) {
 		auto truck = *iter;
 		truck->setRemainTime(truck->remainTime() - 1.0);
-		if (truck->remainTime() <= 0.0) {
+		double remainTime = truck->remainTime();
+		if (truck->loaded() && (remainTime <= truck->totalTime() / 2))
 			truck->unload();
-			transitingTrucks_.erase(iter);
-			++freeVihicleCount_;
+		if (remainTime <= 0.0) {
+			truck->setOccupied(false);
+			truck->setRemainTime(0.0);
+			if (truck->route()->repeated) {
+				truck->load();
+			} else {
+				transitingTrucks_.erase(iter);
+				++freeVihicleCount_;
+			}
 		}
+
 	}
 }
 

@@ -30,9 +30,10 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
 	ui->tabWidget_industry->addTab(widget_warehouse, "Warehouse");
 
 	QWidget *widget_garage = new QWidget;
-	QVBoxLayout *layout_garage = new QVBoxLayout;
-	layout_garage->addWidget(ui->label_GarageState);
-	layout_garage->addWidget(garageTableWidget_);
+	QGridLayout *layout_garage = new QGridLayout;
+	layout_garage->addWidget(ui->label_GarageState, 0, 0);
+	layout_garage->addWidget(ui->pushButtonAddVihicle, 0, 1);
+	layout_garage->addWidget(garageTableWidget_, 1, 0);
 	widget_garage->setLayout(layout_garage);
 	ui->tabWidget_industry->addTab(widget_garage, "Garage");
 
@@ -41,7 +42,12 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
 	connect(this, SIGNAL(dataChanged()),
 		garageTableWidget_, SLOT(updateDisplay()));
 
-	// In order to change building's type by button's text
+	connect(garageTableWidget_, SIGNAL(dataChanged()),
+		this, SLOT(updateDisplay()));
+	connect(warehouseTableWidget_, SIGNAL(dataChanged()),
+		this, SLOT(updateDisplay()));
+
+	// In route to change building's type by button's text
 	connect(ui->pushButton_Build_CoalMine, SIGNAL(sendPointer(MyPushButton*)),
 		this, SLOT(changeType(MyPushButton*)));
 	connect(ui->pushButton_Build_BaseCommerce, SIGNAL(sendPointer(MyPushButton*)),
@@ -53,8 +59,11 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
 	connect(ui->pushButton_Build_SteelBaseIndustry, SIGNAL(sendPointer(MyPushButton*)),
 		this, SLOT(changeType(MyPushButton*)));
 
-	connect(warehouseTableWidget_, SIGNAL(sendPreorder(const Goods &, BaseIndustry*)),
+	connect(warehouseTableWidget_, SIGNAL(sendPreroute(const Goods &, BaseIndustry*)),
 		this, SLOT(deliverGoods(const Goods &, BaseIndustry*)));
+
+	connect(ui->pushButtonAddVihicle, SIGNAL(clicked()),
+		this, SLOT(addNewVihicle()));
 }
 
 BuildingDetailDialog::~BuildingDetailDialog() {
@@ -176,6 +185,12 @@ void BuildingDetailDialog::showWarehouse(BaseIndustry *industry) {
 	warehouseTableWidget_->show();
 	ui->label_WarehouseSum->show();
 	warehouseTableWidget_->updateDisplay();
+}
+
+void BuildingDetailDialog::addNewVihicle() {
+	BaseIndustry *industry = dynamic_cast<BaseIndustry *>(building_);
+	industry->garage()->addNewVihicle("Truck");
+	emit dataChanged();
 }
 
 void BuildingDetailDialog::on_pushButton_Buy_clicked() {

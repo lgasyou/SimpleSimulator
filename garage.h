@@ -4,7 +4,7 @@
 #include <QList>
 
 class BaseIndustry;
-struct Order;
+struct Route;
 class Truck;
 
 class Garage {
@@ -15,11 +15,15 @@ public:
 
 	void init();
 
+	inline Truck *getTruckById(int id);
+
 	void addNewVihicle(const QString &);
 
 	void removeVihicle(Truck *);
 
-	void sendVihicle(Order *order);
+	void sendVihicle(Route *route, int id = -1);
+
+	void stopVihicle(Truck *);
 
 	void update();
 
@@ -39,5 +43,9 @@ private:
 	int vihicleCount_;
 	int freeVihicleCount_;
 };
+
+inline Truck *Garage::getTruckById(int id) {
+	return vihicleList_[id];
+}
 
 #endif // !GARAGE_H

@@ -20,7 +20,7 @@ WarehouseTableWidget::WarehouseTableWidget(QWidget *parent, Warehouse *warehouse
 
 void WarehouseTableWidget::init() {
 	this->setColumnCount(3);
-	QStringList header{ tr("Item"), tr("Weight"), tr("Option") };
+	QStringList header{ tr("Item"), tr("Volume"), tr("Option") };
 	this->setHorizontalHeaderLabels(header);
 }
 
@@ -33,10 +33,10 @@ void WarehouseTableWidget::updateDisplay() {
 	unsigned int index = 0;
 	this->clearContents();
 	for (auto &iter = warehouse.constBegin(); iter != warehouse.constEnd(); ++iter, ++index) {
-		const QString &item = (*iter)->goods;
-		const QString &weight = toString((*iter)->weight);
+		const QString &item = (*iter)->name;
+		const QString &volume = toString((*iter)->volume);
 		this->setItem(index, 0, new QTableWidgetItem(item));
-		this->setItem(index, 1, new QTableWidgetItem(weight));
+		this->setItem(index, 1, new QTableWidgetItem(volume));
 
 		MyPushButton *sellBtn = new MyPushButton(tr("Sell"));
 		sellBtn->setIndex(index);
@@ -54,7 +54,7 @@ void WarehouseTableWidget::goSelectIndustry() {
 		selectTableWidget_->setParent(this, Qt::Window);
 		selectTableWidget_->setSelector(SelectTableWidget::Factory | SelectTableWidget::Mine);
 		connect(selectTableWidget_, SIGNAL(sendBuilding(BaseBuilding*)),
-			this, SLOT(getDestAndSendPreorder(BaseBuilding*)));
+			this, SLOT(getDestAndSendPreroute(BaseBuilding*)));
 	}
 	selectTableWidget_->show();
 	selectTableWidget_->updateDisplay();
@@ -65,11 +65,12 @@ void WarehouseTableWidget::getGoods(MyPushButton *button) {
 	goods_ = warehouse_->getGoodsById(id);
 }
 
-void WarehouseTableWidget::getDestAndSendPreorder(BaseBuilding *building) {
+void WarehouseTableWidget::getDestAndSendPreroute(BaseBuilding *building) {
 	selectTableWidget_->hide();
 
 	BaseIndustry *industry = dynamic_cast<BaseIndustry *>(building);
-	emit sendPreorder(*goods_, industry);
+	emit sendPreroute(*goods_, industry);
+	emit dataChanged();
 }
 
 QString WarehouseTableWidget::toString(double value) {

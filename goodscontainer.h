@@ -16,12 +16,14 @@ public:
 
 	Goods *getGoodsById(int id);
 
-	bool addItem(const Goods &goods);
-	void removeItem(const Goods &goods);
+	double addItem(const Goods &goods);
+	double removeItem(const Goods &goods);
 
 	inline const QList<Goods *> &container() const { return this->container_; }
 
 	inline const double curVolume() const { return this->curVolume_; }
+
+	inline const double freeVolume() const { return maxVolume_ - curVolume_; }
 
 	inline void setMaxVolume(double max) { this->maxVolume_ = max; }
 	inline const double maxVolume() const { return this->maxVolume_; }

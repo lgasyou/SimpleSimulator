@@ -6,6 +6,7 @@
 class BaseBuilding;
 class Garage;
 class Truck;
+struct Route;
 
 class MyPushButton;
 
@@ -26,15 +27,22 @@ public:
 public slots:
 	void updateDisplay();
 
+	void buttonClicked(MyPushButton *);
+
 	void showSetRouteDialog(MyPushButton *);
 
-	void setRoute(BaseBuilding *);
+	void setRoute(Route *);
+
+signals:
+	void dataChanged();
 
 private:
 	// transforms double into QString
 	static QString toString(double value);
 
 	Garage *garage_;
+
+	int selectedTruckId_;
 };
 
 #endif // !GARAGETABLEWIDGET_H

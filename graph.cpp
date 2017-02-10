@@ -6,7 +6,7 @@ void Graph::addVertex(const QString &item) {
 	graph_.push_back(Vertex(item, nullptr, nullptr));
 }
 
-void Graph::addPath(const QString &begin, const QString &end, double weight) {
+void Graph::addPath(const QString &begin, const QString &end, double volume) {
 	int indexOfBegin = indexOf(begin);
 	if (indexOfBegin == -1) {
 		addVertex(begin);
@@ -20,12 +20,12 @@ void Graph::addPath(const QString &begin, const QString &end, double weight) {
 
 	Arc *originalOut = graph_[indexOfBegin].firstOut;
 	Arc *originalIn = graph_[indexOfEnd].firstIn;
-	Arc *newArc = new Arc(weight, indexOfBegin, indexOfEnd, originalOut, originalIn);
+	Arc *newArc = new Arc(volume, indexOfBegin, indexOfEnd, originalOut, originalIn);
 	graph_[indexOfBegin].firstOut = newArc;
 	graph_[indexOfEnd].firstIn = newArc;
 }
 
-double Graph::weight(const QString &begin, const QString &end) const {
+double Graph::volume(const QString &begin, const QString &end) const {
 	int indexOfBegin = indexOf(begin);
 	if (indexOfBegin == -1)
 		return -1;
@@ -34,7 +34,7 @@ double Graph::weight(const QString &begin, const QString &end) const {
 	while (arc) {
 		int indexOfEnd = arc->tailVertex;
 		if (graph_[indexOfEnd].item == end)
-			return arc->weight;
+			return arc->volume;
 		arc = arc->headArc;
 	}
 	return -1;
@@ -49,8 +49,8 @@ std::vector<Goods> Graph::precursors(const QString &item) const {
 	Arc *arc = graph_[indexOfItem].firstIn;
 	while (arc) {
 		const QString &name = graph_[arc->headVertex].item;
-		double weight = arc->weight;
-		ret.push_back(Goods(name, weight));
+		double volume = arc->volume;
+		ret.push_back(Goods(name, volume));
 		arc = arc->tailArc;
 	}
 	return ret;
@@ -65,8 +65,8 @@ std::vector<Goods> Graph::successors(const QString &item) const {
 	Arc *arc = graph_[indexOfItem].firstOut;
 	while (arc) {
 		const QString &name = graph_[arc->tailVertex].item;
-		double weight = arc->weight;
-		ret.push_back(Goods(name, weight));
+		double volume = arc->volume;
+		ret.push_back(Goods(name, volume));
 		arc = arc->headArc;
 	}
 	return ret;

@@ -4,10 +4,10 @@
 #include <QString>
 
 struct Goods {
-	Goods(const QString &goods_, double weight_);
+	Goods(const QString &name_, double volume_);
 
-	QString goods;
-	double weight;
+	QString name;
+	double volume;
 };
 
 #endif // !GOODS_H

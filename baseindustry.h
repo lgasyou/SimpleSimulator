@@ -22,17 +22,23 @@ public:
 
 	void deliverGoods(const Goods &goods, BaseIndustry *dest);
 
-	void putInStorage(const Goods &goods);
+	double putInStorage(const Goods &goods);
 
-	void putOutStorage(const Goods &goods);
+	double putOutStorage(const Goods &goods);
 
 	inline Warehouse *warehouse() const { return this->warehouse_; }
 
 	inline Garage *garage() const { return this->garage_; }
 
+	const std::vector<Goods> &products() const { return this->products_; }
+
+	const std::vector<Goods> &rawMaterials() const { return this->rawMaterials_; }
+
 protected:
     Warehouse *warehouse_;
+
 	Garage *garage_;
+
 	std::vector<Goods> products_;
 	std::vector<Goods> rawMaterials_;
 };

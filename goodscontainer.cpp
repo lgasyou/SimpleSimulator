@@ -11,8 +11,8 @@ GoodsContainer::~GoodsContainer() { }
 
 const double GoodsContainer::query(const QString &goodsName) const {
 	for (const auto &item : container_) {
-		if (item->goods == goodsName)
-			return item->weight;
+		if (item->name == goodsName)
+			return item->volume;
 	}
 	return 0.0;
 }
@@ -21,29 +21,29 @@ Goods *GoodsContainer::getGoodsById(int id) {
 	return container_[id];
 }
 
-bool GoodsContainer::addItem(const Goods &goods) {
-	// The space is full
-	if (curVolume_ + goods.weight > maxVolume_) {
-		double canAdd = maxVolume_ - curVolume_;
-		getGoodsByName(goods.goods)->weight += canAdd;
-		return false;
-	}
-	
-	getGoodsByName(goods.goods)->weight += goods.weight;
-	curVolume_ += goods.weight;
-	return true;
+double GoodsContainer::addItem(const Goods &goods) {
+	double finalAddition = (curVolume_ + goods.volume > maxVolume_) ?
+		maxVolume_ - curVolume_ : goods.volume;
+
+	getGoodsByName(goods.name)->volume += finalAddition;
+	curVolume_ += finalAddition;
+	return finalAddition;
 }
 
-void GoodsContainer::removeItem(const Goods &goods) {
-	Goods *curGoods = getGoodsByName(goods.goods);
-	if ((curGoods->weight -= goods.weight) == 0.0)
+double GoodsContainer::removeItem(const Goods &goods) {
+	Goods *curGoods = getGoodsByName(goods.name);
+	double finalRemoval = (curGoods->volume - goods.volume >= 0.0) ?
+		goods.volume : curGoods->volume;
+
+	if ((curGoods->volume -= finalRemoval) == 0.0)
 		container_.removeOne(curGoods);
-	curVolume_ -= goods.weight;
+	curVolume_ -= finalRemoval;
+	return finalRemoval;
 }
 
 Goods *GoodsContainer::getGoodsByName(const QString &goods) {
 	for (auto &item : container_) {
-		if (item->goods == goods)
+		if (item->name == goods)
 			return item;
 	}
 

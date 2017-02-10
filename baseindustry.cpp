@@ -1,7 +1,7 @@
 #include "baseindustry.h"
 #include "warehouse.h"
 #include "garage.h"
-#include "order.h"
+#include "route.h"
 #include "goods.h"
 
 #include "industrychainmanager.h"
@@ -33,7 +33,7 @@ void BaseIndustry::update() {
 
 void BaseIndustry::manufacture() {
 	for (const auto &rawMaterial : rawMaterials_)
-		if (rawMaterial.weight > warehouse_->query(rawMaterial.goods))
+		if (rawMaterial.volume > warehouse_->query(rawMaterial.name))
 			return;
 
 	for (const auto &rawMaterial : rawMaterials_)
@@ -43,14 +43,14 @@ void BaseIndustry::manufacture() {
 }
 
 void BaseIndustry::deliverGoods(const Goods &goods, BaseIndustry *dest) {
-	Order *order = new Order(goods, dest, this);
-	garage_->sendVihicle(order);
+	Route *route = new Route(goods, dest, this);
+	garage_->sendVihicle(route);
 }
 
-void BaseIndustry::putInStorage(const Goods &goods) {
-	warehouse_->addItem(goods);
+double BaseIndustry::putInStorage(const Goods &goods) {
+	return warehouse_->addItem(goods);
 }
 
-void BaseIndustry::putOutStorage(const Goods &goods) {
-	warehouse_->removeItem(goods);
+double BaseIndustry::putOutStorage(const Goods &goods) {
+	return warehouse_->removeItem(goods);
 }

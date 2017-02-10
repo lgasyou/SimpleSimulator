@@ -6,15 +6,15 @@
 #include <QString>
 
 struct Arc {
-	Arc(double weight_, int headVertex_, int tailVertex_, Arc *headArc_, Arc *tailArc_) :
-		weight(weight_),
+	Arc(double volume_, int headVertex_, int tailVertex_, Arc *headArc_, Arc *tailArc_) :
+		volume(volume_),
 		headVertex(headVertex_),
 		tailVertex(tailVertex_),
 		headArc(headArc_),
 		tailArc(tailArc_)
 	{ }
 
-	double weight;
+	double volume;
 	int headVertex;
 	int tailVertex;
 	Arc *headArc;
@@ -37,9 +37,9 @@ class Graph {
 public:
 	void addVertex(const QString &item);
 
-	void addPath(const QString &begin, const QString &end, double weight);
+	void addPath(const QString &begin, const QString &end, double volume);
 
-	double weight(const QString &begin, const QString &end) const;
+	double volume(const QString &begin, const QString &end) const;
 
 	std::vector<Goods> precursors(const QString &item) const;
 

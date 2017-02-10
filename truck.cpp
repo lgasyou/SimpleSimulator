@@ -1,33 +1,52 @@
 #include "truck.h"
-#include "order.h"
+#include "route.h"
 #include "baseindustry.h"
 #include "goodscontainer.h"
+#include "warehouse.h"
+
+#include <algorithm>
 
 Truck::Truck() :
 	Vihicle(),
-	order_(nullptr), 
+	route_(nullptr), 
+	loaded_(false),
 	occupied_(false),
 	remainTime_(0.0),
+	totalTime_(0.0),
 	freightHouse_(new GoodsContainer)
 { }
 
 Truck::~Truck() { }
 
 void Truck::load() {
-	order_->src->putOutStorage(order_->goods);
-	freightHouse_->addItem(order_->goods);
+	double freeVolume = freightHouse_->freeVolume();
+	double remainVolume = route_->orig->warehouse()->query(route_->goods.name);
+	double practialVolume = std::min({ freeVolume, remainVolume, route_->goods.volume });
+	Goods practialGoods = route_->goods;
+	practialGoods.volume = practialVolume;
+
+	route_->orig->putOutStorage(practialGoods);
+	freightHouse_->addItem(practialGoods);
+
+	// Set remain time and total time.
+	double distance = route_->dest->pos().distanceToPoint(route_->orig->pos());
+	double remainTime = 2 * distance / speed_;
+	remainTime_ = remainTime;
+	totalTime_ = remainTime;
+
+	loaded_ = true;
 	occupied_ = true;
 }
 
 void Truck::unload() {
-	order_->dest->putInStorage(order_->goods);
-	freightHouse_->removeItem(order_->goods);
-	occupied_ = false;
+	double freeVolume = route_->dest->warehouse()->freeVolume();
+	double remainVolume = freightHouse_->query(route_->goods.name);
+	double practialVolume = std::min({ freeVolume, remainVolume, route_->goods.volume });
+	Goods practialGoods = route_->goods;
+	practialGoods.volume = practialVolume;
 
-	delete order_;
-	order_ = nullptr;
-}
+	freightHouse_->removeItem(practialGoods);
+	route_->dest->putInStorage(practialGoods);
 
-const GoodsContainer *Truck::freightHouse() const {
-	return this->freightHouse_;
+	loaded_ = false;
 }

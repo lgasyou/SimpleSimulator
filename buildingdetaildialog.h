@@ -59,6 +59,8 @@ signals:
 	void dataChanged();
 
 private slots:
+	void addNewVihicle();
+
 	void on_pushButton_Buy_clicked();
 	void on_pushButton_Sell_clicked();
 

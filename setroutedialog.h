@@ -4,8 +4,9 @@
 #include <QDialog>
 
 class BaseBuilding;
-struct Order;
+struct Route;
 
+class QString;
 class SelectTableWidget;
 namespace Ui {
 class SetRouteDialog;
@@ -18,24 +19,33 @@ public:
 	SetRouteDialog(QWidget *parent = nullptr);
 	~SetRouteDialog();
 
+	void createNewRoute();
+
 	inline void showAndRaise();
 
+public slots:
 	void updateDisplay();
 
-public slots:
-	void getOrigin(BaseBuilding *);
+private slots:
+	void getGoodsName(const QString &);
+
+	void getGoodsVolume(double);
+
+	void getOrig(BaseBuilding *);
 	
 	void getDest(BaseBuilding *);
 
 	void finishSetting();
 
 signals:
-	void sendOrder(Order *);
+	void sendRoute(Route *);
+
+	void dataChanged();
 
 private:
-	Order *order_;
+	Route *route_;
 
-	SelectTableWidget *selectOriginTableWidget_;
+	SelectTableWidget *selectOrigTableWidget_;
 
 	SelectTableWidget *selectDestTableWidget_;
 
