@@ -32,13 +32,13 @@ void BaseIndustry::update() {
 }
 
 void BaseIndustry::manufacture() {
-	for (auto &rawMaterial : rawMaterials_)
+	for (const auto &rawMaterial : rawMaterials_)
 		if (rawMaterial.weight > warehouse_->query(rawMaterial.goods))
 			return;
 
-	for (auto &rawMaterial : rawMaterials_)
+	for (const auto &rawMaterial : rawMaterials_)
 		warehouse_->removeItem(rawMaterial);
-	for (auto &product : products_)
+	for (const auto &product : products_)
 		warehouse_->addItem(product);
 }
 

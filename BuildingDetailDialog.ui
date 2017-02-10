@@ -6,27 +6,94 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>811</width>
-    <height>196</height>
+    <width>899</width>
+    <height>303</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="3">
-    <layout class="QVBoxLayout" name="verticalLayout_ProperitiesOfBaseIndustry">
+   <item row="1" column="1">
+    <widget class="QTabWidget" name="tabWidget_industry">
+     <property name="currentIndex">
+      <number>-1</number>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="6">
+    <layout class="QVBoxLayout" name="verticalLayout_Build">
      <item>
-      <widget class="QLabel" name="label_WarehouseSum">
+      <widget class="MyPushButton" name="pushButton_Build_IronMine">
        <property name="text">
-        <string>TextLabel</string>
+        <string>Iron Mine</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_GarageState">
+      <widget class="MyPushButton" name="pushButton_Build_CoalMine">
        <property name="text">
-        <string>TextLabel</string>
+        <string>Coal Mine</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="MyPushButton" name="pushButton_Build_SteelBaseIndustry">
+       <property name="text">
+        <string>Steel Factory</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="MyPushButton" name="pushButton_Build_BaseCommerce">
+       <property name="text">
+        <string>Commerce</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="MyPushButton" name="pushButton_Build_residence">
+       <property name="text">
+        <string>Residence</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="2">
+    <widget class="QLabel" name="label_WarehouseSum">
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="5">
+    <layout class="QVBoxLayout" name="verticalLayout_Main">
+     <item>
+      <widget class="QPushButton" name="pushButton_Buy">
+       <property name="text">
+        <string>Buy</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Sell">
+       <property name="text">
+        <string>Sell</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Build">
+       <property name="text">
+        <string>Build</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Dismantle">
+       <property name="text">
+        <string>Dismantle</string>
        </property>
       </widget>
      </item>
@@ -71,89 +138,12 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="4">
-    <layout class="QVBoxLayout" name="verticalLayout_Main">
-     <item>
-      <widget class="QPushButton" name="pushButton_BaseIndustry_SwitchInfo">
-       <property name="text">
-        <string>Warehouse</string>
-       </property>
-       <property name="checkable">
-        <bool>true</bool>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_Buy">
-       <property name="text">
-        <string>Buy</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_Sell">
-       <property name="text">
-        <string>Sell</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_Build">
-       <property name="text">
-        <string>Build</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_Dismantle">
-       <property name="text">
-        <string>Dismantle</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="1" column="5">
-    <layout class="QVBoxLayout" name="verticalLayout_Build">
-     <item>
-      <widget class="MyPushButton" name="pushButton_Build_IronMine">
-       <property name="text">
-        <string>Iron Mine</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="MyPushButton" name="pushButton_Build_CoalMine">
-       <property name="text">
-        <string>Coal Mine</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="MyPushButton" name="pushButton_Build_SteelBaseIndustry">
-       <property name="text">
-        <string>Steel Factory</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="MyPushButton" name="pushButton_Build_BaseCommerce">
-       <property name="text">
-        <string>Commerce</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="MyPushButton" name="pushButton_Build_residence">
-       <property name="text">
-        <string>Residence</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+   <item row="1" column="3">
+    <widget class="QLabel" name="label_GarageState">
+     <property name="text">
+      <string>TextLabel</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

@@ -26,10 +26,10 @@ double IndustryChainManager::cost(const QString &beg, const QString &end) const 
 	return industryChain_.weight(beg, end);
 }
 
-std::vector<Goods> IndustryChainManager::precursors(const QString & item) const {
+std::vector<Goods> IndustryChainManager::precursors(const QString &item) const {
 	return industryChain_.precursors(item);
 }
 
-std::vector<Goods> IndustryChainManager::successors(const QString & item) const {
+std::vector<Goods> IndustryChainManager::successors(const QString &item) const {
 	return industryChain_.successors(item);
 }

@@ -3,24 +3,19 @@
 #include "bankdialog.h"
 #include "buildingdetaildialog.h"
 #include "companydetaildialog.h"
+#include "setroutedialog.h"
 
 UIManager::UIManager() {
 	init();
 }
 
-UIManager::~UIManager() {
-	if (bankDialog_)
-		delete bankDialog_;
-	if (buildingDetailDialog_)
-		delete buildingDetailDialog_;
-	if (companyDetailDialog_)
-		delete companyDetailDialog_;
-}
+UIManager::~UIManager() { }
 
 void UIManager::init() {
 	bankDialog_ = nullptr;
 	buildingDetailDialog_ = nullptr;
 	companyDetailDialog_ = nullptr;
+	setRouteDialog_ = nullptr;
 }
 
 UIManager &UIManager::instance() {
@@ -44,4 +39,10 @@ CompanyDetailDialog *UIManager::companyDetailDialog() {
 	if (!companyDetailDialog_)
 		companyDetailDialog_ = new CompanyDetailDialog;
 	return companyDetailDialog_;
+}
+
+SetRouteDialog *UIManager::setRouteDialog() {
+	if (!setRouteDialog_)
+		setRouteDialog_ = new SetRouteDialog;
+	return setRouteDialog_;
 }

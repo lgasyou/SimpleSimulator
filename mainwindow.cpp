@@ -116,10 +116,9 @@ void MainWindow::updateDisplay() {
 }
 
 void MainWindow::updateCompanyInfo() {
-    ui->label_CompanyName->setText(playerCompany_->name());
-    QString cash = toString(playerCompany_->cash());
+    const QString &cash = toString(playerCompany_->cash());
     ui->label_CompanyCash->setText(tr("Cash: $") + cash);
-    QString totalValue = toString(playerCompany_->totalValue());
+    const QString &totalValue = toString(playerCompany_->totalValue());
     ui->label_CompanyTotalValue->setText(tr("Total Value: $") + totalValue);
     ui->label_Turns->setText(tr("Turn ") + QString::number(TimeManager::instance().currentTime()));
 }
@@ -142,8 +141,10 @@ void MainWindow::setupBuildingInfoTableWidget() {
 }
 
 void MainWindow::setupBuildingDetailDialog(BuildingDetailDialog *buildingDetailDialog) {
-	static bool isFirstTimeCallThisFunction = true;
-	if (isFirstTimeCallThisFunction == false)	return;
+	static bool isTheFirstTimeCall = true;
+	if (isTheFirstTimeCall == false)	return;
+
+	buildingDetailDialog->setParent(this, Qt::Window);
 
 	connect(buildingDetailDialog, SIGNAL(buySignal(BaseBuilding*)),
 		this, SLOT(buy(BaseBuilding*)));
@@ -155,15 +156,17 @@ void MainWindow::setupBuildingDetailDialog(BuildingDetailDialog *buildingDetailD
 	connect(this, SIGNAL(dataChanged()),
 		buildingDetailDialog, SLOT(updateDisplay()));
 
-	isFirstTimeCallThisFunction = false;
+	isTheFirstTimeCall = false;
 }
 
 void MainWindow::setupCompanyDetailDialog(CompanyDetailDialog *companyDetailDialog) {
-	static bool isFirstTimeCallThisFunction = true;
-	if (isFirstTimeCallThisFunction == false)	return;
+	static bool isTheFirstTimeCall = true;
+	if (isTheFirstTimeCall == false)	return;
+
+	companyDetailDialog->setParent(this, Qt::Window);
 
 	connect(this, SIGNAL(dataChanged()),
 		companyDetailDialog, SLOT(updateDisplay()));
 
-	isFirstTimeCallThisFunction = false;
+	isTheFirstTimeCall = false;
 }

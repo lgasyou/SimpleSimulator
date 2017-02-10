@@ -21,11 +21,20 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
     ui(new Ui::BuildingDetailDialog)
 {
     ui->setupUi(this);
-	ui->verticalLayout_ProperitiesOfBaseIndustry->addWidget(warehouseTableWidget_);
-	ui->verticalLayout_ProperitiesOfBaseIndustry->addWidget(garageTableWidget_);
 
-	connect(ui->pushButton_BaseIndustry_SwitchInfo, SIGNAL(toggled(bool)),
-		this, SLOT(switchBaseIndustryDisplay(bool)));
+	QWidget *widget_warehouse = new QWidget;
+	QVBoxLayout *layout_warehouse = new QVBoxLayout;
+	layout_warehouse->addWidget(ui->label_WarehouseSum);
+	layout_warehouse->addWidget(warehouseTableWidget_);
+	widget_warehouse->setLayout(layout_warehouse);
+	ui->tabWidget_industry->addTab(widget_warehouse, "Warehouse");
+
+	QWidget *widget_garage = new QWidget;
+	QVBoxLayout *layout_garage = new QVBoxLayout;
+	layout_garage->addWidget(ui->label_GarageState);
+	layout_garage->addWidget(garageTableWidget_);
+	widget_garage->setLayout(layout_garage);
+	ui->tabWidget_industry->addTab(widget_garage, "Garage");
 
 	connect(this, SIGNAL(dataChanged()),
 		warehouseTableWidget_, SLOT(updateDisplay()));
@@ -63,19 +72,6 @@ void BuildingDetailDialog::updateDisplay() {
 	displayAccordingToVisitor();
 }
 
-void BuildingDetailDialog::switchBaseIndustryDisplay(bool toggled) {
-	QString text;
-	BaseIndustry *industry = dynamic_cast<BaseIndustry *>(building_);
-	if (toggled) {
-		showWarehouse(industry);
-		text = tr("Warehouse");
-	} else {
-		showGarage(industry);
-		text = tr("Garage");
-	}
-	ui->pushButton_BaseIndustry_SwitchInfo->setText(text);
-}
-
 void BuildingDetailDialog::changeType(MyPushButton *button) {
 	const QString &newType = button->text();
 	emit changeTypeSignal(building_, newType);
@@ -96,8 +92,8 @@ void BuildingDetailDialog::hideVariableWidget() {
 	ui->pushButton_Build_residence->hide();
 	ui->pushButton_Buy->hide();
 	ui->pushButton_Dismantle->hide();
-	ui->pushButton_BaseIndustry_SwitchInfo->hide();
 	ui->pushButton_Sell->hide();
+	ui->tabWidget_industry->hide();
 	garageTableWidget_->hide();
 	ui->label_GarageState->hide();
 	warehouseTableWidget_->hide();
@@ -130,36 +126,34 @@ void BuildingDetailDialog::displayAccordingToVisitor() {
 	if (type == "Foundation")
 		typeIsFoundation();
 	else if (type.contains("Factory") || type.contains("Mine"))
-		typeIsBaseIndustry();
-	else if (type.contains("BaseCommerce"))
-		typeIsBaseCommerce();
+		typeIsIndustry();
+	else if (type.contains("Commerce"))
+		typeIsCommerce();
 	else
-		typeIsBaseResidence();
+		typeIsResidence();
 }
 
 void BuildingDetailDialog::typeIsFoundation() {
 	ui->pushButton_Build->show();
 }
 
-void BuildingDetailDialog::typeIsBaseIndustry() {
+void BuildingDetailDialog::typeIsIndustry() {
 	BaseIndustry *industry = dynamic_cast<BaseIndustry *>(building_);
 	warehouseTableWidget_->setWarehouse(industry->warehouse());
 	garageTableWidget_->setGarage(industry->garage());
 
-	if (ui->pushButton_BaseIndustry_SwitchInfo->isChecked())
-		showWarehouse(industry);
-	else
-		showGarage(industry);
+	showWarehouse(industry);
+	showGarage(industry);
 
 	ui->pushButton_Dismantle->show();
-	ui->pushButton_BaseIndustry_SwitchInfo->show();
+	ui->tabWidget_industry->show();
 }
 
-void BuildingDetailDialog::typeIsBaseCommerce() {
+void BuildingDetailDialog::typeIsCommerce() {
 	ui->pushButton_Dismantle->show();
 }
 
-void BuildingDetailDialog::typeIsBaseResidence() {
+void BuildingDetailDialog::typeIsResidence() {
 	ui->pushButton_Dismantle->show();
 }
 
@@ -172,8 +166,6 @@ void BuildingDetailDialog::showGarage(BaseIndustry *industry) {
 	garageTableWidget_->show();
 	ui->label_GarageState->show();
 	garageTableWidget_->updateDisplay();
-	warehouseTableWidget_->hide();
-	ui->label_WarehouseSum->hide();
 }
 
 void BuildingDetailDialog::showWarehouse(BaseIndustry *industry) {
@@ -184,8 +176,6 @@ void BuildingDetailDialog::showWarehouse(BaseIndustry *industry) {
 	warehouseTableWidget_->show();
 	ui->label_WarehouseSum->show();
 	warehouseTableWidget_->updateDisplay();
-	garageTableWidget_->hide();
-	ui->label_GarageState->hide();
 }
 
 void BuildingDetailDialog::on_pushButton_Buy_clicked() {

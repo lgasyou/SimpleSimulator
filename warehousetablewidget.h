@@ -5,10 +5,11 @@
 
 class Warehouse;
 class BaseIndustry;
+class BaseBuilding;
 struct Goods;
 
 class MyPushButton;
-class SelectIndustryDialog;
+class SelectTableWidget;
 
 class WarehouseTableWidget : public QTableWidget {
     Q_OBJECT
@@ -24,11 +25,11 @@ signals:
 	void sendPreorder(const Goods &goods, BaseIndustry *dest);
 
 public slots:
-	void goSelectBaseIndustry();
+	void goSelectIndustry();
 
 	void getGoods(MyPushButton *);
 
-	void getDestAndSendSignal(MyPushButton *);
+	void getDestAndSendPreorder(BaseBuilding *dest);
 
 	void updateDisplay();
 
@@ -37,7 +38,7 @@ private:
 	static QString toString(double value);
 
 	Warehouse *warehouse_;
-	SelectIndustryDialog *selectBaseIndustryDialog_;
+	SelectTableWidget *selectTableWidget_;
 	Goods *goods_;
 };
 

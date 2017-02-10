@@ -4,6 +4,7 @@
 class BankDialog;
 class BuildingDetailDialog;
 class CompanyDetailDialog;
+class SetRouteDialog;
 
 class UIManager {
 public:
@@ -14,6 +15,8 @@ public:
 	BuildingDetailDialog *buildingDetailDialog();
 
 	CompanyDetailDialog *companyDetailDialog();
+
+	SetRouteDialog *setRouteDialog();
 
 private:
 	UIManager();
@@ -26,6 +29,7 @@ private:
 	BankDialog *bankDialog_;
 	BuildingDetailDialog *buildingDetailDialog_;
 	CompanyDetailDialog *companyDetailDialog_;
+	SetRouteDialog *setRouteDialog_;
 };
 
 #endif // !UIMANAGER_H

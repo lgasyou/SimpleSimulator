@@ -36,13 +36,6 @@
     <item row="0" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout_Labels">
       <item>
-       <widget class="QLabel" name="label_CompanyName">
-        <property name="text">
-         <string>TextLabel</string>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QLabel" name="label_CompanyCash">
         <property name="text">
          <string>TextLabel</string>
@@ -83,7 +76,7 @@
      <x>0</x>
      <y>0</y>
      <width>665</width>
-     <height>22</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_Files">

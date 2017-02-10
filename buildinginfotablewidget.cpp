@@ -50,6 +50,7 @@ void BuildingInfoTableWidget::updateDisplay() {
     this->setRowCount(buildingList.size());
 
 	int index = 0;
+	this->clearContents();
 	for (auto &iter = buildingList.constBegin(); iter != buildingList.constEnd(); ++iter, ++index) {
 		displayBasicInfo(index, *iter);
 		displayAccordingToVisitor(index, *iter);

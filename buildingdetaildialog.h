@@ -30,8 +30,6 @@ public:
 public slots:
 	void updateDisplay();
 
-	void switchBaseIndustryDisplay(bool);
-
 	// Changes the type of building by button's text
 	void changeType(MyPushButton *);
 
@@ -43,9 +41,9 @@ private:
 	void displayAccordingToVisitor();
 
 	void typeIsFoundation();
-	void typeIsBaseIndustry();
-	void typeIsBaseCommerce();
-	void typeIsBaseResidence();
+	void typeIsIndustry();
+	void typeIsCommerce();
+	void typeIsResidence();
 
 	void showGarage(BaseIndustry *);
 	void showWarehouse(BaseIndustry *);

@@ -3,7 +3,11 @@
 
 #include <QTableWidget>
 
+class BaseBuilding;
 class Garage;
+class Truck;
+
+class MyPushButton;
 
 class GarageTableWidget : public QTableWidget {
 	Q_OBJECT
@@ -15,10 +19,16 @@ public:
 
 	void init();
 
+	void updateEachLine(int index, Truck *);
+
 	inline void setGarage(Garage *garage) { this->garage_ = garage; }
 
 public slots:
 	void updateDisplay();
+
+	void showSetRouteDialog(MyPushButton *);
+
+	void setRoute(BaseBuilding *);
 
 private:
 	// transforms double into QString
