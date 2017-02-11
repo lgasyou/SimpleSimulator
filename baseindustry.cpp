@@ -6,6 +6,8 @@
 
 #include "industrychainmanager.h"
 
+#include <QString>
+
 BaseIndustry::BaseIndustry(const QString &type) :
 	BaseBuilding("Factory", type),
 	warehouse_(new Warehouse),

@@ -15,7 +15,7 @@ class BuildingInfoTableWidget : public QTableWidget {
     Q_OBJECT
 
 public:
-    BuildingInfoTableWidget(QWidget *parent = 0);
+    BuildingInfoTableWidget(QWidget *parent = nullptr);
 
 	void init();
 

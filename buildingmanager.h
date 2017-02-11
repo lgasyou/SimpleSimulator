@@ -6,6 +6,8 @@
 class BaseBuilding;
 class Company;
 
+// Owns and manages the pointers of buildings.
+// Updates the data of buildings.
 class BuildingManager {
 public:
 	static BuildingManager &instance();
@@ -14,6 +16,7 @@ public:
 
     inline const int buildingNumber() const { return buildingList_.size(); }
 
+	// In order to get the balance of Company.
     const double deltaValueOfCompanyProperties(Company *) const;
 
     BaseBuilding *resetItemType(BaseBuilding *, const QString &);

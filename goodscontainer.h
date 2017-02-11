@@ -2,9 +2,10 @@
 #define GOODSCONTAINER_H
 
 #include <QList>
-#include <QString>
 
 struct Goods;
+
+class QString;
 
 class GoodsContainer {
 public:
@@ -16,7 +17,12 @@ public:
 
 	Goods *getGoodsById(int id);
 
+	// If the goods.volume is smaller or equal to free volume, just adds it.
+	// If not, resets addition volume as the free volume of container.
 	double addItem(const Goods &goods);
+
+	// If the goods.volume is smaller or equal to free volume, just removes it.
+	// If not, resets removal volume as the current volume of container.
 	double removeItem(const Goods &goods);
 
 	inline const QList<Goods *> &container() const { return this->container_; }
@@ -29,6 +35,8 @@ public:
 	inline const double maxVolume() const { return this->maxVolume_; }
 
 protected:
+	// Gets goods' pointer if goods has already exsited.
+	// Otherwise creates a new goods object.
 	Goods *getGoodsByName(const QString &goods);
 
 	QList<Goods *> container_;

@@ -2,6 +2,8 @@
 #include "gameconstants.h"
 #include "goods.h"
 
+#include <QString>
+
 GoodsContainer::GoodsContainer() :
 	maxVolume_(GameConstants::defaultMaxVolOfWarehouse),
 	curVolume_(0.0)

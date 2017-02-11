@@ -19,6 +19,7 @@ public:
 	SetRouteDialog(QWidget *parent = nullptr);
 	~SetRouteDialog();
 
+	// Creates a new object if the former one has been used.
 	void createNewRoute();
 
 	inline void showAndRaise();
@@ -35,6 +36,7 @@ private slots:
 	
 	void getDest(BaseBuilding *);
 
+	// Summarizes all infomations and sends Route to Garage.
 	void finishSetting();
 
 signals:

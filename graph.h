@@ -3,7 +3,8 @@
 
 #include "goods.h"
 #include <vector>
-#include <QString>
+
+class QString;
 
 struct Arc {
 	Arc(double volume_, int headVertex_, int tailVertex_, Arc *headArc_, Arc *tailArc_) :

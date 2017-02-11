@@ -2,6 +2,8 @@
 
 #include "goods.h"
 
+#include <QString>
+
 void Graph::addVertex(const QString &item) {
 	graph_.push_back(Vertex(item, nullptr, nullptr));
 }

@@ -13,13 +13,13 @@ public:
 
 	~Truck();
 
-	// Exchanges goods with factory which is source
+	// Loads goods from factory
 	// Calculates and sets remain time
 	// Sets occupied_ as true
 	// Sets loaded_ as true
 	void load();
 
-	// Exchanges goods with factory which is destination
+	// Unloads goods to factory
 	// Sets loaded_ as false
 	void unload();
 

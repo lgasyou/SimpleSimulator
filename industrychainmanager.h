@@ -2,11 +2,12 @@
 #define INDUSTRYCHAINMANAGER_H
 
 #include <vector>
-#include <QString>
 #include "graph.h"
 
 class BaseBuilding;
 struct Goods;
+
+class QString;
 
 // This class contains the industry chain of this game.
 class IndustryChainManager {
@@ -15,7 +16,8 @@ public:
 
 	void init();
 
-	double cost(const QString &beg, const QString &end) const;
+	// Returns the cost from origin to destination.
+	double cost(const QString &orig, const QString &dest) const;
 
 	std::vector<Goods> precursors(const QString &item) const;
 

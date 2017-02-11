@@ -6,6 +6,7 @@ class QString;
 
 class BuildingFactory {
 public:
+	// Creates a new object and allocates a location to it.
 	BaseBuilding *create(const QString &type);
 };
 

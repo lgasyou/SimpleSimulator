@@ -11,6 +11,10 @@ public:
 
 	void init();
 
+	// Allocates and returns a coordinate with ValueGenerator.
+	// TODO:
+	// It still has some performance issues. It'll generate many 
+	// useless data if the map is almost full.
 	Vector2D allocate();
 
 private:
@@ -19,6 +23,9 @@ private:
 	MapManager(const MapManager &) = delete;
 	MapManager &operator=(const MapManager &) = delete;
 
+	// This array contains a map which shows wether a location is
+	// occupied or not.
 	bool occupiedMap_[100][100];
 };
+
 #endif // !MAPMANAGER_H

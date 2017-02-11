@@ -2,12 +2,13 @@
 #define BASEINDUSTRY_H
 
 #include "basebuilding.h"
-#include <QString>
 #include <vector>
 
 class Warehouse;
 class Garage;
 struct Goods;
+
+class QString;
 
 class BaseIndustry : public BaseBuilding {
 public:
@@ -20,6 +21,7 @@ public:
 
 	void manufacture();
 
+	// Creates a route object and send vihicle by this route.
 	void deliverGoods(const Goods &goods, BaseIndustry *dest);
 
 	double putInStorage(const Goods &goods);

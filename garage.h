@@ -35,7 +35,7 @@ public:
 
 private:
 	// Returns truck* if has free truck, 
-	// otherwise returns nullptr.
+	// Otherwise returns nullptr.
 	Truck *selectFreeTruck();
 
 	QList<Truck *> vihicleList_;

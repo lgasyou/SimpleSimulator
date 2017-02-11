@@ -1,5 +1,7 @@
 #include "industrychainmanager.h"
 
+#include <QString>
+
 IndustryChainManager::IndustryChainManager() {
 	init();
 }
@@ -22,8 +24,8 @@ IndustryChainManager &IndustryChainManager::instance() {
 	return industryChainManager;
 }
 
-double IndustryChainManager::cost(const QString &beg, const QString &end) const {
-	return industryChain_.volume(beg, end);
+double IndustryChainManager::cost(const QString &orig, const QString &dest) const {
+	return industryChain_.volume(orig, dest);
 }
 
 std::vector<Goods> IndustryChainManager::precursors(const QString &item) const {

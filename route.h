@@ -1,11 +1,12 @@
 #ifndef ROUTE_H
 #define ROUTE_H
 
-#include <QString>
 #include "goods.h"
 
 class BaseIndustry;
 class Truck;
+
+class QString;
 
 struct Route {
 	Route(const Goods &goods_, BaseIndustry *dest_,

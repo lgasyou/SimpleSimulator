@@ -20,6 +20,7 @@ class BuildingDetailDialog : public QDialog {
 
 public:
     BuildingDetailDialog(QWidget *parent = nullptr);
+
     ~BuildingDetailDialog();
 
 	inline void showAndRaise();
@@ -33,13 +34,20 @@ public slots:
 	// Changes the type of building by button's text
 	void changeType(MyPushButton *);
 
+	// Receives the data comes from WarehouseTableWidget or GarageTableWidget.
+	// Send infomation to model BaseIndustry.
 	void deliverGoods(const Goods &goods, BaseIndustry *dest);
 
 private:
+	// Hides all variable widget in order to display correctly.
 	void hideVariableWidget();
+
 	void displayBasicInfo();
+
+	// Displays according to whether the visitor is owner or not.
 	void displayAccordingToVisitor();
 
+	// Displays according to the type of building.
 	void typeIsFoundation();
 	void typeIsIndustry();
 	void typeIsCommerce();

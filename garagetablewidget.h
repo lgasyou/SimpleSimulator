@@ -14,7 +14,7 @@ class GarageTableWidget : public QTableWidget {
 	Q_OBJECT
 
 public:
-	GarageTableWidget(QWidget * parent = 0);
+	GarageTableWidget(QWidget * parent = nullptr);
 
 	~GarageTableWidget();
 

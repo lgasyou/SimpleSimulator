@@ -227,6 +227,7 @@
     <ClCompile Include="mainwindow.cpp" />
     <ClCompile Include="mapmanager.cpp" />
     <ClCompile Include="mypushbutton.cpp" />
+    <ClCompile Include="pricemanager.cpp" />
     <ClCompile Include="route.cpp" />
     <ClCompile Include="baseresidence.cpp" />
     <ClCompile Include="selecttablewidget.cpp" />
@@ -255,6 +256,7 @@
     <ClInclude Include="industrychainmanager.h" />
     <ClInclude Include="ironmine.h" />
     <ClInclude Include="mapmanager.h" />
+    <ClInclude Include="pricemanager.h" />
     <ClInclude Include="route.h" />
     <ClInclude Include="baseresidence.h" />
     <CustomBuild Include="setroutedialog.h">

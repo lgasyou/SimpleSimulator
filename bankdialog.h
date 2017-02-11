@@ -18,6 +18,7 @@ public:
 
     void updateDisplay();
 
+	// Displays according to whether the client has lent money or not.
 	void displayAccordingToClientStatus();
 
 	inline void setClient(Company *client) { this->client_ = client; }
@@ -26,6 +27,7 @@ public:
     static const double interestRate() { return interestRate_; }
 
 private slots:
+	// Sets datas with the input.
     void on_pushButton_Accept_clicked();
 
 private:

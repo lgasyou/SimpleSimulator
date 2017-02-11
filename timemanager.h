@@ -2,6 +2,7 @@
 #define TIMEMANAGER_H
 
 
+// This class controls the time of this game.
 class TimeManager {
 public:
 	static TimeManager &instance();

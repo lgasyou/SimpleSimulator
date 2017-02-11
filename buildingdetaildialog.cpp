@@ -71,7 +71,7 @@ BuildingDetailDialog::~BuildingDetailDialog() {
 }
 
 void BuildingDetailDialog::updateDisplay() {
-	// Return if this window isn't showing.
+	// Returns if this window isn't showing.
     if (this->isHidden())	return;
 
 	hideVariableWidget();
