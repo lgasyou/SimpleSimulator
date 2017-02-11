@@ -18,9 +18,10 @@ public:
 
     virtual ~BaseBuilding() { }
 
+	// Copys data from right hand side.
 	void copyInit(const BaseBuilding &);
 
-	// updates data after each turn
+	// Updates data after each turn
 	virtual void update();
 
 	void changeBaseValue();
@@ -40,18 +41,24 @@ public:
     inline void setOwner(Company *const owner) { this->owner_ = owner; }
     inline Company *const owner() const { return this->owner_; }
 
-	inline void setPos(const Vector2D pos) { this->pos_ = pos; }
-	inline const Vector2D &pos() const { return this->pos_; }
+	inline void setPosition(const Vector2D pos) { this->position_ = pos; }
+	inline const Vector2D &position() const { return this->position_; }
 
 private:
 	void initBasicValue();
 
+private:
     QString name_;
+
     double value_;
+
     double deltaValue_;
+
     QString type_;
+
     Company *owner_;
-	Vector2D pos_;
+
+	Vector2D position_;
 };
 
 #endif // BUILDINGBASE_H

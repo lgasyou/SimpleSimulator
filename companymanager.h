@@ -17,10 +17,14 @@ public:
 
 private:
 	CompanyManager();
+
 	~CompanyManager();
+
 	CompanyManager(const CompanyManager &) = delete;
+
 	CompanyManager &operator=(const CompanyManager &) = delete;
 
+private:
 	Company *playerCompany_;
 
 	QList<Company *> aiCompanyList_;

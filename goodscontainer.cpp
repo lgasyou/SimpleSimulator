@@ -11,7 +11,7 @@ GoodsContainer::GoodsContainer() :
 
 GoodsContainer::~GoodsContainer() { }
 
-const double GoodsContainer::query(const QString &goodsName) const {
+double GoodsContainer::query(const QString &goodsName) const {
 	for (const auto &item : container_) {
 		if (item->name == goodsName)
 			return item->volume;

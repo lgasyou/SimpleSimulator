@@ -7,6 +7,7 @@ struct Goods {
 	Goods(const QString &name_, double volume_);
 
 	QString name;
+
 	double volume;
 };
 

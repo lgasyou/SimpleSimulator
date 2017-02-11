@@ -23,15 +23,22 @@ public:
 
 private:
 	UIManager();
+
 	~UIManager();
+
 	UIManager(const UIManager &) = delete;
+
 	UIManager &operator=(const UIManager &) = delete;
 
 	void init();
 
+private:
 	BankDialog *bankDialog_;
+
 	BuildingDetailDialog *buildingDetailDialog_;
+
 	CompanyDetailDialog *companyDetailDialog_;
+
 	SetRouteDialog *setRouteDialog_;
 };
 

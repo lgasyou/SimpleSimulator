@@ -34,6 +34,7 @@ public:
 
 private:
 	double x_;
+
 	double y_;
 };
 

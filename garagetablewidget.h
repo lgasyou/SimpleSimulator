@@ -40,6 +40,7 @@ private:
 	// transforms double into QString
 	static QString toString(double value);
 
+private:
 	Garage *garage_;
 
 	int selectedTruckId_;

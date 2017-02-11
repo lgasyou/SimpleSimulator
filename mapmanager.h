@@ -19,10 +19,14 @@ public:
 
 private:
 	MapManager();
+
 	~MapManager();
+
 	MapManager(const MapManager &) = delete;
+
 	MapManager &operator=(const MapManager &) = delete;
 
+private:
 	// This array contains a map which shows wether a location is
 	// occupied or not.
 	bool occupiedMap_[100][100];

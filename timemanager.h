@@ -7,23 +7,29 @@ class TimeManager {
 public:
 	static TimeManager &instance();
 
-    void setDeltaTime(double deltaTime) { deltaTime_ = deltaTime; }
-    const double deltaTime() { return deltaTime_; }
+    inline void setDeltaTime(double deltaTime) { this->deltaTime_ = deltaTime; }
+    inline double deltaTime() const { return this->deltaTime_; }
 
-	void increaseTime() { currentTime_ += frequence_; }
-    const double currentTime() { return currentTime_; }
+	inline void increaseTime() { this->currentTime_ += frequence_; }
+    inline double currentTime() const { return this->currentTime_; }
 
-	void setFrequence(double frequence) { frequence_ = frequence; }
-	const double frequence() { return frequence_; }
+	inline void setFrequence(double frequence) { this->frequence_ = frequence; }
+	inline double frequence() const { return this->frequence_; }
 
 private:
 	TimeManager();
+
 	~TimeManager() { }
+
 	TimeManager(const TimeManager &) = delete;
+
 	TimeManager &operator=(const TimeManager &) = delete;
 
+private:
     double deltaTime_;
+
     double currentTime_;
+
 	double frequence_;
 };
 

@@ -14,10 +14,6 @@ CompanyDetailDialog::~CompanyDetailDialog() {
     delete ui;
 }
 
-QString CompanyDetailDialog::toString(double value) {
-	return QString::number(value, 10, 2);
-}
-
 void CompanyDetailDialog::updateDisplay() {
 	// Return if this window isn't showing.
     if (this->isHidden())	return;
@@ -31,4 +27,8 @@ void CompanyDetailDialog::updateDisplay() {
     ui->label_Cash->setText(tr("Cash:        $") + cash);
     ui->label_TotalValue->setText(tr("Total Value: $") + totalValue);
     ui->label_Liability->setText(tr("Liability:   $") + liability);
+}
+
+QString CompanyDetailDialog::toString(double value) {
+	return QString::number(value, 10, 2);
 }

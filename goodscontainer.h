@@ -13,7 +13,8 @@ public:
 
 	virtual ~GoodsContainer();
 
-	const double query(const QString &goodsName) const;
+	// Queries goods' volume by its name.
+	double query(const QString &goodsName) const;
 
 	Goods *getGoodsById(int id);
 
@@ -27,20 +28,23 @@ public:
 
 	inline const QList<Goods *> &container() const { return this->container_; }
 
-	inline const double curVolume() const { return this->curVolume_; }
+	inline double curVolume() const { return this->curVolume_; }
 
-	inline const double freeVolume() const { return maxVolume_ - curVolume_; }
+	inline double freeVolume() const { return maxVolume_ - curVolume_; }
 
 	inline void setMaxVolume(double max) { this->maxVolume_ = max; }
-	inline const double maxVolume() const { return this->maxVolume_; }
+	inline double maxVolume() const { return this->maxVolume_; }
 
 protected:
 	// Gets goods' pointer if goods has already exsited.
 	// Otherwise creates a new goods object.
 	Goods *getGoodsByName(const QString &goods);
 
+protected:
 	QList<Goods *> container_;
+
 	double curVolume_;
+
 	double maxVolume_;
 };
 

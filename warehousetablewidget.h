@@ -21,11 +21,6 @@ public:
 
 	inline void setWarehouse(Warehouse *warehouse) { this->warehouse_ = warehouse; }
 
-signals:
-	void sendPreroute(const Goods &goods, BaseIndustry *dest);
-
-	void dataChanged();
-
 public slots:
 	void goSelectIndustry();
 
@@ -35,13 +30,21 @@ public slots:
 
 	void updateDisplay();
 
+signals:
+	void sendPreroute(const Goods &goods, BaseIndustry *dest);
+
+	void dataChanged();
+
 private:
 	// transforms double into QString
 	static QString toString(double value);
 
+private:
 	Warehouse *warehouse_;
-	SelectTableWidget *selectTableWidget_;
+
 	Goods *goods_;
+
+	SelectTableWidget *selectTableWidget_;
 };
 
 #endif // WAREHOUSETABLEWIDGET_H

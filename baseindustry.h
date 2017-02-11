@@ -42,6 +42,7 @@ protected:
 	Garage *garage_;
 
 	std::vector<Goods> products_;
+
 	std::vector<Goods> rawMaterials_;
 };
 

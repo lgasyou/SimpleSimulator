@@ -13,7 +13,8 @@ class CompanyDetailDialog : public QDialog {
     Q_OBJECT
 
 public:
-    explicit CompanyDetailDialog(QWidget *parent = 0);
+    explicit CompanyDetailDialog(QWidget *parent = nullptr);
+
     ~CompanyDetailDialog();
 
 	inline void showAndRaise();
@@ -27,7 +28,9 @@ private:
 	// transforms double into QString
 	static QString toString(double value);
 
+private:
     Company *company_;
+
     Ui::CompanyDetailDialog *ui;
 };
 

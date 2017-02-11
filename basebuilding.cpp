@@ -8,7 +8,7 @@ BaseBuilding::BaseBuilding(const QString &name, const QString &type, double delt
 	type_(type),
 	deltaValue_(deltaValue),
 	owner_(owner),
-	pos_(pos)
+	position_(pos)
 {
 	initBasicValue();
 }
@@ -18,7 +18,7 @@ void BaseBuilding::copyInit(const BaseBuilding &rhs) {
 	value_ = rhs.value();
 	deltaValue_ = rhs.deltaValue();
 	owner_ = rhs.owner();
-	pos_ = rhs.pos();
+	position_ = rhs.position();
 }
 
 void BaseBuilding::initBasicValue() {

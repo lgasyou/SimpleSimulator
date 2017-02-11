@@ -13,10 +13,14 @@ public:
 
 private:
 	ValueGenerator() { }
+
 	~ValueGenerator() { }
+
 	ValueGenerator(const ValueGenerator &) = delete;
+
 	ValueGenerator &operator=(const ValueGenerator &) = delete;
 
+private:
     static std::default_random_engine generator_;
 };
 

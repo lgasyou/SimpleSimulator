@@ -14,7 +14,7 @@ public:
 
     BaseBuilding *getBuildingById(unsigned id);
 
-    inline const int buildingNumber() const { return buildingList_.size(); }
+    inline int buildingNumber() const { return buildingList_.size(); }
 
 	// In order to get the balance of Company.
     const double deltaValueOfCompanyProperties(Company *) const;
@@ -30,12 +30,16 @@ public:
 
 private:
     BuildingManager();
+
 	~BuildingManager();
+
 	BuildingManager(const BuildingManager &) = delete;
+
 	BuildingManager &operator=(const BuildingManager &) = delete;
 
 	QList<BaseBuilding *>::iterator iteratorOf(BaseBuilding *);
 
+private:
     QList<BaseBuilding *> buildingList_;
 };
 

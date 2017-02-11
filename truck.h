@@ -27,24 +27,29 @@ public:
 	inline Route *const route() const { return this->route_; }
 
 	inline void setLoaded(bool loaded) { this->loaded_ = loaded; }
-	inline const bool loaded() const { return this->loaded_; }
+	inline bool loaded() const { return this->loaded_; }
 
 	inline void setOccupied(bool occupied) { this->occupied_ = occupied; }
-	inline const bool occupied() const { return this->occupied_; }
+	inline bool occupied() const { return this->occupied_; }
 
 	inline void setRemainTime(double remainTime) { this->remainTime_ = remainTime; }
-	inline const double remainTime() const { return this->remainTime_; }
+	inline double remainTime() const { return this->remainTime_; }
 
-	inline const double totalTime() const { return this->totalTime_; }
+	inline double totalTime() const { return this->totalTime_; }
 
-	inline const GoodsContainer *freightHouse() const;
+	inline GoodsContainer *const freightHouse() const;
 
 private:
 	Route *route_;
+
 	GoodsContainer *freightHouse_;
+
 	bool loaded_;
+
 	bool occupied_;
+
 	double remainTime_;
+
 	double totalTime_;
 };
 
@@ -54,7 +59,7 @@ inline void Truck::setRoute(Route *route) {
 	this->route_ = route;
 }
 
-inline const GoodsContainer *Truck::freightHouse() const {
+inline GoodsContainer *const Truck::freightHouse() const {
 	return this->freightHouse_;
 }
 

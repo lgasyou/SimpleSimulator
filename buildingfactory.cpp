@@ -36,6 +36,6 @@ BaseBuilding *BuildingFactory::create(const QString &type) {
 	else
 		building = new BaseBuilding;
 	Vector2D allocatedPos = MapManager::instance().allocate();
-	building->setPos(allocatedPos);
+	building->setPosition(allocatedPos);
 	return building;
 }

@@ -8,34 +8,34 @@ void Graph::addVertex(const QString &item) {
 	graph_.push_back(Vertex(item, nullptr, nullptr));
 }
 
-void Graph::addPath(const QString &begin, const QString &end, double volume) {
-	int indexOfBegin = indexOf(begin);
-	if (indexOfBegin == -1) {
-		addVertex(begin);
-		indexOfBegin = (int)graph_.size() - 1;
+void Graph::addPath(const QString &orig, const QString &dest, double volume) {
+	int indexOfOrig = indexOf(orig);
+	if (indexOfOrig == -1) {
+		addVertex(orig);
+		indexOfOrig = (int)graph_.size() - 1;
 	}
-	int indexOfEnd = indexOf(end);
-	if (indexOfEnd == -1) {
-		addVertex(end);
-		indexOfEnd = (int)graph_.size() - 1;
+	int indexOfDest = indexOf(dest);
+	if (indexOfDest == -1) {
+		addVertex(dest);
+		indexOfDest = (int)graph_.size() - 1;
 	}
 
-	Arc *originalOut = graph_[indexOfBegin].firstOut;
-	Arc *originalIn = graph_[indexOfEnd].firstIn;
-	Arc *newArc = new Arc(volume, indexOfBegin, indexOfEnd, originalOut, originalIn);
-	graph_[indexOfBegin].firstOut = newArc;
-	graph_[indexOfEnd].firstIn = newArc;
+	Arc *originalOut = graph_[indexOfOrig].firstOut;
+	Arc *originalIn = graph_[indexOfDest].firstIn;
+	Arc *newArc = new Arc(volume, indexOfOrig, indexOfDest, originalOut, originalIn);
+	graph_[indexOfOrig].firstOut = newArc;
+	graph_[indexOfDest].firstIn = newArc;
 }
 
-double Graph::volume(const QString &begin, const QString &end) const {
-	int indexOfBegin = indexOf(begin);
-	if (indexOfBegin == -1)
+double Graph::volume(const QString &orig, const QString &dest) const {
+	int indexOfOrig = indexOf(orig);
+	if (indexOfOrig == -1)
 		return -1;
 
-	Arc *arc = graph_[indexOfBegin].firstOut;
+	Arc *arc = graph_[indexOfOrig].firstOut;
 	while (arc) {
-		int indexOfEnd = arc->tailVertex;
-		if (graph_[indexOfEnd].item == end)
+		int indexOfDest = arc->tailVertex;
+		if (graph_[indexOfDest].item == dest)
 			return arc->volume;
 		arc = arc->headArc;
 	}

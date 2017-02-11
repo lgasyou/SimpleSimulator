@@ -29,7 +29,7 @@ void Truck::load() {
 	freightHouse_->addItem(practialGoods);
 
 	// Set remain time and total time.
-	double distance = route_->dest->pos().distanceToPoint(route_->orig->pos());
+	double distance = route_->dest->position().distanceToPoint(route_->orig->position());
 	double remainTime = 2 * distance / speed_;
 	remainTime_ = remainTime;
 	totalTime_ = remainTime;

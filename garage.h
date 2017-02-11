@@ -38,9 +38,13 @@ private:
 	// Otherwise returns nullptr.
 	Truck *selectFreeTruck();
 
+private:
 	QList<Truck *> vihicleList_;
+
 	QList<Truck *> transitingTrucks_;
+
 	int vihicleCount_;
+
 	int freeVihicleCount_;
 };
 

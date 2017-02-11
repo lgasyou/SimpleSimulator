@@ -7,40 +7,52 @@
 class QString;
 
 struct Arc {
-	Arc(double volume_, int headVertex_, int tailVertex_, Arc *headArc_, Arc *tailArc_) :
+public:
+	Arc::Arc(double volume_, int headVertex_, int tailVertex_, Arc *headArc_, Arc *tailArc_) :
 		volume(volume_),
 		headVertex(headVertex_),
 		tailVertex(tailVertex_),
 		headArc(headArc_),
-		tailArc(tailArc_)
-	{ }
+		tailArc(tailArc_) { }
 
+public:
 	double volume;
+
 	int headVertex;
+
 	int tailVertex;
+
 	Arc *headArc;
+
 	Arc *tailArc;
 };
 
+
+
 struct Vertex {
-	Vertex(const QString &item_, Arc *firstIn_, Arc *firstOut_) :
+public:
+	Vertex::Vertex(const QString & item_, Arc * firstIn_, Arc * firstOut_) :
 		item(item_),
 		firstIn(firstIn_),
-		firstOut(firstOut_)
-	{ }
+		firstOut(firstOut_) { }
 
+public:
 	QString item;
+
 	Arc *firstIn;
+
 	Arc *firstOut;
 };
+
+
 
 class Graph {
 public:
 	void addVertex(const QString &item);
 
-	void addPath(const QString &begin, const QString &end, double volume);
+	void addPath(const QString &orig, const QString &dest, double volume);
 
-	double volume(const QString &begin, const QString &end) const;
+	double volume(const QString &orig, const QString &dest) const;
 
 	std::vector<Goods> precursors(const QString &item) const;
 

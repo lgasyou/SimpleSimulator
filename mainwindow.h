@@ -28,19 +28,27 @@ signals:
     void dataChanged();
 
 private slots:
+	// Opens bank dialog.
     void goBank();
+
+	// Calls function update() of every variable objects.
     void endTurns();
 
     void showBuildingDetail(BaseBuilding *building);
+
     void showCompanyDetail();
+
     void updateDisplay();
 
     void buy(BaseBuilding *building);
+
     void sell(BaseBuilding *building);
+
     void changeType(BaseBuilding *, const QString &);
 
 private:
     void updateCompanyInfo();
+
     void updateStatusBar(const QString &msg);
 
 	// transforms double into QString
@@ -52,9 +60,11 @@ private:
 
 	inline void setupCompanyDetailDialog(CompanyDetailDialog *);
 
+private:
     Company *playerCompany_;
 
 	BuildingInfoTableWidget *buildingInfoTableWidget_;
+
     Ui::MainWindow *ui;
 };
 

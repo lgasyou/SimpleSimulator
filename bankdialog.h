@@ -18,7 +18,7 @@ public:
 
     void updateDisplay();
 
-	// Displays according to whether the client has lent money or not.
+	// Displays according to whether the client has already lent money or not.
 	void displayAccordingToClientStatus();
 
 	inline void setClient(Company *client) { this->client_ = client; }
@@ -34,8 +34,11 @@ private:
 	// transforms double into QString
 	static QString toString(double value);
 
+private:
     static double interestRate_;
+
     Company *client_;
+
     Ui::BankDialog *ui;
 };
 

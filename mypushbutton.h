@@ -17,11 +17,11 @@ public:
 	inline void setIndex(int index) { this->index_ = index; }
 	inline int index() const { return this->index_; }
 
+public slots:
+	void repeater(bool);
+
 signals:
     void sendPointer(MyPushButton *);
-
-public slots:
-    void repeater(bool);
 
 private:
 	int index_;

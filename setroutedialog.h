@@ -17,6 +17,7 @@ class SetRouteDialog : public QDialog {
 
 public:
 	SetRouteDialog(QWidget *parent = nullptr);
+
 	~SetRouteDialog();
 
 	// Creates a new object if the former one has been used.

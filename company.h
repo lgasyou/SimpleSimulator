@@ -12,7 +12,13 @@ public:
 
 	~Company();
 
+	// Buys building if company's money is enough:
+	// Changes building's owner as this company.
+	// Deducts company's cash.
     bool buy(BaseBuilding *building);
+
+	// Changes building's owner as null pointer.
+	// Adds company's cash.
     bool sell(BaseBuilding *building);
 
     void update();
@@ -31,8 +37,13 @@ public:
 
 private:
     QString name_;
+
     double cash_;
+
+	// Records the total value of company,
+	// includes the value of properties.
     double totalValue_;
+
     double liability_;
 };
 

@@ -31,6 +31,8 @@ public:
 
 	void updateEachLine(int indexInWidget, int indexInManager, BaseBuilding *);
 
+	// Sets type(s) which will be displayed later.
+	// Uses '|' to add multiple objects.
 	void setSelector(int type);
 
 public slots:

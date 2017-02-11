@@ -24,12 +24,16 @@ public:
     bool readFile(const QString &fileName);
 
     void updateDisplay();
+
 	void displayBasicInfo(int index, BaseBuilding *building);
+
 	void displayAccordingToVisitor(int index, BaseBuilding *building);
 
 signals:
     void buySignal(BaseBuilding *);
+
     void sellSignal(BaseBuilding *);
+
     void showDetailSignal(BaseBuilding *);
 
 private slots:
