@@ -4,9 +4,7 @@
 #include <algorithm>
 #include <functional>
 
-CompanyManager::CompanyManager() {
-	playerCompany_ = new Company;
-}
+CompanyManager::CompanyManager() { }
 
 CompanyManager::~CompanyManager() {
 	delete playerCompany_;
@@ -15,6 +13,10 @@ CompanyManager::~CompanyManager() {
 CompanyManager &CompanyManager::instance() {
 	static CompanyManager companyManager;
 	return companyManager;
+}
+
+void CompanyManager::init() {
+	playerCompany_ = new Company;
 }
 
 void CompanyManager::update() {

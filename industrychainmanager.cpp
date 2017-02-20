@@ -2,9 +2,7 @@
 
 #include <QString>
 
-IndustryChainManager::IndustryChainManager() {
-	init();
-}
+IndustryChainManager::IndustryChainManager() { }
 
 IndustryChainManager::~IndustryChainManager() { }
 

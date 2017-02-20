@@ -15,7 +15,13 @@ public:
 	// Use singleton pattern.
 	static BuildingManager &instance();
 
+	void init();
+
     inline BaseBuilding *getBuildingById(size_t id) const;
+
+	BaseBuilding *getBuildingByPos(int x, int y) const;
+
+	int indexOf(BaseBuilding *) const;
 
     inline size_t buildingNumber() const { return buildings_.size(); }
 

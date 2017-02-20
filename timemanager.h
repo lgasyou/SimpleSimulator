@@ -8,6 +8,8 @@ public:
 	// Use singleton pattern.
 	static TimeManager &instance();
 
+	void init();
+
     inline void setDeltaTime(double deltaTime) { this->deltaTime_ = deltaTime; }
     inline double deltaTime() const { return this->deltaTime_; }
 

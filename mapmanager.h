@@ -10,19 +10,21 @@ public:
 	// Use singleton pattern.
 	static MapManager &instance();
 
+	void init();
+
 	// Allocates and returns a coordinate with ValueGenerator.
 	// TODO:
 	// It still has some performance issues. It'll generate many 
 	// useless data if the map is almost full.
 	Vector2D allocate();
 
+	auto occupiedMap() const { return this->occupiedMap_; }
+
 private:
 	// Hide constructor and destructor.
 	MapManager();
 
 	~MapManager();
-
-	void init();
 
 	MapManager(const MapManager &) = delete;
 

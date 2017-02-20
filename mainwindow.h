@@ -10,6 +10,7 @@ class MyPushButton;
 class BuildingInfoTableWidget;
 class BuildingInfoDialog;
 class CompanyDetailDialog;
+class MapUI;
 
 namespace Ui {
 class MainWindow;
@@ -33,6 +34,8 @@ private slots:
 
 	// Calls function update() of every variable objects.
     void endTurns();
+
+	void getBuildingByPos(int x, int y);
 
     void showBuildingDetail(BaseBuilding *building);
 
@@ -64,6 +67,8 @@ private:
     Company *playerCompany_;
 
 	BuildingInfoTableWidget *buildingInfoTableWidget_;
+
+	MapUI *mapUi_;
 
     Ui::MainWindow *ui;
 };

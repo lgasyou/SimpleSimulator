@@ -5,9 +5,7 @@
 #include "companydetaildialog.h"
 #include "setroutedialog.h"
 
-UIManager::UIManager() {
-	init();
-}
+UIManager::UIManager() { }
 
 UIManager::~UIManager() { }
 

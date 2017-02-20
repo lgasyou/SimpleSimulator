@@ -83,6 +83,11 @@
     <Filter Include="Source Files\Managers">
       <UniqueIdentifier>{8a50976a-7560-42d8-96eb-cb8b0e45047f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeneratedFiles\Debug\moc_bankdialog.cpp">
@@ -265,6 +270,18 @@
     <ClCompile Include="government.cpp">
       <Filter>Source Files\Company</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_mapui.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_mapui.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="mapui.cpp">
+      <Filter>Source Files\QtComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_resource.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mainwindow.h">
@@ -305,6 +322,15 @@
     </CustomBuild>
     <CustomBuild Include="buildinginfodialog.h">
       <Filter>Header Files\Dialogs</Filter>
+    </CustomBuild>
+    <CustomBuild Include="mapui.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="mapui.h">
+      <Filter>Header Files\QtComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="resource.qrc">
+      <Filter>Resource Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -423,6 +449,9 @@
     </ClInclude>
     <ClInclude Include="government.h">
       <Filter>Header Files\Company</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_mapui.h">
+      <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

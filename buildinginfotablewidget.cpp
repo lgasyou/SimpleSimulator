@@ -52,7 +52,6 @@ void BuildingInfoTableWidget::updateDisplay() {
 
 	this->clearContents();
 	for (int index = 0; index != buildingNumber; ++index) {
-
 		displayBasicInfo(index);
 		displayAccordingToVisitor(index);
 	}

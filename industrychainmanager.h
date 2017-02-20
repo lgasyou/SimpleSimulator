@@ -15,6 +15,8 @@ public:
 	// Use singleton pattern.
 	static IndustryChainManager &instance();
 
+	void init();
+
 	// Returns the cost from origin to destination.
 	double cost(const QString &orig, const QString &dest) const;
 
@@ -27,8 +29,6 @@ private:
 	IndustryChainManager();
 
 	~IndustryChainManager();
-
-	void init();
 
 	IndustryChainManager(const IndustryChainManager &) = delete;
 

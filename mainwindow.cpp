@@ -1,7 +1,12 @@
 #include "mainwindow.h"
+
+#include "government.h"
+
 #include "buildingmanager.h"
 #include "companymanager.h"
-#include "government.h"
+#include "industrychainmanager.h"
+#include "mapmanager.h"
+#include "pricemanager.h"
 #include "timemanager.h"
 #include "uimanager.h"
 
@@ -12,6 +17,7 @@
 #include "buildinginfodialog.h"
 #include "buildinginfotablewidget.h"
 #include "companydetaildialog.h"
+#include "mapui.h"
 #include "mypushbutton.h"
 #include "ui_mainwindow.h"
 #include <QTableWidget>
@@ -20,21 +26,37 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     buildingInfoTableWidget_(new BuildingInfoTableWidget(this)),
+	mapUi_(new MapUI(this)),
     ui(new Ui::MainWindow)
 {
 	init();
 }
 
 MainWindow::~MainWindow() {
+	delete buildingInfoTableWidget_;
+	delete mapUi_;
     delete ui;
 }
 
 void MainWindow::init() {
-	ui->setupUi(this);
-	ui->BuildingInfoTableWidget->addWidget(buildingInfoTableWidget_);
-	setWindowTitle(tr("Building Value Simulator"));
+	MapManager::instance().init();
+	BuildingManager::instance().init();
+	CompanyManager::instance().init();
+	IndustryChainManager::instance().init();
+	PriceManager::instance().init();
+	TimeManager::instance().init();
+	mapUi_->init();
 
 	playerCompany_ = CompanyManager::instance().playerCompany();
+
+	ui->setupUi(this);
+	setWindowTitle(tr("Building Value Simulator"));
+	ui->tabUI->addTab(mapUi_, "Map");
+	ui->tabUI->addTab(buildingInfoTableWidget_, "Information");
+
+	connect(mapUi_, SIGNAL(sendPosition(int, int)),
+		this, SLOT(getBuildingByPos(int, int)));
+	setupBuildingInfoTableWidget();
 
 	connect(ui->pushButton_EndTurn, SIGNAL(clicked(bool)),
 		this, SLOT(endTurns()));
@@ -42,8 +64,6 @@ void MainWindow::init() {
 		this, SLOT(goBank()));
 	connect(ui->pushButton_Company, SIGNAL(clicked(bool)),
 		this, SLOT(showCompanyDetail()));
-
-	setupBuildingInfoTableWidget();
 
 	connect(this, SIGNAL(dataChanged()),
 		this, SLOT(updateDisplay()));
@@ -72,14 +92,20 @@ void MainWindow::endTurns() {
     emit dataChanged();
 }
 
+void MainWindow::getBuildingByPos(int x, int y) {
+	if (BaseBuilding *building = BuildingManager::instance().getBuildingByPos(x, y)) {
+		showBuildingDetail(building);
+	}
+}
+
 void MainWindow::showBuildingDetail(BaseBuilding *building) {
 	BuildingInfoDialog *buildingDetailDialog = UIManager::instance().buildingDetailDialog();
 	setupBuildingInfoDialog(buildingDetailDialog);
 
-    buildingDetailDialog->setBuilding(building);
-    buildingDetailDialog->setVisitor(playerCompany_);
+	buildingDetailDialog->setBuilding(building);
+	buildingDetailDialog->setVisitor(playerCompany_);
 	buildingDetailDialog->showAndRaise();
-    buildingDetailDialog->updateDisplay();
+	buildingDetailDialog->updateDisplay();
 }
 
 void MainWindow::showCompanyDetail() {

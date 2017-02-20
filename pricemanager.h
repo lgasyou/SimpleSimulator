@@ -28,6 +28,8 @@ class PriceManager {
 public:
 	// Use singleton pattern.
 	static PriceManager &instance();
+
+	void init();
 	
 	double price(const QString &name) const;
 
@@ -39,8 +41,6 @@ private:
 	PriceManager();
 
 	~PriceManager();
-
-	void init();
 
 	PriceManager(const PriceManager &) = delete;
 

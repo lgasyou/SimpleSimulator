@@ -1,8 +1,6 @@
 #include "pricemanager.h"
 
-PriceManager::PriceManager() {
-	init();
-}
+PriceManager::PriceManager() { }
 
 PriceManager::~PriceManager() { }
 

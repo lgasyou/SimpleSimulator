@@ -10,6 +10,8 @@ public:
 	// Use singleton pattern.
 	static CompanyManager &instance();
 
+	void init();
+
 	void update();
 
 	inline Company *playerCompany() { return this->playerCompany_; }

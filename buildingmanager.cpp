@@ -19,23 +19,39 @@
 #include <functional>
 #include <QString>
 
-BuildingManager::BuildingManager() {
-	BuildingFactory factory;
-    buildings_.push_back(factory.create("Foundation"));
-	buildings_.push_back(factory.create("Coal Mine"));
-	buildings_.push_back(factory.create("Iron Mine"));
-	buildings_.push_back(factory.create("Steel Factory"));
-	for (int i = 0; i != 1; ++i)
-		buildings_.push_back(factory.create("Commerce"));
-    for (int i = 0; i != 5; ++i)
-        buildings_.push_back(factory.create("Residence"));
-}
+BuildingManager::BuildingManager() { }
 
 BuildingManager::~BuildingManager() { }
 
 BuildingManager &BuildingManager::instance() {
 	static BuildingManager buildingManager;
 	return buildingManager;
+}
+
+void BuildingManager::init() {
+	BuildingFactory factory;
+	buildings_.push_back(factory.create("Foundation"));
+	buildings_.push_back(factory.create("Coal Mine"));
+	buildings_.push_back(factory.create("Iron Mine"));
+	buildings_.push_back(factory.create("Steel Factory"));
+	for (int i = 0; i != 1; ++i)
+		buildings_.push_back(factory.create("Commerce"));
+	for (int i = 0; i != 5; ++i)
+		buildings_.push_back(factory.create("Residence"));
+}
+
+int BuildingManager::indexOf(BaseBuilding *building) const {
+	for (int i = 0; i != buildings_.size(); ++i)
+		if (buildings_[i] == building)
+			return i;
+	return -1;
+}
+
+BaseBuilding *BuildingManager::getBuildingByPos(int x, int y) const {
+	for (auto building : buildings_)
+		if (building->position() == Vector2D(x, y))
+			return building;
+	return nullptr;
 }
 
 double BuildingManager::deltaValueOfCompanyProperties(Company *company) const {
