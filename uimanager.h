@@ -2,7 +2,7 @@
 #define UIMANAGER_H
 
 class BankDialog;
-class BuildingDetailDialog;
+class BuildingInfoDialog;
 class CompanyDetailDialog;
 class SetRouteDialog;
 
@@ -11,17 +11,19 @@ class SetRouteDialog;
 // But in fact, I don't understand what should it be used for.
 class UIManager {
 public:
+	// Use singleton pattern.
 	static UIManager &instance();
 
 	BankDialog *bankDialog();
 
-	BuildingDetailDialog *buildingDetailDialog();
+	BuildingInfoDialog *buildingDetailDialog();
 
 	CompanyDetailDialog *companyDetailDialog();
 
 	SetRouteDialog *setRouteDialog();
 
 private:
+	// Hide constructor and destructor.
 	UIManager();
 
 	~UIManager();
@@ -35,7 +37,7 @@ private:
 private:
 	BankDialog *bankDialog_;
 
-	BuildingDetailDialog *buildingDetailDialog_;
+	BuildingInfoDialog *buildingDetailDialog_;
 
 	CompanyDetailDialog *companyDetailDialog_;
 

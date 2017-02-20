@@ -20,7 +20,7 @@ public:
 
 	void init();
 
-	void updateEachLine(int index, Truck *);
+	void updateEachRow(int index, Truck *);
 
 	inline void setGarage(Garage *garage) { this->garage_ = garage; }
 

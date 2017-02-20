@@ -91,12 +91,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_bankdialog.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_buildingdetaildialog.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_buildingdetaildialog.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_buildinginfotablewidget.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
@@ -143,9 +137,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="bankdialog.cpp">
-      <Filter>Source Files\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="buildingdetaildialog.cpp">
       <Filter>Source Files\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="buildinginfotablewidget.cpp">
@@ -262,15 +253,24 @@
     <ClCompile Include="pricemanager.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_buildinginfodialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_buildinginfodialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="buildinginfodialog.cpp">
+      <Filter>Source Files\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="government.cpp">
+      <Filter>Source Files\Company</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mainwindow.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="bankdialog.h">
-      <Filter>Header Files\Dialogs</Filter>
-    </CustomBuild>
-    <CustomBuild Include="buildingdetaildialog.h">
       <Filter>Header Files\Dialogs</Filter>
     </CustomBuild>
     <CustomBuild Include="buildinginfotablewidget.h">
@@ -300,12 +300,15 @@
     <CustomBuild Include="selecttablewidget.h">
       <Filter>Header Files\QtComponents</Filter>
     </CustomBuild>
+    <CustomBuild Include="BuildingInfoDialog.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="buildinginfodialog.h">
+      <Filter>Header Files\Dialogs</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="BankDialog.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="BuildingDetailDialog.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="CompanyDetailDialog.ui">
@@ -317,9 +320,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_BankDialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_BuildingDetailDialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_CompanyDetailDialog.h">
@@ -417,6 +417,12 @@
     </ClInclude>
     <ClInclude Include="pricemanager.h">
       <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_BuildingInfoDialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="government.h">
+      <Filter>Header Files\Company</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

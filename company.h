@@ -8,7 +8,7 @@ class BuildingManager;
 
 class Company {
 public:
-    Company();
+    Company(const QString &name = "Xenon Inc.");
 
 	~Company();
 
@@ -16,6 +16,8 @@ public:
 	// Changes building's owner as this company.
 	// Deducts company's cash.
     bool buy(BaseBuilding *building);
+
+	bool purchase(double cost);
 
 	// Changes building's owner as null pointer.
 	// Adds company's cash.
@@ -35,7 +37,7 @@ public:
     inline void setName(const QString &name) { this->name_ = name; }
     inline const QString &name() const { return this->name_; }
 
-private:
+protected:
     QString name_;
 
     double cash_;

@@ -7,7 +7,7 @@
 class Company;
 
 //	the base of building classes.
-//	three types of building:
+//	three types of building are:
 //	* BaseResidence,
 //	* BaseCommerce,
 //	* BaseIndustry.
@@ -19,7 +19,7 @@ public:
     virtual ~BaseBuilding() { }
 
 	// Copys data from right hand side.
-	void copyInit(const BaseBuilding &);
+	void copyFrom(const BaseBuilding &rhs);
 
 	// Updates data after each turn
 	virtual void update();

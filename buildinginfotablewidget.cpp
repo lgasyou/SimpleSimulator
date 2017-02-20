@@ -46,31 +46,36 @@ bool BuildingInfoTableWidget::readFile(const QString &fileName) {
 }
 
 void BuildingInfoTableWidget::updateDisplay() {
-	auto &buildingList = BuildingManager::instance().buildingList();
-    this->setRowCount(buildingList.size());
+	auto &buildingManager = BuildingManager::instance();
+	size_t buildingNumber = buildingManager.buildingNumber();;
+    this->setRowCount((int)buildingNumber);
 
-	int index = 0;
 	this->clearContents();
-	for (auto &iter = buildingList.constBegin(); iter != buildingList.constEnd(); ++iter, ++index) {
-		displayBasicInfo(index, *iter);
-		displayAccordingToVisitor(index, *iter);
+	for (int index = 0; index != buildingNumber; ++index) {
+
+		displayBasicInfo(index);
+		displayAccordingToVisitor(index);
 	}
 }
 
-void BuildingInfoTableWidget::displayBasicInfo(int index, BaseBuilding *building) {
+void BuildingInfoTableWidget::displayBasicInfo(int index) {
+	BaseBuilding *building = BuildingManager::instance().getBuildingById(index);
+
 	const QString &name = building->name();
 	const QString &deltaValue = " " + toString(building->deltaValue());
 	const QString &value = "$" + toString(building->value()) + deltaValue;
 	const QString &type = building->type();
-	const QString &owner = building->owner() ? building->owner()->name() : tr("Government");
+	const QString &owner = building->owner()->name();
 	setItem(index, 0, new QTableWidgetItem(name));
 	setItem(index, 1, new QTableWidgetItem(value));
 	setItem(index, 2, new QTableWidgetItem(type));
 	setItem(index, 3, new QTableWidgetItem(owner));
 }
 
-void BuildingInfoTableWidget::displayAccordingToVisitor(int index, BaseBuilding *building) {
+void BuildingInfoTableWidget::displayAccordingToVisitor(int index) {
+	BaseBuilding *building = BuildingManager::instance().getBuildingById(index);
 	Company *playerCompany = CompanyManager::instance().playerCompany();
+
 	const QString &btnText = (building->owner() != playerCompany) ? tr("Buy") : tr("Sell");
 	MyPushButton *optionBtn = new MyPushButton(btnText);
 	optionBtn->setIndex(index);

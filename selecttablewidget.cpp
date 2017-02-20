@@ -28,7 +28,7 @@ void SelectTableWidget::init() {
 
 void SelectTableWidget::updateDisplay() {
 	auto &buildingList = BuildingManager::instance().buildingList();
-	setRowCount(buildingList.size());
+	setRowCount((int)buildingList.size());
 	clearContents();
 	int indexOfBuilding = 0;
 	int indexOfChosen = 0;

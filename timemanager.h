@@ -5,6 +5,7 @@
 // This class controls the time of this game.
 class TimeManager {
 public:
+	// Use singleton pattern.
 	static TimeManager &instance();
 
     inline void setDeltaTime(double deltaTime) { this->deltaTime_ = deltaTime; }
@@ -17,6 +18,7 @@ public:
 	inline double frequence() const { return this->frequence_; }
 
 private:
+	// Hide constructor and destructor.
 	TimeManager();
 
 	~TimeManager() { }

@@ -20,10 +20,12 @@ public:
 
 	// If the goods.volume is smaller or equal to free volume, just adds it.
 	// If not, resets addition volume as the free volume of container.
+	// Returns final addition.
 	double addItem(const Goods &goods);
 
 	// If the goods.volume is smaller or equal to free volume, just removes it.
 	// If not, resets removal volume as the current volume of container.
+	// Returns final removal.
 	double removeItem(const Goods &goods);
 
 	inline const QList<Goods *> &container() const { return this->container_; }

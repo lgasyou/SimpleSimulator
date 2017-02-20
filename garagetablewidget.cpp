@@ -33,11 +33,11 @@ void GarageTableWidget::updateDisplay() {
 	int index = 0;
 	this->clearContents();
 	for (auto &iter = vihicleList.constBegin(); iter != vihicleList.constEnd(); ++iter, ++index) {
-		updateEachLine(index, *iter);
+		updateEachRow(index, *iter);
 	}
 }
 
-void GarageTableWidget::updateEachLine(int index, Truck *truck) {
+void GarageTableWidget::updateEachRow(int index, Truck *truck) {
 	setItem(index, 0, new QTableWidgetItem(tr("Truck")));
 	const QString &curVolume = toString(truck->freightHouse()->curVolume());
 	const QString &maxVolume = toString(truck->freightHouse()->maxVolume());

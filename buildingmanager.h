@@ -1,34 +1,41 @@
 #ifndef BUILDINGMANAGER_H
 #define BUILDINGMANAGER_H
 
-#include <QList>
+#include <vector>
 
 class BaseBuilding;
 class Company;
+
+class QString;
 
 // Owns and manages the pointers of buildings.
 // Updates the data of buildings.
 class BuildingManager {
 public:
+	// Use singleton pattern.
 	static BuildingManager &instance();
 
-    BaseBuilding *getBuildingById(unsigned id);
+    inline BaseBuilding *getBuildingById(size_t id) const;
 
-    inline int buildingNumber() const { return buildingList_.size(); }
+    inline size_t buildingNumber() const { return buildings_.size(); }
 
 	// In order to get the balance of Company.
-    const double deltaValueOfCompanyProperties(Company *) const;
+    double deltaValueOfCompanyProperties(Company *) const;
 
-    BaseBuilding *resetItemType(BaseBuilding *, const QString &);
+	// Gets building's pointer and type.
+	// Returns a pointer which is arg "type" asked.
+	// If arg "type" isn't a standard type, returns BaseBuilding.
+    BaseBuilding *resetItemType(BaseBuilding *building, const QString &type);
 
     void addItem(BaseBuilding *);
     void removeItem(BaseBuilding *);
 
     void update();
 
-	inline const QList<BaseBuilding *> &buildingList() const { return this->buildingList_; }
+	inline const auto &buildingList() const { return this->buildings_; }
 
 private:
+	// Hide constructor and destructor.
     BuildingManager();
 
 	~BuildingManager();
@@ -37,10 +44,14 @@ private:
 
 	BuildingManager &operator=(const BuildingManager &) = delete;
 
-	QList<BaseBuilding *>::iterator iteratorOf(BaseBuilding *);
+	std::vector<BaseBuilding *>::iterator iteratorOf(BaseBuilding *);
 
 private:
-    QList<BaseBuilding *> buildingList_;
+    std::vector<BaseBuilding *> buildings_;
 };
+
+inline BaseBuilding *BuildingManager::getBuildingById(size_t id) const {
+	return buildings_[id];
+}
 
 #endif // BUILDINGMANAGER_H

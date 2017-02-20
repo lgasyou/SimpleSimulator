@@ -7,6 +7,7 @@ class Company;
 
 class CompanyManager {
 public:
+	// Use singleton pattern.
 	static CompanyManager &instance();
 
 	void update();
@@ -16,6 +17,7 @@ public:
 	inline QList<Company *> &aiCompanyList() { return aiCompanyList_; }
 
 private:
+	// Hide constructor and destructor.
 	CompanyManager();
 
 	~CompanyManager();

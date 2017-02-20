@@ -12,9 +12,8 @@ class QString;
 // This class contains the industry chain of this game.
 class IndustryChainManager {
 public:
+	// Use singleton pattern.
 	static IndustryChainManager &instance();
-
-	void init();
 
 	// Returns the cost from origin to destination.
 	double cost(const QString &orig, const QString &dest) const;
@@ -24,9 +23,12 @@ public:
 	std::vector<Goods> successors(const QString &item) const;
 
 private:
+	// Hide constructor and destructor.
 	IndustryChainManager();
 
 	~IndustryChainManager();
+
+	void init();
 
 	IndustryChainManager(const IndustryChainManager &) = delete;
 

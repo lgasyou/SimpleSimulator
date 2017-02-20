@@ -25,9 +25,9 @@ public:
 
     void updateDisplay();
 
-	void displayBasicInfo(int index, BaseBuilding *building);
+	void displayBasicInfo(int index);
 
-	void displayAccordingToVisitor(int index, BaseBuilding *building);
+	void displayAccordingToVisitor(int index);
 
 signals:
     void buySignal(BaseBuilding *);

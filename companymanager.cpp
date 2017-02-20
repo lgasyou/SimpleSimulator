@@ -1,6 +1,9 @@
 #include "companymanager.h"
 #include "company.h"
 
+#include <algorithm>
+#include <functional>
+
 CompanyManager::CompanyManager() {
 	playerCompany_ = new Company;
 }
@@ -16,6 +19,5 @@ CompanyManager &CompanyManager::instance() {
 
 void CompanyManager::update() {
 	playerCompany_->update();
-	for (auto &aiCompany : aiCompanyList_)
-		aiCompany->update();
+	std::for_each(aiCompanyList_.begin(), aiCompanyList_.end(), std::mem_fun(&Company::update));
 }

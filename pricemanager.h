@@ -26,6 +26,7 @@ public:
 // relationship.
 class PriceManager {
 public:
+	// Use singleton pattern.
 	static PriceManager &instance();
 	
 	double price(const QString &name) const;
@@ -34,6 +35,7 @@ public:
 	void update();
 
 private:
+	// Hide constructor and destructor.
 	PriceManager();
 
 	~PriceManager();

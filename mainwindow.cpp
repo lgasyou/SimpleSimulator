@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "buildingmanager.h"
 #include "companymanager.h"
+#include "government.h"
 #include "timemanager.h"
 #include "uimanager.h"
 
@@ -8,7 +9,7 @@
 #include "company.h"
 
 #include "bankdialog.h"
-#include "buildingdetaildialog.h"
+#include "buildinginfodialog.h"
 #include "buildinginfotablewidget.h"
 #include "companydetaildialog.h"
 #include "mypushbutton.h"
@@ -63,6 +64,8 @@ void MainWindow::goBank() {
 void MainWindow::endTurns() {
 	BuildingManager::instance().update();
 	CompanyManager::instance().update();
+	Government::instance().update();
+
 	double deltaValue = BuildingManager::instance().deltaValueOfCompanyProperties(playerCompany_);
 	playerCompany_->setTotalValue(playerCompany_->totalValue() + deltaValue);
     TimeManager::instance().increaseTime();
@@ -70,8 +73,8 @@ void MainWindow::endTurns() {
 }
 
 void MainWindow::showBuildingDetail(BaseBuilding *building) {
-	BuildingDetailDialog *buildingDetailDialog = UIManager::instance().buildingDetailDialog();
-	setupBuildingDetailDialog(buildingDetailDialog);
+	BuildingInfoDialog *buildingDetailDialog = UIManager::instance().buildingDetailDialog();
+	setupBuildingInfoDialog(buildingDetailDialog);
 
     buildingDetailDialog->setBuilding(building);
     buildingDetailDialog->setVisitor(playerCompany_);
@@ -140,7 +143,7 @@ void MainWindow::setupBuildingInfoTableWidget() {
 		this, SLOT(showBuildingDetail(BaseBuilding*)));
 }
 
-void MainWindow::setupBuildingDetailDialog(BuildingDetailDialog *buildingDetailDialog) {
+void MainWindow::setupBuildingInfoDialog(BuildingInfoDialog *buildingDetailDialog) {
 	static bool isTheFirstTimeCall = true;
 	if (isTheFirstTimeCall == false)	return;
 
@@ -155,6 +158,8 @@ void MainWindow::setupBuildingDetailDialog(BuildingDetailDialog *buildingDetailD
 
 	connect(this, SIGNAL(dataChanged()),
 		buildingDetailDialog, SLOT(updateDisplay()));
+	connect(buildingDetailDialog, SIGNAL(dataChanged()),
+		this, SLOT(updateDisplay()));
 
 	isTheFirstTimeCall = false;
 }

@@ -1,7 +1,7 @@
 #include "uimanager.h"
 
 #include "bankdialog.h"
-#include "buildingdetaildialog.h"
+#include "buildinginfodialog.h"
 #include "companydetaildialog.h"
 #include "setroutedialog.h"
 
@@ -29,9 +29,9 @@ BankDialog *UIManager::bankDialog() {
 	return bankDialog_;
 }
 
-BuildingDetailDialog *UIManager::buildingDetailDialog() {
+BuildingInfoDialog *UIManager::buildingDetailDialog() {
 	if (!buildingDetailDialog_)
-		buildingDetailDialog_ = new BuildingDetailDialog;
+		buildingDetailDialog_ = new BuildingInfoDialog;
 	return buildingDetailDialog_;
 }
 

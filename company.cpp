@@ -1,9 +1,10 @@
 #include "company.h"
 #include "basebuilding.h"
 #include "buildingmanager.h"
+#include "government.h"
 
-Company::Company() :
-    name_("Xenon Inc."),
+Company::Company(const QString &name) :
+    name_(name),
     cash_(1000),
     totalValue_(1000),
     liability_(0)
@@ -21,9 +22,19 @@ bool Company::buy(BaseBuilding *building) {
     return true;
 }
 
+bool Company::purchase(double cost) {
+	if (cost > cash_)
+		return false;
+
+	cash_ -= cost;
+	return true;
+}
+
 bool Company::sell(BaseBuilding *building) {
     cash_ += building->value();
-    building->setOwner(nullptr);
+
+	Government *gov = &Government::instance();
+    building->setOwner(gov);
     return true;
 }
 

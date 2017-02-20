@@ -8,7 +8,7 @@ class BaseBuilding;
 
 class MyPushButton;
 class BuildingInfoTableWidget;
-class BuildingDetailDialog;
+class BuildingInfoDialog;
 class CompanyDetailDialog;
 
 namespace Ui {
@@ -56,7 +56,7 @@ private:
 
 	inline void setupBuildingInfoTableWidget();
 
-	inline void setupBuildingDetailDialog(BuildingDetailDialog *);
+	inline void setupBuildingInfoDialog(BuildingInfoDialog *);
 
 	inline void setupCompanyDetailDialog(CompanyDetailDialog *);
 

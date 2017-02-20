@@ -13,7 +13,7 @@ BaseBuilding::BaseBuilding(const QString &name, const QString &type, double delt
 	initBasicValue();
 }
 
-void BaseBuilding::copyInit(const BaseBuilding &rhs) {
+void BaseBuilding::copyFrom(const BaseBuilding &rhs) {
 	name_ = rhs.name();
 	value_ = rhs.value();
 	deltaValue_ = rhs.deltaValue();

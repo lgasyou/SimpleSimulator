@@ -7,9 +7,8 @@ class Vector2D;
 // This class is designed for working with transportations modules.
 class MapManager {
 public:
+	// Use singleton pattern.
 	static MapManager &instance();
-
-	void init();
 
 	// Allocates and returns a coordinate with ValueGenerator.
 	// TODO:
@@ -18,16 +17,19 @@ public:
 	Vector2D allocate();
 
 private:
+	// Hide constructor and destructor.
 	MapManager();
 
 	~MapManager();
+
+	void init();
 
 	MapManager(const MapManager &) = delete;
 
 	MapManager &operator=(const MapManager &) = delete;
 
 private:
-	// This array contains a map which shows wether a location is
+	// This array contains a map which shows whether a location is
 	// occupied or not.
 	bool occupiedMap_[100][100];
 };

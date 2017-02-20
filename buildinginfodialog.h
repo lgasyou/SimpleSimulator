@@ -1,5 +1,5 @@
-#ifndef BUILDINGDETAILDIALOG_H
-#define BUILDINGDETAILDIALOG_H
+#ifndef BUILDINGINFODIALOG_H
+#define BUILDINGINFODIALOG_H
 
 #include <QDialog>
 
@@ -12,16 +12,16 @@ class GarageTableWidget;
 class WarehouseTableWidget;
 class MyPushButton;
 namespace Ui {
-class BuildingDetailDialog;
+class BuildingInfoDialog;
 }
 
-class BuildingDetailDialog : public QDialog {
+class BuildingInfoDialog : public QDialog {
     Q_OBJECT
 
 public:
-    BuildingDetailDialog(QWidget *parent = nullptr);
+    BuildingInfoDialog(QWidget *parent = nullptr);
 
-    ~BuildingDetailDialog();
+    ~BuildingInfoDialog();
 
 	inline void showAndRaise();
 
@@ -92,13 +92,13 @@ private:
 
     WarehouseTableWidget *warehouseTableWidget_;
 
-    Ui::BuildingDetailDialog *ui;
+    Ui::BuildingInfoDialog *ui;
 };
 
-inline void BuildingDetailDialog::showAndRaise() {
+inline void BuildingInfoDialog::showAndRaise() {
 	this->show();
 	this->raise();
 	this->activateWindow();
 }
 
-#endif // BUILDINGDETAILDIALOG_H
+#endif // !BUILDINGINFODIALOG_H
