@@ -4,7 +4,7 @@
 #include <QString>
 
 struct Goods {
-	Goods(const QString &name_, double volume_);
+	Goods(const QString &name_ = QString(), double volume_ = 0.0);
 
 	QString name;
 

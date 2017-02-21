@@ -4,9 +4,8 @@
 #include "basebuilding.h"
 
 #include "baseindustry.h"
-#include "coalmine.h"
-#include "ironmine.h"
-#include "steelfactory.h"
+#include "mine.h"
+#include "factory.h"
 
 #include "basecommerce.h"
 
@@ -31,9 +30,9 @@ BuildingManager &BuildingManager::instance() {
 void BuildingManager::init() {
 	BuildingFactory factory;
 	buildings_.push_back(factory.create("Foundation"));
-	buildings_.push_back(factory.create("Coal Mine"));
-	buildings_.push_back(factory.create("Iron Mine"));
-	buildings_.push_back(factory.create("Steel Factory"));
+	buildings_.push_back(factory.create("Mine"));
+	buildings_.push_back(factory.create("Mine"));
+	buildings_.push_back(factory.create("Factory"));
 	for (int i = 0; i != 1; ++i)
 		buildings_.push_back(factory.create("Commerce"));
 	for (int i = 0; i != 5; ++i)

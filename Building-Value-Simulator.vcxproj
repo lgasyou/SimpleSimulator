@@ -147,23 +147,23 @@
     <ClCompile Include="basebuilding.cpp" />
     <ClCompile Include="buildinginfodialog.cpp" />
     <ClCompile Include="buildingfactory.cpp" />
-    <ClCompile Include="buildinginfotablewidget.cpp" />
+    <ClCompile Include="buildinginfo.cpp" />
     <ClCompile Include="buildingmanager.cpp" />
-    <ClCompile Include="coalmine.cpp" />
     <ClCompile Include="basecommerce.cpp" />
     <ClCompile Include="company.cpp" />
     <ClCompile Include="companydetaildialog.cpp" />
     <ClCompile Include="companymanager.cpp" />
+    <ClCompile Include="factory.cpp" />
     <ClCompile Include="gameconstants.cpp" />
     <ClCompile Include="garage.cpp" />
     <ClCompile Include="garagetablewidget.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_bankdialog.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_buildinginfodialog.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_buildinginfo.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_buildinginfotablewidget.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_buildinginfodialog.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_companydetaildialog.cpp">
@@ -199,10 +199,10 @@
     <ClCompile Include="GeneratedFiles\Release\moc_bankdialog.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_buildinginfodialog.cpp">
+    <ClCompile Include="GeneratedFiles\Release\moc_buildinginfo.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_buildinginfotablewidget.cpp">
+    <ClCompile Include="GeneratedFiles\Release\moc_buildinginfodialog.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_companydetaildialog.cpp">
@@ -235,18 +235,18 @@
     <ClCompile Include="government.cpp" />
     <ClCompile Include="graph.cpp" />
     <ClCompile Include="industrychainmanager.cpp" />
-    <ClCompile Include="ironmine.cpp" />
+    <ClCompile Include="machine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
     <ClCompile Include="mapmanager.cpp" />
     <ClCompile Include="mapui.cpp" />
+    <ClCompile Include="mine.cpp" />
     <ClCompile Include="mypushbutton.cpp" />
     <ClCompile Include="pricemanager.cpp" />
     <ClCompile Include="route.cpp" />
     <ClCompile Include="baseresidence.cpp" />
     <ClCompile Include="selecttablewidget.cpp" />
     <ClCompile Include="setroutedialog.cpp" />
-    <ClCompile Include="steelfactory.cpp" />
     <ClCompile Include="timemanager.cpp" />
     <ClCompile Include="truck.cpp" />
     <ClCompile Include="uimanager.cpp" />
@@ -259,7 +259,6 @@
   <ItemGroup>
     <ClInclude Include="baseagriculture.h" />
     <ClInclude Include="buildingfactory.h" />
-    <ClInclude Include="coalmine.h" />
     <ClInclude Include="companymanager.h" />
     <ClInclude Include="GeneratedFiles\ui_BuildingInfoDialog.h" />
     <ClInclude Include="GeneratedFiles\ui_mapui.h" />
@@ -271,7 +270,7 @@
     <ClInclude Include="government.h" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="industrychainmanager.h" />
-    <ClInclude Include="ironmine.h" />
+    <ClInclude Include="machine.h" />
     <ClInclude Include="mapmanager.h" />
     <CustomBuild Include="mapui.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
@@ -283,6 +282,8 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
+    <ClInclude Include="mine.h" />
+    <ClInclude Include="factory.h" />
     <ClInclude Include="pricemanager.h" />
     <ClInclude Include="route.h" />
     <ClInclude Include="baseresidence.h" />
@@ -306,7 +307,6 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
-    <ClInclude Include="steelfactory.h" />
     <ClInclude Include="timemanager.h" />
     <ClInclude Include="truck.h" />
     <ClInclude Include="uimanager.h" />
@@ -365,13 +365,13 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
-    <CustomBuild Include="buildinginfotablewidget.h">
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing buildinginfotablewidget.h...</Message>
+    <CustomBuild Include="buildinginfo.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing buildinginfo.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\debug" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
-      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing buildinginfotablewidget.h...</Message>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing buildinginfo.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>

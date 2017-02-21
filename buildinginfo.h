@@ -11,11 +11,11 @@ class MyPushButton;
 
 // This class is used for showing information of Buildings.
 // Set Company before use it.
-class BuildingInfoTableWidget : public QTableWidget {
+class BuildingInfo : public QTableWidget {
     Q_OBJECT
 
 public:
-    BuildingInfoTableWidget(QWidget *parent = nullptr);
+    BuildingInfo(QWidget *parent = nullptr);
 
 	void init();
 

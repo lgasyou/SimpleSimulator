@@ -3,9 +3,8 @@
 #include "basebuilding.h"
 
 #include "baseindustry.h"
-#include "coalmine.h"
-#include "ironmine.h"
-#include "steelfactory.h"
+#include "factory.h"
+#include "mine.h"
 
 #include "basecommerce.h"
 
@@ -20,20 +19,25 @@
 
 BaseBuilding *BuildingFactory::create(const QString &type) {
 	BaseBuilding *building = nullptr;
+	// Industrial buildings
 	if (type == "Factory")
-		building = new BaseIndustry;
-	else if (type == "Coal Mine")
-		building = new CoalMine;
-	else if (type == "Iron Mine")
-		building = new IronMine;
-	else if (type == "Steel Factory")
-		building = new SteelFactory;
+		building = new Factory;
+	else if (type == "Mine")
+		building = new Mine;
+
+	// Commercial buildings
 	else if (type == "Commerce")
 		building = new BaseCommerce;
+
+	// Residential buildings
 	else if (type == "Residence")
 		building = new BaseResidence;
+
+	// Agricultural buildings
 	else if (type == "Agriculture")
 		building = new BaseAgriculture;
+
+	// Foundation
 	else
 		building = new BaseBuilding;
 

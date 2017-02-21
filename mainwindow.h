@@ -7,7 +7,7 @@ class Company;
 class BaseBuilding;
 
 class MyPushButton;
-class BuildingInfoTableWidget;
+class BuildingInfo;
 class BuildingInfoDialog;
 class CompanyDetailDialog;
 class MapUI;
@@ -57,7 +57,7 @@ private:
 	// transforms double into QString
 	static QString toString(double value);
 
-	inline void setupBuildingInfoTableWidget();
+	inline void setupBuildingInfo();
 
 	inline void setupBuildingInfoDialog(BuildingInfoDialog *);
 
@@ -66,7 +66,7 @@ private:
 private:
     Company *playerCompany_;
 
-	BuildingInfoTableWidget *buildingInfoTableWidget_;
+	BuildingInfo *buildingInfoTableWidget_;
 
 	MapUI *mapUi_;
 

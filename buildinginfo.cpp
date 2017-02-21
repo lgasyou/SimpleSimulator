@@ -1,5 +1,6 @@
-#include "buildinginfotablewidget.h"
+#include "buildinginfo.h"
 #include "buildingmanager.h"
+#include "buildinginfo.h"
 #include "companymanager.h"
 #include "basebuilding.h"
 #include "company.h"
@@ -8,19 +9,19 @@
 #include <QFile>
 #include <QApplication>
 
-BuildingInfoTableWidget::BuildingInfoTableWidget(QWidget *parent) :
+BuildingInfo::BuildingInfo(QWidget *parent) :
     QTableWidget(parent)
-{ 
+{
 	init();
 }
 
-void BuildingInfoTableWidget::init() {
-	this->setColumnCount(GameConstants::colOfBuildingInfoTableWidget);
+void BuildingInfo::init() {
+	this->setColumnCount(GameConstants::colOfBuildingInfo);
 	QStringList header{ tr("Name"),tr("Value"),tr("Type"), tr("Ownership"),tr("Option"), tr("Option") };
 	this->setHorizontalHeaderLabels(header);
 }
 
-bool BuildingInfoTableWidget::writeFile(const QString &fileName) {
+bool BuildingInfo::writeFile(const QString &fileName) {
     QFile file(fileName);
     if (!file.open(QIODevice::WriteOnly)) {
         return false;
@@ -40,12 +41,12 @@ bool BuildingInfoTableWidget::writeFile(const QString &fileName) {
     return true;
 }
 
-bool BuildingInfoTableWidget::readFile(const QString &fileName) {
+bool BuildingInfo::readFile(const QString &fileName) {
     QFile file(fileName);
     return true;
 }
 
-void BuildingInfoTableWidget::updateDisplay() {
+void BuildingInfo::updateDisplay() {
 	auto &buildingManager = BuildingManager::instance();
 	size_t buildingNumber = buildingManager.buildingNumber();;
     this->setRowCount((int)buildingNumber);
@@ -57,7 +58,7 @@ void BuildingInfoTableWidget::updateDisplay() {
 	}
 }
 
-void BuildingInfoTableWidget::displayBasicInfo(int index) {
+void BuildingInfo::displayBasicInfo(int index) {
 	BaseBuilding *building = BuildingManager::instance().getBuildingById(index);
 
 	const QString &name = building->name();
@@ -71,7 +72,7 @@ void BuildingInfoTableWidget::displayBasicInfo(int index) {
 	setItem(index, 3, new QTableWidgetItem(owner));
 }
 
-void BuildingInfoTableWidget::displayAccordingToVisitor(int index) {
+void BuildingInfo::displayAccordingToVisitor(int index) {
 	BaseBuilding *building = BuildingManager::instance().getBuildingById(index);
 	Company *playerCompany = CompanyManager::instance().playerCompany();
 
@@ -89,11 +90,11 @@ void BuildingInfoTableWidget::displayAccordingToVisitor(int index) {
 	setCellWidget(index, 5, detailBtn);
 }
 
-QString BuildingInfoTableWidget::toString(double value) {
+QString BuildingInfo::toString(double value) {
 	return QString::number(value, 10, 2);
 }
 
-void BuildingInfoTableWidget::getBuildingAndSendSignal(MyPushButton *button) {
+void BuildingInfo::getBuildingAndSendSignal(MyPushButton *button) {
     int id = button->index();
     BaseBuilding *building = BuildingManager::instance().getBuildingById(id);
 

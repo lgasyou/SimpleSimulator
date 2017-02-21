@@ -6,15 +6,19 @@
 
 class Warehouse;
 class Garage;
+class Machine;
+struct MachineSettings;
 struct Goods;
 
 class QString;
 
 class BaseIndustry : public BaseBuilding {
 public:
-	BaseIndustry(const QString & = "Factory");
+	BaseIndustry(const QString &type = "Factory");
 
 	virtual ~BaseIndustry();
+
+	void addMachine(const MachineSettings &settings);
 
 	// updates data after each turn
 	void update() override;
@@ -32,18 +36,22 @@ public:
 
 	inline Garage *garage() const { return this->garage_; }
 
-	const std::vector<Goods> &products() const { return this->products_; }
+	const std::vector<Goods> &products();
 
-	const std::vector<Goods> &rawMaterials() const { return this->rawMaterials_; }
+	const std::vector<Goods> &materials();
 
 protected:
     Warehouse *warehouse_;
 
 	Garage *garage_;
 
+	mutable bool addedMachine_;
+
+	std::vector<Machine *> machines_;
+
 	std::vector<Goods> products_;
 
-	std::vector<Goods> rawMaterials_;
+	std::vector<Goods> materials_;
 };
 
 #endif // BASEINDUSTRY_H

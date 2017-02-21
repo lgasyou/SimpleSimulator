@@ -15,7 +15,7 @@
 
 #include "bankdialog.h"
 #include "buildinginfodialog.h"
-#include "buildinginfotablewidget.h"
+#include "buildinginfo.h"
 #include "companydetaildialog.h"
 #include "mapui.h"
 #include "mypushbutton.h"
@@ -25,7 +25,7 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    buildingInfoTableWidget_(new BuildingInfoTableWidget(this)),
+    buildingInfoTableWidget_(new BuildingInfo(this)),
 	mapUi_(new MapUI(this)),
     ui(new Ui::MainWindow)
 {
@@ -56,7 +56,7 @@ void MainWindow::init() {
 
 	connect(mapUi_, SIGNAL(sendPosition(int, int)),
 		this, SLOT(getBuildingByPos(int, int)));
-	setupBuildingInfoTableWidget();
+	setupBuildingInfo();
 
 	connect(ui->pushButton_EndTurn, SIGNAL(clicked(bool)),
 		this, SLOT(endTurns()));
@@ -160,7 +160,7 @@ QString MainWindow::toString(double value) {
 	return QString::number(value, 10, 2);
 }
 
-void MainWindow::setupBuildingInfoTableWidget() {
+void MainWindow::setupBuildingInfo() {
 	connect(buildingInfoTableWidget_, SIGNAL(buySignal(BaseBuilding*)),
 		this, SLOT(buy(BaseBuilding*)));
 	connect(buildingInfoTableWidget_, SIGNAL(sellSignal(BaseBuilding*)),
