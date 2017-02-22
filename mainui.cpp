@@ -1,29 +1,31 @@
-﻿#include "mapui.h"
-#include "ui_mapui.h"
+﻿#include "mainui.h"
+#include "ui_mainui.h"
 #include "mapmanager.h"
 
 #include <QPainter>
 #include <QMouseEvent>
 
-MapUI::MapUI(QWidget *parent) : 
+MainUI::MainUI(QWidget *parent) : 
 	QWidget(parent) {
 	image_ = QImage(16, 16, QImage::Format_ARGB32);
 	image_.fill(qRgba(0, 0, 0, 0));
+
+	mode_ = Mode::Map;
 
 	zoom_ = 40;
 
 	this->setMinimumSize(sizeHint());
 	this->setMaximumSize(sizeHint());
 
-	ui = new Ui::MapUI;
+	ui = new Ui::MainUI;
 	ui->setupUi(this);
 }
 
-MapUI::~MapUI() {
+MainUI::~MainUI() {
 	delete ui;
 }
 
-void MapUI::init() {
+void MainUI::init() {
 	auto map = MapManager::instance().occupiedMap();
 	QColor penColor = Qt::black;
 	for (int i = 0; i != 16; ++i) {
@@ -35,13 +37,20 @@ void MapUI::init() {
 	}
 }
 
-QSize MapUI::sizeHint() const {
+QSize MainUI::sizeHint() const {
 	QSize size = image_.size() * zoom_;
 	size += QSize(1, 1);
 	return size;
 }
 
-void MapUI::mousePressEvent(QMouseEvent *event) {
+void MainUI::setMode(int mode) {
+	if (mode_ != mode) {
+		mode_ = mode;
+		update();
+	}
+}
+
+void MainUI::mousePressEvent(QMouseEvent *event) {
 	if (event->button() == Qt::LeftButton) {
 		QPoint pos = event->pos();
 		int x = pos.x() / zoom_;
@@ -53,7 +62,28 @@ void MapUI::mousePressEvent(QMouseEvent *event) {
 	}
 }
 
-void MapUI::paintEvent(QPaintEvent *event) {
+void MainUI::paintEvent(QPaintEvent *event) {
+	switch (mode_) {
+	case Mode::Map:
+		paintMap(event);
+		break;
+
+	case Mode::Building:
+		paintBuilding(event);
+		break;
+
+	default:
+		break;
+	}
+
+
+}
+
+QRect MainUI::pixelRect(int i, int j) const {
+	return QRect(zoom_ * i + 1, zoom_ * j + 1, zoom_ - 1, zoom_ - 1);
+}
+
+void MainUI::paintMap(QPaintEvent *event) {
 	QPainter painter(this);
 
 	for (int i = 0; i <= image_.width(); ++i)
@@ -74,6 +104,7 @@ void MapUI::paintEvent(QPaintEvent *event) {
 	}
 }
 
-QRect MapUI::pixelRect(int i, int j) const {
-	return QRect(zoom_ * i + 1, zoom_ * j + 1, zoom_ - 1, zoom_ - 1);
+void MainUI::paintBuilding(QPaintEvent *event) {
+	QPainter painter(this);
+
 }

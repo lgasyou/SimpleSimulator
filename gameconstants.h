@@ -12,7 +12,7 @@ const double sigmaOfdefaultBaseValueOfBuilding = 25.0;
 const double minBaseValueOfBuilding = 20.0;
 const int numberOfPropertiesOfBuilding = 4;
 const int optionsOfBuildingManager = 2;
-const int colOfBuildingInfo = numberOfPropertiesOfBuilding + optionsOfBuildingManager;
+const int colOfBuildingInfoList = numberOfPropertiesOfBuilding + optionsOfBuildingManager;
 
 // about warehouses
 const double defaultMaxVolOfWarehouse = 60.0;

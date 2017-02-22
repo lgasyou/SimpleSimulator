@@ -36,16 +36,16 @@ public:
 
 	inline Garage *garage() const { return this->garage_; }
 
-	const std::vector<Goods> &products();
+	const std::vector<Goods> &products() const;
 
-	const std::vector<Goods> &materials();
+	const std::vector<Goods> &materials() const;
 
 protected:
     Warehouse *warehouse_;
 
 	Garage *garage_;
 
-	mutable bool addedMachine_;
+	bool addedMachine_;
 
 	std::vector<Machine *> machines_;
 

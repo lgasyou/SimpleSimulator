@@ -7,10 +7,11 @@ class Company;
 class BaseBuilding;
 
 class MyPushButton;
-class BuildingInfo;
-class BuildingInfoDialog;
+class BuildingInfoList;
+class BuildingInfoWidget;
 class CompanyDetailDialog;
-class MapUI;
+class HelpDialog;
+class MainUI;
 
 namespace Ui {
 class MainWindow;
@@ -28,6 +29,8 @@ public:
 signals:
     void dataChanged();
 
+	void sendSelectedBuilding(BaseBuilding *);
+
 private slots:
 	// Opens bank dialog.
     void goBank();
@@ -35,17 +38,17 @@ private slots:
 	// Calls function update() of every variable objects.
     void endTurns();
 
-	void getBuildingByPos(int x, int y);
-
-    void showBuildingDetail(BaseBuilding *building);
+	void showBuildingInfoList();
 
     void showCompanyDetail();
 
+	void showHelp();
+
+	void getBuildingByPos(int x, int y);
+
     void updateDisplay();
 
-    void buy(BaseBuilding *building);
-
-    void sell(BaseBuilding *building);
+	void processOrders(const QString &order, BaseBuilding *);
 
     void changeType(BaseBuilding *, const QString &);
 
@@ -57,18 +60,22 @@ private:
 	// transforms double into QString
 	static QString toString(double value);
 
-	inline void setupBuildingInfo();
+	void setupBuildingInfoList();
 
-	inline void setupBuildingInfoDialog(BuildingInfoDialog *);
+	//inline void setupBuildingDetailWidget(BuildingDetailWidget *);
 
 	inline void setupCompanyDetailDialog(CompanyDetailDialog *);
 
 private:
     Company *playerCompany_;
 
-	BuildingInfo *buildingInfoTableWidget_;
+	BuildingInfoList *buildingInfoList_;
 
-	MapUI *mapUi_;
+	BuildingInfoWidget *buildingInfoWidget_;
+
+	HelpDialog *helpDialog_;
+
+	MainUI *mainUi_;
 
     Ui::MainWindow *ui;
 };

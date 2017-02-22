@@ -19,7 +19,7 @@ public:
 
 	bool purchase(double cost);
 
-	// Changes building's owner as null pointer.
+	// Changes building's owner as government's pointer.
 	// Adds company's cash.
     bool sell(BaseBuilding *building);
 

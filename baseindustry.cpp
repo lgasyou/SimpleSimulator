@@ -29,7 +29,9 @@ void BaseIndustry::addMachine(const MachineSettings &settings) {
 	Machine *newMachine = new Machine;
 	newMachine->setParameters(settings);
 	machines_.push_back(newMachine);
-	addedMachine_ = true;
+
+	products_.insert(products_.end(), newMachine->products().cbegin(), newMachine->products().cend());
+	materials_.insert(materials_.end(), newMachine->materials().cbegin(), newMachine->materials().cend());
 }
 
 void BaseIndustry::update() { 
@@ -55,20 +57,10 @@ double BaseIndustry::putOutStorage(const Goods &goods) {
 	return warehouse_->removeItem(goods);
 }
 
-const std::vector<Goods> &BaseIndustry::products() {
-	if (addedMachine_) {
-		addedMachine_ = false;
-		for (Machine *machine : machines_)
-			products_.insert(products_.end(), machine->products().cbegin(), machine->products().cend());
-	}
+const std::vector<Goods> &BaseIndustry::products() const {
 	return this->products_;
 }
 
-const std::vector<Goods> &BaseIndustry::materials() {
-	if (addedMachine_) {
-		addedMachine_ = false;
-		for (Machine *machine : machines_)
-			materials_.insert(materials_.end(), machine->materials().cbegin(), machine->materials().cend());
-	}
+const std::vector<Goods> &BaseIndustry::materials() const {
 	return this->materials_;
 }

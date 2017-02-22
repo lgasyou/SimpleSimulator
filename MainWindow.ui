@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>665</width>
-    <height>479</height>
+    <width>934</width>
+    <height>671</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,91 +15,74 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="3" column="0">
-     <widget class="QPushButton" name="pushButton_EndTurn">
-      <property name="text">
-       <string>End Turn</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout_OptionButtons">
+    <item row="0" column="0">
+     <layout class="QHBoxLayout" name="horizontalLayout_Labels">
       <item>
-       <widget class="QPushButton" name="pushButton_Bank">
+       <widget class="QPushButton" name="bankPushButton">
         <property name="text">
          <string>Bank</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_Company">
+       <widget class="QPushButton" name="companyPushButton">
         <property name="text">
          <string>Company</string>
         </property>
        </widget>
       </item>
-     </layout>
-    </item>
-    <item row="0" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout_Labels">
       <item>
-       <widget class="QLabel" name="label_CompanyCash">
+       <widget class="QPushButton" name="buildingListPushButton">
         <property name="text">
-         <string>TextLabel</string>
+         <string>Buildings</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_CompanyTotalValue">
+       <widget class="QPushButton" name="helpPushButton">
         <property name="text">
-         <string>TextLabel</string>
+         <string>Help</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_Turns">
+       <widget class="QPushButton" name="menuPushButton">
         <property name="text">
-         <string>TextLabel</string>
+         <string>Menu</string>
         </property>
        </widget>
       </item>
      </layout>
     </item>
     <item row="1" column="0">
-     <widget class="QTabWidget" name="tabUI">
-      <property name="currentIndex">
-       <number>-1</number>
-      </property>
-     </widget>
+     <layout class="QHBoxLayout" name="mainLayout"/>
+    </item>
+    <item row="2" column="0">
+     <layout class="QHBoxLayout" name="bottomLayout">
+      <item>
+       <widget class="QLabel" name="label_Turns">
+        <property name="text">
+         <string>turns</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_CompanyCash">
+        <property name="text">
+         <string>cash</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_EndTurn">
+        <property name="text">
+         <string>End Turn</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>665</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menu_Files">
-    <property name="title">
-     <string>&amp;Files</string>
-    </property>
-    <addaction name="action_Save"/>
-    <addaction name="action_Load"/>
-    <addaction name="action_New"/>
-    <addaction name="action_SaveAndExit"/>
-    <addaction name="actionExit_without_Save"/>
-   </widget>
-   <widget class="QMenu" name="menu_Help">
-    <property name="title">
-     <string>&amp;Help</string>
-    </property>
-   </widget>
-   <addaction name="menu_Files"/>
-   <addaction name="menu_Help"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="action_Open">

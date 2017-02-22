@@ -1,24 +1,24 @@
-#include "buildinginfodialog.h"
+#include "buildingdetailwidget.h"
 #include "basebuilding.h"
 #include "baseindustry.h"
 #include "warehouse.h"
 #include "goodscontainer.h"
 #include "company.h"
+#include "companymanager.h"
 #include "garage.h"
 #include "goods.h"
 
 #include "garagetablewidget.h"
 #include "warehousetablewidget.h"
 #include "mypushbutton.h"
-#include "ui_buildinginfodialog.h"
+#include "ui_buildingdetailwidget.h"
 
-BuildingInfoDialog::BuildingInfoDialog(QWidget *parent) :
-    QDialog(parent),
+BuildingDetailWidget::BuildingDetailWidget(QWidget *parent) :
+    QWidget(parent),
     building_(nullptr),
-    visitor_(nullptr),
 	garageTableWidget_(new GarageTableWidget(this)),
 	warehouseTableWidget_(new WarehouseTableWidget(this)),
-    ui(new Ui::BuildingInfoDialog)
+    ui(new Ui::BuildingDetailWidget)
 {
     ui->setupUi(this);
 
@@ -66,11 +66,11 @@ BuildingInfoDialog::BuildingInfoDialog(QWidget *parent) :
 		this, SLOT(addNewVihicle()));
 }
 
-BuildingInfoDialog::~BuildingInfoDialog() {
+BuildingDetailWidget::~BuildingDetailWidget() {
     delete ui;
 }
 
-void BuildingInfoDialog::updateDisplay() {
+void BuildingDetailWidget::updateDisplay() {
 	// Returns if this window isn't showing.
     if (this->isHidden())	return;
 
@@ -81,18 +81,18 @@ void BuildingInfoDialog::updateDisplay() {
 	displayAccordingToVisitor();
 }
 
-void BuildingInfoDialog::changeType(MyPushButton *button) {
+void BuildingDetailWidget::changeType(MyPushButton *button) {
 	const QString &newType = button->text();
 	emit changeTypeSignal(building_, newType);
 }
 
-void BuildingInfoDialog::deliverGoods(const Goods &goods, BaseIndustry *dest) {
+void BuildingDetailWidget::deliverGoods(const Goods &goods, BaseIndustry *dest) {
 	BaseIndustry *industry = dynamic_cast<BaseIndustry *>(building_);
 	industry->deliverGoods(goods, dest);
 	emit dataChanged();
 }
 
-void BuildingInfoDialog::hideVariableWidget() {
+void BuildingDetailWidget::hideVariableWidget() {
 	ui->pushButton_Build->hide();
 	ui->pushButton_Build_IronMine->hide();
 	ui->pushButton_Build_CoalMine->hide();
@@ -109,7 +109,7 @@ void BuildingInfoDialog::hideVariableWidget() {
 	ui->label_WarehouseSum->hide();
 }
 
-void BuildingInfoDialog::displayBasicInfo() {
+void BuildingDetailWidget::displayBasicInfo() {
 	const QString &name = building_->name();
 	const QString &value = toString(building_->value());
 	const QString &type = building_->type();
@@ -123,8 +123,8 @@ void BuildingInfoDialog::displayBasicInfo() {
 	ui->label_Position->setText(tr("Position: ") + position);
 }
 
-void BuildingInfoDialog::displayAccordingToVisitor() {
-	bool isVisitorOwner = (building_->owner() == visitor_);
+void BuildingDetailWidget::displayAccordingToVisitor() {
+	bool isVisitorOwner = (building_->owner() == CompanyManager::instance().playerCompany());
 	if (isVisitorOwner == false) {
 		ui->pushButton_Buy->show();
 		return;
@@ -142,11 +142,11 @@ void BuildingInfoDialog::displayAccordingToVisitor() {
 		typeIsResidence();
 }
 
-void BuildingInfoDialog::typeIsFoundation() {
+void BuildingDetailWidget::typeIsFoundation() {
 	ui->pushButton_Build->show();
 }
 
-void BuildingInfoDialog::typeIsIndustry() {
+void BuildingDetailWidget::typeIsIndustry() {
 	BaseIndustry *industry = dynamic_cast<BaseIndustry *>(building_);
 	warehouseTableWidget_->setWarehouse(industry->warehouse());
 	garageTableWidget_->setGarage(industry->garage());
@@ -158,15 +158,15 @@ void BuildingInfoDialog::typeIsIndustry() {
 	ui->tabWidget_industry->show();
 }
 
-void BuildingInfoDialog::typeIsCommerce() {
+void BuildingDetailWidget::typeIsCommerce() {
 	ui->pushButton_Dismantle->show();
 }
 
-void BuildingInfoDialog::typeIsResidence() {
+void BuildingDetailWidget::typeIsResidence() {
 	ui->pushButton_Dismantle->show();
 }
 
-void BuildingInfoDialog::showGarage(BaseIndustry *industry) {
+void BuildingDetailWidget::showGarage(BaseIndustry *industry) {
 	const QString &freeVicleCount = QString::number(industry->garage()->freeVihicleCount());
 	const QString &vihicleCount = QString::number(industry->garage()->vihicleCount());
 	const QString &text = freeVicleCount + " / " + vihicleCount + tr(" Truck Free");
@@ -177,7 +177,7 @@ void BuildingInfoDialog::showGarage(BaseIndustry *industry) {
 	garageTableWidget_->updateDisplay();
 }
 
-void BuildingInfoDialog::showWarehouse(BaseIndustry *industry) {
+void BuildingDetailWidget::showWarehouse(BaseIndustry *industry) {
 	const QString &curVolume = toString(industry->warehouse()->curVolume());
 	const QString &maxVolume = toString(industry->warehouse()->maxVolume());
 	ui->label_WarehouseSum->setText(curVolume + "t / " + maxVolume + "t");
@@ -187,7 +187,7 @@ void BuildingInfoDialog::showWarehouse(BaseIndustry *industry) {
 	warehouseTableWidget_->updateDisplay();
 }
 
-void BuildingInfoDialog::addNewVihicle() {
+void BuildingDetailWidget::addNewVihicle() {
 	BaseIndustry *industry = dynamic_cast<BaseIndustry *>(building_);
 	Company *owner = industry->owner();
 	owner->purchase(50);
@@ -195,15 +195,15 @@ void BuildingInfoDialog::addNewVihicle() {
 	emit dataChanged();
 }
 
-void BuildingInfoDialog::on_pushButton_Buy_clicked() {
+void BuildingDetailWidget::on_pushButton_Buy_clicked() {
     emit buySignal(building_);
 }
 
-void BuildingInfoDialog::on_pushButton_Sell_clicked() {
+void BuildingDetailWidget::on_pushButton_Sell_clicked() {
     emit sellSignal(building_);
 }
 
-void BuildingInfoDialog::on_pushButton_Build_clicked() {
+void BuildingDetailWidget::on_pushButton_Build_clicked() {
 	ui->pushButton_Build_IronMine->show();
 	ui->pushButton_Build_CoalMine->show();
 	ui->pushButton_Build_SteelBaseIndustry->show();
@@ -211,10 +211,10 @@ void BuildingInfoDialog::on_pushButton_Build_clicked() {
     ui->pushButton_Build_residence->show();
 }
 
-void BuildingInfoDialog::on_pushButton_Dismantle_clicked() {
+void BuildingDetailWidget::on_pushButton_Dismantle_clicked() {
     emit changeTypeSignal(building_, "Foundation");
 }
 
-QString BuildingInfoDialog::toString(double value) {
+QString BuildingDetailWidget::toString(double value) {
 	return QString::number(value, 10, 2);
 }

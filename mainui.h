@@ -4,15 +4,17 @@
 #include <QWidget>
 #include <QImage>
 
-namespace Ui { class MapUI; }
+namespace Ui { class MainUI; }
 
-class MapUI : public QWidget {
+class MainUI : public QWidget {
 	Q_OBJECT
 
 public:
-	MapUI(QWidget *parent = nullptr);
+	MainUI(QWidget *parent = nullptr);
 
-	~MapUI();
+	~MainUI();
+
+	enum Mode{ Map, Building };
 
 	void init();
 
@@ -20,6 +22,8 @@ public:
 
 	inline void setImage(const QImage &image) { this->image_ = image; }
 	inline const QImage &image() const { return this->image_; }
+
+	void setMode(int mode);
 
 	inline void setZoom(int zoom) { this->zoom_ = zoom; }
 	inline int zoom() const { return this->zoom_; }
@@ -35,12 +39,18 @@ protected:
 private:
 	QRect pixelRect(int i, int j) const;
 
+	void paintMap(QPaintEvent *);
+
+	void paintBuilding(QPaintEvent *);
+
 private:
 	QImage image_;
 
+	int mode_;
+
 	int zoom_;
 
-	Ui::MapUI *ui;
+	Ui::MainUI *ui;
 };
 
 #endif // !MAPUI_H

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>BuildingInfoDialog</class>
- <widget class="QDialog" name="BuildingInfoDialog">
+ <class>BuildingDetailWidget</class>
+ <widget class="QWidget" name="BuildingDetailWidget">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>988</width>
-    <height>303</height>
+    <width>452</width>
+    <height>654</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>QWidget</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -74,7 +74,14 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="5">
+   <item row="0" column="3">
+    <widget class="QPushButton" name="pushButtonAddVihicle">
+     <property name="text">
+      <string>Buy New Vihicle</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
     <layout class="QVBoxLayout" name="verticalLayout_Main">
      <item>
       <widget class="QPushButton" name="pushButton_Buy">
@@ -106,7 +113,7 @@
      </item>
     </layout>
    </item>
-   <item row="0" column="6" rowspan="2">
+   <item row="1" column="1">
     <layout class="QVBoxLayout" name="verticalLayout_Build">
      <item>
       <widget class="MyPushButton" name="pushButton_Build_IronMine">
@@ -144,13 +151,6 @@
       </widget>
      </item>
     </layout>
-   </item>
-   <item row="0" column="3">
-    <widget class="QPushButton" name="pushButtonAddVihicle">
-     <property name="text">
-      <string>Buy New Vihicle</string>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>

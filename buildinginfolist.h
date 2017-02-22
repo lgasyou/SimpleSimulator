@@ -1,5 +1,5 @@
-#ifndef BUILDINGINFOTABLE_H
-#define BUILDINGINFOTABLE_H
+#ifndef BUILDINGINFOLIST_H
+#define BUILDINGINFOLIST_H
 
 #include <QTableWidget>
 
@@ -11,17 +11,13 @@ class MyPushButton;
 
 // This class is used for showing information of Buildings.
 // Set Company before use it.
-class BuildingInfo : public QTableWidget {
+class BuildingInfoList : public QTableWidget {
     Q_OBJECT
 
 public:
-    BuildingInfo(QWidget *parent = nullptr);
+    BuildingInfoList(QWidget *parent = nullptr);
 
 	void init();
-
-	// Those two functions are still in building.
-    bool writeFile(const QString &fileName);
-    bool readFile(const QString &fileName);
 
     void updateDisplay();
 
@@ -30,9 +26,7 @@ public:
 	void displayAccordingToVisitor(int index);
 
 signals:
-    void buySignal(BaseBuilding *);
-
-    void sellSignal(BaseBuilding *);
+	void sendOption(const QString &, BaseBuilding *);
 
     void showDetailSignal(BaseBuilding *);
 
@@ -46,4 +40,4 @@ private:
 	static QString toString(double value);
 };
 
-#endif // BUILDINGINFOTABLE_H
+#endif // BUILDINGINFOLIST_H
