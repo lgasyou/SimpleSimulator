@@ -14,7 +14,7 @@ class QString;
 
 class BaseIndustry : public BaseBuilding {
 public:
-	BaseIndustry(const QString &type = "Factory");
+	BaseIndustry(const QString &name, const QString &type);
 
 	virtual ~BaseIndustry();
 

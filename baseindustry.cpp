@@ -11,8 +11,8 @@
 #include <algorithm>
 #include <functional>
 
-BaseIndustry::BaseIndustry(const QString &type) :
-	BaseBuilding("Factory", type),
+BaseIndustry::BaseIndustry(const QString &name, const QString &type) :
+	BaseBuilding(name, type),
 	addedMachine_(false),
 	warehouse_(new Warehouse),
 	garage_(new Garage)

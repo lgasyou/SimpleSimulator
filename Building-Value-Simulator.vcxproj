@@ -142,9 +142,11 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bank.cpp" />
     <ClCompile Include="bankdialog.cpp" />
     <ClCompile Include="baseagriculture.cpp" />
     <ClCompile Include="basebuilding.cpp" />
+    <ClCompile Include="basefinance.cpp" />
     <ClCompile Include="buildingdetailwidget.cpp" />
     <ClCompile Include="buildingfactory.cpp" />
     <ClCompile Include="buildinginfolist.cpp" />
@@ -155,6 +157,7 @@
     <ClCompile Include="companydetaildialog.cpp" />
     <ClCompile Include="companymanager.cpp" />
     <ClCompile Include="factory.cpp" />
+    <ClCompile Include="farm.cpp" />
     <ClCompile Include="gameconstants.cpp" />
     <ClCompile Include="garage.cpp" />
     <ClCompile Include="garagetablewidget.cpp" />
@@ -264,6 +267,7 @@
     <ClCompile Include="timemanager.cpp" />
     <ClCompile Include="truck.cpp" />
     <ClCompile Include="uimanager.cpp" />
+    <ClCompile Include="unusedland.cpp" />
     <ClCompile Include="valuegenerator.cpp" />
     <ClCompile Include="vector2d.cpp" />
     <ClCompile Include="vihicle.cpp" />
@@ -271,7 +275,9 @@
     <ClCompile Include="warehousetablewidget.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bank.h" />
     <ClInclude Include="baseagriculture.h" />
+    <ClInclude Include="basefinance.h" />
     <ClInclude Include="buildingfactory.h" />
     <CustomBuild Include="buildinginfowidget.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
@@ -283,7 +289,9 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
+    <ClInclude Include="unusedland.h" />
     <ClInclude Include="companymanager.h" />
+    <ClInclude Include="farm.h" />
     <ClInclude Include="GeneratedFiles\ui_buildingdetailwidget.h" />
     <ClInclude Include="GeneratedFiles\ui_buildinginfowidget.h" />
     <ClInclude Include="GeneratedFiles\ui_helpdialog.h" />

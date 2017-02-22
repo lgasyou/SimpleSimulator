@@ -3,9 +3,11 @@
 
 #include "baseindustry.h"
 
+class QString;
+
 class Factory : public BaseIndustry {
 public:
-	Factory();
+	Factory(const QString &name = "Factory");
 };
 
 #endif // !FACTORY_H

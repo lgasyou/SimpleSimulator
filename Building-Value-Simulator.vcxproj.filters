@@ -43,9 +43,6 @@
     <Filter Include="Source Files\Buildings">
       <UniqueIdentifier>{c05c5f96-bcef-432a-acee-daeaf38be9cd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Company">
-      <UniqueIdentifier>{225fbf91-b066-4985-aabc-e05aa8577e8b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Dialogs">
       <UniqueIdentifier>{75f0809b-5420-45c3-9f73-aaad1d258a59}</UniqueIdentifier>
     </Filter>
@@ -87,6 +84,9 @@
     </Filter>
     <Filter Include="Source Files\GUIComponents">
       <UniqueIdentifier>{81efcd5f-914b-4aa3-9b60-30b8de739cb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Group">
+      <UniqueIdentifier>{225fbf91-b066-4985-aabc-e05aa8577e8b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -300,6 +300,18 @@
     <ClCompile Include="mainui.cpp">
       <Filter>Source Files\GUIComponents</Filter>
     </ClCompile>
+    <ClCompile Include="farm.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="basefinance.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="bank.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="unusedland.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mainwindow.h">
@@ -385,7 +397,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="company.h">
-      <Filter>Header Files\Company</Filter>
+      <Filter>Header Files\Group</Filter>
     </ClInclude>
     <ClInclude Include="valuegenerator.h">
       <Filter>Header Files\Utilities</Filter>
@@ -463,7 +475,7 @@
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
     <ClInclude Include="government.h">
-      <Filter>Header Files\Company</Filter>
+      <Filter>Header Files\Group</Filter>
     </ClInclude>
     <ClInclude Include="machine.h">
       <Filter>Header Files\Objects</Filter>
@@ -488,6 +500,18 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_mainui.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="farm.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="basefinance.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="bank.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="unusedland.h">
+      <Filter>Header Files\Buildings</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -3,8 +3,10 @@
 
 #include "baseindustry.h"
 
+class QString;
+
 class Mine : public BaseIndustry {
 public:
-	Mine();
+	Mine(const QString &name = "Mine");
 };
 #endif // !MINE_H

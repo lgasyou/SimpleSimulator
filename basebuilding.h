@@ -13,7 +13,7 @@ class Company;
 //	* BaseIndustry.
 class BaseBuilding {
 public:
-	BaseBuilding(const QString &name = "Foundation", const QString &type = "Foundation",
+	BaseBuilding(const QString &name, const QString &type,
 		double deltaValue = 0.0, Company *owner = nullptr, const Vector2D & = Vector2D(0.0, 0.0));
 
     virtual ~BaseBuilding() { }

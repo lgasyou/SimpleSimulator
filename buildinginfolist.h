@@ -28,8 +28,6 @@ public:
 signals:
 	void sendOption(const QString &, BaseBuilding *);
 
-    void showDetailSignal(BaseBuilding *);
-
 private slots:
 	// Gets building by push button and sends 
 	// signals according to text of button.

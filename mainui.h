@@ -14,7 +14,7 @@ public:
 
 	~MainUI();
 
-	enum Mode{ Map, Building };
+	enum PaintMode{ Map, Building };
 
 	void init();
 

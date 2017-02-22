@@ -1,5 +1,7 @@
 #include "factory.h"
 
-Factory::Factory():
-	BaseIndustry("Factory")
+#include <QString>
+
+Factory::Factory(const QString &name):
+	BaseIndustry(name, "Factory")
 { }

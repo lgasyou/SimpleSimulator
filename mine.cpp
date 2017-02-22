@@ -1,5 +1,7 @@
 #include "mine.h"
 
-Mine::Mine() :
-	BaseIndustry("Mine")
+#include <QString>
+
+Mine::Mine(const QString &name) :
+	BaseIndustry(name, "Mine")
 { }

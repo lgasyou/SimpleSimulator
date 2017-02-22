@@ -1,6 +1,7 @@
 #include "buildingfactory.h"
 
 #include "basebuilding.h"
+#include "unusedland.h"
 
 #include "baseindustry.h"
 #include "factory.h"
@@ -8,9 +9,12 @@
 
 #include "basecommerce.h"
 
+#include "basefinance.h"
+
 #include "baseresidence.h"
 
 #include "baseagriculture.h"
+#include "farm.h"
 
 #include "mapmanager.h"
 #include "government.h"
@@ -34,12 +38,15 @@ BaseBuilding *BuildingFactory::create(const QString &type) {
 		building = new BaseResidence;
 
 	// Agricultural buildings
-	else if (type == "Agriculture")
-		building = new BaseAgriculture;
+	else if (type == "Farm")
+		building = new Farm;
+
+	//else if (type == "Finance")
+	//	building = new BaseFinance;
 
 	// Foundation
 	else
-		building = new BaseBuilding;
+		building = new UnusedLand;
 
 	Vector2D allocatedPos = MapManager::instance().allocate();
 	building->setPosition(allocatedPos);

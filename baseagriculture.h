@@ -3,9 +3,11 @@
 
 #include "basebuilding.h"
 
+class QString;
+
 class BaseAgriculture : public BaseBuilding {
 public:
-	BaseAgriculture(const QString & = "Farm");
+	BaseAgriculture(const QString &name, const QString &type);
 
 	virtual ~BaseAgriculture();
 

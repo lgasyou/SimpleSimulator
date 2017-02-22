@@ -156,8 +156,8 @@ void MainWindow::processOrders(const QString &order, BaseBuilding *building) {
 			emit dataChanged();
 			updateStatusBar(building->type()+ " " + building->name() + " sold.");
 		}
-	} else if (order == "Show Detail") {
-		this->show();
+	} else if (order == "Details") {
+		// TODO
 	}
 }
 
@@ -178,8 +178,6 @@ QString MainWindow::toString(double value) {
 void MainWindow::setupBuildingInfoList() {
 	connect(buildingInfoList_, SIGNAL(sendOption(const QString &, BaseBuilding *)),
 		this, SLOT(processOrders(const QString &, BaseBuilding *)));
-	connect(buildingInfoList_, SIGNAL(showDetailSignal(BaseBuilding*)),
-		this, SLOT(showBuildingDetail(BaseBuilding*)));
 }
 
 void MainWindow::setupCompanyDetailDialog(CompanyDetailDialog *companyDetailDialog) {

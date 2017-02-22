@@ -1,7 +1,7 @@
 #include "baseagriculture.h"
 
-BaseAgriculture::BaseAgriculture(const QString &type) :
-	BaseBuilding("Farm", type)
+BaseAgriculture::BaseAgriculture(const QString &name, const QString &type) :
+	BaseBuilding(name, type)
 { }
 
 BaseAgriculture::~BaseAgriculture() { }

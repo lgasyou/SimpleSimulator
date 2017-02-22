@@ -73,10 +73,5 @@ QString BuildingInfoList::toString(double value) {
 void BuildingInfoList::getBuildingAndSendSignal(MyPushButton *button) {
     int id = button->index();
     BaseBuilding *building = BuildingManager::instance().getBuildingById(id);
-
-    if (button->text() == "Details") {
-        emit showDetailSignal(building);
-    } else {
-        emit sendOption(button->text(), building);
-    }
+	emit sendOption(button->text(), building);
 }

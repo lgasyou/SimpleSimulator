@@ -10,7 +10,7 @@ MainUI::MainUI(QWidget *parent) :
 	image_ = QImage(16, 16, QImage::Format_ARGB32);
 	image_.fill(qRgba(0, 0, 0, 0));
 
-	mode_ = Mode::Map;
+	mode_ = PaintMode::Map;
 
 	zoom_ = 40;
 
@@ -64,11 +64,11 @@ void MainUI::mousePressEvent(QMouseEvent *event) {
 
 void MainUI::paintEvent(QPaintEvent *event) {
 	switch (mode_) {
-	case Mode::Map:
+	case PaintMode::Map:
 		paintMap(event);
 		break;
 
-	case Mode::Building:
+	case PaintMode::Building:
 		paintBuilding(event);
 		break;
 
@@ -107,4 +107,5 @@ void MainUI::paintMap(QPaintEvent *event) {
 void MainUI::paintBuilding(QPaintEvent *event) {
 	QPainter painter(this);
 
+	event;
 }
