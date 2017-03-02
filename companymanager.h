@@ -1,7 +1,7 @@
 #ifndef COMPANYMANAGER_H
 #define COMPANYMANAGER_H
 
-#include <QList>
+#include <list>
 
 class Company;
 
@@ -16,7 +16,7 @@ public:
 
 	inline Company *playerCompany() { return this->playerCompany_; }
 
-	inline QList<Company *> &aiCompanyList() { return aiCompanyList_; }
+	inline std::list<Company *> &aiCompanyList() { return aiCompanyList_; }
 
 private:
 	// Hide constructor and destructor.
@@ -31,7 +31,7 @@ private:
 private:
 	Company *playerCompany_;
 
-	QList<Company *> aiCompanyList_;
+	std::list<Company *> aiCompanyList_;
 };
 
 

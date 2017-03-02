@@ -1,5 +1,7 @@
 #include "unusedland.h"
 
+#include <QString>
+
 UnusedLand::UnusedLand(const QString &name) :
-	BaseBuilding(name, "UnusedLand")
+	BaseBuilding(name, "Unused Land")
 { }

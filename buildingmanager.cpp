@@ -3,19 +3,12 @@
 
 #include "basebuilding.h"
 
-#include "baseindustry.h"
-#include "mine.h"
-#include "factory.h"
-
-#include "basecommerce.h"
-
-#include "baseresidence.h"
-
 #include "company.h"
 #include "valuegenerator.h"
 
 #include <algorithm>
 #include <functional>
+#include <map>
 #include <QString>
 
 BuildingManager::BuildingManager() { }
@@ -29,21 +22,41 @@ BuildingManager &BuildingManager::instance() {
 
 void BuildingManager::init() {
 	BuildingFactory factory;
-	buildings_.push_back(factory.create("Foundation"));
-	buildings_.push_back(factory.create("Mine"));
-	buildings_.push_back(factory.create("Mine"));
-	buildings_.push_back(factory.create("Factory"));
-	for (int i = 0; i != 1; ++i)
-		buildings_.push_back(factory.create("Commerce"));
+	addItem(factory.create("Unused Land"));
+	addItem(factory.create("Mine"));
+	addItem(factory.create("Mine"));
+	addItem(factory.create("Factory"));
+	addItem(factory.create("Bank"));
+	addItem(factory.create("Supermarket"));
+	addItem(factory.create("Garage"));
 	for (int i = 0; i != 5; ++i)
-		buildings_.push_back(factory.create("Residence"));
+		addItem(factory.create("Villa"));
 }
 
-int BuildingManager::indexOf(BaseBuilding *building) const {
-	for (int i = 0; i != buildings_.size(); ++i)
-		if (buildings_[i] == building)
-			return i;
-	return -1;
+BuildingManager::BuildingTypes BuildingManager::stringToEnum(const QString &type) {
+	static std::map<QString, BuildingTypes> stringToEnumMap{
+		{"Bank", Bank },
+		{"Factory", Factory },
+		{"Farm", Farm },
+		{"Garage", Garage },
+		{"Mine", Mine },
+		{"Supermarket", Supermarket },
+		{"Unused Land", UnusedLand },
+		{"Villa", Villa } };
+	return stringToEnumMap[type];
+}
+
+void BuildingManager::addItem(BaseBuilding *building) {
+	buildings_.push_back(building);
+}
+
+double BuildingManager::deltaValueOfCompanyProperties(Company *company) const {
+	double totalDeltaValue = 0.0;
+	for (auto &building : buildings_) {
+		if (building->owner() == company)
+			totalDeltaValue += building->deltaValue();
+	}
+	return totalDeltaValue;
 }
 
 BaseBuilding *BuildingManager::getBuildingByPos(int x, int y) const {
@@ -53,13 +66,17 @@ BaseBuilding *BuildingManager::getBuildingByPos(int x, int y) const {
 	return nullptr;
 }
 
-double BuildingManager::deltaValueOfCompanyProperties(Company *company) const {
-    double totalDeltaValue = 0.0;
-    for (auto &building : buildings_) {
-		if (building->owner() == company)
-			totalDeltaValue += building->deltaValue();
-    }
-    return totalDeltaValue;
+
+int BuildingManager::indexOf(BaseBuilding *building) const {
+	for (int i = 0; i != buildings_.size(); ++i)
+		if (buildings_[i] == building)
+			return i;
+	return -1;
+}
+
+void BuildingManager::removeItem(BaseBuilding *building) {
+	auto iter = iteratorOf(building);
+	buildings_.erase(iter);
 }
 
 BaseBuilding *BuildingManager::resetItemType(BaseBuilding *building, const QString &type) {
@@ -71,15 +88,6 @@ BaseBuilding *BuildingManager::resetItemType(BaseBuilding *building, const QStri
     delete *iterator;
 	*iterator = newBuilding;
     return newBuilding;
-}
-
-void BuildingManager::addItem(BaseBuilding *building) {
-    buildings_.push_back(building);
-}
-
-void BuildingManager::removeItem(BaseBuilding *building) {
-	auto iter = iteratorOf(building);
-	buildings_.erase(iter);
 }
 
 void BuildingManager::update() {

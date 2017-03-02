@@ -12,6 +12,7 @@ struct Goods;
 
 class QString;
 
+//	This class should not be instantiated.
 class BaseIndustry : public BaseBuilding {
 public:
 	BaseIndustry(const QString &name, const QString &type);
@@ -25,16 +26,11 @@ public:
 
 	void manufacture();
 
-	// Creates a route object and send vihicle by this route.
-	void deliverGoods(const Goods &goods, BaseIndustry *dest);
-
 	double putInStorage(const Goods &goods);
 
 	double putOutStorage(const Goods &goods);
 
 	inline Warehouse *warehouse() const { return this->warehouse_; }
-
-	inline Garage *garage() const { return this->garage_; }
 
 	const std::vector<Goods> &products() const;
 
@@ -42,8 +38,6 @@ public:
 
 protected:
     Warehouse *warehouse_;
-
-	Garage *garage_;
 
 	bool addedMachine_;
 

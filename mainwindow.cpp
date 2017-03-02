@@ -16,6 +16,7 @@
 #include "bankdialog.h"
 #include "buildinginfowidget.h"
 #include "buildinginfolist.h"
+#include "buildingdetaildialog.h"
 #include "companydetaildialog.h"
 #include "helpdialog.h"
 #include "mainui.h"
@@ -27,6 +28,7 @@
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
+	buildingDetailDialog_(new BuildingDetailDialog),
 	buildingInfoList_(new BuildingInfoList),
 	buildingInfoWidget_(new BuildingInfoWidget),
 	helpDialog_(new HelpDialog),
@@ -154,8 +156,10 @@ void MainWindow::processOrders(const QString &order, BaseBuilding *building) {
 	} else if (order == "Sell") {
 		if (playerCompany_->sell(building)) {
 			emit dataChanged();
-			updateStatusBar(building->type()+ " " + building->name() + " sold.");
+			updateStatusBar(building->type() + " " + building->name() + " sold.");
 		}
+	} else if (order == "Dismantle") {
+		BuildingManager::instance().resetItemType(building, "Unused Land");
 	} else if (order == "Details") {
 		// TODO
 	}

@@ -1,7 +1,7 @@
-#ifndef BUILDINGDETAILWIDGET_H
-#define BUILDINGDETAILWIDGET_H
+#ifndef BUILDINGDETAILDIALOG_H
+#define BUILDINGDETAILDIALOG_H
 
-#include <QWidget>
+#include <QDialog>
 
 class BaseBuilding;
 class Company;
@@ -12,52 +12,42 @@ class GarageTableWidget;
 class WarehouseTableWidget;
 class MyPushButton;
 namespace Ui {
-class BuildingDetailWidget;
+class BuildingDetailDialog;
 }
 
-class BuildingDetailWidget : public QWidget {
+class BuildingDetailDialog : public QDialog {
     Q_OBJECT
 
 public:
-    BuildingDetailWidget(QWidget *parent = nullptr);
+    BuildingDetailDialog(QWidget *parent = nullptr);
 
-    ~BuildingDetailWidget();
+    ~BuildingDetailDialog();
 
 	inline void showAndRaise();
 
     inline void setBuilding(BaseBuilding *building) { this->building_ = building; }
 
 public slots:
-	void updateDisplay();
-
 	// Changes the type of building by button's text
 	void changeType(MyPushButton *);
 
+	void updateDisplay();
+
 	// Receives the data comes from WarehouseTableWidget or GarageTableWidget.
 	// Send infomation to model BaseIndustry.
-	void deliverGoods(const Goods &goods, BaseIndustry *dest);
+	//void deliverGoods(const Goods &goods, BaseIndustry *dest);
 
 signals:
-	void buySignal(BaseBuilding *);
-
-	void sellSignal(BaseBuilding *);
-
 	void changeTypeSignal(BaseBuilding *, const QString &buildingType);
-
-	void manageSignal(BaseBuilding *, const QString &cmd);
 
 	void dataChanged();
 
+	void sendOption(const QString &option, BaseBuilding *building);
+
 private slots:
-	void addNewVihicle();
+	//void addNewVihicle();
 
-	void on_pushButton_Buy_clicked();
-
-	void on_pushButton_Sell_clicked();
-
-	void on_pushButton_Dismantle_clicked();
-
-	void on_pushButton_Build_clicked();
+	void receiveOrder(MyPushButton *);
 
 private:
 	// Hides all variable widget in order to display correctly.
@@ -68,15 +58,15 @@ private:
 	// Displays according to whether the visitor is owner or not.
 	void displayAccordingToVisitor();
 
-	// Displays according to the type of building.
-	void typeIsFoundation();
-	void typeIsIndustry();
-	void typeIsCommerce();
-	void typeIsResidence();
+	//// Displays according to the type of building.
+	//void typeIsFoundation();
+	//void typeIsIndustry();
+	//void typeIsCommerce();
+	//void typeIsResidence();
 
-	void showGarage(BaseIndustry *);
+	//void showGarage(BaseIndustry *);
 
-	void showWarehouse(BaseIndustry *);
+	//void showWarehouse(BaseIndustry *);
 
 	// transforms double into QString
 	static QString toString(double value);
@@ -88,13 +78,13 @@ private:
 
     WarehouseTableWidget *warehouseTableWidget_;
 
-    Ui::BuildingDetailWidget *ui;
+    Ui::BuildingDetailDialog *ui;
 };
 
-inline void BuildingDetailWidget::showAndRaise() {
+inline void BuildingDetailDialog::showAndRaise() {
 	this->show();
 	this->raise();
 	this->activateWindow();
 }
 
-#endif // !BUILDINGDETAILWIDGET_H
+#endif // !BUILDINGDETAILDIALOG_H

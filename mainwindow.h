@@ -7,6 +7,7 @@ class Company;
 class BaseBuilding;
 
 class MyPushButton;
+class BuildingDetailDialog;
 class BuildingInfoList;
 class BuildingInfoWidget;
 class CompanyDetailDialog;
@@ -62,12 +63,14 @@ private:
 
 	void setupBuildingInfoList();
 
-	//inline void setupBuildingDetailWidget(BuildingDetailWidget *);
+	//inline void setupBuildingDetailDialog(BuildingDetailDialog *);
 
 	inline void setupCompanyDetailDialog(CompanyDetailDialog *);
 
 private:
     Company *playerCompany_;
+
+	BuildingDetailDialog *buildingDetailDialog_;
 
 	BuildingInfoList *buildingInfoList_;
 

@@ -2,14 +2,16 @@
 #define GARAGE_H
 
 #include <QList>
+#include "basetransportation.h"
 
-class BaseIndustry;
 struct Route;
 class Truck;
 
-class Garage {
+class QString;
+
+class Garage : public BaseTransportation {
 public:
-	Garage();
+	Garage(const QString &name = "Garage");
 
 	~Garage();
 

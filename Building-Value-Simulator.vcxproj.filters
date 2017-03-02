@@ -46,9 +46,6 @@
     <Filter Include="Header Files\Dialogs">
       <UniqueIdentifier>{75f0809b-5420-45c3-9f73-aaad1d258a59}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Company">
-      <UniqueIdentifier>{ea6b5ddd-bb06-4665-a28d-27395d619c3b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Dialogs">
       <UniqueIdentifier>{d17210c1-5901-475d-88b4-7bfd538075b5}</UniqueIdentifier>
     </Filter>
@@ -85,7 +82,16 @@
     <Filter Include="Source Files\GUIComponents">
       <UniqueIdentifier>{81efcd5f-914b-4aa3-9b60-30b8de739cb6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Group">
+    <Filter Include="Header Files\Buildings\Instances">
+      <UniqueIdentifier>{060b5227-9109-4438-aa24-08b762336e71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Buildings\Instances">
+      <UniqueIdentifier>{c9b7e77f-1474-4548-bd91-0cba830106a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Groups">
+      <UniqueIdentifier>{ea6b5ddd-bb06-4665-a28d-27395d619c3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Groups">
       <UniqueIdentifier>{225fbf91-b066-4985-aabc-e05aa8577e8b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -139,7 +145,7 @@
       <Filter>Source Files\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="company.cpp">
-      <Filter>Source Files\Company</Filter>
+      <Filter>Source Files\Groups</Filter>
     </ClCompile>
     <ClCompile Include="companydetaildialog.cpp">
       <Filter>Source Files\Dialogs</Filter>
@@ -161,9 +167,6 @@
     </ClCompile>
     <ClCompile Include="warehousetablewidget.cpp">
       <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="garage.cpp">
-      <Filter>Source Files\Objects</Filter>
     </ClCompile>
     <ClCompile Include="truck.cpp">
       <Filter>Source Files\Objects</Filter>
@@ -241,19 +244,13 @@
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
     <ClCompile Include="government.cpp">
-      <Filter>Source Files\Company</Filter>
+      <Filter>Source Files\Groups</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\qrc_resource.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="machine.cpp">
       <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="factory.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
-    <ClCompile Include="mine.cpp">
-      <Filter>Source Files\Buildings</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_buildinginfolist.cpp">
       <Filter>Generated Files\Debug</Filter>
@@ -262,15 +259,6 @@
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
     <ClCompile Include="buildinginfolist.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_buildingdetailwidget.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_buildingdetailwidget.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="buildingdetailwidget.cpp">
       <Filter>Source Files\GUIComponents</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_buildinginfowidget.cpp">
@@ -300,17 +288,50 @@
     <ClCompile Include="mainui.cpp">
       <Filter>Source Files\GUIComponents</Filter>
     </ClCompile>
-    <ClCompile Include="farm.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
     <ClCompile Include="basefinance.cpp">
       <Filter>Source Files\Buildings</Filter>
     </ClCompile>
-    <ClCompile Include="bank.cpp">
+    <ClCompile Include="basetransportation.cpp">
       <Filter>Source Files\Buildings</Filter>
     </ClCompile>
+    <ClCompile Include="bank.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="factory.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="farm.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="mine.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
     <ClCompile Include="unusedland.cpp">
-      <Filter>Source Files\Buildings</Filter>
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="garage.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="supermarket.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="villa.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_buildingdetaildialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_buildingdetaildialog.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="buildingdetaildialog.cpp">
+      <Filter>Source Files\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="person.cpp">
+      <Filter>Source Files\Groups</Filter>
+    </ClCompile>
+    <ClCompile Include="personmanager.cpp">
+      <Filter>Source Files\Managers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -353,12 +374,6 @@
     <CustomBuild Include="buildinginfolist.h">
       <Filter>Header Files\GUIComponents</Filter>
     </CustomBuild>
-    <CustomBuild Include="buildingdetailwidget.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </CustomBuild>
-    <CustomBuild Include="buildingdetailwidget.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="buildinginfowidget.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
@@ -377,27 +392,25 @@
     <CustomBuild Include="mainui.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="BankDialog.ui">
+    <CustomBuild Include="buildingdetaildialog.h">
+      <Filter>Header Files\Dialogs</Filter>
+    </CustomBuild>
+    <CustomBuild Include="buildingdetaildialog.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="CompanyDetailDialog.ui">
+    <CustomBuild Include="bankdialog.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="companydetaildialog.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GeneratedFiles\ui_BankDialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_CompanyDetailDialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="gameconstants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="company.h">
-      <Filter>Header Files\Group</Filter>
+      <Filter>Header Files\Groups</Filter>
     </ClInclude>
     <ClInclude Include="valuegenerator.h">
       <Filter>Header Files\Utilities</Filter>
@@ -415,9 +428,6 @@
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
     <ClInclude Include="goodscontainer.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="garage.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
     <ClInclude Include="basebuilding.h">
@@ -475,21 +485,12 @@
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
     <ClInclude Include="government.h">
-      <Filter>Header Files\Group</Filter>
+      <Filter>Header Files\Groups</Filter>
     </ClInclude>
     <ClInclude Include="machine.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="factory.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
-    <ClInclude Include="mine.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_mainwindow.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_buildingdetailwidget.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_buildinginfowidget.h">
@@ -501,17 +502,50 @@
     <ClInclude Include="GeneratedFiles\ui_mainui.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="farm.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
     <ClInclude Include="basefinance.h">
       <Filter>Header Files\Buildings</Filter>
     </ClInclude>
     <ClInclude Include="bank.h">
-      <Filter>Header Files\Buildings</Filter>
+      <Filter>Header Files\Buildings\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="factory.h">
+      <Filter>Header Files\Buildings\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="farm.h">
+      <Filter>Header Files\Buildings\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="mine.h">
+      <Filter>Header Files\Buildings\Instances</Filter>
     </ClInclude>
     <ClInclude Include="unusedland.h">
+      <Filter>Header Files\Buildings\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="garage.h">
+      <Filter>Header Files\Buildings\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="basetransportation.h">
       <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="supermarket.h">
+      <Filter>Header Files\Buildings\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="villa.h">
+      <Filter>Header Files\Buildings\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_buildingdetaildialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_bankdialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_companydetaildialog.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="person.h">
+      <Filter>Header Files\Groups</Filter>
+    </ClInclude>
+    <ClInclude Include="personmanager.h">
+      <Filter>Header Files\Managers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

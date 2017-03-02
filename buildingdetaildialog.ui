@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BuildingDetailDialog</class>
+ <widget class="QWidget" name="BuildingDetailDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>795</width>
+    <height>418</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>QWidget</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="0" column="1" rowspan="2">
+    <widget class="QStackedWidget" name="detailStackedWidget">
+     <property name="currentIndex">
+      <number>3</number>
+     </property>
+     <widget class="QWidget" name="bankPage">
+      <layout class="QGridLayout" name="gridLayout_2"/>
+     </widget>
+     <widget class="QWidget" name="factoryPage"/>
+     <widget class="QWidget" name="farmPage"/>
+     <widget class="QWidget" name="minePage"/>
+     <widget class="QWidget" name="supermarketPage"/>
+     <widget class="QWidget" name="unusedLandPage">
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="MyPushButton" name="pushButton_Build_IronMine">
+         <property name="text">
+          <string>Iron Mine</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="MyPushButton" name="pushButton_Build_CoalMine">
+         <property name="text">
+          <string>Coal Mine</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="MyPushButton" name="pushButton_Build_SteelBaseIndustry">
+         <property name="text">
+          <string>Steel Factory</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="MyPushButton" name="pushButton_Build_BaseCommerce">
+         <property name="text">
+          <string>Commerce</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="MyPushButton" name="pushButton_Build_residence">
+         <property name="text">
+          <string>Residence</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="villaPage"/>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout_Info">
+     <item>
+      <widget class="QLabel" name="label_Name">
+       <property name="text">
+        <string>BuildingName</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_Value">
+       <property name="text">
+        <string>BuildingValue</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_Type">
+       <property name="text">
+        <string>BuildingType</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_Owner">
+       <property name="text">
+        <string>BuildingOwner</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_Position">
+       <property name="text">
+        <string>BuildingPosition</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout_Main">
+     <item>
+      <widget class="QPushButton" name="buyPushButton">
+       <property name="text">
+        <string>Buy</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="sellPushButton">
+       <property name="text">
+        <string>Sell</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="dismantlePushButton">
+       <property name="text">
+        <string>Dismantle</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MyPushButton</class>
+   <extends>QPushButton</extends>
+   <header>mypushbutton.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

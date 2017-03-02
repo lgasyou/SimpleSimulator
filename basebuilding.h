@@ -6,15 +6,13 @@
 
 class Company;
 
-//	the base of building classes.
-//	three types of building are:
-//	* BaseResidence,
-//	* BaseCommerce,
-//	* BaseIndustry.
+class QString;
+
+//	The base of building classes.
+//	This class should not be instantiated.
 class BaseBuilding {
 public:
-	BaseBuilding(const QString &name, const QString &type,
-		double deltaValue = 0.0, Company *owner = nullptr, const Vector2D & = Vector2D(0.0, 0.0));
+	BaseBuilding(const QString &name, const QString &type);
 
     virtual ~BaseBuilding() { }
 

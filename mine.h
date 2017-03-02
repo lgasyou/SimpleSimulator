@@ -9,4 +9,5 @@ class Mine : public BaseIndustry {
 public:
 	Mine(const QString &name = "Mine");
 };
+
 #endif // !MINE_H

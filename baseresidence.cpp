@@ -1,7 +1,8 @@
 #include "baseresidence.h"
+#include "person.h"
 
-BaseResidence::BaseResidence(const QString &type) :
-	BaseBuilding("World", type)
+BaseResidence::BaseResidence(const QString &name, const QString &type) :
+	BaseBuilding(name, type)
 { }
 
 BaseResidence::~BaseResidence() { }
@@ -9,3 +10,7 @@ BaseResidence::~BaseResidence() { }
 void BaseResidence::update() {
 	changeBaseValue();
 }
+
+void BaseResidence::checkin(Person *resident) { }
+
+void BaseResidence::checkout(Person *resident) { }

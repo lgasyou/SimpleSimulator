@@ -4,7 +4,7 @@
 #include "company.h"
 #include "companymanager.h"
 
-#include "buildingdetailwidget.h"
+#include "buildingdetaildialog.h"
 #include "mypushbutton.h"
 
 #include <QString>
@@ -42,7 +42,7 @@ void BuildingInfoWidget::receiveOrder(MyPushButton *button) {
 void BuildingInfoWidget::showBuildingDetail() {
 	if (displayedBuilding_ != nullptr) {
 		if (detailWidget_ == nullptr) {
-			detailWidget_ = new BuildingDetailWidget;
+			detailWidget_ = new BuildingDetailDialog;
 			detailWidget_->setBuilding(displayedBuilding_);
 		}
 

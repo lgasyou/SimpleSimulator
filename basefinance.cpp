@@ -5,3 +5,5 @@
 BaseFinance::BaseFinance(const QString &name, const QString &type) :
 	BaseBuilding(name, type)
 { }
+
+BaseFinance::~BaseFinance() { }

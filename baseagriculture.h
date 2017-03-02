@@ -5,6 +5,7 @@
 
 class QString;
 
+//	This class should not be instantiated.
 class BaseAgriculture : public BaseBuilding {
 public:
 	BaseAgriculture(const QString &name, const QString &type);

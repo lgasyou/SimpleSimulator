@@ -3,12 +3,14 @@
 #include "valuegenerator.h"
 #include "gameconstants.h"
 
-BaseBuilding::BaseBuilding(const QString &name, const QString &type, double deltaValue, Company *owner, const Vector2D &pos) :
+#include <QString>
+
+BaseBuilding::BaseBuilding(const QString &name, const QString &type) :
 	name_(name),
 	type_(type),
-	deltaValue_(deltaValue),
-	owner_(owner),
-	position_(pos)
+	deltaValue_(0.0),
+	owner_(nullptr),
+	position_(Vector2D())
 {
 	initBasicValue();
 }

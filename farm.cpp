@@ -5,3 +5,5 @@
 Farm::Farm(const QString &name) :
 	BaseAgriculture(name, "Farm")
 { }
+
+Farm::~Farm() { }

@@ -4,7 +4,7 @@
 #include <QWidget>
 
 class BaseBuilding;
-class BuildingDetailWidget;
+class BuildingDetailDialog;
 namespace Ui { class BuildingInfoWidget; }
 
 class QString;
@@ -34,7 +34,7 @@ public slots:
 private:
 	BaseBuilding *displayedBuilding_;
 
-	BuildingDetailWidget *detailWidget_;
+	BuildingDetailDialog *detailWidget_;
 
 	Ui::BuildingInfoWidget *ui;
 };

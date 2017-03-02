@@ -2,7 +2,7 @@
 #define UIMANAGER_H
 
 class BankDialog;
-class BuildingDetailWidget;
+class BuildingDetailDialog;
 class CompanyDetailDialog;
 class SetRouteDialog;
 
@@ -16,7 +16,7 @@ public:
 
 	BankDialog *bankDialog();
 
-	BuildingDetailWidget *buildingDetailDialog();
+	BuildingDetailDialog *buildingDetailDialog();
 
 	CompanyDetailDialog *companyDetailDialog();
 
@@ -37,7 +37,7 @@ private:
 private:
 	BankDialog *bankDialog_;
 
-	BuildingDetailWidget *buildingDetailDialog_;
+	BuildingDetailDialog *buildingDetailDialog_;
 
 	CompanyDetailDialog *companyDetailDialog_;
 
