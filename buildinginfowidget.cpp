@@ -3,6 +3,7 @@
 #include "basebuilding.h"
 #include "company.h"
 #include "companymanager.h"
+#include "uimanager.h"
 
 #include "buildingdetaildialog.h"
 #include "mypushbutton.h"
@@ -41,10 +42,8 @@ void BuildingInfoWidget::receiveOrder(MyPushButton *button) {
 
 void BuildingInfoWidget::showBuildingDetail() {
 	if (displayedBuilding_ != nullptr) {
-		if (detailWidget_ == nullptr) {
-			detailWidget_ = new BuildingDetailDialog;
-			detailWidget_->setBuilding(displayedBuilding_);
-		}
+		detailWidget_ = UIManager::instance().buildingDetailDialog();
+		detailWidget_->setBuilding(displayedBuilding_);
 
 		detailWidget_->showAndRaise();
 		detailWidget_->updateDisplay();

@@ -24,28 +24,28 @@ public:
 
     void update();
 
-    inline void setTotalValue(const double totalValue) { this->totalValue_ = totalValue; }
-    inline const double totalValue() const { return this->totalValue_; }
+    void setCash(const double cash) { this->cash_ = cash; }
+    const double cash() const { return this->cash_; }
 
-    inline void setCash(const double cash) { this->cash_ = cash; }
-    inline const double cash() const { return this->cash_; }
+    void setLiability(const double liability) { this->liability_ = liability; }
+    const double liability() const { return this->liability_; }
 
-    inline void setLiability(const double liability) { this->liability_ = liability; }
-    inline const double liability() const { return this->liability_; }
+    void setName(const QString &name) { this->name_ = name; }
+    const QString &name() const { return this->name_; }
 
-    inline void setName(const QString &name) { this->name_ = name; }
-    inline const QString &name() const { return this->name_; }
+	void setTotalValue(const double totalValue) { this->totalValue_ = totalValue; }
+	const double totalValue() const { return this->totalValue_; }
 
 protected:
-    QString name_;
-
     double cash_;
+
+    double liability_;
+
+    QString name_;
 
 	// Records the total value of company,
 	// includes the value of properties.
     double totalValue_;
-
-    double liability_;
 };
 
 #endif // COMPANY_H

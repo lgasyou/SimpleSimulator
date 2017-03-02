@@ -9,12 +9,13 @@
 #include <QApplication>
 
 BuildingInfoList::BuildingInfoList(QWidget *parent) :
-    QTableWidget(parent)
-{
+    QTableWidget(parent) {
 	init();
 }
 
 void BuildingInfoList::init() {
+	resize(QSize(800, 600));
+
 	setWindowTitle(tr("Building Information List"));
 
 	this->setColumnCount(GameConstants::colOfBuildingInfoList);

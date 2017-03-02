@@ -143,6 +143,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bank.cpp" />
+    <ClCompile Include="bankclient.cpp" />
     <ClCompile Include="bankdialog.cpp" />
     <ClCompile Include="baseagriculture.cpp" />
     <ClCompile Include="basebuilding.cpp" />
@@ -281,6 +282,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bank.h" />
+    <ClInclude Include="bankclient.h" />
     <ClInclude Include="baseagriculture.h" />
     <ClInclude Include="basefinance.h" />
     <ClInclude Include="basetransportation.h" />

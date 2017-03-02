@@ -9,8 +9,7 @@ BaseBuilding::BaseBuilding(const QString &name, const QString &type) :
 	name_(name),
 	type_(type),
 	deltaValue_(0.0),
-	owner_(nullptr),
-	position_(Vector2D())
+	owner_(nullptr)
 {
 	initBasicValue();
 }

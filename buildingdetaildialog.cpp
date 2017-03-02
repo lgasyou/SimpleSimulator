@@ -25,27 +25,27 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
 
 	ui->detailStackedWidget->insertWidget(3, garageTableWidget_);
 
-	connect(this, SIGNAL(dataChanged()),
-		warehouseTableWidget_, SLOT(updateDisplay()));
-	connect(this, SIGNAL(dataChanged()),
-		garageTableWidget_, SLOT(updateDisplay()));
+	//connect(this, SIGNAL(dataChanged()),
+	//	warehouseTableWidget_, SLOT(updateDisplay()));
+	//connect(this, SIGNAL(dataChanged()),
+	//	garageTableWidget_, SLOT(updateDisplay()));
 
-	connect(garageTableWidget_, SIGNAL(dataChanged()),
-		this, SLOT(updateDisplay()));
-	connect(warehouseTableWidget_, SIGNAL(dataChanged()),
-		this, SLOT(updateDisplay()));
+	//connect(garageTableWidget_, SIGNAL(dataChanged()),
+	//	this, SLOT(updateDisplay()));
+	//connect(warehouseTableWidget_, SIGNAL(dataChanged()),
+	//	this, SLOT(updateDisplay()));
 
-	// In route to change building's type by button's text
-	connect(ui->pushButton_Build_CoalMine, SIGNAL(sendPointer(MyPushButton*)),
-		this, SLOT(changeType(MyPushButton*)));
-	connect(ui->pushButton_Build_BaseCommerce, SIGNAL(sendPointer(MyPushButton*)),
-		this, SLOT(changeType(MyPushButton*)));
-	connect(ui->pushButton_Build_IronMine, SIGNAL(sendPointer(MyPushButton*)),
-		this, SLOT(changeType(MyPushButton*)));
-	connect(ui->pushButton_Build_residence, SIGNAL(sendPointer(MyPushButton*)),
-		this, SLOT(changeType(MyPushButton*)));
-	connect(ui->pushButton_Build_SteelBaseIndustry, SIGNAL(sendPointer(MyPushButton*)),
-		this, SLOT(changeType(MyPushButton*)));
+	//// In route to change building's type by button's text
+	//connect(ui->pushButton_Build_CoalMine, SIGNAL(sendPointer(MyPushButton*)),
+	//	this, SLOT(changeType(MyPushButton*)));
+	//connect(ui->pushButton_Build_BaseCommerce, SIGNAL(sendPointer(MyPushButton*)),
+	//	this, SLOT(changeType(MyPushButton*)));
+	//connect(ui->pushButton_Build_IronMine, SIGNAL(sendPointer(MyPushButton*)),
+	//	this, SLOT(changeType(MyPushButton*)));
+	//connect(ui->pushButton_Build_residence, SIGNAL(sendPointer(MyPushButton*)),
+	//	this, SLOT(changeType(MyPushButton*)));
+	//connect(ui->pushButton_Build_SteelBaseIndustry, SIGNAL(sendPointer(MyPushButton*)),
+	//	this, SLOT(changeType(MyPushButton*)));
 
 	connect(ui->buyPushButton, SIGNAL(sendPointer(MyPushButton*)),
 		this, SLOT(receiveOrder(MyPushButton*)));
@@ -119,8 +119,8 @@ void BuildingDetailDialog::displayAccordingToVisitor() {
 	ui->sellPushButton->show();
 
 	const QString &type = building_->type();
-	int pageIndex = BuildingManager::stringToEnum(type);
-	ui->detailStackedWidget->setCurrentIndex(pageIndex);
+	int indexOfPage = BuildingManager::stringToEnum(type);
+	ui->detailStackedWidget->setCurrentIndex(indexOfPage);
 }
 
 //void BuildingDetailDialog::typeIsFoundation() {

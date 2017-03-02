@@ -28,7 +28,7 @@
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
-	buildingDetailDialog_(new BuildingDetailDialog),
+	buildingDetailDialog_(nullptr),
 	buildingInfoList_(new BuildingInfoList),
 	buildingInfoWidget_(new BuildingInfoWidget),
 	helpDialog_(new HelpDialog),
@@ -57,6 +57,8 @@ void MainWindow::init() {
 
 	playerCompany_ = CompanyManager::instance().playerCompany();
 
+	buildingDetailDialog_ = UIManager::instance().buildingDetailDialog();
+
 	setWindowTitle(tr("Building Value Simulator"));
 
 	ui->setupUi(this);
@@ -71,6 +73,9 @@ void MainWindow::init() {
 	connect(buildingInfoWidget_, SIGNAL(sendOption(const QString &, BaseBuilding *)),
 		this, SLOT(processOrders(const QString &, BaseBuilding *)));
 	setupBuildingInfoList();
+
+	connect(buildingDetailDialog_, SIGNAL(sendOption(const QString &, BaseBuilding *)),
+		this, SLOT(processOrders(const QString &, BaseBuilding *)));
 
 	connect(ui->bankPushButton, SIGNAL(clicked()),
 		this, SLOT(goBank()));
@@ -87,6 +92,8 @@ void MainWindow::init() {
 		this, SLOT(updateDisplay()));
 	connect(this, SIGNAL(dataChanged()),
 		buildingInfoWidget_, SLOT(updateDisplay()));
+	connect(this, SIGNAL(dataChanged()),
+		buildingDetailDialog_, SLOT(updateDisplay()));
 
 	updateDisplay();
 }
@@ -161,7 +168,11 @@ void MainWindow::processOrders(const QString &order, BaseBuilding *building) {
 	} else if (order == "Dismantle") {
 		BuildingManager::instance().resetItemType(building, "Unused Land");
 	} else if (order == "Details") {
-		// TODO
+		buildingDetailDialog_ = UIManager::instance().buildingDetailDialog();
+		buildingDetailDialog_->setBuilding(building);
+
+		buildingDetailDialog_->showAndRaise();
+		buildingDetailDialog_->updateDisplay();
 	}
 }
 
