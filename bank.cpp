@@ -23,20 +23,10 @@ void Bank::openAnAccount(Company *client) { }
 
 void Bank::repay(Company *client, double amount) { }
 
-const BankClient &Bank::query(Company *client) {
-	return findClient(client);
+const BankClient &Bank::query(Company *client) const {
+	return clientList_.find(client)->second;
 }
 
 void Bank::withdraw(Company *client, double amount) { }
 
 void Bank::update() { }
-
-BankClient &Bank::findClient(Company *client) {
-	for (BankClient &c : clientList_) {
-		if (c.company() == client)
-			return c;
-	}
-
-	static BankClient emptyClient;
-	return emptyClient;
-}

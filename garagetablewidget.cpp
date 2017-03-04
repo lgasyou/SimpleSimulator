@@ -11,7 +11,8 @@
 #include "mypushbutton.h"
 
 GarageTableWidget::GarageTableWidget(QWidget *parent) : 
-	QTableWidget(parent)
+	QTableWidget(parent),
+	garage_(nullptr)
 {
 	init();
 }
@@ -25,13 +26,15 @@ void GarageTableWidget::init() {
 }
 
 void GarageTableWidget::updateDisplay() {
-	auto &vihicleList = garage_->vihicleList();
-	this->setRowCount(vihicleList.size());
+	if (garage_ != nullptr) {
+		auto &vihicleList = garage_->vihicleList();
+		this->setRowCount(vihicleList.size());
 
-	int index = 0;
-	this->clearContents();
-	for (auto &iter = vihicleList.constBegin(); iter != vihicleList.constEnd(); ++iter, ++index) {
-		updateEachRow(index, *iter);
+		int index = 0;
+		this->clearContents();
+		for (auto &iter = vihicleList.constBegin(); iter != vihicleList.constEnd(); ++iter, ++index) {
+			updateEachRow(index, *iter);
+		}
 	}
 }
 

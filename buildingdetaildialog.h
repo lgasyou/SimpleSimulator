@@ -51,23 +51,16 @@ private slots:
 	void receiveOrder(MyPushButton *);
 
 private:
-	// Hides all variable widget in order to display correctly.
-	void hideVariableWidget();
 
 	void displayBasicInfo();
 
 	// Displays according to whether the visitor is owner or not.
 	void displayAccordingToVisitor();
+	
+	// Hides all variable widget in order to display correctly.
+	void hideVariableWidget();
 
-	//// Displays according to the type of building.
-	//void typeIsFoundation();
-	//void typeIsIndustry();
-	//void typeIsCommerce();
-	//void typeIsResidence();
-
-	//void showGarage(BaseIndustry *);
-
-	//void showWarehouse(BaseIndustry *);
+	void signalSlotConfig();
 
 	// transforms double into QString
 	static QString toString(double value);

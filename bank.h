@@ -3,7 +3,7 @@
 
 #include "basefinance.h"
 #include "bankclient.h"
-#include <list>
+#include <map>
 
 class Company;
 
@@ -27,7 +27,7 @@ public:
 
 	void repay(Company *client, double amount);
 
-	const BankClient &query(Company *client);
+	const BankClient &query(Company *client) const;
 
 	void withdraw(Company *client, double amount);
 
@@ -40,10 +40,7 @@ public:
 	double loanInterestRate() const { return this->loanInterestRate_; }
 
 private:
-	BankClient &findClient(Company *client);
-
-private:
-	std::list<BankClient> clientList_;
+	std::map<Company *, BankClient> clientList_;
 
 	double depositInterestRate_;
 

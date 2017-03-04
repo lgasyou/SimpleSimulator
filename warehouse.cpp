@@ -5,3 +5,5 @@
 Warehouse::Warehouse() :
 	GoodsContainer()
 { }
+
+Warehouse::~Warehouse() { }

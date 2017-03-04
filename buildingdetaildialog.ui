@@ -187,8 +187,15 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0" colspan="2">
+       <item row="2" column="0" colspan="2">
         <widget class="GarageTableWidget" name="garageTableWidget"/>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QLabel" name="garageStateLabel">
+         <property name="text">
+          <string>0 / 0 Truck Free</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
