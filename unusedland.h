@@ -8,6 +8,8 @@ class QString;
 class UnusedLand : public BaseBuilding {
 public:
 	UnusedLand(const QString &name = "Unused Land");
+
+	void update() override;
 };
 
 #endif // !UNUSEDLAND_H

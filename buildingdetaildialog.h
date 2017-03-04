@@ -8,7 +8,6 @@ class Company;
 class BaseIndustry;
 struct Goods;
 
-class GarageTableWidget;
 class WarehouseTableWidget;
 class MyPushButton;
 namespace Ui {
@@ -47,6 +46,8 @@ signals:
 private slots:
 	//void addNewVihicle();
 
+	void addNewMachine(MyPushButton *);
+
 	void receiveOrder(MyPushButton *);
 
 private:
@@ -73,8 +74,6 @@ private:
 
 private:
     BaseBuilding *building_;
-
-	GarageTableWidget *garageTableWidget_;
 
     WarehouseTableWidget *warehouseTableWidget_;
 

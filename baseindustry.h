@@ -7,7 +7,6 @@
 class Warehouse;
 class Garage;
 class Machine;
-struct MachineSettings;
 struct Goods;
 
 class QString;
@@ -19,7 +18,7 @@ public:
 
 	virtual ~BaseIndustry();
 
-	void addMachine(const MachineSettings &settings);
+	void addMachine(Machine *);
 
 	// updates data after each turn
 	void update() override;
@@ -32,14 +31,14 @@ public:
 
 	inline Warehouse *warehouse() const { return this->warehouse_; }
 
+	const auto &machines() const { return this->machines_; }
+
 	const std::vector<Goods> &products() const;
 
 	const std::vector<Goods> &materials() const;
 
 protected:
     Warehouse *warehouse_;
-
-	bool addedMachine_;
 
 	std::vector<Machine *> machines_;
 

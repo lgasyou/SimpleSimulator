@@ -17,8 +17,8 @@ HelpDialog::~HelpDialog() {
 }
 
 void HelpDialog::init() {
-	connect(ui->itemListWidget, SIGNAL(currentItemChanged(QListWidgetItem *, QListWidgetItem *)),
-		this, SLOT(showIndustryChain(QListWidgetItem *)));
+	connect(ui->itemListWidget,	SIGNAL(currentItemChanged(QListWidgetItem *, QListWidgetItem *)),
+			this,				SLOT(showIndustryChain(QListWidgetItem *)));
 
 	QStringList items{ "Coal", "Iron", "Log", "Plank", "Steel"  };
 	ui->itemListWidget->addItems(items);

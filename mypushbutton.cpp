@@ -1,14 +1,12 @@
 #include "mypushbutton.h"
 
 MyPushButton::MyPushButton(QWidget *parent) :
-    QPushButton(parent)
-{	
+    QPushButton(parent) {	
 	init();
 }
 
 MyPushButton::MyPushButton(const QString &text, QWidget *parent) :
-    QPushButton(text, parent)
-{
+    QPushButton(text, parent) {
 	init();
 }
 

@@ -12,7 +12,6 @@
 
 BaseIndustry::BaseIndustry(const QString &name, const QString &type) :
 	BaseBuilding(name, type),
-	addedMachine_(false),
 	warehouse_(new Warehouse)
 { }
 
@@ -21,13 +20,13 @@ BaseIndustry::~BaseIndustry() {
 	warehouse_ = nullptr;
 }
 
-void BaseIndustry::addMachine(const MachineSettings &settings) {
-	Machine *newMachine = new Machine;
-	newMachine->setParameters(settings);
-	machines_.push_back(newMachine);
+void BaseIndustry::addMachine(Machine *machine) {
+	machines_.push_back(machine);
 
-	products_.insert(products_.end(), newMachine->products().cbegin(), newMachine->products().cend());
-	materials_.insert(materials_.end(), newMachine->materials().cbegin(), newMachine->materials().cend());
+	products_.insert(products_.end(), machine->products().cbegin(), machine->products().cend());
+	products_.erase(std::unique(products_.begin(), products_.end()), products_.end());
+	materials_.insert(materials_.end(), machine->materials().cbegin(), machine->materials().cend());
+	materials_.erase(std::unique(materials_.begin(), materials_.end()), materials_.end());
 }
 
 void BaseIndustry::update() { 

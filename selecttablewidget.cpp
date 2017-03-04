@@ -1,5 +1,4 @@
 ﻿#include "selecttablewidget.h"
-#include "ui_selecttablewidget.h"
 
 #include "basebuilding.h"
 
@@ -8,18 +7,13 @@
 #include "mypushbutton.h"
 
 SelectTableWidget::SelectTableWidget(QWidget *parent) :
-	QTableWidget(parent),
-	ui(new Ui::SelectTableWidget)
-{	
+	QTableWidget(parent) {	
 	init();
 }
 
-SelectTableWidget::~SelectTableWidget() {
-	delete ui;
-}
+SelectTableWidget::~SelectTableWidget() { }
 
 void SelectTableWidget::init() {
-	ui->setupUi(this);
 	setColumnCount(3);
 	QStringList header{ tr("Name"), tr("Type"), tr("Option") };
 	setHorizontalHeaderLabels(header);
@@ -60,11 +54,11 @@ void SelectTableWidget::updateEachLine(int indexInWidget, int indexInManager, Ba
 void SelectTableWidget::setSelector(int type) {
 	typeNames_.clear();
 	if (type) {
-		if (type & 1)
-			typeNames_.push_back("Foundation");
-		if (type & 2)
+		if (type & UnusedLand)
+			typeNames_.push_back("Unused Land");
+		if (type & Factory)
 			typeNames_.push_back("Factory");
-		if (type & 8)
+		if (type & Mine)
 			typeNames_.push_back("Mine");
 	}
 }

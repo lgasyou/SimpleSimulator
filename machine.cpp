@@ -25,7 +25,6 @@ void Machine::produce() {
 			limitFactor = ratio;
 	}
 
-	currentProductivity_ = limitFactor;
 	// Produces several goods.
 	for (const auto &material : materials_) {
 		Goods finalMaterial = material;
@@ -37,6 +36,7 @@ void Machine::produce() {
 		finalProduct.volume *= limitFactor;
 		warehouse_->addItem(finalProduct);
 	}
+	currentProductivity_ = limitFactor;
 }
 
 void Machine::setMaximalProductivity(double maximalProductivity) {

@@ -39,5 +39,6 @@ bool Company::sell(BaseBuilding *building) {
 }
 
 void Company::update() {
-    
+	double deltaValue = BuildingManager::instance().deltaValueOfCompanyProperties(this);
+	setTotalValue(totalValue() + deltaValue);
 }

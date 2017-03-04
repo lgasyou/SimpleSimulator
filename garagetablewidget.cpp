@@ -25,8 +25,6 @@ void GarageTableWidget::init() {
 }
 
 void GarageTableWidget::updateDisplay() {
-	if (this->isHidden())	return;
-
 	auto &vihicleList = garage_->vihicleList();
 	this->setRowCount(vihicleList.size());
 
@@ -59,6 +57,10 @@ void GarageTableWidget::updateEachRow(int index, Truck *truck) {
 
 	connect(routeBtn, SIGNAL(sendPointer(MyPushButton*)),
 		this, SLOT(buttonClicked(MyPushButton*)));
+}
+
+void GarageTableWidget::setGarage(BaseBuilding *garage) {
+	this->garage_ = dynamic_cast<Garage *>(garage);
 }
 
 void GarageTableWidget::buttonClicked(MyPushButton *button) {

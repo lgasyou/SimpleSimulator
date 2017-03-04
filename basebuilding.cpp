@@ -32,10 +32,6 @@ void BaseBuilding::initBasicValue() {
 	this->value_ = value;
 }
 
-void BaseBuilding::update() { 
-	changeBaseValue();
-}
-
 void BaseBuilding::changeBaseValue() {
 	double sigma = value_ * 0.1 / 3;
 	double deltaValue = ValueGenerator::instance().normalDistribution(0, sigma);

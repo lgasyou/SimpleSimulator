@@ -9,10 +9,9 @@ class BaseBuilding;
 class MyPushButton;
 class BuildingDetailDialog;
 class BuildingInfoList;
-class BuildingInfoWidget;
 class CompanyDetailDialog;
 class HelpDialog;
-class MainUI;
+class QString;
 
 namespace Ui {
 class MainWindow;
@@ -33,9 +32,6 @@ signals:
 	void sendSelectedBuilding(BaseBuilding *);
 
 private slots:
-	// Opens bank dialog.
-    void goBank();
-
 	// Calls function update() of every variable objects.
     void endTurns();
 
@@ -54,18 +50,12 @@ private slots:
     void changeType(BaseBuilding *, const QString &);
 
 private:
-    void updateCompanyInfo();
-
     void updateStatusBar(const QString &msg);
 
 	// transforms double into QString
 	static QString toString(double value);
 
-	void setupBuildingInfoList();
-
-	//inline void setupBuildingDetailDialog(BuildingDetailDialog *);
-
-	inline void setupCompanyDetailDialog(CompanyDetailDialog *);
+	void signalSlotConfig();
 
 private:
     Company *playerCompany_;
@@ -74,11 +64,9 @@ private:
 
 	BuildingInfoList *buildingInfoList_;
 
-	BuildingInfoWidget *buildingInfoWidget_;
+	CompanyDetailDialog *companyDetailDialog_;
 
 	HelpDialog *helpDialog_;
-
-	MainUI *mainUi_;
 
     Ui::MainWindow *ui;
 };

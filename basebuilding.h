@@ -20,7 +20,7 @@ public:
 	void copyFrom(const BaseBuilding &rhs);
 
 	// Updates data after each turn
-	virtual void update();
+	virtual void update() = 0;
 
 	void changeBaseValue();
 

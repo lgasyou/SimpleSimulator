@@ -15,7 +15,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="2" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_Repay">
+    <layout class="QHBoxLayout" name="repayHorizontalLayout">
      <item>
       <widget class="QLabel" name="label_Repay">
        <property name="text">

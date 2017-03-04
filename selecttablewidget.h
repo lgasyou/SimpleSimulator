@@ -7,9 +7,6 @@
 
 class BaseBuilding;
 class MyPushButton;
-namespace Ui {
-class SelectTableWidget;
-}
 
 class SelectTableWidget : public QTableWidget {
 	Q_OBJECT
@@ -17,9 +14,8 @@ class SelectTableWidget : public QTableWidget {
 public:
 	enum { 
 		None = 0, 
-		Foundation = 1, 
-		Factory = 2, SteelFactory = 4, 
-		Mine = 8, CoalMine = 16, IronMine = 32 };
+		UnusedLand = 1, 
+		Factory = 2, Mine = 4 };
 
 	SelectTableWidget(QWidget *parent = nullptr);
 
@@ -43,8 +39,6 @@ signals:
 
 private:
 	std::vector<QString> typeNames_;
-
-	Ui::SelectTableWidget *ui;
 };
 
 #endif // !SELECTTABLEWIDGET_H

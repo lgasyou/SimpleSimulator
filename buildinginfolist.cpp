@@ -4,6 +4,7 @@
 #include "basebuilding.h"
 #include "company.h"
 #include "gameconstants.h"
+
 #include "mypushbutton.h"
 #include <QFile>
 #include <QApplication>

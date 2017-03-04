@@ -17,28 +17,28 @@
    <item row="0" column="0">
     <widget class="QLabel" name="label_Name">
      <property name="text">
-      <string>TextLabel</string>
+      <string>Name</string>
      </property>
     </widget>
    </item>
    <item row="1" column="0">
     <widget class="QLabel" name="label_Cash">
      <property name="text">
-      <string>TextLabel</string>
+      <string>Cash</string>
      </property>
     </widget>
    </item>
    <item row="2" column="0">
     <widget class="QLabel" name="label_TotalValue">
      <property name="text">
-      <string>TextLabel</string>
+      <string>TotalValue</string>
      </property>
     </widget>
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="label_Liability">
      <property name="text">
-      <string>TextLabel</string>
+      <string>Liability</string>
      </property>
     </widget>
    </item>

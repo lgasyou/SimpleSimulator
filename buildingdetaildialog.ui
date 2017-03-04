@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>795</width>
+    <width>863</width>
     <height>423</height>
    </rect>
   </property>
@@ -15,39 +15,64 @@
   </property>
   <layout class="QGridLayout" name="gridLayout_3">
    <item row="0" column="0">
-    <layout class="QVBoxLayout" name="verticalLayout_Info">
+    <layout class="QVBoxLayout" name="basicInfoVerticalLayout">
      <item>
-      <widget class="QLabel" name="label_Name">
+      <widget class="QLabel" name="nameLabel">
        <property name="text">
         <string>BuildingName</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_Value">
+      <widget class="QLabel" name="valueLabel">
        <property name="text">
         <string>BuildingValue</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_Type">
+      <widget class="QLabel" name="typeLabel">
        <property name="text">
         <string>BuildingType</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_Owner">
+      <widget class="QLabel" name="ownerLabel">
        <property name="text">
         <string>BuildingOwner</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_Position">
+      <widget class="QLabel" name="positionLabel">
        <property name="text">
         <string>BuildingPosition</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="0" column="2">
+    <layout class="QVBoxLayout" name="basicOperationVerticalLayout">
+     <item>
+      <widget class="MyPushButton" name="buyPushButton">
+       <property name="text">
+        <string>Buy</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="MyPushButton" name="sellPushButton">
+       <property name="text">
+        <string>Sell</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="MyPushButton" name="dismantlePushButton">
+       <property name="text">
+        <string>Dismantle</string>
        </property>
       </widget>
      </item>
@@ -56,7 +81,7 @@
    <item row="0" column="1">
     <widget class="QStackedWidget" name="detailStackedWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="bankPage">
       <layout class="QGridLayout" name="gridLayout_2">
@@ -107,67 +132,114 @@
      <widget class="QWidget" name="factoryPage">
       <layout class="QGridLayout" name="gridLayout_6">
        <item row="0" column="0">
+        <widget class="MyPushButton" name="purchaseNewMachineInFactoryPushButton">
+         <property name="text">
+          <string>Purchase New Machine</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
         <widget class="QPushButton" name="stopFactoryPushButton">
          <property name="text">
           <string>Stop</string>
          </property>
         </widget>
        </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="MachineTableWidget" name="factoryTableWidget"/>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="farmPage">
       <layout class="QGridLayout" name="gridLayout_5">
        <item row="0" column="0">
+        <widget class="MyPushButton" name="purchaseNewMachineInFarmPushButton">
+         <property name="text">
+          <string>Purchase New Machine</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
         <widget class="QPushButton" name="stopFarmPushButton">
          <property name="text">
           <string>Stop</string>
          </property>
         </widget>
        </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="MachineTableWidget" name="farmTableWidget"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="garagePage">
+      <layout class="QGridLayout" name="gridLayout_8">
+       <item row="0" column="0">
+        <widget class="QPushButton" name="purchaseNewVihiclePushButton">
+         <property name="text">
+          <string>Purchase New Vihicle</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="stopGaragePushButton">
+         <property name="text">
+          <string>Stop</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="GarageTableWidget" name="garageTableWidget"/>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="minePage">
       <layout class="QGridLayout" name="gridLayout_4">
        <item row="0" column="0">
+        <widget class="MyPushButton" name="purchaseNewMachineInMinePushButton">
+         <property name="text">
+          <string>Purchase New Machine</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
         <widget class="QPushButton" name="stopMinePushButton">
          <property name="text">
           <string>Stop</string>
          </property>
         </widget>
        </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="MachineTableWidget" name="mineTableWidget"/>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="supermarketPage">
       <layout class="QGridLayout" name="gridLayout_7">
-       <item row="0" column="0">
+       <item row="0" column="1">
         <widget class="QPushButton" name="stopSupermarketPushButton">
          <property name="text">
           <string>Stop</string>
          </property>
         </widget>
        </item>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="purchasePushButton">
+         <property name="text">
+          <string>Purchase</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QTableWidget" name="supermarketTableWidget"/>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="unusedLandPage">
       <layout class="QGridLayout" name="gridLayout">
-       <item row="8" column="0">
-        <widget class="MyPushButton" name="buildSupermarketPushButton">
+       <item row="2" column="0">
+        <widget class="MyPushButton" name="buildFactoryPushButton">
          <property name="text">
-          <string>Supermarket</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="0">
-        <widget class="MyPushButton" name="buildGaragePushButton">
-         <property name="text">
-          <string>Garage</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="MyPushButton" name="buildFarmPushButton">
-         <property name="text">
-          <string>Farm</string>
+          <string>Factory</string>
          </property>
         </widget>
        </item>
@@ -178,17 +250,24 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
-        <widget class="MyPushButton" name="buildFactoryPushButton">
+       <item row="8" column="0">
+        <widget class="MyPushButton" name="buildSupermarketPushButton">
          <property name="text">
-          <string>Factory</string>
+          <string>Supermarket</string>
          </property>
         </widget>
        </item>
-       <item row="7" column="0">
-        <widget class="MyPushButton" name="buildMinePushButton">
+       <item row="4" column="0">
+        <widget class="MyPushButton" name="buildFarmPushButton">
          <property name="text">
-          <string>Mine</string>
+          <string>Farm</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="MyPushButton" name="buildGaragePushButton">
+         <property name="text">
+          <string>Garage</string>
          </property>
         </widget>
        </item>
@@ -199,35 +278,17 @@
          </property>
         </widget>
        </item>
+       <item row="7" column="0">
+        <widget class="MyPushButton" name="buildMinePushButton">
+         <property name="text">
+          <string>Mine</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="villaPage"/>
     </widget>
-   </item>
-   <item row="0" column="2">
-    <layout class="QVBoxLayout" name="basicOperationVerticalLayout">
-     <item>
-      <widget class="MyPushButton" name="buyPushButton">
-       <property name="text">
-        <string>Buy</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="MyPushButton" name="sellPushButton">
-       <property name="text">
-        <string>Sell</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="MyPushButton" name="dismantlePushButton">
-       <property name="text">
-        <string>Dismantle</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
    </item>
   </layout>
  </widget>
@@ -236,6 +297,16 @@
    <class>MyPushButton</class>
    <extends>QPushButton</extends>
    <header>mypushbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>GarageTableWidget</class>
+   <extends>QTableWidget</extends>
+   <header>garagetablewidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>MachineTableWidget</class>
+   <extends>QTableWidget</extends>
+   <header>machinetablewidget.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

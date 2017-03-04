@@ -8,6 +8,7 @@
 #include "buildingmanager.h"
 #include "garage.h"
 #include "goods.h"
+#include "machine.h"
 
 #include "garagetablewidget.h"
 #include "warehousetablewidget.h"
@@ -17,13 +18,10 @@
 BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
 	QDialog(parent),
     building_(nullptr),
-	garageTableWidget_(new GarageTableWidget),
 	warehouseTableWidget_(new WarehouseTableWidget),
     ui(new Ui::BuildingDetailDialog)
 {
     ui->setupUi(this);
-
-	ui->detailStackedWidget->insertWidget(3, garageTableWidget_);
 
 	//connect(this, SIGNAL(dataChanged()),
 	//	warehouseTableWidget_, SLOT(updateDisplay()));
@@ -47,12 +45,24 @@ BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
 	//connect(ui->pushButton_Build_SteelBaseIndustry, SIGNAL(sendPointer(MyPushButton*)),
 	//	this, SLOT(changeType(MyPushButton*)));
 
-	connect(ui->buyPushButton, SIGNAL(sendPointer(MyPushButton*)),
-		this, SLOT(receiveOrder(MyPushButton*)));
-	connect(ui->sellPushButton, SIGNAL(sendPointer(MyPushButton*)),
-		this, SLOT(receiveOrder(MyPushButton*)));
-	connect(ui->dismantlePushButton, SIGNAL(sendPointer(MyPushButton*)),
-		this, SLOT(receiveOrder(MyPushButton*)));
+	connect(ui->buyPushButton,							SIGNAL(sendPointer(MyPushButton*)),
+			this,										SLOT(receiveOrder(MyPushButton*)));
+	connect(ui->sellPushButton,							SIGNAL(sendPointer(MyPushButton*)),
+			this,										SLOT(receiveOrder(MyPushButton*)));
+	connect(ui->dismantlePushButton,					SIGNAL(sendPointer(MyPushButton*)),
+			this,										SLOT(receiveOrder(MyPushButton*)));
+
+	connect(ui->purchaseNewMachineInFactoryPushButton,	SIGNAL(sendPointer(MyPushButton*)),
+			this,										SLOT(addNewMachine(MyPushButton*)));
+	connect(ui->purchaseNewMachineInMinePushButton,		SIGNAL(sendPointer(MyPushButton*)),
+			this,										SLOT(addNewMachine(MyPushButton*)));
+
+	connect(this,										SIGNAL(dataChanged()),
+			ui->factoryTableWidget,						SLOT(updateDisplay()));
+	connect(this,										SIGNAL(dataChanged()),
+			ui->mineTableWidget,						SLOT(updateDisplay()));
+	connect(this,										SIGNAL(dataChanged()),
+			ui->garageTableWidget,						SLOT(updateDisplay()));
 }
 
 BuildingDetailDialog::~BuildingDetailDialog() {
@@ -81,6 +91,19 @@ void BuildingDetailDialog::updateDisplay() {
 //	emit dataChanged();
 //}
 
+void BuildingDetailDialog::addNewMachine(MyPushButton *button) {
+	BaseIndustry *building = dynamic_cast<BaseIndustry *>(building_);
+
+	Machine *machine = new Machine;
+	building->addMachine(machine);
+
+	emit dataChanged();
+}
+
+void BuildingDetailDialog::receiveOrder(MyPushButton *button) {
+	emit sendOption(button->text(), building_);
+}
+
 void BuildingDetailDialog::hideVariableWidget() {
 	//ui->pushButton_Build->hide();
 	//ui->pushButton_Build_IronMine->hide();
@@ -103,11 +126,11 @@ void BuildingDetailDialog::displayBasicInfo() {
 	const QString &owner = building_->owner()->name();
 	const QString &position = building_->position().toString();
 	setWindowTitle(name);
-	ui->label_Name->setText(tr("Name:  ") + name);
-	ui->label_Value->setText(tr("Value: $") + value);
-	ui->label_Type->setText(tr("Type:  ") + type);
-	ui->label_Owner->setText(tr("Owner: ") + owner);
-	ui->label_Position->setText(tr("Position: ") + position);
+	ui->nameLabel->setText(tr("Name:  ") + name);
+	ui->valueLabel->setText(tr("Value: $") + value);
+	ui->typeLabel->setText(tr("Type:  ") + type);
+	ui->ownerLabel->setText(tr("Owner: ") + owner);
+	ui->positionLabel->setText(tr("Position: ") + position);
 }
 
 void BuildingDetailDialog::displayAccordingToVisitor() {
@@ -121,6 +144,40 @@ void BuildingDetailDialog::displayAccordingToVisitor() {
 	const QString &type = building_->type();
 	int indexOfPage = BuildingManager::stringToEnum(type);
 	ui->detailStackedWidget->setCurrentIndex(indexOfPage);
+	switch (indexOfPage) {
+	case BuildingManager::Bank:
+		break;
+
+	case BuildingManager::Factory:
+		ui->factoryTableWidget->setIndustry(building_);
+		ui->factoryTableWidget->updateDisplay();
+		break;
+
+	case BuildingManager::Farm:
+		break;
+
+	case BuildingManager::Garage:
+		ui->garageTableWidget->setGarage(building_);
+		ui->garageTableWidget->updateDisplay();
+		break;
+
+	case BuildingManager::Mine:
+		ui->mineTableWidget->setIndustry(building_);
+		ui->mineTableWidget->updateDisplay();
+		break;
+
+	case BuildingManager::Supermarket:
+		break;
+
+	case BuildingManager::UnusedLand:
+		break;
+
+	case BuildingManager::Villa:
+		break;
+
+	default:
+		break;
+	}
 }
 
 //void BuildingDetailDialog::typeIsFoundation() {
@@ -175,10 +232,6 @@ void BuildingDetailDialog::displayAccordingToVisitor() {
 //	industry->garage()->addNewVihicle("Truck");
 //	emit dataChanged();
 //}
-
-void BuildingDetailDialog::receiveOrder(MyPushButton *button) {
-	emit sendOption(button->text(), building_);
-}
 
 QString BuildingDetailDialog::toString(double value) {
 	return QString::number(value, 10, 2);

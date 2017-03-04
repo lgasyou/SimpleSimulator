@@ -21,12 +21,12 @@ SetRouteDialog::SetRouteDialog(QWidget *parent) :
 	selectOrigTableWidget_->setParent(this);
 	selectOrigTableWidget_->setSelector(SelectTableWidget::Mine | SelectTableWidget::Factory);
 	connect(selectOrigTableWidget_, SIGNAL(sendBuilding(BaseBuilding*)),
-		this, SLOT(getOrig(BaseBuilding*)));
+			this,					SLOT(getOrig(BaseBuilding*)));
 
 	selectDestTableWidget_->setParent(this);
 	selectDestTableWidget_->setSelector(SelectTableWidget::Mine | SelectTableWidget::Factory);
 	connect(selectDestTableWidget_, SIGNAL(sendBuilding(BaseBuilding*)),
-		this, SLOT(getDest(BaseBuilding*)));
+			this,					SLOT(getDest(BaseBuilding*)));
 
 	ui->layout->addWidget(ui->labelOrig);
 	ui->layout->addWidget(selectOrigTableWidget_);
@@ -35,11 +35,11 @@ SetRouteDialog::SetRouteDialog(QWidget *parent) :
 
 	ui->labelGoodsName->setText(tr("Please select origin."));
 
-	connect(ui->pushButton, SIGNAL(clicked()),
-		this, SLOT(finishSetting()));
+	connect(ui->pushButton,			SIGNAL(clicked()),
+			this,					SLOT(finishSetting()));
 
-	connect(this, SIGNAL(dataChanged()),
-		this, SLOT(updateDisplay()));
+	connect(this,					SIGNAL(dataChanged()),
+			this,					SLOT(updateDisplay()));
 
 	route_ = new Route(Goods("", 0.0), nullptr, nullptr, false);
 }

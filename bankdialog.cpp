@@ -10,15 +10,15 @@ BankDialog::BankDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     setWindowTitle(tr("Welcome to the Bank!"));
-    connect(ui->horizontalSlider_Borrow, SIGNAL(valueChanged(int)),
-            ui->spinBox_Borrow, SLOT(setValue(int)));
-    connect(ui->spinBox_Borrow, SIGNAL(valueChanged(int)),
-            ui->horizontalSlider_Borrow, SLOT(setValue(int)));
+    connect(ui->horizontalSlider_Borrow,	SIGNAL(valueChanged(int)),
+            ui->spinBox_Borrow,				SLOT(setValue(int)));
+    connect(ui->spinBox_Borrow,				SIGNAL(valueChanged(int)),
+            ui->horizontalSlider_Borrow,	SLOT(setValue(int)));
 
-    connect(ui->horizontalSlider_Repay, SIGNAL(valueChanged(int)),
-            ui->spinBox_Repay, SLOT(setValue(int)));
-    connect(ui->spinBox_Repay, SIGNAL(valueChanged(int)),
-            ui->horizontalSlider_Repay, SLOT(setValue(int)));
+    connect(ui->horizontalSlider_Repay,		SIGNAL(valueChanged(int)),
+            ui->spinBox_Repay,				SLOT(setValue(int)));
+    connect(ui->spinBox_Repay,				SIGNAL(valueChanged(int)),
+            ui->horizontalSlider_Repay,		SLOT(setValue(int)));
 }
 
 BankDialog::~BankDialog() {

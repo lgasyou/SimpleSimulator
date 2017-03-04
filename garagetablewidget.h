@@ -22,7 +22,7 @@ public:
 
 	void updateEachRow(int index, Truck *);
 
-	inline void setGarage(Garage *garage) { this->garage_ = garage; }
+	void setGarage(BaseBuilding *garage);
 
 public slots:
 	void updateDisplay();
