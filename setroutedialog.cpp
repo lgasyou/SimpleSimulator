@@ -45,13 +45,14 @@ SetRouteDialog::SetRouteDialog(QWidget *parent) :
 }
 
 SetRouteDialog::~SetRouteDialog() {
-	delete route_;
+	if (route_)
+		delete route_;
 	delete ui;
 }
 
 void SetRouteDialog::createNewRoute() {
 	if(route_->orig && route_->dest)
-		route_ = new Route(Goods("", 0.0), nullptr, nullptr, false);
+		route_ = new Route(Goods(), nullptr, nullptr, false);
 }
 
 void SetRouteDialog::updateDisplay() {

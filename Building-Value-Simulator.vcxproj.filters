@@ -252,15 +252,6 @@
     <ClCompile Include="machine.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_buildinginfolist.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_buildinginfolist.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="buildinginfolist.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_buildinginfowidget.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
@@ -345,6 +336,15 @@
     <ClCompile Include="machinetablewidget.cpp">
       <Filter>Source Files\GUIComponents</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_buildingtablewidget.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_buildingtablewidget.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="buildingtablewidget.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mainwindow.h">
@@ -380,9 +380,6 @@
     <CustomBuild Include="mainwindow.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="buildinginfolist.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </CustomBuild>
     <CustomBuild Include="buildinginfowidget.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
@@ -414,6 +411,9 @@
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="machinetablewidget.h">
+      <Filter>Header Files\GUIComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="buildingtablewidget.h">
       <Filter>Header Files\GUIComponents</Filter>
     </CustomBuild>
   </ItemGroup>

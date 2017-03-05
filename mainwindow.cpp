@@ -15,7 +15,7 @@
 
 #include "bankdialog.h"
 #include "buildinginfowidget.h"
-#include "buildinginfolist.h"
+#include "buildingtablewidget.h"
 #include "buildingdetaildialog.h"
 #include "companydetaildialog.h"
 #include "helpdialog.h"
@@ -25,11 +25,12 @@
 #include <QTableWidget>
 #include <QStatusBar>
 #include <QSplitter>
+#include <map>
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
 	buildingDetailDialog_(nullptr),
-	buildingInfoList_(new BuildingInfoList),
+	buildingInfoList_(new BuildingTableWidget),
 	companyDetailDialog_(new CompanyDetailDialog),
 	helpDialog_(new HelpDialog),
     ui(new Ui::MainWindow) {
@@ -40,6 +41,22 @@ MainWindow::~MainWindow() {
 	delete buildingInfoList_;
 	delete helpDialog_;
     delete ui;
+}
+
+MainWindow::OrderTypes MainWindow::stringToEnum(const QString &type) {
+	static std::map<QString, OrderTypes> stringToEnumMap{
+		{"Buy", Buy },
+		{"Bank", Build },
+		{"Factory", Build },
+		{"Farm", Build },
+		{"Garage", Build },
+		{"Mine", Build },
+		{"Supermarket", Build },
+		{"Villa", Build },
+		{"Dismantle", Dismantle },
+		{"Details", Details },
+		{"Sell", Sell } };
+	return stringToEnumMap[type];
 }
 
 void MainWindow::init() {
@@ -60,9 +77,6 @@ void MainWindow::init() {
 	signalSlotConfig();
 
 	updateDisplay();
-
-	QIcon icon = QIcon("Sources/MainIcon.png");
-	setWindowIcon(icon);
 }
 
 //void MainWindow::goBank() {
@@ -84,7 +98,7 @@ void MainWindow::endTurns() {
     emit dataChanged();
 }
 
-void MainWindow::showBuildingInfoList() {
+void MainWindow::showBuildingTableWidget() {
 	buildingInfoList_->show();
 }
 
@@ -103,13 +117,6 @@ void MainWindow::getBuildingByPos(int x, int y) {
 	emit sendSelectedBuilding(building);
 }
 
-void MainWindow::changeType(BaseBuilding *building, const QString &type) {
-	BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, type);
-	ui->buildingInfoWidget->setTarget(newBuilding);
-    updateStatusBar(newBuilding->name() + " has been changed into " + type + ".");
-    emit dataChanged();
-}
-
 void MainWindow::updateDisplay() {
 	const QString &turnText = tr("Turn ") + QString::number(TimeManager::instance().currentTime());
 	ui->label_Turns->setText(turnText);
@@ -121,29 +128,49 @@ void MainWindow::updateDisplay() {
 
 void MainWindow::processOrders(const QString &order, BaseBuilding *building) {
 	QString msg;
-	if (order == "Buy") {
+	switch (stringToEnum(order)) {
+	case Buy:
 		if (playerCompany_->buy(building)) {
 			emit dataChanged();
-			msg = building->type() + " " + building->name() + " bought.";
-			updateStatusBar(msg);
-		} else
+			msg = QString("%1 %2 bought.").arg(building->type(), building->name());
+		} else {
 			msg = "Cannot Afford it.";
-			updateStatusBar(msg);
-	} else if (order == "Sell") {
-		if (playerCompany_->sell(building)) {
-			emit dataChanged();
-			msg = building->type() + " " + building->name() + " sold.";
-			updateStatusBar(msg);
 		}
-	} else if (order == "Dismantle") {
-		BuildingManager::instance().resetItemType(building, "Unused Land");
-	} else if (order == "Details") {
-		buildingDetailDialog_ = UIManager::instance().buildingDetailDialog();
-		buildingDetailDialog_->setBuilding(building);
+		break;
 
+	case Build: {
+		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, order);
+		ui->buildingInfoWidget->setTarget(newBuilding);
+		buildingDetailDialog_->setBuilding(newBuilding);
+		emit dataChanged();
+		break;
+	}
+
+	case Dismantle: {
+		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, "Unused Land");
+		ui->buildingInfoWidget->setTarget(newBuilding);
+		buildingDetailDialog_->setBuilding(newBuilding);
+		msg = newBuilding->name() + " has been dismantled.";
+		emit dataChanged();
+		break;
+	}
+
+	case Details:
+		buildingDetailDialog_->setBuilding(building);
 		buildingDetailDialog_->showAndRaise();
 		buildingDetailDialog_->updateDisplay();
+		break;
+
+	case Sell:
+		playerCompany_->sell(building);
+		emit dataChanged();
+		msg = QString("%1 %2 sold.").arg(building->type(), building->name());
+		break;
+
+	default:
+		break;
 	}
+	updateStatusBar(msg);
 }
 
 inline void MainWindow::updateStatusBar(const QString &msg) {
@@ -155,31 +182,34 @@ QString MainWindow::toString(double value) {
 }
 
 void MainWindow::signalSlotConfig() {
-	// Main functions of MainWindow
+	/* ------------------------------ Main Functions Config ----------------------------------------- */
 	connect(ui->buildingListPushButton, SIGNAL(clicked()),
-			this,						SLOT(showBuildingInfoList()));
+			this,						SLOT(showBuildingTableWidget()));
 	connect(ui->companyPushButton,		SIGNAL(clicked()),
 			this,						SLOT(showCompanyDetail()));
-	connect(ui->pushButton_EndTurn,		SIGNAL(clicked()),
+	connect(ui->endTurnPushButton,		SIGNAL(clicked()),
 			this,						SLOT(endTurns()));
 	connect(ui->helpPushButton,			SIGNAL(clicked()),
 			this,						SLOT(showHelp()));
+	/* ---------------------------------------------------------------------------------------------- */
 
-	// Processes the order which comes from other dialogs.
+	/* ---------------------------------- Orders Config --------------------------------------------- */
 	connect(ui->buildingInfoWidget,		SIGNAL(sendOption(const QString &, BaseBuilding *)),
 			this,						SLOT(processOrders(const QString &, BaseBuilding *)));
 	connect(buildingInfoList_,			SIGNAL(sendOption(const QString &, BaseBuilding *)),
 			this,						SLOT(processOrders(const QString &, BaseBuilding *)));
 	connect(buildingDetailDialog_,		SIGNAL(sendOption(const QString &, BaseBuilding *)),
 			this,						SLOT(processOrders(const QString &, BaseBuilding *)));
+	/* ---------------------------------------------------------------------------------------------- */
 
-	// Configurates display.
+	/* ---------------------------------- Display Config -------------------------------------------- */
 	connect(ui->userInterface,			SIGNAL(sendPosition(int, int)),	
 			this,						SLOT(getBuildingByPos(int, int)));
 	connect(this,						SIGNAL(sendSelectedBuilding(BaseBuilding*)),
 			ui->buildingInfoWidget,		SLOT(showBuildingInfo(BaseBuilding*)));
+	/* ---------------------------------------------------------------------------------------------- */
 
-	// Updates display if it's neccessary.
+	/* ------------------------------- Update Display Config ---------------------------------------- */
 	connect(this,						SIGNAL(dataChanged()),
 			this,						SLOT(updateDisplay()));
 	connect(this,						SIGNAL(dataChanged()),
@@ -188,4 +218,5 @@ void MainWindow::signalSlotConfig() {
 			buildingDetailDialog_,		SLOT(updateDisplay()));
 	connect(this,						SIGNAL(dataChanged()),
 			companyDetailDialog_,		SLOT(updateDisplay()));
+	/* ---------------------------------------------------------------------------------------------- */
 }

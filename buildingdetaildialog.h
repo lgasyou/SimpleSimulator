@@ -4,11 +4,8 @@
 #include <QDialog>
 
 class BaseBuilding;
-class Company;
-class BaseIndustry;
-struct Goods;
+class Machine;
 
-class WarehouseTableWidget;
 class MyPushButton;
 namespace Ui {
 class BuildingDetailDialog;
@@ -22,43 +19,41 @@ public:
 
     ~BuildingDetailDialog();
 
-	inline void showAndRaise();
+	void showAndRaise();
 
-    inline void setBuilding(BaseBuilding *building) { this->building_ = building; }
+    void setBuilding(BaseBuilding *building) { this->building_ = building; }
 
 public slots:
-	// Changes the type of building by button's text
-	void changeType(MyPushButton *);
-
 	void updateDisplay();
 
 	// Receives the data comes from WarehouseTableWidget or GarageTableWidget.
-	// Send infomation to model BaseIndustry.
+	// Send information to model BaseIndustry.
 	//void deliverGoods(const Goods &goods, BaseIndustry *dest);
 
-signals:
-	void changeTypeSignal(BaseBuilding *, const QString &buildingType);
+protected:
+	void closeEvent(QCloseEvent *) override;
 
+signals:
 	void dataChanged();
 
 	void sendOption(const QString &option, BaseBuilding *building);
 
 private slots:
-	//void addNewVihicle();
+	void addNewVihicle(MyPushButton *);
 
 	void addNewMachine(MyPushButton *);
+
+	void setNextMachineProduct(const QString &);
+
+	void showMachineDetail(Machine *);
+
+	void updateMachineDetail(Machine *);
 
 	void receiveOrder(MyPushButton *);
 
 private:
-
-	void displayBasicInfo();
-
 	// Displays according to whether the visitor is owner or not.
 	void displayAccordingToVisitor();
-	
-	// Hides all variable widget in order to display correctly.
-	void hideVariableWidget();
 
 	void signalSlotConfig();
 
@@ -68,7 +63,7 @@ private:
 private:
     BaseBuilding *building_;
 
-    WarehouseTableWidget *warehouseTableWidget_;
+	Machine *selectMachine_;
 
     Ui::BuildingDetailDialog *ui;
 };

@@ -1,4 +1,4 @@
-#include "buildinginfolist.h"
+#include "buildingtablewidget.h"
 #include "buildingmanager.h"
 #include "companymanager.h"
 #include "basebuilding.h"
@@ -9,22 +9,22 @@
 #include <QFile>
 #include <QApplication>
 
-BuildingInfoList::BuildingInfoList(QWidget *parent) :
+BuildingTableWidget::BuildingTableWidget(QWidget *parent) :
     QTableWidget(parent) {
 	init();
 }
 
-void BuildingInfoList::init() {
+void BuildingTableWidget::init() {
 	resize(QSize(800, 600));
 
 	setWindowTitle(tr("Building Information List"));
 
-	this->setColumnCount(GameConstants::colOfBuildingInfoList);
+	this->setColumnCount(GameConstants::colOfBuildingTableWidget);
 	QStringList header{ tr("Name"),tr("Value"),tr("Type"), tr("Ownership"),tr("Option"), tr("Option") };
 	this->setHorizontalHeaderLabels(header);
 }
 
-void BuildingInfoList::updateDisplay() {
+void BuildingTableWidget::updateDisplay() {
 	auto &buildingManager = BuildingManager::instance();
 	size_t buildingNumber = buildingManager.buildingNumber();
     this->setRowCount((int)buildingNumber);
@@ -36,7 +36,7 @@ void BuildingInfoList::updateDisplay() {
 	}
 }
 
-void BuildingInfoList::displayBasicInfo(int index) {
+void BuildingTableWidget::displayBasicInfo(int index) {
 	BaseBuilding *building = BuildingManager::instance().getBuildingById(index);
 
 	const QString &name = building->name();
@@ -50,7 +50,7 @@ void BuildingInfoList::displayBasicInfo(int index) {
 	setItem(index, 3, new QTableWidgetItem(owner));
 }
 
-void BuildingInfoList::displayAccordingToVisitor(int index) {
+void BuildingTableWidget::displayAccordingToVisitor(int index) {
 	BaseBuilding *building = BuildingManager::instance().getBuildingById(index);
 	Company *playerCompany = CompanyManager::instance().playerCompany();
 
@@ -68,11 +68,11 @@ void BuildingInfoList::displayAccordingToVisitor(int index) {
 	setCellWidget(index, 5, detailBtn);
 }
 
-QString BuildingInfoList::toString(double value) {
+QString BuildingTableWidget::toString(double value) {
 	return QString::number(value, 10, 2);
 }
 
-void BuildingInfoList::getBuildingAndSendSignal(MyPushButton *button) {
+void BuildingTableWidget::getBuildingAndSendSignal(MyPushButton *button) {
     int id = button->index();
     BaseBuilding *building = BuildingManager::instance().getBuildingById(id);
 	emit sendOption(button->text(), building);

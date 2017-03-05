@@ -8,7 +8,7 @@ class BaseBuilding;
 
 class MyPushButton;
 class BuildingDetailDialog;
-class BuildingInfoList;
+class BuildingTableWidget;
 class CompanyDetailDialog;
 class HelpDialog;
 class QString;
@@ -22,7 +22,18 @@ class MainWindow : public QMainWindow {
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
+
     ~MainWindow();
+
+	enum OrderTypes {
+		Buy,
+		Build,
+		Dismantle,
+		Details,
+		Sell
+	};
+
+	static OrderTypes stringToEnum(const QString &type);
 
 	void init();
 
@@ -35,7 +46,7 @@ private slots:
 	// Calls function update() of every variable objects.
     void endTurns();
 
-	void showBuildingInfoList();
+	void showBuildingTableWidget();
 
     void showCompanyDetail();
 
@@ -46,8 +57,6 @@ private slots:
     void updateDisplay();
 
 	void processOrders(const QString &order, BaseBuilding *);
-
-    void changeType(BaseBuilding *, const QString &);
 
 private:
     void updateStatusBar(const QString &msg);
@@ -62,7 +71,7 @@ private:
 
 	BuildingDetailDialog *buildingDetailDialog_;
 
-	BuildingInfoList *buildingInfoList_;
+	BuildingTableWidget *buildingInfoList_;
 
 	CompanyDetailDialog *companyDetailDialog_;
 

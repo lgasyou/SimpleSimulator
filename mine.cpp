@@ -2,6 +2,7 @@
 
 #include <QString>
 
-Mine::Mine(const QString &name) :
-	BaseIndustry(name, "Mine")
+Mine::Mine(const QString &name, const QString &mineType) :
+	BaseIndustry(name, "Mine"),
+	mineType_(mineType)
 { }

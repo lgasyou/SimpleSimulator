@@ -1,11 +1,11 @@
 #include "buildingdetaildialog.h"
 #include "basebuilding.h"
 #include "baseindustry.h"
-#include "warehouse.h"
 #include "goodscontainer.h"
 #include "company.h"
 #include "companymanager.h"
 #include "buildingmanager.h"
+#include "industrychainmanager.h"
 #include "garage.h"
 #include "goods.h"
 #include "machine.h"
@@ -18,44 +18,45 @@
 BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
 	QDialog(parent),
     building_(nullptr),
-	warehouseTableWidget_(new WarehouseTableWidget),
+	selectMachine_(nullptr),
     ui(new Ui::BuildingDetailDialog)
 {
     ui->setupUi(this);
 
 	signalSlotConfig();
 
-	//// In route to change building's type by button's text
-	//connect(ui->pushButton_Build_CoalMine, SIGNAL(sendPointer(MyPushButton*)),
-	//	this, SLOT(changeType(MyPushButton*)));
-	//connect(ui->pushButton_Build_BaseCommerce, SIGNAL(sendPointer(MyPushButton*)),
-	//	this, SLOT(changeType(MyPushButton*)));
-	//connect(ui->pushButton_Build_IronMine, SIGNAL(sendPointer(MyPushButton*)),
-	//	this, SLOT(changeType(MyPushButton*)));
-	//connect(ui->pushButton_Build_residence, SIGNAL(sendPointer(MyPushButton*)),
-	//	this, SLOT(changeType(MyPushButton*)));
-	//connect(ui->pushButton_Build_SteelBaseIndustry, SIGNAL(sendPointer(MyPushButton*)),
-	//	this, SLOT(changeType(MyPushButton*)));
+	ui->expandStackedWidget->hide();
 }
 
 BuildingDetailDialog::~BuildingDetailDialog() {
     delete ui;
 }
 
-void BuildingDetailDialog::changeType(MyPushButton *button) {
-	const QString &newType = button->text();
-	emit changeTypeSignal(building_, newType);
-}
-
 void BuildingDetailDialog::updateDisplay() {
 	// Returns if this window isn't showing.
     if (this->isHidden() || !building_)	return;
 
-	hideVariableWidget();
+	const QString &name = building_->name();
+	const QString &value = toString(building_->value());
+	const QString &type = building_->type();
+	const QString &owner = building_->owner()->name();
+	const QString &position = building_->position().toString();
+	setWindowTitle(name);
+	ui->nameLabel->setText(tr("Name:  ") + name);
+	ui->valueLabel->setText(tr("Value: $") + value);
+	ui->typeLabel->setText(tr("Type:  ") + type);
+	ui->ownerLabel->setText(tr("Owner: ") + owner);
+	ui->positionLabel->setText(tr("Position: ") + position);
 
-	displayBasicInfo();
+	if (ui->machinePage->isVisible()) {
+		updateMachineDetail(selectMachine_);
+	}
 
 	displayAccordingToVisitor();
+}
+
+void BuildingDetailDialog::closeEvent(QCloseEvent *) {
+	ui->expandStackedWidget->hide();
 }
 
 //void BuildingDetailDialog::deliverGoods(const Goods &goods, BaseIndustry *dest) {
@@ -64,45 +65,53 @@ void BuildingDetailDialog::updateDisplay() {
 //	emit dataChanged();
 //}
 
-void BuildingDetailDialog::addNewMachine(MyPushButton *button) {
+void BuildingDetailDialog::addNewMachine(MyPushButton *) {
 	BaseIndustry *building = dynamic_cast<BaseIndustry *>(building_);
-
-	Machine *machine = new Machine;
+	std::vector<Goods> products{ Goods("Coal", 1), Goods("Iron", 2) };
+	auto materials = IndustryChainManager::instance().precursors(products[0].name);
+	MachineSettings settings = MachineSettings(5.0, building->warehouse(), products, materials);
+	Machine *machine = new Machine(settings);
 	building->addMachine(machine);
-
 	emit dataChanged();
+}
+
+void BuildingDetailDialog::setNextMachineProduct(const QString &product) {
+	selectMachine_->setCurrentProduct(product);
+	emit dataChanged();
+}
+
+void BuildingDetailDialog::showMachineDetail(Machine *machine) {
+	ui->expandStackedWidget->show();
+	selectMachine_ = machine;
+
+	for (const auto &product : machine->products()) {
+		ui->selectNextProductComboBox->addItem(product.name);
+	}
+
+	updateMachineDetail(machine);
+}
+
+void BuildingDetailDialog::updateMachineDetail(Machine *machine) {
+	const QString &machineCurrentProductivity = toString(machine->currentProductivity());
+	ui->machineCurrentProductivity->setText("Current Productivity: " + machineCurrentProductivity);
+
+	const QString &machineMaximumProductivity = toString(machine->maximalProductivity());
+	ui->machineMaximumProductivity->setText("Maximum Productivity: " + machineMaximumProductivity);
 }
 
 void BuildingDetailDialog::receiveOrder(MyPushButton *button) {
 	emit sendOption(button->text(), building_);
-}
-
-void BuildingDetailDialog::displayBasicInfo() {
-	const QString &name = building_->name();
-	const QString &value = toString(building_->value());
-	const QString &type = building_->type();
-	const QString &owner = building_->owner()->name();
-	const QString &position = building_->position().toString();
-	setWindowTitle(name);
-	ui->nameLabel->setText(tr("Name:  %1") + name);
-	ui->valueLabel->setText(tr("Value: $") + value);
-	ui->typeLabel->setText(tr("Type:  ") + type);
-	ui->ownerLabel->setText(tr("Owner: ") + owner);
-	ui->positionLabel->setText(tr("Position: ") + position);
+	emit dataChanged();
 }
 
 void BuildingDetailDialog::displayAccordingToVisitor() {
 	bool isVisitorOwner = (building_->owner() == CompanyManager::instance().playerCompany());
-	if (isVisitorOwner == false) {
-		ui->buyPushButton->show();
-		return;
-	}
-	ui->sellPushButton->show();
+	ui->basicOperationStackedWidget->setCurrentIndex(isVisitorOwner);
 
 	const QString &type = building_->type();
-	int indexOfPage = BuildingManager::stringToEnum(type);
-	ui->detailStackedWidget->setCurrentIndex(indexOfPage);
-	switch (indexOfPage) {
+	auto buildingType = BuildingManager::stringToEnum(type);
+	ui->detailStackedWidget->setCurrentIndex(buildingType);
+	switch (buildingType) {
 	case BuildingManager::Bank:
 		break;
 
@@ -145,49 +154,70 @@ void BuildingDetailDialog::displayAccordingToVisitor() {
 	}
 }
 
-void BuildingDetailDialog::hideVariableWidget() {
-	//ui->pushButton_Build->hide();
-	//ui->pushButton_Build_IronMine->hide();
-	//ui->pushButton_Build_CoalMine->hide();
-	//ui->pushButton_Build_SteelBaseIndustry->hide();
-	//ui->pushButton_Build_BaseCommerce->hide();
-	//ui->pushButton_Build_residence->hide();
-	//ui->buyPushButton->hide();
-	//ui->dismantlePushButton->hide();
-	//ui->sellPushButton->hide();
-	//garageTableWidget_->hide();
-	//warehouseTableWidget_->hide();
-	//ui->warehouseSumLabel->hide();
-}
-
 void BuildingDetailDialog::signalSlotConfig() {
+	/* ---------------------------------- Basic Config ---------------------------------------------- */
 	connect(ui->buyPushButton,							SIGNAL(sendPointer(MyPushButton*)),
 			this,										SLOT(receiveOrder(MyPushButton*)));
 	connect(ui->sellPushButton,							SIGNAL(sendPointer(MyPushButton*)),
 			this,										SLOT(receiveOrder(MyPushButton*)));
 	connect(ui->dismantlePushButton,					SIGNAL(sendPointer(MyPushButton*)),
 			this,										SLOT(receiveOrder(MyPushButton*)));
+	/* ---------------------------------------------------------------------------------------------- */
 
+	/* ---------------------------------- Garage Config --------------------------------------------- */
+	connect(ui->purchaseNewVihiclePushButton,			SIGNAL(sendPointer(MyPushButton *)),
+			this,										SLOT(addNewVihicle(MyPushButton *)));
+	/* ---------------------------------------------------------------------------------------------- */
+
+	/* --------------------------------- Industry Config -------------------------------------------- */
 	connect(ui->purchaseNewMachineInFactoryPushButton,	SIGNAL(sendPointer(MyPushButton*)),
 			this,										SLOT(addNewMachine(MyPushButton*)));
 	connect(ui->purchaseNewMachineInMinePushButton,		SIGNAL(sendPointer(MyPushButton*)),
 			this,										SLOT(addNewMachine(MyPushButton*)));
 
+	connect(ui->factoryTableWidget,						SIGNAL(sendSelectedMachine(Machine *)),
+			this,										SLOT(showMachineDetail(Machine *)));
+	connect(ui->mineTableWidget,						SIGNAL(sendSelectedMachine(Machine *)),
+			this,										SLOT(showMachineDetail(Machine *)));
+
+	connect(ui->selectNextProductComboBox,				SIGNAL(currentIndexChanged(const QString &)),
+			this,										SLOT(setNextMachineProduct(const QString &)));
+	/* ---------------------------------------------------------------------------------------------- */
+
+	/* -------------------------------- UnusedLand Config ------------------------------------------- */
+	connect(ui->buildBankPushButton,					SIGNAL(sendPointer(MyPushButton*)),
+			this,										SLOT(receiveOrder(MyPushButton*)));
+	connect(ui->buildFactoryPushButton,					SIGNAL(sendPointer(MyPushButton*)),
+			this,										SLOT(receiveOrder(MyPushButton*)));
+	connect(ui->buildFarmPushButton,					SIGNAL(sendPointer(MyPushButton*)),
+			this,										SLOT(receiveOrder(MyPushButton*)));
+	connect(ui->buildGaragePushButton,					SIGNAL(sendPointer(MyPushButton*)),
+			this,										SLOT(receiveOrder(MyPushButton*)));
+	connect(ui->buildMinePushButton,					SIGNAL(sendPointer(MyPushButton*)),
+			this,										SLOT(receiveOrder(MyPushButton*)));
+	connect(ui->buildSupermarketPushButton,				SIGNAL(sendPointer(MyPushButton*)),
+			this,										SLOT(receiveOrder(MyPushButton*)));
+	connect(ui->buildVillaPushButton,					SIGNAL(sendPointer(MyPushButton*)),
+			this,										SLOT(receiveOrder(MyPushButton*)));
+	/* ---------------------------------------------------------------------------------------------- */
+
+	/* ---------------------------------- Display Config -------------------------------------------- */
+	connect(this,										SIGNAL(dataChanged()),
+			this,										SLOT(updateDisplay()));
 	connect(this,										SIGNAL(dataChanged()),
 			ui->factoryTableWidget,						SLOT(updateDisplay()));
 	connect(this,										SIGNAL(dataChanged()),
 			ui->mineTableWidget,						SLOT(updateDisplay()));
 	connect(this,										SIGNAL(dataChanged()),
 			ui->garageTableWidget,						SLOT(updateDisplay()));
+	/* ---------------------------------------------------------------------------------------------- */
 }
 
-//void BuildingDetailDialog::addNewVihicle() {
-//	BaseIndustry *industry = dynamic_cast<BaseIndustry *>(building_);
-//	Company *owner = industry->owner();
-//	owner->purchase(50);
-//	industry->garage()->addNewVihicle("Truck");
-//	emit dataChanged();
-//}
+void BuildingDetailDialog::addNewVihicle(MyPushButton *) {
+	Garage *garage = dynamic_cast<Garage *>(building_);
+	garage->addNewVihicle("Truck");
+	emit dataChanged();
+}
 
 QString BuildingDetailDialog::toString(double value) {
 	return QString::number(value, 10, 2);

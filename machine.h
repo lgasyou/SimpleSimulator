@@ -2,6 +2,7 @@
 #define MACHINE_H
 
 #include <vector>
+#include <QString>
 
 class Warehouse;
 struct Goods;
@@ -24,6 +25,8 @@ class Machine {
 public:
 	Machine();
 
+	Machine(const MachineSettings &);
+
 	~Machine();
 
 	void init();
@@ -34,6 +37,9 @@ public:
 
 	void setMaximalProductivity(double maximalProductivity);
 	double maximalProductivity() const { return this->maximalProductivity_; }
+
+	void setCurrentProduct(const QString &product);
+	const QString &currentProduct() const { return this->currentProduct_; }
 
 	void setWarehouse(Warehouse *warehouse) { this->warehouse_ = warehouse; }
 
@@ -47,6 +53,8 @@ private:
 	double currentProductivity_;
 
 	double maximalProductivity_;
+
+	QString currentProduct_;
 
 	Warehouse *warehouse_;
 

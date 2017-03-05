@@ -19,10 +19,10 @@ BuildingInfoWidget::BuildingInfoWidget(QWidget *parent) : QWidget(parent) {
 	ui->buyOrSellpushButton->hide();
 	ui->detailsPushButton->hide();
 
-	connect(ui->detailsPushButton, SIGNAL(clicked()),
-		this, SLOT(showBuildingDetail()));
-	connect(ui->buyOrSellpushButton, SIGNAL(sendPointer(MyPushButton*)),
-		this, SLOT(receiveOrder(MyPushButton*)));
+	connect(ui->detailsPushButton,		SIGNAL(clicked()),
+			this,						SLOT(showBuildingDetail()));
+	connect(ui->buyOrSellpushButton,	SIGNAL(sendPointer(MyPushButton*)),
+			this,						SLOT(receiveOrder(MyPushButton*)));
 }
 
 BuildingInfoWidget::~BuildingInfoWidget() {

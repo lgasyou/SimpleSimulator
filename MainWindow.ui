@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Building Value Simulator</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>Sources/MainIcon.png</normaloff>Sources/MainIcon.png</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
@@ -74,7 +78,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_EndTurn">
+       <widget class="QPushButton" name="endTurnPushButton">
         <property name="text">
          <string>End Turn</string>
         </property>
