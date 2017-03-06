@@ -3,7 +3,7 @@
 #include "machine.h"
 #include "goods.h"
 
-#include "mypushbutton.h"
+#include "TableWidgetPushButton.h"
 
 MachineTableWidget::MachineTableWidget(QWidget *parent) : 
 	QTableWidget(parent),
@@ -24,7 +24,7 @@ void MachineTableWidget::setIndustry(BaseBuilding *industry) {
 	this->industry_ = dynamic_cast<BaseIndustry *>(industry);
 }
 
-void MachineTableWidget::receiveShowDetailSignal(MyPushButton *button) {
+void MachineTableWidget::receiveShowDetailSignal(TableWidgetPushButton *button) {
 	int index = button->index();
 	Machine *machine = industry_->machines()[index];
 	emit sendSelectedMachine(machine);
@@ -37,17 +37,16 @@ void MachineTableWidget::updateDisplay() {
 		setRowCount(static_cast<int>(machineNumber));
 
 		for (int i = 0; i != machineNumber; ++i) {
-			// TODO
-			//const QString &productName = machines[i]->products()[0].name;
-			//setItem(i, 0, new QTableWidgetItem(productName));
+			const QString &productName = machines[i]->currentProduct();
+			setItem(i, 0, new QTableWidgetItem(productName));
 			double percentage = machines[i]->currentProductivity() / machines[i]->maximalProductivity() * 100;
 			const QString &productivity = QString::number(percentage) + "%";
 			setItem(i, 1, new QTableWidgetItem(productivity));
 
-			MyPushButton *detailButton = new MyPushButton(tr("Details"));
+			TableWidgetPushButton *detailButton = new TableWidgetPushButton(tr("Details"));
 			setCellWidget(i, 2, detailButton);
-			connect(detailButton,	SIGNAL(sendPointer(MyPushButton *)),
-					this,			SLOT(receiveShowDetailSignal(MyPushButton *)));
+			connect(detailButton,	SIGNAL(sendPointer(TableWidgetPushButton *)),
+					this,			SLOT(receiveShowDetailSignal(TableWidgetPushButton *)));
 			detailButton->setIndex(i);
 		}
 	}

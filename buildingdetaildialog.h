@@ -6,7 +6,7 @@
 class BaseBuilding;
 class Machine;
 
-class MyPushButton;
+class TableWidgetPushButton;
 namespace Ui {
 class BuildingDetailDialog;
 }
@@ -36,12 +36,12 @@ protected:
 signals:
 	void dataChanged();
 
-	void sendOption(const QString &option, BaseBuilding *building);
+	void sendCommand(int command, BaseBuilding *building);
 
 private slots:
-	void addNewVihicle(MyPushButton *);
+	void addNewMachine();
 
-	void addNewMachine(MyPushButton *);
+	void addNewVihicle();
 
 	void setNextMachineProduct(const QString &);
 
@@ -49,11 +49,11 @@ private slots:
 
 	void updateMachineDetail(Machine *);
 
-	void receiveOrder(MyPushButton *);
+	void receiveCommand(int);
 
 private:
-	// Displays according to whether the visitor is owner or not.
-	void displayAccordingToVisitor();
+	// Displays according to the type of building.
+	void displayAccordingToBuildingType();
 
 	void signalSlotConfig();
 

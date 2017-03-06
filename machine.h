@@ -7,18 +7,31 @@
 class Warehouse;
 struct Goods;
 
+//************************************
+// Member: double maximalProductivity_
+// Member: QString currentProduct_
+// Member: Warehouse *warehouse_
+// Member: std::vector<Goods> products_
+//************************************
 struct MachineSettings {
-	MachineSettings(double maximalProductivity_, Warehouse *warehouse_,
-		const std::vector<Goods> &products_, const std::vector<Goods> &materials_) :
+	MachineSettings(
+		double maximalProductivity_, 
+		const QString &currentProduct_,
+		Warehouse *warehouse_,
+		const std::vector<Goods> &products_) :
 		maximalProductivity(maximalProductivity_),
+		currentProduct(currentProduct_),
 		warehouse(warehouse_),
-		products(products_),
-		rawMaterials(materials_) { }
+		products(products_) { }
+
+	MachineSettings() :
+		maximalProductivity(0.0),
+		warehouse(nullptr) { }
 
 	double maximalProductivity;
+	QString currentProduct;
 	Warehouse *warehouse;
 	std::vector<Goods> products;
-	std::vector<Goods> rawMaterials;
 };
 
 class Machine {

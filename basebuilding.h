@@ -6,57 +6,60 @@
 
 class Company;
 
-class QString;
-
 //	The base of building classes.
 //	This class should not be instantiated.
 class BaseBuilding {
 public:
 	BaseBuilding(const QString &name, const QString &type);
 
-    virtual ~BaseBuilding() { }
+	virtual ~BaseBuilding();
 
-	// Copys data from right hand side.
+	// Copies data from right hand side.
 	void copyFrom(const BaseBuilding &rhs);
+
+	void changeBaseValue();
 
 	// Updates data after each turn
 	virtual void update() = 0;
 
-	void changeBaseValue();
+	void setDeltaValue(double deltaValue) { this->deltaValue_ = deltaValue; }
+	const double deltaValue() const { return this->deltaValue_; }
 
-    inline void setValue(double value) { this->value_ = value; }
-	inline const double value() const { return this->value_; }
+	void setName(const QString &name) { this->name_ = name; }
+	const QString &name() const { return this->name_; }
 
-    inline void setDeltaValue(double deltaValue) { this->deltaValue_ = deltaValue; }
-    inline const double deltaValue() const { return this->deltaValue_; }
+	void setOwner(Company *const owner) { this->owner_ = owner; }
+	Company *const owner() const { return this->owner_; }
 
-    inline void setName(const QString &name) { this->name_ = name; }
-    inline const QString &name() const { return this->name_; }
+	void setPosition(const Vector2D pos) { this->position_ = pos; }
+	const Vector2D &position() const { return this->position_; }
 
-    inline void setType(const QString &type) { this->type_ = type; }
-    inline const QString &type() const { return this->type_; }
+	void setResource(const QString &resource) { this->resource_ = resource; }
+	const QString &resource() const { return this->resource_; }
 
-    inline void setOwner(Company *const owner) { this->owner_ = owner; }
-    inline Company *const owner() const { return this->owner_; }
+	void setType(const QString &type) { this->type_ = type; }
+	const QString &type() const { return this->type_; }
 
-	inline void setPosition(const Vector2D pos) { this->position_ = pos; }
-	inline const Vector2D &position() const { return this->position_; }
+	void setValue(double value) { this->value_ = value; }
+	const double value() const { return this->value_; }
 
 private:
 	void initBasicValue();
 
 private:
-    QString name_;
-
-    double value_;
-
     double deltaValue_;
 
-    QString type_;
+	QString name_;
 
     Company *owner_;
 
 	Vector2D position_;
+
+	QString resource_;
+
+    QString type_;
+
+    double value_;
 };
 
 #endif // BUILDINGBASE_H

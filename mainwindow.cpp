@@ -9,6 +9,7 @@
 #include "pricemanager.h"
 #include "timemanager.h"
 #include "uimanager.h"
+#include "gameconstants.h"
 
 #include "basebuilding.h"
 #include "company.h"
@@ -20,11 +21,12 @@
 #include "companydetaildialog.h"
 #include "helpdialog.h"
 #include "mainui.h"
-#include "mypushbutton.h"
+#include "TableWidgetPushButton.h"
 #include "ui_mainwindow.h"
 #include <QTableWidget>
 #include <QStatusBar>
 #include <QSplitter>
+#include <QString>
 #include <map>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -126,7 +128,7 @@ void MainWindow::updateDisplay() {
     buildingInfoList_->updateDisplay();
 }
 
-void MainWindow::processOrders(const QString &order, BaseBuilding *building) {
+void MainWindow::processOrder(const QString &order, BaseBuilding *building) {
 	QString msg;
 	switch (stringToEnum(order)) {
 	case Buy:
@@ -173,7 +175,116 @@ void MainWindow::processOrders(const QString &order, BaseBuilding *building) {
 	updateStatusBar(msg);
 }
 
-inline void MainWindow::updateStatusBar(const QString &msg) {
+void MainWindow::processCommand(int command, BaseBuilding *building) {
+	using namespace GameConstants;
+	QString msg;
+	switch (command) {
+	case BuildBank: {
+		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, "Bank");
+		ui->buildingInfoWidget->setTarget(newBuilding);
+		buildingDetailDialog_->setBuilding(newBuilding);
+		emit dataChanged();
+		break;
+	}
+
+	case BuildFactory: {
+		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, "Factory");
+		ui->buildingInfoWidget->setTarget(newBuilding);
+		buildingDetailDialog_->setBuilding(newBuilding);
+		emit dataChanged();
+		break;
+	}
+
+	case BuildFarm: {
+		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, "Farm");
+		ui->buildingInfoWidget->setTarget(newBuilding);
+		buildingDetailDialog_->setBuilding(newBuilding);
+		emit dataChanged();
+		break;
+	}
+
+
+	case BuildGarage: {
+		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, "Garage");
+		ui->buildingInfoWidget->setTarget(newBuilding);
+		buildingDetailDialog_->setBuilding(newBuilding);
+		emit dataChanged();
+		break;
+	}
+
+	case BuildMine: {
+		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, "Mine");
+		ui->buildingInfoWidget->setTarget(newBuilding);
+		buildingDetailDialog_->setBuilding(newBuilding);
+		emit dataChanged();
+		break;
+	}
+
+	case BuildSupermarket: {
+		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, "Supermarket");
+		ui->buildingInfoWidget->setTarget(newBuilding);
+		buildingDetailDialog_->setBuilding(newBuilding);
+		emit dataChanged();
+		break;
+	}
+
+	case BuildVilla: {
+		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, "Villa");
+		ui->buildingInfoWidget->setTarget(newBuilding);
+		buildingDetailDialog_->setBuilding(newBuilding);
+		emit dataChanged();
+		break;
+	}
+
+	case BuyBuilding:
+		if (playerCompany_->buy(building)) {
+			emit dataChanged();
+			msg = QString("%1 %2 bought.").arg(building->type(), building->name());
+		} else {
+			msg = "Cannot Afford it.";
+		}
+		break;
+
+	case CloseAnAccount:
+		break;
+
+	case Deposit:
+		break;
+
+	case DismantleBuilding: {
+		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, "Unused Land");
+		ui->buildingInfoWidget->setTarget(newBuilding);
+		buildingDetailDialog_->setBuilding(newBuilding);
+		msg = newBuilding->name() + " has been dismantled.";
+		emit dataChanged();
+		break;
+	}
+
+	case Loan:
+		break;
+
+	case OpenAnAccount:
+		break;
+
+	case Repay:
+		break;
+
+	case SellBuilding:
+		playerCompany_->sell(building);
+		emit dataChanged();
+		msg = QString("%1 %2 sold.").arg(building->type(), building->name());
+		break;
+
+	case Withdraw:
+		break;
+
+	default:
+		break;
+	}
+	updateStatusBar(msg);
+}
+
+void MainWindow::updateStatusBar(const QString &msg) {
     ui->statusBar->showMessage(msg, 5000);
 }
 
@@ -195,18 +306,18 @@ void MainWindow::signalSlotConfig() {
 
 	/* ---------------------------------- Orders Config --------------------------------------------- */
 	connect(ui->buildingInfoWidget,		SIGNAL(sendOption(const QString &, BaseBuilding *)),
-			this,						SLOT(processOrders(const QString &, BaseBuilding *)));
+			this,						SLOT(processOrder(const QString &, BaseBuilding *)));
 	connect(buildingInfoList_,			SIGNAL(sendOption(const QString &, BaseBuilding *)),
-			this,						SLOT(processOrders(const QString &, BaseBuilding *)));
-	connect(buildingDetailDialog_,		SIGNAL(sendOption(const QString &, BaseBuilding *)),
-			this,						SLOT(processOrders(const QString &, BaseBuilding *)));
+			this,						SLOT(processOrder(const QString &, BaseBuilding *)));
+	connect(buildingDetailDialog_,		SIGNAL(sendCommand(int, BaseBuilding *)),
+			this,						SLOT(processCommand(int, BaseBuilding *)));
 	/* ---------------------------------------------------------------------------------------------- */
 
 	/* ---------------------------------- Display Config -------------------------------------------- */
 	connect(ui->userInterface,			SIGNAL(sendPosition(int, int)),	
 			this,						SLOT(getBuildingByPos(int, int)));
-	connect(this,						SIGNAL(sendSelectedBuilding(BaseBuilding*)),
-			ui->buildingInfoWidget,		SLOT(showBuildingInfo(BaseBuilding*)));
+	connect(this,						SIGNAL(sendSelectedBuilding(BaseBuilding *)),
+			ui->buildingInfoWidget,		SLOT(showBuildingInfo(BaseBuilding *)));
 	/* ---------------------------------------------------------------------------------------------- */
 
 	/* ------------------------------- Update Display Config ---------------------------------------- */

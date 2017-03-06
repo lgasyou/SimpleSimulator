@@ -7,7 +7,7 @@ class BuildingManager;
 class BaseBuilding;
 class Company;
 
-class MyPushButton;
+class TableWidgetPushButton;
 
 // This class is used for showing information of Buildings.
 // Set Company before use it.
@@ -31,7 +31,7 @@ signals:
 private slots:
 	// Gets building by push button and sends 
 	// signals according to text of button.
-    void getBuildingAndSendSignal(MyPushButton *);
+    void getBuildingAndSendSignal(TableWidgetPushButton *);
 
 private:
 	// transforms double into QString

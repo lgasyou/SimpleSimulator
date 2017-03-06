@@ -6,6 +6,9 @@
 
 class QString;
 
+namespace DataStructure {
+
+
 struct Arc {
 public:
 	Arc::Arc(double volume_, int headVertex_, int tailVertex_, Arc *headArc_, Arc *tailArc_) :
@@ -45,6 +48,9 @@ public:
 };
 
 
+}
+
+
 
 class Graph {
 public:
@@ -52,7 +58,7 @@ public:
 
 	void addPath(const QString &orig, const QString &dest, double volume);
 
-	double volume(const QString &orig, const QString &dest) const;
+	double weight(const QString &orig, const QString &dest) const;
 
 	std::vector<Goods> precursors(const QString &item) const;
 
@@ -61,7 +67,7 @@ public:
 	int indexOf(const QString &) const;
 
 private:
-	std::vector<Vertex> graph_;
+	std::vector<DataStructure::Vertex> graph_;
 };
 
 #endif // !GRAPH_H

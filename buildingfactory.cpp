@@ -22,6 +22,7 @@
 #include "basetransportation.h"
 #include "garage.h"
 
+#include "buildingmanager.h"
 #include "mapmanager.h"
 #include "government.h"
 
@@ -29,41 +30,54 @@
 
 BaseBuilding *BuildingFactory::create(const QString &type) {
 	BaseBuilding *building = nullptr;
-	// Industrial buildings
-	if (type == "Factory")
-		building = new Factory;
-	else if (type == "Mine")
-		building = new Mine;
 
-	// Commercial buildings
-	else if (type == "Supermarket")
-		building = new Supermarket;
-
-	// Residential buildings
-	else if (type == "Villa")
-		building = new Villa;
-
-	// Agricultural buildings
-	else if (type == "Farm")
-		building = new Farm;
-
-	// Transporatation buildings
-	else if (type == "Garage")
-		building = new Garage;
-
-	// Financial buildings
-	else if (type == "Bank")
+	auto buildingType = BuildingManager::stringToEnum(type);
+	switch (buildingType) {
+	case BuildingManager::Bank:
 		building = new Bank;
+		break;
 
-	// Foundation
-	else
+	case BuildingManager::Factory:
+		building = new Factory;
+		break;
+
+	case BuildingManager::Farm:
+		building = new Farm;
+		break;
+
+	case BuildingManager::Garage:
+		building = new Garage;
+		break;
+
+	case BuildingManager::Mine:
+		building = new Mine;
+		break;
+
+	case BuildingManager::Supermarket:
+		building = new Supermarket;
+		break;
+
+	case BuildingManager::UnusedLand:
 		building = new UnusedLand;
+		break;
+
+	case BuildingManager::Villa:
+		building = new Villa;
+		break;
+
+	default:
+		break;
+	}
+
+	Government *gov = &Government::instance();
+	building->setOwner(gov);
 
 	Vector2D allocatedPos = MapManager::instance().allocate();
 	building->setPosition(allocatedPos);
 
-	Government *gov = &Government::instance();
-	building->setOwner(gov);
+	// TODO
+	// Generate true resource.
+	building->setResource("Coal");
 
 	return building;
 }

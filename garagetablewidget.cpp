@@ -8,7 +8,7 @@
 #include "uimanager.h"
 
 #include "setroutedialog.h"
-#include "mypushbutton.h"
+#include "TableWidgetPushButton.h"
 
 GarageTableWidget::GarageTableWidget(QWidget *parent) : 
 	QTableWidget(parent),
@@ -54,19 +54,19 @@ void GarageTableWidget::updateEachRow(int index, Truck *truck) {
 	}
 
 	const QString &text = truck->occupied() ? tr("Stop") : tr("Route");
-	MyPushButton *routeBtn = new MyPushButton(text);
+	TableWidgetPushButton *routeBtn = new TableWidgetPushButton(text);
 	routeBtn->setIndex(index);
 	setCellWidget(index, 5, routeBtn);
 
-	connect(routeBtn, SIGNAL(sendPointer(MyPushButton*)),
-		this, SLOT(buttonClicked(MyPushButton*)));
+	connect(routeBtn, SIGNAL(sendPointer(TableWidgetPushButton*)),
+		this, SLOT(buttonClicked(TableWidgetPushButton*)));
 }
 
 void GarageTableWidget::setGarage(BaseBuilding *garage) {
 	this->garage_ = dynamic_cast<Garage *>(garage);
 }
 
-void GarageTableWidget::buttonClicked(MyPushButton *button) {
+void GarageTableWidget::buttonClicked(TableWidgetPushButton *button) {
 	if (button->text() == "Route")
 		showSetRouteDialog(button);
 	else if (button->text() == "Stop") {
@@ -77,7 +77,7 @@ void GarageTableWidget::buttonClicked(MyPushButton *button) {
 	}
 }
 
-void GarageTableWidget::showSetRouteDialog(MyPushButton *truckBtn) {
+void GarageTableWidget::showSetRouteDialog(TableWidgetPushButton *truckBtn) {
 	selectedTruckId_ = truckBtn->index();
 
 	SetRouteDialog *setRouteDialog = UIManager::instance().setRouteDialog();

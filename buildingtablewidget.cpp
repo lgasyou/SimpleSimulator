@@ -5,7 +5,7 @@
 #include "company.h"
 #include "gameconstants.h"
 
-#include "mypushbutton.h"
+#include "TableWidgetPushButton.h"
 #include <QFile>
 #include <QApplication>
 
@@ -55,16 +55,16 @@ void BuildingTableWidget::displayAccordingToVisitor(int index) {
 	Company *playerCompany = CompanyManager::instance().playerCompany();
 
 	const QString &btnText = (building->owner() != playerCompany) ? tr("Buy") : tr("Sell");
-	MyPushButton *optionBtn = new MyPushButton(btnText);
+	TableWidgetPushButton *optionBtn = new TableWidgetPushButton(btnText);
 	optionBtn->setIndex(index);
-	connect(optionBtn, SIGNAL(sendPointer(MyPushButton*)),
-		this, SLOT(getBuildingAndSendSignal(MyPushButton*)));
+	connect(optionBtn, SIGNAL(sendPointer(TableWidgetPushButton*)),
+		this, SLOT(getBuildingAndSendSignal(TableWidgetPushButton*)));
 	setCellWidget(index, 4, optionBtn);
 
-	MyPushButton *detailBtn = new MyPushButton(tr("Details"));
+	TableWidgetPushButton *detailBtn = new TableWidgetPushButton(tr("Details"));
 	detailBtn->setIndex(index);
-	connect(detailBtn, SIGNAL(sendPointer(MyPushButton*)),
-		this, SLOT(getBuildingAndSendSignal(MyPushButton*)));
+	connect(detailBtn, SIGNAL(sendPointer(TableWidgetPushButton*)),
+		this, SLOT(getBuildingAndSendSignal(TableWidgetPushButton*)));
 	setCellWidget(index, 5, detailBtn);
 }
 
@@ -72,7 +72,7 @@ QString BuildingTableWidget::toString(double value) {
 	return QString::number(value, 10, 2);
 }
 
-void BuildingTableWidget::getBuildingAndSendSignal(MyPushButton *button) {
+void BuildingTableWidget::getBuildingAndSendSignal(TableWidgetPushButton *button) {
     int id = button->index();
     BaseBuilding *building = BuildingManager::instance().getBuildingById(id);
 	emit sendOption(button->text(), building);

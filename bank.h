@@ -2,7 +2,7 @@
 #define BANK_H
 
 #include "basefinance.h"
-#include "bankclient.h"
+#include "BankAccount.h"
 #include <map>
 
 class Company;
@@ -27,7 +27,7 @@ public:
 
 	void repay(Company *client, double amount);
 
-	const BankClient &query(Company *client) const;
+	const BankAccount &query(Company *client) const;
 
 	void withdraw(Company *client, double amount);
 
@@ -40,7 +40,7 @@ public:
 	double loanInterestRate() const { return this->loanInterestRate_; }
 
 private:
-	std::map<Company *, BankClient> clientList_;
+	std::map<Company *, BankAccount> clientMap_;
 
 	double depositInterestRate_;
 

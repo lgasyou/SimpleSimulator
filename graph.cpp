@@ -4,6 +4,8 @@
 
 #include <QString>
 
+using namespace DataStructure;
+
 void Graph::addVertex(const QString &item) {
 	graph_.push_back(Vertex(item, nullptr, nullptr));
 }
@@ -27,7 +29,7 @@ void Graph::addPath(const QString &orig, const QString &dest, double volume) {
 	graph_[indexOfDest].firstIn = newArc;
 }
 
-double Graph::volume(const QString &orig, const QString &dest) const {
+double Graph::weight(const QString &orig, const QString &dest) const {
 	int indexOfOrig = indexOf(orig);
 	if (indexOfOrig == -1)
 		return -1;

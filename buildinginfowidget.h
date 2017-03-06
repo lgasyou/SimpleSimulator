@@ -8,13 +8,14 @@ class BuildingDetailDialog;
 namespace Ui { class BuildingInfoWidget; }
 
 class QString;
-class MyPushButton;
+class TableWidgetPushButton;
 
 class BuildingInfoWidget : public QWidget {
 	Q_OBJECT
 
 public:
 	BuildingInfoWidget(QWidget *parent = nullptr);
+
 	~BuildingInfoWidget();
 
 	void setTarget(BaseBuilding *building);
@@ -23,7 +24,7 @@ signals:
 	void sendOption(const QString &option, BaseBuilding *building);
 
 public slots:
-	void receiveOrder(MyPushButton *);
+	void receiveOrder(TableWidgetPushButton *);
 
 	void showBuildingDetail();
 

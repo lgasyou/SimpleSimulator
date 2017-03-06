@@ -6,7 +6,7 @@
 #include <vector>
 
 class BaseBuilding;
-class MyPushButton;
+class TableWidgetPushButton;
 
 class SelectTableWidget : public QTableWidget {
 	Q_OBJECT
@@ -32,7 +32,7 @@ public:
 	void setSelector(int type);
 
 public slots:
-	void getDestAndSendBuilding(MyPushButton *);
+	void getDestAndSendBuilding(TableWidgetPushButton *);
 
 signals:
 	void sendBuilding(BaseBuilding *);

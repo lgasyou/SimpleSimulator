@@ -19,6 +19,26 @@ const double defaultMaxVolOfWarehouse = 60.0;
 
 const int integerMaximum = INT_MAX;
 const int integerMinimum = INT_MIN;
+
+enum Command {
+	BuildBank,
+	BuildFactory,
+	BuildFarm,
+	BuildGarage,
+	BuildMine,
+	BuildSupermarket,
+	BuildVilla,
+	BuyBuilding,
+	CloseAnAccount,
+	Deposit,
+	DismantleBuilding,
+	Loan,
+	OpenAnAccount,
+	Repay,
+	SellBuilding,
+	Withdraw,
+};
+
 }
 
 #endif // !GAMECONSTANTS_H

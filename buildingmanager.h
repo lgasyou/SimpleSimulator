@@ -23,7 +23,7 @@ public:
 		Villa
 	};
 
-	// Converts QString to enum.
+	// Converts type of building from QString to enum.
 	static BuildingTypes stringToEnum(const QString &type);
 
 	// Use singleton pattern.

@@ -31,7 +31,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="MyPushButton" name="buyOrSellpushButton">
+      <widget class="TableWidgetPushButton" name="buyOrSellpushButton">
        <property name="text">
         <string>Buy</string>
        </property>
@@ -51,9 +51,9 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>MyPushButton</class>
+   <class>TableWidgetPushButton</class>
    <extends>QPushButton</extends>
-   <header location="global">mypushbutton.h</header>
+   <header location="global">tablewidgetpushbutton.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

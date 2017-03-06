@@ -7,7 +7,7 @@ class BaseBuilding;
 class BaseIndustry;
 class Machine;
 
-class MyPushButton;
+class TableWidgetPushButton;
 
 class MachineTableWidget : public QTableWidget {
 	Q_OBJECT
@@ -22,7 +22,7 @@ public:
 	void setIndustry(BaseBuilding *industry);
 
 public slots:
-	void receiveShowDetailSignal(MyPushButton *);
+	void receiveShowDetailSignal(TableWidgetPushButton *);
 
 	void updateDisplay();
 

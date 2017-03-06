@@ -6,7 +6,7 @@
 class Company;
 class BaseBuilding;
 
-class MyPushButton;
+class TableWidgetPushButton;
 class BuildingDetailDialog;
 class BuildingTableWidget;
 class CompanyDetailDialog;
@@ -56,7 +56,10 @@ private slots:
 
     void updateDisplay();
 
-	void processOrders(const QString &order, BaseBuilding *);
+	// Old function. Will be deleted later.
+	void processOrder(const QString &order, BaseBuilding *);
+
+	void processCommand(int command, BaseBuilding *);
 
 private:
     void updateStatusBar(const QString &msg);

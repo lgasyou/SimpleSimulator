@@ -6,7 +6,7 @@
 #include "buildingmanager.h"
 #include "uimanager.h"
 
-#include "mypushbutton.h"
+#include "TableWidgetPushButton.h"
 #include "selecttablewidget.h"
 
 WarehouseTableWidget::WarehouseTableWidget(QWidget *parent, Warehouse *warehouse) :
@@ -38,12 +38,12 @@ void WarehouseTableWidget::updateDisplay() {
 		this->setItem(index, 0, new QTableWidgetItem(item));
 		this->setItem(index, 1, new QTableWidgetItem(volume));
 
-		MyPushButton *sellBtn = new MyPushButton(tr("Sell"));
+		TableWidgetPushButton *sellBtn = new TableWidgetPushButton(tr("Sell"));
 		sellBtn->setIndex(index);
 		connect(sellBtn, SIGNAL(clicked()),
 			this, SLOT(goSelectIndustry()));
-		connect(sellBtn, SIGNAL(sendPointer(MyPushButton*)),
-				this, SLOT(getGoods(MyPushButton*)));
+		connect(sellBtn, SIGNAL(sendPointer(TableWidgetPushButton*)),
+				this, SLOT(getGoods(TableWidgetPushButton*)));
 		this->setCellWidget(index, 2, sellBtn);
 	}
 }
@@ -60,7 +60,7 @@ void WarehouseTableWidget::goSelectIndustry() {
 	selectTableWidget_->updateDisplay();
 }
 
-void WarehouseTableWidget::getGoods(MyPushButton *button) {
+void WarehouseTableWidget::getGoods(TableWidgetPushButton *button) {
 	int id = button->index();
 	goods_ = warehouse_->getGoodsById(id);
 }

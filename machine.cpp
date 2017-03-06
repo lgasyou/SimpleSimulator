@@ -54,8 +54,8 @@ void Machine::setCurrentProduct(const QString &product) {
 
 void Machine::setParameters(const MachineSettings &settings) {
 	this->maximalProductivity_ = settings.maximalProductivity;
+	setCurrentProduct(settings.currentProduct);
 	this->warehouse_ = settings.warehouse;
 	this->products_ = settings.products;
-	this->materials_ = settings.rawMaterials;
 }
 

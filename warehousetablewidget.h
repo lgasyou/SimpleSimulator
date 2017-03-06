@@ -8,7 +8,7 @@ class BaseIndustry;
 class BaseBuilding;
 struct Goods;
 
-class MyPushButton;
+class TableWidgetPushButton;
 class SelectTableWidget;
 
 class WarehouseTableWidget : public QTableWidget {
@@ -24,7 +24,7 @@ public:
 public slots:
 	void goSelectIndustry();
 
-	void getGoods(MyPushButton *);
+	void getGoods(TableWidgetPushButton *);
 
 	void getDestAndSendPreroute(BaseBuilding *dest);
 

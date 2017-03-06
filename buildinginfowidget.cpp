@@ -6,7 +6,7 @@
 #include "uimanager.h"
 
 #include "buildingdetaildialog.h"
-#include "mypushbutton.h"
+#include "TableWidgetPushButton.h"
 
 #include <QString>
 
@@ -21,8 +21,8 @@ BuildingInfoWidget::BuildingInfoWidget(QWidget *parent) : QWidget(parent) {
 
 	connect(ui->detailsPushButton,		SIGNAL(clicked()),
 			this,						SLOT(showBuildingDetail()));
-	connect(ui->buyOrSellpushButton,	SIGNAL(sendPointer(MyPushButton*)),
-			this,						SLOT(receiveOrder(MyPushButton*)));
+	connect(ui->buyOrSellpushButton,	SIGNAL(sendPointer(TableWidgetPushButton *)),
+			this,						SLOT(receiveOrder(TableWidgetPushButton *)));
 }
 
 BuildingInfoWidget::~BuildingInfoWidget() {
@@ -35,7 +35,7 @@ void BuildingInfoWidget::setTarget(BaseBuilding *building) {
 		detailWidget_->setBuilding(building);
 }
 
-void BuildingInfoWidget::receiveOrder(MyPushButton *button) {
+void BuildingInfoWidget::receiveOrder(TableWidgetPushButton *button) {
 	emit sendOption(button->text(), displayedBuilding_);
 }
 

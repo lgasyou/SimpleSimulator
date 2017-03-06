@@ -9,6 +9,7 @@ namespace Ui {
 class BankDialog;
 }
 
+// Used in early version ONLY.
 class BankDialog : public QDialog {
     Q_OBJECT
 

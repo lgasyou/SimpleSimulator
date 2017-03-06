@@ -8,7 +8,7 @@ class Garage;
 class Truck;
 struct Route;
 
-class MyPushButton;
+class TableWidgetPushButton;
 
 class GarageTableWidget : public QTableWidget {
 	Q_OBJECT
@@ -27,9 +27,9 @@ public:
 public slots:
 	void updateDisplay();
 
-	void buttonClicked(MyPushButton *);
+	void buttonClicked(TableWidgetPushButton *);
 
-	void showSetRouteDialog(MyPushButton *);
+	void showSetRouteDialog(TableWidgetPushButton *);
 
 	void setRoute(Route *);
 

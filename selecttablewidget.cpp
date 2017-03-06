@@ -4,7 +4,7 @@
 
 #include "buildingmanager.h"
 
-#include "mypushbutton.h"
+#include "TableWidgetPushButton.h"
 
 SelectTableWidget::SelectTableWidget(QWidget *parent) :
 	QTableWidget(parent) {	
@@ -44,11 +44,11 @@ void SelectTableWidget::updateEachLine(int indexInWidget, int indexInManager, Ba
 	setItem(indexInWidget, 0, new QTableWidgetItem(name));
 	setItem(indexInWidget, 1, new QTableWidgetItem(type));
 
-	MyPushButton *selectButton = new MyPushButton(tr("Select"));
+	TableWidgetPushButton *selectButton = new TableWidgetPushButton(tr("Select"));
 	setCellWidget(indexInWidget, 2, selectButton);
 	selectButton->setIndex(indexInManager);
-	connect(selectButton, SIGNAL(sendPointer(MyPushButton*)),
-		this, SLOT(getDestAndSendBuilding(MyPushButton*)));
+	connect(selectButton, SIGNAL(sendPointer(TableWidgetPushButton*)),
+		this, SLOT(getDestAndSendBuilding(TableWidgetPushButton*)));
 }
 
 void SelectTableWidget::setSelector(int type) {
@@ -63,7 +63,7 @@ void SelectTableWidget::setSelector(int type) {
 	}
 }
 
-void SelectTableWidget::getDestAndSendBuilding(MyPushButton *button) {
+void SelectTableWidget::getDestAndSendBuilding(TableWidgetPushButton *button) {
 	int id = button->index();
 	BaseBuilding *building = BuildingManager::instance().getBuildingById(id);
 	emit sendBuilding(building);

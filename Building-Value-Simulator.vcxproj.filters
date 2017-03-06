@@ -120,12 +120,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_mainwindow.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_mypushbutton.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_mypushbutton.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_warehousetablewidget.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
@@ -158,9 +152,6 @@
     </ClCompile>
     <ClCompile Include="goods.cpp">
       <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="mypushbutton.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
     </ClCompile>
     <ClCompile Include="valuegenerator.cpp">
       <Filter>Source Files\Utilities</Filter>
@@ -324,9 +315,6 @@
     <ClCompile Include="personmanager.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="bankclient.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_machinetablewidget.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
@@ -345,6 +333,27 @@
     <ClCompile Include="buildingtablewidget.cpp">
       <Filter>Source Files\GUIComponents</Filter>
     </ClCompile>
+    <ClCompile Include="bankaccount.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="tablewidgetpushbutton.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_tablewidgetpushbutton.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_tablewidgetpushbutton.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_commandpushbutton.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_commandpushbutton.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="commandpushbutton.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mainwindow.h">
@@ -357,9 +366,6 @@
       <Filter>Header Files\Dialogs</Filter>
     </CustomBuild>
     <CustomBuild Include="garagetablewidget.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </CustomBuild>
-    <CustomBuild Include="mypushbutton.h">
       <Filter>Header Files\GUIComponents</Filter>
     </CustomBuild>
     <CustomBuild Include="warehousetablewidget.h">
@@ -414,6 +420,12 @@
       <Filter>Header Files\GUIComponents</Filter>
     </CustomBuild>
     <CustomBuild Include="buildingtablewidget.h">
+      <Filter>Header Files\GUIComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="tablewidgetpushbutton.h">
+      <Filter>Header Files\GUIComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="commandpushbutton.h">
       <Filter>Header Files\GUIComponents</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -556,7 +568,7 @@
     <ClInclude Include="personmanager.h">
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="bankclient.h">
+    <ClInclude Include="bankaccount.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
   </ItemGroup>

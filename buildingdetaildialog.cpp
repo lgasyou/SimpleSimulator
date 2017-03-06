@@ -9,10 +9,13 @@
 #include "garage.h"
 #include "goods.h"
 #include "machine.h"
+#include "mine.h"
+#include "factory.h"
+#include "gameconstants.h"
 
 #include "garagetablewidget.h"
 #include "warehousetablewidget.h"
-#include "mypushbutton.h"
+#include "TableWidgetPushButton.h"
 #include "ui_buildingdetaildialog.h"
 
 BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
@@ -52,7 +55,7 @@ void BuildingDetailDialog::updateDisplay() {
 		updateMachineDetail(selectMachine_);
 	}
 
-	displayAccordingToVisitor();
+	displayAccordingToBuildingType();
 }
 
 void BuildingDetailDialog::closeEvent(QCloseEvent *) {
@@ -65,13 +68,46 @@ void BuildingDetailDialog::closeEvent(QCloseEvent *) {
 //	emit dataChanged();
 //}
 
-void BuildingDetailDialog::addNewMachine(MyPushButton *) {
-	BaseIndustry *building = dynamic_cast<BaseIndustry *>(building_);
-	std::vector<Goods> products{ Goods("Coal", 1), Goods("Iron", 2) };
-	auto materials = IndustryChainManager::instance().precursors(products[0].name);
-	MachineSettings settings = MachineSettings(5.0, building->warehouse(), products, materials);
-	Machine *machine = new Machine(settings);
-	building->addMachine(machine);
+void BuildingDetailDialog::addNewMachine() {
+	auto industryType = BuildingManager::stringToEnum(building_->type());
+	switch (industryType) {
+	case BuildingManager::Factory: {
+		Factory *factory = dynamic_cast<Factory *>(building_);
+		MachineSettings settings;
+		settings.maximalProductivity = 1.0;
+		settings.products = { Goods("Steel", 1) };
+		settings.currentProduct = settings.products[0].name;
+		settings.warehouse = factory->warehouse();
+
+		Machine *machine = new Machine(settings);
+		factory->addMachine(machine);
+		emit dataChanged();
+		break;
+	}
+
+	case BuildingManager::Mine: {
+		Mine *mine = dynamic_cast<Mine *>(building_);
+		MachineSettings settings;
+		settings.maximalProductivity = 1.0;
+		settings.products = { Goods(mine->resource(), 1) };
+		settings.currentProduct = mine->resource();
+		settings.warehouse = mine->warehouse();
+
+		Machine *machine = new Machine(settings);
+		mine->addMachine(machine);
+		emit dataChanged();
+		break;
+	}
+
+	default:
+		break;
+	}
+
+}
+
+void BuildingDetailDialog::addNewVihicle() {
+	Garage *garage = dynamic_cast<Garage *>(building_);
+	garage->addNewVihicle("Truck");
 	emit dataChanged();
 }
 
@@ -99,12 +135,12 @@ void BuildingDetailDialog::updateMachineDetail(Machine *machine) {
 	ui->machineMaximumProductivity->setText("Maximum Productivity: " + machineMaximumProductivity);
 }
 
-void BuildingDetailDialog::receiveOrder(MyPushButton *button) {
-	emit sendOption(button->text(), building_);
+void BuildingDetailDialog::receiveCommand(int command) {
+	emit sendCommand(command, building_);
 	emit dataChanged();
 }
 
-void BuildingDetailDialog::displayAccordingToVisitor() {
+void BuildingDetailDialog::displayAccordingToBuildingType() {
 	bool isVisitorOwner = (building_->owner() == CompanyManager::instance().playerCompany());
 	ui->basicOperationStackedWidget->setCurrentIndex(isVisitorOwner);
 
@@ -135,10 +171,15 @@ void BuildingDetailDialog::displayAccordingToVisitor() {
 		break;
 	}
 
-	case BuildingManager::Mine:
+	case BuildingManager::Mine: {
+		Mine *mine = dynamic_cast<Mine *>(building_);
+		const QString &typeText = QString("Type:  %1 Mine").arg(mine->resource());
+		ui->typeLabel->setText(typeText);
+
 		ui->mineTableWidget->setIndustry(building_);
 		ui->mineTableWidget->updateDisplay();
 		break;
+	}
 
 	case BuildingManager::Supermarket:
 		break;
@@ -155,25 +196,58 @@ void BuildingDetailDialog::displayAccordingToVisitor() {
 }
 
 void BuildingDetailDialog::signalSlotConfig() {
+	using namespace GameConstants;
+
 	/* ---------------------------------- Basic Config ---------------------------------------------- */
-	connect(ui->buyPushButton,							SIGNAL(sendPointer(MyPushButton*)),
-			this,										SLOT(receiveOrder(MyPushButton*)));
-	connect(ui->sellPushButton,							SIGNAL(sendPointer(MyPushButton*)),
-			this,										SLOT(receiveOrder(MyPushButton*)));
-	connect(ui->dismantlePushButton,					SIGNAL(sendPointer(MyPushButton*)),
-			this,										SLOT(receiveOrder(MyPushButton*)));
+	connect(ui->buyPushButton,							SIGNAL(sendCommand(int)),
+			this,										SLOT(receiveCommand(int)));
+	ui->buyPushButton->setCommand(Command::BuyBuilding);
+
+	connect(ui->sellPushButton,							SIGNAL(sendCommand(int)),
+			this,										SLOT(receiveCommand(int)));
+	ui->sellPushButton->setCommand(Command::SellBuilding);
+
+	connect(ui->dismantlePushButton,					SIGNAL(sendCommand(int)),
+			this,										SLOT(receiveCommand(int)));
+	ui->dismantlePushButton->setCommand(Command::DismantleBuilding);
+	/* ---------------------------------------------------------------------------------------------- */
+
+	/* ----------------------------------- Bank Config ---------------------------------------------- */
+	connect(ui->closeAnAccountPushButton,				SIGNAL(sendCommand(int)),
+			this,										SLOT(receiveCommand(int)));
+	ui->closeAnAccountPushButton->setCommand(Command::CloseAnAccount);
+
+	connect(ui->depositPushButton,						SIGNAL(sendCommand(int)),
+			this,										SLOT(receiveCommand(int)));
+	ui->depositPushButton->setCommand(Command::Deposit);
+
+	connect(ui->loanPushButton,							SIGNAL(sendCommand(int)),
+			this,										SLOT(receiveCommand(int)));
+	ui->loanPushButton->setCommand(Command::Loan);
+
+	connect(ui->openAnAccountPushButton,				SIGNAL(sendCommand(int)),
+			this,										SLOT(receiveCommand(int)));
+	ui->openAnAccountPushButton->setCommand(Command::OpenAnAccount);
+
+	connect(ui->repayPushButton,						SIGNAL(sendCommand(int)),
+			this,										SLOT(receiveCommand(int)));
+	ui->repayPushButton->setCommand(Command::Repay);
+
+	connect(ui->withdrawPushButton,						SIGNAL(sendCommand(int)),
+			this,										SLOT(receiveCommand(int)));
+	ui->withdrawPushButton->setCommand(Command::Withdraw);
 	/* ---------------------------------------------------------------------------------------------- */
 
 	/* ---------------------------------- Garage Config --------------------------------------------- */
-	connect(ui->purchaseNewVihiclePushButton,			SIGNAL(sendPointer(MyPushButton *)),
-			this,										SLOT(addNewVihicle(MyPushButton *)));
+	connect(ui->purchaseNewVihiclePushButton,			SIGNAL(clicked()),
+			this,										SLOT(addNewVihicle()));
 	/* ---------------------------------------------------------------------------------------------- */
 
 	/* --------------------------------- Industry Config -------------------------------------------- */
-	connect(ui->purchaseNewMachineInFactoryPushButton,	SIGNAL(sendPointer(MyPushButton*)),
-			this,										SLOT(addNewMachine(MyPushButton*)));
-	connect(ui->purchaseNewMachineInMinePushButton,		SIGNAL(sendPointer(MyPushButton*)),
-			this,										SLOT(addNewMachine(MyPushButton*)));
+	connect(ui->purchaseNewMachineInFactoryPushButton,	SIGNAL(clicked()),
+			this,										SLOT(addNewMachine()));
+	connect(ui->purchaseNewMachineInMinePushButton,		SIGNAL(clicked()),
+			this,										SLOT(addNewMachine()));
 
 	connect(ui->factoryTableWidget,						SIGNAL(sendSelectedMachine(Machine *)),
 			this,										SLOT(showMachineDetail(Machine *)));
@@ -185,20 +259,33 @@ void BuildingDetailDialog::signalSlotConfig() {
 	/* ---------------------------------------------------------------------------------------------- */
 
 	/* -------------------------------- UnusedLand Config ------------------------------------------- */
-	connect(ui->buildBankPushButton,					SIGNAL(sendPointer(MyPushButton*)),
-			this,										SLOT(receiveOrder(MyPushButton*)));
-	connect(ui->buildFactoryPushButton,					SIGNAL(sendPointer(MyPushButton*)),
-			this,										SLOT(receiveOrder(MyPushButton*)));
-	connect(ui->buildFarmPushButton,					SIGNAL(sendPointer(MyPushButton*)),
-			this,										SLOT(receiveOrder(MyPushButton*)));
-	connect(ui->buildGaragePushButton,					SIGNAL(sendPointer(MyPushButton*)),
-			this,										SLOT(receiveOrder(MyPushButton*)));
-	connect(ui->buildMinePushButton,					SIGNAL(sendPointer(MyPushButton*)),
-			this,										SLOT(receiveOrder(MyPushButton*)));
-	connect(ui->buildSupermarketPushButton,				SIGNAL(sendPointer(MyPushButton*)),
-			this,										SLOT(receiveOrder(MyPushButton*)));
-	connect(ui->buildVillaPushButton,					SIGNAL(sendPointer(MyPushButton*)),
-			this,										SLOT(receiveOrder(MyPushButton*)));
+	connect(ui->buildBankPushButton,					SIGNAL(sendCommand(int)),
+			this,										SLOT(receiveCommand(int)));
+	ui->buildBankPushButton->setCommand(Command::BuildBank);
+
+	connect(ui->buildFactoryPushButton,					SIGNAL(sendCommand(int)),
+			this,										SLOT(receiveCommand(int)));
+	ui->buildFactoryPushButton->setCommand(Command::BuildFactory);
+
+	connect(ui->buildFarmPushButton,					SIGNAL(sendCommand(int)),
+			this,										SLOT(receiveCommand(int)));
+	ui->buildFarmPushButton->setCommand(Command::BuildFarm);
+
+	connect(ui->buildGaragePushButton,					SIGNAL(sendCommand(int)),
+			this,										SLOT(receiveCommand(int)));
+	ui->buildGaragePushButton->setCommand(Command::BuildGarage);
+
+	connect(ui->buildMinePushButton,					SIGNAL(sendCommand(int)),
+			this,										SLOT(receiveCommand(int)));
+	ui->buildMinePushButton->setCommand(Command::BuildMine);
+
+	connect(ui->buildSupermarketPushButton,				SIGNAL(sendCommand(int)),
+			this,										SLOT(receiveCommand(int)));
+	ui->buildSupermarketPushButton->setCommand(Command::BuildSupermarket);
+
+	connect(ui->buildVillaPushButton,					SIGNAL(sendCommand(int)),
+			this,										SLOT(receiveCommand(int)));
+	ui->buildVillaPushButton->setCommand(Command::BuildVilla);
 	/* ---------------------------------------------------------------------------------------------- */
 
 	/* ---------------------------------- Display Config -------------------------------------------- */
@@ -211,12 +298,6 @@ void BuildingDetailDialog::signalSlotConfig() {
 	connect(this,										SIGNAL(dataChanged()),
 			ui->garageTableWidget,						SLOT(updateDisplay()));
 	/* ---------------------------------------------------------------------------------------------- */
-}
-
-void BuildingDetailDialog::addNewVihicle(MyPushButton *) {
-	Garage *garage = dynamic_cast<Garage *>(building_);
-	garage->addNewVihicle("Truck");
-	emit dataChanged();
 }
 
 QString BuildingDetailDialog::toString(double value) {

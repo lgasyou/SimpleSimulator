@@ -23,7 +23,7 @@ IndustryChainManager &IndustryChainManager::instance() {
 }
 
 double IndustryChainManager::cost(const QString &orig, const QString &dest) const {
-	return industryChain_.volume(orig, dest);
+	return industryChain_.weight(orig, dest);
 }
 
 std::vector<Goods> IndustryChainManager::precursors(const QString &item) const {
