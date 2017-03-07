@@ -25,16 +25,6 @@ public:
 
     ~MainWindow();
 
-	enum OrderTypes {
-		Buy,
-		Build,
-		Dismantle,
-		Details,
-		Sell
-	};
-
-	static OrderTypes stringToEnum(const QString &type);
-
 	void init();
 
 signals:
@@ -55,9 +45,6 @@ private slots:
 	void getBuildingByPos(int x, int y);
 
     void updateDisplay();
-
-	// Old function. Will be deleted later.
-	void processOrder(const QString &order, BaseBuilding *);
 
 	void processCommand(int command, BaseBuilding *);
 

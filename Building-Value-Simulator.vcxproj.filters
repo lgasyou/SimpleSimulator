@@ -339,12 +339,6 @@
     <ClCompile Include="tablewidgetpushbutton.cpp">
       <Filter>Source Files\GUIComponents</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_tablewidgetpushbutton.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_tablewidgetpushbutton.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_commandpushbutton.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
@@ -353,6 +347,12 @@
     </ClCompile>
     <ClCompile Include="commandpushbutton.cpp">
       <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_tablewidgetpushbutton.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_tablewidgetpushbutton.cpp">
+      <Filter>Generated Files\Release</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

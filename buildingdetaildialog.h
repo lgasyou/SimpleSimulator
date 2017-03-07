@@ -6,7 +6,6 @@
 class BaseBuilding;
 class Machine;
 
-class TableWidgetPushButton;
 namespace Ui {
 class BuildingDetailDialog;
 }

@@ -3,26 +3,25 @@
 #include "basebuilding.h"
 #include "company.h"
 #include "companymanager.h"
-#include "uimanager.h"
+#include "gameconstants.h"
 
-#include "buildingdetaildialog.h"
-#include "TableWidgetPushButton.h"
+#include "tablewidgetpushbutton.h"
 
 #include <QString>
 
 BuildingInfoWidget::BuildingInfoWidget(QWidget *parent) : QWidget(parent) {
 	displayedBuilding_ = nullptr;
-	detailWidget_ = nullptr;
 	ui = new Ui::BuildingInfoWidget;
 	ui->setupUi(this); 
 
-	ui->buyOrSellpushButton->hide();
+	connect(ui->detailsPushButton,		SIGNAL(sendCommand(int)),
+			this,						SLOT(receiveCommand(int)));
+	ui->detailsPushButton->setCommand(GameConstants::ShowDetail);
 	ui->detailsPushButton->hide();
 
-	connect(ui->detailsPushButton,		SIGNAL(clicked()),
-			this,						SLOT(showBuildingDetail()));
-	connect(ui->buyOrSellpushButton,	SIGNAL(sendPointer(TableWidgetPushButton *)),
-			this,						SLOT(receiveOrder(TableWidgetPushButton *)));
+	connect(ui->buyOrSellpushButton,	SIGNAL(sendCommand(int)),
+			this,						SLOT(receiveCommand(int)));
+	ui->buyOrSellpushButton->hide();
 }
 
 BuildingInfoWidget::~BuildingInfoWidget() {
@@ -31,23 +30,10 @@ BuildingInfoWidget::~BuildingInfoWidget() {
 
 void BuildingInfoWidget::setTarget(BaseBuilding *building) {
 	this->displayedBuilding_ = building;
-	if (detailWidget_)
-		detailWidget_->setBuilding(building);
 }
 
-void BuildingInfoWidget::receiveOrder(TableWidgetPushButton *button) {
-	emit sendOption(button->text(), displayedBuilding_);
-}
-
-
-void BuildingInfoWidget::showBuildingDetail() {
-	if (displayedBuilding_ != nullptr) {
-		detailWidget_ = UIManager::instance().buildingDetailDialog();
-		detailWidget_->setBuilding(displayedBuilding_);
-
-		detailWidget_->showAndRaise();
-		detailWidget_->updateDisplay();
-	}
+void BuildingInfoWidget::receiveCommand(int command) {
+	emit sendCommand(command, displayedBuilding_);
 }
 
 void BuildingInfoWidget::showBuildingInfo(BaseBuilding *building) {
@@ -74,6 +60,7 @@ void BuildingInfoWidget::updateDisplay() {
 
 		bool owned = (displayedBuilding_->owner() == CompanyManager::instance().playerCompany());
 		const QString buttonText = owned ? tr("Sell") : tr("Buy");
+		ui->buyOrSellpushButton->setCommand(owned ? GameConstants::SellBuilding : GameConstants::BuyBuilding);
 		ui->buyOrSellpushButton->setText(buttonText);
 	}
 }

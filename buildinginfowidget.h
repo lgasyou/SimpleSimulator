@@ -4,11 +4,11 @@
 #include <QWidget>
 
 class BaseBuilding;
-class BuildingDetailDialog;
-namespace Ui { class BuildingInfoWidget; }
+namespace Ui { 
+class BuildingInfoWidget; 
+}
 
 class QString;
-class TableWidgetPushButton;
 
 class BuildingInfoWidget : public QWidget {
 	Q_OBJECT
@@ -21,12 +21,10 @@ public:
 	void setTarget(BaseBuilding *building);
 
 signals:
-	void sendOption(const QString &option, BaseBuilding *building);
+	void sendCommand(int command, BaseBuilding *building);
 
 public slots:
-	void receiveOrder(TableWidgetPushButton *);
-
-	void showBuildingDetail();
+	void receiveCommand(int);
 
 	void showBuildingInfo(BaseBuilding *building);
 
@@ -34,8 +32,6 @@ public slots:
 
 private:
 	BaseBuilding *displayedBuilding_;
-
-	BuildingDetailDialog *detailWidget_;
 
 	Ui::BuildingInfoWidget *ui;
 };

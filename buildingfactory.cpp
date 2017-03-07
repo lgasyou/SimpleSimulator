@@ -25,6 +25,7 @@
 #include "buildingmanager.h"
 #include "mapmanager.h"
 #include "government.h"
+#include "gameconstants.h"
 
 #include <QString>
 
@@ -33,35 +34,35 @@ BaseBuilding *BuildingFactory::create(const QString &type) {
 
 	auto buildingType = BuildingManager::stringToEnum(type);
 	switch (buildingType) {
-	case BuildingManager::Bank:
+	case GameConstants::Bank:
 		building = new Bank;
 		break;
 
-	case BuildingManager::Factory:
+	case GameConstants::Factory:
 		building = new Factory;
 		break;
 
-	case BuildingManager::Farm:
+	case GameConstants::Farm:
 		building = new Farm;
 		break;
 
-	case BuildingManager::Garage:
+	case GameConstants::Garage:
 		building = new Garage;
 		break;
 
-	case BuildingManager::Mine:
+	case GameConstants::Mine:
 		building = new Mine;
 		break;
 
-	case BuildingManager::Supermarket:
+	case GameConstants::Supermarket:
 		building = new Supermarket;
 		break;
 
-	case BuildingManager::UnusedLand:
+	case GameConstants::UnusedLand:
 		building = new UnusedLand;
 		break;
 
-	case BuildingManager::Villa:
+	case GameConstants::Villa:
 		building = new Villa;
 		break;
 

@@ -4,7 +4,9 @@
 #include <QWidget>
 #include <QImage>
 
-namespace Ui { class MainUI; }
+namespace Ui { 
+class MainUI; 
+}
 
 class MainUI : public QWidget {
 	Q_OBJECT

@@ -6,7 +6,7 @@
 #include "buildingmanager.h"
 #include "uimanager.h"
 
-#include "TableWidgetPushButton.h"
+#include "tablewidgetpushbutton.h"
 #include "selecttablewidget.h"
 
 WarehouseTableWidget::WarehouseTableWidget(QWidget *parent, Warehouse *warehouse) :

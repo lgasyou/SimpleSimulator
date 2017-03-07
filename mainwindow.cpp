@@ -21,7 +21,7 @@
 #include "companydetaildialog.h"
 #include "helpdialog.h"
 #include "mainui.h"
-#include "TableWidgetPushButton.h"
+#include "tablewidgetpushbutton.h"
 #include "ui_mainwindow.h"
 #include <QTableWidget>
 #include <QStatusBar>
@@ -43,22 +43,6 @@ MainWindow::~MainWindow() {
 	delete buildingInfoList_;
 	delete helpDialog_;
     delete ui;
-}
-
-MainWindow::OrderTypes MainWindow::stringToEnum(const QString &type) {
-	static std::map<QString, OrderTypes> stringToEnumMap{
-		{"Buy", Buy },
-		{"Bank", Build },
-		{"Factory", Build },
-		{"Farm", Build },
-		{"Garage", Build },
-		{"Mine", Build },
-		{"Supermarket", Build },
-		{"Villa", Build },
-		{"Dismantle", Dismantle },
-		{"Details", Details },
-		{"Sell", Sell } };
-	return stringToEnumMap[type];
 }
 
 void MainWindow::init() {
@@ -126,53 +110,6 @@ void MainWindow::updateDisplay() {
 	ui->label_CompanyCash->setText(cashText);
 
     buildingInfoList_->updateDisplay();
-}
-
-void MainWindow::processOrder(const QString &order, BaseBuilding *building) {
-	QString msg;
-	switch (stringToEnum(order)) {
-	case Buy:
-		if (playerCompany_->buy(building)) {
-			emit dataChanged();
-			msg = QString("%1 %2 bought.").arg(building->type(), building->name());
-		} else {
-			msg = "Cannot Afford it.";
-		}
-		break;
-
-	case Build: {
-		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, order);
-		ui->buildingInfoWidget->setTarget(newBuilding);
-		buildingDetailDialog_->setBuilding(newBuilding);
-		emit dataChanged();
-		break;
-	}
-
-	case Dismantle: {
-		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, "Unused Land");
-		ui->buildingInfoWidget->setTarget(newBuilding);
-		buildingDetailDialog_->setBuilding(newBuilding);
-		msg = newBuilding->name() + " has been dismantled.";
-		emit dataChanged();
-		break;
-	}
-
-	case Details:
-		buildingDetailDialog_->setBuilding(building);
-		buildingDetailDialog_->showAndRaise();
-		buildingDetailDialog_->updateDisplay();
-		break;
-
-	case Sell:
-		playerCompany_->sell(building);
-		emit dataChanged();
-		msg = QString("%1 %2 sold.").arg(building->type(), building->name());
-		break;
-
-	default:
-		break;
-	}
-	updateStatusBar(msg);
 }
 
 void MainWindow::processCommand(int command, BaseBuilding *building) {
@@ -275,6 +212,12 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
 		msg = QString("%1 %2 sold.").arg(building->type(), building->name());
 		break;
 
+	case ShowDetail:
+		buildingDetailDialog_->setBuilding(building);
+		buildingDetailDialog_->showAndRaise();
+		buildingDetailDialog_->updateDisplay();
+		break;
+
 	case Withdraw:
 		break;
 
@@ -305,10 +248,10 @@ void MainWindow::signalSlotConfig() {
 	/* ---------------------------------------------------------------------------------------------- */
 
 	/* ---------------------------------- Orders Config --------------------------------------------- */
-	connect(ui->buildingInfoWidget,		SIGNAL(sendOption(const QString &, BaseBuilding *)),
-			this,						SLOT(processOrder(const QString &, BaseBuilding *)));
-	connect(buildingInfoList_,			SIGNAL(sendOption(const QString &, BaseBuilding *)),
-			this,						SLOT(processOrder(const QString &, BaseBuilding *)));
+	connect(ui->buildingInfoWidget,		SIGNAL(sendCommand(int, BaseBuilding *)),
+			this,						SLOT(processCommand(int, BaseBuilding *)));
+	connect(buildingInfoList_,			SIGNAL(sendCommand(int, BaseBuilding *)),
+			this,						SLOT(processCommand(int, BaseBuilding *)));
 	connect(buildingDetailDialog_,		SIGNAL(sendCommand(int, BaseBuilding *)),
 			this,						SLOT(processCommand(int, BaseBuilding *)));
 	/* ---------------------------------------------------------------------------------------------- */

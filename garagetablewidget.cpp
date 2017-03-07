@@ -8,7 +8,7 @@
 #include "uimanager.h"
 
 #include "setroutedialog.h"
-#include "TableWidgetPushButton.h"
+#include "tablewidgetpushbutton.h"
 
 GarageTableWidget::GarageTableWidget(QWidget *parent) : 
 	QTableWidget(parent),

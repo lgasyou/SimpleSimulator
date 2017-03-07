@@ -4,7 +4,7 @@
 
 #include "buildingmanager.h"
 
-#include "TableWidgetPushButton.h"
+#include "tablewidgetpushbutton.h"
 
 SelectTableWidget::SelectTableWidget(QWidget *parent) :
 	QTableWidget(parent) {	

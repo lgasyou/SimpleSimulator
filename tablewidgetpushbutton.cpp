@@ -1,20 +1,15 @@
 #include "tablewidgetpushbutton.h"
 
-TableWidgetPushButton::TableWidgetPushButton(QWidget *parent) :
-    QPushButton(parent) {	
+TableWidgetPushButton::TableWidgetPushButton(QWidget *parent, int command) :
+	CommandPushButton(parent, command) {	
 	init();
 }
 
-TableWidgetPushButton::TableWidgetPushButton(const QString &text, QWidget *parent) :
-    QPushButton(text, parent) {
+TableWidgetPushButton::TableWidgetPushButton(const QString &text, int command, QWidget *parent) :
+	CommandPushButton(text, command, parent) {
 	init();
-}
-
-void TableWidgetPushButton::init() {
-	connect(this, SIGNAL(clicked()),
-			this, SLOT(repeater()));
 }
 
 void TableWidgetPushButton::repeater() {
-	emit sendPointer(this);
+	emit sendCommand(this->command(), this->index());
 }

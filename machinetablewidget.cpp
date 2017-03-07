@@ -3,7 +3,7 @@
 #include "machine.h"
 #include "goods.h"
 
-#include "TableWidgetPushButton.h"
+#include "tablewidgetpushbutton.h"
 
 MachineTableWidget::MachineTableWidget(QWidget *parent) : 
 	QTableWidget(parent),

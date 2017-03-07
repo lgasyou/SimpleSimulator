@@ -8,9 +8,9 @@ class CommandPushButton : public QPushButton {
 	Q_OBJECT
 
 public:
-	CommandPushButton(QWidget *parent = nullptr);
+	CommandPushButton(QWidget *parent = nullptr, int command = -1);
 
-	CommandPushButton(const QString &text, QWidget *parent = nullptr);
+	CommandPushButton(const QString &text, int command = -1, QWidget *parent = nullptr);
 
 	~CommandPushButton();
 
@@ -20,7 +20,7 @@ public:
 	int command() const { return this->command_; }
 
 public slots:
-	void repeater();
+	virtual void repeater();
 
 signals:
 	void sendCommand(int);

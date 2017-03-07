@@ -8,23 +8,16 @@ class Company;
 
 class QString;
 
+namespace GameConstants {
+enum BuildingTypes;
+}
+
 // Owns and manages the pointers of buildings.
 // Updates the data of buildings.
 class BuildingManager {
 public:
-	enum BuildingTypes {
-		Bank,
-		Factory,
-		Farm,
-		Garage,
-		Mine,
-		Supermarket,
-		UnusedLand,
-		Villa
-	};
-
 	// Converts type of building from QString to enum.
-	static BuildingTypes stringToEnum(const QString &type);
+	static GameConstants::BuildingTypes stringToEnum(const QString &type);
 
 	// Use singleton pattern.
 	static BuildingManager &instance();
@@ -33,14 +26,14 @@ public:
 
 	void addItem(BaseBuilding *);
 
-	inline const auto &buildingList() const { return this->buildings_; }
+	const auto &buildingList() const { return this->buildings_; }
 
-	inline size_t buildingNumber() const { return buildings_.size(); }
+	size_t buildingNumber() const { return buildings_.size(); }
 
 	// In order to get the balance of Company.
 	double deltaValueOfCompanyProperties(Company *) const;
 
-	inline BaseBuilding *getBuildingById(size_t id) const;
+	BaseBuilding *getBuildingById(size_t id) const;
 
 	BaseBuilding *getBuildingByPos(int x, int y) const;
 

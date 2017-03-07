@@ -20,7 +20,18 @@ const double defaultMaxVolOfWarehouse = 60.0;
 const int integerMaximum = INT_MAX;
 const int integerMinimum = INT_MIN;
 
-enum Command {
+enum BuildingTypes {
+	Bank,
+	Factory,
+	Farm,
+	Garage,
+	Mine,
+	Supermarket,
+	UnusedLand,
+	Villa
+};
+
+enum Commands {
 	BuildBank,
 	BuildFactory,
 	BuildFarm,
@@ -36,6 +47,7 @@ enum Command {
 	OpenAnAccount,
 	Repay,
 	SellBuilding,
+	ShowDetail,
 	Withdraw,
 };
 

@@ -1,21 +1,21 @@
 #include "buildingdetaildialog.h"
 #include "basebuilding.h"
 #include "baseindustry.h"
-#include "goodscontainer.h"
 #include "company.h"
-#include "companymanager.h"
-#include "buildingmanager.h"
-#include "industrychainmanager.h"
-#include "garage.h"
-#include "goods.h"
-#include "machine.h"
-#include "mine.h"
 #include "factory.h"
 #include "gameconstants.h"
+#include "garage.h"
+#include "goods.h"
+#include "goodscontainer.h"
+#include "machine.h"
+#include "mine.h"
+
+#include "buildingmanager.h"
+#include "companymanager.h"
+#include "industrychainmanager.h"
 
 #include "garagetablewidget.h"
 #include "warehousetablewidget.h"
-#include "TableWidgetPushButton.h"
 #include "ui_buildingdetaildialog.h"
 
 BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
@@ -71,7 +71,7 @@ void BuildingDetailDialog::closeEvent(QCloseEvent *) {
 void BuildingDetailDialog::addNewMachine() {
 	auto industryType = BuildingManager::stringToEnum(building_->type());
 	switch (industryType) {
-	case BuildingManager::Factory: {
+	case GameConstants::Factory: {
 		Factory *factory = dynamic_cast<Factory *>(building_);
 		MachineSettings settings;
 		settings.maximalProductivity = 1.0;
@@ -85,7 +85,7 @@ void BuildingDetailDialog::addNewMachine() {
 		break;
 	}
 
-	case BuildingManager::Mine: {
+	case GameConstants::Mine: {
 		Mine *mine = dynamic_cast<Mine *>(building_);
 		MachineSettings settings;
 		settings.maximalProductivity = 1.0;
@@ -148,18 +148,18 @@ void BuildingDetailDialog::displayAccordingToBuildingType() {
 	auto buildingType = BuildingManager::stringToEnum(type);
 	ui->detailStackedWidget->setCurrentIndex(buildingType);
 	switch (buildingType) {
-	case BuildingManager::Bank:
+	case GameConstants::Bank:
 		break;
 
-	case BuildingManager::Factory:
+	case GameConstants::Factory:
 		ui->factoryTableWidget->setIndustry(building_);
 		ui->factoryTableWidget->updateDisplay();
 		break;
 
-	case BuildingManager::Farm:
+	case GameConstants::Farm:
 		break;
 
-	case BuildingManager::Garage: {
+	case GameConstants::Garage: {
 		Garage *garage = dynamic_cast<Garage *>(building_);
 		const QString &freeVicleCount = QString::number(garage->freeVihicleCount());
 		const QString &vihicleCount = QString::number(garage->vihicleCount());
@@ -171,7 +171,7 @@ void BuildingDetailDialog::displayAccordingToBuildingType() {
 		break;
 	}
 
-	case BuildingManager::Mine: {
+	case GameConstants::Mine: {
 		Mine *mine = dynamic_cast<Mine *>(building_);
 		const QString &typeText = QString("Type:  %1 Mine").arg(mine->resource());
 		ui->typeLabel->setText(typeText);
@@ -181,13 +181,13 @@ void BuildingDetailDialog::displayAccordingToBuildingType() {
 		break;
 	}
 
-	case BuildingManager::Supermarket:
+	case GameConstants::Supermarket:
 		break;
 
-	case BuildingManager::UnusedLand:
+	case GameConstants::UnusedLand:
 		break;
 
-	case BuildingManager::Villa:
+	case GameConstants::Villa:
 		break;
 
 	default:
@@ -201,41 +201,41 @@ void BuildingDetailDialog::signalSlotConfig() {
 	/* ---------------------------------- Basic Config ---------------------------------------------- */
 	connect(ui->buyPushButton,							SIGNAL(sendCommand(int)),
 			this,										SLOT(receiveCommand(int)));
-	ui->buyPushButton->setCommand(Command::BuyBuilding);
+	ui->buyPushButton->setCommand(Commands::BuyBuilding);
 
 	connect(ui->sellPushButton,							SIGNAL(sendCommand(int)),
 			this,										SLOT(receiveCommand(int)));
-	ui->sellPushButton->setCommand(Command::SellBuilding);
+	ui->sellPushButton->setCommand(Commands::SellBuilding);
 
 	connect(ui->dismantlePushButton,					SIGNAL(sendCommand(int)),
 			this,										SLOT(receiveCommand(int)));
-	ui->dismantlePushButton->setCommand(Command::DismantleBuilding);
+	ui->dismantlePushButton->setCommand(Commands::DismantleBuilding);
 	/* ---------------------------------------------------------------------------------------------- */
 
 	/* ----------------------------------- Bank Config ---------------------------------------------- */
 	connect(ui->closeAnAccountPushButton,				SIGNAL(sendCommand(int)),
 			this,										SLOT(receiveCommand(int)));
-	ui->closeAnAccountPushButton->setCommand(Command::CloseAnAccount);
+	ui->closeAnAccountPushButton->setCommand(Commands::CloseAnAccount);
 
 	connect(ui->depositPushButton,						SIGNAL(sendCommand(int)),
 			this,										SLOT(receiveCommand(int)));
-	ui->depositPushButton->setCommand(Command::Deposit);
+	ui->depositPushButton->setCommand(Commands::Deposit);
 
 	connect(ui->loanPushButton,							SIGNAL(sendCommand(int)),
 			this,										SLOT(receiveCommand(int)));
-	ui->loanPushButton->setCommand(Command::Loan);
+	ui->loanPushButton->setCommand(Commands::Loan);
 
 	connect(ui->openAnAccountPushButton,				SIGNAL(sendCommand(int)),
 			this,										SLOT(receiveCommand(int)));
-	ui->openAnAccountPushButton->setCommand(Command::OpenAnAccount);
+	ui->openAnAccountPushButton->setCommand(Commands::OpenAnAccount);
 
 	connect(ui->repayPushButton,						SIGNAL(sendCommand(int)),
 			this,										SLOT(receiveCommand(int)));
-	ui->repayPushButton->setCommand(Command::Repay);
+	ui->repayPushButton->setCommand(Commands::Repay);
 
 	connect(ui->withdrawPushButton,						SIGNAL(sendCommand(int)),
 			this,										SLOT(receiveCommand(int)));
-	ui->withdrawPushButton->setCommand(Command::Withdraw);
+	ui->withdrawPushButton->setCommand(Commands::Withdraw);
 	/* ---------------------------------------------------------------------------------------------- */
 
 	/* ---------------------------------- Garage Config --------------------------------------------- */
@@ -261,42 +261,36 @@ void BuildingDetailDialog::signalSlotConfig() {
 	/* -------------------------------- UnusedLand Config ------------------------------------------- */
 	connect(ui->buildBankPushButton,					SIGNAL(sendCommand(int)),
 			this,										SLOT(receiveCommand(int)));
-	ui->buildBankPushButton->setCommand(Command::BuildBank);
+	ui->buildBankPushButton->setCommand(Commands::BuildBank);
 
 	connect(ui->buildFactoryPushButton,					SIGNAL(sendCommand(int)),
 			this,										SLOT(receiveCommand(int)));
-	ui->buildFactoryPushButton->setCommand(Command::BuildFactory);
+	ui->buildFactoryPushButton->setCommand(Commands::BuildFactory);
 
 	connect(ui->buildFarmPushButton,					SIGNAL(sendCommand(int)),
 			this,										SLOT(receiveCommand(int)));
-	ui->buildFarmPushButton->setCommand(Command::BuildFarm);
+	ui->buildFarmPushButton->setCommand(Commands::BuildFarm);
 
 	connect(ui->buildGaragePushButton,					SIGNAL(sendCommand(int)),
 			this,										SLOT(receiveCommand(int)));
-	ui->buildGaragePushButton->setCommand(Command::BuildGarage);
+	ui->buildGaragePushButton->setCommand(Commands::BuildGarage);
 
 	connect(ui->buildMinePushButton,					SIGNAL(sendCommand(int)),
 			this,										SLOT(receiveCommand(int)));
-	ui->buildMinePushButton->setCommand(Command::BuildMine);
+	ui->buildMinePushButton->setCommand(Commands::BuildMine);
 
 	connect(ui->buildSupermarketPushButton,				SIGNAL(sendCommand(int)),
 			this,										SLOT(receiveCommand(int)));
-	ui->buildSupermarketPushButton->setCommand(Command::BuildSupermarket);
+	ui->buildSupermarketPushButton->setCommand(Commands::BuildSupermarket);
 
 	connect(ui->buildVillaPushButton,					SIGNAL(sendCommand(int)),
 			this,										SLOT(receiveCommand(int)));
-	ui->buildVillaPushButton->setCommand(Command::BuildVilla);
+	ui->buildVillaPushButton->setCommand(Commands::BuildVilla);
 	/* ---------------------------------------------------------------------------------------------- */
 
 	/* ---------------------------------- Display Config -------------------------------------------- */
 	connect(this,										SIGNAL(dataChanged()),
 			this,										SLOT(updateDisplay()));
-	connect(this,										SIGNAL(dataChanged()),
-			ui->factoryTableWidget,						SLOT(updateDisplay()));
-	connect(this,										SIGNAL(dataChanged()),
-			ui->mineTableWidget,						SLOT(updateDisplay()));
-	connect(this,										SIGNAL(dataChanged()),
-			ui->garageTableWidget,						SLOT(updateDisplay()));
 	/* ---------------------------------------------------------------------------------------------- */
 }
 

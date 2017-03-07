@@ -6,6 +6,8 @@
 #include "company.h"
 #include "valuegenerator.h"
 
+#include "gameconstants.h"
+
 #include <algorithm>
 #include <functional>
 #include <map>
@@ -33,8 +35,9 @@ void BuildingManager::init() {
 		addItem(factory.create("Villa"));
 }
 
-BuildingManager::BuildingTypes BuildingManager::stringToEnum(const QString &type) {
-	static std::map<QString, BuildingTypes> stringToEnumMap{
+GameConstants::BuildingTypes BuildingManager::stringToEnum(const QString &type) {
+	using namespace GameConstants;
+	static std::map<QString, GameConstants::BuildingTypes> stringToEnumMap{
 		{"Bank", Bank },
 		{"Factory", Factory },
 		{"Farm", Farm },

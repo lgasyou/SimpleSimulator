@@ -5,7 +5,7 @@
 #include "company.h"
 #include "gameconstants.h"
 
-#include "TableWidgetPushButton.h"
+#include "tablewidgetpushbutton.h"
 #include <QFile>
 #include <QApplication>
 
@@ -54,26 +54,28 @@ void BuildingTableWidget::displayAccordingToVisitor(int index) {
 	BaseBuilding *building = BuildingManager::instance().getBuildingById(index);
 	Company *playerCompany = CompanyManager::instance().playerCompany();
 
-	const QString &btnText = (building->owner() != playerCompany) ? tr("Buy") : tr("Sell");
-	TableWidgetPushButton *optionBtn = new TableWidgetPushButton(btnText);
+	using namespace GameConstants;
+
+	bool owned = building->owner() != playerCompany;
+	const QString &btnText = owned ? tr("Buy") : tr("Sell");
+	TableWidgetPushButton *optionBtn = new TableWidgetPushButton(btnText, owned ? BuyBuilding : SellBuilding);
 	optionBtn->setIndex(index);
-	connect(optionBtn, SIGNAL(sendPointer(TableWidgetPushButton*)),
-		this, SLOT(getBuildingAndSendSignal(TableWidgetPushButton*)));
+	connect(optionBtn,	SIGNAL(sendCommand(int, int)),
+			this,		SLOT(receiveCommand(int, int)));
 	setCellWidget(index, 4, optionBtn);
 
-	TableWidgetPushButton *detailBtn = new TableWidgetPushButton(tr("Details"));
+	TableWidgetPushButton *detailBtn = new TableWidgetPushButton(tr("Details"), ShowDetail);
 	detailBtn->setIndex(index);
-	connect(detailBtn, SIGNAL(sendPointer(TableWidgetPushButton*)),
-		this, SLOT(getBuildingAndSendSignal(TableWidgetPushButton*)));
+	connect(detailBtn,	SIGNAL(sendCommand(int, int)),
+			this,		SLOT(receiveCommand(int, int)));
 	setCellWidget(index, 5, detailBtn);
+}
+
+void BuildingTableWidget::receiveCommand(int command, int index) {
+	BaseBuilding *building = BuildingManager::instance().getBuildingById(index);
+	emit sendCommand(command, building);
 }
 
 QString BuildingTableWidget::toString(double value) {
 	return QString::number(value, 10, 2);
-}
-
-void BuildingTableWidget::getBuildingAndSendSignal(TableWidgetPushButton *button) {
-    int id = button->index();
-    BaseBuilding *building = BuildingManager::instance().getBuildingById(id);
-	emit sendOption(button->text(), building);
 }

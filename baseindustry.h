@@ -7,6 +7,7 @@
 class Warehouse;
 class Garage;
 class Machine;
+struct MachineSettings;
 struct Goods;
 
 class QString;
@@ -20,6 +21,8 @@ public:
 
 	void addMachine(Machine *);
 
+	void addMachine(const MachineSettings &);
+
 	// updates data after each turn
 	void update() override;
 
@@ -29,7 +32,7 @@ public:
 
 	double putOutStorage(const Goods &goods);
 
-	inline Warehouse *warehouse() const { return this->warehouse_; }
+	Warehouse *warehouse() const { return this->warehouse_; }
 
 	const auto &machines() const { return this->machines_; }
 

@@ -1,12 +1,14 @@
 ﻿#include "commandpushbutton.h"
 
-CommandPushButton::CommandPushButton(QWidget *parent) : 
-	QPushButton(parent) {
+CommandPushButton::CommandPushButton(QWidget *parent, int command) : 
+	QPushButton(parent),
+	command_(command) {
 	init();
 }
 
-CommandPushButton::CommandPushButton(const QString &text, QWidget *parent) :
-	QPushButton(text, parent) {
+CommandPushButton::CommandPushButton(const QString &text, int command, QWidget *parent) :
+	QPushButton(text, parent),
+	command_(command) {
 	init();
 }
 
