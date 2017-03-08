@@ -26,7 +26,7 @@ void SelectTableWidget::updateDisplay() {
 	clearContents();
 	int indexOfBuilding = 0;
 	int indexOfChosen = 0;
-	for (const auto &item : buildingList) {
+	for (const auto item : buildingList) {
 		for (const auto &typeName : typeNames_) {
 			if (item->type().contains(typeName)) {
 				updateEachLine(indexOfChosen, indexOfBuilding, item);

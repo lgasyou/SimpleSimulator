@@ -55,7 +55,7 @@ void BuildingManager::addItem(BaseBuilding *building) {
 
 double BuildingManager::deltaValueOfCompanyProperties(Company *company) const {
 	double totalDeltaValue = 0.0;
-	for (auto &building : buildings_) {
+	for (auto building : buildings_) {
 		if (building->owner() == company)
 			totalDeltaValue += building->deltaValue();
 	}
@@ -71,9 +71,9 @@ BaseBuilding *BuildingManager::getBuildingByPos(int x, int y) const {
 
 
 int BuildingManager::indexOf(BaseBuilding *building) const {
-	for (int i = 0; i != buildings_.size(); ++i)
+	for (std::size_t i = 0; i != buildings_.size(); ++i)
 		if (buildings_[i] == building)
-			return i;
+			return static_cast<int>(i);
 	return -1;
 }
 
@@ -98,7 +98,7 @@ void BuildingManager::update() {
 }
 
 std::vector<BaseBuilding *>::iterator BuildingManager::iteratorOf(BaseBuilding *building) {
-	auto &iterator = buildings_.begin();
+	auto iterator = buildings_.begin();
 	while (iterator != buildings_.end() && *iterator != building)
 		++iterator;
 	return iterator;

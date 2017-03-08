@@ -2,7 +2,7 @@
 #define BANK_H
 
 #include "basefinance.h"
-#include "BankAccount.h"
+#include "bankaccount.h"
 #include <map>
 
 class Company;

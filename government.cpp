@@ -1,6 +1,5 @@
 #include "government.h"
-
-#include <cstdlib>
+#include "gameconstants.h"
 
 Government::Government() :
 	Company("Government")
@@ -14,6 +13,6 @@ Government &Government::instance() {
 }
 
 void Government::update() {
-	this->cash_ = INT_MAX;
-	this->totalValue_ = INT_MAX;
+	this->cash_ = GameConstants::integerMaximum;
+	this->totalValue_ = GameConstants::integerMaximum;
 }

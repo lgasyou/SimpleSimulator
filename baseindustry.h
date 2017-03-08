@@ -34,7 +34,7 @@ public:
 
 	Warehouse *warehouse() const { return this->warehouse_; }
 
-	const auto &machines() const { return this->machines_; }
+	const std::vector<Machine *> &machines() const { return this->machines_; }
 
 	const std::vector<Goods> &products() const;
 

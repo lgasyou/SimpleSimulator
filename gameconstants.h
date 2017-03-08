@@ -1,8 +1,6 @@
 #ifndef GAMECONSTANTS_H
 #define GAMECONSTANTS_H
 
-#include <cstdlib>
-
 // TODO:
 // Move all those into a file.
 namespace GameConstants {
@@ -17,8 +15,8 @@ const int colOfBuildingTableWidget = numberOfPropertiesOfBuilding + optionsOfBui
 // about warehouses
 const double defaultMaxVolOfWarehouse = 60.0;
 
-const int integerMaximum = INT_MAX;
-const int integerMinimum = INT_MIN;
+const int integerMaximum = (1 << (sizeof(int) * 8 - 2));
+const int integerMinimum = (1 << (sizeof(int) * 8 - 1));
 
 enum BuildingTypes {
 	Bank,

@@ -75,7 +75,7 @@ void Garage::update() {
 }
 
 Truck *Garage::selectFreeTruck() {
-	for (auto &truck : vihicleList_)
+	for (auto truck : vihicleList_)
 		if (!truck->occupied())
 			return truck;
 	return nullptr;

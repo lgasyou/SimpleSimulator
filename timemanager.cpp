@@ -1,4 +1,4 @@
-#include "TimeManager.h"
+#include "timemanager.h"
 
 TimeManager &TimeManager::instance() {
 	static TimeManager gameTimer;

@@ -32,7 +32,7 @@ void GarageTableWidget::updateDisplay() {
 
 		int index = 0;
 		this->clearContents();
-		for (auto &iter = vihicleList.constBegin(); iter != vihicleList.constEnd(); ++iter, ++index) {
+		for (auto iter = vihicleList.constBegin(); iter != vihicleList.constEnd(); ++iter, ++index) {
 			updateEachRow(index, *iter);
 		}
 	}

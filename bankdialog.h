@@ -25,7 +25,7 @@ public:
 	inline void setClient(Company *client) { this->client_ = client; }
 
     static void setInterestRate(double interestRate) { interestRate_ = interestRate; }
-    static const double interestRate() { return interestRate_; }
+    static double interestRate() { return interestRate_; }
 
 private slots:
 	// Sets datas with the input.

@@ -32,7 +32,7 @@ void WarehouseTableWidget::updateDisplay() {
 
 	unsigned int index = 0;
 	this->clearContents();
-	for (auto &iter = warehouse.constBegin(); iter != warehouse.constEnd(); ++iter, ++index) {
+	for (auto iter = warehouse.constBegin(); iter != warehouse.constEnd(); ++iter, ++index) {
 		const QString &item = (*iter)->name;
 		const QString &volume = toString((*iter)->volume);
 		this->setItem(index, 0, new QTableWidgetItem(item));

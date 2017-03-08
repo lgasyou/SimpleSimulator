@@ -11,7 +11,7 @@ namespace DataStructure {
 
 struct Arc {
 public:
-	Arc::Arc(double volume_, int headVertex_, int tailVertex_, Arc *headArc_, Arc *tailArc_) :
+	Arc(double volume_, int headVertex_, int tailVertex_, Arc *headArc_, Arc *tailArc_) :
 		volume(volume_),
 		headVertex(headVertex_),
 		tailVertex(tailVertex_),
@@ -34,7 +34,7 @@ public:
 
 struct Vertex {
 public:
-	Vertex::Vertex(const QString & item_, Arc * firstIn_, Arc * firstOut_) :
+	Vertex(const QString & item_, Arc * firstIn_, Arc * firstOut_) :
 		item(item_),
 		firstIn(firstIn_),
 		firstOut(firstOut_) { }

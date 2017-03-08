@@ -26,7 +26,7 @@ void BuildingTableWidget::init() {
 
 void BuildingTableWidget::updateDisplay() {
 	auto &buildingManager = BuildingManager::instance();
-	size_t buildingNumber = buildingManager.buildingNumber();
+	std::size_t buildingNumber = buildingManager.buildingNumber();
     this->setRowCount((int)buildingNumber);
 
 	this->clearContents();

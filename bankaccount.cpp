@@ -1,4 +1,4 @@
-#include "BankAccount.h"
+#include "bankaccount.h"
 #include "bank.h"
 
 BankAccount::BankAccount() :

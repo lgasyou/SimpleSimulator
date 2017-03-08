@@ -12,7 +12,7 @@ GoodsContainer::GoodsContainer() :
 GoodsContainer::~GoodsContainer() { }
 
 double GoodsContainer::query(const QString &goodsName) const {
-	for (const auto &item : container_) {
+	for (const auto item : container_) {
 		if (item->name == goodsName)
 			return item->volume;
 	}
@@ -44,7 +44,7 @@ double GoodsContainer::removeItem(const Goods &goods) {
 }
 
 Goods *GoodsContainer::getGoodsByName(const QString &goods) {
-	for (auto &item : container_) {
+	for (auto item : container_) {
 		if (item->name == goods)
 			return item;
 	}

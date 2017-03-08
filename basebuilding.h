@@ -23,13 +23,13 @@ public:
 	virtual void update() = 0;
 
 	void setDeltaValue(double deltaValue) { this->deltaValue_ = deltaValue; }
-	const double deltaValue() const { return this->deltaValue_; }
+	double deltaValue() const { return this->deltaValue_; }
 
 	void setName(const QString &name) { this->name_ = name; }
 	const QString &name() const { return this->name_; }
 
 	void setOwner(Company *const owner) { this->owner_ = owner; }
-	Company *const owner() const { return this->owner_; }
+	Company *owner() const { return this->owner_; }
 
 	void setPosition(const Vector2D pos) { this->position_ = pos; }
 	const Vector2D &position() const { return this->position_; }
@@ -41,7 +41,7 @@ public:
 	const QString &type() const { return this->type_; }
 
 	void setValue(double value) { this->value_ = value; }
-	const double value() const { return this->value_; }
+	double value() const { return this->value_; }
 
 private:
 	void initBasicValue();

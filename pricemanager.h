@@ -6,7 +6,7 @@
 
 struct PriceItem {
 public:
-	PriceItem::PriceItem(const QString &name_, const QString &unit_, double price_) :
+	PriceItem(const QString &name_, const QString &unit_, double price_) :
 		name(name_),
 		unit(unit_),
 		price(price_) { }

@@ -32,7 +32,7 @@ void HelpDialog::init() {
 }
 
 void HelpDialog::showIndustryChain(QListWidgetItem *item) {
-	auto &precursors = IndustryChainManager::instance().precursors(item->text());
+	auto precursors = IndustryChainManager::instance().precursors(item->text());
 	int size = (int)precursors.size();
 	ui->sourceTableWidget->setRowCount(size);
 	for (int i = 0; i != size; ++i) {
