@@ -11,9 +11,9 @@
 
 WarehouseTableWidget::WarehouseTableWidget(QWidget *parent, Warehouse *warehouse) :
 	QTableWidget(parent),
+	goods_(nullptr),
 	warehouse_(warehouse),
-	selectTableWidget_(nullptr),
-	goods_(nullptr)
+	selectTableWidget_(nullptr)
 {
 	init();
 }

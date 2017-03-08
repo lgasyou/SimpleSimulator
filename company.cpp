@@ -4,10 +4,10 @@
 #include "government.h"
 
 Company::Company(const QString &name) :
-    name_(name),
     cash_(1000),
-    totalValue_(1000),
-    liability_(0)
+    liability_(0),
+    name_(name),
+    totalValue_(1000)
 { }
 
 Company::~Company() { }

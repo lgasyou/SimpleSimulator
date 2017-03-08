@@ -117,7 +117,7 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
 	QString msg;
 	switch (command) {
 	case BuildBank: {
-		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, "Bank");
+		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, Bank);
 		ui->buildingInfoWidget->setTarget(newBuilding);
 		buildingDetailDialog_->setBuilding(newBuilding);
 		emit dataChanged();
@@ -125,7 +125,7 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
 	}
 
 	case BuildFactory: {
-		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, "Factory");
+		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, Factory);
 		ui->buildingInfoWidget->setTarget(newBuilding);
 		buildingDetailDialog_->setBuilding(newBuilding);
 		emit dataChanged();
@@ -133,7 +133,7 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
 	}
 
 	case BuildFarm: {
-		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, "Farm");
+		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, Farm);
 		ui->buildingInfoWidget->setTarget(newBuilding);
 		buildingDetailDialog_->setBuilding(newBuilding);
 		emit dataChanged();
@@ -142,7 +142,7 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
 
 
 	case BuildGarage: {
-		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, "Garage");
+		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, Garage);
 		ui->buildingInfoWidget->setTarget(newBuilding);
 		buildingDetailDialog_->setBuilding(newBuilding);
 		emit dataChanged();
@@ -150,7 +150,7 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
 	}
 
 	case BuildMine: {
-		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, "Mine");
+		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, Mine);
 		ui->buildingInfoWidget->setTarget(newBuilding);
 		buildingDetailDialog_->setBuilding(newBuilding);
 		emit dataChanged();
@@ -158,7 +158,7 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
 	}
 
 	case BuildSupermarket: {
-		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, "Supermarket");
+		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, Supermarket);
 		ui->buildingInfoWidget->setTarget(newBuilding);
 		buildingDetailDialog_->setBuilding(newBuilding);
 		emit dataChanged();
@@ -166,7 +166,7 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
 	}
 
 	case BuildVilla: {
-		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, "Villa");
+		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, Villa);
 		ui->buildingInfoWidget->setTarget(newBuilding);
 		buildingDetailDialog_->setBuilding(newBuilding);
 		emit dataChanged();
@@ -189,7 +189,7 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
 		break;
 
 	case DismantleBuilding: {
-		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, "Unused Land");
+		BaseBuilding *newBuilding = BuildingManager::instance().resetItemType(building, UnusedLand);
 		ui->buildingInfoWidget->setTarget(newBuilding);
 		buildingDetailDialog_->setBuilding(newBuilding);
 		msg = newBuilding->name() + " has been dismantled.";

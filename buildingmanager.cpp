@@ -23,16 +23,16 @@ BuildingManager &BuildingManager::instance() {
 }
 
 void BuildingManager::init() {
-	BuildingFactory factory;
-	addItem(factory.create("Unused Land"));
-	addItem(factory.create("Mine"));
-	addItem(factory.create("Mine"));
-	addItem(factory.create("Factory"));
-	addItem(factory.create("Bank"));
-	addItem(factory.create("Supermarket"));
-	addItem(factory.create("Garage"));
+	using namespace GameConstants;
+	addItem(UnusedLand);
+	addItem(Mine);
+	addItem(Mine);
+	addItem(Factory);
+	addItem(Bank);
+	addItem(Supermarket);
+	addItem(Garage);
 	for (int i = 0; i != 5; ++i)
-		addItem(factory.create("Villa"));
+		addItem(Villa);
 }
 
 GameConstants::BuildingTypes BuildingManager::stringToEnum(const QString &type) {
@@ -51,6 +51,12 @@ GameConstants::BuildingTypes BuildingManager::stringToEnum(const QString &type) 
 
 void BuildingManager::addItem(BaseBuilding *building) {
 	buildings_.push_back(building);
+}
+
+void BuildingManager::addItem(GameConstants::BuildingTypes buildingType) {
+	BuildingFactory factory;
+	BaseBuilding *newBuilding = factory.create(buildingType);
+	this->addItem(newBuilding);
 }
 
 double BuildingManager::deltaValueOfCompanyProperties(Company *company) const {
@@ -82,7 +88,7 @@ void BuildingManager::removeItem(BaseBuilding *building) {
 	buildings_.erase(iter);
 }
 
-BaseBuilding *BuildingManager::resetItemType(BaseBuilding *building, const QString &type) {
+BaseBuilding *BuildingManager::resetItemType(BaseBuilding *building, GameConstants::BuildingTypes type) {
 	BuildingFactory buildingFactory;
     BaseBuilding *newBuilding = buildingFactory.create(type);
 	newBuilding->copyFrom(*building);

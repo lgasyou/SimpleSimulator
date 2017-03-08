@@ -23,6 +23,8 @@ public:
 
 	void addItem(BaseBuilding *);
 
+	void addItem(GameConstants::BuildingTypes);
+
 	const std::vector<BaseBuilding *> &buildingList() const { return this->buildings_; }
 
 	std::size_t buildingNumber() const { return buildings_.size(); }
@@ -41,7 +43,7 @@ public:
 	// Gets building's pointer and type.
 	// Returns a pointer which is arg "type" asked.
 	// If arg "type" isn't a standard type, returns "Unused Land".
-    BaseBuilding *resetItemType(BaseBuilding *building, const QString &type);
+    BaseBuilding *resetItemType(BaseBuilding *, GameConstants::BuildingTypes);
 
     void update();
 
@@ -62,7 +64,7 @@ private:
 };
 
 inline BaseBuilding *BuildingManager::getBuildingById(int id) const {
-	return buildings_[id];
+	return buildings_.at(id);
 }
 
 #endif // BUILDINGMANAGER_H

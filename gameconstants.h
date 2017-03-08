@@ -2,7 +2,7 @@
 #define GAMECONSTANTS_H
 
 // TODO:
-// Move all those into a file.
+// Move all of those into a file.
 namespace GameConstants {
 // about buildings
 const double defaultBaseValueOfBuilding = 50.0;

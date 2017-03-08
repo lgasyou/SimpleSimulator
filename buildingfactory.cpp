@@ -29,10 +29,9 @@
 
 #include <QString>
 
-BaseBuilding *BuildingFactory::create(const QString &type) {
+BaseBuilding *BuildingFactory::create(GameConstants::BuildingTypes buildingType) {
 	BaseBuilding *building = nullptr;
 
-	auto buildingType = BuildingManager::stringToEnum(type);
 	switch (buildingType) {
 	case GameConstants::Bank:
 		building = new Bank;

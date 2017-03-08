@@ -33,7 +33,7 @@ void MachineTableWidget::receiveShowDetailSignal(TableWidgetPushButton *button) 
 void MachineTableWidget::updateDisplay() {
 	if (BaseIndustry *industry = industry_) {
 		const auto &machines = industry->machines();
-		int machineNumber = machines.size();
+		int machineNumber = (int)machines.size();
 		setRowCount(static_cast<int>(machineNumber));
 
 		for (int i = 0; i != machineNumber; ++i) {

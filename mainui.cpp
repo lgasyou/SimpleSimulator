@@ -104,8 +104,6 @@ void MainUI::paintMap(QPaintEvent *event) {
 	}
 }
 
-void MainUI::paintBuilding(QPaintEvent *event) {
+void MainUI::paintBuilding(QPaintEvent *) {
 	QPainter painter(this);
-
-	event;
 }

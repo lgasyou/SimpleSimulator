@@ -5,8 +5,8 @@
 #include <QString>
 
 GoodsContainer::GoodsContainer() :
-	maxVolume_(GameConstants::defaultMaxVolOfWarehouse),
-	curVolume_(0.0)
+	curVolume_(0.0),
+	maxVolume_(GameConstants::defaultMaxVolOfWarehouse)
 { }
 
 GoodsContainer::~GoodsContainer() { }

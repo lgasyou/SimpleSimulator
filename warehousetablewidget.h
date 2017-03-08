@@ -40,9 +40,9 @@ private:
 	static QString toString(double value);
 
 private:
-	Warehouse *warehouse_;
-
 	Goods *goods_;
+
+	Warehouse *warehouse_;
 
 	SelectTableWidget *selectTableWidget_;
 };

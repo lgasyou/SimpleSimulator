@@ -1,7 +1,18 @@
 #ifndef MAPMANAGER_H
 #define MAPMANAGER_H
 
+#include "gameconstants.h"
+
+class BaseBuilding;
 class Vector2D;
+
+struct MapNode {
+	bool isOccupied;
+
+	GameConstants::BuildingTypes buildingType;
+};
+
+
 
 // This class creates a map which contains all buildings.
 // This class is designed for working with transportations modules.
@@ -37,7 +48,7 @@ private:
 };
 
 inline auto MapManager::occupiedMap() const -> const bool(*)[100] {
-	return occupiedMap_;
+	return this->occupiedMap_;
 }
 
 #endif // !MAPMANAGER_H
