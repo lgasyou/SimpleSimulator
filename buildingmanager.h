@@ -57,8 +57,6 @@ private:
 
 	BuildingManager &operator=(const BuildingManager &) = delete;
 
-	std::vector<BaseBuilding *>::iterator iteratorOf(BaseBuilding *);
-
 private:
     std::vector<BaseBuilding *> buildings_;
 };

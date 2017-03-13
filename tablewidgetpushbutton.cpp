@@ -11,5 +11,5 @@ TableWidgetPushButton::TableWidgetPushButton(const QString &text, int command, Q
 }
 
 void TableWidgetPushButton::repeater() {
-	emit sendCommand(this->command(), this->index());
+	emit sendData(this->index, this->command);
 }

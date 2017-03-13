@@ -26,8 +26,6 @@ private:
 
 	PersonManager &operator=(const PersonManager &) = delete;
 
-	std::list<Person *>::iterator iteratorOf(Person *);
-
 private:
 	std::list<Person *> personList_;
 };

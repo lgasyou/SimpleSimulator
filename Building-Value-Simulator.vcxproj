@@ -159,6 +159,7 @@
     <ClCompile Include="company.cpp" />
     <ClCompile Include="companydetaildialog.cpp" />
     <ClCompile Include="companymanager.cpp" />
+    <ClCompile Include="defaultmachinebuilder.cpp" />
     <ClCompile Include="factory.cpp" />
     <ClCompile Include="farm.cpp" />
     <ClCompile Include="gameconstants.cpp" />
@@ -268,6 +269,8 @@
     <ClCompile Include="helpdialog.cpp" />
     <ClCompile Include="industrychainmanager.cpp" />
     <ClCompile Include="machine.cpp" />
+    <ClCompile Include="machinebuilder.cpp" />
+    <ClCompile Include="machinemanager.cpp" />
     <ClCompile Include="machinetablewidget.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mainwindow.cpp" />
@@ -321,6 +324,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
+    <ClInclude Include="defaultmachinebuilder.h" />
     <ClInclude Include="GeneratedFiles\ui_bankdialog.h" />
     <ClInclude Include="GeneratedFiles\ui_buildingdetaildialog.h" />
     <ClInclude Include="GeneratedFiles\ui_companydetaildialog.h" />
@@ -334,6 +338,8 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
+    <ClInclude Include="machinebuilder.h" />
+    <ClInclude Include="machinemanager.h" />
     <ClInclude Include="person.h" />
     <ClInclude Include="personmanager.h" />
     <ClInclude Include="supermarket.h" />

@@ -12,19 +12,16 @@ public:
 
     TableWidgetPushButton(const QString &text, int command = -1, QWidget *parent = nullptr);
 
-	void setIndex(int index) { this->indexInTable_ = index; }
-	int index() const { return this->indexInTable_; }
+	void setIndex(int index) { this->index = index; }
 
 public slots:
 	void repeater() override;
 
 signals:
-	void sendCommand(int command, int index);
-
-    void sendPointer(TableWidgetPushButton *);
+	void sendData(int index, int command);
 
 private:
-	int indexInTable_;
+	int index;
 };
 
 #endif // MYPUSHBUTTON_H

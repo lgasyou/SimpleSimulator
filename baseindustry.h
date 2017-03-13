@@ -21,8 +21,6 @@ public:
 
 	void addMachine(Machine *);
 
-	void addMachine(const MachineSettings &);
-
 	// updates data after each turn
 	void update() override;
 

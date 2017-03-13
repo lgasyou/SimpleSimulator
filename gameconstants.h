@@ -15,8 +15,8 @@ const int colOfBuildingTableWidget = numberOfPropertiesOfBuilding + optionsOfBui
 // about warehouses
 const double defaultMaxVolOfWarehouse = 60.0;
 
-const int integerMaximum = (1 << (sizeof(int) * 8 - 2));
 const int integerMinimum = (1 << (sizeof(int) * 8 - 1));
+const int integerMaximum = (int)((unsigned)integerMinimum - 1);
 
 enum BuildingTypes {
 	Bank,

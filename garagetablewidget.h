@@ -27,9 +27,9 @@ public:
 public slots:
 	void updateDisplay();
 
-	void buttonClicked(TableWidgetPushButton *);
+	void buttonClicked(int index, int command);
 
-	void showSetRouteDialog(TableWidgetPushButton *);
+	void showSetRouteDialog(int index);
 
 	void setRoute(Route *);
 

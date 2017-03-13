@@ -13,8 +13,7 @@ WarehouseTableWidget::WarehouseTableWidget(QWidget *parent, Warehouse *warehouse
 	QTableWidget(parent),
 	goods_(nullptr),
 	warehouse_(warehouse),
-	selectTableWidget_(nullptr)
-{
+	selectTableWidget_(nullptr) {
 	init();
 }
 
@@ -40,10 +39,10 @@ void WarehouseTableWidget::updateDisplay() {
 
 		TableWidgetPushButton *sellBtn = new TableWidgetPushButton(tr("Sell"));
 		sellBtn->setIndex(index);
-		connect(sellBtn, SIGNAL(clicked()),
-			this, SLOT(goSelectIndustry()));
-		connect(sellBtn, SIGNAL(sendPointer(TableWidgetPushButton*)),
-				this, SLOT(getGoods(TableWidgetPushButton*)));
+		connect(sellBtn,			SIGNAL(clicked()),
+				this,				SLOT(goSelectIndustry()));
+		connect(sellBtn,			SIGNAL(sendData(int, int)),
+				this,				SLOT(getGoods(int)));
 		this->setCellWidget(index, 2, sellBtn);
 	}
 }
@@ -53,16 +52,15 @@ void WarehouseTableWidget::goSelectIndustry() {
 		selectTableWidget_ = new SelectTableWidget;
 		selectTableWidget_->setParent(this, Qt::Window);
 		selectTableWidget_->setSelector(SelectTableWidget::Factory | SelectTableWidget::Mine);
-		connect(selectTableWidget_, SIGNAL(sendBuilding(BaseBuilding*)),
-			this, SLOT(getDestAndSendPreroute(BaseBuilding*)));
+		connect(selectTableWidget_,	SIGNAL(sendBuilding(BaseBuilding*)),
+				this,				SLOT(getDestAndSendPreroute(BaseBuilding*)));
 	}
 	selectTableWidget_->show();
 	selectTableWidget_->updateDisplay();
 }
 
-void WarehouseTableWidget::getGoods(TableWidgetPushButton *button) {
-	int id = button->index();
-	goods_ = warehouse_->getGoodsById(id);
+void WarehouseTableWidget::getGoods(int index) {
+	goods_ = warehouse_->getGoodsById(index);
 }
 
 void WarehouseTableWidget::getDestAndSendPreroute(BaseBuilding *building) {

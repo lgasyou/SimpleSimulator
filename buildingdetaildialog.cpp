@@ -13,6 +13,9 @@
 #include "buildingmanager.h"
 #include "companymanager.h"
 #include "industrychainmanager.h"
+#include "machinemanager.h"
+
+#include "defaultmachinebuilder.h"
 
 #include "garagetablewidget.h"
 #include "warehousetablewidget.h"
@@ -73,28 +76,26 @@ void BuildingDetailDialog::addNewMachine() {
 	switch (industryType) {
 	case GameConstants::Factory: {
 		Factory *factory = dynamic_cast<Factory *>(building_);
-		MachineSettings settings;
-		settings.maximalProductivity = 1.0;
-		settings.products = { Goods("Steel", 1) };
-		settings.currentProduct = settings.products[0].name;
-		settings.warehouse = factory->warehouse();
 
-		Machine *machine = new Machine(settings);
+		MachineBuilder *builder = new DefaultMachineBuilder;
+		Machine *machine = MachineManager::instance().machine(builder);
+		machine->setWarehouse(factory->warehouse());
 		factory->addMachine(machine);
+		delete builder;
+
 		emit dataChanged();
 		break;
 	}
 
 	case GameConstants::Mine: {
 		Mine *mine = dynamic_cast<Mine *>(building_);
-		MachineSettings settings;
-		settings.maximalProductivity = 1.0;
-		settings.products = { Goods(mine->resource(), 1) };
-		settings.currentProduct = mine->resource();
-		settings.warehouse = mine->warehouse();
 
-		Machine *machine = new Machine(settings);
+		MachineBuilder *builder = new DefaultMachineBuilder;
+		Machine *machine = MachineManager::instance().machine(builder);
+		machine->setWarehouse(mine->warehouse());
 		mine->addMachine(machine);
+		delete builder;
+
 		emit dataChanged();
 		break;
 	}

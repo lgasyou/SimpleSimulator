@@ -22,7 +22,7 @@ public:
 	void setIndustry(BaseBuilding *industry);
 
 public slots:
-	void receiveShowDetailSignal(TableWidgetPushButton *);
+	void receiveShowDetailSignal(int);
 
 	void updateDisplay();
 

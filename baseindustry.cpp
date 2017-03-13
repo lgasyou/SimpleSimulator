@@ -29,11 +29,6 @@ void BaseIndustry::addMachine(Machine *machine) {
 	materials_.erase(std::unique(materials_.begin(), materials_.end()), materials_.end());
 }
 
-void BaseIndustry::addMachine(const MachineSettings &settings) {
-	Machine *machine = new Machine(settings);
-	addMachine(machine);
-}
-
 void BaseIndustry::update() { 
 	changeBaseValue();
 	manufacture();

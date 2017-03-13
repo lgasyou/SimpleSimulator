@@ -47,8 +47,8 @@ void SelectTableWidget::updateEachLine(int indexInWidget, int indexInManager, Ba
 	TableWidgetPushButton *selectButton = new TableWidgetPushButton(tr("Select"));
 	setCellWidget(indexInWidget, 2, selectButton);
 	selectButton->setIndex(indexInManager);
-	connect(selectButton, SIGNAL(sendPointer(TableWidgetPushButton*)),
-		this, SLOT(getDestAndSendBuilding(TableWidgetPushButton*)));
+	connect(selectButton,	SIGNAL(sendData(int, int)),
+			this,			SLOT(getDestAndSendBuilding(int)));
 }
 
 void SelectTableWidget::setSelector(int type) {
@@ -63,8 +63,7 @@ void SelectTableWidget::setSelector(int type) {
 	}
 }
 
-void SelectTableWidget::getDestAndSendBuilding(TableWidgetPushButton *button) {
-	int id = button->index();
-	BaseBuilding *building = BuildingManager::instance().getBuildingById(id);
+void SelectTableWidget::getDestAndSendBuilding(int index) {
+	BaseBuilding *building = BuildingManager::instance().getBuildingById(index);
 	emit sendBuilding(building);
 }

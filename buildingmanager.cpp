@@ -84,7 +84,7 @@ int BuildingManager::indexOf(BaseBuilding *building) const {
 }
 
 void BuildingManager::removeItem(BaseBuilding *building) {
-	auto iter = iteratorOf(building);
+	auto iter = std::find(buildings_.begin(), buildings_.end(), building);
 	buildings_.erase(iter);
 }
 
@@ -93,7 +93,7 @@ BaseBuilding *BuildingManager::resetItemType(BaseBuilding *building, GameConstan
     BaseBuilding *newBuilding = buildingFactory.create(type);
 	newBuilding->copyFrom(*building);
 
-	auto iterator = iteratorOf(building);
+	auto iterator = std::find(buildings_.begin(), buildings_.end(), building);
     delete *iterator;
 	*iterator = newBuilding;
     return newBuilding;
@@ -101,11 +101,4 @@ BaseBuilding *BuildingManager::resetItemType(BaseBuilding *building, GameConstan
 
 void BuildingManager::update() {
 	std::for_each(buildings_.begin(), buildings_.end(), std::mem_fun(&BaseBuilding::update));
-}
-
-std::vector<BaseBuilding *>::iterator BuildingManager::iteratorOf(BaseBuilding *building) {
-	auto iterator = buildings_.begin();
-	while (iterator != buildings_.end() && *iterator != building)
-		++iterator;
-	return iterator;
 }

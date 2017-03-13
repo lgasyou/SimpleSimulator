@@ -32,7 +32,7 @@ public:
 	void setSelector(int type);
 
 public slots:
-	void getDestAndSendBuilding(TableWidgetPushButton *);
+	void getDestAndSendBuilding(int index);
 
 signals:
 	void sendBuilding(BaseBuilding *);

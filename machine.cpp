@@ -8,11 +8,6 @@ Machine::Machine() {
 	init();
 }
 
-Machine::Machine(const MachineSettings &settings) {
-	init();
-	setParameters(settings);
-}
-
 Machine::~Machine() { }
 
 void Machine::init() {
@@ -52,10 +47,7 @@ void Machine::setCurrentProduct(const QString &product) {
 	this->currentProduct_ = product;
 }
 
-void Machine::setParameters(const MachineSettings &settings) {
-	this->maximalProductivity_ = settings.maximalProductivity;
-	setCurrentProduct(settings.currentProduct);
-	this->warehouse_ = settings.warehouse;
-	this->products_ = settings.products;
+void Machine::setProducts(const std::vector<Goods> &products) {
+	this->products_ = products;
+	this->currentProduct_ = products[0].name;
 }
-

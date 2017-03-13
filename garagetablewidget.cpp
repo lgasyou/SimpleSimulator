@@ -58,27 +58,31 @@ void GarageTableWidget::updateEachRow(int index, Truck *truck) {
 	routeBtn->setIndex(index);
 	setCellWidget(index, 5, routeBtn);
 
-	connect(routeBtn, SIGNAL(sendPointer(TableWidgetPushButton*)),
-		this, SLOT(buttonClicked(TableWidgetPushButton*)));
+	connect(routeBtn,	SIGNAL(sendData(int, int)),
+			this,		SLOT(buttonClicked(int, int)));
 }
 
 void GarageTableWidget::setGarage(BaseBuilding *garage) {
 	this->garage_ = dynamic_cast<Garage *>(garage);
 }
 
-void GarageTableWidget::buttonClicked(TableWidgetPushButton *button) {
-	if (button->text() == "Route")
-		showSetRouteDialog(button);
-	else if (button->text() == "Stop") {
-		int id = button->index();
-		Truck *truck = garage_->getTruckById(id);
+void GarageTableWidget::buttonClicked(int index, int command) {
+	// TODO
+	switch (command) {
+	case 1:// Show
+		showSetRouteDialog(index);
+		break;
+
+	case 2: // Stop
+		Truck *truck = garage_->getTruckById(index);
 		garage_->stopVihicle(truck);
 		emit dataChanged();
+		break;
 	}
 }
 
-void GarageTableWidget::showSetRouteDialog(TableWidgetPushButton *truckBtn) {
-	selectedTruckId_ = truckBtn->index();
+void GarageTableWidget::showSetRouteDialog(int index) {
+	selectedTruckId_ = index;
 
 	SetRouteDialog *setRouteDialog = UIManager::instance().setRouteDialog();
 	setRouteDialog->createNewRoute();

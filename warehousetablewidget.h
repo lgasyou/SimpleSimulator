@@ -24,7 +24,7 @@ public:
 public slots:
 	void goSelectIndustry();
 
-	void getGoods(TableWidgetPushButton *);
+	void getGoods(int index);
 
 	void getDestAndSendPreroute(BaseBuilding *dest);
 

@@ -16,10 +16,3 @@ void PersonManager::update() { }
 PersonManager::PersonManager() { }
 
 PersonManager::~PersonManager() { }
-
-std::list<Person*>::iterator PersonManager::iteratorOf(Person *person) {
-	auto iterator = personList_.begin();
-	while (iterator != personList_.end() && *iterator != person)
-		++iterator;
-	return iterator;
-}

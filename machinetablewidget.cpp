@@ -24,8 +24,7 @@ void MachineTableWidget::setIndustry(BaseBuilding *industry) {
 	this->industry_ = dynamic_cast<BaseIndustry *>(industry);
 }
 
-void MachineTableWidget::receiveShowDetailSignal(TableWidgetPushButton *button) {
-	int index = button->index();
+void MachineTableWidget::receiveShowDetailSignal(int index) {
 	Machine *machine = industry_->machines()[index];
 	emit sendSelectedMachine(machine);
 }
@@ -45,8 +44,8 @@ void MachineTableWidget::updateDisplay() {
 
 			TableWidgetPushButton *detailButton = new TableWidgetPushButton(tr("Details"));
 			setCellWidget(i, 2, detailButton);
-			connect(detailButton,	SIGNAL(sendPointer(TableWidgetPushButton *)),
-					this,			SLOT(receiveShowDetailSignal(TableWidgetPushButton *)));
+			connect(detailButton,	SIGNAL(sendData(int, int)),
+					this,			SLOT(receiveShowDetailSignal(int)));
 			detailButton->setIndex(i);
 		}
 	}

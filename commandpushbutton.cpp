@@ -2,13 +2,13 @@
 
 CommandPushButton::CommandPushButton(QWidget *parent, int command) : 
 	QPushButton(parent),
-	command_(command) {
+	command(command) {
 	init();
 }
 
 CommandPushButton::CommandPushButton(const QString &text, int command, QWidget *parent) :
 	QPushButton(text, parent),
-	command_(command) {
+	command(command) {
 	init();
 }
 
@@ -20,5 +20,5 @@ void CommandPushButton::init() {
 }
 
 void CommandPushButton::repeater() {
-	emit sendCommand(command_);
+	emit sendCommand(this->command);
 }

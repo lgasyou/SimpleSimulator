@@ -60,18 +60,18 @@ void BuildingTableWidget::displayAccordingToVisitor(int index) {
 	const QString &btnText = owned ? tr("Buy") : tr("Sell");
 	TableWidgetPushButton *optionBtn = new TableWidgetPushButton(btnText, owned ? BuyBuilding : SellBuilding);
 	optionBtn->setIndex(index);
-	connect(optionBtn,	SIGNAL(sendCommand(int, int)),
+	connect(optionBtn,	SIGNAL(sendData(int, int)),
 			this,		SLOT(receiveCommand(int, int)));
 	setCellWidget(index, 4, optionBtn);
 
 	TableWidgetPushButton *detailBtn = new TableWidgetPushButton(tr("Details"), ShowDetail);
 	detailBtn->setIndex(index);
-	connect(detailBtn,	SIGNAL(sendCommand(int, int)),
+	connect(detailBtn,	SIGNAL(sendData(int, int)),
 			this,		SLOT(receiveCommand(int, int)));
 	setCellWidget(index, 5, detailBtn);
 }
 
-void BuildingTableWidget::receiveCommand(int command, int index) {
+void BuildingTableWidget::receiveCommand(int index, int command) {
 	BaseBuilding *building = BuildingManager::instance().getBuildingById(index);
 	emit sendCommand(command, building);
 }

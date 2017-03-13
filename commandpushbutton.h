@@ -16,8 +16,7 @@ public:
 
 	void init();
 
-	void setCommand(int command) { this->command_ = command; }
-	int command() const { return this->command_; }
+	void setCommand(int command) { this->command = command; }
 
 public slots:
 	virtual void repeater();
@@ -25,8 +24,8 @@ public slots:
 signals:
 	void sendCommand(int);
 
-private:
-	int command_;
+protected:
+	int command;
 };
 
 #endif // COMMANDPUSHBUTTON_H
