@@ -8,10 +8,9 @@
 #include <QString>
 
 Garage::Garage(const QString &name) :
-	BaseTransportation(name, "Garage"),
-	vihicleCount_(0),
-	freeVihicleCount_(0)
-{ init(); }
+	BaseTransportation(name, "Garage") {
+	init(); 
+}
 
 Garage::~Garage() { }
 

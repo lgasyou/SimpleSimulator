@@ -5,7 +5,6 @@
 #include <QString>
 
 GoodsContainer::GoodsContainer() :
-	curVolume_(0.0),
 	maxVolume_(GameConstants::defaultMaxVolOfWarehouse)
 { }
 
@@ -49,7 +48,7 @@ Goods *GoodsContainer::getGoodsByName(const QString &goods) {
 			return item;
 	}
 
-	Goods *newGoods = new Goods(goods, 0.0);
+	Goods *newGoods = new Goods{ goods, 0.0 };
 	container_.push_back(newGoods);
 	return newGoods;
 }

@@ -13,8 +13,6 @@ public:
 
 	~Machine();
 
-	void init();
-
 	double currentProductivity() const { return this->currentProductivity_; }
 
 	void produce();
@@ -33,13 +31,13 @@ public:
 	const std::vector<Goods> &materials() const { return this->materials_; }
 
 private:
-	double currentProductivity_;
+	double currentProductivity_ = 0.0;
 
-	double maximalProductivity_;
+	double maximalProductivity_ = 1.0;
 
 	QString currentProduct_;
 
-	Warehouse *warehouse_;
+	Warehouse *warehouse_ = nullptr;
 
 	std::vector<Goods> products_;
 

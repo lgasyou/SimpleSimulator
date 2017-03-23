@@ -40,17 +40,17 @@ public:
 	inline GoodsContainer *const freightHouse() const;
 
 private:
-	Route *route_;
+	Route *route_ = nullptr;
 
 	GoodsContainer *freightHouse_;
 
-	bool loaded_;
+	bool loaded_ = false;
 
-	bool occupied_;
+	bool occupied_ = false;
 
-	double remainTime_;
+	double remainTime_ = 0.0;
 
-	double totalTime_;
+	double totalTime_ = 0.0;
 };
 
 inline void Truck::setRoute(Route *route) {

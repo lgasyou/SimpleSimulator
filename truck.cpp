@@ -8,11 +8,6 @@
 
 Truck::Truck() :
 	Vihicle(),
-	route_(nullptr), 
-	loaded_(false),
-	occupied_(false),
-	remainTime_(0.0),
-	totalTime_(0.0),
 	freightHouse_(new GoodsContainer)
 { }
 

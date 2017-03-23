@@ -24,12 +24,12 @@ public:
 	Company *company() const { return this->company_; }
 
 private:
-	double debt_;
+	double debt_ = 0.0;
 
-	double deposit_;
+	double deposit_ = 0.0;
 
-	Bank *bank_;
+	Bank *bank_ = nullptr;
 
-	Company *company_;
+	Company *company_ = nullptr;
 };
 #endif // !BANKCLIENT_H

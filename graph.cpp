@@ -54,7 +54,7 @@ std::vector<Goods> Graph::precursors(const QString &item) const {
 	while (arc) {
 		const QString &name = graph_[arc->headVertex].item;
 		double volume = arc->volume;
-		ret.push_back(Goods(name, volume));
+		ret.push_back(Goods{ name, volume });
 		arc = arc->tailArc;
 	}
 	return ret;
@@ -70,7 +70,7 @@ std::vector<Goods> Graph::successors(const QString &item) const {
 	while (arc) {
 		const QString &name = graph_[arc->tailVertex].item;
 		double volume = arc->volume;
-		ret.push_back(Goods(name, volume));
+		ret.push_back(Goods{ name, volume });
 		arc = arc->headArc;
 	}
 	return ret;

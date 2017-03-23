@@ -37,15 +37,15 @@ public:
 	double totalValue() const { return this->totalValue_; }
 
 protected:
-    double cash_;
+    double cash_ = 1000.0;
 
-    double liability_;
+    double liability_ = 0.0;
 
     QString name_;
 
 	// Records the total value of company,
 	// includes the value of properties.
-    double totalValue_;
+    double totalValue_ = 1000.0;
 };
 
 #endif // COMPANY_H

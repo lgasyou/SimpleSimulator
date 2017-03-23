@@ -363,6 +363,9 @@
     <ClCompile Include="machinemanager.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
+    <ClCompile Include="buildinginterface.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="mainwindow.h">
@@ -588,6 +591,9 @@
     </ClInclude>
     <ClInclude Include="machinemanager.h">
       <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="buildinginterface.h">
+      <Filter>Header Files\Buildings</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -38,14 +38,14 @@ public:
 	inline double maxVolume() const { return this->maxVolume_; }
 
 protected:
-	// Gets goods' pointer if goods has already exsited.
+	// Gets goods' pointer if goods has already existed.
 	// Otherwise creates a new goods object.
 	Goods *getGoodsByName(const QString &goods);
 
 protected:
 	QList<Goods *> container_;
 
-	double curVolume_;
+	double curVolume_ = 0.0;
 
 	double maxVolume_;
 };

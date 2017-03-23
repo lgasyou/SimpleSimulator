@@ -11,7 +11,7 @@ void DefaultMachineBuilder::setMaximumProductivity() {
 }
 
 void DefaultMachineBuilder::setProducts() {
-	machine->setProducts({ Goods("Steel", 1) });
+	machine->setProducts({ { "Steel", 1 } });
 }
 
 Machine *DefaultMachineBuilder::getMachine() {

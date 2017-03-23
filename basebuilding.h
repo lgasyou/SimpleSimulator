@@ -1,14 +1,15 @@
 #ifndef BUILDINGBASE_H
 #define BUILDINGBASE_H
 
-#include <QString>
+#include "buildinginterface.h"
 #include "vector2d.h"
+#include <QString>
 
 class Company;
 
 //	The base of building classes.
 //	This class should not be instantiated.
-class BaseBuilding {
+class BaseBuilding : public BuildingInterface {
 public:
 	BaseBuilding(const QString &name, const QString &type);
 
@@ -20,7 +21,7 @@ public:
 	void changeBaseValue();
 
 	// Updates data after each turn
-	virtual void update() = 0;
+	void update() = 0;
 
 	void setDeltaValue(double deltaValue) { this->deltaValue_ = deltaValue; }
 	double deltaValue() const { return this->deltaValue_; }
@@ -47,11 +48,11 @@ private:
 	void initBasicValue();
 
 private:
-    double deltaValue_;
+    double deltaValue_ = 0.0;
 
 	QString name_;
 
-    Company *owner_;
+    Company *owner_ = nullptr;
 
 	Vector2D position_;
 
@@ -59,7 +60,7 @@ private:
 
     QString type_;
 
-    double value_;
+    double value_ = 0.0;
 };
 
 #endif // BUILDINGBASE_H

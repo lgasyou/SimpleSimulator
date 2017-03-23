@@ -4,17 +4,9 @@
 #include "gameconstants.h"
 #include "industrychainmanager.h"
 
-Machine::Machine() { 
-	init();
-}
+Machine::Machine() { }
 
 Machine::~Machine() { }
-
-void Machine::init() {
-	currentProductivity_ = 0.0;
-	maximalProductivity_ = 1.0;
-	warehouse_ = nullptr;
-}
 
 void Machine::produce() {
 	// Finds the limit factor of producing goods.
@@ -32,7 +24,7 @@ void Machine::produce() {
 		finalMaterial.volume *= limitFactor;
 		warehouse_->removeItem(finalMaterial);
 	}
-	Goods finalProduct = currentProduct_;
+	Goods finalProduct = { currentProduct_, 0.0 };
 	finalProduct.volume *= limitFactor;
 	warehouse_->addItem(finalProduct);
 	currentProductivity_ = limitFactor;

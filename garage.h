@@ -45,9 +45,9 @@ private:
 
 	QList<Truck *> transitingTrucks_;
 
-	int vihicleCount_;
+	int vihicleCount_ = 0;
 
-	int freeVihicleCount_;
+	int freeVihicleCount_ = 0;
 };
 
 inline Truck *Garage::getTruckById(int id) {

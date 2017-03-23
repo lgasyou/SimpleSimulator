@@ -1,7 +1,7 @@
 #include "warehousetablewidget.h"
-#include "warehouse.h"
 #include "baseindustry.h"
 #include "goods.h"
+#include "warehouse.h"
 
 #include "buildingmanager.h"
 #include "uimanager.h"

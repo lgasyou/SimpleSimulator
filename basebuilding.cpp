@@ -6,9 +6,7 @@
 #include <QString>
 
 BaseBuilding::BaseBuilding(const QString &name, const QString &type) :
-	deltaValue_(0.0),
 	name_(name),
-	owner_(nullptr),
 	type_(type) {
 	initBasicValue();
 }
