@@ -18,7 +18,7 @@ struct Route {
 
 	BaseIndustry *orig;
 
-	bool repeated;
+	bool repeated = false;
 };
 
 #endif // !ROUTE_H

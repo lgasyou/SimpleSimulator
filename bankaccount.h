@@ -13,15 +13,15 @@ public:
 	void update();
 
 	void setDebt(double debt) { this->debt_ = debt; }
-	double debt() const { return this->debt_; }
+	double debt() const { return debt_; }
 
 	void setDeposit(double deposit) { this->deposit_ = deposit; }
-	double deposit() const { return this->deposit_; }
+	double deposit() const { return deposit_; }
 
 	void setBank(Bank *bank) { this->bank_ = bank; }
 
 	void setCompany(Company *company) { this->company_ = company; }
-	Company *company() const { return this->company_; }
+	Company *company() const { return company_; }
 
 private:
 	double debt_ = 0.0;

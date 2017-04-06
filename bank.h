@@ -34,10 +34,10 @@ public:
 	void update();
 
 	void setDepositInterestRate(double depositInterestRate) { this->depositInterestRate_ = depositInterestRate; }
-	double depositInterestRate() const { return this->depositInterestRate_; }
+	double depositInterestRate() const { return depositInterestRate_; }
 
 	void setLoanInterestRate(double loanInterestRate) { this->loanInterestRate_ = loanInterestRate; }
-	double loanInterestRate() const { return this->loanInterestRate_; }
+	double loanInterestRate() const { return loanInterestRate_; }
 
 private:
 	std::map<Company *, BankAccount> clientMap_;

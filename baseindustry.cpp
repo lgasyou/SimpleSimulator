@@ -47,9 +47,9 @@ double BaseIndustry::putOutStorage(const Goods &goods) {
 }
 
 const std::vector<Goods> &BaseIndustry::products() const {
-	return this->products_;
+	return products_;
 }
 
 const std::vector<Goods> &BaseIndustry::materials() const {
-	return this->materials_;
+	return materials_;
 }

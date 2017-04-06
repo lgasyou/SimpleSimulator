@@ -21,7 +21,7 @@ void SelectTableWidget::init() {
 }
 
 void SelectTableWidget::updateDisplay() {
-	auto &buildingList = BuildingManager::instance().buildingList();
+	auto &buildingList = BuildingManager::instance().buildings();
 	setRowCount((int)buildingList.size());
 	clearContents();
 	int indexOfBuilding = 0;
@@ -64,6 +64,6 @@ void SelectTableWidget::setSelector(int type) {
 }
 
 void SelectTableWidget::getDestAndSendBuilding(int index) {
-	BaseBuilding *building = BuildingManager::instance().getBuildingById(index);
+	BaseBuilding *building = BuildingManager::instance().getById(index);
 	emit sendBuilding(building);
 }

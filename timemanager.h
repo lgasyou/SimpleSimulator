@@ -10,14 +10,14 @@ public:
 
 	void init();
 
-    inline void setDeltaTime(double deltaTime) { this->deltaTime_ = deltaTime; }
-    inline double deltaTime() const { return this->deltaTime_; }
+    void setDeltaTime(double deltaTime) { this->deltaTime_ = deltaTime; }
+    double deltaTime() const { return deltaTime_; }
 
-	inline void increaseTime() { this->currentTime_ += frequence_; }
-    inline double currentTime() const { return this->currentTime_; }
+	void increaseTime() { this->currentTime_ += frequence_; }
+    double currentTime() const { return currentTime_; }
 
-	inline void setFrequence(double frequence) { this->frequence_ = frequence; }
-	inline double frequence() const { return this->frequence_; }
+	void setFrequence(double frequence) { this->frequence_ = frequence; }
+	double frequence() const { return frequence_; }
 
 private:
 	// Hide constructor and destructor.
@@ -30,11 +30,11 @@ private:
 	TimeManager &operator=(const TimeManager &) = delete;
 
 private:
-    double deltaTime_;
+    double deltaTime_ = 0.0;
 
-    double currentTime_;
+    double currentTime_ = 1.0;
 
-	double frequence_;
+	double frequence_ = 1.0;
 };
 
 #endif // TIMEMANAGER_H

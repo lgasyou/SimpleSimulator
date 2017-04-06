@@ -22,7 +22,7 @@ public:
 
 	void checkout(Person *resident);
 
-	const std::list<Person *> &residentList() const { return this->residentList_; }
+	const std::list<Person *> &residentList() const { return residentList_; }
 
 protected:
 	std::list<Person *> residentList_;

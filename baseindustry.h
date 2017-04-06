@@ -30,9 +30,9 @@ public:
 
 	double putOutStorage(const Goods &goods);
 
-	Warehouse *warehouse() const { return this->warehouse_; }
+	Warehouse *warehouse() const { return warehouse_; }
 
-	const std::vector<Machine *> &machines() const { return this->machines_; }
+	const std::vector<Machine *> &machines() const { return machines_; }
 
 	const std::vector<Goods> &products() const;
 

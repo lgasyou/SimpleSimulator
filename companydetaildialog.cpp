@@ -2,11 +2,17 @@
 #include "company.h"
 #include "ui_companydetaildialog.h"
 
+namespace {
+// transforms double into QString
+QString toString(double value) {
+	return QString::number(value, 10, 2);
+	}
+}
+
 CompanyDetailDialog::CompanyDetailDialog(QWidget *parent) :
     QDialog(parent),
     company_(nullptr),
-    ui(new Ui::CompanyDetailDialog)
-{
+    ui(new Ui::CompanyDetailDialog) {
     ui->setupUi(this);
 }
 
@@ -27,8 +33,4 @@ void CompanyDetailDialog::updateDisplay() {
     ui->label_Cash->setText(tr("Cash:        $") + cash);
     ui->label_TotalValue->setText(tr("Total Value: $") + totalValue);
     ui->label_Liability->setText(tr("Liability:   $") + liability);
-}
-
-QString CompanyDetailDialog::toString(double value) {
-	return QString::number(value, 10, 2);
 }

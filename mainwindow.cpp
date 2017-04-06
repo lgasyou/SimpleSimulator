@@ -94,12 +94,12 @@ void MainWindow::showHelp() {
 
 void MainWindow::showCompanyDetail() {
     companyDetailDialog_->setCompany(playerCompany_);
-	companyDetailDialog_->showAndRaise();
+	companyDetailDialog_->showUp();
     companyDetailDialog_->updateDisplay();
 }
 
 void MainWindow::getBuildingByPos(int x, int y) {
-	BaseBuilding *building = BuildingManager::instance().getBuildingByPos(x, y);
+	BaseBuilding *building = BuildingManager::instance().getByPos(x, y);
 	emit sendSelectedBuilding(building);
 }
 
@@ -214,7 +214,7 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
 
 	case ShowDetail:
 		buildingDetailDialog_->setBuilding(building);
-		buildingDetailDialog_->showAndRaise();
+		buildingDetailDialog_->showUp();
 		buildingDetailDialog_->updateDisplay();
 		break;
 

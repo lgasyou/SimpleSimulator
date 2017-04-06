@@ -23,21 +23,21 @@ public:
 	// Sets loaded_ as false
 	void unload();
 
-	inline void setRoute(Route *route);
-	inline Route *const route() const { return this->route_; }
+	void setRoute(Route *route);
+	Route *const route() const { return route_; }
 
-	inline void setLoaded(bool loaded) { this->loaded_ = loaded; }
-	inline bool loaded() const { return this->loaded_; }
+	void setLoaded(bool loaded) { this->loaded_ = loaded; }
+	bool loaded() const { return loaded_; }
 
-	inline void setOccupied(bool occupied) { this->occupied_ = occupied; }
-	inline bool occupied() const { return this->occupied_; }
+	void setOccupied(bool occupied) { this->occupied_ = occupied; }
+	bool occupied() const { return occupied_; }
 
-	inline void setRemainTime(double remainTime) { this->remainTime_ = remainTime; }
-	inline double remainTime() const { return this->remainTime_; }
+	void setRemainTime(double remainTime) { this->remainTime_ = remainTime; }
+	double remainTime() const { return remainTime_; }
 
-	inline double totalTime() const { return this->totalTime_; }
+	double totalTime() const { return totalTime_; }
 
-	inline GoodsContainer *const freightHouse() const;
+	GoodsContainer *freightHouse() const;
 
 private:
 	Route *route_ = nullptr;
@@ -59,8 +59,8 @@ inline void Truck::setRoute(Route *route) {
 	this->route_ = route;
 }
 
-inline GoodsContainer *const Truck::freightHouse() const {
-	return this->freightHouse_;
+inline GoodsContainer *Truck::freightHouse() const {
+	return freightHouse_;
 }
 
 #endif // !TRUCK_H

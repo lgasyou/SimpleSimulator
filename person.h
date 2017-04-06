@@ -10,10 +10,10 @@ public:
 	~Person();
 
 	void setCash(const double cash) { this->cash_ = cash; }
-	double cash() const { return this->cash_; }
+	double cash() const { return cash_; }
 
 	void setName(const QString &name) { this->name_ = name; }
-	const QString &name() const { return this->name_; }
+	const QString &name() const { return name_; }
 
 private:
 	double cash_;

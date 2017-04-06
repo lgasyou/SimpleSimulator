@@ -5,6 +5,7 @@
 #include "baseindustry.h"
 #include "vector2d.h"
 
+#include <algorithm>
 #include <QString>
 
 Garage::Garage(const QString &name) :
@@ -28,8 +29,8 @@ void Garage::addNewVihicle(const QString &type) {
 
 void Garage::removeVihicle(Truck *truck) {
 	if (truck->occupied())
-		transitingTrucks_.removeOne(truck);
-	vihicleList_.removeOne(truck);
+		transitingTrucks_.remove(truck);
+	vihicleList_.erase(std::find(vihicleList_.begin(), vihicleList_.end(), truck));
 	delete truck;
 	--vihicleCount_;
 	--freeVihicleCount_;
@@ -47,7 +48,7 @@ void Garage::sendVihicle(Route *route, int id) {
 }
 
 void Garage::stopVihicle(Truck *truck) {
-	transitingTrucks_.removeOne(truck);
+	transitingTrucks_.remove(truck);
 	truck->setOccupied(false);
 	++freeVihicleCount_;
 }

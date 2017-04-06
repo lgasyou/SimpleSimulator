@@ -23,7 +23,7 @@ public:
 	// Creates a new object if the former one has been used.
 	void createNewRoute();
 
-	inline void showAndRaise();
+	void showUp();
 
 public slots:
 	void updateDisplay();
@@ -37,7 +37,7 @@ private slots:
 	
 	void getDest(BaseBuilding *);
 
-	// Summarizes all infomations and sends Route to Garage.
+	// Summarizes all informations and sends Route to Garage.
 	void finishSetting();
 
 signals:
@@ -55,7 +55,7 @@ private:
 	Ui::SetRouteDialog *ui;
 };
 
-inline void SetRouteDialog::showAndRaise() {
+inline void SetRouteDialog::showUp() {
 	this->show();
 	this->raise();
 	this->activateWindow();

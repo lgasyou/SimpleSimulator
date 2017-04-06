@@ -7,9 +7,9 @@ PersonManager &PersonManager::instance() {
 
 void PersonManager::init() { }
 
-void PersonManager::addItem(Person *) { }
+void PersonManager::add(Person *) { }
 
-void PersonManager::removeItem(Person *) { }
+void PersonManager::remove(Person *) { }
 
 void PersonManager::update() { }
 

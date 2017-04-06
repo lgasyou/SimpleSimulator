@@ -24,15 +24,15 @@ BuildingManager &BuildingManager::instance() {
 
 void BuildingManager::init() {
 	using namespace GameConstants;
-	addItem(UnusedLand);
-	addItem(Mine);
-	addItem(Mine);
-	addItem(Factory);
-	addItem(Bank);
-	addItem(Supermarket);
-	addItem(Garage);
+	add(UnusedLand);
+	add(Mine);
+	add(Mine);
+	add(Factory);
+	add(Bank);
+	add(Supermarket);
+	add(Garage);
 	for (int i = 0; i != 5; ++i)
-		addItem(Villa);
+		add(Villa);
 }
 
 GameConstants::BuildingTypes BuildingManager::stringToEnum(const QString &type) {
@@ -49,14 +49,14 @@ GameConstants::BuildingTypes BuildingManager::stringToEnum(const QString &type) 
 	return stringToEnumMap[type];
 }
 
-void BuildingManager::addItem(BaseBuilding *building) {
+void BuildingManager::add(BaseBuilding *building) {
 	buildings_.push_back(building);
 }
 
-void BuildingManager::addItem(GameConstants::BuildingTypes buildingType) {
+void BuildingManager::add(GameConstants::BuildingTypes buildingType) {
 	BuildingFactory factory;
 	BaseBuilding *newBuilding = factory.create(buildingType);
-	this->addItem(newBuilding);
+	this->add(newBuilding);
 }
 
 double BuildingManager::deltaValueOfCompanyProperties(Company *company) const {
@@ -68,7 +68,7 @@ double BuildingManager::deltaValueOfCompanyProperties(Company *company) const {
 	return totalDeltaValue;
 }
 
-BaseBuilding *BuildingManager::getBuildingByPos(int x, int y) const {
+BaseBuilding *BuildingManager::getByPos(int x, int y) const {
 	for (auto building : buildings_)
 		if (building->position() == Vector2D(x, y))
 			return building;
@@ -83,7 +83,7 @@ int BuildingManager::indexOf(BaseBuilding *building) const {
 	return -1;
 }
 
-void BuildingManager::removeItem(BaseBuilding *building) {
+void BuildingManager::remove(BaseBuilding *building) {
 	auto iter = std::find(buildings_.begin(), buildings_.end(), building);
 	buildings_.erase(iter);
 }
@@ -100,5 +100,5 @@ BaseBuilding *BuildingManager::resetItemType(BaseBuilding *building, GameConstan
 }
 
 void BuildingManager::update() {
-	std::for_each(buildings_.begin(), buildings_.end(), std::mem_fun(&BaseBuilding::update));
+	std::for_each(buildings_.begin(), buildings_.end(), [](BaseBuilding *building) { building->update(); });
 }

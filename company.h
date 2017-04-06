@@ -25,16 +25,16 @@ public:
     void update();
 
     void setCash(const double cash) { this->cash_ = cash; }
-    double cash() const { return this->cash_; }
+    double cash() const { return cash_; }
 
     void setLiability(const double liability) { this->liability_ = liability; }
-    double liability() const { return this->liability_; }
+    double liability() const { return liability_; }
 
     void setName(const QString &name) { this->name_ = name; }
-    const QString &name() const { return this->name_; }
+    const QString &name() const { return name_; }
 
 	void setTotalValue(const double totalValue) { this->totalValue_ = totalValue; }
-	double totalValue() const { return this->totalValue_; }
+	double totalValue() const { return totalValue_; }
 
 protected:
     double cash_ = 1000.0;

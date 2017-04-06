@@ -18,7 +18,7 @@ public:
 
     ~BuildingDetailDialog();
 
-	void showAndRaise();
+	void showUp();
 
     void setBuilding(BaseBuilding *building) { this->building_ = building; }
 
@@ -67,7 +67,7 @@ private:
     Ui::BuildingDetailDialog *ui;
 };
 
-inline void BuildingDetailDialog::showAndRaise() {
+inline void BuildingDetailDialog::showUp() {
 	this->show();
 	this->raise();
 	this->activateWindow();

@@ -22,7 +22,7 @@ public:
 	// Displays according to whether the client has already lent money or not.
 	void displayAccordingToClientStatus();
 
-	inline void setClient(Company *client) { this->client_ = client; }
+	void setClient(Company *client) { this->client_ = client; }
 
     static void setInterestRate(double interestRate) { interestRate_ = interestRate; }
     static double interestRate() { return interestRate_; }

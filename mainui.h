@@ -22,13 +22,13 @@ public:
 
 	QSize sizeHint() const;
 
-	inline void setImage(const QImage &image) { this->image_ = image; }
-	inline const QImage &image() const { return this->image_; }
+	void setImage(const QImage &image) { this->image_ = image; }
+	const QImage &image() const { return image_; }
 
 	void setMode(int mode);
 
-	inline void setZoom(int zoom) { this->zoom_ = zoom; }
-	inline int zoom() const { return this->zoom_; }
+	void setZoom(int zoom) { this->zoom_ = zoom; }
+	int zoom() const { return zoom_; }
 
 signals:
 	void sendPosition(int x, int y);

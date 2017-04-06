@@ -7,7 +7,7 @@ class CompanyDetailDialog;
 class SetRouteDialog;
 
 // For now this class is only the prototype of UIManager.
-// It returns the UI componments by its methods.
+// It returns the UI components by its methods.
 // But in fact, I don't understand what should it be used for.
 class UIManager {
 public:

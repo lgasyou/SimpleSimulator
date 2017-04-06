@@ -7,8 +7,8 @@ public:
 
 	virtual ~Vihicle();
 
-	inline void setSpeed(double speed) { this->speed_ = speed; }
-	inline double speed() const { return this->speed_; }
+	void setSpeed(double speed) { this->speed_ = speed; }
+	double speed() const { return speed_; }
 
 protected:
 	double speed_;

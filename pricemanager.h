@@ -22,7 +22,7 @@ public:
 
 
 // This class is designed for controlling the price of goods in the game.
-// It adjusts the prices dynamiclly according to the supply-demand
+// It adjusts the prices dynamically according to the supply-demand
 // relationship.
 class PriceManager {
 public:

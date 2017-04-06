@@ -21,5 +21,5 @@ void CompanyManager::init() {
 
 void CompanyManager::update() {
 	playerCompany_->update();
-	std::for_each(aiCompanyList_.begin(), aiCompanyList_.end(), std::mem_fun(&Company::update));
+	std::for_each(aiCompanyList_.begin(), aiCompanyList_.end(), [](Company *company) { company->update(); });
 }

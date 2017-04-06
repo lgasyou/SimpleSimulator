@@ -24,25 +24,25 @@ public:
 	void update() = 0;
 
 	void setDeltaValue(double deltaValue) { this->deltaValue_ = deltaValue; }
-	double deltaValue() const { return this->deltaValue_; }
+	double deltaValue() const { return deltaValue_; }
 
 	void setName(const QString &name) { this->name_ = name; }
-	const QString &name() const { return this->name_; }
+	const QString &name() const { return name_; }
 
 	void setOwner(Company *const owner) { this->owner_ = owner; }
-	Company *owner() const { return this->owner_; }
+	Company *owner() const { return owner_; }
 
 	void setPosition(const Vector2D pos) { this->position_ = pos; }
-	const Vector2D &position() const { return this->position_; }
+	const Vector2D &position() const { return position_; }
 
 	void setResource(const QString &resource) { this->resource_ = resource; }
-	const QString &resource() const { return this->resource_; }
+	const QString &resource() const { return resource_; }
 
 	void setType(const QString &type) { this->type_ = type; }
-	const QString &type() const { return this->type_; }
+	const QString &type() const { return type_; }
 
 	void setValue(double value) { this->value_ = value; }
-	double value() const { return this->value_; }
+	double value() const { return value_; }
 
 private:
 	void initBasicValue();

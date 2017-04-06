@@ -14,9 +14,9 @@ public:
 
 	void update();
 
-	inline Company *playerCompany() { return this->playerCompany_; }
+	Company *playerCompany() { return playerCompany_; }
 
-	inline std::list<Company *> &aiCompanyList() { return aiCompanyList_; }
+	std::list<Company *> &aiCompanyList() { return aiCompanyList_; }
 
 private:
 	// Hide constructor and destructor.

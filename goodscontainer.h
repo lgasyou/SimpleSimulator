@@ -28,14 +28,14 @@ public:
 	// Returns final removal.
 	double removeItem(const Goods &goods);
 
-	inline const QList<Goods *> &container() const { return this->container_; }
+	const QList<Goods *> &container() const { return container_; }
 
-	inline double curVolume() const { return this->curVolume_; }
+	double curVolume() const { return curVolume_; }
 
-	inline double freeVolume() const { return maxVolume_ - curVolume_; }
+	double freeVolume() const { return maxVolume_ - curVolume_; }
 
-	inline void setMaxVolume(double max) { this->maxVolume_ = max; }
-	inline double maxVolume() const { return this->maxVolume_; }
+	void setMaxVolume(double max) { this->maxVolume_ = max; }
+	double maxVolume() const { return maxVolume_; }
 
 protected:
 	// Gets goods' pointer if goods has already existed.

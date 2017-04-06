@@ -11,9 +11,9 @@ public:
 
 	void init();
 
-	void addItem(Person *);
+	void add(Person *);
 
-	void removeItem(Person *);
+	void remove(Person *);
 
 	void update();
 

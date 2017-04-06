@@ -1,7 +1,8 @@
 #ifndef GARAGE_H
 #define GARAGE_H
 
-#include <QList>
+#include <vector>
+#include <list>
 #include "basetransportation.h"
 
 struct Route;
@@ -17,7 +18,7 @@ public:
 
 	void init();
 
-	inline Truck *getTruckById(int id);
+	Truck *getById(int id);
 
 	void addNewVihicle(const QString &);
 
@@ -29,11 +30,11 @@ public:
 
 	void update();
 
-	inline const QList<Truck *> &vihicleList() const { return this->vihicleList_; }
+	const std::vector<Truck *> &vihicleList() const { return vihicleList_; }
 
-	inline int vihicleCount() const { return this->vihicleCount_; }
+	int vihicleCount() const { return vihicleCount_; }
 
-	inline int freeVihicleCount() const { return this->freeVihicleCount_; }
+	int freeVihicleCount() const { return freeVihicleCount_; }
 
 private:
 	// Returns truck* if has free truck, 
@@ -41,16 +42,16 @@ private:
 	Truck *selectFreeTruck();
 
 private:
-	QList<Truck *> vihicleList_;
+	std::vector<Truck *> vihicleList_;
 
-	QList<Truck *> transitingTrucks_;
+	std::list<Truck *> transitingTrucks_;
 
 	int vihicleCount_ = 0;
 
 	int freeVihicleCount_ = 0;
 };
 
-inline Truck *Garage::getTruckById(int id) {
+inline Truck *Garage::getById(int id) {
 	return vihicleList_[id];
 }
 

@@ -37,7 +37,7 @@ void BuildingTableWidget::updateDisplay() {
 }
 
 void BuildingTableWidget::displayBasicInfo(int index) {
-	BaseBuilding *building = BuildingManager::instance().getBuildingById(index);
+	BaseBuilding *building = BuildingManager::instance().getById(index);
 
 	const QString &name = building->name();
 	const QString &deltaValue = " " + toString(building->deltaValue());
@@ -51,7 +51,7 @@ void BuildingTableWidget::displayBasicInfo(int index) {
 }
 
 void BuildingTableWidget::displayAccordingToVisitor(int index) {
-	BaseBuilding *building = BuildingManager::instance().getBuildingById(index);
+	BaseBuilding *building = BuildingManager::instance().getById(index);
 	Company *playerCompany = CompanyManager::instance().playerCompany();
 
 	using namespace GameConstants;
@@ -72,7 +72,7 @@ void BuildingTableWidget::displayAccordingToVisitor(int index) {
 }
 
 void BuildingTableWidget::receiveCommand(int index, int command) {
-	BaseBuilding *building = BuildingManager::instance().getBuildingById(index);
+	BaseBuilding *building = BuildingManager::instance().getById(index);
 	emit sendCommand(command, building);
 }
 

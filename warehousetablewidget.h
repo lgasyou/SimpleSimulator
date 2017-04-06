@@ -19,7 +19,7 @@ public:
 
 	void init();
 
-	inline void setWarehouse(Warehouse *warehouse) { this->warehouse_ = warehouse; }
+	void setWarehouse(Warehouse *warehouse) { this->warehouse_ = warehouse; }
 
 public slots:
 	void goSelectIndustry();

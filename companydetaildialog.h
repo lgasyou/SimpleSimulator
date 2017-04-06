@@ -17,16 +17,12 @@ public:
 
     ~CompanyDetailDialog();
 
-	inline void showAndRaise();
+	void showUp();
 
-    inline void setCompany(Company *company) { this->company_ = company; }
+    void setCompany(Company *company) { this->company_ = company; }
 
 public slots:
     void updateDisplay();
-
-private:
-	// transforms double into QString
-	static QString toString(double value);
 
 private:
     Company *company_;
@@ -34,7 +30,7 @@ private:
     Ui::CompanyDetailDialog *ui;
 };
 
-inline void CompanyDetailDialog::showAndRaise() {
+inline void CompanyDetailDialog::showUp() {
 	this->show();
 	this->raise();
 	this->activateWindow();

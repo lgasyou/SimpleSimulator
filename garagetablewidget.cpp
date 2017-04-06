@@ -28,12 +28,12 @@ void GarageTableWidget::init() {
 void GarageTableWidget::updateDisplay() {
 	if (garage_ != nullptr) {
 		auto &vihicleList = garage_->vihicleList();
-		this->setRowCount(vihicleList.size());
+		this->setRowCount((int)vihicleList.size());
 
 		int index = 0;
 		this->clearContents();
-		for (auto iter = vihicleList.constBegin(); iter != vihicleList.constEnd(); ++iter, ++index) {
-			updateEachRow(index, *iter);
+		for (auto vihicle : vihicleList) {
+			updateEachRow(index++, vihicle);
 		}
 	}
 }
@@ -74,7 +74,7 @@ void GarageTableWidget::buttonClicked(int index, int command) {
 		break;
 
 	case 2: // Stop
-		Truck *truck = garage_->getTruckById(index);
+		Truck *truck = garage_->getById(index);
 		garage_->stopVihicle(truck);
 		emit dataChanged();
 		break;
@@ -93,7 +93,7 @@ void GarageTableWidget::showSetRouteDialog(int index) {
 		setRouteDialog->setParent(this, Qt::Window);
 		isTheFirstTimeCall = false;
 	}
-	setRouteDialog->showAndRaise();
+	setRouteDialog->showUp();
 	setRouteDialog->updateDisplay();
 }
 

@@ -2,12 +2,15 @@
 #define BUILDINGMANAGER_H
 
 #include <vector>
-#include "gameconstants.h"
 
 class BaseBuilding;
 class Company;
 
 class QString;
+
+namespace GameConstants {
+enum BuildingTypes : int;
+}
 
 // Owns and manages the pointers of buildings.
 // Updates the data of buildings.
@@ -21,24 +24,24 @@ public:
 
 	void init();
 
-	void addItem(BaseBuilding *);
+	void add(BaseBuilding *);
 
-	void addItem(GameConstants::BuildingTypes);
+	void add(GameConstants::BuildingTypes);
 
-	const std::vector<BaseBuilding *> &buildingList() const { return this->buildings_; }
+	const std::vector<BaseBuilding *> &buildings() const { return buildings_; }
 
 	std::size_t buildingNumber() const { return buildings_.size(); }
 
 	// In order to get the balance of Company.
 	double deltaValueOfCompanyProperties(Company *) const;
 
-	BaseBuilding *getBuildingById(int id) const;
+	BaseBuilding *getById(int id) const;
 
-	BaseBuilding *getBuildingByPos(int x, int y) const;
+	BaseBuilding *getByPos(int x, int y) const;
 
 	int indexOf(BaseBuilding *) const;
 
-	void removeItem(BaseBuilding *);
+	void remove(BaseBuilding *);
 
 	// Gets building's pointer and type.
 	// Returns a pointer which is arg "type" asked.
@@ -61,7 +64,7 @@ private:
     std::vector<BaseBuilding *> buildings_;
 };
 
-inline BaseBuilding *BuildingManager::getBuildingById(int id) const {
+inline BaseBuilding *BuildingManager::getById(int id) const {
 	return buildings_.at(id);
 }
 

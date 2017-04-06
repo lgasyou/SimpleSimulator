@@ -4,6 +4,12 @@
 class QString;
 
 class Vector2D {
+	friend bool operator==(const Vector2D &v1, const Vector2D &v2);
+	friend bool operator!=(const Vector2D &v1, const Vector2D &v2);
+	friend const Vector2D operator+(const Vector2D &v1, const Vector2D &v2);
+	friend const Vector2D operator-(const Vector2D &v1, const Vector2D &v2);
+	friend const Vector2D operator-(const Vector2D &vector);
+
 public:
 	Vector2D(double x = 0.0, double y = 0.0);
 	
@@ -17,24 +23,17 @@ public:
 
 	const QString toString() const;
 
-	inline void setX(double x) { this->x_ = x; }
-	inline double x() const { return this->x_; }
+	void setX(double x) { this->x_ = x; }
+	double x() const { return x_; }
 
-	inline void setY(double y) { this->y_ = y; }
-	inline double y() const { return this->y_; }
+	void setY(double y) { this->y_ = y; }
+	double y() const { return y_; }
 
 	Vector2D &operator+=(const Vector2D &vector);
 	Vector2D &operator-=(const Vector2D &vector);
 
-	friend inline bool operator==(const Vector2D &v1, const Vector2D &v2);
-	friend inline bool operator!=(const Vector2D &v1, const Vector2D &v2);
-	friend inline const Vector2D operator+(const Vector2D &v1, const Vector2D &v2);
-	friend inline const Vector2D operator-(const Vector2D &v1, const Vector2D &v2);
-	friend inline const Vector2D operator-(const Vector2D &vector);
-
 private:
 	double x_;
-
 	double y_;
 };
 

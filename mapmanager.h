@@ -29,7 +29,9 @@ public:
 	// useless data if the map is almost full.
 	Vector2D allocate();
 
-	auto occupiedMap() const -> const bool(*)[100];
+	auto occupiedMap() const -> const bool(*)[100]{
+		return occupiedMap_;
+	}
 
 private:
 	// Hide constructor and destructor.
@@ -46,9 +48,5 @@ private:
 	// occupied or not.
 	bool occupiedMap_[100][100];
 };
-
-inline auto MapManager::occupiedMap() const -> const bool(*)[100] {
-	return this->occupiedMap_;
-}
 
 #endif // !MAPMANAGER_H
