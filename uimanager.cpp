@@ -9,13 +9,6 @@ UIManager::UIManager() { }
 
 UIManager::~UIManager() { }
 
-void UIManager::init() {
-	bankDialog_ = nullptr;
-	buildingDetailDialog_ = nullptr;
-	companyDetailDialog_ = nullptr;
-	setRouteDialog_ = nullptr;
-}
-
 UIManager &UIManager::instance() {
 	static UIManager uiManager;
 	return uiManager;

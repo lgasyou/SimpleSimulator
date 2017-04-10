@@ -7,7 +7,7 @@
 using namespace DataStructure;
 
 void Graph::addVertex(const QString &item) {
-	graph_.push_back(Vertex(item, nullptr, nullptr));
+	graph_.push_back(Vertex{ item, nullptr, nullptr });
 }
 
 void Graph::addPath(const QString &orig, const QString &dest, double volume) {
@@ -24,7 +24,7 @@ void Graph::addPath(const QString &orig, const QString &dest, double volume) {
 
 	Arc *originalOut = graph_[indexOfOrig].firstOut;
 	Arc *originalIn = graph_[indexOfDest].firstIn;
-	Arc *newArc = new Arc(volume, indexOfOrig, indexOfDest, originalOut, originalIn);
+	Arc *newArc = new Arc{ volume, indexOfOrig, indexOfDest, originalOut, originalIn };
 	graph_[indexOfOrig].firstOut = newArc;
 	graph_[indexOfDest].firstIn = newArc;
 }

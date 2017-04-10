@@ -25,10 +25,6 @@ private:
 
 	~TimeManager() { }
 
-	TimeManager(const TimeManager &) = delete;
-
-	TimeManager &operator=(const TimeManager &) = delete;
-
 private:
     double deltaTime_ = 0.0;
 

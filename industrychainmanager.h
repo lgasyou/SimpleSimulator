@@ -30,10 +30,6 @@ private:
 
 	~IndustryChainManager();
 
-	IndustryChainManager(const IndustryChainManager &) = delete;
-
-	IndustryChainManager &operator=(const IndustryChainManager &) = delete;
-
 private:
 	Graph industryChain_;
 };

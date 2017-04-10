@@ -39,10 +39,6 @@ private:
 
 	~MapManager();
 
-	MapManager(const MapManager &) = delete;
-
-	MapManager &operator=(const MapManager &) = delete;
-
 private:
 	// This array contains a map which shows whether a location is
 	// occupied or not.

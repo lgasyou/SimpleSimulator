@@ -42,10 +42,6 @@ private:
 
 	~PriceManager();
 
-	PriceManager(const PriceManager &) = delete;
-
-	PriceManager &operator=(const PriceManager &) = delete;
-
 private:
 	std::vector<PriceItem> prices_;
 };

@@ -31,7 +31,7 @@ public:
 
 	void withdraw(Company *client, double amount);
 
-	void update();
+	void update() override;
 
 	void setDepositInterestRate(double depositInterestRate) { this->depositInterestRate_ = depositInterestRate; }
 	double depositInterestRate() const { return depositInterestRate_; }

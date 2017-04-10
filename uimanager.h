@@ -9,6 +9,7 @@ class SetRouteDialog;
 // For now this class is only the prototype of UIManager.
 // It returns the UI components by its methods.
 // But in fact, I don't understand what should it be used for.
+// deprecated.
 class UIManager {
 public:
 	// Use singleton pattern.
@@ -28,20 +29,14 @@ private:
 
 	~UIManager();
 
-	UIManager(const UIManager &) = delete;
-
-	UIManager &operator=(const UIManager &) = delete;
-
-	void init();
-
 private:
-	BankDialog *bankDialog_;
+	BankDialog *bankDialog_ = nullptr;
 
-	BuildingDetailDialog *buildingDetailDialog_;
+	BuildingDetailDialog *buildingDetailDialog_ = nullptr;
 
-	CompanyDetailDialog *companyDetailDialog_;
+	CompanyDetailDialog *companyDetailDialog_ = nullptr;
 
-	SetRouteDialog *setRouteDialog_;
+	SetRouteDialog *setRouteDialog_ = nullptr;
 };
 
 #endif // !UIMANAGER_H

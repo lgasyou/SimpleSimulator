@@ -10,15 +10,6 @@ namespace DataStructure {
 
 
 struct Arc {
-public:
-	Arc(double volume_, int headVertex_, int tailVertex_, Arc *headArc_, Arc *tailArc_) :
-		volume(volume_),
-		headVertex(headVertex_),
-		tailVertex(tailVertex_),
-		headArc(headArc_),
-		tailArc(tailArc_) { }
-
-public:
 	double volume;
 
 	int headVertex;
@@ -33,13 +24,6 @@ public:
 
 
 struct Vertex {
-public:
-	Vertex(const QString & item_, Arc * firstIn_, Arc * firstOut_) :
-		item(item_),
-		firstIn(firstIn_),
-		firstOut(firstOut_) { }
-
-public:
 	QString item;
 
 	Arc *firstIn;

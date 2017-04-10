@@ -22,10 +22,6 @@ private:
 
 	~PersonManager();
 
-	PersonManager(const PersonManager &) = delete;
-
-	PersonManager &operator=(const PersonManager &) = delete;
-
 private:
 	std::list<Person *> personList_;
 };

@@ -10,6 +10,7 @@ class BankDialog;
 }
 
 // Used in early version ONLY.
+// @deprecated
 class BankDialog : public QDialog {
     Q_OBJECT
 

@@ -6,7 +6,8 @@ class Company;
 class QString;
 class Vector2D;
 
-class BuildingInterface {
+// The interface of BuildingBase.
+class IBuilding {
 public:
 	// Copies data from right hand side.
 	virtual void copyFrom(const BaseBuilding &rhs) = 0;

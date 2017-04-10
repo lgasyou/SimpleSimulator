@@ -1,7 +1,7 @@
 #ifndef BUILDINGBASE_H
 #define BUILDINGBASE_H
 
-#include "buildinginterface.h"
+#include "ibuilding.h"
 #include "vector2d.h"
 #include <QString>
 
@@ -9,7 +9,7 @@ class Company;
 
 //	The base of building classes.
 //	This class should not be instantiated.
-class BaseBuilding : public BuildingInterface {
+class BaseBuilding : public IBuilding {
 public:
 	BaseBuilding(const QString &name, const QString &type);
 

@@ -16,7 +16,7 @@ public:
 
 	Company *playerCompany() { return playerCompany_; }
 
-	std::list<Company *> &aiCompanyList() { return aiCompanyList_; }
+	std::list<Company *> &AICompanyList() { return AICompanyList_; }
 
 private:
 	// Hide constructor and destructor.
@@ -24,14 +24,10 @@ private:
 
 	~CompanyManager();
 
-	CompanyManager(const CompanyManager &) = delete;
-
-	CompanyManager &operator=(const CompanyManager &) = delete;
-
 private:
 	Company *playerCompany_;
 
-	std::list<Company *> aiCompanyList_;
+	std::list<Company *> AICompanyList_;
 };
 
 

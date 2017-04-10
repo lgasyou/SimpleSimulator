@@ -28,7 +28,7 @@ public:
 
 	void stopVihicle(Truck *);
 
-	void update();
+	void update() override;
 
 	const std::vector<Truck *> &vihicleList() const { return vihicleList_; }
 

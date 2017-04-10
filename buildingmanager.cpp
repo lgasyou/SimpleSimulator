@@ -15,7 +15,11 @@
 
 BuildingManager::BuildingManager() { }
 
-BuildingManager::~BuildingManager() { }
+BuildingManager::~BuildingManager() {
+	for (BaseBuilding *building : buildings_) {
+		delete building;
+	}
+}
 
 BuildingManager &BuildingManager::instance() {
 	static BuildingManager buildingManager;
@@ -88,15 +92,15 @@ void BuildingManager::remove(BaseBuilding *building) {
 	buildings_.erase(iter);
 }
 
-BaseBuilding *BuildingManager::resetItemType(BaseBuilding *building, GameConstants::BuildingTypes type) {
+BaseBuilding *BuildingManager::resetType(BaseBuilding *building, GameConstants::BuildingTypes type) {
 	BuildingFactory buildingFactory;
-    BaseBuilding *newBuilding = buildingFactory.create(type);
-	newBuilding->copyFrom(*building);
+    BaseBuilding *buildingCopy = buildingFactory.create(type);
+	buildingCopy->copyFrom(*building);
 
 	auto iterator = std::find(buildings_.begin(), buildings_.end(), building);
     delete *iterator;
-	*iterator = newBuilding;
-    return newBuilding;
+	*iterator = buildingCopy;
+    return buildingCopy;
 }
 
 void BuildingManager::update() {

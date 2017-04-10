@@ -15,10 +15,6 @@ private:
 	MachineManager();
 
 	~MachineManager();
-
-	MachineManager(const MachineManager &) = delete;
-
-	MachineManager &operator=(const MachineManager &) = delete;
 };
 
 #endif // !MACHINEMANAGER_H

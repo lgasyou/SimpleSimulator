@@ -46,7 +46,7 @@ public:
 	// Gets building's pointer and type.
 	// Returns a pointer which is arg "type" asked.
 	// If arg "type" isn't a standard type, returns "Unused Land".
-    BaseBuilding *resetItemType(BaseBuilding *, GameConstants::BuildingTypes);
+    BaseBuilding *resetType(BaseBuilding *, GameConstants::BuildingTypes);
 
     void update();
 
@@ -55,10 +55,6 @@ private:
     BuildingManager();
 
 	~BuildingManager();
-
-	BuildingManager(const BuildingManager &) = delete;
-
-	BuildingManager &operator=(const BuildingManager &) = delete;
 
 private:
     std::vector<BaseBuilding *> buildings_;
