@@ -1,4 +1,4 @@
-# SimpleSimulator
+# WorldSimulator
 This program is powered by Qt.
 
 Explicitly speaking, the program is a game including many aspects.
