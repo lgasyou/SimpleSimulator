@@ -9,11 +9,13 @@ Company::Company(const QString &name) :
 
 Company::~Company() { }
 
-bool Company::buy(BaseBuilding *building) {
+bool Company::phrchase(BaseBuilding *building) {
     double buildingValue = building->value();
     if (buildingValue > this->cash_)
         return false;
 
+	Company *seller = building->owner();
+	seller->setCash(buildingValue + seller->cash());
     cash_ -= buildingValue;
     building->setOwner(this);
     return true;
@@ -28,10 +30,10 @@ bool Company::purchase(double cost) {
 }
 
 bool Company::sell(BaseBuilding *building) {
+	Government *buyer = &Government::instance();
+	buyer->setCash(buyer->cash() - building->value());
     cash_ += building->value();
-
-	Government *gov = &Government::instance();
-    building->setOwner(gov);
+    building->setOwner(buyer);
     return true;
 }
 

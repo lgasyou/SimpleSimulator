@@ -14,7 +14,7 @@ public:
 	// Buys building if company's money is enough:
 	// Changes building's owner as this company.
 	// Deducts company's cash.
-    bool buy(BaseBuilding *building);
+    bool phrchase(BaseBuilding *building);
 
 	bool purchase(double cost);
 

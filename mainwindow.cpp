@@ -174,7 +174,7 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
 	}
 
 	case BuyBuilding:
-		if (playerCompany_->buy(building)) {
+		if (playerCompany_->phrchase(building)) {
 			emit dataChanged();
 			msg = QString("%1 %2 bought.").arg(building->type(), building->name());
 		} else {

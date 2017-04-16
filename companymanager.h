@@ -22,6 +22,7 @@ private:
 	// Hide constructor and destructor.
 	CompanyManager();
 
+	// Delete all pointers while destructing.
 	~CompanyManager();
 
 private:

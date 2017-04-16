@@ -99,8 +99,7 @@ BaseBuilding *BuildingManager::resetType(BaseBuilding *building, GameConstants::
 
 	auto iterator = std::find(buildings_.begin(), buildings_.end(), building);
     delete *iterator;
-	*iterator = buildingCopy;
-    return buildingCopy;
+    return *iterator = buildingCopy;
 }
 
 void BuildingManager::update() {

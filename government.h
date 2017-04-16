@@ -13,10 +13,6 @@ private:
 	Government();
 
 	~Government() { }
-
-	Government(const Government &) = delete;
-
-	Government &operator=(const Government &) = delete;
 };
 
 #endif // !GOVERNMENT_H

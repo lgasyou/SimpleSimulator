@@ -46,7 +46,7 @@ public:
 	// Gets building's pointer and type.
 	// Returns a pointer which is arg "type" asked.
 	// If arg "type" isn't a standard type, returns "Unused Land".
-    BaseBuilding *resetType(BaseBuilding *, GameConstants::BuildingTypes);
+    BaseBuilding *resetType(BaseBuilding *, GameConstants::BuildingTypes type);
 
     void update();
 
@@ -54,6 +54,7 @@ private:
 	// Hide constructor and destructor.
     BuildingManager();
 
+	// Delete all pointers while destructing.
 	~BuildingManager();
 
 private:
