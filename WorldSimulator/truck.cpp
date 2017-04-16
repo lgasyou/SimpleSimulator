@@ -40,7 +40,7 @@ void Truck::load() {
 	practialGoods.volume = practialVolume;
 
 	route_->orig->putOutStorage(practialGoods);
-	freightHouse_->addItem(practialGoods);
+	freightHouse_->add(practialGoods);
 
 	// Set remain time and total time.
 	double distance = route_->dest->position().distanceToPoint(route_->orig->position());
@@ -59,7 +59,7 @@ void Truck::unload() {
 	Goods practialGoods = route_->goods;
 	practialGoods.volume = practialVolume;
 
-	freightHouse_->removeItem(practialGoods);
+	freightHouse_->remove(practialGoods);
 	route_->dest->putInStorage(practialGoods);
 
 	loaded_ = false;

@@ -35,17 +35,17 @@ public:
 	// Queries goods' volume by its name.
 	double query(const QString &goodsName) const;
 
-	Goods *getGoodsById(int id);
+	Goods *getById(int id);
 
 	// If the goods.volume is smaller or equal to free volume, just adds it.
 	// If not, resets addition volume as the free volume of container.
 	// Returns final addition.
-	double addItem(const Goods &goods);
+	double add(const Goods &goods);
 
 	// If the goods.volume is smaller or equal to free volume, just removes it.
 	// If not, resets removal volume as the current volume of container.
 	// Returns final removal.
-	double removeItem(const Goods &goods);
+	double remove(const Goods &goods);
 
 	const QList<Goods *> &container() const { return container_; }
 
@@ -59,7 +59,7 @@ public:
 protected:
 	// Gets goods' pointer if goods has already existed.
 	// Otherwise creates a new goods object.
-	Goods *getGoodsByName(const QString &goods);
+	Goods *getByName(const QString &stringName);
 
 protected:
 	QList<Goods *> container_;
@@ -68,5 +68,9 @@ protected:
 
 	double maxVolume_;
 };
+
+inline Goods *GoodsContainer::getById(int id) {
+	return container_[id];
+}
 
 #endif // !GOODSCONTAINER_H

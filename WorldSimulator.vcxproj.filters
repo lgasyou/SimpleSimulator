@@ -94,6 +94,12 @@
     <Filter Include="Header Files\Groups">
       <UniqueIdentifier>{225fbf91-b066-4985-aabc-e05aa8577e8b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Builders">
+      <UniqueIdentifier>{58959238-042d-4a9b-89c1-4a66f0c3947b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Builders">
+      <UniqueIdentifier>{f240df0d-ecf0-4b29-9118-3416323eae75}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GeneratedFiles\Debug\moc_bankdialog.cpp">
@@ -246,9 +252,6 @@
     <ClCompile Include="WorldSimulator\companymanager.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\defaultmachinebuilder.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="WorldSimulator\factory.cpp">
       <Filter>Source Files\Buildings\Instances</Filter>
     </ClCompile>
@@ -286,9 +289,6 @@
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
     <ClCompile Include="WorldSimulator\machine.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\machinebuilder.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
     <ClCompile Include="WorldSimulator\machinemanager.cpp">
@@ -365,6 +365,12 @@
     </ClCompile>
     <ClCompile Include="WorldSimulator\warehousetablewidget.cpp">
       <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldSimulator\machinebuilder.cpp">
+      <Filter>Source Files\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldSimulator\defaultmachinebuilder.cpp">
+      <Filter>Source Files\Builders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -505,9 +511,6 @@
     <ClInclude Include="WorldSimulator\companymanager.h">
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\defaultmachinebuilder.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
     <ClInclude Include="WorldSimulator\factory.h">
       <Filter>Header Files\Buildings\Instances</Filter>
     </ClInclude>
@@ -539,9 +542,6 @@
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
     <ClInclude Include="WorldSimulator\machine.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\machinebuilder.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
     <ClInclude Include="WorldSimulator\machinemanager.h">
@@ -594,6 +594,12 @@
     </ClInclude>
     <ClInclude Include="WorldSimulator\warehouse.h">
       <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldSimulator\defaultmachinebuilder.h">
+      <Filter>Header Files\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldSimulator\machinebuilder.h">
+      <Filter>Header Files\Builders</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

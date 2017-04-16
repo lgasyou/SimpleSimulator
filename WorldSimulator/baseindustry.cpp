@@ -36,7 +36,6 @@ BaseIndustry::BaseIndustry(const QString &name, const QString &type) :
 
 BaseIndustry::~BaseIndustry() {
 	delete warehouse_;
-	warehouse_ = nullptr;
 }
 
 void BaseIndustry::addMachine(Machine *machine) {
@@ -54,21 +53,13 @@ void BaseIndustry::update() {
 }
 
 void BaseIndustry::manufacture() {
-	std::for_each(machines_.begin(), machines_.end(), std::mem_fun(&Machine::produce));
+	std::for_each(machines_.begin(), machines_.end(), [](Machine *m) { m->produce(); });
 }
 
 double BaseIndustry::putInStorage(const Goods &goods) {
-	return warehouse_->addItem(goods);
+	return warehouse_->add(goods);
 }
 
 double BaseIndustry::putOutStorage(const Goods &goods) {
-	return warehouse_->removeItem(goods);
-}
-
-const std::vector<Goods> &BaseIndustry::products() const {
-	return products_;
-}
-
-const std::vector<Goods> &BaseIndustry::materials() const {
-	return materials_;
+	return warehouse_->remove(goods);
 }

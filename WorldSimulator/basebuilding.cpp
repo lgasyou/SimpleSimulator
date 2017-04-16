@@ -43,10 +43,8 @@ void BaseBuilding::copyFrom(const BaseBuilding &rhs) {
 
 void BaseBuilding::changeBaseValue() {
 	double sigma = value_ * 0.1 / 3;
-	double deltaValue = ValueGenerator::instance().normalDistribution(0, sigma);
-	double finalValue = deltaValue + value_;
-	this->deltaValue_ = deltaValue;
-	this->value_ = finalValue;
+	deltaValue_ = ValueGenerator::instance().normalDistribution(0, sigma);
+	value_ += deltaValue_;
 }
 
 void BaseBuilding::initBasicValue() {

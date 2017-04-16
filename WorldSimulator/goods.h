@@ -23,14 +23,14 @@
 #include <QString>
 
 struct Goods {
-	bool operator==(const Goods &rhs) {
-		return name == rhs.name && volume == rhs.volume;
-	}
-
 	QString name;
 
 	double volume;
 };
+
+inline bool operator==(const Goods &lhs, const Goods &rhs) {
+	return lhs.name == rhs.name && lhs.volume == rhs.volume;
+}
 
 #endif // !GOODS_H
 

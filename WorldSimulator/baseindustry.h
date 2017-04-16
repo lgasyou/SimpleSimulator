@@ -38,6 +38,7 @@ public:
 
 	virtual ~BaseIndustry();
 
+	// TODO
 	void addMachine(Machine *);
 
 	// updates data after each turn
@@ -53,9 +54,9 @@ public:
 
 	const std::vector<Machine *> &machines() const { return machines_; }
 
-	const std::vector<Goods> &products() const;
+	const std::vector<Goods> &products() const { return products_; }
 
-	const std::vector<Goods> &materials() const;
+	const std::vector<Goods> &materials() const { return materials_; }
 
 protected:
     Warehouse *warehouse_;

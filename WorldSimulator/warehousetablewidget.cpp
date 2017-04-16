@@ -79,7 +79,7 @@ void WarehouseTableWidget::goSelectIndustry() {
 }
 
 void WarehouseTableWidget::getGoods(int index) {
-	goods_ = warehouse_->getGoodsById(index);
+	goods_ = warehouse_->getById(index);
 }
 
 void WarehouseTableWidget::getDestAndSendPreroute(BaseBuilding *building) {

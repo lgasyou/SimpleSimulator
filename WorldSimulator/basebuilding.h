@@ -27,7 +27,7 @@
 class Company;
 
 //	The base of building classes.
-//	This class should not be instantiated.
+//	This class cannot be instantiated.
 class BaseBuilding : public IBuilding {
 public:
 	BaseBuilding(const QString &name, const QString &type);
@@ -36,8 +36,6 @@ public:
 
 	// Copies data from right hand side.
 	void copyFrom(const BaseBuilding &rhs);
-
-	void changeBaseValue();
 
 	// Updates data after each turn
 	void update() = 0;
@@ -62,6 +60,9 @@ public:
 
 	void setValue(double value) { this->value_ = value; }
 	double value() const { return value_; }
+
+protected:
+	void changeBaseValue();
 
 private:
 	void initBasicValue();

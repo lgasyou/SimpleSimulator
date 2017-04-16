@@ -37,37 +37,33 @@ double GoodsContainer::query(const QString &goodsName) const {
 	return 0.0;
 }
 
-Goods *GoodsContainer::getGoodsById(int id) {
-	return container_[id];
-}
-
-double GoodsContainer::addItem(const Goods &goods) {
+double GoodsContainer::add(const Goods &goods) {
 	double finalAddition = (curVolume_ + goods.volume > maxVolume_) ?
 		maxVolume_ - curVolume_ : goods.volume;
 
-	getGoodsByName(goods.name)->volume += finalAddition;
+	getByName(goods.name)->volume += finalAddition;
 	curVolume_ += finalAddition;
 	return finalAddition;
 }
 
-double GoodsContainer::removeItem(const Goods &goods) {
-	Goods *curGoods = getGoodsByName(goods.name);
+double GoodsContainer::remove(const Goods &goods) {
+	Goods *curGoods = getByName(goods.name);
 	double finalRemoval = (curGoods->volume - goods.volume >= 0.0) ?
 		goods.volume : curGoods->volume;
 
-	if ((curGoods->volume -= finalRemoval) == 0.0)
+	if ((curGoods->volume -= finalRemoval) < 0.01)
 		container_.removeOne(curGoods);
 	curVolume_ -= finalRemoval;
 	return finalRemoval;
 }
 
-Goods *GoodsContainer::getGoodsByName(const QString &goods) {
+Goods *GoodsContainer::getByName(const QString &stringName) {
 	for (auto item : container_) {
-		if (item->name == goods)
+		if (item->name == stringName)
 			return item;
 	}
 
-	Goods *newGoods = new Goods{ goods, 0.0 };
+	Goods *newGoods = new Goods{ stringName, 0.0 };
 	container_.push_back(newGoods);
 	return newGoods;
 }

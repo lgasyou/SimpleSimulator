@@ -41,11 +41,11 @@ void Machine::produce() {
 	for (const auto &material : materials_) {
 		Goods finalMaterial = material;
 		finalMaterial.volume *= limitFactor;
-		warehouse_->removeItem(finalMaterial);
+		warehouse_->remove(finalMaterial);
 	}
 	Goods finalProduct = { currentProduct_, 0.0 };
 	finalProduct.volume *= limitFactor;
-	warehouse_->addItem(finalProduct);
+	warehouse_->add(finalProduct);
 	currentProductivity_ = limitFactor;
 }
 
