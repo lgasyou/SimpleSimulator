@@ -40,6 +40,13 @@
 #include "warehousetablewidget.h"
 #include "ui_buildingdetaildialog.h"
 
+namespace {
+// transforms double into QString
+static QString toString(double value) {
+	return QString::number(value, 10, 2);
+	}
+}
+
 BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
 	QDialog(parent),
     building_(nullptr),
@@ -91,8 +98,7 @@ void BuildingDetailDialog::closeEvent(QCloseEvent *) {
 //}
 
 void BuildingDetailDialog::addNewMachine() {
-	auto industryType = BuildingManager::stringToEnum(building_->type());
-	switch (industryType) {
+	switch (auto industryType = BuildingManager::stringToEnum(building_->type())) {
 	case GameConstants::Factory: {
 		Factory *factory = dynamic_cast<Factory *>(building_);
 
@@ -140,6 +146,7 @@ void BuildingDetailDialog::showMachineDetail(Machine *machine) {
 	ui->expandStackedWidget->show();
 	selectMachine_ = machine;
 
+	ui->selectNextProductComboBox->clear();
 	for (const auto &product : machine->products()) {
 		ui->selectNextProductComboBox->addItem(product.name);
 	}
@@ -312,8 +319,4 @@ void BuildingDetailDialog::signalSlotConfig() {
 	connect(this,										SIGNAL(dataChanged()),
 			this,										SLOT(updateDisplay()));
 	/* ---------------------------------------------------------------------------------------------- */
-}
-
-QString BuildingDetailDialog::toString(double value) {
-	return QString::number(value, 10, 2);
 }

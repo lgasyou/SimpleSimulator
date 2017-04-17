@@ -46,7 +46,7 @@ public:
 
 	void repay(Company *client, double amount);
 
-	const BankAccount &query(Company *client) const;
+	const BankAccount &accountOf(Company *client) const;
 
 	void withdraw(Company *client, double amount);
 

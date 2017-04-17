@@ -25,13 +25,13 @@ class Company;
 class QString;
 class Vector2D;
 
-// The interface of BuildingBase.
+// The interface of BaseBuilding.
 class IBuilding {
 public:
-	// Copies data from right hand side.
+	// Copies data from the other building. Only the basic part of BaseBuilding is copiesd.
 	virtual void copyFrom(const BaseBuilding &rhs) = 0;
 
-	// Updates data after each turn
+	// Updates data each turn
 	virtual void update() = 0;
 
 protected:

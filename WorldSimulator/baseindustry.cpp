@@ -41,10 +41,24 @@ BaseIndustry::~BaseIndustry() {
 void BaseIndustry::addMachine(Machine *machine) {
 	machines_.push_back(machine);
 
-	products_.insert(products_.end(), machine->products().cbegin(), machine->products().cend());
-	products_.erase(std::unique(products_.begin(), products_.end()), products_.end());
-	materials_.insert(materials_.end(), machine->materials().cbegin(), machine->materials().cend());
-	materials_.erase(std::unique(materials_.begin(), materials_.end()), materials_.end());
+	// Add products of this factory.
+	for (const auto &product : machine->products()) {
+		if (std::count(products_.cbegin(), products_.cend(), product.name) == 0) {
+			products_.push_back(product.name);
+		}
+	}
+
+	// Add materials of this factory.
+	for (const auto &material : machine->materials()) {
+		if (std::count(materials_.cbegin(), materials_.cend(), material.name) == 0) {
+			materials_.push_back(material.name);
+		}
+	}
+}
+
+void BaseIndustry::removeMachine(Machine *machine) {
+	auto iter = std::find(machines_.begin(), machines_.end(), machine);
+	machines_.erase(iter);
 }
 
 void BaseIndustry::update() { 

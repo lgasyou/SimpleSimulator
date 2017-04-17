@@ -70,7 +70,7 @@ void Bank::repay(Company *client, double amount) {
 	client->setCash(finalCash);
 }
 
-const BankAccount &Bank::query(Company *client) const {
+const BankAccount &Bank::accountOf(Company *client) const {
 	return clientMap_.find(client)->second;
 }
 

@@ -76,7 +76,7 @@ void SetRouteDialog::createNewRoute() {
 
 void SetRouteDialog::updateDisplay() {
 	if (route_->orig && route_->orig->products().size()) {
-		const QString &goodsName = route_->orig->products()[0].name;
+		const QString &goodsName = route_->orig->products()[0];
 		ui->labelGoodsName->setText(goodsName);
 	}
 	const QString &originName = route_->orig ? route_->orig->name() : "";

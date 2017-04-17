@@ -38,10 +38,12 @@ public:
 
 	virtual ~BaseIndustry();
 
-	// TODO
+	// Add a new Machine and update products and materials of this building.
 	void addMachine(Machine *);
 
-	// updates data after each turn
+	void removeMachine(Machine *);
+
+	// Updates data after each turn
 	void update() override;
 
 	void manufacture();
@@ -54,18 +56,18 @@ public:
 
 	const std::vector<Machine *> &machines() const { return machines_; }
 
-	const std::vector<Goods> &products() const { return products_; }
+	const std::vector<QString> &products() const { return products_; }
 
-	const std::vector<Goods> &materials() const { return materials_; }
+	const std::vector<QString> &materials() const { return materials_; }
 
 protected:
     Warehouse *warehouse_;
 
 	std::vector<Machine *> machines_;
 
-	std::vector<Goods> products_;
+	std::vector<QString> products_;
 
-	std::vector<Goods> materials_;
+	std::vector<QString> materials_;
 };
 
 #endif // BASEINDUSTRY_H

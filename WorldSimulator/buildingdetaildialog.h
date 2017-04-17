@@ -75,9 +75,6 @@ private:
 
 	void signalSlotConfig();
 
-	// transforms double into QString
-	static QString toString(double value);
-
 private:
     BaseBuilding *building_;
 

@@ -198,9 +198,6 @@
     <ClCompile Include="WorldSimulator\bank.cpp">
       <Filter>Source Files\Buildings\Instances</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\bankaccount.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
     <ClCompile Include="WorldSimulator\bankdialog.cpp">
       <Filter>Source Files\Dialogs</Filter>
     </ClCompile>
@@ -372,6 +369,9 @@
     <ClCompile Include="WorldSimulator\defaultmachinebuilder.cpp">
       <Filter>Source Files\Builders</Filter>
     </ClCompile>
+    <ClCompile Include="WorldSimulator\bankaccount.cpp">
+      <Filter>Source Files\Groups</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="WorldSimulator\bankdialog.h">
@@ -474,9 +474,6 @@
     </ClInclude>
     <ClInclude Include="WorldSimulator\bank.h">
       <Filter>Header Files\Buildings\Instances</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\bankaccount.h">
-      <Filter>Header Files\Objects</Filter>
     </ClInclude>
     <ClInclude Include="WorldSimulator\baseagriculture.h">
       <Filter>Header Files\Buildings</Filter>
@@ -600,6 +597,9 @@
     </ClInclude>
     <ClInclude Include="WorldSimulator\machinebuilder.h">
       <Filter>Header Files\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldSimulator\bankaccount.h">
+      <Filter>Header Files\Groups</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
