@@ -14,8 +14,8 @@
    <string>Building Value Simulator</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>Sources/MainIcon.png</normaloff>Sources/MainIcon.png</iconset>
+   <iconset resource="resource.qrc">
+    <normaloff>:/icons/Images/MainIcon.png</normaloff>:/icons/Images/MainIcon.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -135,6 +135,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

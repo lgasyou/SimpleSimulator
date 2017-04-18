@@ -195,255 +195,255 @@
     <ClCompile Include="GeneratedFiles\Release\moc_tablewidgetpushbutton.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\bank.cpp">
+    <ClCompile Include="Source\bank.cpp">
       <Filter>Source Files\Buildings\Instances</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\bankdialog.cpp">
-      <Filter>Source Files\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\baseagriculture.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\basebuilding.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\basecommerce.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\basefinance.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\baseindustry.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\baseresidence.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\basetransportation.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\buildingdetaildialog.cpp">
-      <Filter>Source Files\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\buildingfactory.cpp">
-      <Filter>Source Files\Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\buildinginfowidget.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\buildingmanager.cpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\buildingtablewidget.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\commandpushbutton.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\company.cpp">
+    <ClCompile Include="Source\bankaccount.cpp">
       <Filter>Source Files\Groups</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\companydetaildialog.cpp">
+    <ClCompile Include="Source\bankdialog.cpp">
       <Filter>Source Files\Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\companymanager.cpp">
-      <Filter>Source Files\Managers</Filter>
+    <ClCompile Include="Source\baseagriculture.cpp">
+      <Filter>Source Files\Buildings</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\factory.cpp">
-      <Filter>Source Files\Buildings\Instances</Filter>
+    <ClCompile Include="Source\basebuilding.cpp">
+      <Filter>Source Files\Buildings</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\farm.cpp">
-      <Filter>Source Files\Buildings\Instances</Filter>
+    <ClCompile Include="Source\basecommerce.cpp">
+      <Filter>Source Files\Buildings</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\gameconstants.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Source\basefinance.cpp">
+      <Filter>Source Files\Buildings</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\garage.cpp">
-      <Filter>Source Files\Buildings\Instances</Filter>
+    <ClCompile Include="Source\baseindustry.cpp">
+      <Filter>Source Files\Buildings</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\garagetablewidget.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
+    <ClCompile Include="Source\baseresidence.cpp">
+      <Filter>Source Files\Buildings</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\goods.cpp">
-      <Filter>Source Files\Objects</Filter>
+    <ClCompile Include="Source\basetransportation.cpp">
+      <Filter>Source Files\Buildings</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\goodscontainer.cpp">
-      <Filter>Source Files\Objects</Filter>
+    <ClCompile Include="Source\buildingdetaildialog.cpp">
+      <Filter>Source Files\Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\government.cpp">
-      <Filter>Source Files\Groups</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\graph.cpp">
+    <ClCompile Include="Source\buildingfactory.cpp">
       <Filter>Source Files\Utilities</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\helpdialog.cpp">
-      <Filter>Source Files\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\industrychainmanager.cpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\machine.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\machinemanager.cpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\machinetablewidget.cpp">
+    <ClCompile Include="Source\buildinginfowidget.cpp">
       <Filter>Source Files\GUIComponents</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\mainui.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\mainwindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\mapmanager.cpp">
+    <ClCompile Include="Source\buildingmanager.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\mine.cpp">
-      <Filter>Source Files\Buildings\Instances</Filter>
+    <ClCompile Include="Source\buildingtablewidget.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\person.cpp">
+    <ClCompile Include="Source\commandpushbutton.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\company.cpp">
       <Filter>Source Files\Groups</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\personmanager.cpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\pricemanager.cpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\route.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\selecttablewidget.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\setroutedialog.cpp">
+    <ClCompile Include="Source\companydetaildialog.cpp">
       <Filter>Source Files\Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\supermarket.cpp">
-      <Filter>Source Files\Buildings\Instances</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\tablewidgetpushbutton.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\timemanager.cpp">
+    <ClCompile Include="Source\companymanager.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\truck.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\uimanager.cpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\unusedland.cpp">
-      <Filter>Source Files\Buildings\Instances</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\vector2d.cpp">
-      <Filter>Source Files\Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\vihicle.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\villa.cpp">
-      <Filter>Source Files\Buildings\Instances</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\warehouse.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\warehousetablewidget.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="WorldSimulator\machinebuilder.cpp">
+    <ClCompile Include="Source\defaultmachinebuilder.cpp">
       <Filter>Source Files\Builders</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\defaultmachinebuilder.cpp">
-      <Filter>Source Files\Builders</Filter>
+    <ClCompile Include="Source\factory.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\bankaccount.cpp">
+    <ClCompile Include="Source\farm.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\gameconstants.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\garage.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\garagetablewidget.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\goods.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\goodscontainer.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\government.cpp">
       <Filter>Source Files\Groups</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\random.cpp">
+    <ClCompile Include="Source\graph.cpp">
       <Filter>Source Files\Utilities</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\legalperson.cpp">
+    <ClCompile Include="Source\helpdialog.cpp">
+      <Filter>Source Files\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\industrychainmanager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\legalperson.cpp">
       <Filter>Source Files\Groups</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\machine.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\machinebuilder.cpp">
+      <Filter>Source Files\Builders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\machinemanager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\machinetablewidget.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\mainui.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\mainwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\mapmanager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\mine.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\person.cpp">
+      <Filter>Source Files\Groups</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\personmanager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\pricemanager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\random.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\route.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\selecttablewidget.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\setroutedialog.cpp">
+      <Filter>Source Files\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\supermarket.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\tablewidgetpushbutton.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\timemanager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\truck.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\uimanager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\unusedland.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\vector2d.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\vihicle.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\villa.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\warehouse.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\warehousetablewidget.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="WorldSimulator\bankdialog.h">
+    <CustomBuild Include="Source\bankdialog.h">
       <Filter>Header Files\Dialogs</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\bankdialog.ui">
+    <CustomBuild Include="Source\bankdialog.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\buildingdetaildialog.h">
+    <CustomBuild Include="Source\buildingdetaildialog.h">
       <Filter>Header Files\Dialogs</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\buildingdetaildialog.ui">
+    <CustomBuild Include="Source\buildingdetaildialog.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\buildinginfowidget.h">
+    <CustomBuild Include="Source\buildinginfowidget.h">
       <Filter>Header Files\GUIComponents</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\buildinginfowidget.ui">
+    <CustomBuild Include="Source\buildinginfowidget.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\buildingtablewidget.h">
+    <CustomBuild Include="Source\buildingtablewidget.h">
       <Filter>Header Files\GUIComponents</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\commandpushbutton.h">
+    <CustomBuild Include="Source\commandpushbutton.h">
       <Filter>Header Files\GUIComponents</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\companydetaildialog.h">
+    <CustomBuild Include="Source\companydetaildialog.h">
       <Filter>Header Files\Dialogs</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\companydetaildialog.ui">
+    <CustomBuild Include="Source\companydetaildialog.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\garagetablewidget.h">
+    <CustomBuild Include="Source\garagetablewidget.h">
       <Filter>Header Files\GUIComponents</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\helpdialog.h">
+    <CustomBuild Include="Source\helpdialog.h">
       <Filter>Header Files\Dialogs</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\helpdialog.ui">
+    <CustomBuild Include="Source\helpdialog.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\machinetablewidget.h">
+    <CustomBuild Include="Source\machinetablewidget.h">
       <Filter>Header Files\GUIComponents</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\mainui.h">
+    <CustomBuild Include="Source\mainui.h">
       <Filter>Header Files\GUIComponents</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\mainui.ui">
+    <CustomBuild Include="Source\mainui.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\mainwindow.h">
+    <CustomBuild Include="Source\mainwindow.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\mainwindow.ui">
+    <CustomBuild Include="Source\mainwindow.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\resource.qrc">
+    <CustomBuild Include="Source\resource.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\selecttablewidget.h">
+    <CustomBuild Include="Source\selecttablewidget.h">
       <Filter>Header Files\GUIComponents</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\setroutedialog.h">
+    <CustomBuild Include="Source\setroutedialog.h">
       <Filter>Header Files\Dialogs</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\setroutedialog.ui">
+    <CustomBuild Include="Source\setroutedialog.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\tablewidgetpushbutton.h">
+    <CustomBuild Include="Source\tablewidgetpushbutton.h">
       <Filter>Header Files\GUIComponents</Filter>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\warehousetablewidget.h">
+    <CustomBuild Include="Source\warehousetablewidget.h">
       <Filter>Header Files\GUIComponents</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -472,137 +472,137 @@
     <ClInclude Include="GeneratedFiles\ui_companydetaildialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\bank.h">
+    <ClInclude Include="Source\bank.h">
       <Filter>Header Files\Buildings\Instances</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\baseagriculture.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\basebuilding.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\basecommerce.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\basefinance.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\baseindustry.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\baseresidence.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\basetransportation.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\buildingfactory.h">
-      <Filter>Header Files\Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\buildingmanager.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\company.h">
+    <ClInclude Include="Source\bankaccount.h">
       <Filter>Header Files\Groups</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\companymanager.h">
+    <ClInclude Include="Source\baseagriculture.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\basebuilding.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\basecommerce.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\basefinance.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\baseindustry.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\baseresidence.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\basetransportation.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\buildingfactory.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\buildingmanager.h">
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\factory.h">
+    <ClInclude Include="Source\company.h">
+      <Filter>Header Files\Groups</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\companymanager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\defaultmachinebuilder.h">
+      <Filter>Header Files\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\factory.h">
       <Filter>Header Files\Buildings\Instances</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\farm.h">
+    <ClInclude Include="Source\farm.h">
       <Filter>Header Files\Buildings\Instances</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\gameconstants.h">
+    <ClInclude Include="Source\gameconstants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\garage.h">
+    <ClInclude Include="Source\garage.h">
       <Filter>Header Files\Buildings\Instances</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\goods.h">
+    <ClInclude Include="Source\goods.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\goodscontainer.h">
+    <ClInclude Include="Source\goodscontainer.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\government.h">
+    <ClInclude Include="Source\government.h">
       <Filter>Header Files\Groups</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\graph.h">
+    <ClInclude Include="Source\graph.h">
       <Filter>Header Files\Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\ibuilding.h">
+    <ClInclude Include="Source\ibuilding.h">
       <Filter>Header Files\Buildings</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\industrychainmanager.h">
+    <ClInclude Include="Source\industrychainmanager.h">
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\machine.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\machinemanager.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\mapmanager.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\mine.h">
-      <Filter>Header Files\Buildings\Instances</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\person.h">
+    <ClInclude Include="Source\legalperson.h">
       <Filter>Header Files\Groups</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\personmanager.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\pricemanager.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\route.h">
+    <ClInclude Include="Source\machine.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\supermarket.h">
-      <Filter>Header Files\Buildings\Instances</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\timemanager.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\truck.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\uimanager.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\unusedland.h">
-      <Filter>Header Files\Buildings\Instances</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\vector2d.h">
-      <Filter>Header Files\Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\vihicle.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\villa.h">
-      <Filter>Header Files\Buildings\Instances</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\warehouse.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldSimulator\defaultmachinebuilder.h">
+    <ClInclude Include="Source\machinebuilder.h">
       <Filter>Header Files\Builders</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\machinebuilder.h">
-      <Filter>Header Files\Builders</Filter>
+    <ClInclude Include="Source\machinemanager.h">
+      <Filter>Header Files\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\bankaccount.h">
+    <ClInclude Include="Source\mapmanager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\mine.h">
+      <Filter>Header Files\Buildings\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\person.h">
       <Filter>Header Files\Groups</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\random.h">
+    <ClInclude Include="Source\personmanager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\pricemanager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\random.h">
       <Filter>Header Files\Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\legalperson.h">
-      <Filter>Header Files\Groups</Filter>
+    <ClInclude Include="Source\route.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\supermarket.h">
+      <Filter>Header Files\Buildings\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\timemanager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\truck.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\uimanager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\unusedland.h">
+      <Filter>Header Files\Buildings\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\vector2d.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\vihicle.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\villa.h">
+      <Filter>Header Files\Buildings\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\warehouse.h">
+      <Filter>Header Files\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

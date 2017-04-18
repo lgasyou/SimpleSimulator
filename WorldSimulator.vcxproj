@@ -144,29 +144,29 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="WorldSimulator\bank.cpp" />
-    <ClCompile Include="WorldSimulator\bankaccount.cpp" />
-    <ClCompile Include="WorldSimulator\bankdialog.cpp" />
-    <ClCompile Include="WorldSimulator\baseagriculture.cpp" />
-    <ClCompile Include="WorldSimulator\basebuilding.cpp" />
-    <ClCompile Include="WorldSimulator\basefinance.cpp" />
-    <ClCompile Include="WorldSimulator\basetransportation.cpp" />
-    <ClCompile Include="WorldSimulator\buildingdetaildialog.cpp" />
-    <ClCompile Include="WorldSimulator\buildingfactory.cpp" />
-    <ClCompile Include="WorldSimulator\buildingtablewidget.cpp" />
-    <ClCompile Include="WorldSimulator\buildinginfowidget.cpp" />
-    <ClCompile Include="WorldSimulator\buildingmanager.cpp" />
-    <ClCompile Include="WorldSimulator\basecommerce.cpp" />
-    <ClCompile Include="WorldSimulator\commandpushbutton.cpp" />
-    <ClCompile Include="WorldSimulator\company.cpp" />
-    <ClCompile Include="WorldSimulator\companydetaildialog.cpp" />
-    <ClCompile Include="WorldSimulator\companymanager.cpp" />
-    <ClCompile Include="WorldSimulator\defaultmachinebuilder.cpp" />
-    <ClCompile Include="WorldSimulator\factory.cpp" />
-    <ClCompile Include="WorldSimulator\farm.cpp" />
-    <ClCompile Include="WorldSimulator\gameconstants.cpp" />
-    <ClCompile Include="WorldSimulator\garage.cpp" />
-    <ClCompile Include="WorldSimulator\garagetablewidget.cpp" />
+    <ClCompile Include="Source\bank.cpp" />
+    <ClCompile Include="Source\bankaccount.cpp" />
+    <ClCompile Include="Source\bankdialog.cpp" />
+    <ClCompile Include="Source\baseagriculture.cpp" />
+    <ClCompile Include="Source\basebuilding.cpp" />
+    <ClCompile Include="Source\basefinance.cpp" />
+    <ClCompile Include="Source\basetransportation.cpp" />
+    <ClCompile Include="Source\buildingdetaildialog.cpp" />
+    <ClCompile Include="Source\buildingfactory.cpp" />
+    <ClCompile Include="Source\buildingtablewidget.cpp" />
+    <ClCompile Include="Source\buildinginfowidget.cpp" />
+    <ClCompile Include="Source\buildingmanager.cpp" />
+    <ClCompile Include="Source\basecommerce.cpp" />
+    <ClCompile Include="Source\commandpushbutton.cpp" />
+    <ClCompile Include="Source\company.cpp" />
+    <ClCompile Include="Source\companydetaildialog.cpp" />
+    <ClCompile Include="Source\companymanager.cpp" />
+    <ClCompile Include="Source\defaultmachinebuilder.cpp" />
+    <ClCompile Include="Source\factory.cpp" />
+    <ClCompile Include="Source\farm.cpp" />
+    <ClCompile Include="Source\gameconstants.cpp" />
+    <ClCompile Include="Source\garage.cpp" />
+    <ClCompile Include="Source\garagetablewidget.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_bankdialog.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -263,51 +263,51 @@
     <ClCompile Include="GeneratedFiles\Release\moc_warehousetablewidget.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\goods.cpp" />
-    <ClCompile Include="WorldSimulator\goodscontainer.cpp" />
-    <ClCompile Include="WorldSimulator\baseindustry.cpp" />
-    <ClCompile Include="WorldSimulator\government.cpp" />
-    <ClCompile Include="WorldSimulator\graph.cpp" />
-    <ClCompile Include="WorldSimulator\helpdialog.cpp" />
-    <ClCompile Include="WorldSimulator\industrychainmanager.cpp" />
-    <ClCompile Include="WorldSimulator\legalperson.cpp" />
-    <ClCompile Include="WorldSimulator\machine.cpp" />
-    <ClCompile Include="WorldSimulator\machinebuilder.cpp" />
-    <ClCompile Include="WorldSimulator\machinemanager.cpp" />
-    <ClCompile Include="WorldSimulator\machinetablewidget.cpp" />
-    <ClCompile Include="WorldSimulator\main.cpp" />
-    <ClCompile Include="WorldSimulator\mainwindow.cpp" />
-    <ClCompile Include="WorldSimulator\mapmanager.cpp" />
-    <ClCompile Include="WorldSimulator\mainui.cpp" />
-    <ClCompile Include="WorldSimulator\mine.cpp" />
-    <ClCompile Include="WorldSimulator\tablewidgetpushbutton.cpp" />
-    <ClCompile Include="WorldSimulator\person.cpp" />
-    <ClCompile Include="WorldSimulator\personmanager.cpp" />
-    <ClCompile Include="WorldSimulator\pricemanager.cpp" />
-    <ClCompile Include="WorldSimulator\route.cpp" />
-    <ClCompile Include="WorldSimulator\baseresidence.cpp" />
-    <ClCompile Include="WorldSimulator\selecttablewidget.cpp" />
-    <ClCompile Include="WorldSimulator\setroutedialog.cpp" />
-    <ClCompile Include="WorldSimulator\supermarket.cpp" />
-    <ClCompile Include="WorldSimulator\timemanager.cpp" />
-    <ClCompile Include="WorldSimulator\truck.cpp" />
-    <ClCompile Include="WorldSimulator\uimanager.cpp" />
-    <ClCompile Include="WorldSimulator\unusedland.cpp" />
-    <ClCompile Include="WorldSimulator\random.cpp" />
-    <ClCompile Include="WorldSimulator\vector2d.cpp" />
-    <ClCompile Include="WorldSimulator\vihicle.cpp" />
-    <ClCompile Include="WorldSimulator\villa.cpp" />
-    <ClCompile Include="WorldSimulator\warehouse.cpp" />
-    <ClCompile Include="WorldSimulator\warehousetablewidget.cpp" />
+    <ClCompile Include="Source\goods.cpp" />
+    <ClCompile Include="Source\goodscontainer.cpp" />
+    <ClCompile Include="Source\baseindustry.cpp" />
+    <ClCompile Include="Source\government.cpp" />
+    <ClCompile Include="Source\graph.cpp" />
+    <ClCompile Include="Source\helpdialog.cpp" />
+    <ClCompile Include="Source\industrychainmanager.cpp" />
+    <ClCompile Include="Source\legalperson.cpp" />
+    <ClCompile Include="Source\machine.cpp" />
+    <ClCompile Include="Source\machinebuilder.cpp" />
+    <ClCompile Include="Source\machinemanager.cpp" />
+    <ClCompile Include="Source\machinetablewidget.cpp" />
+    <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\mainwindow.cpp" />
+    <ClCompile Include="Source\mapmanager.cpp" />
+    <ClCompile Include="Source\mainui.cpp" />
+    <ClCompile Include="Source\mine.cpp" />
+    <ClCompile Include="Source\tablewidgetpushbutton.cpp" />
+    <ClCompile Include="Source\person.cpp" />
+    <ClCompile Include="Source\personmanager.cpp" />
+    <ClCompile Include="Source\pricemanager.cpp" />
+    <ClCompile Include="Source\route.cpp" />
+    <ClCompile Include="Source\baseresidence.cpp" />
+    <ClCompile Include="Source\selecttablewidget.cpp" />
+    <ClCompile Include="Source\setroutedialog.cpp" />
+    <ClCompile Include="Source\supermarket.cpp" />
+    <ClCompile Include="Source\timemanager.cpp" />
+    <ClCompile Include="Source\truck.cpp" />
+    <ClCompile Include="Source\uimanager.cpp" />
+    <ClCompile Include="Source\unusedland.cpp" />
+    <ClCompile Include="Source\random.cpp" />
+    <ClCompile Include="Source\vector2d.cpp" />
+    <ClCompile Include="Source\vihicle.cpp" />
+    <ClCompile Include="Source\villa.cpp" />
+    <ClCompile Include="Source\warehouse.cpp" />
+    <ClCompile Include="Source\warehousetablewidget.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="WorldSimulator\bank.h" />
-    <ClInclude Include="WorldSimulator\bankaccount.h" />
-    <ClInclude Include="WorldSimulator\baseagriculture.h" />
-    <ClInclude Include="WorldSimulator\basefinance.h" />
-    <ClInclude Include="WorldSimulator\basetransportation.h" />
-    <ClInclude Include="WorldSimulator\buildingfactory.h" />
-    <CustomBuild Include="WorldSimulator\buildinginfowidget.h">
+    <ClInclude Include="Source\bank.h" />
+    <ClInclude Include="Source\bankaccount.h" />
+    <ClInclude Include="Source\baseagriculture.h" />
+    <ClInclude Include="Source\basefinance.h" />
+    <ClInclude Include="Source\basetransportation.h" />
+    <ClInclude Include="Source\buildingfactory.h" />
+    <CustomBuild Include="Source\buildinginfowidget.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing buildinginfowidget.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -317,7 +317,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\commandpushbutton.h">
+    <CustomBuild Include="Source\commandpushbutton.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing commandpushbutton.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -327,12 +327,12 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
-    <ClInclude Include="WorldSimulator\ibuilding.h" />
-    <ClInclude Include="WorldSimulator\defaultmachinebuilder.h" />
+    <ClInclude Include="Source\ibuilding.h" />
+    <ClInclude Include="Source\defaultmachinebuilder.h" />
     <ClInclude Include="GeneratedFiles\ui_bankdialog.h" />
     <ClInclude Include="GeneratedFiles\ui_buildingdetaildialog.h" />
     <ClInclude Include="GeneratedFiles\ui_companydetaildialog.h" />
-    <CustomBuild Include="WorldSimulator\machinetablewidget.h">
+    <CustomBuild Include="Source\machinetablewidget.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing machinetablewidget.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -342,26 +342,26 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
-    <ClInclude Include="WorldSimulator\legalperson.h" />
-    <ClInclude Include="WorldSimulator\machinebuilder.h" />
-    <ClInclude Include="WorldSimulator\machinemanager.h" />
-    <ClInclude Include="WorldSimulator\person.h" />
-    <ClInclude Include="WorldSimulator\personmanager.h" />
-    <ClInclude Include="WorldSimulator\supermarket.h" />
-    <ClInclude Include="WorldSimulator\unusedland.h" />
-    <ClInclude Include="WorldSimulator\companymanager.h" />
-    <ClInclude Include="WorldSimulator\farm.h" />
+    <ClInclude Include="Source\legalperson.h" />
+    <ClInclude Include="Source\machinebuilder.h" />
+    <ClInclude Include="Source\machinemanager.h" />
+    <ClInclude Include="Source\person.h" />
+    <ClInclude Include="Source\personmanager.h" />
+    <ClInclude Include="Source\supermarket.h" />
+    <ClInclude Include="Source\unusedland.h" />
+    <ClInclude Include="Source\companymanager.h" />
+    <ClInclude Include="Source\farm.h" />
     <ClInclude Include="GeneratedFiles\ui_buildinginfowidget.h" />
     <ClInclude Include="GeneratedFiles\ui_helpdialog.h" />
     <ClInclude Include="GeneratedFiles\ui_mainui.h" />
     <ClInclude Include="GeneratedFiles\ui_mainwindow.h" />
     <ClInclude Include="GeneratedFiles\ui_setroutedialog.h" />
-    <ClInclude Include="WorldSimulator\goods.h" />
-    <ClInclude Include="WorldSimulator\goodscontainer.h" />
-    <ClInclude Include="WorldSimulator\baseindustry.h" />
-    <ClInclude Include="WorldSimulator\government.h" />
-    <ClInclude Include="WorldSimulator\graph.h" />
-    <CustomBuild Include="WorldSimulator\helpdialog.h">
+    <ClInclude Include="Source\goods.h" />
+    <ClInclude Include="Source\goodscontainer.h" />
+    <ClInclude Include="Source\baseindustry.h" />
+    <ClInclude Include="Source\government.h" />
+    <ClInclude Include="Source\graph.h" />
+    <CustomBuild Include="Source\helpdialog.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing helpdialog.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -371,10 +371,10 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
-    <ClInclude Include="WorldSimulator\industrychainmanager.h" />
-    <ClInclude Include="WorldSimulator\machine.h" />
-    <ClInclude Include="WorldSimulator\mapmanager.h" />
-    <CustomBuild Include="WorldSimulator\mainui.h">
+    <ClInclude Include="Source\industrychainmanager.h" />
+    <ClInclude Include="Source\machine.h" />
+    <ClInclude Include="Source\mapmanager.h" />
+    <CustomBuild Include="Source\mainui.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing mainui.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -384,12 +384,12 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
-    <ClInclude Include="WorldSimulator\mine.h" />
-    <ClInclude Include="WorldSimulator\factory.h" />
-    <ClInclude Include="WorldSimulator\pricemanager.h" />
-    <ClInclude Include="WorldSimulator\route.h" />
-    <ClInclude Include="WorldSimulator\baseresidence.h" />
-    <CustomBuild Include="WorldSimulator\setroutedialog.h">
+    <ClInclude Include="Source\mine.h" />
+    <ClInclude Include="Source\factory.h" />
+    <ClInclude Include="Source\pricemanager.h" />
+    <ClInclude Include="Source\route.h" />
+    <ClInclude Include="Source\baseresidence.h" />
+    <CustomBuild Include="Source\setroutedialog.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing setroutedialog.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -399,7 +399,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\selecttablewidget.h">
+    <CustomBuild Include="Source\selecttablewidget.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing selecttablewidget.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -409,15 +409,15 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
-    <ClInclude Include="WorldSimulator\timemanager.h" />
-    <ClInclude Include="WorldSimulator\truck.h" />
-    <ClInclude Include="WorldSimulator\uimanager.h" />
-    <ClInclude Include="WorldSimulator\random.h" />
-    <ClInclude Include="WorldSimulator\vector2d.h" />
-    <ClInclude Include="WorldSimulator\vihicle.h" />
-    <ClInclude Include="WorldSimulator\villa.h" />
-    <ClInclude Include="WorldSimulator\warehouse.h" />
-    <CustomBuild Include="WorldSimulator\warehousetablewidget.h">
+    <ClInclude Include="Source\timemanager.h" />
+    <ClInclude Include="Source\truck.h" />
+    <ClInclude Include="Source\uimanager.h" />
+    <ClInclude Include="Source\random.h" />
+    <ClInclude Include="Source\vector2d.h" />
+    <ClInclude Include="Source\vihicle.h" />
+    <ClInclude Include="Source\villa.h" />
+    <ClInclude Include="Source\warehouse.h" />
+    <CustomBuild Include="Source\warehousetablewidget.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing warehousetablewidget.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -427,7 +427,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\tablewidgetpushbutton.h">
+    <CustomBuild Include="Source\tablewidgetpushbutton.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing tablewidgetpushbutton.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\debug" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
@@ -437,7 +437,7 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\mainwindow.h">
+    <CustomBuild Include="Source\mainwindow.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing mainwindow.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -447,7 +447,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\bankdialog.h">
+    <CustomBuild Include="Source\bankdialog.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing bankdialog.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -457,8 +457,8 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
-    <ClInclude Include="WorldSimulator\basebuilding.h" />
-    <CustomBuild Include="WorldSimulator\buildingdetaildialog.h">
+    <ClInclude Include="Source\basebuilding.h" />
+    <CustomBuild Include="Source\buildingdetaildialog.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing buildingdetaildialog.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -468,7 +468,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\buildingtablewidget.h">
+    <CustomBuild Include="Source\buildingtablewidget.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing buildingtablewidget.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -478,10 +478,10 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
-    <ClInclude Include="WorldSimulator\buildingmanager.h" />
-    <ClInclude Include="WorldSimulator\basecommerce.h" />
-    <ClInclude Include="WorldSimulator\company.h" />
-    <CustomBuild Include="WorldSimulator\companydetaildialog.h">
+    <ClInclude Include="Source\buildingmanager.h" />
+    <ClInclude Include="Source\basecommerce.h" />
+    <ClInclude Include="Source\company.h" />
+    <CustomBuild Include="Source\companydetaildialog.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing companydetaildialog.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -491,9 +491,9 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
-    <ClInclude Include="WorldSimulator\gameconstants.h" />
-    <ClInclude Include="WorldSimulator\garage.h" />
-    <CustomBuild Include="WorldSimulator\garagetablewidget.h">
+    <ClInclude Include="Source\gameconstants.h" />
+    <ClInclude Include="Source\garage.h" />
+    <CustomBuild Include="Source\garagetablewidget.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing garagetablewidget.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -505,7 +505,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="WorldSimulator\bankdialog.ui">
+    <CustomBuild Include="Source\bankdialog.ui">
       <FileType>Document</FileType>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
@@ -516,7 +516,7 @@
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\buildingdetaildialog.ui">
+    <CustomBuild Include="Source\buildingdetaildialog.ui">
       <FileType>Document</FileType>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
@@ -527,7 +527,7 @@
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\companydetaildialog.ui">
+    <CustomBuild Include="Source\companydetaildialog.ui">
       <FileType>Document</FileType>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
@@ -538,7 +538,7 @@
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
     </CustomBuild>
-    <CustomBuild Include="WorldSimulator\mainwindow.ui">
+    <CustomBuild Include="Source\mainwindow.ui">
       <FileType>Document</FileType>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
@@ -551,7 +551,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="WorldSimulator\setroutedialog.ui">
+    <CustomBuild Include="Source\setroutedialog.ui">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
@@ -563,7 +563,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="WorldSimulator\mainui.ui">
+    <CustomBuild Include="Source\mainui.ui">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
@@ -575,7 +575,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="WorldSimulator\resource.qrc">
+    <CustomBuild Include="Source\resource.qrc">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(FullPath);%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Rcc%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\qrc_%(Filename).cpp;%(Outputs)</Outputs>
@@ -587,7 +587,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="WorldSimulator\buildinginfowidget.ui">
+    <CustomBuild Include="Source\buildinginfowidget.ui">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
@@ -599,7 +599,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="WorldSimulator\helpdialog.ui">
+    <CustomBuild Include="Source\helpdialog.ui">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>

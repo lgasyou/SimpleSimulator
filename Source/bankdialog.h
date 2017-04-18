@@ -20,7 +20,7 @@
 #ifndef BANKDIALOG_H
 #define BANKDIALOG_H
 
-#include "QDialog"
+#include <QDialog>
 
 class Company;
 
