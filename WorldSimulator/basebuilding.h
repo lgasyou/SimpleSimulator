@@ -24,7 +24,7 @@
 #include "vector2d.h"
 #include <QString>
 
-class Company;
+class LegalPerson;
 
 //	The base of building classes.
 //	This class cannot be instantiated.
@@ -46,8 +46,8 @@ public:
 	void setName(const QString &name) { this->name_ = name; }
 	const QString &name() const { return name_; }
 
-	void setOwner(Company *const owner) { this->owner_ = owner; }
-	Company *owner() const { return owner_; }
+	void setOwner(LegalPerson *const owner) { this->owner_ = owner; }
+	LegalPerson *owner() const { return owner_; }
 
 	void setPosition(const Vector2D pos) { this->position_ = pos; }
 	const Vector2D &position() const { return position_; }
@@ -72,7 +72,7 @@ private:
 
 	QString name_;
 
-    Company *owner_ = nullptr;
+	LegalPerson *owner_ = nullptr;
 
 	Vector2D position_;
 

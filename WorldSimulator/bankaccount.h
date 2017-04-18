@@ -21,7 +21,7 @@
 #define BANKCLIENT_H
 
 class Bank;
-class Company;
+class LegalPerson;
 
 class BankAccount {
 public:
@@ -39,8 +39,8 @@ public:
 
 	void setBank(Bank *bank) { this->bank_ = bank; }
 
-	void setCompany(Company *company) { this->company_ = company; }
-	Company *company() const { return company_; }
+	void setClient(LegalPerson *client) { this->client_ = client; }
+	LegalPerson *client() const { return client_; }
 
 private:
 	double debt_ = 0.0;
@@ -49,6 +49,6 @@ private:
 
 	Bank *bank_ = nullptr;
 
-	Company *company_ = nullptr;
+	LegalPerson *client_ = nullptr;
 };
 #endif // !BANKCLIENT_H

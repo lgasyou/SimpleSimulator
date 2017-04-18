@@ -21,7 +21,7 @@
 #include "basebuilding.h"
 
 #include "vector2d.h"
-#include "valuegenerator.h"
+#include "random.h"
 
 MapManager::MapManager() { }
 
@@ -43,10 +43,10 @@ Vector2D MapManager::allocate() {
 	int y = 0;
 	do {
 		do {
-			x = ValueGenerator::instance().uniformDistribution(0, 15);
+			x = Random::instance().uniformDistribution(0, 15);
 		} while (x < 0 || x > 15);
 		do {
-			y = ValueGenerator::instance().uniformDistribution(0, 15);
+			y = Random::instance().uniformDistribution(0, 15);
 		} while (y < 0 || y > 15);
 	} while (occupiedMap_[x][y]);
 	occupiedMap_[x][y] = true;

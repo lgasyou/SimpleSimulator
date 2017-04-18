@@ -20,7 +20,9 @@
 #include "person.h"
 
 Person::Person(const QString &name) :
-	name_(name)
+	LegalPerson(name)
 { }
 
 Person::~Person() { }
+
+void Person::update() { }

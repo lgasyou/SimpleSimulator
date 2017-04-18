@@ -24,7 +24,7 @@
 #include "bankaccount.h"
 #include <map>
 
-class Company;
+class LegalPerson;
 
 class QString;
 
@@ -36,19 +36,19 @@ public:
 
 	void init();
 
-	void closeAnAccount(Company *client);
+	void closeAnAccount(LegalPerson *client);
 
-	void deposit(Company *client, double amount);
+	void deposit(LegalPerson *client, double amount);
 
-	void loan(Company *client, double amount);
+	void loan(LegalPerson *client, double amount);
 
-	void openAnAccount(Company *client);
+	void openAnAccount(LegalPerson *client);
 
-	void repay(Company *client, double amount);
+	void repay(LegalPerson *client, double amount);
 
-	const BankAccount &accountOf(Company *client) const;
+	const BankAccount &accountOf(LegalPerson *client) const;
 
-	void withdraw(Company *client, double amount);
+	void withdraw(LegalPerson *client, double amount);
 
 	void update() override;
 
@@ -59,7 +59,7 @@ public:
 	double loanInterestRate() const { return loanInterestRate_; }
 
 private:
-	std::map<Company *, BankAccount> clientMap_;
+	std::map<LegalPerson *, BankAccount> clientMap_;
 
 	double depositInterestRate_;
 

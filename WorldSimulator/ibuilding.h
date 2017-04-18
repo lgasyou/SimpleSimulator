@@ -21,11 +21,8 @@
 #define IBUILDING_H
 
 class BaseBuilding;
-class Company;
-class QString;
-class Vector2D;
 
-// The interface of BaseBuilding.
+// Interface of BaseBuilding.
 class IBuilding {
 public:
 	// Copies data from the other building. Only the basic part of BaseBuilding is copiesd.

@@ -42,7 +42,7 @@ public:
 
 	void init();
 
-	// Allocates and returns a coordinate with ValueGenerator.
+	// Allocates and returns a coordinate with Random.
 	// TODO:
 	// It still has some performance issues. It'll generate many 
 	// useless data if the map is almost full.

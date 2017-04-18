@@ -17,26 +17,23 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef VALUEGENERATOR_H
-#define VALUEGENERATOR_H
+#include "legalperson.h"
 
-#include <random>
+LegalPerson::LegalPerson(const QString &name) :
+	name_(name)
+{ }
 
-class ValueGenerator {
-public:
-	static ValueGenerator &instance();
+LegalPerson::~LegalPerson() { }
 
-    int uniformDistribution(int lowerBound, int upperBound);
+bool LegalPerson::purchase(double cost) {
+	if (cost > cash_)
+		return false;
 
-    double normalDistribution(double mu, double sigma);
+	cash_ -= cost;
+	return true;
+}
 
-private:
-	ValueGenerator() { }
-
-	~ValueGenerator() { }
-
-private:
-    static std::default_random_engine generator_;
-};
-
-#endif // VALUEGENERATOR_H
+bool LegalPerson::sell(double value) {
+	cash_ += value;
+	return true;
+}

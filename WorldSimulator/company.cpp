@@ -23,7 +23,7 @@
 #include "government.h"
 
 Company::Company(const QString &name) :
-    name_(name)
+    LegalPerson(name)
 { }
 
 Company::~Company() { }
@@ -33,19 +33,11 @@ bool Company::phrchase(BaseBuilding *building) {
     if (buildingValue > this->cash_)
         return false;
 
-	Company *seller = building->owner();
+	LegalPerson *seller = building->owner();
 	seller->setCash(buildingValue + seller->cash());
     cash_ -= buildingValue;
     building->setOwner(this);
     return true;
-}
-
-bool Company::purchase(double cost) {
-	if (cost > cash_)
-		return false;
-
-	cash_ -= cost;
-	return true;
 }
 
 bool Company::sell(BaseBuilding *building) {

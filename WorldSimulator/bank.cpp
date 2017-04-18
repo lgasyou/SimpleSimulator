@@ -33,7 +33,7 @@ void Bank::init() {
 	loanInterestRate_ = 0.008;
 }
 
-void Bank::closeAnAccount(Company *client) {
+void Bank::closeAnAccount(LegalPerson *client) {
 	const BankAccount &bankAccount = clientMap_[client];
 	double finalCash = client->cash() + bankAccount.deposit() - bankAccount.debt();
 	if (finalCash >= 0) {
@@ -42,7 +42,7 @@ void Bank::closeAnAccount(Company *client) {
 	}
 }
 
-void Bank::deposit(Company *client, double amount) {
+void Bank::deposit(LegalPerson *client, double amount) {
 	BankAccount &bankAccount = clientMap_[client];
 	double finalCash = client->cash() - amount;
 	double finalDeposit = bankAccount.deposit() + amount;
@@ -50,7 +50,7 @@ void Bank::deposit(Company *client, double amount) {
 	client->setCash(finalCash);
 }
 
-void Bank::loan(Company *client, double amount) {
+void Bank::loan(LegalPerson *client, double amount) {
 	BankAccount &bankAccount = clientMap_[client];
 	double finalCash = client->cash() + amount;
 	double finalDebt = bankAccount.debt() + amount;
@@ -58,11 +58,11 @@ void Bank::loan(Company *client, double amount) {
 	client->setCash(finalCash);
 }
 
-void Bank::openAnAccount(Company *client) {
+void Bank::openAnAccount(LegalPerson *client) {
 	clientMap_[client].setBank(this);
 }
 
-void Bank::repay(Company *client, double amount) {
+void Bank::repay(LegalPerson *client, double amount) {
 	BankAccount &bankAccount = clientMap_[client];
 	double finalCash = client->cash() - amount;
 	double finalDebt = bankAccount.debt() - amount;
@@ -70,11 +70,11 @@ void Bank::repay(Company *client, double amount) {
 	client->setCash(finalCash);
 }
 
-const BankAccount &Bank::accountOf(Company *client) const {
+const BankAccount &Bank::accountOf(LegalPerson *client) const {
 	return clientMap_.find(client)->second;
 }
 
-void Bank::withdraw(Company *client, double amount) {
+void Bank::withdraw(LegalPerson *client, double amount) {
 	BankAccount &bankAccount = clientMap_[client];
 	double finalCash = client->cash() + amount;
 	double finalDeposit = bankAccount.deposit() - amount;

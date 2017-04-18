@@ -20,24 +20,15 @@
 #ifndef PERSON_H
 #define PERSON_H
 
-#include <QString>
+#include "legalperson.h"
 
-class Person {
+class Person : public LegalPerson {
 public:
-	Person(const QString &name = "Hello World");
+	Person(const QString &name = "This is a nameless person.");
 
 	~Person();
 
-	void setCash(const double cash) { this->cash_ = cash; }
-	double cash() const { return cash_; }
-
-	void setName(const QString &name) { this->name_ = name; }
-	const QString &name() const { return name_; }
-
-private:
-	double cash_;
-
-	QString name_;
+	void update() override;
 };
 
 #endif // !PERSON_H

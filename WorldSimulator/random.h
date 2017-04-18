@@ -17,4 +17,26 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "ibuilding.h"
+#ifndef RANDOM_H
+#define RANDOM_H
+
+#include <random>
+
+class Random {
+public:
+	static Random &instance();
+
+    int uniformDistribution(int lowerBound, int upperBound);
+
+    double normalDistribution(double mu, double sigma);
+
+private:
+	Random() { }
+
+	~Random() { }
+
+private:
+    static std::default_random_engine generator_;
+};
+
+#endif // RANDOM_H

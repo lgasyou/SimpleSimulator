@@ -42,17 +42,13 @@ void Garage::init() {
 void Garage::addNewVihicle(const QString &type) {
 	if (type == "Truck")
 		vihicleList_.push_back(new Truck);
-	++vihicleCount_;
-	++freeVihicleCount_;
 }
 
 void Garage::removeVihicle(Truck *truck) {
-	if (truck->occupied())
+	if (truck->isWorking())
 		transitingTrucks_.remove(truck);
 	vihicleList_.erase(std::find(vihicleList_.begin(), vihicleList_.end(), truck));
 	delete truck;
-	--vihicleCount_;
-	--freeVihicleCount_;
 }
 
 void Garage::sendVihicle(Route *route, int id) {
@@ -63,39 +59,26 @@ void Garage::sendVihicle(Route *route, int id) {
 	truck->setRoute(route);
 	truck->load();
 	transitingTrucks_.push_back(truck);
-	--freeVihicleCount_;
 }
 
 void Garage::stopVihicle(Truck *truck) {
 	transitingTrucks_.remove(truck);
-	truck->setOccupied(false);
-	++freeVihicleCount_;
+	truck->goBack();
 }
 
 void Garage::update() {
 	for (auto iter = transitingTrucks_.begin(); iter != transitingTrucks_.end(); ++iter) {
 		auto truck = *iter;
-		truck->setRemainTime(truck->remainTime() - 1.0);
-		double remainTime = truck->remainTime();
-		if (truck->loaded() && (remainTime <= truck->totalTime() / 2))
-			truck->unload();
-		if (remainTime <= 0.0) {
-			truck->setOccupied(false);
-			truck->setRemainTime(0.0);
-			if (truck->route()->repeated) {
-				truck->load();
-			} else {
-				transitingTrucks_.erase(iter);
-				++freeVihicleCount_;
-			}
+		truck->work();
+		if (!truck->isWorking()) {
+			transitingTrucks_.erase(iter);
 		}
-
 	}
 }
 
 Truck *Garage::selectFreeTruck() {
 	for (auto truck : vihicleList_)
-		if (!truck->occupied())
+		if (!truck->isWorking())
 			return truck;
 	return nullptr;
 }

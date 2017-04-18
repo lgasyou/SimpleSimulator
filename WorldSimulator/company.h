@@ -20,11 +20,11 @@
 #ifndef COMPANY_H
 #define COMPANY_H
 
-#include <QString>
+#include "legalperson.h"
 
 class BaseBuilding;
 
-class Company {
+class Company : public LegalPerson {
 public:
     Company(const QString &name = "Xenon Inc.");
 
@@ -35,36 +35,12 @@ public:
 	// Deducts company's cash.
     bool phrchase(BaseBuilding *building);
 
-	bool purchase(double cost);
-
 	// Changes building's owner as government's pointer.
 	// Adds company's cash.
     bool sell(BaseBuilding *building);
 
-    void update();
+    void update() override;
 
-    void setCash(const double cash) { this->cash_ = cash; }
-    double cash() const { return cash_; }
-
-    void setLiability(const double liability) { this->liability_ = liability; }
-    double liability() const { return liability_; }
-
-    void setName(const QString &name) { this->name_ = name; }
-    const QString &name() const { return name_; }
-
-	void setTotalValue(const double totalValue) { this->totalValue_ = totalValue; }
-	double totalValue() const { return totalValue_; }
-
-protected:
-    double cash_ = 1000.0;
-
-    double liability_ = 0.0;
-
-    QString name_;
-
-	// Records the total value of company,
-	// includes the value of properties.
-    double totalValue_ = 1000.0;
 };
 
 #endif // COMPANY_H

@@ -21,8 +21,7 @@
 #include "gameconstants.h"
 
 Government::Government() :
-	Company("Government")
-{
+	LegalPerson("Government") {
 	update();
 }
 

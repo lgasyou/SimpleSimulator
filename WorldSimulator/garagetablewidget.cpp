@@ -62,7 +62,7 @@ void GarageTableWidget::updateEachRow(int index, Truck *truck) {
 	const QString &curVolume = toString(truck->freightHouse()->curVolume());
 	const QString &maxVolume = toString(truck->freightHouse()->maxVolume());
 	setItem(index, 1, new QTableWidgetItem(curVolume + " / " + maxVolume));
-	if (truck->occupied()) {
+	if (truck->isWorking()) {
 		const QString &dest = truck->route()->dest->name();
 		const QString &goods = truck->route()->goods.name;
 		const QString &volume = toString(truck->route()->goods.volume);
@@ -72,7 +72,7 @@ void GarageTableWidget::updateEachRow(int index, Truck *truck) {
 		setItem(index, 4, new QTableWidgetItem(remainTime));
 	}
 
-	const QString &text = truck->occupied() ? tr("Stop") : tr("Route");
+	const QString &text = truck->isWorking() ? tr("Stop") : tr("Route");
 	TableWidgetPushButton *routeBtn = new TableWidgetPushButton(text);
 	routeBtn->setIndex(index);
 	setCellWidget(index, 5, routeBtn);

@@ -19,7 +19,7 @@
 
 #include "basebuilding.h"
 
-#include "valuegenerator.h"
+#include "random.h"
 #include "gameconstants.h"
 
 #include <QString>
@@ -43,7 +43,7 @@ void BaseBuilding::copyFrom(const BaseBuilding &rhs) {
 
 void BaseBuilding::changeBaseValue() {
 	double sigma = value_ * 0.1 / 3;
-	deltaValue_ = ValueGenerator::instance().normalDistribution(0, sigma);
+	deltaValue_ = Random::instance().normalDistribution(0, sigma);
 	value_ += deltaValue_;
 }
 
@@ -52,7 +52,7 @@ void BaseBuilding::initBasicValue() {
 	const double sigma = GameConstants::sigmaOfdefaultBaseValueOfBuilding;
 	double value = 0.0;
 	do {
-		value = ValueGenerator::instance().normalDistribution(basicValue, sigma);
+		value = Random::instance().normalDistribution(basicValue, sigma);
 	} while (value <= GameConstants::minBaseValueOfBuilding);
 	this->value_ = value;
 }

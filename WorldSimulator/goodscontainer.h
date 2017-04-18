@@ -49,6 +49,8 @@ public:
 
 	const QList<Goods *> &container() const { return container_; }
 
+	bool isEmpty() const { return container_.isEmpty(); }
+
 	double curVolume() const { return curVolume_; }
 
 	double freeVolume() const { return maxVolume_ - curVolume_; }

@@ -153,7 +153,6 @@
     <ClCompile Include="WorldSimulator\basetransportation.cpp" />
     <ClCompile Include="WorldSimulator\buildingdetaildialog.cpp" />
     <ClCompile Include="WorldSimulator\buildingfactory.cpp" />
-    <ClCompile Include="WorldSimulator\ibuilding.cpp" />
     <ClCompile Include="WorldSimulator\buildingtablewidget.cpp" />
     <ClCompile Include="WorldSimulator\buildinginfowidget.cpp" />
     <ClCompile Include="WorldSimulator\buildingmanager.cpp" />
@@ -271,6 +270,7 @@
     <ClCompile Include="WorldSimulator\graph.cpp" />
     <ClCompile Include="WorldSimulator\helpdialog.cpp" />
     <ClCompile Include="WorldSimulator\industrychainmanager.cpp" />
+    <ClCompile Include="WorldSimulator\legalperson.cpp" />
     <ClCompile Include="WorldSimulator\machine.cpp" />
     <ClCompile Include="WorldSimulator\machinebuilder.cpp" />
     <ClCompile Include="WorldSimulator\machinemanager.cpp" />
@@ -293,7 +293,7 @@
     <ClCompile Include="WorldSimulator\truck.cpp" />
     <ClCompile Include="WorldSimulator\uimanager.cpp" />
     <ClCompile Include="WorldSimulator\unusedland.cpp" />
-    <ClCompile Include="WorldSimulator\valuegenerator.cpp" />
+    <ClCompile Include="WorldSimulator\random.cpp" />
     <ClCompile Include="WorldSimulator\vector2d.cpp" />
     <ClCompile Include="WorldSimulator\vihicle.cpp" />
     <ClCompile Include="WorldSimulator\villa.cpp" />
@@ -342,6 +342,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
+    <ClInclude Include="WorldSimulator\legalperson.h" />
     <ClInclude Include="WorldSimulator\machinebuilder.h" />
     <ClInclude Include="WorldSimulator\machinemanager.h" />
     <ClInclude Include="WorldSimulator\person.h" />
@@ -411,7 +412,7 @@
     <ClInclude Include="WorldSimulator\timemanager.h" />
     <ClInclude Include="WorldSimulator\truck.h" />
     <ClInclude Include="WorldSimulator\uimanager.h" />
-    <ClInclude Include="WorldSimulator\valuegenerator.h" />
+    <ClInclude Include="WorldSimulator\random.h" />
     <ClInclude Include="WorldSimulator\vector2d.h" />
     <ClInclude Include="WorldSimulator\vihicle.h" />
     <ClInclude Include="WorldSimulator\villa.h" />
@@ -608,6 +609,11 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
     </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WorldSimulator.pro.user">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

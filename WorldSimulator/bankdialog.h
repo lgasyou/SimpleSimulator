@@ -20,7 +20,7 @@
 #ifndef BANKDIALOG_H
 #define BANKDIALOG_H
 
-#include <QDialog>
+#include "QDialog"
 
 class Company;
 
@@ -35,6 +35,7 @@ class BankDialog : public QDialog {
 
 public:
     explicit BankDialog(QWidget *parent = nullptr);
+
     ~BankDialog();
 
     void updateDisplay();

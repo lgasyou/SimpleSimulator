@@ -28,6 +28,12 @@ class BaseIndustry;
 
 class Truck : public Vihicle {
 public:
+	enum class State : char { 
+		Going, 
+		Backing,
+		Stoped
+	};
+
 	Truck();
 
 	~Truck();
@@ -42,44 +48,52 @@ public:
 	// Sets loaded_ as false
 	void unload();
 
+	void work();
+
+	// Stops jobs and go back to garage.
+	void goBack();
+
+	State truckState() const { return truckState_; }
+
+	bool isWorking() const;
+
 	void setRoute(Route *route);
 	Route *const route() const { return route_; }
 
-	void setLoaded(bool loaded) { this->loaded_ = loaded; }
 	bool loaded() const { return loaded_; }
 
-	void setOccupied(bool occupied) { this->occupied_ = occupied; }
-	bool occupied() const { return occupied_; }
-
-	void setRemainTime(double remainTime) { this->remainTime_ = remainTime; }
 	double remainTime() const { return remainTime_; }
+
+	double halfwayTime() const { return halfwayTime_; }
 
 	double totalTime() const { return totalTime_; }
 
-	GoodsContainer *freightHouse() const;
+	GoodsContainer *freightHouse() const { return freightHouse_; }
 
 private:
+	State truckState_ = State::Stoped;
+
 	Route *route_ = nullptr;
 
-	GoodsContainer *freightHouse_;
+	GoodsContainer *freightHouse_ = nullptr;
 
 	bool loaded_ = false;
 
-	bool occupied_ = false;
-
 	double remainTime_ = 0.0;
+
+	double halfwayTime_ = 0.0;
 
 	double totalTime_ = 0.0;
 };
+
+inline bool Truck::isWorking() const {
+	return truckState() != State::Stoped;
+}
 
 inline void Truck::setRoute(Route *route) {
 	if (this->route_ != route && this->route_)
 		delete route_;
 	this->route_ = route;
-}
-
-inline GoodsContainer *Truck::freightHouse() const {
-	return freightHouse_;
 }
 
 #endif // !TRUCK_H

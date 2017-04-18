@@ -30,37 +30,57 @@ Truck::Truck() :
 	freightHouse_(new GoodsContainer)
 { }
 
-Truck::~Truck() { }
+Truck::~Truck() {
+	delete freightHouse_;
+}
+
+void Truck::work() {
+	--remainTime_;
+	if (remainTime() <= 0.0)
+		route()->repeated ? load() : truckState_ = State::Stoped;
+	else if (remainTime() <= halfwayTime())
+		loaded() ? unload() : truckState_ = State::Backing;
+	else
+		truckState_ = State::Going;
+}
+
+void Truck::goBack() {
+	if (remainTime() <= 0.0) return;
+	if (remainTime() > halfwayTime()) {
+		remainTime_ = totalTime() - remainTime();
+	}
+	truckState_ = State::Backing;
+}
 
 void Truck::load() {
 	double freeVolume = freightHouse_->freeVolume();
-	double remainVolume = route_->orig->warehouse()->query(route_->goods.name);
-	double practialVolume = std::min({ freeVolume, remainVolume, route_->goods.volume });
-	Goods practialGoods = route_->goods;
-	practialGoods.volume = practialVolume;
+	double remainVolume = route()->orig->warehouse()->query(route()->goods.name);
+	double finalVolume = std::min({ freeVolume, remainVolume, route()->goods.volume });
+	Goods finalGoods = route()->goods;
+	finalGoods.volume = finalVolume;
 
-	route_->orig->putOutStorage(practialGoods);
-	freightHouse_->add(practialGoods);
+	route()->orig->putOutStorage(finalGoods);
+	freightHouse_->add(finalGoods);
 
-	// Set remain time and total time.
-	double distance = route_->dest->position().distanceToPoint(route_->orig->position());
-	double remainTime = 2 * distance / speed_;
-	remainTime_ = remainTime;
-	totalTime_ = remainTime;
+	// Sets remain time, halfway time and total time.
+	double distance = route()->dest->position().distanceToPoint(route()->orig->position());
+	halfwayTime_ = distance / speed_;
+	remainTime_ = totalTime_ = 2 * halfwayTime_;
 
 	loaded_ = true;
-	occupied_ = true;
+	truckState_ = State::Going;
 }
 
 void Truck::unload() {
-	double freeVolume = route_->dest->warehouse()->freeVolume();
-	double remainVolume = freightHouse_->query(route_->goods.name);
-	double practialVolume = std::min({ freeVolume, remainVolume, route_->goods.volume });
-	Goods practialGoods = route_->goods;
-	practialGoods.volume = practialVolume;
+	double freeVolume = route()->dest->warehouse()->freeVolume();
+	double remainVolume = freightHouse_->query(route()->goods.name);
+	double finalVolume = std::min({ freeVolume, remainVolume, route()->goods.volume });
+	Goods finalGoods = route()->goods;
+	finalGoods.volume = finalVolume;
 
-	freightHouse_->remove(practialGoods);
-	route_->dest->putInStorage(practialGoods);
+	freightHouse_->remove(finalGoods);
+	route()->dest->putInStorage(finalGoods);
 
 	loaded_ = false;
+	truckState_ = State::Backing;
 }

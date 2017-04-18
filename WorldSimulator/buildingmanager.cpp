@@ -23,7 +23,7 @@
 #include "basebuilding.h"
 
 #include "company.h"
-#include "valuegenerator.h"
+#include "random.h"
 
 #include "gameconstants.h"
 

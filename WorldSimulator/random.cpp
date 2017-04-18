@@ -17,23 +17,23 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "valuegenerator.h"
+#include "random.h"
 #include <ctime>
 
-ValueGenerator &ValueGenerator::instance() {
-	static ValueGenerator valueGenerator;
+Random &Random::instance() {
+	static Random valueGenerator;
 	return valueGenerator;
 }
 
-int ValueGenerator::uniformDistribution(int lowerBound, int upperBound) {
+int Random::uniformDistribution(int lowerBound, int upperBound) {
     std::uniform_int_distribution<int> range(lowerBound, upperBound);
     return range(generator_);
 }
 
-double ValueGenerator::normalDistribution(double mu, double sigma) {
+double Random::normalDistribution(double mu, double sigma) {
     std::normal_distribution<double> range(mu, sigma);
     return range(generator_);
 }
 
-std::default_random_engine ValueGenerator::generator_ =
+std::default_random_engine Random::generator_ =
         std::default_random_engine(static_cast<unsigned>(time(nullptr)));

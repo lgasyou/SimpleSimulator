@@ -279,9 +279,6 @@
     <ClCompile Include="WorldSimulator\helpdialog.cpp">
       <Filter>Source Files\Dialogs</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\ibuilding.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
     <ClCompile Include="WorldSimulator\industrychainmanager.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
@@ -345,9 +342,6 @@
     <ClCompile Include="WorldSimulator\unusedland.cpp">
       <Filter>Source Files\Buildings\Instances</Filter>
     </ClCompile>
-    <ClCompile Include="WorldSimulator\valuegenerator.cpp">
-      <Filter>Source Files\Utilities</Filter>
-    </ClCompile>
     <ClCompile Include="WorldSimulator\vector2d.cpp">
       <Filter>Source Files\Utilities</Filter>
     </ClCompile>
@@ -370,6 +364,12 @@
       <Filter>Source Files\Builders</Filter>
     </ClCompile>
     <ClCompile Include="WorldSimulator\bankaccount.cpp">
+      <Filter>Source Files\Groups</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldSimulator\random.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldSimulator\legalperson.cpp">
       <Filter>Source Files\Groups</Filter>
     </ClCompile>
   </ItemGroup>
@@ -577,9 +577,6 @@
     <ClInclude Include="WorldSimulator\unusedland.h">
       <Filter>Header Files\Buildings\Instances</Filter>
     </ClInclude>
-    <ClInclude Include="WorldSimulator\valuegenerator.h">
-      <Filter>Header Files\Utilities</Filter>
-    </ClInclude>
     <ClInclude Include="WorldSimulator\vector2d.h">
       <Filter>Header Files\Utilities</Filter>
     </ClInclude>
@@ -601,5 +598,14 @@
     <ClInclude Include="WorldSimulator\bankaccount.h">
       <Filter>Header Files\Groups</Filter>
     </ClInclude>
+    <ClInclude Include="WorldSimulator\random.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldSimulator\legalperson.h">
+      <Filter>Header Files\Groups</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="WorldSimulator.pro.user" />
   </ItemGroup>
 </Project>

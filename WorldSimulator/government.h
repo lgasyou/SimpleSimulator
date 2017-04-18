@@ -20,13 +20,13 @@
 #ifndef GOVERNMENT_H
 #define GOVERNMENT_H
 
-#include "company.h"
+#include "legalperson.h"
 
-class Government : public Company {
+class Government : public LegalPerson {
 public:
 	static Government &instance();
 
-	void update();
+	void update() override;
 
 private:
 	Government();

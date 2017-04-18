@@ -38,7 +38,7 @@ public:
 
 	virtual ~BaseIndustry();
 
-	// Add a new Machine and update products and materials of this building.
+	// Adds a new Machine and update products and materials of this building.
 	void addMachine(Machine *);
 
 	void removeMachine(Machine *);

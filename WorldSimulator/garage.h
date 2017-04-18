@@ -43,6 +43,8 @@ public:
 
 	void removeVihicle(Truck *);
 
+	// Lets truck[id] join route.
+	// If id < 0 then selects a free vihicle to continue.
 	void sendVihicle(Route *route, int id = -1);
 
 	void stopVihicle(Truck *);
@@ -51,9 +53,9 @@ public:
 
 	const std::vector<Truck *> &vihicleList() const { return vihicleList_; }
 
-	int vihicleCount() const { return vihicleCount_; }
+	std::size_t vihicleCount() const { return vihicleList_.size(); }
 
-	int freeVihicleCount() const { return freeVihicleCount_; }
+	std::size_t freeVihicleCount() const;
 
 private:
 	// Returns truck* if has free truck, 
@@ -64,14 +66,14 @@ private:
 	std::vector<Truck *> vihicleList_;
 
 	std::list<Truck *> transitingTrucks_;
-
-	int vihicleCount_ = 0;
-
-	int freeVihicleCount_ = 0;
 };
 
 inline Truck *Garage::getById(int id) {
 	return vihicleList_[id];
+}
+
+inline std::size_t Garage::freeVihicleCount() const {
+	return vihicleList_.size() - transitingTrucks_.size();
 }
 
 #endif // !GARAGE_H
