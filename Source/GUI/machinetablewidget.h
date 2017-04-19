@@ -17,47 +17,39 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SELECTTABLEWIDGET_H
-#define SELECTTABLEWIDGET_H
+#ifndef MACHINETABLEWIDGET_H
+#define MACHINETABLEWIDGET_H
 
 #include <QTableWidget>
-#include <QString>
-#include <vector>
 
 class BaseBuilding;
+class BaseIndustry;
+class Machine;
+
 class TableWidgetPushButton;
 
-class SelectTableWidget : public QTableWidget {
+class MachineTableWidget : public QTableWidget {
 	Q_OBJECT
 
 public:
-	enum { 
-		None = 0, 
-		UnusedLand = 1, 
-		Factory = 2, Mine = 4 };
+	MachineTableWidget(QWidget *parent = nullptr);
 
-	SelectTableWidget(QWidget *parent = nullptr);
-
-	~SelectTableWidget();
+	~MachineTableWidget();
 
 	void init();
 
-	void updateDisplay();
-
-	void updateEachLine(int indexInWidget, int indexInManager, BaseBuilding *);
-
-	// Sets type(s) which will be displayed later.
-	// Uses '|' to add multiple objects.
-	void setSelector(int type);
+	void setIndustry(BaseBuilding *industry);
 
 public slots:
-	void getDestAndSendBuilding(int index);
+	void receiveShowDetailSignal(int);
+
+	void updateDisplay();
 
 signals:
-	void sendBuilding(BaseBuilding *);
+	void sendSelectedMachine(Machine *);
 
 private:
-	std::vector<QString> typeNames_;
+	BaseIndustry *industry_ = nullptr;
 };
 
-#endif // !SELECTTABLEWIDGET_H
+#endif // MACHINETABLEWIDGET_H

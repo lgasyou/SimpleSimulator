@@ -48,10 +48,6 @@ private slots:
 	// sends command and pointer of building.
 	void receiveCommand(int command, int index);
 
-
-private:
-	// transforms double into QString
-	static QString toString(double value);
 };
 
 #endif // BUILDINGINFOLIST_H

@@ -17,35 +17,29 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "Source/basebuilding.h"
+#include "Source/baseindustry.h"
+#include "Source/company.h"
+#include "Source/factory.h"
+#include "Source/gameconstants.h"
+#include "Source/garage.h"
+#include "Source/goods.h"
+#include "Source/goodscontainer.h"
+#include "Source/machine.h"
+#include "Source/mine.h"
+
+#include "Source/buildingmanager.h"
+#include "Source/companymanager.h"
+#include "Source/industrychainmanager.h"
+#include "Source/machinemanager.h"
+
+#include "Source/defaultmachinebuilder.h"
+
 #include "buildingdetaildialog.h"
-#include "basebuilding.h"
-#include "baseindustry.h"
-#include "company.h"
-#include "factory.h"
-#include "gameconstants.h"
-#include "garage.h"
-#include "goods.h"
-#include "goodscontainer.h"
-#include "machine.h"
-#include "mine.h"
-
-#include "buildingmanager.h"
-#include "companymanager.h"
-#include "industrychainmanager.h"
-#include "machinemanager.h"
-
-#include "defaultmachinebuilder.h"
-
 #include "garagetablewidget.h"
 #include "warehousetablewidget.h"
 #include "ui_buildingdetaildialog.h"
-
-namespace {
-// transforms double into QString
-static QString toString(double value) {
-	return QString::number(value, 10, 2);
-	}
-}
+#include "widgethelper.h"
 
 BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
 	QDialog(parent),
@@ -69,7 +63,7 @@ void BuildingDetailDialog::updateDisplay() {
     if (this->isHidden() || !building_)	return;
 
 	const QString &name = building_->name();
-	const QString &value = toString(building_->value());
+	const QString &value = WidgetHelper::toString(building_->value());
 	const QString &type = building_->type();
 	const QString &owner = building_->owner()->name();
 	const QString &position = building_->position().toString();
@@ -148,17 +142,17 @@ void BuildingDetailDialog::showMachineDetail(Machine *machine) {
 
 	ui->selectNextProductComboBox->clear();
 	for (const auto &product : machine->products()) {
-		ui->selectNextProductComboBox->addItem(product.name);
+		ui->selectNextProductComboBox->addItem(product.label);
 	}
 
 	updateMachineDetail(machine);
 }
 
 void BuildingDetailDialog::updateMachineDetail(Machine *machine) {
-	const QString &machineCurrentProductivity = toString(machine->currentProductivity());
+	const QString &machineCurrentProductivity = WidgetHelper::toString(machine->currentProductivity());
 	ui->machineCurrentProductivity->setText("Current Productivity: " + machineCurrentProductivity);
 
-	const QString &machineMaximumProductivity = toString(machine->maximalProductivity());
+	const QString &machineMaximumProductivity = WidgetHelper::toString(machine->maximalProductivity());
 	ui->machineMaximumProductivity->setText("Maximum Productivity: " + machineMaximumProductivity);
 }
 

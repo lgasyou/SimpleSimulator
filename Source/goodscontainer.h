@@ -26,26 +26,28 @@ struct Goods;
 
 class QString;
 
+using GoodsLabel = QString;
+
 class GoodsContainer {
 public:
 	GoodsContainer();
 
 	virtual ~GoodsContainer();
 
-	// Queries goods' volume by its name.
-	double query(const QString &goodsName) const;
+	// Queries goods' volume by its label.
+	double volumeOf(const QString &goodsName) const;
 
 	Goods *getById(int id);
 
 	// If the goods.volume is smaller or equal to free volume, just adds it.
 	// If not, resets addition volume as the free volume of container.
 	// Returns final addition.
-	double add(const Goods &goods);
+	double store(const Goods &goods);
 
 	// If the goods.volume is smaller or equal to free volume, just removes it.
 	// If not, resets removal volume as the current volume of container.
 	// Returns final removal.
-	double remove(const Goods &goods);
+	double fetch(const Goods &goods);
 
 	const QList<Goods *> &container() const { return container_; }
 
@@ -59,16 +61,16 @@ public:
 	double maxVolume() const { return maxVolume_; }
 
 protected:
-	// Gets goods' pointer if goods has already existed.
+	// Gets pointer of goods if it has been already existed.
 	// Otherwise creates a new goods object.
-	Goods *getByName(const QString &stringName);
+	Goods *getByLabel(const GoodsLabel &label);
 
 protected:
 	QList<Goods *> container_;
 
 	double curVolume_ = 0.0;
 
-	double maxVolume_;
+	double maxVolume_ = 60.0;
 };
 
 inline Goods *GoodsContainer::getById(int id) {

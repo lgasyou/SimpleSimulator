@@ -1,4 +1,4 @@
-/*
+﻿/*
  *	Copyright 2017 Li Zeqing
  *
  *	This file is part of World Simulator.
@@ -17,28 +17,48 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef IBUILDING_H
-#define IBUILDING_H
+#ifndef GARAGETABLEWIDGET_H
+#define GARAGETABLEWIDGET_H
+
+#include <QTableWidget>
 
 class BaseBuilding;
+class Garage;
+class Truck;
+struct Route;
 
-// Interface of BaseBuilding.
-class IBuilding {
+class TableWidgetPushButton;
+
+class GarageTableWidget : public QTableWidget {
+	Q_OBJECT
+
 public:
-	// Copies data from the other building. Only the basic part of BaseBuilding is copiesd.
-	virtual void copyFrom(const BaseBuilding &rhs) = 0;
+	GarageTableWidget(QWidget * parent = nullptr);
 
-	// Updates data each turn
-	virtual void update() = 0;
+	~GarageTableWidget();
 
-protected:
-	// Changes the value of building in ten percent.
-	virtual void changeBaseValue() = 0;
+	void init();
+
+	void updateEachRow(int index, Truck *);
+
+	void setGarage(BaseBuilding *garage);
+
+public slots:
+	void updateDisplay();
+
+	void buttonClicked(int index, int command);
+
+	void showSetRouteDialog(int index);
+
+	void setRoute(Route *);
+
+signals:
+	void dataChanged();
 
 private:
-	// Gives a primitive value to this building.
-	virtual void initBasicValue() = 0;
+	Garage *garage_ = nullptr;
 
+	int selectedTruckId_ = -1;
 };
 
-#endif // !IBUILDING_H
+#endif // !GARAGETABLEWIDGET_H

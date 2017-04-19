@@ -35,8 +35,6 @@ public:
 
 	~Garage();
 
-	void init();
-
 	Truck *getById(int id);
 
 	void addNewVihicle(const QString &);

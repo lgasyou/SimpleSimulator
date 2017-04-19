@@ -17,14 +17,16 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "buildingtablewidget.h"
-#include "buildingmanager.h"
-#include "companymanager.h"
-#include "basebuilding.h"
-#include "company.h"
-#include "gameconstants.h"
+#include "Source/buildingmanager.h"
+#include "Source/companymanager.h"
+#include "Source/basebuilding.h"
+#include "Source/company.h"
+#include "Source/gameconstants.h"
 
+#include "buildingtablewidget.h"
 #include "tablewidgetpushbutton.h"
+#include "widgethelper.h"
+
 #include <QFile>
 #include <QApplication>
 
@@ -38,7 +40,7 @@ void BuildingTableWidget::init() {
 
 	setWindowTitle(tr("Building Information List"));
 
-	this->setColumnCount(GameConstants::colOfBuildingTableWidget);
+	this->setColumnCount(6);
 	QStringList header{ tr("Name"),tr("Value"),tr("Type"), tr("Ownership"),tr("Option"), tr("Option") };
 	this->setHorizontalHeaderLabels(header);
 }
@@ -59,8 +61,8 @@ void BuildingTableWidget::displayBasicInfo(int index) {
 	BaseBuilding *building = BuildingManager::instance().getById(index);
 
 	const QString &name = building->name();
-	const QString &deltaValue = " " + toString(building->deltaValue());
-	const QString &value = "$" + toString(building->value()) + deltaValue;
+	const QString &deltaValue = " " + WidgetHelper::toString(building->deltaValue());
+	const QString &value = "$" + WidgetHelper::toString(building->value()) + deltaValue;
 	const QString &type = building->type();
 	const QString &owner = building->owner()->name();
 	setItem(index, 0, new QTableWidgetItem(name));
@@ -93,8 +95,4 @@ void BuildingTableWidget::displayAccordingToVisitor(int index) {
 void BuildingTableWidget::receiveCommand(int index, int command) {
 	BaseBuilding *building = BuildingManager::instance().getById(index);
 	emit sendCommand(command, building);
-}
-
-QString BuildingTableWidget::toString(double value) {
-	return QString::number(value, 10, 2);
 }

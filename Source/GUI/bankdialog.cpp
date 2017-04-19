@@ -17,9 +17,12 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "Source\company.h"
+
 #include "bankdialog.h"
-#include "company.h"
 #include "ui_bankdialog.h"
+#include "widgethelper.h"
+
 #include <QString>
 
 BankDialog::BankDialog(QWidget *parent) :
@@ -44,8 +47,8 @@ BankDialog::~BankDialog() {
 }
 
 void BankDialog::updateDisplay() {
-    const QString &liability = tr("Liability: $") + toString(client_->liability());
-	const QString &interestRate = tr("Interest Rate: ") + toString(interestRate_ * 100) + "%";
+    const QString &liability = tr("Liability: $") + WidgetHelper::toString(client_->liability());
+	const QString &interestRate = tr("Interest Rate: ") + WidgetHelper::toString(interestRate_ * 100) + "%";
 	ui->label_InterestRate->setText(interestRate);
     ui->label_Liability->setText(liability);
 
@@ -91,10 +94,6 @@ void BankDialog::on_pushButton_Accept_clicked() {
     client_->setTotalValue(client_->totalValue() + brought - repay);
     client_->setLiability(client_->liability() + needRepay - repay);
     accept();
-}
-
-QString BankDialog::toString(double value) {
-	return QString::number(value, 10, 2);
 }
 
 double BankDialog::interestRate_ = 0.1;

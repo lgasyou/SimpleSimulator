@@ -31,6 +31,8 @@ struct Goods;
 
 class QString;
 
+using GoodsLabel = QString;
+
 //	This class should not be instantiated.
 class BaseIndustry : public BaseBuilding {
 public:
@@ -48,26 +50,26 @@ public:
 
 	void manufacture();
 
-	double putInStorage(const Goods &goods);
+	double store(const Goods &goods);
 
-	double putOutStorage(const Goods &goods);
+	double fetch(const Goods &goods);
 
 	Warehouse *warehouse() const { return warehouse_; }
 
 	const std::vector<Machine *> &machines() const { return machines_; }
 
-	const std::vector<QString> &products() const { return products_; }
+	const std::vector<GoodsLabel> &products() const { return products_; }
 
-	const std::vector<QString> &materials() const { return materials_; }
+	const std::vector<GoodsLabel> &materials() const { return materials_; }
 
 protected:
     Warehouse *warehouse_;
 
 	std::vector<Machine *> machines_;
 
-	std::vector<QString> products_;
+	std::vector<GoodsLabel> products_;
 
-	std::vector<QString> materials_;
+	std::vector<GoodsLabel> materials_;
 };
 
 #endif // BASEINDUSTRY_H

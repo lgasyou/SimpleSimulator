@@ -18,36 +18,34 @@
  */
 
 #include "goodscontainer.h"
-#include "gameconstants.h"
 #include "goods.h"
 
 #include <QString>
 
-GoodsContainer::GoodsContainer() :
-	maxVolume_(GameConstants::defaultMaxVolOfWarehouse)
-{ }
+GoodsContainer::GoodsContainer() { }
 
 GoodsContainer::~GoodsContainer() { }
 
-double GoodsContainer::query(const QString &goodsName) const {
+double GoodsContainer::volumeOf(const QString &goodsName) const {
 	for (const auto item : container_) {
-		if (item->name == goodsName)
+		if (item->label == goodsName)
 			return item->volume;
 	}
 	return 0.0;
 }
 
-double GoodsContainer::add(const Goods &goods) {
+double GoodsContainer::store(const Goods &goods) {
 	double finalAddition = (curVolume_ + goods.volume > maxVolume_) ?
 		maxVolume_ - curVolume_ : goods.volume;
 
-	getByName(goods.name)->volume += finalAddition;
+	Goods *finalGoods = getByLabel(goods.label);
+	finalGoods->label += finalAddition;
 	curVolume_ += finalAddition;
 	return finalAddition;
 }
 
-double GoodsContainer::remove(const Goods &goods) {
-	Goods *curGoods = getByName(goods.name);
+double GoodsContainer::fetch(const Goods &goods) {
+	Goods *curGoods = getByLabel(goods.label);
 	double finalRemoval = (curGoods->volume - goods.volume >= 0.0) ?
 		goods.volume : curGoods->volume;
 
@@ -57,13 +55,13 @@ double GoodsContainer::remove(const Goods &goods) {
 	return finalRemoval;
 }
 
-Goods *GoodsContainer::getByName(const QString &stringName) {
+Goods *GoodsContainer::getByLabel(const GoodsLabel &label) {
 	for (auto item : container_) {
-		if (item->name == stringName)
+		if (item->label == label)
 			return item;
 	}
 
-	Goods *newGoods = new Goods{ stringName, 0.0 };
+	Goods *newGoods = new Goods{ label, 0.0 };
 	container_.push_back(newGoods);
 	return newGoods;
 }

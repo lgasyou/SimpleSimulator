@@ -17,12 +17,10 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "Source/basebuilding.h"
+#include "Source/buildingmanager.h"
+
 #include "selecttablewidget.h"
-
-#include "basebuilding.h"
-
-#include "buildingmanager.h"
-
 #include "tablewidgetpushbutton.h"
 
 SelectTableWidget::SelectTableWidget(QWidget *parent) :

@@ -19,10 +19,10 @@
 
 #include "uimanager.h"
 
-#include "bankdialog.h"
-#include "buildingdetaildialog.h"
-#include "companydetaildialog.h"
-#include "setroutedialog.h"
+#include "GUI/bankdialog.h"
+#include "GUI/buildingdetaildialog.h"
+#include "GUI/companydetaildialog.h"
+#include "GUI/setroutedialog.h"
 
 UIManager::UIManager() { }
 

@@ -19,15 +19,14 @@
 
 #include "baseindustry.h"
 #include "warehouse.h"
-#include "route.h"
 #include "goods.h"
+#include "route.h"
 #include "machine.h"
 
 #include "industrychainmanager.h"
 
 #include <QString>
 #include <algorithm>
-#include <functional>
 
 BaseIndustry::BaseIndustry(const QString &name, const QString &type) :
 	BaseBuilding(name, type),
@@ -43,15 +42,15 @@ void BaseIndustry::addMachine(Machine *machine) {
 
 	// Add products of this factory.
 	for (const auto &product : machine->products()) {
-		if (std::count(products_.cbegin(), products_.cend(), product.name) == 0) {
-			products_.push_back(product.name);
+		if (std::find(products_.cbegin(), products_.cend(), product.label) == products_.cend()) {
+			products_.push_back(product.label);
 		}
 	}
 
 	// Add materials of this factory.
 	for (const auto &material : machine->materials()) {
-		if (std::count(materials_.cbegin(), materials_.cend(), material.name) == 0) {
-			materials_.push_back(material.name);
+		if (std::find(materials_.cbegin(), materials_.cend(), material.label) == materials_.cend()) {
+			materials_.push_back(material.label);
 		}
 	}
 }
@@ -70,10 +69,10 @@ void BaseIndustry::manufacture() {
 	std::for_each(machines_.begin(), machines_.end(), [](Machine *m) { m->produce(); });
 }
 
-double BaseIndustry::putInStorage(const Goods &goods) {
-	return warehouse_->add(goods);
+double BaseIndustry::store(const Goods &goods) {
+	return warehouse_->store(goods);
 }
 
-double BaseIndustry::putOutStorage(const Goods &goods) {
-	return warehouse_->remove(goods);
+double BaseIndustry::fetch(const Goods &goods) {
+	return warehouse_->fetch(goods);
 }

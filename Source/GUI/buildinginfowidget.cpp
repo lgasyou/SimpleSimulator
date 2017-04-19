@@ -17,19 +17,19 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "Source/basebuilding.h"
+#include "Source/company.h"
+#include "Source/companymanager.h"
+#include "Source/gameconstants.h"
+
 #include "buildinginfowidget.h"
 #include "ui_buildinginfowidget.h"
-#include "basebuilding.h"
-#include "company.h"
-#include "companymanager.h"
-#include "gameconstants.h"
-
 #include "tablewidgetpushbutton.h"
 
 #include <QString>
 
-BuildingInfoWidget::BuildingInfoWidget(QWidget *parent) : QWidget(parent) {
-	displayedBuilding_ = nullptr;
+BuildingInfoWidget::BuildingInfoWidget(QWidget *parent) : 
+	QWidget(parent) {
 	ui = new Ui::BuildingInfoWidget;
 	ui->setupUi(this); 
 

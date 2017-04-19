@@ -17,52 +17,42 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GARAGETABLEWIDGET_H
-#define GARAGETABLEWIDGET_H
+#ifndef BUILDINGINFOWIDGET_H
+#define BUILDINGINFOWIDGET_H
 
-#include <QTableWidget>
+#include <QWidget>
 
 class BaseBuilding;
-class Garage;
-class Truck;
-struct Route;
+namespace Ui { 
+class BuildingInfoWidget; 
+}
 
-class TableWidgetPushButton;
+class QString;
 
-class GarageTableWidget : public QTableWidget {
+class BuildingInfoWidget : public QWidget {
 	Q_OBJECT
 
 public:
-	GarageTableWidget(QWidget * parent = nullptr);
+	BuildingInfoWidget(QWidget *parent = nullptr);
 
-	~GarageTableWidget();
+	~BuildingInfoWidget();
 
-	void init();
-
-	void updateEachRow(int index, Truck *);
-
-	void setGarage(BaseBuilding *garage);
-
-public slots:
-	void updateDisplay();
-
-	void buttonClicked(int index, int command);
-
-	void showSetRouteDialog(int index);
-
-	void setRoute(Route *);
+	void setTarget(BaseBuilding *building);
 
 signals:
-	void dataChanged();
+	void sendCommand(int command, BaseBuilding *building);
+
+public slots:
+	void receiveCommand(int);
+
+	void showBuildingInfo(BaseBuilding *building);
+
+	void updateDisplay();
 
 private:
-	// transforms double into QString
-	static QString toString(double value);
+	BaseBuilding *displayedBuilding_ = nullptr;
 
-private:
-	Garage *garage_;
-
-	int selectedTruckId_;
+	Ui::BuildingInfoWidget *ui;
 };
 
-#endif // !GARAGETABLEWIDGET_H
+#endif // !BUILDINGINFOWIDGET_H

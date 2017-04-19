@@ -201,9 +201,6 @@
     <ClCompile Include="Source\bankaccount.cpp">
       <Filter>Source Files\Groups</Filter>
     </ClCompile>
-    <ClCompile Include="Source\bankdialog.cpp">
-      <Filter>Source Files\Dialogs</Filter>
-    </ClCompile>
     <ClCompile Include="Source\baseagriculture.cpp">
       <Filter>Source Files\Buildings</Filter>
     </ClCompile>
@@ -225,29 +222,14 @@
     <ClCompile Include="Source\basetransportation.cpp">
       <Filter>Source Files\Buildings</Filter>
     </ClCompile>
-    <ClCompile Include="Source\buildingdetaildialog.cpp">
-      <Filter>Source Files\Dialogs</Filter>
-    </ClCompile>
     <ClCompile Include="Source\buildingfactory.cpp">
       <Filter>Source Files\Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\buildinginfowidget.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
     </ClCompile>
     <ClCompile Include="Source\buildingmanager.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="Source\buildingtablewidget.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\commandpushbutton.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
     <ClCompile Include="Source\company.cpp">
       <Filter>Source Files\Groups</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\companydetaildialog.cpp">
-      <Filter>Source Files\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="Source\companymanager.cpp">
       <Filter>Source Files\Managers</Filter>
@@ -267,9 +249,6 @@
     <ClCompile Include="Source\garage.cpp">
       <Filter>Source Files\Buildings\Instances</Filter>
     </ClCompile>
-    <ClCompile Include="Source\garagetablewidget.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
     <ClCompile Include="Source\goods.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
@@ -281,9 +260,6 @@
     </ClCompile>
     <ClCompile Include="Source\graph.cpp">
       <Filter>Source Files\Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\helpdialog.cpp">
-      <Filter>Source Files\Dialogs</Filter>
     </ClCompile>
     <ClCompile Include="Source\industrychainmanager.cpp">
       <Filter>Source Files\Managers</Filter>
@@ -300,16 +276,7 @@
     <ClCompile Include="Source\machinemanager.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="Source\machinetablewidget.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
     <ClCompile Include="Source\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\mainui.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\mainwindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\mapmanager.cpp">
@@ -333,17 +300,8 @@
     <ClCompile Include="Source\route.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Source\selecttablewidget.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\setroutedialog.cpp">
-      <Filter>Source Files\Dialogs</Filter>
-    </ClCompile>
     <ClCompile Include="Source\supermarket.cpp">
       <Filter>Source Files\Buildings\Instances</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\tablewidgetpushbutton.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
     </ClCompile>
     <ClCompile Include="Source\timemanager.cpp">
       <Filter>Source Files\Managers</Filter>
@@ -369,81 +327,126 @@
     <ClCompile Include="Source\warehouse.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="Source\warehousetablewidget.cpp">
+    <ClCompile Include="Source\GUI\bankdialog.cpp">
+      <Filter>Source Files\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\buildingdetaildialog.cpp">
+      <Filter>Source Files\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\buildinginfowidget.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\buildingtablewidget.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\commandpushbutton.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\companydetaildialog.cpp">
+      <Filter>Source Files\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\garagetablewidget.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\helpdialog.cpp">
+      <Filter>Source Files\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\machinetablewidget.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\mainui.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\mainwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\selecttablewidget.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\setroutedialog.cpp">
+      <Filter>Source Files\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\tablewidgetpushbutton.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\warehousetablewidget.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\widgethelper.cpp">
       <Filter>Source Files\GUIComponents</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="Source\bankdialog.h">
-      <Filter>Header Files\Dialogs</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\bankdialog.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\buildingdetaildialog.h">
-      <Filter>Header Files\Dialogs</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\buildingdetaildialog.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\buildinginfowidget.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\buildinginfowidget.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\buildingtablewidget.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\commandpushbutton.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\companydetaildialog.h">
-      <Filter>Header Files\Dialogs</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\companydetaildialog.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\garagetablewidget.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\helpdialog.h">
-      <Filter>Header Files\Dialogs</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\helpdialog.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\machinetablewidget.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\mainui.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\mainui.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\mainwindow.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\mainwindow.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="Source\resource.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="Source\selecttablewidget.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\setroutedialog.h">
+    <CustomBuild Include="Source\GUI\bankdialog.h">
       <Filter>Header Files\Dialogs</Filter>
     </CustomBuild>
-    <CustomBuild Include="Source\setroutedialog.ui">
+    <CustomBuild Include="Source\GUI\bankdialog.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="Source\tablewidgetpushbutton.h">
+    <CustomBuild Include="Source\GUI\buildingdetaildialog.h">
+      <Filter>Header Files\Dialogs</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\buildingdetaildialog.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\buildinginfowidget.h">
       <Filter>Header Files\GUIComponents</Filter>
     </CustomBuild>
-    <CustomBuild Include="Source\warehousetablewidget.h">
+    <CustomBuild Include="Source\GUI\buildinginfowidget.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\buildingtablewidget.h">
+      <Filter>Header Files\GUIComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\commandpushbutton.h">
+      <Filter>Header Files\GUIComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\companydetaildialog.h">
+      <Filter>Header Files\Dialogs</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\companydetaildialog.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\garagetablewidget.h">
+      <Filter>Header Files\GUIComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\helpdialog.h">
+      <Filter>Header Files\Dialogs</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\helpdialog.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\machinetablewidget.h">
+      <Filter>Header Files\GUIComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\mainui.h">
+      <Filter>Header Files\GUIComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\mainui.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\mainwindow.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\mainwindow.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\selecttablewidget.h">
+      <Filter>Header Files\GUIComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\setroutedialog.h">
+      <Filter>Header Files\Dialogs</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\setroutedialog.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\tablewidgetpushbutton.h">
+      <Filter>Header Files\GUIComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\warehousetablewidget.h">
       <Filter>Header Files\GUIComponents</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -603,6 +606,9 @@
     </ClInclude>
     <ClInclude Include="Source\warehouse.h">
       <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\widgethelper.h">
+      <Filter>Header Files\GUIComponents</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

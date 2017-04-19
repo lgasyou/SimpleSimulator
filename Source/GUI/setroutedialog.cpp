@@ -17,15 +17,17 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
+
+#include "Source/baseindustry.h"
+#include "Source/route.h"
+
 #include "setroutedialog.h"
 #include "ui_setroutedialog.h"
-
-#include "baseindustry.h"
-#include "route.h"
+#include "selecttablewidget.h"
 
 #include <QLabel>
 #include <QString>
-#include "selecttablewidget.h"
 
 SetRouteDialog::SetRouteDialog(QWidget *parent) :
 	QDialog(parent),
@@ -94,7 +96,7 @@ void SetRouteDialog::updateDisplay() {
 }
 
 void SetRouteDialog::getGoodsName(const QString &goodsName) {
-	route_->goods.name = goodsName;
+	route_->goods.label = goodsName;
 	emit dataChanged();
 }
 
@@ -116,7 +118,7 @@ void SetRouteDialog::getDest(BaseBuilding *dest) {
 void SetRouteDialog::finishSetting() {
 	if (ui->checkBox->isChecked())
 		route_->repeated = true;
-	route_->goods.name = ui->labelGoodsName->text();
+	route_->goods.label = ui->labelGoodsName->text();
 	route_->goods.volume = ui->spinBoxEachVolume->value();
 
 	ui->checkBox->setChecked(false);

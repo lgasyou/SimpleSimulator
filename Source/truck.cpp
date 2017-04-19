@@ -34,10 +34,10 @@ Truck::~Truck() {
 	delete freightHouse_;
 }
 
-void Truck::work() {
+void Truck::operate() {
 	--remainTime_;
 	if (remainTime() <= 0.0)
-		route()->repeated ? load() : truckState_ = State::Stoped;
+		route()->repeated ? load() : truckState_ = State::Idle;
 	else if (remainTime() <= halfwayTime())
 		loaded() ? unload() : truckState_ = State::Backing;
 	else
@@ -53,14 +53,13 @@ void Truck::goBack() {
 }
 
 void Truck::load() {
-	double freeVolume = freightHouse_->freeVolume();
-	double remainVolume = route()->orig->warehouse()->query(route()->goods.name);
-	double finalVolume = std::min({ freeVolume, remainVolume, route()->goods.volume });
-	Goods finalGoods = route()->goods;
-	finalGoods.volume = finalVolume;
+	double truckFreeVolume = freightHouse_->freeVolume();
+	double warehouseRemain = route()->orig->warehouse()->volumeOf(route()->goods.label);
+	double finalVolume = std::min({ truckFreeVolume, warehouseRemain, route()->goods.volume });
+	Goods finalGoods = { route()->goods.label, finalVolume };
 
-	route()->orig->putOutStorage(finalGoods);
-	freightHouse_->add(finalGoods);
+	route()->orig->fetch(finalGoods);
+	freightHouse_->store(finalGoods);
 
 	// Sets remain time, halfway time and total time.
 	double distance = route()->dest->position().distanceToPoint(route()->orig->position());
@@ -72,14 +71,13 @@ void Truck::load() {
 }
 
 void Truck::unload() {
-	double freeVolume = route()->dest->warehouse()->freeVolume();
-	double remainVolume = freightHouse_->query(route()->goods.name);
-	double finalVolume = std::min({ freeVolume, remainVolume, route()->goods.volume });
-	Goods finalGoods = route()->goods;
-	finalGoods.volume = finalVolume;
+	double warehouseFreeVolume = route()->dest->warehouse()->freeVolume();
+	double truckLoaded = freightHouse_->volumeOf(route()->goods.label);
+	double finalVolume = std::min({ warehouseFreeVolume, truckLoaded, route()->goods.volume });
+	Goods finalGoods = { route()->goods.label, finalVolume };
 
-	freightHouse_->remove(finalGoods);
-	route()->dest->putInStorage(finalGoods);
+	freightHouse_->fetch(finalGoods);
+	route()->dest->store(finalGoods);
 
 	loaded_ = false;
 	truckState_ = State::Backing;

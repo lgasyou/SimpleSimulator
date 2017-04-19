@@ -37,9 +37,6 @@ public:
 	// Copies data from right hand side.
 	void copyFrom(const BaseBuilding &rhs);
 
-	// Updates data after each turn
-	void update() = 0;
-
 	void setDeltaValue(double deltaValue) { this->deltaValue_ = deltaValue; }
 	double deltaValue() const { return deltaValue_; }
 

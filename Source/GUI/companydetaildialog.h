@@ -17,51 +17,34 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BANKDIALOG_H
-#define BANKDIALOG_H
+#ifndef COMPANYDETAILDIALOG_H
+#define COMPANYDETAILDIALOG_H
 
 #include <QDialog>
 
 class Company;
 
 namespace Ui {
-class BankDialog;
+class CompanyDetailDialog;
 }
 
-// Used in early version ONLY.
-// @deprecated
-class BankDialog : public QDialog {
+class CompanyDetailDialog : public QDialog {
     Q_OBJECT
 
 public:
-    explicit BankDialog(QWidget *parent = nullptr);
+    explicit CompanyDetailDialog(QWidget *parent = nullptr);
 
-    ~BankDialog();
+    ~CompanyDetailDialog();
 
+    void setCompany(Company *company) { this->company_ = company; }
+
+public slots:
     void updateDisplay();
 
-	// Displays according to whether the client has already lent money or not.
-	void displayAccordingToClientStatus();
-
-	void setClient(Company *client) { this->client_ = client; }
-
-    static void setInterestRate(double interestRate) { interestRate_ = interestRate; }
-    static double interestRate() { return interestRate_; }
-
-private slots:
-	// Sets datas with the input.
-    void on_pushButton_Accept_clicked();
-
 private:
-	// transforms double into QString
-	static QString toString(double value);
+    Company *company_;
 
-private:
-    static double interestRate_;
-
-    Company *client_;
-
-    Ui::BankDialog *ui;
+    Ui::CompanyDetailDialog *ui;
 };
 
-#endif // BANKDIALOG_H
+#endif // COMPANYDETAILDIALOG_H

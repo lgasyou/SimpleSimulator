@@ -31,7 +31,7 @@ public:
 private:
 	Government();
 
-	~Government() { }
+	~Government() = default;
 };
 
 #endif // !GOVERNMENT_H

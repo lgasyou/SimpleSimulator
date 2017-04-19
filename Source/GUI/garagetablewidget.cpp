@@ -17,22 +17,20 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "Source/garage.h"
+#include "Source/truck.h"
+#include "Source/route.h"
+#include "Source/baseindustry.h"
+#include "Source/goodscontainer.h"
+#include "Source/uimanager.h"
+
 #include "garagetablewidget.h"
-#include "garage.h"
-#include "truck.h"
-#include "route.h"
-#include "baseindustry.h"
-#include "goodscontainer.h"
-
-#include "uimanager.h"
-
 #include "setroutedialog.h"
 #include "tablewidgetpushbutton.h"
+#include "widgethelper.h"
 
 GarageTableWidget::GarageTableWidget(QWidget *parent) : 
-	QTableWidget(parent),
-	garage_(nullptr)
-{
+	QTableWidget(parent) {
 	init();
 }
 
@@ -59,14 +57,14 @@ void GarageTableWidget::updateDisplay() {
 
 void GarageTableWidget::updateEachRow(int index, Truck *truck) {
 	setItem(index, 0, new QTableWidgetItem(tr("Truck")));
-	const QString &curVolume = toString(truck->freightHouse()->curVolume());
-	const QString &maxVolume = toString(truck->freightHouse()->maxVolume());
+	const QString &curVolume = WidgetHelper::toString(truck->freightHouse()->curVolume());
+	const QString &maxVolume = WidgetHelper::toString(truck->freightHouse()->maxVolume());
 	setItem(index, 1, new QTableWidgetItem(curVolume + " / " + maxVolume));
 	if (truck->isWorking()) {
 		const QString &dest = truck->route()->dest->name();
-		const QString &goods = truck->route()->goods.name;
-		const QString &volume = toString(truck->route()->goods.volume);
-		const QString &remainTime = toString(truck->remainTime());
+		const QString &goods = truck->route()->goods.label;
+		const QString &volume = WidgetHelper::toString(truck->route()->goods.volume);
+		const QString &remainTime = WidgetHelper::toString(truck->remainTime());
 		setItem(index, 2, new QTableWidgetItem(dest));
 		setItem(index, 3, new QTableWidgetItem(goods + " / " + volume));
 		setItem(index, 4, new QTableWidgetItem(remainTime));
@@ -112,15 +110,11 @@ void GarageTableWidget::showSetRouteDialog(int index) {
 		setRouteDialog->setParent(this, Qt::Window);
 		isTheFirstTimeCall = false;
 	}
-	setRouteDialog->showUp();
+	WidgetHelper::showUp(setRouteDialog);
 	setRouteDialog->updateDisplay();
 }
 
 void GarageTableWidget::setRoute(Route *route) {
 	garage_->sendVihicle(route, selectedTruckId_);
 	emit dataChanged();
-}
-
-QString GarageTableWidget::toString(double value) {
-	return QString::number(value, 10, 2);
 }

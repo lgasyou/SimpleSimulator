@@ -29,15 +29,11 @@
 
 Garage::Garage(const QString &name) :
 	BaseTransportation(name, "Garage") {
-	init(); 
+	addNewVihicle("Truck");
+	addNewVihicle("Truck");
 }
 
 Garage::~Garage() { }
-
-void Garage::init() {
-	addNewVihicle("Truck");
-	addNewVihicle("Truck");
-}
 
 void Garage::addNewVihicle(const QString &type) {
 	if (type == "Truck")
@@ -69,7 +65,7 @@ void Garage::stopVihicle(Truck *truck) {
 void Garage::update() {
 	for (auto iter = transitingTrucks_.begin(); iter != transitingTrucks_.end(); ++iter) {
 		auto truck = *iter;
-		truck->work();
+		truck->operate();
 		if (!truck->isWorking()) {
 			transitingTrucks_.erase(iter);
 		}

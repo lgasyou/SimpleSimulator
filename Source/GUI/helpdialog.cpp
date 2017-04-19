@@ -17,9 +17,10 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "Source/industrychainmanager.h"
+
 #include "helpdialog.h"
 #include "ui_helpdialog.h"
-#include "industrychainmanager.h"
 
 #include <QStringList>
 
@@ -55,7 +56,7 @@ void HelpDialog::showIndustryChain(QListWidgetItem *item) {
 	int size = (int)precursors.size();
 	ui->sourceTableWidget->setRowCount(size);
 	for (int i = 0; i != size; ++i) {
-		const QString &itemName = precursors[i].name;
+		const QString &itemName = precursors[i].label;
 		ui->sourceTableWidget->setItem(i, 0, new QTableWidgetItem(itemName));
 		const QString &itemWeight = QString::number(precursors[i].volume, 10, 2);
 		ui->sourceTableWidget->setItem(i, 1, new QTableWidgetItem(itemWeight));

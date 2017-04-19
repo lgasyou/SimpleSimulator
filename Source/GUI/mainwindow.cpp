@@ -17,22 +17,20 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "Source/basebuilding.h"
+#include "Source/company.h"
+#include "Source/government.h"
+
+#include "Source/buildingmanager.h"
+#include "Source/companymanager.h"
+#include "Source/industrychainmanager.h"
+#include "Source/mapmanager.h"
+#include "Source/pricemanager.h"
+#include "Source/timemanager.h"
+#include "Source/uimanager.h"
+#include "Source/gameconstants.h"
+
 #include "mainwindow.h"
-
-#include "government.h"
-
-#include "buildingmanager.h"
-#include "companymanager.h"
-#include "industrychainmanager.h"
-#include "mapmanager.h"
-#include "pricemanager.h"
-#include "timemanager.h"
-#include "uimanager.h"
-#include "gameconstants.h"
-
-#include "basebuilding.h"
-#include "company.h"
-
 #include "bankdialog.h"
 #include "buildinginfowidget.h"
 #include "buildingtablewidget.h"
@@ -41,12 +39,11 @@
 #include "helpdialog.h"
 #include "mainui.h"
 #include "tablewidgetpushbutton.h"
+#include "widgethelper.h"
 #include "ui_mainwindow.h"
-#include <QTableWidget>
+
 #include <QStatusBar>
-#include <QSplitter>
 #include <QString>
-#include <map>
 
 MainWindow::MainWindow(QWidget *parent) :
 	QMainWindow(parent),
@@ -113,7 +110,7 @@ void MainWindow::showHelp() {
 
 void MainWindow::showCompanyDetail() {
     companyDetailDialog_->setCompany(playerCompany_);
-	companyDetailDialog_->showUp();
+	WidgetHelper::showUp(companyDetailDialog_);
     companyDetailDialog_->updateDisplay();
 }
 
@@ -125,7 +122,7 @@ void MainWindow::getBuildingByPos(int x, int y) {
 void MainWindow::updateDisplay() {
 	const QString &turnText = tr("Turn ") + QString::number(TimeManager::instance().currentTime());
 	ui->label_Turns->setText(turnText);
-	const QString &cashText = tr("Cash: $") + toString(playerCompany_->cash());
+	const QString &cashText = tr("Cash: $") + WidgetHelper::toString(playerCompany_->cash());
 	ui->label_CompanyCash->setText(cashText);
 
     buildingInfoList_->updateDisplay();
@@ -233,7 +230,7 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
 
 	case ShowDetail:
 		buildingDetailDialog_->setBuilding(building);
-		buildingDetailDialog_->showUp();
+		WidgetHelper::showUp(buildingDetailDialog_);
 		buildingDetailDialog_->updateDisplay();
 		break;
 
@@ -248,10 +245,6 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
 
 void MainWindow::updateStatusBar(const QString &msg) {
     ui->statusBar->showMessage(msg, 5000);
-}
-
-QString MainWindow::toString(double value) {
-	return QString::number(value, 10, 2);
 }
 
 void MainWindow::signalSlotConfig() {

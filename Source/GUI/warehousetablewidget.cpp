@@ -17,22 +17,21 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "Source/baseindustry.h"
+#include "Source/goods.h"
+#include "Source/warehouse.h"
+
+#include "Source/buildingmanager.h"
+#include "Source/uimanager.h"
+
 #include "warehousetablewidget.h"
-#include "baseindustry.h"
-#include "goods.h"
-#include "warehouse.h"
-
-#include "buildingmanager.h"
-#include "uimanager.h"
-
 #include "tablewidgetpushbutton.h"
 #include "selecttablewidget.h"
+#include "widgethelper.h"
 
 WarehouseTableWidget::WarehouseTableWidget(QWidget *parent, Warehouse *warehouse) :
 	QTableWidget(parent),
-	goods_(nullptr),
-	warehouse_(warehouse),
-	selectTableWidget_(nullptr) {
+	warehouse_(warehouse) {
 	init();
 }
 
@@ -51,8 +50,8 @@ void WarehouseTableWidget::updateDisplay() {
 	unsigned int index = 0;
 	this->clearContents();
 	for (auto iter = warehouse.constBegin(); iter != warehouse.constEnd(); ++iter, ++index) {
-		const QString &item = (*iter)->name;
-		const QString &volume = toString((*iter)->volume);
+		const QString &item = (*iter)->label;
+		const QString &volume = WidgetHelper::toString((*iter)->volume);
 		this->setItem(index, 0, new QTableWidgetItem(item));
 		this->setItem(index, 1, new QTableWidgetItem(volume));
 
@@ -88,8 +87,4 @@ void WarehouseTableWidget::getDestAndSendPreroute(BaseBuilding *building) {
 	BaseIndustry *industry = dynamic_cast<BaseIndustry *>(building);
 	emit sendPreroute(*goods_, industry);
 	emit dataChanged();
-}
-
-QString WarehouseTableWidget::toString(double value) {
-	return QString::number(value, 10, 2);
 }

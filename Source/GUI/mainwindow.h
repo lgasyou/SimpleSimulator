@@ -70,10 +70,6 @@ private slots:
 private:
     void updateStatusBar(const QString &msg);
 
-	// transforms double into QString
-	// Retains two decimals.
-	static QString toString(double value);
-
 	void signalSlotConfig();
 
 private:

@@ -19,7 +19,7 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mainwindow.h"
+#include "GUI/mainwindow.h"
 #include <QApplication>
 
 int main(int argc, char *argv[]) {

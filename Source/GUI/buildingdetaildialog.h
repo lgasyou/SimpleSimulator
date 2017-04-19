@@ -37,8 +37,6 @@ public:
 
     ~BuildingDetailDialog();
 
-	void showUp();
-
     void setBuilding(BaseBuilding *building) { this->building_ = building; }
 
 public slots:
@@ -82,11 +80,5 @@ private:
 
     Ui::BuildingDetailDialog *ui;
 };
-
-inline void BuildingDetailDialog::showUp() {
-	this->show();
-	this->raise();
-	this->activateWindow();
-}
 
 #endif // !BUILDINGDETAILDIALOG_H

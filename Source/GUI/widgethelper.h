@@ -1,4 +1,4 @@
-﻿/*
+/*
  *	Copyright 2017 Li Zeqing
  *
  *	This file is part of World Simulator.
@@ -17,42 +17,18 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BUILDINGINFOWIDGET_H
-#define BUILDINGINFOWIDGET_H
-
-#include <QWidget>
-
-class BaseBuilding;
-namespace Ui { 
-class BuildingInfoWidget; 
-}
+#ifndef WIDGETHELPER_H
+#define WIDGETHELPER_H
 
 class QString;
+class QWidget;
 
-class BuildingInfoWidget : public QWidget {
-	Q_OBJECT
-
+class WidgetHelper {
 public:
-	BuildingInfoWidget(QWidget *parent = nullptr);
+	static QString toString(double value);
 
-	~BuildingInfoWidget();
+	static void showUp(QWidget *widget);
 
-	void setTarget(BaseBuilding *building);
-
-signals:
-	void sendCommand(int command, BaseBuilding *building);
-
-public slots:
-	void receiveCommand(int);
-
-	void showBuildingInfo(BaseBuilding *building);
-
-	void updateDisplay();
-
-private:
-	BaseBuilding *displayedBuilding_;
-
-	Ui::BuildingInfoWidget *ui;
 };
 
-#endif // !BUILDINGINFOWIDGET_H
+#endif // !WIDGETHELPER_H

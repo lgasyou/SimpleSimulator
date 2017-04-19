@@ -1,4 +1,4 @@
-﻿/*
+/*
  *	Copyright 2017 Li Zeqing
  *
  *	This file is part of World Simulator.
@@ -17,39 +17,17 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MACHINETABLEWIDGET_H
-#define MACHINETABLEWIDGET_H
+#include "widgethelper.h"
 
-#include <QTableWidget>
+#include <QString>
+#include <QWidget>
 
-class BaseBuilding;
-class BaseIndustry;
-class Machine;
+QString WidgetHelper::toString(double value) {
+	return QString::number(value, 10, 2);
+}
 
-class TableWidgetPushButton;
-
-class MachineTableWidget : public QTableWidget {
-	Q_OBJECT
-
-public:
-	MachineTableWidget(QWidget *parent = nullptr);
-
-	~MachineTableWidget();
-
-	void init();
-
-	void setIndustry(BaseBuilding *industry);
-
-public slots:
-	void receiveShowDetailSignal(int);
-
-	void updateDisplay();
-
-signals:
-	void sendSelectedMachine(Machine *);
-
-private:
-	BaseIndustry *industry_;
-};
-
-#endif // MACHINETABLEWIDGET_H
+void WidgetHelper::showUp(QWidget *widget) {
+	widget->show();
+	widget->raise();
+	widget->activateWindow();
+}

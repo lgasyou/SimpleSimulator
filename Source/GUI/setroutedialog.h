@@ -42,8 +42,6 @@ public:
 	// Creates a new object if the former one has been used.
 	void createNewRoute();
 
-	void showUp();
-
 public slots:
 	void updateDisplay();
 
@@ -73,11 +71,5 @@ private:
 
 	Ui::SetRouteDialog *ui;
 };
-
-inline void SetRouteDialog::showUp() {
-	this->show();
-	this->raise();
-	this->activateWindow();
-}
 
 #endif // !SETROUTEDIALOG_H

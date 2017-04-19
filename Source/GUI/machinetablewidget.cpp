@@ -17,16 +17,15 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "machinetablewidget.h"
-#include "baseindustry.h"
-#include "machine.h"
-#include "goods.h"
+#include "Source/baseindustry.h"
+#include "Source/machine.h"
+#include "Source/goods.h"
 
+#include "machinetablewidget.h"
 #include "tablewidgetpushbutton.h"
 
 MachineTableWidget::MachineTableWidget(QWidget *parent) : 
-	QTableWidget(parent),
-	industry_(nullptr) {
+	QTableWidget(parent) {
 	init();
 }
 

@@ -17,9 +17,10 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "Source/mapmanager.h"
+
 #include "mainui.h"
 #include "ui_mainui.h"
-#include "mapmanager.h"
 
 #include <QPainter>
 #include <QMouseEvent>

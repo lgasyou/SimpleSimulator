@@ -18,9 +18,7 @@
  */
 
 #include "basebuilding.h"
-
 #include "random.h"
-#include "gameconstants.h"
 
 #include <QString>
 
@@ -48,11 +46,11 @@ void BaseBuilding::changeBaseValue() {
 }
 
 void BaseBuilding::initBasicValue() {
-	const double basicValue = GameConstants::defaultBaseValueOfBuilding;
-	const double sigma = GameConstants::sigmaOfdefaultBaseValueOfBuilding;
+	const double basicValue = 50.0;
+	const double sigma = 25.0;
 	double value = 0.0;
 	do {
 		value = Random::instance().normalDistribution(basicValue, sigma);
-	} while (value <= GameConstants::minBaseValueOfBuilding);
+	} while (value <= 20.0);
 	this->value_ = value;
 }

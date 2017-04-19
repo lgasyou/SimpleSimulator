@@ -29,9 +29,9 @@ class BaseIndustry;
 class Truck : public Vihicle {
 public:
 	enum class State : char { 
+		Idle,
 		Going, 
-		Backing,
-		Stoped
+		Backing
 	};
 
 	Truck();
@@ -39,18 +39,14 @@ public:
 	~Truck();
 
 	// Loads goods from factory
-	// Calculates and sets remain time
-	// Sets occupied_ as true
-	// Sets loaded_ as true
 	void load();
 
 	// Unloads goods to factory
-	// Sets loaded_ as false
 	void unload();
 
-	void work();
+	void operate();
 
-	// Stops jobs and go back to garage.
+	// Stops jobs and goes back to garage.
 	void goBack();
 
 	State truckState() const { return truckState_; }
@@ -71,7 +67,7 @@ public:
 	GoodsContainer *freightHouse() const { return freightHouse_; }
 
 private:
-	State truckState_ = State::Stoped;
+	State truckState_ = State::Idle;
 
 	Route *route_ = nullptr;
 
@@ -87,7 +83,7 @@ private:
 };
 
 inline bool Truck::isWorking() const {
-	return truckState() != State::Stoped;
+	return truckState() != State::Idle;
 }
 
 inline void Truck::setRoute(Route *route) {

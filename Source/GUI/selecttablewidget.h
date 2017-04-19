@@ -1,4 +1,4 @@
-/*
+﻿/*
  *	Copyright 2017 Li Zeqing
  *
  *	This file is part of World Simulator.
@@ -17,53 +17,47 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef WAREHOUSETABLEWIDGET_H
-#define WAREHOUSETABLEWIDGET_H
+#ifndef SELECTTABLEWIDGET_H
+#define SELECTTABLEWIDGET_H
 
 #include <QTableWidget>
+#include <QString>
+#include <vector>
 
-class Warehouse;
-class BaseIndustry;
 class BaseBuilding;
-struct Goods;
-
 class TableWidgetPushButton;
-class SelectTableWidget;
 
-class WarehouseTableWidget : public QTableWidget {
-    Q_OBJECT
+class SelectTableWidget : public QTableWidget {
+	Q_OBJECT
 
 public:
-	WarehouseTableWidget(QWidget *parent = nullptr, Warehouse *warehouse = nullptr);
+	enum { 
+		None = 0, 
+		UnusedLand = 1, 
+		Factory = 2, Mine = 4 };
+
+	SelectTableWidget(QWidget *parent = nullptr);
+
+	~SelectTableWidget();
 
 	void init();
 
-	void setWarehouse(Warehouse *warehouse) { this->warehouse_ = warehouse; }
-
-public slots:
-	void goSelectIndustry();
-
-	void getGoods(int index);
-
-	void getDestAndSendPreroute(BaseBuilding *dest);
-
 	void updateDisplay();
 
+	void updateEachLine(int indexInWidget, int indexInManager, BaseBuilding *);
+
+	// Sets type(s) which will be displayed later.
+	// Uses '|' to store multiple objects.
+	void setSelector(int type);
+
+public slots:
+	void getDestAndSendBuilding(int index);
+
 signals:
-	void sendPreroute(const Goods &goods, BaseIndustry *dest);
-
-	void dataChanged();
+	void sendBuilding(BaseBuilding *);
 
 private:
-	// transforms double into QString
-	static QString toString(double value);
-
-private:
-	Goods *goods_;
-
-	Warehouse *warehouse_;
-
-	SelectTableWidget *selectTableWidget_;
+	std::vector<QString> typeNames_;
 };
 
-#endif // WAREHOUSETABLEWIDGET_H
+#endif // !SELECTTABLEWIDGET_H
