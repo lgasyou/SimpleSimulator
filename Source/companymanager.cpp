@@ -27,7 +27,7 @@ CompanyManager::CompanyManager() { }
 
 CompanyManager::~CompanyManager() {
 	delete playerCompany_;
-	for (Company *AICompany : AICompanyList_) {
+	for (Company *AICompany : AICompanies_) {
 		delete AICompany;
 	}
 }
@@ -43,5 +43,5 @@ void CompanyManager::init() {
 
 void CompanyManager::update() {
 	playerCompany_->update();
-	std::for_each(AICompanyList_.begin(), AICompanyList_.end(), [](Company *company) { company->update(); });
+	std::for_each(AICompanies_.begin(), AICompanies_.end(), [](Company *company) { company->update(); });
 }

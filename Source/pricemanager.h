@@ -24,13 +24,6 @@
 #include <QString>
 
 struct PriceItem {
-public:
-	PriceItem(const QString &name_, const QString &unit_, double price_) :
-		name(name_),
-		unit(unit_),
-		price(price_) { }
-
-public:
 	QString name;
 
 	QString unit;
@@ -40,9 +33,8 @@ public:
 
 
 
-// This class is designed for controlling the price of goods in the game.
-// It adjusts the prices dynamically according to the supply-demand
-// relationship.
+// Controls the Price of goods in the game.
+// It adjusts the prices dynamically according to the supply-demand relationship.
 class PriceManager {
 public:
 	// Use singleton pattern.
@@ -50,7 +42,7 @@ public:
 
 	void init();
 	
-	double price(const QString &name) const;
+	double currentPrice(const QString &name) const;
 
 	// Updates the prices of all goods.
 	void update();

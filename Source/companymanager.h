@@ -35,7 +35,7 @@ public:
 
 	Company *playerCompany() { return playerCompany_; }
 
-	std::list<Company *> &AICompanyList() { return AICompanyList_; }
+	std::list<Company *> &AICompanies() { return AICompanies_; }
 
 private:
 	// Hide constructor and destructor.
@@ -47,7 +47,7 @@ private:
 private:
 	Company *playerCompany_;
 
-	std::list<Company *> AICompanyList_;
+	std::list<Company *> AICompanies_;
 };
 
 

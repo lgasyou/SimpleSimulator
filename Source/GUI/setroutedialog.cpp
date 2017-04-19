@@ -62,7 +62,7 @@ SetRouteDialog::SetRouteDialog(QWidget *parent) :
 	connect(this,					SIGNAL(dataChanged()),
 			this,					SLOT(updateDisplay()));
 
-	route_ = new Route(Goods{ "", 0.0 }, nullptr, nullptr, false);
+	route_ = new Route;
 }
 
 SetRouteDialog::~SetRouteDialog() {
@@ -73,7 +73,7 @@ SetRouteDialog::~SetRouteDialog() {
 
 void SetRouteDialog::createNewRoute() {
 	if(route_->orig && route_->dest)
-		route_ = new Route(Goods(), nullptr, nullptr, false);
+		route_ = new Route;
 }
 
 void SetRouteDialog::updateDisplay() {

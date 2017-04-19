@@ -82,6 +82,11 @@ void BuildingManager::add(GameConstants::BuildingTypes buildingType) {
 	this->add(newBuilding);
 }
 
+void BuildingManager::remove(BaseBuilding *building) {
+	auto iter = std::find(buildings_.begin(), buildings_.end(), building);
+	buildings_.erase(iter);
+}
+
 double BuildingManager::deltaValueOfCompanyProperties(Company *company) const {
 	double totalDeltaValue = 0.0;
 	for (auto building : buildings_) {
@@ -104,11 +109,6 @@ int BuildingManager::indexOf(BaseBuilding *building) const {
 		if (buildings_[i] == building)
 			return static_cast<int>(i);
 	return -1;
-}
-
-void BuildingManager::remove(BaseBuilding *building) {
-	auto iter = std::find(buildings_.begin(), buildings_.end(), building);
-	buildings_.erase(iter);
 }
 
 BaseBuilding *BuildingManager::resetType(BaseBuilding *building, GameConstants::BuildingTypes type) {

@@ -42,7 +42,7 @@ private:
 	~PersonManager();
 
 private:
-	std::list<Person *> personList_;
+	std::list<Person *> persons_;
 };
 
 #endif // !PERSONMANAGER_H

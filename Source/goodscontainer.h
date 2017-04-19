@@ -35,7 +35,7 @@ public:
 	virtual ~GoodsContainer();
 
 	// Queries goods' volume by its label.
-	double volumeOf(const QString &goodsName) const;
+	double volumeOf(const GoodsLabel &label) const;
 
 	Goods *getById(int id);
 

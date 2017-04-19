@@ -18,7 +18,6 @@
  */
 
 #include "graph.h"
-
 #include "goods.h"
 
 #include <QString>

@@ -31,11 +31,11 @@ BaseCommerce::BaseCommerce(const QString &name, const QString &type) :
 
 BaseCommerce::~BaseCommerce() { }
 
-void BaseCommerce::purchaseCommodity(BaseIndustry *factory, const Goods &goods) {
+void BaseCommerce::restock(BaseIndustry *factory, const Goods &goods) {
 	factory->fetch(goods);
 }
 
-void BaseCommerce::sellCommodity(Person *consumer, const Goods &goods) {
+void BaseCommerce::sellTo(Person *consumer, const Goods &goods) {
 
 }
 

@@ -35,9 +35,9 @@ public:
 
 	virtual ~BaseCommerce();
 
-	void purchaseCommodity(BaseIndustry *factory, const Goods &goods);
+	void restock(BaseIndustry *factory, const Goods &goods);
 
-	void sellCommodity(Person *consumer, const Goods &goods);
+	void sellTo(Person *consumer, const Goods &goods);
 
 	// update data after each turn
 	void update() override;

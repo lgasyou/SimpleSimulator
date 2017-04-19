@@ -35,5 +35,6 @@ double Random::normalDistribution(double mu, double sigma) {
     return range(generator_);
 }
 
-std::default_random_engine Random::generator_ =
-        std::default_random_engine(static_cast<unsigned>(time(nullptr)));
+Random::Random() :
+	generator_(std::default_random_engine(static_cast<unsigned>(time(nullptr))))
+{ }

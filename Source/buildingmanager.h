@@ -47,6 +47,8 @@ public:
 
 	void add(GameConstants::BuildingTypes);
 
+	void remove(BaseBuilding *);
+
 	const std::vector<BaseBuilding *> &buildings() const { return buildings_; }
 
 	std::size_t buildingNumber() const { return buildings_.size(); }
@@ -59,8 +61,6 @@ public:
 	BaseBuilding *getByPos(int x, int y) const;
 
 	int indexOf(BaseBuilding *) const;
-
-	void remove(BaseBuilding *);
 
 	// Gets building's pointer and type.
 	// Returns a pointer which is arg "type" asked.

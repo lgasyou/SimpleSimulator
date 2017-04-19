@@ -31,12 +31,12 @@ public:
     double normalDistribution(double mu, double sigma);
 
 private:
-	Random() { }
+	Random();
 
-	~Random() { }
+	~Random() = default;
 
 private:
-    static std::default_random_engine generator_;
+    std::default_random_engine generator_;
 };
 
 #endif // RANDOM_H

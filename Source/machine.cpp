@@ -28,29 +28,12 @@ Machine::Machine() { }
 Machine::~Machine() { }
 
 void Machine::produce() {
-	// Finds the limit factor of producing goods.
-	int limitFactor = maximalProductivity();
-	for (const auto &rawMaterial : materials_) {
-		double stock = warehouse_->volumeOf(rawMaterial.label);
-		int ratio = static_cast<int>(stock / rawMaterial.volume);
-		if (ratio < limitFactor)
-			limitFactor = ratio;
-	}
-
-	// Produces several goods.
-	for (const auto &material : materials_) {
-		Goods finalMaterial = material;
-		finalMaterial.volume *= limitFactor;
-		warehouse_->fetch(finalMaterial);
-	}
-	Goods finalProduct = { currentProduct_, 0.0 };
+	double limitFactor = getProduceLimitFactor();
+	fetchMaterialByLimitFactor(limitFactor);
+	Goods finalProduct = { currentProduct_, 1.0 };
 	finalProduct.volume *= limitFactor;
 	warehouse_->store(finalProduct);
 	currentProductivity_ = limitFactor;
-}
-
-void Machine::setMaximalProductivity(double maximalProductivity) {
-	this->maximalProductivity_ = maximalProductivity;
 }
 
 void Machine::setCurrentProduct(const QString &product) {
@@ -61,4 +44,23 @@ void Machine::setCurrentProduct(const QString &product) {
 void Machine::setProducts(const std::vector<Goods> &products) {
 	this->products_ = products;
 	this->currentProduct_ = products[0].label;
+}
+
+double Machine::getProduceLimitFactor() const {
+	int limitFactor = maximalProductivity();
+	for (const auto &rawMaterial : materials_) {
+		double stock = warehouse_->volumeOf(rawMaterial.label);
+		int ratio = static_cast<int>(stock / rawMaterial.volume);
+		if (ratio < limitFactor)
+			limitFactor = ratio;
+	}
+	return limitFactor;
+}
+
+void Machine::fetchMaterialByLimitFactor(double limitFactor) {
+	for (const auto &material : materials_) {
+		Goods finalMaterial = material;
+		finalMaterial.volume *= limitFactor;
+		warehouse_->fetch(finalMaterial);
+	}
 }

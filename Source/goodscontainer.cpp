@@ -26,9 +26,9 @@ GoodsContainer::GoodsContainer() { }
 
 GoodsContainer::~GoodsContainer() { }
 
-double GoodsContainer::volumeOf(const QString &goodsName) const {
+double GoodsContainer::volumeOf(const GoodsLabel &label) const {
 	for (const auto item : container_) {
-		if (item->label == goodsName)
+		if (item->label == label)
 			return item->volume;
 	}
 	return 0.0;

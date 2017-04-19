@@ -22,7 +22,6 @@
 
 #include "gameconstants.h"
 
-class BaseBuilding;
 class Vector2D;
 
 struct MapNode {

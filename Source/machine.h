@@ -50,6 +50,11 @@ public:
 	const std::vector<Goods> &materials() const { return materials_; }
 
 private:
+	double getProduceLimitFactor() const;
+
+	void fetchMaterialByLimitFactor(double limitFactor);
+
+private:
 	double currentProductivity_ = 0.0;
 
 	double maximalProductivity_ = 1.0;
@@ -62,5 +67,9 @@ private:
 
 	std::vector<Goods> materials_;
 };
+
+inline void Machine::setMaximalProductivity(double maximalProductivity) {
+	this->maximalProductivity_ = maximalProductivity;
+}
 
 #endif // !MACHINE_H

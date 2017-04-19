@@ -33,6 +33,7 @@ public:
     double deltaTime() const { return deltaTime_; }
 
 	void increaseTime() { this->currentTime_ += frequence_; }
+
     double currentTime() const { return currentTime_; }
 
 	void setFrequence(double frequence) { this->frequence_ = frequence; }
