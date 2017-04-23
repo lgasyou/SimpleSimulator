@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef GARAGETABLEWIDGET_H
@@ -22,7 +22,7 @@
 
 #include <QTableWidget>
 
-#include "Source/Objects/basebuilding.h"
+#include "Source/Objects/land.h"
 #include "Source/Objects/garage.h"
 #include "Source/Objects/truck.h"
 #include "Source/Objects/route.h"
@@ -41,7 +41,7 @@ public:
 
     void updateEachRow(int index, Truck *);
 
-    void setGarage(BaseBuilding *garage);
+    void setGarage(Land *garage);
 
 public slots:
     void updateDisplay();

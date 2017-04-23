@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "mainui.h"
@@ -50,18 +50,6 @@ MainUI::~MainUI() {
     delete ui;
 }
 
-void MainUI::init() {
-    auto map = MapManager::instance().gameMap();
-    QColor penColor = Qt::black;
-    for (int i = 0; i != mapHeight; ++i) {
-        for (int j = 0; j != mapWeight; ++j) {
-            if (map[i][j] != UnusedLand) {
-                image_.setPixel(i, j, penColor.rgba());
-            }
-        }
-    }
-}
-
 QSize MainUI::sizeHint() const {
     QSize size = image_.size() * zoom_;
     size += QSize(1, 1);
@@ -73,6 +61,18 @@ void MainUI::setMode(int mode) {
         mode_ = mode;
         update();
     }
+}
+
+void MainUI::updateDisplay() {
+    auto map = MapManager::instance().gameMap();
+    QColor penColor;
+    for (int i = 0; i != mapHeight; ++i) {
+        for (int j = 0; j != mapWeight; ++j) {
+            penColor = getNodeColorByType(map[i][j]);
+            image_.setPixel(i, j, penColor.rgba());
+        }
+    }
+    update();
 }
 
 void MainUI::mousePressEvent(QMouseEvent *event) {
@@ -129,4 +129,25 @@ void MainUI::paintMap(QPaintEvent *event) {
 
 void MainUI::paintBuilding(QPaintEvent *) {
     QPainter painter(this);
+}
+
+QColor MainUI::getNodeColorByType(StructureType type) {
+    switch (type) {
+    case Bank:
+        return Qt::red;
+    case Factory:
+        return Qt::black;
+    case Farm:
+        return Qt::yellow;
+    case Garage:
+        return Qt::blue;
+    case Mine:
+        return Qt::darkYellow;
+    case Supermarket:
+        return Qt::darkBlue;
+    case Villa:
+        return Qt::lightGray;
+    default:
+        return Qt::white;
+    }
 }

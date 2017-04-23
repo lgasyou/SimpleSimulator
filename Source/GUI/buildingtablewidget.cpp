@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "buildingtablewidget.h"
@@ -61,7 +61,7 @@ void BuildingTableWidget::updateDisplay() {
     }
 }
 
-void BuildingTableWidget::displayBasicInfo(int index, BaseBuilding *building) {
+void BuildingTableWidget::displayBasicInfo(int index, Land *building) {
     const QString &name = building->name();
     const QString &deltaValue = " " + WidgetHelper::toString(building->deltaValue());
     const QString &value = "$" + WidgetHelper::toString(building->value()) + deltaValue;
@@ -73,7 +73,7 @@ void BuildingTableWidget::displayBasicInfo(int index, BaseBuilding *building) {
     setItem(index, 3, new QTableWidgetItem(owner));
 }
 
-void BuildingTableWidget::displayAccordingToVisitor(int index, BaseBuilding *building) {
+void BuildingTableWidget::displayAccordingToVisitor(int index, Land *building) {
     Company *playerCompany = CompanyManager::instance().playerCompany();
 
     using namespace gameconstants;
@@ -95,6 +95,6 @@ void BuildingTableWidget::displayAccordingToVisitor(int index, BaseBuilding *bui
 }
 
 void BuildingTableWidget::receiveCommand(int index, int command) {
-    BaseBuilding *building = BuildingManager::instance().getById(index);
+    Land *building = BuildingManager::instance().getById(index);
     emit sendCommand(command, building);
 }

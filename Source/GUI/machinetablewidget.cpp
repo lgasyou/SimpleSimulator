@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "machinetablewidget.h"
@@ -33,7 +33,7 @@ void MachineTableWidget::init() {
     this->setHorizontalHeaderLabels(header);
 }
 
-void MachineTableWidget::setIndustry(BaseBuilding *industry) {
+void MachineTableWidget::setIndustry(Land *industry) {
     this->industry_ = dynamic_cast<BaseIndustry *>(industry);
 }
 

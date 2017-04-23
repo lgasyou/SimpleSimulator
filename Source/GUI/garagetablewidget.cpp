@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "garagetablewidget.h"
@@ -78,7 +78,7 @@ void GarageTableWidget::updateEachRow(int index, Truck *truck) {
             this,        SLOT(buttonClicked(int, int)));
 }
 
-void GarageTableWidget::setGarage(BaseBuilding *garage) {
+void GarageTableWidget::setGarage(Land *garage) {
     this->garage_ = dynamic_cast<Garage *>(garage);
 }
 

@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef UNUSEDLAND_H
@@ -22,9 +22,9 @@
 
 #include <QString>
 
-#include "basebuilding.h"
+#include "land.h"
 
-class UnusedLand : public BaseBuilding {
+class UnusedLand : public Land {
 public:
     UnusedLand(const QString &name = "Unused Land");
 

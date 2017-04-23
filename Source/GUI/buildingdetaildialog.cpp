@@ -14,12 +14,12 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "buildingdetaildialog.h"
 
-#include "Source/Objects/basebuilding.h"
+#include "Source/Objects/land.h"
 #include "Source/Objects/baseindustry.h"
 #include "Source/Objects/company.h"
 #include "Source/Objects/factory.h"
@@ -93,43 +93,22 @@ void BuildingDetailDialog::closeEvent(QCloseEvent *) {
 //}
 
 void BuildingDetailDialog::addNewMachine() {
-    switch (auto industryType = BuildingManager::stringToEnum(building_->type())) {
-    case gameconstants::Factory: {
-        Factory *factory = dynamic_cast<Factory *>(building_);
-
+    if (BaseIndustry *industry = dynamic_cast<BaseIndustry *>(building_)) {
         MachineBuilder *builder = new DefaultMachineBuilder;
         Machine *machine = MachineManager::instance().machine(builder);
-        machine->setWarehouse(factory->warehouse());
-        factory->addMachine(machine);
+        machine->setWarehouse(industry->warehouse());
+        industry->addMachine(machine);
         delete builder;
 
         emit dataChanged();
-        break;
     }
-
-    case gameconstants::Mine: {
-        Mine *mine = dynamic_cast<Mine *>(building_);
-
-        MachineBuilder *builder = new DefaultMachineBuilder;
-        Machine *machine = MachineManager::instance().machine(builder);
-        machine->setWarehouse(mine->warehouse());
-        mine->addMachine(machine);
-        delete builder;
-
-        emit dataChanged();
-        break;
-    }
-
-    default:
-        break;
-    }
-
 }
 
 void BuildingDetailDialog::addNewVihicle() {
-    Garage *garage = dynamic_cast<Garage *>(building_);
-    garage->addNewVihicle("Truck");
-    emit dataChanged();
+    if (Garage *garage = dynamic_cast<Garage *>(building_)) {
+        garage->addNewVihicle("Truck");
+        emit dataChanged();
+    }
 }
 
 void BuildingDetailDialog::setNextMachineProduct(const QString &product) {

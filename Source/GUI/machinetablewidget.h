@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef MACHINETABLEWIDGET_H
@@ -22,7 +22,7 @@
 
 #include <QTableWidget>
 
-#include "Source/Objects/basebuilding.h"
+#include "Source/Objects/land.h"
 #include "Source/Objects/baseindustry.h"
 #include "Source/Objects/machine.h"
 #include "Source/Objects/route.h"
@@ -39,7 +39,7 @@ public:
 
     void init();
 
-    void setIndustry(BaseBuilding *industry);
+    void setIndustry(Land *industry);
     
 public slots:
     void receiveShowDetailSignal(int);

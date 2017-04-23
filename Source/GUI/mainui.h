@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef MAPUI_H
@@ -22,6 +22,8 @@
 
 #include <QWidget>
 #include <QImage>
+
+#include "Source/gameconstants.h"
 
 namespace Ui { 
 class MainUI; 
@@ -37,9 +39,6 @@ public:
 
     enum PaintMode{ Map, Building };
 
-    // TODO: Reset colors of Map Node.
-    void init();
-
     QSize sizeHint() const;
 
     void setImage(const QImage &image) { this->image_ = image; }
@@ -50,13 +49,16 @@ public:
     void setZoom(int zoom) { this->zoom_ = zoom; }
     int zoom() const { return zoom_; }
 
+public slots:
+    void updateDisplay();
+
 signals:
     void sendPosition(int x, int y);
 
 protected:
     void mousePressEvent(QMouseEvent *) override;
 
-    void paintEvent(QPaintEvent *)      override;
+    void paintEvent(QPaintEvent *) override;
 
 private:
     QRect pixelRect(int i, int j) const;
@@ -64,6 +66,8 @@ private:
     void paintMap(QPaintEvent *);
 
     void paintBuilding(QPaintEvent *);
+
+    QColor getNodeColorByType(gameconstants::StructureType);
 
 private:
     QImage image_;

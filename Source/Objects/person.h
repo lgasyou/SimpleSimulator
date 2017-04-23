@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef PERSON_H
@@ -22,7 +22,7 @@
 
 #include "legalperson.h"
 
-class BaseBuilding;
+class Land;
 class BaseResidence;
 
 class Person : public LegalPerson {
@@ -35,12 +35,12 @@ public:
 
     const BaseResidence *home() const { return home_; }
 
-    const BaseBuilding *workplace() const { return workplace_; }
+    const Land *workplace() const { return workplace_; }
 
 private:
     BaseResidence *home_ = nullptr;
 
-    BaseBuilding *workplace_ = nullptr;
+    Land *workplace_ = nullptr;
 
 };
 

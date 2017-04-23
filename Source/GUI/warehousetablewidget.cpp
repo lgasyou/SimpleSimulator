@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "warehousetablewidget.h"
@@ -65,8 +65,8 @@ void WarehouseTableWidget::goSelectIndustry() {
         selectTableWidget_ = new SelectTableWidget;
         selectTableWidget_->setParent(this, Qt::Window);
         selectTableWidget_->setSelector(SelectTableWidget::Factory | SelectTableWidget::Mine);
-        connect(selectTableWidget_, SIGNAL(sendBuilding(BaseBuilding*)),
-                this,               SLOT(getDestAndSendPreroute(BaseBuilding*)));
+        connect(selectTableWidget_, SIGNAL(sendBuilding(Land*)),
+                this,               SLOT(getDestAndSendPreroute(Land*)));
     }
     selectTableWidget_->show();
     selectTableWidget_->updateDisplay();
@@ -76,7 +76,7 @@ void WarehouseTableWidget::getGoods(int index) {
     goods_ = warehouse_->getById(index);
 }
 
-void WarehouseTableWidget::getDestAndSendPreroute(BaseBuilding *building) {
+void WarehouseTableWidget::getDestAndSendPreroute(Land *building) {
     selectTableWidget_->hide();
 
     BaseIndustry *industry = dynamic_cast<BaseIndustry *>(building);

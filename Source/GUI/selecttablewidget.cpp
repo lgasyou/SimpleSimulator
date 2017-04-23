@@ -14,12 +14,12 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "selecttablewidget.h"
 
-#include "Source/Objects/basebuilding.h"
+#include "Source/Objects/land.h"
 
 #include "Source/Managers/buildingmanager.h"
 
@@ -56,7 +56,7 @@ void SelectTableWidget::updateDisplay() {
     setRowCount(indexOfChosen);
 }
 
-void SelectTableWidget::updateEachLine(int indexInWidget, int indexInManager, const BaseBuilding *building) {
+void SelectTableWidget::updateEachLine(int indexInWidget, int indexInManager, const Land *building) {
     const QString &name = building->name();
     const QString &type = building->type();
     setItem(indexInWidget, 0, new QTableWidgetItem(name));
@@ -82,6 +82,6 @@ void SelectTableWidget::setSelector(int type) {
 }
 
 void SelectTableWidget::getDestAndSendBuilding(int index) {
-    BaseBuilding *building = BuildingManager::instance().getById(index);
+    Land *building = BuildingManager::instance().getById(index);
     emit sendBuilding(building);
 }

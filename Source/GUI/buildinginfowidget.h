@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef BUILDINGINFOWIDGET_H
@@ -23,7 +23,7 @@
 #include <QString>
 #include <QWidget>
 
-#include "Source/Objects/basebuilding.h"
+#include "Source/Objects/land.h"
 
 namespace Ui { 
 class BuildingInfoWidget; 
@@ -37,20 +37,20 @@ public:
 
     ~BuildingInfoWidget();
 
-    void setTarget(BaseBuilding *building);
+    void setTarget(Land *building);
 
 signals:
-    void sendCommand(int command, BaseBuilding *building);
+    void sendCommand(int command, Land *building);
 
 public slots:
     void receiveCommand(int);
 
-    void showBuildingInfo(BaseBuilding *building);
+    void showBuildingInfo(Land *building);
 
     void updateDisplay();
 
 private:
-    BaseBuilding *displayedBuilding_ = nullptr;
+    Land *displayedBuilding_ = nullptr;
 
     Ui::BuildingInfoWidget *ui;
 };

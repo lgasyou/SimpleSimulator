@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "buildingmanager.h"
@@ -64,7 +64,7 @@ StructureType BuildingManager::stringToEnum(const QString &type) {
 
 void BuildingManager::add(StructureType buildingType) {
     BuildingFactory factory;
-    BaseBuilding *newBuilding = factory.create(buildingType);
+    Land *newBuilding = factory.create(buildingType);
     
     int x = newBuilding->position().x();
     int y = newBuilding->position().y();
@@ -72,12 +72,12 @@ void BuildingManager::add(StructureType buildingType) {
     dataChanged_ = true;
 }
 
-const std::vector<BaseBuilding *> &BuildingManager::buildings() const {
-    static std::vector<BaseBuilding *> buildingsBuffer;
+const std::vector<Land *> &BuildingManager::buildings() const {
+    static std::vector<Land *> buildingsBuffer;
     if (dataChanged_) {
         buildingsBuffer.clear();
         for (const auto &row : buildings_) {
-            for (BaseBuilding *building : row) {
+            for (Land *building : row) {
                 if (building != nullptr)
                     buildingsBuffer.push_back(building);
             }
@@ -100,23 +100,23 @@ std::size_t BuildingManager::buildingNumber() const {
     return buildings().size();
 }
 
-BaseBuilding *BuildingManager::getById(int id) const {
+Land *BuildingManager::getById(int id) const {
     return buildings()[id];
 }
 
-BaseBuilding *BuildingManager::resetType(BaseBuilding *building, StructureType type) {
+Land *BuildingManager::resetType(Land *building, StructureType type) {
     BuildingFactory buildingFactory;
-    BaseBuilding *buildingCopy = buildingFactory.create(type);
+    Land *buildingCopy = buildingFactory.create(type, building->position());
     buildingCopy->copyFrom(*building);
 
     int x = building->position().x();
     int y = building->position().y();
-
+    
     delete building;
     dataChanged_ = true;
     return buildings_[x][y] = buildingCopy;
 }
 
 void BuildingManager::update() {
-    std::for_each(buildings().begin(), buildings().end(), [](BaseBuilding *b) { b->update(); });
+    std::for_each(buildings().begin(), buildings().end(), [](Land *b) { b->update(); });
 }

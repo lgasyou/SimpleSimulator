@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef BUILDINGBASE_H
@@ -22,20 +22,20 @@
 
 #include <QString>
 
-#include "ibuilding.h"
+#include "iland.h"
 #include "legalperson.h"
 #include "Source/vector2d.h"
 
 //  The base of building classes.
 //  This class cannot be instantiated.
-class BaseBuilding : public IBuilding {
+class Land : public ILand {
 public:
-    BaseBuilding(const QString &name, const QString &type);
+    Land(const QString &name, const QString &type);
 
-    virtual ~BaseBuilding();
+    virtual ~Land();
 
     // Copies data from right hand side.
-    void copyFrom(const BaseBuilding &rhs);
+    void copyFrom(const Land &rhs);
 
     void setDeltaValue(double deltaValue) { this->deltaValue_ = deltaValue; }
 
@@ -67,9 +67,6 @@ public:
 
 protected:
     void changeBaseValue();
-
-private:
-    void initBasicValue();
 
 private:
     double deltaValue_ = 0.0;

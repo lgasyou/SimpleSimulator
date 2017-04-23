@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef INDUSTRYCHAINMANAGER_H
@@ -23,7 +23,7 @@
 #include <vector>
 #include <QString>
 
-#include "Source/Objects/basebuilding.h"
+#include "Source/Objects/land.h"
 #include "Source/Objects/goods.h"
 
 #include "Source/graph.h"

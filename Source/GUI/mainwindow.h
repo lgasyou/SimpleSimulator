@@ -14,7 +14,7 @@
  *	GNU General Public License for more details.
  *	
  *	You should have received a copy of the GNU Lesser General Public License
- *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *	along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef MAINWINDOW_H
@@ -23,7 +23,7 @@
 #include <QMainWindow>
 #include <QString>
 
-#include "Source/Objects/basebuilding.h"
+#include "Source/Objects/land.h"
 #include "Source/Objects/company.h"
 
 #include "buildingtablewidget.h"
@@ -48,7 +48,7 @@ public:
 signals:
     void dataChanged();
 
-    void sendSelectedBuilding(BaseBuilding *);
+    void sendSelectedBuilding(Land *);
 
 private slots:
     // Calls function update() of every variable objects.
@@ -64,7 +64,7 @@ private slots:
 
     void updateDisplay();
 
-    void processCommand(int command, BaseBuilding *);
+    void processCommand(int command, Land *);
 
 private:
     void updateStatusBar(const QString &msg);

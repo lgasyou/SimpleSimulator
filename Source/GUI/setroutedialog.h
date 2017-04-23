@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef SETROUTEDIALOG_H
@@ -23,7 +23,7 @@
 #include <QDialog>
 #include <QString>
 
-#include "Source/Objects/basebuilding.h"
+#include "Source/Objects/land.h"
 #include "Source/Objects/route.h"
 
 #include "selecttablewidget.h"
@@ -51,9 +51,9 @@ private slots:
 
     void getGoodsVolume(double);
 
-    void getOrig(BaseBuilding *);
+    void getOrig(Land *);
     
-    void getDest(BaseBuilding *);
+    void getDest(Land *);
 
     // Summarizes all informations and sends Route to Garage.
     void finishSetting();

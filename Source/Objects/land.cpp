@@ -14,22 +14,20 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "basebuilding.h"
+#include "land.h"
 
 #include "Source/random.h"
 
-BaseBuilding::BaseBuilding(const QString &name, const QString &type) :
+Land::Land(const QString &name, const QString &type) :
     name_(name),
-    type_(type) {
-    initBasicValue();
-}
+    type_(type) { }
 
-BaseBuilding::~BaseBuilding() { }
+Land::~Land() { }
 
-void BaseBuilding::copyFrom(const BaseBuilding &rhs) {
+void Land::copyFrom(const Land &rhs) {
     deltaValue_ = rhs.deltaValue();
     name_ = rhs.name();
     owner_ = rhs.owner();
@@ -38,18 +36,8 @@ void BaseBuilding::copyFrom(const BaseBuilding &rhs) {
     value_ = rhs.value();
 }
 
-void BaseBuilding::changeBaseValue() {
+void Land::changeBaseValue() {
     double sigma = value_ * 0.1 / 3;
     deltaValue_ = Random::instance().normalDistribution(0, sigma);
     value_ += deltaValue_;
-}
-
-void BaseBuilding::initBasicValue() {
-    const double basicValue = 50.0;
-    const double sigma = 25.0;
-    double value = 0.0;
-    do {
-        value = Random::instance().normalDistribution(basicValue, sigma);
-    } while (value <= 20.0);
-    this->value_ = value;
 }

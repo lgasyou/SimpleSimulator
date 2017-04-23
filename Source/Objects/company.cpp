@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "company.h"
@@ -29,7 +29,7 @@ Company::Company(const QString &name) :
 
 Company::~Company() { }
 
-bool Company::phrchase(BaseBuilding *building) {
+bool Company::phrchase(Land *building) {
     double buildingValue = building->value();
     if (buildingValue > cash())
         return false;
@@ -41,7 +41,7 @@ bool Company::phrchase(BaseBuilding *building) {
     return true;
 }
 
-bool Company::sell(BaseBuilding *building) {
+bool Company::sell(Land *building) {
     Government *buyer = &Government::instance();
     buyer->setCash(buyer->cash() - building->value());
     setCash(cash() + building->value());

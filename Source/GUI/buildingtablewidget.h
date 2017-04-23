@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef BUILDINGINFOLIST_H
@@ -22,7 +22,7 @@
 
 #include <QTableWidget>
 
-#include "Source/Objects/basebuilding.h"
+#include "Source/Objects/land.h"
 
 // This class is used for showing information of Buildings.
 // Set Company before use it.
@@ -37,12 +37,12 @@ public:
     void updateDisplay();
 
 private:
-    void displayBasicInfo(int index, BaseBuilding *building);
+    void displayBasicInfo(int index, Land *building);
 
-    void displayAccordingToVisitor(int index, BaseBuilding *building);
+    void displayAccordingToVisitor(int index, Land *building);
 
 signals:
-    void sendCommand(int command, BaseBuilding *building);
+    void sendCommand(int command, Land *building);
 
 private slots:
     // Gets command and index of building,

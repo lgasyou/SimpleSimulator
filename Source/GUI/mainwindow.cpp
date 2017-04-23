@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "mainwindow.h"
@@ -64,7 +64,7 @@ void MainWindow::init() {
     TimeManager::instance().init();
 
     ui->setupUi(this);
-    ui->userInterface->init();
+    ui->userInterface->updateDisplay();
 
     playerCompany_ = CompanyManager::instance().playerCompany();
 
@@ -109,7 +109,7 @@ void MainWindow::showCompanyDetail() {
 }
 
 void MainWindow::getBuildingByPos(int x, int y) {
-    BaseBuilding *building = BuildingManager::instance().getByPos(x, y);
+    Land *building = BuildingManager::instance().getByPos(x, y);
     emit sendSelectedBuilding(building);
 }
 
@@ -122,12 +122,12 @@ void MainWindow::updateDisplay() {
     buildingInfoList_->updateDisplay();
 }
 
-void MainWindow::processCommand(int command, BaseBuilding *building) {
+void MainWindow::processCommand(int command, Land *building) {
     using namespace gameconstants;
     QString msg;
     switch (command) {
     case BuildBank: {
-        BaseBuilding *newBuilding = BuildingManager::instance().resetType(building, Bank);
+        Land *newBuilding = BuildingManager::instance().resetType(building, Bank);
         ui->buildingInfoWidget->setTarget(newBuilding);
         buildingDetailDialog_->setBuilding(newBuilding);
         emit dataChanged();
@@ -135,7 +135,7 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
     }
 
     case BuildFactory: {
-        BaseBuilding *newBuilding = BuildingManager::instance().resetType(building, Factory);
+        Land *newBuilding = BuildingManager::instance().resetType(building, Factory);
         ui->buildingInfoWidget->setTarget(newBuilding);
         buildingDetailDialog_->setBuilding(newBuilding);
         emit dataChanged();
@@ -143,7 +143,7 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
     }
 
     case BuildFarm: {
-        BaseBuilding *newBuilding = BuildingManager::instance().resetType(building, Farm);
+        Land *newBuilding = BuildingManager::instance().resetType(building, Farm);
         ui->buildingInfoWidget->setTarget(newBuilding);
         buildingDetailDialog_->setBuilding(newBuilding);
         emit dataChanged();
@@ -152,7 +152,7 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
 
 
     case BuildGarage: {
-        BaseBuilding *newBuilding = BuildingManager::instance().resetType(building, Garage);
+        Land *newBuilding = BuildingManager::instance().resetType(building, Garage);
         ui->buildingInfoWidget->setTarget(newBuilding);
         buildingDetailDialog_->setBuilding(newBuilding);
         emit dataChanged();
@@ -160,7 +160,7 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
     }
 
     case BuildMine: {
-        BaseBuilding *newBuilding = BuildingManager::instance().resetType(building, Mine);
+        Land *newBuilding = BuildingManager::instance().resetType(building, Mine);
         ui->buildingInfoWidget->setTarget(newBuilding);
         buildingDetailDialog_->setBuilding(newBuilding);
         emit dataChanged();
@@ -168,7 +168,7 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
     }
 
     case BuildSupermarket: {
-        BaseBuilding *newBuilding = BuildingManager::instance().resetType(building, Supermarket);
+        Land *newBuilding = BuildingManager::instance().resetType(building, Supermarket);
         ui->buildingInfoWidget->setTarget(newBuilding);
         buildingDetailDialog_->setBuilding(newBuilding);
         emit dataChanged();
@@ -176,7 +176,7 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
     }
 
     case BuildVilla: {
-        BaseBuilding *newBuilding = BuildingManager::instance().resetType(building, Villa);
+        Land *newBuilding = BuildingManager::instance().resetType(building, Villa);
         ui->buildingInfoWidget->setTarget(newBuilding);
         buildingDetailDialog_->setBuilding(newBuilding);
         emit dataChanged();
@@ -199,7 +199,7 @@ void MainWindow::processCommand(int command, BaseBuilding *building) {
         break;
 
     case DismantleBuilding: {
-        BaseBuilding *newBuilding = BuildingManager::instance().resetType(building, UnusedLand);
+        Land *newBuilding = BuildingManager::instance().resetType(building, UnusedLand);
         ui->buildingInfoWidget->setTarget(newBuilding);
         buildingDetailDialog_->setBuilding(newBuilding);
         msg = newBuilding->name() + " has been dismantled.";
@@ -254,19 +254,19 @@ void MainWindow::signalSlotConfig() {
     /* ---------------------------------------------------------------------------------------------- */
 
     /* ---------------------------------- Orders Config --------------------------------------------- */
-    connect(ui->buildingInfoWidget,     SIGNAL(sendCommand(int, BaseBuilding *)),
-            this,                       SLOT(processCommand(int, BaseBuilding *)));
-    connect(buildingInfoList_,          SIGNAL(sendCommand(int, BaseBuilding *)),
-            this,                       SLOT(processCommand(int, BaseBuilding *)));
-    connect(buildingDetailDialog_,      SIGNAL(sendCommand(int, BaseBuilding *)),
-            this,                       SLOT(processCommand(int, BaseBuilding *)));
+    connect(ui->buildingInfoWidget,     SIGNAL(sendCommand(int, Land *)),
+            this,                       SLOT(processCommand(int, Land *)));
+    connect(buildingInfoList_,          SIGNAL(sendCommand(int, Land *)),
+            this,                       SLOT(processCommand(int, Land *)));
+    connect(buildingDetailDialog_,      SIGNAL(sendCommand(int, Land *)),
+            this,                       SLOT(processCommand(int, Land *)));
     /* ---------------------------------------------------------------------------------------------- */
 
     /* ---------------------------------- Display Config -------------------------------------------- */
     connect(ui->userInterface,          SIGNAL(sendPosition(int, int)),    
             this,                       SLOT(getBuildingByPos(int, int)));
-    connect(this,                       SIGNAL(sendSelectedBuilding(BaseBuilding *)),
-            ui->buildingInfoWidget,     SLOT(showBuildingInfo(BaseBuilding *)));
+    connect(this,                       SIGNAL(sendSelectedBuilding(Land *)),
+            ui->buildingInfoWidget,     SLOT(showBuildingInfo(Land *)));
     /* ---------------------------------------------------------------------------------------------- */
 
     /* ------------------------------- Update Display Config ---------------------------------------- */
@@ -278,5 +278,7 @@ void MainWindow::signalSlotConfig() {
             buildingDetailDialog_,      SLOT(updateDisplay()));
     connect(this,                       SIGNAL(dataChanged()),
             companyDetailDialog_,       SLOT(updateDisplay()));
+    connect(this,                       SIGNAL(dataChanged()),
+            ui->userInterface,          SLOT(updateDisplay()));
     /* ---------------------------------------------------------------------------------------------- */
 }

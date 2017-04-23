@@ -14,19 +14,19 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef IBUILDING_H
 #define IBUILDING_H
 
-class BaseBuilding;
+class Land;
 
-// Interface of BaseBuilding.
-class IBuilding {
+// Interface of Land.
+class ILand {
 public:
-    // Copies data from the other building. Only the basic part of BaseBuilding is copiesd.
-    virtual void copyFrom(const BaseBuilding &rhs) = 0;
+    // Copies data from the other building. Only the basic part of Land is copiesd.
+    virtual void copyFrom(const Land &rhs) = 0;
 
     // Updates data each turn
     virtual void update() = 0;
@@ -34,10 +34,6 @@ public:
 protected:
     // Changes the value of building in ten percent.
     virtual void changeBaseValue() = 0;
-
-private:
-    // Gives a primitive value to this building.
-    virtual void initBasicValue() = 0;
 
 };
 

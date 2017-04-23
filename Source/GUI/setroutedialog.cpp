@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "setroutedialog.h"
@@ -39,13 +39,13 @@ SetRouteDialog::SetRouteDialog(QWidget *parent) :
 
     selectOrigTableWidget_->setParent(this);
     selectOrigTableWidget_->setSelector(SelectTableWidget::Mine | SelectTableWidget::Factory);
-    connect(selectOrigTableWidget_, SIGNAL(sendBuilding(BaseBuilding*)),
-            this,                   SLOT(getOrig(BaseBuilding*)));
+    connect(selectOrigTableWidget_, SIGNAL(sendBuilding(Land*)),
+            this,                   SLOT(getOrig(Land*)));
 
     selectDestTableWidget_->setParent(this);
     selectDestTableWidget_->setSelector(SelectTableWidget::Mine | SelectTableWidget::Factory);
-    connect(selectDestTableWidget_, SIGNAL(sendBuilding(BaseBuilding*)),
-            this,                   SLOT(getDest(BaseBuilding*)));
+    connect(selectDestTableWidget_, SIGNAL(sendBuilding(Land*)),
+            this,                   SLOT(getDest(Land*)));
 
     ui->layout->addWidget(ui->labelOrig);
     ui->layout->addWidget(selectOrigTableWidget_);
@@ -103,12 +103,12 @@ void SetRouteDialog::getGoodsVolume(double eachVolume) {
     emit dataChanged();
 }
 
-void SetRouteDialog::getOrig(BaseBuilding *origin) {
+void SetRouteDialog::getOrig(Land *origin) {
     route_->orig = (BaseIndustry *)origin;
     emit dataChanged();
 }
 
-void SetRouteDialog::getDest(BaseBuilding *dest) {
+void SetRouteDialog::getDest(Land *dest) {
     route_->dest = (BaseIndustry *)dest;
     emit dataChanged();
 }

@@ -14,33 +14,39 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "buildingfactory.h"
 
 #include "Source/Objects/unusedland.h"  
-#include "Source/Objects/baseindustry.h"
 #include "Source/Objects/factory.h"
 #include "Source/Objects/mine.h"    
-#include "Source/Objects/basecommerce.h"
 #include "Source/Objects/supermarket.h"    
-#include "Source/Objects/basefinance.h"
 #include "Source/Objects/bank.h"
-#include "Source/Objects/baseresidence.h"
 #include "Source/Objects/villa.h"
-#include "Source/Objects/baseagriculture.h"
 #include "Source/Objects/farm.h"
-#include "Source/Objects/basetransportation.h"
 #include "Source/Objects/garage.h"
 #include "Source/Objects/government.h"
 
-#include "Source/Managers/buildingmanager.h"
-#include "Source/Managers/mapmanager.h"
+#include "Source/random.h"
 
-BaseBuilding *BuildingFactory::create(gameconstants::StructureType buildingType) {
-    BaseBuilding *building = nullptr;
+Land *BuildingFactory::create(gameconstants::StructureType buildingType, Vector2D position) {
+    createInstance(buildingType);
 
+    setBasicValue();
+
+    allocatePosition(buildingType, position);
+
+    building->setOwner(&Government::instance());
+
+    // TODO: Generate true resource.
+    building->setResource("Coal");
+
+    return building;
+}
+
+void BuildingFactory::createInstance(gameconstants::StructureType buildingType) {
     switch (buildingType) {
     case gameconstants::Bank:
         building = new Bank;
@@ -75,16 +81,17 @@ BaseBuilding *BuildingFactory::create(gameconstants::StructureType buildingType)
         break;
 
     default:
+        building = nullptr;
         break;
     }
+}
 
-    building->setOwner(&Government::instance());
-
-    Vector2D position = MapManager::instance().allocate(buildingType);
-    building->setPosition(position);
-
-    // TODO: Generate true resource.
-    building->setResource("Coal");
-
-    return building;
+void BuildingFactory::setBasicValue() {
+    const double basicValue = 50.0;
+    const double sigma = 25.0;
+    double value = 0.0;
+    do {
+        value = Random::instance().normalDistribution(basicValue, sigma);
+    } while (value <= 20.0);
+    building->setValue(value);
 }

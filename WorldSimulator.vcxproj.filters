@@ -252,9 +252,6 @@
     <ClCompile Include="Source\Objects\baseagriculture.cpp">
       <Filter>Source Files\Buildings</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Objects\basebuilding.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Objects\basecommerce.cpp">
       <Filter>Source Files\Buildings</Filter>
     </ClCompile>
@@ -375,6 +372,9 @@
     <ClCompile Include="Source\graph.cpp">
       <Filter>Source Files\Utilities</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Objects\land.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Source\GUI\bankdialog.h">
@@ -487,9 +487,6 @@
     <ClInclude Include="Source\Objects\baseagriculture.h">
       <Filter>Header Files\Buildings</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Objects\basebuilding.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Objects\basecommerce.h">
       <Filter>Header Files\Buildings</Filter>
     </ClInclude>
@@ -525,9 +522,6 @@
     </ClInclude>
     <ClInclude Include="Source\Objects\government.h">
       <Filter>Header Files\Groups</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\ibuilding.h">
-      <Filter>Header Files\Buildings</Filter>
     </ClInclude>
     <ClInclude Include="Source\Objects\legalperson.h">
       <Filter>Header Files\Groups</Filter>
@@ -609,6 +603,12 @@
     </ClInclude>
     <ClInclude Include="Source\graph.h">
       <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\iland.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\land.h">
+      <Filter>Header Files\Buildings</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

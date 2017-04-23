@@ -148,7 +148,7 @@
     <ClCompile Include="Source\Objects\bankaccount.cpp" />
     <ClCompile Include="Source\GUI\bankdialog.cpp" />
     <ClCompile Include="Source\Objects\baseagriculture.cpp" />
-    <ClCompile Include="Source\Objects\basebuilding.cpp" />
+    <ClCompile Include="Source\Objects\land.cpp" />
     <ClCompile Include="Source\Objects\basefinance.cpp" />
     <ClCompile Include="Source\Objects\basetransportation.cpp" />
     <ClCompile Include="Source\GUI\buildingdetaildialog.cpp" />
@@ -329,7 +329,7 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
     <ClInclude Include="Source\GUI\widgethelper.h" />
-    <ClInclude Include="Source\Objects\ibuilding.h" />
+    <ClInclude Include="Source\Objects\iland.h" />
     <ClInclude Include="Source\defaultmachinebuilder.h" />
     <ClInclude Include="GeneratedFiles\ui_bankdialog.h" />
     <ClInclude Include="GeneratedFiles\ui_buildingdetaildialog.h" />
@@ -459,7 +459,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
-    <ClInclude Include="Source\Objects\basebuilding.h" />
+    <ClInclude Include="Source\Objects\land.h" />
     <CustomBuild Include="Source\GUI\buildingdetaildialog.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath);$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing buildingdetaildialog.h...</Message>

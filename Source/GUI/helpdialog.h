@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef HELPDIALOG_H
@@ -23,7 +23,9 @@
 #include <QDialog>
 #include <QListWidgetItem>
 
-namespace Ui { class HelpDialog; }
+namespace Ui { 
+class HelpDialog;
+}
 
 class HelpDialog : public QDialog {
     Q_OBJECT

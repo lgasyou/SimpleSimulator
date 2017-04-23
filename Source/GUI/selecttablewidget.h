@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef SELECTTABLEWIDGET_H
@@ -24,7 +24,7 @@
 #include <QString>
 #include <vector>
 
-#include "Source/Objects/basebuilding.h"
+#include "Source/Objects/land.h"
 
 #include "tablewidgetpushbutton.h"
 
@@ -45,7 +45,7 @@ public:
 
     void updateDisplay();
 
-    void updateEachLine(int indexInWidget, int indexInManager, const BaseBuilding *);
+    void updateEachLine(int indexInWidget, int indexInManager, const Land *);
 
     // Sets type(s) which will be displayed later.
     // Uses '|' to store multiple objects.
@@ -55,7 +55,7 @@ public slots:
     void getDestAndSendBuilding(int index);
 
 signals:
-    void sendBuilding(BaseBuilding *);
+    void sendBuilding(Land *);
 
 private:
     std::vector<QString> typeNames_;

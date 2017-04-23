@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef MAPMANAGER_H
@@ -29,7 +29,7 @@
 // This class is designed for working with transportations modules.
 class MapManager {
 public:
-    typedef std::array<std::array<gameconstants::StructureType, gameconstants::mapWeight>, gameconstants::mapHeight> Map;
+    typedef std::array<std::array<gameconstants::StructureType, gameconstants::mapWeight>, gameconstants::mapHeight> GameMap;
 
     // Gets single instance.
     static MapManager &instance();
@@ -42,7 +42,7 @@ public:
 
     void setNodeType(const Vector2D &pos, gameconstants::StructureType newType);
 
-    Map gameMap() const { return gameMap_; }
+    GameMap gameMap() const { return gameMap_; }
 
 private:
     // Hides constructor and destructor.
@@ -53,7 +53,7 @@ private:
 private:
     // This array contains a map which shows whether a location is
     // occupied or not.
-    Map gameMap_;
+    GameMap gameMap_;
 };
 
 #endif // !MAPMANAGER_H

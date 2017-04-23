@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef BASEINDUSTRY_H
@@ -23,14 +23,14 @@
 #include <vector>
 #include <QString>
 
-#include "basebuilding.h"
+#include "land.h"
 #include "warehouse.h"
 #include "garage.h"
 #include "goods.h"
 #include "machine.h"
 
 // This class should not be instantiated.
-class BaseIndustry : public BaseBuilding {
+class BaseIndustry : public Land {
 public:
     BaseIndustry(const QString &name, const QString &type);
 

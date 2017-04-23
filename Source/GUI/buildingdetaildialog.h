@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef BUILDINGDETAILDIALOG_H
@@ -22,7 +22,7 @@
 
 #include <QDialog>
 
-#include "Source/Objects/basebuilding.h"
+#include "Source/Objects/land.h"
 #include "Source/Objects/machine.h"
 
 namespace Ui {
@@ -37,7 +37,7 @@ public:
 
     ~BuildingDetailDialog();
 
-    void setBuilding(BaseBuilding *building) { this->building_ = building; }
+    void setBuilding(Land *building) { this->building_ = building; }
 
 public slots:
     void updateDisplay();
@@ -52,7 +52,7 @@ protected:
 signals:
     void dataChanged();
 
-    void sendCommand(int command, BaseBuilding *building);
+    void sendCommand(int command, Land *building);
 
 private slots:
     void addNewMachine();
@@ -74,7 +74,7 @@ private:
     void signalSlotConfig();
 
 private:
-    BaseBuilding *building_;
+    Land *building_;
 
     Machine *selectMachine_;
 

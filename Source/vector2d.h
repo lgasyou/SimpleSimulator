@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #ifndef VECTOR2D_H
@@ -48,6 +48,8 @@ public:
     void setY(double y) { this->y_ = y; }
     double y() const { return y_; }
 
+    Vector2D &operator=(const Vector2D &rhs);
+
     Vector2D &operator+=(const Vector2D &vector);
     Vector2D &operator-=(const Vector2D &vector);
 
@@ -65,6 +67,14 @@ inline Vector2D &Vector2D::operator+=(const Vector2D &vector) {
 inline Vector2D &Vector2D::operator-=(const Vector2D &vector) {
     x_ -= vector.x_;
     y_ -= vector.y_;
+    return *this;
+}
+
+inline Vector2D &Vector2D::operator=(const Vector2D &rhs) {
+    if (*this != rhs) {
+        x_ = rhs.x();
+        y_ = rhs.y();
+    }
     return *this;
 }
 

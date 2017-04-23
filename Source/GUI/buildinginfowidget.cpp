@@ -14,7 +14,7 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU Lesser General Public License
- *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "buildinginfowidget.h"
@@ -47,7 +47,7 @@ BuildingInfoWidget::~BuildingInfoWidget() {
     delete ui;
 }
 
-void BuildingInfoWidget::setTarget(BaseBuilding *building) {
+void BuildingInfoWidget::setTarget(Land *building) {
     this->displayedBuilding_ = building;
 }
 
@@ -55,7 +55,7 @@ void BuildingInfoWidget::receiveCommand(int command) {
     emit sendCommand(command, displayedBuilding_);
 }
 
-void BuildingInfoWidget::showBuildingInfo(BaseBuilding *building) {
+void BuildingInfoWidget::showBuildingInfo(Land *building) {
     if (building != displayedBuilding_) {
         setTarget(building);
 
