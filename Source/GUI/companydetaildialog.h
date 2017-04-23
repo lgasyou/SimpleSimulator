@@ -22,7 +22,7 @@
 
 #include <QDialog>
 
-class Company;
+#include "Source/Objects/company.h"
 
 namespace Ui {
 class CompanyDetailDialog;

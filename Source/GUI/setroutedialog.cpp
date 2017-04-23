@@ -17,111 +17,109 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-
-#include "Source/baseindustry.h"
-#include "Source/route.h"
-
 #include "setroutedialog.h"
-#include "ui_setroutedialog.h"
-#include "selecttablewidget.h"
 
 #include <QLabel>
 #include <QString>
 
+#include "Source/Objects/baseindustry.h"
+#include "Source/Objects/route.h"
+
+#include "ui_setroutedialog.h"
+
 SetRouteDialog::SetRouteDialog(QWidget *parent) :
-	QDialog(parent),
-	route_(nullptr),
-	selectOrigTableWidget_(new SelectTableWidget),
-	selectDestTableWidget_(new SelectTableWidget),
-	ui(new Ui::SetRouteDialog)
+    QDialog(parent),
+    route_(nullptr),
+    selectOrigTableWidget_(new SelectTableWidget),
+    selectDestTableWidget_(new SelectTableWidget),
+    ui(new Ui::SetRouteDialog)
 {
-	ui->setupUi(this); 
-	setWindowTitle("Set Route");
+    ui->setupUi(this); 
+    setWindowTitle("Set Route");
 
-	selectOrigTableWidget_->setParent(this);
-	selectOrigTableWidget_->setSelector(SelectTableWidget::Mine | SelectTableWidget::Factory);
-	connect(selectOrigTableWidget_, SIGNAL(sendBuilding(BaseBuilding*)),
-			this,					SLOT(getOrig(BaseBuilding*)));
+    selectOrigTableWidget_->setParent(this);
+    selectOrigTableWidget_->setSelector(SelectTableWidget::Mine | SelectTableWidget::Factory);
+    connect(selectOrigTableWidget_, SIGNAL(sendBuilding(BaseBuilding*)),
+            this,                   SLOT(getOrig(BaseBuilding*)));
 
-	selectDestTableWidget_->setParent(this);
-	selectDestTableWidget_->setSelector(SelectTableWidget::Mine | SelectTableWidget::Factory);
-	connect(selectDestTableWidget_, SIGNAL(sendBuilding(BaseBuilding*)),
-			this,					SLOT(getDest(BaseBuilding*)));
+    selectDestTableWidget_->setParent(this);
+    selectDestTableWidget_->setSelector(SelectTableWidget::Mine | SelectTableWidget::Factory);
+    connect(selectDestTableWidget_, SIGNAL(sendBuilding(BaseBuilding*)),
+            this,                   SLOT(getDest(BaseBuilding*)));
 
-	ui->layout->addWidget(ui->labelOrig);
-	ui->layout->addWidget(selectOrigTableWidget_);
-	ui->layout->addWidget(ui->labelDest);
-	ui->layout->addWidget(selectDestTableWidget_);
+    ui->layout->addWidget(ui->labelOrig);
+    ui->layout->addWidget(selectOrigTableWidget_);
+    ui->layout->addWidget(ui->labelDest);
+    ui->layout->addWidget(selectDestTableWidget_);
 
-	ui->labelGoodsName->setText(tr("Please select origin."));
+    ui->labelGoodsName->setText(tr("Please select origin."));
 
-	connect(ui->pushButton,			SIGNAL(clicked()),
-			this,					SLOT(finishSetting()));
+    connect(ui->pushButton,         SIGNAL(clicked()),
+            this,                   SLOT(finishSetting()));
 
-	connect(this,					SIGNAL(dataChanged()),
-			this,					SLOT(updateDisplay()));
+    connect(this,                   SIGNAL(dataChanged()),
+            this,                   SLOT(updateDisplay()));
 
-	route_ = new Route;
+    route_ = new Route;
 }
 
 SetRouteDialog::~SetRouteDialog() {
-	if (route_)
-		delete route_;
-	delete ui;
+    if (route_)
+        delete route_;
+    delete ui;
 }
 
 void SetRouteDialog::createNewRoute() {
-	if(route_->orig && route_->dest)
-		route_ = new Route;
+    if(route_->orig && route_->dest)
+        route_ = new Route;
 }
 
 void SetRouteDialog::updateDisplay() {
-	if (route_->orig && route_->orig->products().size()) {
-		const QString &goodsName = route_->orig->products()[0];
-		ui->labelGoodsName->setText(goodsName);
-	}
-	const QString &originName = route_->orig ? route_->orig->name() : "";
-	ui->labelOrig->setText(tr("Origin:		") + originName);
+    if (route_->orig && route_->orig->products().size()) {
+        const QString &goodsName = route_->orig->products()[0];
+        ui->labelGoodsName->setText(goodsName);
+    }
+    const QString &originName = route_->orig ? route_->orig->name() : "";
+    ui->labelOrig->setText(tr("Origin:        ") + originName);
 
-	selectOrigTableWidget_->updateDisplay();
+    selectOrigTableWidget_->updateDisplay();
 
-	const QString &destName = route_->dest ? route_->dest->name() : "";
-	ui->labelDest->setText(tr("Destination:	") + destName);
+    const QString &destName = route_->dest ? route_->dest->name() : "";
+    ui->labelDest->setText(tr("Destination:    ") + destName);
 
-	selectDestTableWidget_->updateDisplay();
+    selectDestTableWidget_->updateDisplay();
 
-	bool finishedSetting = (route_->orig && route_->dest);
-	ui->pushButton->setEnabled(finishedSetting);
+    bool finishedSetting = (route_->orig && route_->dest);
+    ui->pushButton->setEnabled(finishedSetting);
 }
 
 void SetRouteDialog::getGoodsName(const QString &goodsName) {
-	route_->goods.label = goodsName;
-	emit dataChanged();
+    route_->goods.label = goodsName;
+    emit dataChanged();
 }
 
 void SetRouteDialog::getGoodsVolume(double eachVolume) {
-	route_->goods.volume = eachVolume;
-	emit dataChanged();
+    route_->goods.volume = eachVolume;
+    emit dataChanged();
 }
 
 void SetRouteDialog::getOrig(BaseBuilding *origin) {
-	route_->orig = (BaseIndustry *)origin;
-	emit dataChanged();
+    route_->orig = (BaseIndustry *)origin;
+    emit dataChanged();
 }
 
 void SetRouteDialog::getDest(BaseBuilding *dest) {
-	route_->dest = (BaseIndustry *)dest;
-	emit dataChanged();
+    route_->dest = (BaseIndustry *)dest;
+    emit dataChanged();
 }
 
 void SetRouteDialog::finishSetting() {
-	if (ui->checkBox->isChecked())
-		route_->repeated = true;
-	route_->goods.label = ui->labelGoodsName->text();
-	route_->goods.volume = ui->spinBoxEachVolume->value();
+    if (ui->checkBox->isChecked())
+        route_->repeated = true;
+    route_->goods.label = ui->labelGoodsName->text();
+    route_->goods.volume = ui->spinBoxEachVolume->value();
 
-	ui->checkBox->setChecked(false);
-	emit sendRoute(route_);
-	accept();
+    ui->checkBox->setChecked(false);
+    emit sendRoute(route_);
+    accept();
 }

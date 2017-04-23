@@ -28,50 +28,51 @@ class MainUI;
 }
 
 class MainUI : public QWidget {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	MainUI(QWidget *parent = nullptr);
+    MainUI(QWidget *parent = nullptr);
 
-	~MainUI();
+    ~MainUI();
 
-	enum PaintMode{ Map, Building };
+    enum PaintMode{ Map, Building };
 
-	void init();
+    // TODO: Reset colors of Map Node.
+    void init();
 
-	QSize sizeHint() const;
+    QSize sizeHint() const;
 
-	void setImage(const QImage &image) { this->image_ = image; }
-	const QImage &image() const { return image_; }
+    void setImage(const QImage &image) { this->image_ = image; }
+    const QImage &image() const { return image_; }
 
-	void setMode(int mode);
+    void setMode(int mode);
 
-	void setZoom(int zoom) { this->zoom_ = zoom; }
-	int zoom() const { return zoom_; }
+    void setZoom(int zoom) { this->zoom_ = zoom; }
+    int zoom() const { return zoom_; }
 
 signals:
-	void sendPosition(int x, int y);
+    void sendPosition(int x, int y);
 
 protected:
-	void mousePressEvent(QMouseEvent *)	override;
+    void mousePressEvent(QMouseEvent *) override;
 
-	void paintEvent(QPaintEvent *)		override;
-
-private:
-	QRect pixelRect(int i, int j) const;
-
-	void paintMap(QPaintEvent *);
-
-	void paintBuilding(QPaintEvent *);
+    void paintEvent(QPaintEvent *)      override;
 
 private:
-	QImage image_;
+    QRect pixelRect(int i, int j) const;
 
-	int mode_;
+    void paintMap(QPaintEvent *);
 
-	int zoom_;
+    void paintBuilding(QPaintEvent *);
 
-	Ui::MainUI *ui;
+private:
+    QImage image_;
+
+    int mode_;
+
+    int zoom_;
+
+    Ui::MainUI *ui;
 };
 
 #endif // !MAPUI_H

@@ -22,34 +22,35 @@
 
 #include <QTableWidget>
 
-class BaseBuilding;
-class BaseIndustry;
-class Machine;
+#include "Source/Objects/basebuilding.h"
+#include "Source/Objects/baseindustry.h"
+#include "Source/Objects/machine.h"
+#include "Source/Objects/route.h"
 
-class TableWidgetPushButton;
+#include "tablewidgetpushbutton.h"
 
 class MachineTableWidget : public QTableWidget {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	MachineTableWidget(QWidget *parent = nullptr);
+    MachineTableWidget(QWidget *parent = nullptr);
 
-	~MachineTableWidget();
+    ~MachineTableWidget();
 
-	void init();
+    void init();
 
-	void setIndustry(BaseBuilding *industry);
-
+    void setIndustry(BaseBuilding *industry);
+    
 public slots:
-	void receiveShowDetailSignal(int);
+    void receiveShowDetailSignal(int);
 
-	void updateDisplay();
-
+    void updateDisplay();
+    
 signals:
-	void sendSelectedMachine(Machine *);
+    void sendSelectedMachine(Machine *);
 
 private:
-	BaseIndustry *industry_ = nullptr;
+    BaseIndustry *industry_ = nullptr;
 };
 
 #endif // MACHINETABLEWIDGET_H

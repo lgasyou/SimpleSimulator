@@ -19,15 +19,12 @@
 
 #include "widgethelper.h"
 
-#include <QString>
-#include <QWidget>
-
 QString WidgetHelper::toString(double value) {
-	return QString::number(value, 10, 2);
+    return QString::number(value, 10, 2);
 }
 
 void WidgetHelper::showUp(QWidget *widget) {
-	widget->show();
-	widget->raise();
-	widget->activateWindow();
+    widget->show();
+    widget->raise();
+    widget->activateWindow();
 }

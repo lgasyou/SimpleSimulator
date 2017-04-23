@@ -20,42 +20,44 @@
 #ifndef GAMECONSTANTS_H
 #define GAMECONSTANTS_H
 
-// TODO:
-// Move all of those into a file.
-namespace GameConstants {
+// TODO: Move all of those into a file.
+namespace gameconstants {
 
 const int integerMinimum = (1 << (sizeof(int) * 8 - 1));
 const int integerMaximum = (int)((unsigned)integerMinimum - 1);
 
-enum BuildingTypes {
-	Bank,
-	Factory,
-	Farm,
-	Garage,
-	Mine,
-	Supermarket,
-	UnusedLand,
-	Villa
+const int mapHeight = 16;
+const int mapWeight = 16;
+
+enum StructureType {
+    UnusedLand,
+    Bank,
+    Factory,
+    Farm,
+    Garage,
+    Mine,
+    Supermarket,
+    Villa
 };
 
 enum Commands {
-	BuildBank,
-	BuildFactory,
-	BuildFarm,
-	BuildGarage,
-	BuildMine,
-	BuildSupermarket,
-	BuildVilla,
-	BuyBuilding,
-	CloseAnAccount,
-	Deposit,
-	DismantleBuilding,
-	Loan,
-	OpenAnAccount,
-	Repay,
-	SellBuilding,
-	ShowDetail,
-	Withdraw,
+    BuildBank,
+    BuildFactory,
+    BuildFarm,
+    BuildGarage,
+    BuildMine,
+    BuildSupermarket,
+    BuildVilla,
+    BuyBuilding,
+    CloseAnAccount,
+    Deposit,
+    DismantleBuilding,
+    Loan,
+    OpenAnAccount,
+    Repay,
+    SellBuilding,
+    ShowDetail,
+    Withdraw,
 };
 
 }

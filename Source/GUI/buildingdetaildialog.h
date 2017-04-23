@@ -22,8 +22,8 @@
 
 #include <QDialog>
 
-class BaseBuilding;
-class Machine;
+#include "Source/Objects/basebuilding.h"
+#include "Source/Objects/machine.h"
 
 namespace Ui {
 class BuildingDetailDialog;
@@ -40,43 +40,43 @@ public:
     void setBuilding(BaseBuilding *building) { this->building_ = building; }
 
 public slots:
-	void updateDisplay();
+    void updateDisplay();
 
-	// Receives the data comes from WarehouseTableWidget or GarageTableWidget.
-	// Send information to model BaseIndustry.
-	//void deliverGoods(const Goods &goods, BaseIndustry *dest);
+    // Receives the data comes from WarehouseTableWidget or GarageTableWidget.
+    // Send information to model BaseIndustry.
+    //void deliverGoods(const Goods &goods, BaseIndustry *dest);
 
 protected:
-	void closeEvent(QCloseEvent *) override;
+    void closeEvent(QCloseEvent *) override;
 
 signals:
-	void dataChanged();
+    void dataChanged();
 
-	void sendCommand(int command, BaseBuilding *building);
+    void sendCommand(int command, BaseBuilding *building);
 
 private slots:
-	void addNewMachine();
+    void addNewMachine();
 
-	void addNewVihicle();
+    void addNewVihicle();
 
-	void setNextMachineProduct(const QString &);
+    void setNextMachineProduct(const QString &);
 
-	void showMachineDetail(Machine *);
+    void showMachineDetail(Machine *);
 
-	void updateMachineDetail(Machine *);
+    void updateMachineDetail(Machine *);
 
-	void receiveCommand(int);
+    void receiveCommand(int);
 
 private:
-	// Displays according to the type of building.
-	void displayAccordingToBuildingType();
+    // Displays according to the type of building.
+    void displayAccordingToBuildingType();
 
-	void signalSlotConfig();
+    void signalSlotConfig();
 
 private:
     BaseBuilding *building_;
 
-	Machine *selectMachine_;
+    Machine *selectMachine_;
 
     Ui::BuildingDetailDialog *ui;
 };

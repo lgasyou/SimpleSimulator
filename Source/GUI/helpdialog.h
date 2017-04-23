@@ -21,26 +21,25 @@
 #define HELPDIALOG_H
 
 #include <QDialog>
-
-class QListWidgetItem;
+#include <QListWidgetItem>
 
 namespace Ui { class HelpDialog; }
 
 class HelpDialog : public QDialog {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	HelpDialog(QDialog *parent = nullptr);
+    HelpDialog(QDialog *parent = nullptr);
 
-	~HelpDialog();
+    ~HelpDialog();
 
-	void init();
-	
+    void init();
+    
 public slots:
-	void showIndustryChain(QListWidgetItem *);
+    void showIndustryChain(QListWidgetItem *);
 
 private:
-	Ui::HelpDialog *ui;
+    Ui::HelpDialog *ui;
 };
 
 

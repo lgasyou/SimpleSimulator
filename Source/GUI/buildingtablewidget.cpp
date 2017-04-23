@@ -17,82 +17,84 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Source/buildingmanager.h"
-#include "Source/companymanager.h"
-#include "Source/basebuilding.h"
-#include "Source/company.h"
-#include "Source/gameconstants.h"
-
 #include "buildingtablewidget.h"
-#include "tablewidgetpushbutton.h"
-#include "widgethelper.h"
 
 #include <QFile>
 #include <QApplication>
 
+#include "Source/Objects/company.h"
+
+#include "Source/Managers/buildingmanager.h"
+#include "Source/Managers/companymanager.h"
+
+#include "Source/gameconstants.h"
+
+#include "tablewidgetpushbutton.h"
+#include "widgethelper.h"
+
 BuildingTableWidget::BuildingTableWidget(QWidget *parent) :
     QTableWidget(parent) {
-	init();
+    init();
 }
 
 void BuildingTableWidget::init() {
-	resize(QSize(800, 600));
+    resize(QSize(800, 600));
 
-	setWindowTitle(tr("Building Information List"));
+    setWindowTitle(tr("Building Information List"));
 
-	this->setColumnCount(6);
-	QStringList header{ tr("Name"),tr("Value"),tr("Type"), tr("Ownership"),tr("Option"), tr("Option") };
-	this->setHorizontalHeaderLabels(header);
+    this->setColumnCount(6);
+    QStringList header{ tr("Name"),tr("Value"),tr("Type"), tr("Ownership"),tr("Option"), tr("Option") };
+    this->setHorizontalHeaderLabels(header);
 }
 
 void BuildingTableWidget::updateDisplay() {
-	auto &buildingManager = BuildingManager::instance();
-	int buildingNumber = (int)buildingManager.buildingNumber();
+    auto &buildingManager = BuildingManager::instance();
+    int buildingNumber = (int)buildingManager.buildingNumber();
     this->setRowCount(buildingNumber);
 
-	this->clearContents();
-	for (int index = 0; index != buildingNumber; ++index) {
-		displayBasicInfo(index);
-		displayAccordingToVisitor(index);
-	}
+    this->clearContents();
+    for (int index = 0; index != buildingNumber; ++index) {
+        displayBasicInfo(index);
+        displayAccordingToVisitor(index);
+    }
 }
 
 void BuildingTableWidget::displayBasicInfo(int index) {
-	BaseBuilding *building = BuildingManager::instance().getById(index);
+    BaseBuilding *building = BuildingManager::instance().getById(index);
 
-	const QString &name = building->name();
-	const QString &deltaValue = " " + WidgetHelper::toString(building->deltaValue());
-	const QString &value = "$" + WidgetHelper::toString(building->value()) + deltaValue;
-	const QString &type = building->type();
-	const QString &owner = building->owner()->name();
-	setItem(index, 0, new QTableWidgetItem(name));
-	setItem(index, 1, new QTableWidgetItem(value));
-	setItem(index, 2, new QTableWidgetItem(type));
-	setItem(index, 3, new QTableWidgetItem(owner));
+    const QString &name = building->name();
+    const QString &deltaValue = " " + WidgetHelper::toString(building->deltaValue());
+    const QString &value = "$" + WidgetHelper::toString(building->value()) + deltaValue;
+    const QString &type = building->type();
+    const QString &owner = building->owner()->name();
+    setItem(index, 0, new QTableWidgetItem(name));
+    setItem(index, 1, new QTableWidgetItem(value));
+    setItem(index, 2, new QTableWidgetItem(type));
+    setItem(index, 3, new QTableWidgetItem(owner));
 }
 
 void BuildingTableWidget::displayAccordingToVisitor(int index) {
-	BaseBuilding *building = BuildingManager::instance().getById(index);
-	Company *playerCompany = CompanyManager::instance().playerCompany();
+    BaseBuilding *building = BuildingManager::instance().getById(index);
+    Company *playerCompany = CompanyManager::instance().playerCompany();
 
-	using namespace GameConstants;
+    using namespace gameconstants;
 
-	bool owned = building->owner() != playerCompany;
-	const QString &btnText = owned ? tr("Buy") : tr("Sell");
-	TableWidgetPushButton *optionBtn = new TableWidgetPushButton(btnText, owned ? BuyBuilding : SellBuilding);
-	optionBtn->setIndex(index);
-	connect(optionBtn,	SIGNAL(sendData(int, int)),
-			this,		SLOT(receiveCommand(int, int)));
-	setCellWidget(index, 4, optionBtn);
+    bool owned = building->owner() != playerCompany;
+    const QString &btnText = owned ? tr("Buy") : tr("Sell");
+    TableWidgetPushButton *optionBtn = new TableWidgetPushButton(btnText, owned ? BuyBuilding : SellBuilding);
+    optionBtn->setIndex(index);
+    connect(optionBtn,  SIGNAL(sendData(int, int)),
+            this,       SLOT(receiveCommand(int, int)));
+    setCellWidget(index, 4, optionBtn);
 
-	TableWidgetPushButton *detailBtn = new TableWidgetPushButton(tr("Details"), ShowDetail);
-	detailBtn->setIndex(index);
-	connect(detailBtn,	SIGNAL(sendData(int, int)),
-			this,		SLOT(receiveCommand(int, int)));
-	setCellWidget(index, 5, detailBtn);
+    TableWidgetPushButton *detailBtn = new TableWidgetPushButton(tr("Details"), ShowDetail);
+    detailBtn->setIndex(index);
+    connect(detailBtn,  SIGNAL(sendData(int, int)),
+            this,       SLOT(receiveCommand(int, int)));
+    setCellWidget(index, 5, detailBtn);
 }
 
 void BuildingTableWidget::receiveCommand(int index, int command) {
-	BaseBuilding *building = BuildingManager::instance().getById(index);
-	emit sendCommand(command, building);
+    BaseBuilding *building = BuildingManager::instance().getById(index);
+    emit sendCommand(command, building);
 }

@@ -22,43 +22,43 @@
 
 #include <QTableWidget>
 
-class BaseBuilding;
-class Garage;
-class Truck;
-struct Route;
+#include "Source/Objects/basebuilding.h"
+#include "Source/Objects/garage.h"
+#include "Source/Objects/truck.h"
+#include "Source/Objects/route.h"
 
-class TableWidgetPushButton;
+#include "tablewidgetpushbutton.h"
 
 class GarageTableWidget : public QTableWidget {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	GarageTableWidget(QWidget * parent = nullptr);
+    GarageTableWidget(QWidget * parent = nullptr);
 
-	~GarageTableWidget();
+    ~GarageTableWidget();
 
-	void init();
+    void init();
 
-	void updateEachRow(int index, Truck *);
+    void updateEachRow(int index, Truck *);
 
-	void setGarage(BaseBuilding *garage);
+    void setGarage(BaseBuilding *garage);
 
 public slots:
-	void updateDisplay();
+    void updateDisplay();
 
-	void buttonClicked(int index, int command);
+    void buttonClicked(int index, int command);
 
-	void showSetRouteDialog(int index);
+    void showSetRouteDialog(int index);
 
-	void setRoute(Route *);
+    void setRoute(Route *);
 
 signals:
-	void dataChanged();
+    void dataChanged();
 
 private:
-	Garage *garage_ = nullptr;
+    Garage *garage_ = nullptr;
 
-	int selectedTruckId_ = -1;
+    int selectedTruckId_ = -1;
 };
 
 #endif // !GARAGETABLEWIDGET_H

@@ -20,15 +20,15 @@
 #ifndef BUILDINGFACTORY_H
 #define BUILDINGFACTORY_H
 
-#include "gameconstants.h"
+#include <QString>
 
-class BaseBuilding;
-class QString;
+#include "gameconstants.h"
+#include "Source/Objects/basebuilding.h"
 
 class BuildingFactory {
 public:
-	// Creates a new object and allocates a location to it.
-	BaseBuilding *create(GameConstants::BuildingTypes);
+    // Creates a new object and allocates a location to it.
+    BaseBuilding *create(gameconstants::StructureType);
 };
 
 #endif // !BUILDINGFACTORY_H

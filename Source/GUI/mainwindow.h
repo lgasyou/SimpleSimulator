@@ -21,16 +21,15 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QString>
 
-class Company;
-class BaseBuilding;
+#include "Source/Objects/basebuilding.h"
+#include "Source/Objects/company.h"
 
-class TableWidgetPushButton;
-class BuildingDetailDialog;
-class BuildingTableWidget;
-class CompanyDetailDialog;
-class HelpDialog;
-class QString;
+#include "buildingtablewidget.h"
+#include "buildingdetaildialog.h"
+#include "companydetaildialog.h"
+#include "helpdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -44,44 +43,44 @@ public:
 
     ~MainWindow();
 
-	void init();
+    void init();
 
 signals:
     void dataChanged();
 
-	void sendSelectedBuilding(BaseBuilding *);
+    void sendSelectedBuilding(BaseBuilding *);
 
 private slots:
-	// Calls function update() of every variable objects.
+    // Calls function update() of every variable objects.
     void endTurns();
 
-	void showBuildingTableWidget();
+    void showBuildingTableWidget();
 
     void showCompanyDetail();
 
-	void showHelp();
+    void showHelp();
 
-	void getBuildingByPos(int x, int y);
+    void getBuildingByPos(int x, int y);
 
     void updateDisplay();
 
-	void processCommand(int command, BaseBuilding *);
+    void processCommand(int command, BaseBuilding *);
 
 private:
     void updateStatusBar(const QString &msg);
 
-	void signalSlotConfig();
+    void signalSlotConfig();
 
 private:
     Company *playerCompany_;
 
-	BuildingDetailDialog *buildingDetailDialog_;
+    BuildingDetailDialog *buildingDetailDialog_;
 
-	BuildingTableWidget *buildingInfoList_;
+    BuildingTableWidget *buildingInfoList_;
 
-	CompanyDetailDialog *companyDetailDialog_;
+    CompanyDetailDialog *companyDetailDialog_;
 
-	HelpDialog *helpDialog_;
+    HelpDialog *helpDialog_;
 
     Ui::MainWindow *ui;
 };

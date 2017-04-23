@@ -17,54 +17,55 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Source/industrychainmanager.h"
-
 #include "helpdialog.h"
-#include "ui_helpdialog.h"
 
 #include <QStringList>
 
-HelpDialog::HelpDialog(QDialog *parent) : QDialog(parent) {
-	ui = new Ui::HelpDialog;
-	ui->setupUi(this); 
-	setWindowTitle(tr("Help"));
+#include "Source/Managers/industrychainmanager.h"
 
-	init();
+#include "ui_helpdialog.h"
+
+HelpDialog::HelpDialog(QDialog *parent) : QDialog(parent) {
+    ui = new Ui::HelpDialog;
+    ui->setupUi(this); 
+    setWindowTitle(tr("Help"));
+
+    init();
 }
 
 HelpDialog::~HelpDialog() {
-	delete ui;
+    delete ui;
 }
 
 void HelpDialog::init() {
-	connect(ui->itemListWidget,	SIGNAL(currentItemChanged(QListWidgetItem *, QListWidgetItem *)),
-			this,				SLOT(showIndustryChain(QListWidgetItem *)));
+    connect(ui->itemListWidget, SIGNAL(currentItemChanged(QListWidgetItem *, QListWidgetItem *)),
+            this,               SLOT(showIndustryChain(QListWidgetItem *)));
 
-	QStringList items{ "Coal", "Iron", "Log", "Plank", "Steel"  };
-	ui->itemListWidget->addItems(items);
+    QStringList items{ "Coal", "Iron", "Log", "Plank", "Steel"  };
+    ui->itemListWidget->addItems(items);
 
-	QStringList header{ "Item", "Weight" };
+    QStringList header{ "Item", "Weight" };
 
-	ui->sourceTableWidget->setColumnCount(2);
-	ui->sourceTableWidget->setHorizontalHeaderLabels(header);
-	ui->productTableWidget->setColumnCount(2);
-	ui->productTableWidget->setHorizontalHeaderLabels(header);
+    ui->sourceTableWidget->setColumnCount(2);
+    ui->sourceTableWidget->setHorizontalHeaderLabels(header);
+    ui->productTableWidget->setColumnCount(2);
+    ui->productTableWidget->setHorizontalHeaderLabels(header);
 }
 
 void HelpDialog::showIndustryChain(QListWidgetItem *item) {
-	auto precursors = IndustryChainManager::instance().precursors(item->text());
-	int size = (int)precursors.size();
-	ui->sourceTableWidget->setRowCount(size);
-	for (int i = 0; i != size; ++i) {
-		const QString &itemName = precursors[i].label;
-		ui->sourceTableWidget->setItem(i, 0, new QTableWidgetItem(itemName));
-		const QString &itemWeight = QString::number(precursors[i].volume, 10, 2);
-		ui->sourceTableWidget->setItem(i, 1, new QTableWidgetItem(itemWeight));
-	}
+    auto precursors = IndustryChainManager::instance().precursors(item->text());
+    int size = (int)precursors.size();
+    ui->sourceTableWidget->setRowCount(size);
+    for (int i = 0; i != size; ++i) {
+        const QString &itemName = precursors[i].label;
+        ui->sourceTableWidget->setItem(i, 0, new QTableWidgetItem(itemName));
+        const QString &itemWeight = QString::number(precursors[i].volume, 10, 2);
+        ui->sourceTableWidget->setItem(i, 1, new QTableWidgetItem(itemWeight));
+    }
 
-	ui->productTableWidget->setRowCount(1);
-	const QString &itemName = item->text();
-	ui->productTableWidget->setItem(0, 0, new QTableWidgetItem(itemName));
-	const QString &itemWeight = QString::number(1);
-	ui->productTableWidget->setItem(0, 1, new QTableWidgetItem(itemWeight));
+    ui->productTableWidget->setRowCount(1);
+    const QString &itemName = item->text();
+    ui->productTableWidget->setItem(0, 0, new QTableWidgetItem(itemName));
+    const QString &itemWeight = QString::number(1);
+    ui->productTableWidget->setItem(0, 1, new QTableWidgetItem(itemWeight));
 }

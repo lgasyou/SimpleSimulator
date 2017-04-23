@@ -20,14 +20,14 @@
 #ifndef WIDGETHELPER_H
 #define WIDGETHELPER_H
 
-class QString;
-class QWidget;
+#include <QString>
+#include <QWidget>
 
 class WidgetHelper {
 public:
-	static QString toString(double value);
+    static QString toString(double value);
 
-	static void showUp(QWidget *widget);
+    static void showUp(QWidget *widget);
 
 };
 

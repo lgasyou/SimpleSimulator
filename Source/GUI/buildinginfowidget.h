@@ -20,39 +20,39 @@
 #ifndef BUILDINGINFOWIDGET_H
 #define BUILDINGINFOWIDGET_H
 
+#include <QString>
 #include <QWidget>
 
-class BaseBuilding;
+#include "Source/Objects/basebuilding.h"
+
 namespace Ui { 
 class BuildingInfoWidget; 
 }
 
-class QString;
-
 class BuildingInfoWidget : public QWidget {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	BuildingInfoWidget(QWidget *parent = nullptr);
+    BuildingInfoWidget(QWidget *parent = nullptr);
 
-	~BuildingInfoWidget();
+    ~BuildingInfoWidget();
 
-	void setTarget(BaseBuilding *building);
+    void setTarget(BaseBuilding *building);
 
 signals:
-	void sendCommand(int command, BaseBuilding *building);
+    void sendCommand(int command, BaseBuilding *building);
 
 public slots:
-	void receiveCommand(int);
+    void receiveCommand(int);
 
-	void showBuildingInfo(BaseBuilding *building);
+    void showBuildingInfo(BaseBuilding *building);
 
-	void updateDisplay();
+    void updateDisplay();
 
 private:
-	BaseBuilding *displayedBuilding_ = nullptr;
+    BaseBuilding *displayedBuilding_ = nullptr;
 
-	Ui::BuildingInfoWidget *ui;
+    Ui::BuildingInfoWidget *ui;
 };
 
 #endif // !BUILDINGINFOWIDGET_H

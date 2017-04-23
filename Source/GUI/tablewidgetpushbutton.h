@@ -31,16 +31,16 @@ public:
 
     TableWidgetPushButton(const QString &text, int command = -1, QWidget *parent = nullptr);
 
-	void setIndex(int index) { this->index = index; }
+    void setIndex(int index) { this->index = index; }
 
 public slots:
-	void repeater() override;
+    void repeater() override;
 
 signals:
-	void sendData(int index, int command);
+    void sendData(int index, int command);
 
 private:
-	int index;
+    int index;
 };
 
 #endif // MYPUSHBUTTON_H

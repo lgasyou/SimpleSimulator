@@ -18,11 +18,12 @@
  */
 
 #include "random.h"
+
 #include <ctime>
 
 Random &Random::instance() {
-	static Random valueGenerator;
-	return valueGenerator;
+    static Random valueGenerator;
+    return valueGenerator;
 }
 
 int Random::uniformDistribution(int lowerBound, int upperBound) {
@@ -36,5 +37,5 @@ double Random::normalDistribution(double mu, double sigma) {
 }
 
 Random::Random() :
-	generator_(std::default_random_engine(static_cast<unsigned>(time(nullptr))))
+    generator_(std::default_random_engine(static_cast<unsigned>(time(0))))
 { }

@@ -24,40 +24,41 @@
 #include <QString>
 #include <vector>
 
-class BaseBuilding;
-class TableWidgetPushButton;
+#include "Source/Objects/basebuilding.h"
+
+#include "tablewidgetpushbutton.h"
 
 class SelectTableWidget : public QTableWidget {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	enum { 
-		None = 0, 
-		UnusedLand = 1, 
-		Factory = 2, Mine = 4 };
+    enum { 
+        None = 0, 
+        UnusedLand = 1, 
+        Factory = 2, Mine = 4 };
 
-	SelectTableWidget(QWidget *parent = nullptr);
+    SelectTableWidget(QWidget *parent = nullptr);
 
-	~SelectTableWidget();
+    ~SelectTableWidget();
 
-	void init();
+    void init();
 
-	void updateDisplay();
+    void updateDisplay();
 
-	void updateEachLine(int indexInWidget, int indexInManager, BaseBuilding *);
+    void updateEachLine(int indexInWidget, int indexInManager, BaseBuilding *);
 
-	// Sets type(s) which will be displayed later.
-	// Uses '|' to store multiple objects.
-	void setSelector(int type);
+    // Sets type(s) which will be displayed later.
+    // Uses '|' to store multiple objects.
+    void setSelector(int type);
 
 public slots:
-	void getDestAndSendBuilding(int index);
+    void getDestAndSendBuilding(int index);
 
 signals:
-	void sendBuilding(BaseBuilding *);
+    void sendBuilding(BaseBuilding *);
 
 private:
-	std::vector<QString> typeNames_;
+    std::vector<QString> typeNames_;
 };
 
 #endif // !SELECTTABLEWIDGET_H

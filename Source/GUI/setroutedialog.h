@@ -21,55 +21,56 @@
 #define SETROUTEDIALOG_H
 
 #include <QDialog>
+#include <QString>
 
-class BaseBuilding;
-struct Route;
+#include "Source/Objects/basebuilding.h"
+#include "Source/Objects/route.h"
 
-class QString;
-class SelectTableWidget;
+#include "selecttablewidget.h"
+
 namespace Ui {
 class SetRouteDialog;
 }
 
 class SetRouteDialog : public QDialog {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	SetRouteDialog(QWidget *parent = nullptr);
+    SetRouteDialog(QWidget *parent = nullptr);
 
-	~SetRouteDialog();
+    ~SetRouteDialog();
 
-	// Creates a new object if the former one has been used.
-	void createNewRoute();
+    // Creates a new object if the former one has been used.
+    void createNewRoute();
 
 public slots:
-	void updateDisplay();
+    void updateDisplay();
 
 private slots:
-	void getGoodsName(const QString &);
+    void getGoodsName(const QString &);
 
-	void getGoodsVolume(double);
+    void getGoodsVolume(double);
 
-	void getOrig(BaseBuilding *);
-	
-	void getDest(BaseBuilding *);
+    void getOrig(BaseBuilding *);
+    
+    void getDest(BaseBuilding *);
 
-	// Summarizes all informations and sends Route to Garage.
-	void finishSetting();
+    // Summarizes all informations and sends Route to Garage.
+    void finishSetting();
 
 signals:
-	void sendRoute(Route *);
+    void sendRoute(Route *);
 
-	void dataChanged();
+    void dataChanged();
 
 private:
-	Route *route_;
+    Route *route_;
 
-	SelectTableWidget *selectOrigTableWidget_;
+    SelectTableWidget *selectOrigTableWidget_;
 
-	SelectTableWidget *selectDestTableWidget_;
+    SelectTableWidget *selectDestTableWidget_;
 
-	Ui::SetRouteDialog *ui;
+    Ui::SetRouteDialog *ui;
 };
 
 #endif // !SETROUTEDIALOG_H

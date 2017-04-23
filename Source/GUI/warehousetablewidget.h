@@ -22,44 +22,44 @@
 
 #include <QTableWidget>
 
-class Warehouse;
-class BaseIndustry;
-class BaseBuilding;
-struct Goods;
+#include "Source/Objects/basebuilding.h"
+#include "Source/Objects/baseindustry.h"
+#include "Source/Objects/goods.h"
+#include "Source/Objects/warehouse.h"
 
-class TableWidgetPushButton;
-class SelectTableWidget;
+#include "tablewidgetpushbutton.h"
+#include "selecttablewidget.h"
 
 class WarehouseTableWidget : public QTableWidget {
     Q_OBJECT
 
 public:
-	WarehouseTableWidget(QWidget *parent = nullptr, Warehouse *warehouse = nullptr);
+    WarehouseTableWidget(QWidget *parent = nullptr, Warehouse *warehouse = nullptr);
 
-	void init();
+    void init();
 
-	void setWarehouse(Warehouse *warehouse) { this->warehouse_ = warehouse; }
+    void setWarehouse(Warehouse *warehouse) { this->warehouse_ = warehouse; }
 
 public slots:
-	void goSelectIndustry();
+    void goSelectIndustry();
 
-	void getGoods(int index);
+    void getGoods(int index);
 
-	void getDestAndSendPreroute(BaseBuilding *dest);
+    void getDestAndSendPreroute(BaseBuilding *dest);
 
-	void updateDisplay();
+    void updateDisplay();
 
 signals:
-	void sendPreroute(const Goods &goods, BaseIndustry *dest);
+    void sendPreroute(const Goods &goods, BaseIndustry *dest);
 
-	void dataChanged();
+    void dataChanged();
 
 private:
-	Goods *goods_ = nullptr;
+    Goods *goods_ = nullptr;
 
-	Warehouse *warehouse_ = nullptr;
+    Warehouse *warehouse_ = nullptr;
 
-	SelectTableWidget *selectTableWidget_ = nullptr;
+    SelectTableWidget *selectTableWidget_ = nullptr;
 };
 
 #endif // WAREHOUSETABLEWIDGET_H

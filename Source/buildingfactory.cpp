@@ -19,84 +19,73 @@
 
 #include "buildingfactory.h"
 
-#include "basebuilding.h"
-#include "unusedland.h"
+#include "Source/Objects/unusedland.h"  
+#include "Source/Objects/baseindustry.h"
+#include "Source/Objects/factory.h"
+#include "Source/Objects/mine.h"    
+#include "Source/Objects/basecommerce.h"
+#include "Source/Objects/supermarket.h"    
+#include "Source/Objects/basefinance.h"
+#include "Source/Objects/bank.h"
+#include "Source/Objects/baseresidence.h"
+#include "Source/Objects/villa.h"
+#include "Source/Objects/baseagriculture.h"
+#include "Source/Objects/farm.h"
+#include "Source/Objects/basetransportation.h"
+#include "Source/Objects/garage.h"
+#include "Source/Objects/government.h"
 
-#include "baseindustry.h"
-#include "factory.h"
-#include "mine.h"
+#include "Source/Managers/buildingmanager.h"
+#include "Source/Managers/mapmanager.h"
 
-#include "basecommerce.h"
-#include "supermarket.h"
+BaseBuilding *BuildingFactory::create(gameconstants::StructureType buildingType) {
+    BaseBuilding *building = nullptr;
 
-#include "basefinance.h"
-#include "bank.h"
+    switch (buildingType) {
+    case gameconstants::Bank:
+        building = new Bank;
+        break;
 
-#include "baseresidence.h"
-#include "villa.h"
+    case gameconstants::Factory:
+        building = new Factory;
+        break;
 
-#include "baseagriculture.h"
-#include "farm.h"
+    case gameconstants::Farm:
+        building = new Farm;
+        break;
 
-#include "basetransportation.h"
-#include "garage.h"
+    case gameconstants::Garage:
+        building = new Garage;
+        break;
 
-#include "buildingmanager.h"
-#include "mapmanager.h"
-#include "government.h"
-#include "gameconstants.h"
+    case gameconstants::Mine:
+        building = new Mine;
+        break;
 
-#include <QString>
+    case gameconstants::Supermarket:
+        building = new Supermarket;
+        break;
 
-BaseBuilding *BuildingFactory::create(GameConstants::BuildingTypes buildingType) {
-	BaseBuilding *building = nullptr;
+    case gameconstants::UnusedLand:
+        building = new UnusedLand;
+        break;
 
-	switch (buildingType) {
-	case GameConstants::Bank:
-		building = new Bank;
-		break;
+    case gameconstants::Villa:
+        building = new Villa;
+        break;
 
-	case GameConstants::Factory:
-		building = new Factory;
-		break;
+    default:
+        break;
+    }
 
-	case GameConstants::Farm:
-		building = new Farm;
-		break;
+    Government *gov = &Government::instance();
+    building->setOwner(gov);
 
-	case GameConstants::Garage:
-		building = new Garage;
-		break;
+    Vector2D allocatedPos = MapManager::instance().allocate(buildingType);
+    building->setPosition(allocatedPos);
 
-	case GameConstants::Mine:
-		building = new Mine;
-		break;
+    // TODO: Generate true resource.
+    building->setResource("Coal");
 
-	case GameConstants::Supermarket:
-		building = new Supermarket;
-		break;
-
-	case GameConstants::UnusedLand:
-		building = new UnusedLand;
-		break;
-
-	case GameConstants::Villa:
-		building = new Villa;
-		break;
-
-	default:
-		break;
-	}
-
-	Government *gov = &Government::instance();
-	building->setOwner(gov);
-
-	Vector2D allocatedPos = MapManager::instance().allocate();
-	building->setPosition(allocatedPos);
-
-	// TODO
-	// Generate true resource.
-	building->setResource("Coal");
-
-	return building;
+    return building;
 }

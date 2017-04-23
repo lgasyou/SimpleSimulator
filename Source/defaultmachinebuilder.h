@@ -22,15 +22,18 @@
 
 #include "machinebuilder.h"
 
+#include "Objects/machine.h"
+#include "Objects/goods.h"
+
 class DefaultMachineBuilder : public MachineBuilder {
 public:
-	DefaultMachineBuilder();
+    DefaultMachineBuilder();
 
-	void setMaximumProductivity();
+    void setMaximumProductivity();
 
-	void setProducts();
+    void setProducts();
 
-	Machine *getMachine();
+    Machine *getMachine();
 };
 
 #endif // !DEFAULTMACHINEBUILDER_H

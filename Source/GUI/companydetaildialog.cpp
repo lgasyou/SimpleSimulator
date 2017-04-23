@@ -17,9 +17,8 @@
  *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Source/company.h"
-
 #include "companydetaildialog.h"
+
 #include "ui_companydetaildialog.h"
 #include "widgethelper.h"
 
@@ -35,13 +34,13 @@ CompanyDetailDialog::~CompanyDetailDialog() {
 }
 
 void CompanyDetailDialog::updateDisplay() {
-	// Return if this window isn't showing.
-    if (this->isHidden())	return;
+    // Return if this window isn't showing.
+    if (this->isHidden())    return;
 
-	const QString &name = company_->name();
-	const QString &cash = WidgetHelper::toString(company_->cash());
-	const QString &totalValue = WidgetHelper::toString(company_->totalValue());
-	const QString &liability = WidgetHelper::toString(company_->liability());
+    const QString &name = company_->name();
+    const QString &cash = WidgetHelper::toString(company_->cash());
+    const QString &totalValue = WidgetHelper::toString(company_->totalValue());
+    const QString &liability = WidgetHelper::toString(company_->liability());
     setWindowTitle(name);
     ui->label_Name->setText(tr("Name:        ") + name);
     ui->label_Cash->setText(tr("Cash:        $") + cash);

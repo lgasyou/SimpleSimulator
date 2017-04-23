@@ -24,16 +24,17 @@
 
 class Random {
 public:
-	static Random &instance();
+    static Random &instance();
 
+    // Returns a value in range [lowerBound, upperBound].
     int uniformDistribution(int lowerBound, int upperBound);
 
     double normalDistribution(double mu, double sigma);
 
 private:
-	Random();
+    Random();
 
-	~Random() = default;
+    ~Random() = default;
 
 private:
     std::default_random_engine generator_;
