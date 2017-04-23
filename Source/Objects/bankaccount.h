@@ -52,4 +52,5 @@ private:
     
     LegalPerson *client_ = nullptr;
 };
+
 #endif // !BANKCLIENT_H

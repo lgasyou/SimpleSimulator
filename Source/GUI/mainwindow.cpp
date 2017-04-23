@@ -1,20 +1,20 @@
 /*
- *	Copyright 2017 Li Zeqing
+ *  Copyright 2017 Li Zeqing
  *
- *	This file is part of World Simulator.
- *	
- *	World Simulator is free software: you can redistribute it and/or modify
- *	it under the terms of the GNU Lesser General Public License as published by
- *	the Free Software Foundation, either version 3 of the License, or
- *	(at your option) any later version.
- *	
- *	World Simulator is distributed in the hope that it will be useful,
- *	but WITHOUT ANY WARRANTY; without even the implied warranty of
- *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *	GNU General Public License for more details.
- *	
- *	You should have received a copy of the GNU Lesser General Public License
- *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  This file is part of World Simulator.
+ *  
+ *  World Simulator is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Lesser General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  World Simulator is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU Lesser General Public License
+ *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "mainwindow.h"
@@ -51,7 +51,6 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 
 MainWindow::~MainWindow() {
-    delete buildingInfoList_;
     delete helpDialog_;
     delete ui;
 }
@@ -77,13 +76,13 @@ void MainWindow::init() {
 }
 
 //void MainWindow::goBank() {
-//	BankDialog *bankDialog_ = UIManager::instance().bankDialog();
-//	bankDialog_->setClient(playerCompany_);
-//	bankDialog_->updateDisplay();
-//	if (bankDialog_->exec() == QDialog::Accepted) {
-//	    updateStatusBar("Back.");
-//	    emit dataChanged();
-//	}
+// BankDialog *bankDialog_ = UIManager::instance().bankDialog();
+// bankDialog_->setClient(playerCompany_);
+// bankDialog_->updateDisplay();
+// if (bankDialog_->exec() == QDialog::Accepted) {
+//     updateStatusBar("Back.");
+//     emit dataChanged();
+// }
 //}
 
 void MainWindow::endTurns() {
@@ -245,39 +244,39 @@ void MainWindow::updateStatusBar(const QString &msg) {
 void MainWindow::signalSlotConfig() {
     /* ------------------------------ Main Functions Config ----------------------------------------- */
     connect(ui->buildingListPushButton, SIGNAL(clicked()),
-            this,                        SLOT(showBuildingTableWidget()));
-    connect(ui->companyPushButton,        SIGNAL(clicked()),
-            this,                        SLOT(showCompanyDetail()));
-    connect(ui->endTurnPushButton,        SIGNAL(clicked()),
-            this,                        SLOT(endTurns()));
-    connect(ui->helpPushButton,            SIGNAL(clicked()),
-            this,                        SLOT(showHelp()));
+            this,                       SLOT(showBuildingTableWidget()));
+    connect(ui->companyPushButton,      SIGNAL(clicked()),
+            this,                       SLOT(showCompanyDetail()));
+    connect(ui->endTurnPushButton,      SIGNAL(clicked()),
+            this,                       SLOT(endTurns()));
+    connect(ui->helpPushButton,         SIGNAL(clicked()),
+            this,                       SLOT(showHelp()));
     /* ---------------------------------------------------------------------------------------------- */
 
     /* ---------------------------------- Orders Config --------------------------------------------- */
-    connect(ui->buildingInfoWidget,        SIGNAL(sendCommand(int, BaseBuilding *)),
-            this,                        SLOT(processCommand(int, BaseBuilding *)));
-    connect(buildingInfoList_,            SIGNAL(sendCommand(int, BaseBuilding *)),
-            this,                        SLOT(processCommand(int, BaseBuilding *)));
-    connect(buildingDetailDialog_,        SIGNAL(sendCommand(int, BaseBuilding *)),
-            this,                        SLOT(processCommand(int, BaseBuilding *)));
+    connect(ui->buildingInfoWidget,     SIGNAL(sendCommand(int, BaseBuilding *)),
+            this,                       SLOT(processCommand(int, BaseBuilding *)));
+    connect(buildingInfoList_,          SIGNAL(sendCommand(int, BaseBuilding *)),
+            this,                       SLOT(processCommand(int, BaseBuilding *)));
+    connect(buildingDetailDialog_,      SIGNAL(sendCommand(int, BaseBuilding *)),
+            this,                       SLOT(processCommand(int, BaseBuilding *)));
     /* ---------------------------------------------------------------------------------------------- */
 
     /* ---------------------------------- Display Config -------------------------------------------- */
-    connect(ui->userInterface,            SIGNAL(sendPosition(int, int)),    
-            this,                        SLOT(getBuildingByPos(int, int)));
-    connect(this,                        SIGNAL(sendSelectedBuilding(BaseBuilding *)),
-            ui->buildingInfoWidget,        SLOT(showBuildingInfo(BaseBuilding *)));
+    connect(ui->userInterface,          SIGNAL(sendPosition(int, int)),    
+            this,                       SLOT(getBuildingByPos(int, int)));
+    connect(this,                       SIGNAL(sendSelectedBuilding(BaseBuilding *)),
+            ui->buildingInfoWidget,     SLOT(showBuildingInfo(BaseBuilding *)));
     /* ---------------------------------------------------------------------------------------------- */
 
     /* ------------------------------- Update Display Config ---------------------------------------- */
-    connect(this,                        SIGNAL(dataChanged()),
-            this,                        SLOT(updateDisplay()));
-    connect(this,                        SIGNAL(dataChanged()),
-            ui->buildingInfoWidget,        SLOT(updateDisplay()));
-    connect(this,                        SIGNAL(dataChanged()),
-            buildingDetailDialog_,        SLOT(updateDisplay()));
-    connect(this,                        SIGNAL(dataChanged()),
-            companyDetailDialog_,        SLOT(updateDisplay()));
+    connect(this,                       SIGNAL(dataChanged()),
+            this,                       SLOT(updateDisplay()));
+    connect(this,                       SIGNAL(dataChanged()),
+            ui->buildingInfoWidget,     SLOT(updateDisplay()));
+    connect(this,                       SIGNAL(dataChanged()),
+            buildingDetailDialog_,      SLOT(updateDisplay()));
+    connect(this,                       SIGNAL(dataChanged()),
+            companyDetailDialog_,       SLOT(updateDisplay()));
     /* ---------------------------------------------------------------------------------------------- */
 }

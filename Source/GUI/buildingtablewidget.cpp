@@ -1,20 +1,20 @@
 /*
- *	Copyright 2017 Li Zeqing
+ *  Copyright 2017 Li Zeqing
  *
- *	This file is part of World Simulator.
- *	
- *	World Simulator is free software: you can redistribute it and/or modify
- *	it under the terms of the GNU Lesser General Public License as published by
- *	the Free Software Foundation, either version 3 of the License, or
- *	(at your option) any later version.
- *	
- *	World Simulator is distributed in the hope that it will be useful,
- *	but WITHOUT ANY WARRANTY; without even the implied warranty of
- *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *	GNU General Public License for more details.
- *	
- *	You should have received a copy of the GNU Lesser General Public License
- *	along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
+ *  This file is part of World Simulator.
+ *  
+ *  World Simulator is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Lesser General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  World Simulator is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU Lesser General Public License
+ *  along with World Simulator.  If not, see <http://www.gnu.org/licenses/>.
  */
 
 #include "buildingtablewidget.h"
@@ -52,16 +52,16 @@ void BuildingTableWidget::updateDisplay() {
     int buildingNumber = (int)buildingManager.buildingNumber();
     this->setRowCount(buildingNumber);
 
+    const auto &buildings = buildingManager.buildings();
+
     this->clearContents();
     for (int index = 0; index != buildingNumber; ++index) {
-        displayBasicInfo(index);
-        displayAccordingToVisitor(index);
+        displayBasicInfo(index, buildings[index]);
+        displayAccordingToVisitor(index, buildings[index]);
     }
 }
 
-void BuildingTableWidget::displayBasicInfo(int index) {
-    BaseBuilding *building = BuildingManager::instance().getById(index);
-
+void BuildingTableWidget::displayBasicInfo(int index, BaseBuilding *building) {
     const QString &name = building->name();
     const QString &deltaValue = " " + WidgetHelper::toString(building->deltaValue());
     const QString &value = "$" + WidgetHelper::toString(building->value()) + deltaValue;
@@ -73,15 +73,15 @@ void BuildingTableWidget::displayBasicInfo(int index) {
     setItem(index, 3, new QTableWidgetItem(owner));
 }
 
-void BuildingTableWidget::displayAccordingToVisitor(int index) {
-    BaseBuilding *building = BuildingManager::instance().getById(index);
+void BuildingTableWidget::displayAccordingToVisitor(int index, BaseBuilding *building) {
     Company *playerCompany = CompanyManager::instance().playerCompany();
 
     using namespace gameconstants;
 
-    bool owned = building->owner() != playerCompany;
-    const QString &btnText = owned ? tr("Buy") : tr("Sell");
-    TableWidgetPushButton *optionBtn = new TableWidgetPushButton(btnText, owned ? BuyBuilding : SellBuilding);
+    TableWidgetPushButton *optionBtn = 
+        (building->owner() != playerCompany) ?
+        new TableWidgetPushButton(tr("Buy"),  BuyBuilding) :
+        new TableWidgetPushButton(tr("Sell"), SellBuilding);
     optionBtn->setIndex(index);
     connect(optionBtn,  SIGNAL(sendData(int, int)),
             this,       SLOT(receiveCommand(int, int)));
