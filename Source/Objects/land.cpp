@@ -27,15 +27,6 @@ Land::Land(const QString &name, const QString &type) :
 
 Land::~Land() { }
 
-void Land::copyFrom(const Land &rhs) {
-    deltaValue_ = rhs.deltaValue();
-    name_ = rhs.name();
-    owner_ = rhs.owner();
-    position_ = rhs.position();
-    resource_ = rhs.resource();
-    value_ = rhs.value();
-}
-
 void Land::changeBaseValue() {
     double sigma = value_ * 0.1 / 3;
     deltaValue_ = Random::instance().normalDistribution(0, sigma);

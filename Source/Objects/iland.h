@@ -17,17 +17,14 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef IBUILDING_H
-#define IBUILDING_H
+#ifndef ILAND_H
+#define ILAND_H
 
 class Land;
 
 // Interface of Land.
 class ILand {
 public:
-    // Copies data from the other building. Only the basic part of Land is copiesd.
-    virtual void copyFrom(const Land &rhs) = 0;
-
     // Updates data each turn
     virtual void update() = 0;
 
@@ -37,4 +34,4 @@ protected:
 
 };
 
-#endif // !IBUILDING_H
+#endif // !ILAND_H

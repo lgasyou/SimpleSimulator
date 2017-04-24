@@ -69,7 +69,7 @@ void MainUI::updateDisplay() {
     for (int i = 0; i != mapHeight; ++i) {
         for (int j = 0; j != mapWeight; ++j) {
             penColor = getNodeColorByType(map[i][j]);
-            image_.setPixel(i, j, penColor.rgba());
+            image_.setPixel(j, i, penColor.rgba());
         }
     }
     update();
@@ -82,7 +82,7 @@ void MainUI::mousePressEvent(QMouseEvent *event) {
         int y = pos.y() / zoom_;
 
         if (image_.rect().contains(x, y)) {
-            emit sendPosition(x, y);
+            emit sendPosition(y, x);
         }
     }
 }

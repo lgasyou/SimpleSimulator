@@ -49,6 +49,7 @@ public:
 
     virtual void update() override;
 
+public:
     const std::vector<Truck *> &vihicleList() const { return vihicleList_; }
 
     std::size_t vihicleCount() const { return vihicleList_.size(); }

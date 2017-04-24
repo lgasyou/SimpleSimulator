@@ -40,6 +40,7 @@ public:
 
     void updateDisplay();
 
+public:
     void setClient(Company *client) { this->client_ = client; }
     
     static void setInterestRate(double interestRate) { interestRate_ = interestRate; }

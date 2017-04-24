@@ -46,6 +46,7 @@ public:
     // Returns final removal.
     double fetch(const Goods &goods);
 
+public:
     const QList<Goods *> &container() const { return container_; }
 
     bool isEmpty() const { return container_.isEmpty(); }

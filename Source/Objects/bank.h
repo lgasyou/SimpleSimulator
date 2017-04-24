@@ -50,7 +50,8 @@ public:
     void withdraw(LegalPerson *client, double amount);
     
     virtual void update() override;
-    
+
+public:    
     void setDepositInterestRate(double depositInterestRate) { this->depositInterestRate_ = depositInterestRate; }
     double depositInterestRate() const { return depositInterestRate_; }
     
@@ -64,5 +65,59 @@ private:
     
     double loanInterestRate_;
 };
+
+inline void Bank::init() {
+    depositInterestRate_ = 0.003;
+    loanInterestRate_ = 0.008;
+}
+
+inline void Bank::closeAnAccount(LegalPerson *client) {
+    const BankAccount &bankAccount = clientMap_[client];
+    double finalCash = client->cash() + bankAccount.deposit() - bankAccount.debt();
+    if (finalCash >= 0) {
+        client->setCash(finalCash);
+        clientMap_.erase(client);
+    }
+}
+
+inline void Bank::deposit(LegalPerson *client, double amount) {
+    BankAccount &bankAccount = clientMap_[client];
+    double finalCash = client->cash() - amount;
+    double finalDeposit = bankAccount.deposit() + amount;
+    bankAccount.setDeposit(finalDeposit);
+    client->setCash(finalCash);
+}
+
+inline void Bank::loan(LegalPerson *client, double amount) {
+    BankAccount &bankAccount = clientMap_[client];
+    double finalCash = client->cash() + amount;
+    double finalDebt = bankAccount.debt() + amount;
+    bankAccount.setDeposit(finalDebt);
+    client->setCash(finalCash);
+}
+
+inline void Bank::openAnAccount(LegalPerson *client) {
+    clientMap_[client].setBank(this);
+}
+
+inline void Bank::repay(LegalPerson *client, double amount) {
+    BankAccount &bankAccount = clientMap_[client];
+    double finalCash = client->cash() - amount;
+    double finalDebt = bankAccount.debt() - amount;
+    bankAccount.setDeposit(finalDebt);
+    client->setCash(finalCash);
+}
+
+inline const BankAccount &Bank::accountOf(LegalPerson *client) const {
+    return clientMap_.find(client)->second;
+}
+
+inline void Bank::withdraw(LegalPerson *client, double amount) {
+    BankAccount &bankAccount = clientMap_[client];
+    double finalCash = client->cash() + amount;
+    double finalDeposit = bankAccount.deposit() - amount;
+    bankAccount.setDeposit(finalDeposit);
+    client->setCash(finalCash);
+}
 
 #endif // !BANK_H

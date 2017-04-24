@@ -40,6 +40,7 @@ public:
 
     void checkout(Person *resident);
 
+public:
     const std::list<Person *> &residents() const { return residents_; }
 
 private:

@@ -36,6 +36,7 @@ public:
 
     void produce();
 
+public:
     void setMaximalProductivity(double maximalProductivity);
     double maximalProductivity() const { return maximalProductivity_; }
 

@@ -33,6 +33,7 @@ public:
 
     virtual void update() override;
 
+public:
     const BaseResidence *home() const { return home_; }
 
     const Land *workplace() const { return workplace_; }

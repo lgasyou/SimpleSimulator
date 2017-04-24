@@ -36,6 +36,7 @@ public:
 
     ~CompanyDetailDialog();
 
+public:
     void setCompany(Company *company) { this->company_ = company; }
 
 public slots:

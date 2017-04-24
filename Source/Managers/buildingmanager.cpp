@@ -47,6 +47,15 @@ void BuildingManager::init() {
     add(Garage);
     for (int i = 0; i != 5; ++i)
         add(Villa);
+
+    BuildingFactory factory;
+    for (int i = 0; i != mapHeight; ++i) {
+        for (int j = 0; j != mapWeight; ++j) {
+            if (buildings_[i][j] == nullptr) {
+                buildings_[i][j] = factory.create(LandParameter{ UnusedLand, Vector2D(i,j) });
+            }
+        }
+    }
 }
 
 StructureType BuildingManager::stringToEnum(const QString &type) {
@@ -64,7 +73,7 @@ StructureType BuildingManager::stringToEnum(const QString &type) {
 
 void BuildingManager::add(StructureType buildingType) {
     BuildingFactory factory;
-    Land *newBuilding = factory.create(buildingType);
+    Land *newBuilding = factory.create(LandParameter{ buildingType });
     
     int x = newBuilding->position().x();
     int y = newBuilding->position().y();
@@ -78,7 +87,7 @@ const std::vector<Land *> &BuildingManager::buildings() const {
         buildingsBuffer.clear();
         for (const auto &row : buildings_) {
             for (Land *building : row) {
-                if (building != nullptr)
+                if (building->type() != "Unused Land")
                     buildingsBuffer.push_back(building);
             }
         }
@@ -106,8 +115,14 @@ Land *BuildingManager::getById(int id) const {
 
 Land *BuildingManager::resetType(Land *building, StructureType type) {
     BuildingFactory buildingFactory;
-    Land *buildingCopy = buildingFactory.create(type, building->position());
-    buildingCopy->copyFrom(*building);
+    Land *buildingCopy = buildingFactory.create(LandParameter{
+        type,
+        building->position(),
+        building->value(),
+        building->deltaValue(),
+        building->owner(),
+        building->resource()
+    });
 
     int x = building->position().x();
     int y = building->position().y();

@@ -31,34 +31,6 @@ BaseIndustry::~BaseIndustry() {
     delete warehouse_;
 }
 
-void BaseIndustry::addMachine(Machine *machine) {
-    machines_.push_back(machine);
-    setMaterialsAccordingToMachine(machine);
-    setProductsAccordingToMachine(machine);
-}
-
-void BaseIndustry::removeMachine(Machine *machine) {
-    auto iter = std::find(machines_.begin(), machines_.end(), machine);
-    machines_.erase(iter);
-}
-
-void BaseIndustry::update() {
-    changeBaseValue();
-    manufacture();
-}
-
-void BaseIndustry::manufacture() {
-    std::for_each(machines_.begin(), machines_.end(), [](Machine *m) { m->produce(); });
-}
-
-double BaseIndustry::store(const Goods &goods) {
-    return warehouse_->store(goods);
-}
-
-double BaseIndustry::fetch(const Goods &goods) {
-    return warehouse_->fetch(goods);
-}
-
 void BaseIndustry::setMaterialsAccordingToMachine(Machine *machine) {
     for (const auto &material : machine->materials()) {
         if (std::find(materials_.cbegin(), materials_.cend(), material.label) == materials_.cend()) {

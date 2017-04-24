@@ -36,6 +36,7 @@ public:
     // Adds company's cash.
     bool sell(double value);
 
+public:
     void setCash(const double cash) { this->cash_ = cash; }
     double cash() const { return cash_; }
 

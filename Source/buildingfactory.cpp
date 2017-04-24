@@ -31,23 +31,20 @@
 
 #include "Source/random.h"
 
-Land *BuildingFactory::create(gameconstants::StructureType buildingType, Vector2D position) {
-    createInstance(buildingType);
+Land *BuildingFactory::create(const LandParameter &landParameter) {
+    parameter = landParameter;
+    createInstance();
 
-    setBasicValue();
-
-    allocatePosition(buildingType, position);
-
-    building->setOwner(&Government::instance());
-
-    // TODO: Generate true resource.
-    building->setResource("Coal");
+    allocatePosition();
+    setValue();
+    setOwner();
+    setResource();
 
     return building;
 }
 
-void BuildingFactory::createInstance(gameconstants::StructureType buildingType) {
-    switch (buildingType) {
+void BuildingFactory::createInstance() {
+    switch (parameter.type) {
     case gameconstants::Bank:
         building = new Bank;
         break;
@@ -81,17 +78,47 @@ void BuildingFactory::createInstance(gameconstants::StructureType buildingType) 
         break;
 
     default:
-        building = nullptr;
         break;
     }
 }
 
-void BuildingFactory::setBasicValue() {
-    const double basicValue = 50.0;
-    const double sigma = 25.0;
-    double value = 0.0;
-    do {
-        value = Random::instance().normalDistribution(basicValue, sigma);
-    } while (value <= 20.0);
+void BuildingFactory::setValue() {
+    double value = parameter.basicValue;
+    if (parameter.basicValue == 0.0) {
+        const double basicValue = 50.0;
+        const double sigma = 25.0;
+        do {
+            value = Random::instance().normalDistribution(basicValue, sigma);
+        } while (value <= 20.0);
+        building->setDeltaValue(parameter.deltaValue);
+    }
     building->setValue(value);
+}
+
+void BuildingFactory::setOwner() {
+    (parameter.owner == nullptr) ?
+        building->setOwner(&Government::instance()) :
+        building->setOwner(parameter.owner);
+}
+
+void BuildingFactory::setResource() {
+    if (parameter.resource == "Unallocated") {
+        switch (int resourceNumber = Random::instance().uniformDistribution(0, 2)) {
+        case 0:
+            parameter.resource = "Coal";
+            break;
+
+        case 1:
+            parameter.resource = "Iron";
+            break;
+
+        case 2:
+            parameter.resource = "Log";
+            break;
+
+        default:
+            break;
+        }
+    }
+    building->setResource(parameter.resource);
 }

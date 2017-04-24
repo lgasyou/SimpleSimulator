@@ -34,6 +34,11 @@ public:
     
     ~Vector2D();
 
+    Vector2D &operator=(const Vector2D &rhs);
+
+    Vector2D &operator+=(const Vector2D &vector);
+    Vector2D &operator-=(const Vector2D &vector);
+
     double length() const;
 
     double lengthSquared() const;
@@ -42,16 +47,12 @@ public:
 
     const QString toString() const;
 
+public:
     void setX(double x) { this->x_ = x; }
     double x() const { return x_; }
 
     void setY(double y) { this->y_ = y; }
     double y() const { return y_; }
-
-    Vector2D &operator=(const Vector2D &rhs);
-
-    Vector2D &operator+=(const Vector2D &vector);
-    Vector2D &operator-=(const Vector2D &vector);
 
 private:
     double x_;

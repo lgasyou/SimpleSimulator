@@ -26,6 +26,7 @@ public:
 
     virtual ~Vihicle();
 
+public:
     void setSpeed(double speed) { this->speed_ = speed; }
     double speed() const { return speed_; }
 

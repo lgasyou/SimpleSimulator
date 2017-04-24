@@ -17,8 +17,8 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BUILDINGBASE_H
-#define BUILDINGBASE_H
+#ifndef LAND_H
+#define LAND_H
 
 #include <QString>
 
@@ -34,9 +34,9 @@ public:
 
     virtual ~Land();
 
-    // Copies data from right hand side.
-    void copyFrom(const Land &rhs);
+    virtual void update() = 0;
 
+public:
     void setDeltaValue(double deltaValue) { this->deltaValue_ = deltaValue; }
 
     void setValue(double value) { this->value_ = value; }
@@ -84,4 +84,4 @@ private:
     Vector2D position_;
 };
 
-#endif // BUILDINGBASE_H
+#endif // LAND_H

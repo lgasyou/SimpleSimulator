@@ -37,6 +37,7 @@ public:
 
     ~BuildingDetailDialog();
 
+public:
     void setBuilding(Land *building) { this->building_ = building; }
 
 public slots:

@@ -48,6 +48,7 @@ public:
     // Stops jobs and goes back to garage.
     void goBack();
 
+public:
     State truckState() const { return truckState_; }
 
     bool isWorking() const;

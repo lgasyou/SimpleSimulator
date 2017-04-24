@@ -26,30 +26,58 @@
 #include "Source/Objects/land.h"
 #include "Source/Managers/mapmanager.h"
 
+// Parameters:
+//  gameconstants::StructureType type
+//  Vector2D position
+//  double basicValue
+//  double deltaValue
+//  LegalPerson *owner
+//  QString resource
+struct LandParameter {
+    gameconstants::StructureType type;
+
+    Vector2D position = Vector2D(-1, -1);
+
+    double basicValue = 0.0;
+
+    double deltaValue = 0.0;
+
+    LegalPerson *owner = nullptr;
+
+    QString resource = "Unallocated";
+
+};
+
 class BuildingFactory {
 public:
-    // Creates a new object and sets other parameters.
-    // If position is valid, it will use it. Otherwise it'll allocate a new position.
-    Land *create(gameconstants::StructureType, Vector2D position = Vector2D(-1, -1));
+    // Creates a new object use LandParameter
+    Land *create(const LandParameter &landParameter);
 
 private:
     // Creates an instance according to buildingType;
-    void createInstance(gameconstants::StructureType buildingType);
+    void createInstance();
+
+    void allocatePosition();
 
     // Generates a primitive value.
-    void setBasicValue();
+    void setValue();
 
-    void allocatePosition(gameconstants::StructureType buildingType, Vector2D position);
+    void setOwner();
+
+    void setResource();
 
 private:
     Land *building = nullptr;
 
+    LandParameter parameter;
+
 };
 
-inline void BuildingFactory::allocatePosition(gameconstants::StructureType buildingType, Vector2D position) {
+inline void BuildingFactory::allocatePosition() {
+    Vector2D position = parameter.position;
     (position == Vector2D(-1, -1)) ?
-        position = MapManager::instance().allocate(buildingType) :
-        MapManager::instance().setNodeType(position, buildingType);
+        position = MapManager::instance().allocate(parameter.type) :
+        MapManager::instance().setNodeType(position, parameter.type);
     building->setPosition(position);
 }
 

@@ -32,6 +32,7 @@ public:
     
     void update();
     
+public:
     void setDebt(double debt) { this->debt_ = debt; }
     double debt() const { return debt_; }
     

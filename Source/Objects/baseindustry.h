@@ -50,6 +50,7 @@ public:
 
     double fetch(const Goods &goods);
 
+public:
     Warehouse *warehouse() const { return warehouse_; }
 
     const std::vector<Machine *> &machines() const { return machines_; }
@@ -72,5 +73,33 @@ private:
 
     std::vector<GoodsLabel> materials_;
 };
+
+inline void BaseIndustry::addMachine(Machine *machine) {
+    machines_.push_back(machine);
+    setMaterialsAccordingToMachine(machine);
+    setProductsAccordingToMachine(machine);
+}
+
+inline void BaseIndustry::removeMachine(Machine *machine) {
+    auto iter = std::find(machines_.begin(), machines_.end(), machine);
+    machines_.erase(iter);
+}
+
+inline void BaseIndustry::update() {
+    changeBaseValue();
+    manufacture();
+}
+
+inline void BaseIndustry::manufacture() {
+    std::for_each(machines_.begin(), machines_.end(), [](Machine *m) { m->produce(); });
+}
+
+inline double BaseIndustry::store(const Goods &goods) {
+    return warehouse_->store(goods);
+}
+
+inline double BaseIndustry::fetch(const Goods &goods) {
+    return warehouse_->fetch(goods);
+}
 
 #endif // BASEINDUSTRY_H

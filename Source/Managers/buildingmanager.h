@@ -76,7 +76,7 @@ private:
     BuildingsArray buildings_;
 
 private:
-    // Flag of whether buildings_ has been modified.
+    // Detects whether buildings_ has been modified.
     mutable bool dataChanged_ = true;
 
 };

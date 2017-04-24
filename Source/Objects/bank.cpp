@@ -25,60 +25,6 @@ Bank::Bank(const QString &name) :
 
 Bank::~Bank() { }
 
-void Bank::init() {
-    depositInterestRate_ = 0.003;
-    loanInterestRate_ = 0.008;
-}
-
-void Bank::closeAnAccount(LegalPerson *client) {
-    const BankAccount &bankAccount = clientMap_[client];
-    double finalCash = client->cash() + bankAccount.deposit() - bankAccount.debt();
-    if (finalCash >= 0) {
-        client->setCash(finalCash);
-        clientMap_.erase(client);
-    }
-}
-
-void Bank::deposit(LegalPerson *client, double amount) {
-    BankAccount &bankAccount = clientMap_[client];
-    double finalCash = client->cash() - amount;
-    double finalDeposit = bankAccount.deposit() + amount;
-    bankAccount.setDeposit(finalDeposit);
-    client->setCash(finalCash);
-}
-
-void Bank::loan(LegalPerson *client, double amount) {
-    BankAccount &bankAccount = clientMap_[client];
-    double finalCash = client->cash() + amount;
-    double finalDebt = bankAccount.debt() + amount;
-    bankAccount.setDeposit(finalDebt);
-    client->setCash(finalCash);
-}
-
-void Bank::openAnAccount(LegalPerson *client) {
-    clientMap_[client].setBank(this);
-}
-
-void Bank::repay(LegalPerson *client, double amount) {
-    BankAccount &bankAccount = clientMap_[client];
-    double finalCash = client->cash() - amount;
-    double finalDebt = bankAccount.debt() - amount;
-    bankAccount.setDeposit(finalDebt);
-    client->setCash(finalCash);
-}
-
-const BankAccount &Bank::accountOf(LegalPerson *client) const {
-    return clientMap_.find(client)->second;
-}
-
-void Bank::withdraw(LegalPerson *client, double amount) {
-    BankAccount &bankAccount = clientMap_[client];
-    double finalCash = client->cash() + amount;
-    double finalDeposit = bankAccount.deposit() - amount;
-    bankAccount.setDeposit(finalDeposit);
-    client->setCash(finalCash);
-}
-
 void Bank::update() {
     for (auto &client : clientMap_) {
         client.second.update();
