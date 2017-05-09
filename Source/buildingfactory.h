@@ -27,13 +27,13 @@
 #include "Source/Managers/mapmanager.h"
 
 // Parameters:
-//  gameconstants::StructureType type
+//  StructureType type
 //  Vector2D position
 //  double basicValue
 //  double deltaValue
 //  LegalPerson *owner
 //  QString resource
-struct LandParameter {
+struct LandInitialParameter {
     gameconstants::StructureType type;
 
     Vector2D position = Vector2D(-1, -1);
@@ -50,8 +50,8 @@ struct LandParameter {
 
 class BuildingFactory {
 public:
-    // Creates a new object use LandParameter
-    Land *create(const LandParameter &landParameter);
+    // Creates a new object use LandInitialParameter
+    Land *create(const LandInitialParameter &landParameter);
 
 private:
     // Creates an instance according to buildingType;
@@ -69,7 +69,7 @@ private:
 private:
     Land *building = nullptr;
 
-    LandParameter parameter;
+    LandInitialParameter parameter;
 
 };
 

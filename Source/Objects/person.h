@@ -21,6 +21,7 @@
 #define PERSON_H
 
 #include "legalperson.h"
+#include "goodscontainer.h"
 
 class Land;
 class BaseResidence;
@@ -33,16 +34,32 @@ public:
 
     virtual void update() override;
 
+    void store(const Goods &goods);
+
+    void fetch(const Goods &goods);
+
 public:
     const BaseResidence *home() const { return home_; }
 
     const Land *workplace() const { return workplace_; }
+
+    const GoodsContainer &properties() const { return properties_; }
 
 private:
     BaseResidence *home_ = nullptr;
 
     Land *workplace_ = nullptr;
 
+    GoodsContainer properties_;
+
 };
+
+inline void Person::store(const Goods &goods) {
+    properties_.store(goods);
+}
+
+inline void Person::fetch(const Goods &goods) {
+    properties_.fetch(goods);
+}
 
 #endif // !PERSON_H

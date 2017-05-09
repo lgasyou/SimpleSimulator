@@ -52,7 +52,7 @@ void BuildingManager::init() {
     for (int i = 0; i != mapHeight; ++i) {
         for (int j = 0; j != mapWeight; ++j) {
             if (buildings_[i][j] == nullptr) {
-                buildings_[i][j] = factory.create(LandParameter{ UnusedLand, Vector2D(i,j) });
+                buildings_[i][j] = factory.create(LandInitialParameter{ UnusedLand, Vector2D(i,j) });
             }
         }
     }
@@ -73,7 +73,7 @@ StructureType BuildingManager::stringToEnum(const QString &type) {
 
 void BuildingManager::add(StructureType buildingType) {
     BuildingFactory factory;
-    Land *newBuilding = factory.create(LandParameter{ buildingType });
+    Land *newBuilding = factory.create(LandInitialParameter{ buildingType });
     
     int x = newBuilding->position().x();
     int y = newBuilding->position().y();
@@ -115,7 +115,7 @@ Land *BuildingManager::getById(int id) const {
 
 Land *BuildingManager::resetType(Land *building, StructureType type) {
     BuildingFactory buildingFactory;
-    Land *buildingCopy = buildingFactory.create(LandParameter{
+    Land *buildingCopy = buildingFactory.create(LandInitialParameter{
         type,
         building->position(),
         building->value(),

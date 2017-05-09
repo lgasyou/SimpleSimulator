@@ -17,6 +17,8 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <algorithm>
+
 #include "pricemanager.h"
 
 PriceManager::PriceManager() { }
@@ -24,21 +26,14 @@ PriceManager::PriceManager() { }
 PriceManager::~PriceManager() { }
 
 void PriceManager::init() {
-    prices_.push_back(PriceItem{ "Coal", "ton", 10 });
-    prices_.push_back(PriceItem{ "Iron", "ton", 10 });
-    prices_.push_back(PriceItem{ "Steel", "ton", 35 });
+    priceMap_.insert({ "Coal",{ "ton", 10 } });
+    priceMap_.insert({ "Iron",{ "ton", 10 } });
+    priceMap_.insert({ "Steel",{ "ton", 35 } });
 }
 
 PriceManager &PriceManager::instance() {
     static PriceManager priceManager;
     return priceManager;
-}
-
-double PriceManager::currentPrice(const QString &name) const {
-    for (const auto &item : prices_)
-        if (item.name == name)
-            return item.price;
-    return 0.0;
 }
 
 void PriceManager::update() {

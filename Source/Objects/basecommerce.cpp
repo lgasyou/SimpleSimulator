@@ -31,7 +31,7 @@ void BaseCommerce::restock(BaseIndustry *factory, const Goods &goods) {
 }
 
 void BaseCommerce::sellTo(Person *consumer, const Goods &goods) {
-
+    consumer->store(goods);
 }
 
 void BaseCommerce::update() {

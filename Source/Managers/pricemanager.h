@@ -20,13 +20,13 @@
 #ifndef PRICEMANAGER_H
 #define PRICEMANAGER_H
 
-#include <vector>
+#include <map>
 #include <QString>
+
+#include "Source/Objects/goods.h"
 
 // Item of Price
 struct PriceItem {
-    QString name;
-
     QString unit;
 
     double price;
@@ -41,7 +41,7 @@ public:
 
     void init();
     
-    double currentPrice(const QString &name) const;
+    double currentPrice(const GoodsLabel &label) const;
 
     // Updates the prices of all goods.
     void update();
@@ -53,8 +53,12 @@ private:
     ~PriceManager();
 
 private:
-    std::vector<PriceItem> prices_;
+    std::map<GoodsLabel, PriceItem> priceMap_;
 };
+
+inline double PriceManager::currentPrice(const GoodsLabel &label) const {
+    return priceMap_.find(label)->second.price;
+}
 
 #endif // !PRICEMANAGER_H
 

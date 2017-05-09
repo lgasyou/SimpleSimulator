@@ -31,7 +31,7 @@
 
 #include "Source/random.h"
 
-Land *BuildingFactory::create(const LandParameter &landParameter) {
+Land *BuildingFactory::create(const LandInitialParameter &landParameter) {
     parameter = landParameter;
     createInstance();
 
