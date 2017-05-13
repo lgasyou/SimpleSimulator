@@ -33,9 +33,9 @@ public:
 
     void update();
 
-    Company *playerCompany() { return playerCompany_; }
+    Company *playerCompany() const { return playerCompany_; }
 
-    std::list<Company *> &AICompanies() { return AICompanies_; }
+    const std::list<Company *> &AICompanies() const { return AICompanies_; }
 
 private:
     // Hides constructor and destructor.
@@ -45,10 +45,9 @@ private:
     ~CompanyManager();
 
 private:
-    Company *playerCompany_;
+    Company *playerCompany_ = nullptr;
 
     std::list<Company *> AICompanies_;
 };
-
 
 #endif // !COMPANYMANAGER_H

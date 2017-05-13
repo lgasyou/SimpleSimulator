@@ -42,7 +42,7 @@ public:
     void removeMachine(Machine *);
 
     // Updates data after each turn
-    virtual void update() override;
+    void update() override;
 
     void manufacture();
 

@@ -45,39 +45,40 @@ Land *BuildingFactory::create(const LandInitialParameter &landParameter) {
 
 void BuildingFactory::createInstance() {
     switch (parameter.type) {
-    case gameconstants::Bank:
+    case BANK:
         building = new Bank;
         break;
 
-    case gameconstants::Factory:
+    case FACTORY:
         building = new Factory;
         break;
 
-    case gameconstants::Farm:
+    case FARM:
         building = new Farm;
         break;
 
-    case gameconstants::Garage:
+    case GARAGE:
         building = new Garage;
         break;
 
-    case gameconstants::Mine:
+    case MINE:
         building = new Mine;
         break;
 
-    case gameconstants::Supermarket:
+    case SUPERMARKET:
         building = new Supermarket;
         break;
 
-    case gameconstants::UnusedLand:
+    case UNUSED_LAND:
         building = new UnusedLand;
         break;
 
-    case gameconstants::Villa:
+    case VILLA:
         building = new Villa;
         break;
 
     default:
+        building = nullptr;
         break;
     }
 }
@@ -117,6 +118,7 @@ void BuildingFactory::setResource() {
             break;
 
         default:
+            parameter.resource.clear();
             break;
         }
     }

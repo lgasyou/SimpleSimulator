@@ -31,15 +31,15 @@
 BuildingInfoWidget::BuildingInfoWidget(QWidget *parent) : 
     QWidget(parent) {
     ui = new Ui::BuildingInfoWidget;
-    ui->setupUi(this); 
+    ui->setupUi(this);
 
-    connect(ui->detailsPushButton,      SIGNAL(sendCommand(int)),
-            this,                       SLOT(receiveCommand(int)));
-    ui->detailsPushButton->setCommand(gameconstants::ShowDetail);
+    connect(ui->detailsPushButton,      SIGNAL(sendCommand(ICommmand *)),
+            this,                       SLOT(receiveCommand(ICommmand *)));
+    ui->detailsPushButton->setCommand(new ShowDetailCommand(parent));
     ui->detailsPushButton->hide();
 
-    connect(ui->buyOrSellpushButton,    SIGNAL(sendCommand(int)),
-            this,                       SLOT(receiveCommand(int)));
+    connect(ui->buyOrSellpushButton,    SIGNAL(sendCommand(ICommmand *)),
+            this,                       SLOT(receiveCommand(ICommmand *)));
     ui->buyOrSellpushButton->hide();
 }
 
@@ -51,7 +51,7 @@ void BuildingInfoWidget::setTarget(Land *building) {
     this->displayedBuilding_ = building;
 }
 
-void BuildingInfoWidget::receiveCommand(int command) {
+void BuildingInfoWidget::receiveCommand(ICommmand *command) {
     emit sendCommand(command, displayedBuilding_);
 }
 

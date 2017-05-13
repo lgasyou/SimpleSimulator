@@ -19,10 +19,10 @@
 
 #include "tablewidgetpushbutton.h"
 
-TableWidgetPushButton::TableWidgetPushButton(QWidget *parent, int command) :
+TableWidgetPushButton::TableWidgetPushButton(QWidget *parent, ICommmand *command) :
     CommandPushButton(parent, command) { }
 
-TableWidgetPushButton::TableWidgetPushButton(const QString &text, int command, QWidget *parent) :
+TableWidgetPushButton::TableWidgetPushButton(const QString &text, ICommmand *command, QWidget *parent) :
     CommandPushButton(text, command, parent) { }
 
 void TableWidgetPushButton::repeater() {

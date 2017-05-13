@@ -31,6 +31,8 @@
 #include "companydetaildialog.h"
 #include "helpdialog.h"
 
+class ICommmand;
+
 namespace Ui {
 class MainWindow;
 }
@@ -44,6 +46,8 @@ public:
     ~MainWindow();
 
     void init();
+
+    void redirectData(Land *);
 
 signals:
     void dataChanged();
@@ -64,7 +68,7 @@ private slots:
 
     void updateDisplay();
 
-    void processCommand(int command, Land *);
+    void processCommand(ICommmand *command);
 
 private:
     void updateStatusBar(const QString &msg);

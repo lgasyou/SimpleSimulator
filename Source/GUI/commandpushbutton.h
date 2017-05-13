@@ -21,30 +21,31 @@
 #define COMMANDPUSHBUTTON_H
 
 #include <QPushButton>
+#include "Source/Commmand.h"
 
 // The PushButton is specialized to send command when clicked.
 class CommandPushButton : public QPushButton {
     Q_OBJECT
 
 public:
-    CommandPushButton(QWidget *parent = nullptr, int command = -1);
+    CommandPushButton(QWidget *parent = nullptr, ICommmand *command = nullptr);
 
-    CommandPushButton(const QString &text, int command = -1, QWidget *parent = nullptr);
+    CommandPushButton(const QString &text, ICommmand *command = nullptr, QWidget *parent = nullptr);
 
     ~CommandPushButton();
 
     void init();
 
-    void setCommand(int command) { this->command = command; }
+    void setCommand(ICommmand *command) { this->command = command; }
 
 public slots:
     virtual void repeater();
 
 signals:
-    void sendCommand(int);
+    void sendCommand(ICommmand *);
 
 protected:
-    int command;
+	ICommmand *command;
 };
 
 #endif // COMMANDPUSHBUTTON_H

@@ -24,6 +24,7 @@
 #include <QImage>
 
 #include "Source/gameconstants.h"
+#include "Source/Objects/land.h"
 
 namespace Ui { 
 class MainUI; 
@@ -67,7 +68,7 @@ private:
 
     void paintBuilding(QPaintEvent *);
 
-    QColor getNodeColorByType(gameconstants::StructureType);
+    QColor getNodeColorByType(StructureType);
 
 private:
     QImage image_;

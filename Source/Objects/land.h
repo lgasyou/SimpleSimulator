@@ -22,17 +22,29 @@
 
 #include <QString>
 
-#include "iland.h"
 #include "legalperson.h"
 #include "Source/vector2d.h"
 
-//  The base of building classes.
-//  This class cannot be instantiated.
-class Land : public ILand {
+#define abstract 
+
+enum StructureType {
+    BANK,
+    FACTORY,
+    FARM,
+    GARAGE,
+    MINE,
+    SUPERMARKET,
+    UNUSED_LAND,
+    VILLA
+};
+
+// The base of building classes.
+// This class cannot be instantiated.
+abstract class Land {
 public:
     Land(const QString &name, const QString &type);
 
-    virtual ~Land();
+    virtual ~Land() = default;
 
     virtual void update() = 0;
 

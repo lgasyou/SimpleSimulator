@@ -22,7 +22,6 @@
 
 #include <array>
 #include <vector>
-#include <QString>
 
 #include "Source/Objects/land.h"
 #include "Source/Objects/company.h"
@@ -36,14 +35,14 @@ public:
     typedef std::array<std::array<Land *, gameconstants::mapWeight>, gameconstants::mapHeight> BuildingsArray;
 
     // Converts type of building from QString to enum.
-    static gameconstants::StructureType stringToEnum(const QString &type);
+    static StructureType stringToEnum(const QString &type);
 
     // Gets single instance.
     static BuildingManager &instance();
 
     void init();
 
-    void add(gameconstants::StructureType);
+    void add(StructureType);
 
     const std::vector<Land *> &buildings() const;
 
@@ -61,7 +60,7 @@ public:
     // Gets building's pointer and type.
     // Returns a pointer which is arg "type" asked.
     // If arg "type" isn't a standard type, returns "Unused Land".
-    Land *resetType(Land *, gameconstants::StructureType type);
+    Land *changeType(Land *, StructureType type);
 
     void update();
 

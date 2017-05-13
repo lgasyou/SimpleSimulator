@@ -35,7 +35,7 @@ MapManager &MapManager::instance() {
 void MapManager::init() {
     for (int x = 0; x != mapHeight; ++x)
         for (int y = 0; y != mapWeight; ++y)
-            gameMap_[x][y] = StructureType::UnusedLand;
+            gameMap_[x][y] = UNUSED_LAND;
 }
 
 Vector2D MapManager::allocate(StructureType type) {
@@ -43,12 +43,12 @@ Vector2D MapManager::allocate(StructureType type) {
     do {
         x = Random::instance().uniformDistribution(0, mapHeight - 1);
         y = Random::instance().uniformDistribution(0, mapWeight - 1);
-    } while (gameMap_[x][y] != StructureType::UnusedLand);
+    } while (gameMap_[x][y] != UNUSED_LAND);
     gameMap_[x][y] = type;
     return Vector2D(x, y);
 }
 
-void MapManager::setNodeType(const Vector2D &pos, gameconstants::StructureType newType) {
+void MapManager::setNodeType(const Vector2D &pos, StructureType newType) {
     int x = pos.x(), y = pos.y();
     gameMap_[x][y] = newType;
 }

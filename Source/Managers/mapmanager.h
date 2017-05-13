@@ -23,13 +23,14 @@
 #include <array>
 
 #include "Source/gameconstants.h"
+#include "Source/Objects/land.h"
 #include "Source/vector2d.h"
 
 // This class creates a map which contains all buildings.
 // This class is designed for working with transportations modules.
 class MapManager {
 public:
-    typedef std::array<std::array<gameconstants::StructureType, gameconstants::mapWeight>, gameconstants::mapHeight> GameMap;
+    typedef std::array<std::array<StructureType, gameconstants::mapWeight>, gameconstants::mapHeight> GameMap;
 
     // Gets single instance.
     static MapManager &instance();
@@ -38,9 +39,9 @@ public:
 
     // Allocates and returns a coordinate with Random.
     // TODO: It still has some performance issues. It'll generate many useless data if the map is almost full.
-    Vector2D allocate(gameconstants::StructureType);
+    Vector2D allocate(StructureType);
 
-    void setNodeType(const Vector2D &pos, gameconstants::StructureType newType);
+    void setNodeType(const Vector2D &pos, StructureType newType);
 
     GameMap gameMap() const { return gameMap_; }
 

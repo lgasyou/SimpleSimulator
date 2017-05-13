@@ -133,19 +133,19 @@ void MainUI::paintBuilding(QPaintEvent *) {
 
 QColor MainUI::getNodeColorByType(StructureType type) {
     switch (type) {
-    case Bank:
+    case BANK:
         return Qt::red;
-    case Factory:
+    case FACTORY:
         return Qt::black;
-    case Farm:
+    case FARM:
         return Qt::yellow;
-    case Garage:
+    case GARAGE:
         return Qt::blue;
-    case Mine:
+    case MINE:
         return Qt::darkYellow;
-    case Supermarket:
+    case SUPERMARKET:
         return Qt::darkBlue;
-    case Villa:
+    case VILLA:
         return Qt::lightGray;
     default:
         return Qt::white;

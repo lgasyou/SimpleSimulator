@@ -22,29 +22,27 @@
 
 #include <QString>
 
-#include "gameconstants.h"
 #include "Source/Objects/land.h"
 #include "Source/Managers/mapmanager.h"
 
-// Parameters:
-//  StructureType type
-//  Vector2D position
-//  double basicValue
-//  double deltaValue
-//  LegalPerson *owner
-//  QString resource
 struct LandInitialParameter {
-    gameconstants::StructureType type;
+	LandInitialParameter() = default;
 
-    Vector2D position = Vector2D(-1, -1);
+	LandInitialParameter(StructureType type, const Vector2D &position = Vector2D(-1, -1), double basicValue = 0.0, double deltaValue = 0.0, LegalPerson *owner = nullptr, const QString &resource = "Unallocated")
+		: type(type),
+		  position(position),
+		  basicValue(basicValue),
+		  deltaValue(deltaValue),
+		  owner(owner),
+		  resource(resource) {
+	}
 
-    double basicValue = 0.0;
-
-    double deltaValue = 0.0;
-
-    LegalPerson *owner = nullptr;
-
-    QString resource = "Unallocated";
+    StructureType type;
+    Vector2D position;
+    double basicValue;
+    double deltaValue;
+    LegalPerson *owner;
+    QString resource;
 
 };
 
@@ -57,7 +55,7 @@ private:
     // Creates an instance according to buildingType;
     void createInstance();
 
-    void allocatePosition();
+    void allocatePosition() const;
 
     // Generates a primitive value.
     void setValue();
@@ -73,7 +71,7 @@ private:
 
 };
 
-inline void BuildingFactory::allocatePosition() {
+inline void BuildingFactory::allocatePosition() const {
     Vector2D position = parameter.position;
     (position == Vector2D(-1, -1)) ?
         position = MapManager::instance().allocate(parameter.type) :

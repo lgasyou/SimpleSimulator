@@ -29,37 +29,6 @@ const int integerMaximum = (int)((unsigned)integerMinimum - 1);
 const int mapHeight = 16;
 const int mapWeight = 16;
 
-enum StructureType {
-    Bank,
-    Factory,
-    Farm,
-    Garage,
-    Mine,
-    Supermarket,
-    UnusedLand,
-    Villa
-};
-
-enum Commands {
-    BuildBank,
-    BuildFactory,
-    BuildFarm,
-    BuildGarage,
-    BuildMine,
-    BuildSupermarket,
-    BuildVilla,
-    BuyBuilding,
-    CloseAnAccount,
-    Deposit,
-    DismantleBuilding,
-    Loan,
-    OpenAnAccount,
-    Repay,
-    SellBuilding,
-    ShowDetail,
-    Withdraw,
-};
-
 }
 
 #endif // !GAMECONSTANTS_H

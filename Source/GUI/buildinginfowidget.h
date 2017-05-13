@@ -25,6 +25,8 @@
 
 #include "Source/Objects/land.h"
 
+class ICommmand;
+
 namespace Ui { 
 class BuildingInfoWidget; 
 }
@@ -40,10 +42,10 @@ public:
     void setTarget(Land *building);
 
 signals:
-    void sendCommand(int command, Land *building);
+    void sendCommand(ICommmand *command);
 
 public slots:
-    void receiveCommand(int);
+    void receiveCommand(ICommmand *);
 
     void showBuildingInfo(Land *building);
 

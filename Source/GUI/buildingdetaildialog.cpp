@@ -22,23 +22,20 @@
 #include "Source/Objects/land.h"
 #include "Source/Objects/baseindustry.h"
 #include "Source/Objects/company.h"
-#include "Source/Objects/factory.h"
 #include "Source/Objects/garage.h"
 #include "Source/Objects/goods.h"
-#include "Source/Objects/goodscontainer.h"
 #include "Source/Objects/machine.h"
 #include "Source/Objects/mine.h"
+#include "Source/Commmand.h"
 
 #include "Source/gameconstants.h"
 #include "Source/defaultmachinebuilder.h"
 
 #include "Source/Managers/buildingmanager.h"
 #include "Source/Managers/companymanager.h"
-#include "Source/Managers/industrychainmanager.h"
 #include "Source/Managers/machinemanager.h"
 
 #include "garagetablewidget.h"
-#include "warehousetablewidget.h"
 #include "ui_buildingdetaildialog.h"
 #include "widgethelper.h"
 
@@ -149,18 +146,18 @@ void BuildingDetailDialog::displayAccordingToBuildingType() {
     auto buildingType = BuildingManager::stringToEnum(type);
     ui->detailStackedWidget->setCurrentIndex(buildingType);
     switch (buildingType) {
-    case gameconstants::Bank:
+    case BANK:
         break;
 
-    case gameconstants::Factory:
+    case FACTORY:
         ui->factoryTableWidget->setIndustry(building_);
         ui->factoryTableWidget->updateDisplay();
         break;
 
-    case gameconstants::Farm:
+    case FARM:
         break;
 
-    case gameconstants::Garage: {
+    case GARAGE: {
         Garage *garage = dynamic_cast<Garage *>(building_);
         const QString &freeVicleCount = QString::number(garage->freeVihicleCount());
         const QString &vihicleCount = QString::number(garage->vihicleCount());
@@ -172,7 +169,7 @@ void BuildingDetailDialog::displayAccordingToBuildingType() {
         break;
     }
 
-    case gameconstants::Mine: {
+    case MINE: {
         Mine *mine = dynamic_cast<Mine *>(building_);
         const QString &typeText = QString("Type:  %1 Mine").arg(mine->resource());
         ui->typeLabel->setText(typeText);
@@ -182,13 +179,13 @@ void BuildingDetailDialog::displayAccordingToBuildingType() {
         break;
     }
 
-    case gameconstants::Supermarket:
+    case SUPERMARKET:
         break;
 
-    case gameconstants::UnusedLand:
+    case UNUSED_LAND:
         break;
 
-    case gameconstants::Villa:
+    case VILLA:
         break;
 
     default:
@@ -202,41 +199,41 @@ void BuildingDetailDialog::signalSlotConfig() {
     /* ---------------------------------- Basic Config ---------------------------------------------- */
     connect(ui->buyPushButton,                          SIGNAL(sendCommand(int)),
             this,                                       SLOT(receiveCommand(int)));
-    ui->buyPushButton->setCommand(Commands::BuyBuilding);
+    ui->buyPushButton->setCommand(BUY_BUILDING);
 
     connect(ui->sellPushButton,                         SIGNAL(sendCommand(int)),
             this,                                       SLOT(receiveCommand(int)));
-    ui->sellPushButton->setCommand(Commands::SellBuilding);
+    ui->sellPushButton->setCommand(SELL_BUILDING);
 
     connect(ui->dismantlePushButton,                    SIGNAL(sendCommand(int)),
             this,                                       SLOT(receiveCommand(int)));
-    ui->dismantlePushButton->setCommand(Commands::DismantleBuilding);
+    ui->dismantlePushButton->setCommand(DISMANTLE_BUILDING);
     /* ---------------------------------------------------------------------------------------------- */
 
     /* ----------------------------------- Bank Config ---------------------------------------------- */
     connect(ui->closeAnAccountPushButton,               SIGNAL(sendCommand(int)),
             this,                                       SLOT(receiveCommand(int)));
-    ui->closeAnAccountPushButton->setCommand(Commands::CloseAnAccount);
+    ui->closeAnAccountPushButton->setCommand(CLOSE_AN_ACCOUNT);
 
     connect(ui->depositPushButton,                      SIGNAL(sendCommand(int)),
             this,                                       SLOT(receiveCommand(int)));
-    ui->depositPushButton->setCommand(Commands::Deposit);
+    ui->depositPushButton->setCommand(DEPOSIT);
 
     connect(ui->loanPushButton,                         SIGNAL(sendCommand(int)),
             this,                                       SLOT(receiveCommand(int)));
-    ui->loanPushButton->setCommand(Commands::Loan);
+    ui->loanPushButton->setCommand(LOAN);
 
     connect(ui->openAnAccountPushButton,                SIGNAL(sendCommand(int)),
             this,                                       SLOT(receiveCommand(int)));
-    ui->openAnAccountPushButton->setCommand(Commands::OpenAnAccount);
+    ui->openAnAccountPushButton->setCommand(OPEN_AN_ACCOUNT);
 
     connect(ui->repayPushButton,                        SIGNAL(sendCommand(int)),
             this,                                       SLOT(receiveCommand(int)));
-    ui->repayPushButton->setCommand(Commands::Repay);
+    ui->repayPushButton->setCommand(REPAY);
 
     connect(ui->withdrawPushButton,                     SIGNAL(sendCommand(int)),
             this,                                       SLOT(receiveCommand(int)));
-    ui->withdrawPushButton->setCommand(Commands::Withdraw);
+    ui->withdrawPushButton->setCommand(WITHDRAW);
     /* ---------------------------------------------------------------------------------------------- */
 
     /* ---------------------------------- Garage Config --------------------------------------------- */

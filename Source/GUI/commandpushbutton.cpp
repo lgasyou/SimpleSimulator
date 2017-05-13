@@ -19,13 +19,13 @@
 
 #include "commandpushbutton.h"
 
-CommandPushButton::CommandPushButton(QWidget *parent, int command) : 
-    QPushButton(parent),
-    command(command) {
+CommandPushButton::CommandPushButton(QWidget *parent, ICommmand *command) 
+	: QPushButton(parent),
+      command(command) {
     init();
 }
 
-CommandPushButton::CommandPushButton(const QString &text, int command, QWidget *parent) :
+CommandPushButton::CommandPushButton(const QString &text, ICommmand *command, QWidget *parent) :
     QPushButton(text, parent),
     command(command) {
     init();
@@ -39,5 +39,5 @@ void CommandPushButton::init() {
 }
 
 void CommandPushButton::repeater() {
-    emit sendCommand(this->command);
+    emit sendCommand(command);
 }

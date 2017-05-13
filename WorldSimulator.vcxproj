@@ -144,6 +144,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Commmand.cpp" />
     <ClCompile Include="Source\Objects\bank.cpp" />
     <ClCompile Include="Source\Objects\bankaccount.cpp" />
     <ClCompile Include="Source\GUI\bankdialog.cpp" />
@@ -302,6 +303,8 @@
     <ClCompile Include="Source\GUI\warehousetablewidget.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Commmand.h" />
+    <ClInclude Include="Source\Interface.h" />
     <ClInclude Include="Source\Objects\bank.h" />
     <ClInclude Include="Source\Objects\bankaccount.h" />
     <ClInclude Include="Source\Objects\baseagriculture.h" />
@@ -329,7 +332,6 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
     <ClInclude Include="Source\GUI\widgethelper.h" />
-    <ClInclude Include="Source\Objects\iland.h" />
     <ClInclude Include="Source\defaultmachinebuilder.h" />
     <ClInclude Include="GeneratedFiles\ui_bankdialog.h" />
     <ClInclude Include="GeneratedFiles\ui_buildingdetaildialog.h" />

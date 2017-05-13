@@ -27,20 +27,20 @@ class TableWidgetPushButton : public CommandPushButton {
     Q_OBJECT
 
 public:
-    TableWidgetPushButton(QWidget *parent = nullptr, int command = -1);
+    TableWidgetPushButton(QWidget *parent = nullptr, ICommmand *command = nullptr);
 
-    TableWidgetPushButton(const QString &text, int command = -1, QWidget *parent = nullptr);
+    TableWidgetPushButton(const QString &text, ICommmand *command = nullptr, QWidget *parent = nullptr);
 
     void setIndex(int index) { this->index = index; }
 
 public slots:
-    virtual void repeater() override;
+    void repeater() override;
 
 signals:
-    void sendData(int index, int command);
+    void sendData(int index, ICommmand *command);
 
 private:
-    int index;
+    int index = -1;
 };
 
 #endif // MYPUSHBUTTON_H

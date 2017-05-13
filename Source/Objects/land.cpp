@@ -25,8 +25,6 @@ Land::Land(const QString &name, const QString &type) :
     name_(name),
     type_(type) { }
 
-Land::~Land() { }
-
 void Land::changeBaseValue() {
     double sigma = value_ * 0.1 / 3;
     deltaValue_ = Random::instance().normalDistribution(0, sigma);

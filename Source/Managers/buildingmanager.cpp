@@ -39,20 +39,20 @@ BuildingManager &BuildingManager::instance() {
 }
 
 void BuildingManager::init() {
-    add(Mine);
-    add(Mine);
-    add(Factory);
-    add(Bank);
-    add(Supermarket);
-    add(Garage);
+    add(MINE);
+    add(MINE);
+    add(FACTORY);
+    add(BANK);
+    add(SUPERMARKET);
+    add(GARAGE);
     for (int i = 0; i != 5; ++i)
-        add(Villa);
+        add(VILLA);
 
     BuildingFactory factory;
     for (int i = 0; i != mapHeight; ++i) {
         for (int j = 0; j != mapWeight; ++j) {
             if (buildings_[i][j] == nullptr) {
-                buildings_[i][j] = factory.create(LandInitialParameter{ UnusedLand, Vector2D(i,j) });
+                buildings_[i][j] = factory.create(LandInitialParameter{ UNUSED_LAND, Vector2D(i,j) });
             }
         }
     }
@@ -60,14 +60,14 @@ void BuildingManager::init() {
 
 StructureType BuildingManager::stringToEnum(const QString &type) {
     static std::map<QString, StructureType> stringToEnumMap{
-        {"Bank", Bank },
-        {"Factory", Factory },
-        {"Farm", Farm },
-        {"Garage", Garage },
-        {"Mine", Mine },
-        {"Supermarket", Supermarket },
-        {"Unused Land", UnusedLand },
-        {"Villa", Villa } };
+        {"Bank", BANK },
+        {"Factory", FACTORY },
+        {"Farm", FARM },
+        {"Garage", GARAGE },
+        {"Mine", MINE },
+        {"Supermarket", SUPERMARKET },
+        {"Unused Land", UNUSED_LAND },
+        {"Villa", VILLA } };
     return stringToEnumMap[type];
 }
 
@@ -113,7 +113,7 @@ Land *BuildingManager::getById(int id) const {
     return buildings()[id];
 }
 
-Land *BuildingManager::resetType(Land *building, StructureType type) {
+Land *BuildingManager::changeType(Land *building, StructureType type) {
     BuildingFactory buildingFactory;
     Land *buildingCopy = buildingFactory.create(LandInitialParameter{
         type,
