@@ -24,6 +24,7 @@
 #include "Source/Objects/company.h"
 #include "Source/Objects/garage.h"
 #include "Source/Objects/goods.h"
+#include "Source/Objects/government.h"
 #include "Source/Objects/machine.h"
 #include "Source/Objects/mine.h"
 #include "Source/Commmand.h"
@@ -38,13 +39,12 @@
 #include "garagetablewidget.h"
 #include "ui_buildingdetaildialog.h"
 #include "widgethelper.h"
+#include "mainwindow.h"
 
-BuildingDetailDialog::BuildingDetailDialog(QWidget *parent) :
-    QDialog(parent),
-    building_(nullptr),
-    selectMachine_(nullptr),
-    ui(new Ui::BuildingDetailDialog)
-{
+BuildingDetailDialog::BuildingDetailDialog(Land *object, QWidget *parent)
+	: QDialog(parent),
+	  building_(object),
+      ui(new Ui::BuildingDetailDialog) {
     ui->setupUi(this);
 
     signalSlotConfig();
@@ -73,7 +73,7 @@ void BuildingDetailDialog::updateDisplay() {
     ui->positionLabel->setText(tr("Position: ") + position);
 
     if (ui->machinePage->isVisible()) {
-        updateMachineDetail(selectMachine_);
+        updateMachineDetail(selectedMachine_);
     }
 
     displayAccordingToBuildingType();
@@ -109,13 +109,13 @@ void BuildingDetailDialog::addNewVihicle() {
 }
 
 void BuildingDetailDialog::setNextMachineProduct(const QString &product) {
-    selectMachine_->setCurrentProduct(product);
+    selectedMachine_->setCurrentProduct(product);
     emit dataChanged();
 }
 
 void BuildingDetailDialog::showMachineDetail(Machine *machine) {
     ui->expandStackedWidget->show();
-    selectMachine_ = machine;
+    selectedMachine_ = machine;
 
     ui->selectNextProductComboBox->clear();
     for (const auto &product : machine->products()) {
@@ -199,41 +199,43 @@ void BuildingDetailDialog::signalSlotConfig() {
     /* ---------------------------------- Basic Config ---------------------------------------------- */
     connect(ui->buyPushButton,                          SIGNAL(sendCommand(int)),
             this,                                       SLOT(receiveCommand(int)));
-    ui->buyPushButton->setCommand(BUY_BUILDING);
+    ui->buyPushButton->setCommand(new TransactionCommand(CompanyManager::instance().playerCompany(), building_->owner(),
+														 building_, &MainWindow::instance()));
 
-    connect(ui->sellPushButton,                         SIGNAL(sendCommand(int)),
-            this,                                       SLOT(receiveCommand(int)));
-    ui->sellPushButton->setCommand(SELL_BUILDING);
+    connect(ui->sellPushButton,							&CommandPushButton::sendCommand,
+			&WidgetHelper::placeCommand);
+    ui->sellPushButton->setCommand(new TransactionCommand(&Government::instance(), building_->owner(),
+														  building_, &MainWindow::instance()));
 
-    connect(ui->dismantlePushButton,                    SIGNAL(sendCommand(int)),
-            this,                                       SLOT(receiveCommand(int)));
-    ui->dismantlePushButton->setCommand(DISMANTLE_BUILDING);
+    connect(ui->dismantlePushButton,					&CommandPushButton::sendCommand,
+			&WidgetHelper::placeCommand);
+    ui->dismantlePushButton->setCommand(new DismantleBuilding(building_, &MainWindow::instance()));
     /* ---------------------------------------------------------------------------------------------- */
 
     /* ----------------------------------- Bank Config ---------------------------------------------- */
-    connect(ui->closeAnAccountPushButton,               SIGNAL(sendCommand(int)),
-            this,                                       SLOT(receiveCommand(int)));
-    ui->closeAnAccountPushButton->setCommand(CLOSE_AN_ACCOUNT);
+    //connect(ui->closeAnAccountPushButton,               SIGNAL(sendCommand(int)),
+    //        this,                                       SLOT(receiveCommand(int)));
+    //ui->closeAnAccountPushButton->setCommand(CLOSE_AN_ACCOUNT);
 
-    connect(ui->depositPushButton,                      SIGNAL(sendCommand(int)),
-            this,                                       SLOT(receiveCommand(int)));
-    ui->depositPushButton->setCommand(DEPOSIT);
+    //connect(ui->depositPushButton,                      SIGNAL(sendCommand(int)),
+    //        this,                                       SLOT(receiveCommand(int)));
+    //ui->depositPushButton->setCommand(DEPOSIT);
 
-    connect(ui->loanPushButton,                         SIGNAL(sendCommand(int)),
-            this,                                       SLOT(receiveCommand(int)));
-    ui->loanPushButton->setCommand(LOAN);
+    //connect(ui->loanPushButton,                         SIGNAL(sendCommand(int)),
+    //        this,                                       SLOT(receiveCommand(int)));
+    //ui->loanPushButton->setCommand(LOAN);
 
-    connect(ui->openAnAccountPushButton,                SIGNAL(sendCommand(int)),
-            this,                                       SLOT(receiveCommand(int)));
-    ui->openAnAccountPushButton->setCommand(OPEN_AN_ACCOUNT);
+    //connect(ui->openAnAccountPushButton,                SIGNAL(sendCommand(int)),
+    //        this,                                       SLOT(receiveCommand(int)));
+    //ui->openAnAccountPushButton->setCommand(OPEN_AN_ACCOUNT);
 
-    connect(ui->repayPushButton,                        SIGNAL(sendCommand(int)),
-            this,                                       SLOT(receiveCommand(int)));
-    ui->repayPushButton->setCommand(REPAY);
+    //connect(ui->repayPushButton,                        SIGNAL(sendCommand(int)),
+    //        this,                                       SLOT(receiveCommand(int)));
+    //ui->repayPushButton->setCommand(REPAY);
 
-    connect(ui->withdrawPushButton,                     SIGNAL(sendCommand(int)),
-            this,                                       SLOT(receiveCommand(int)));
-    ui->withdrawPushButton->setCommand(WITHDRAW);
+    //connect(ui->withdrawPushButton,                     SIGNAL(sendCommand(int)),
+    //        this,                                       SLOT(receiveCommand(int)));
+    //ui->withdrawPushButton->setCommand(WITHDRAW);
     /* ---------------------------------------------------------------------------------------------- */
 
     /* ---------------------------------- Garage Config --------------------------------------------- */
@@ -257,33 +259,33 @@ void BuildingDetailDialog::signalSlotConfig() {
     /* ---------------------------------------------------------------------------------------------- */
 
     /* -------------------------------- UnusedLand Config ------------------------------------------- */
-    connect(ui->buildBankPushButton,                    SIGNAL(sendCommand(int)),
-            this,                                       SLOT(receiveCommand(int)));
-    ui->buildBankPushButton->setCommand(Commands::BuildBank);
+    connect(ui->buildBankPushButton,                    &CommandPushButton::sendCommand,
+            WidgetHelper::placeCommand);
+	ui->buildBankPushButton->setCommand(new BuildBank(building_, &MainWindow::instance()));
 
-    connect(ui->buildFactoryPushButton,                 SIGNAL(sendCommand(int)),
-            this,                                       SLOT(receiveCommand(int)));
-    ui->buildFactoryPushButton->setCommand(Commands::BuildFactory);
+    connect(ui->buildFactoryPushButton,					&CommandPushButton::sendCommand,
+			WidgetHelper::placeCommand);
+    ui->buildFactoryPushButton->setCommand(new BuildFactory(building_, &MainWindow::instance()));
 
-    connect(ui->buildFarmPushButton,                    SIGNAL(sendCommand(int)),
-            this,                                       SLOT(receiveCommand(int)));
-    ui->buildFarmPushButton->setCommand(Commands::BuildFarm);
+    connect(ui->buildFarmPushButton,					&CommandPushButton::sendCommand,
+			WidgetHelper::placeCommand);
+    ui->buildFarmPushButton->setCommand(new BuildFarm(building_, &MainWindow::instance()));
 
-    connect(ui->buildGaragePushButton,                  SIGNAL(sendCommand(int)),
-            this,                                       SLOT(receiveCommand(int)));
-    ui->buildGaragePushButton->setCommand(Commands::BuildGarage);
+    connect(ui->buildGaragePushButton,					&CommandPushButton::sendCommand,
+			WidgetHelper::placeCommand);
+    ui->buildGaragePushButton->setCommand(new BuildGarage(building_, &MainWindow::instance()));
 
-    connect(ui->buildMinePushButton,                    SIGNAL(sendCommand(int)),
-            this,                                       SLOT(receiveCommand(int)));
-    ui->buildMinePushButton->setCommand(Commands::BuildMine);
+    connect(ui->buildMinePushButton,					&CommandPushButton::sendCommand,
+			WidgetHelper::placeCommand);
+    ui->buildMinePushButton->setCommand(new BuildMine(building_, &MainWindow::instance()));
 
-    connect(ui->buildSupermarketPushButton,             SIGNAL(sendCommand(int)),
-            this,                                       SLOT(receiveCommand(int)));
-    ui->buildSupermarketPushButton->setCommand(Commands::BuildSupermarket);
+    connect(ui->buildSupermarketPushButton,				&CommandPushButton::sendCommand,
+			WidgetHelper::placeCommand);
+    ui->buildSupermarketPushButton->setCommand(new BuildSupermarket(building_, &MainWindow::instance()));
 
-    connect(ui->buildVillaPushButton,                   SIGNAL(sendCommand(int)),
-            this,                                       SLOT(receiveCommand(int)));
-    ui->buildVillaPushButton->setCommand(Commands::BuildVilla);
+    connect(ui->buildVillaPushButton,					&CommandPushButton::sendCommand,
+			WidgetHelper::placeCommand);
+    ui->buildVillaPushButton->setCommand(new BuildVilla(building_, &MainWindow::instance()));
     /* ---------------------------------------------------------------------------------------------- */
 
     /* ---------------------------------- Display Config -------------------------------------------- */

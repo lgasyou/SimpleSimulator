@@ -35,8 +35,9 @@ BankDialog *UIManager::bankDialog() {
 }
 
 BuildingDetailDialog *UIManager::buildingDetailDialog() {
+	// TODO: finish this.
     if (!buildingDetailDialog_)
-        buildingDetailDialog_ = new BuildingDetailDialog;
+        buildingDetailDialog_ = new BuildingDetailDialog(nullptr);
     return buildingDetailDialog_;
 }
 

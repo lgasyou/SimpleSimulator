@@ -36,6 +36,11 @@
 #include "ui_mainwindow.h"
 #include "widgethelper.h"
 
+MainWindow &MainWindow::instance() {
+	static MainWindow mainWindow;
+	return mainWindow;
+}
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     buildingDetailDialog_(nullptr),
@@ -64,17 +69,19 @@ void MainWindow::init() {
 
     playerCompany_ = CompanyManager::instance().playerCompany();
 
-    buildingDetailDialog_ = UIManager::instance().buildingDetailDialog();
-
     signalSlotConfig();
 
     updateDisplay();
 }
 
-void MainWindow::redirectData(Land *newBuilding) {
-    ui->buildingInfoWidget->setTarget(newBuilding);
-    buildingDetailDialog_->setBuilding(newBuilding);
+void MainWindow::redirectData(Land *object) {
+    ui->buildingInfoWidget->setTarget(object);
+    buildingDetailDialog_->setBuilding(object);
     emit dataChanged();
+}
+
+void MainWindow::setDirty() {
+	emit dataChanged();
 }
 
 //void MainWindow::goBank() {
@@ -125,61 +132,60 @@ void MainWindow::updateDisplay() {
 }
 
 void MainWindow::processCommand(ICommmand *command) {
-	command->execute();
     //switch (command) {
     //case BuildBank: {
-    //    Land *newBuilding = BuildingManager::instance().changeType(building, BANK);
-    //    ui->buildingInfoWidget->setTarget(newBuilding);
-    //    buildingDetailDialog_->setBuilding(newBuilding);
+    //    Land *object = BuildingManager::instance().changeType(building, BANK);
+    //    ui->buildingInfoWidget->setTarget(object);
+    //    buildingDetailDialog_->setBuilding(object);
     //    emit dataChanged();
     //    break;
     //}
 
     //case BuildFactory: {
-    //    Land *newBuilding = BuildingManager::instance().changeType(building, FACTORY);
-    //    ui->buildingInfoWidget->setTarget(newBuilding);
-    //    buildingDetailDialog_->setBuilding(newBuilding);
+    //    Land *object = BuildingManager::instance().changeType(building, FACTORY);
+    //    ui->buildingInfoWidget->setTarget(object);
+    //    buildingDetailDialog_->setBuilding(object);
     //    emit dataChanged();
     //    break;
     //}
 
     //case BuildFarm: {
-    //    Land *newBuilding = BuildingManager::instance().changeType(building, FARM);
-    //    ui->buildingInfoWidget->setTarget(newBuilding);
-    //    buildingDetailDialog_->setBuilding(newBuilding);
+    //    Land *object = BuildingManager::instance().changeType(building, FARM);
+    //    ui->buildingInfoWidget->setTarget(object);
+    //    buildingDetailDialog_->setBuilding(object);
     //    emit dataChanged();
     //    break;
     //}
 
 
     //case BuildGarage: {
-    //    Land *newBuilding = BuildingManager::instance().changeType(building, GARAGE);
-    //    ui->buildingInfoWidget->setTarget(newBuilding);
-    //    buildingDetailDialog_->setBuilding(newBuilding);
+    //    Land *object = BuildingManager::instance().changeType(building, GARAGE);
+    //    ui->buildingInfoWidget->setTarget(object);
+    //    buildingDetailDialog_->setBuilding(object);
     //    emit dataChanged();
     //    break;
     //}
 
     //case BuildMine: {
-    //    Land *newBuilding = BuildingManager::instance().changeType(building, MINE);
-    //    ui->buildingInfoWidget->setTarget(newBuilding);
-    //    buildingDetailDialog_->setBuilding(newBuilding);
+    //    Land *object = BuildingManager::instance().changeType(building, MINE);
+    //    ui->buildingInfoWidget->setTarget(object);
+    //    buildingDetailDialog_->setBuilding(object);
     //    emit dataChanged();
     //    break;
     //}
 
     //case BuildSupermarket: {
-    //    Land *newBuilding = BuildingManager::instance().changeType(building, SUPERMARKET);
-    //    ui->buildingInfoWidget->setTarget(newBuilding);
-    //    buildingDetailDialog_->setBuilding(newBuilding);
+    //    Land *object = BuildingManager::instance().changeType(building, SUPERMARKET);
+    //    ui->buildingInfoWidget->setTarget(object);
+    //    buildingDetailDialog_->setBuilding(object);
     //    emit dataChanged();
     //    break;
     //}
 
     //case BuildVilla: {
-    //    Land *newBuilding = BuildingManager::instance().changeType(building, VILLA);
-    //    ui->buildingInfoWidget->setTarget(newBuilding);
-    //    buildingDetailDialog_->setBuilding(newBuilding);
+    //    Land *object = BuildingManager::instance().changeType(building, VILLA);
+    //    ui->buildingInfoWidget->setTarget(object);
+    //    buildingDetailDialog_->setBuilding(object);
     //    emit dataChanged();
     //    break;
     //}
@@ -200,10 +206,10 @@ void MainWindow::processCommand(ICommmand *command) {
     //    break;
 
     //case DismantleBuilding: {
-    //    Land *newBuilding = BuildingManager::instance().changeType(building, UNUSED_LAND);
-    //    ui->buildingInfoWidget->setTarget(newBuilding);
-    //    buildingDetailDialog_->setBuilding(newBuilding);
-    //    msg = newBuilding->name() + " has been dismantled.";
+    //    Land *object = BuildingManager::instance().changeType(building, UNUSED_LAND);
+    //    ui->buildingInfoWidget->setTarget(object);
+    //    buildingDetailDialog_->setBuilding(object);
+    //    msg = object->name() + " has been dismantled.";
     //    emit dataChanged();
     //    break;
     //}
@@ -224,9 +230,7 @@ void MainWindow::processCommand(ICommmand *command) {
     //    break;
 
     //case ShowDetail:
-    //    buildingDetailDialog_->setBuilding(building);
-    //    WidgetHelper::showUp(buildingDetailDialog_);
-    //    buildingDetailDialog_->updateDisplay();
+
     //    break;
 
     //case Withdraw:

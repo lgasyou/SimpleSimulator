@@ -41,13 +41,13 @@ class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
-
-    ~MainWindow();
+	static MainWindow &instance();
 
     void init();
 
     void redirectData(Land *);
+
+	void setDirty();
 
 signals:
     void dataChanged();
@@ -71,6 +71,10 @@ private slots:
     void processCommand(ICommmand *command);
 
 private:
+	explicit MainWindow(QWidget *parent = nullptr);
+
+	~MainWindow();
+
     void updateStatusBar(const QString &msg);
 
     void signalSlotConfig();

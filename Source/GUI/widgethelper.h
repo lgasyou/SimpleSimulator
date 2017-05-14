@@ -21,13 +21,19 @@
 #define WIDGETHELPER_H
 
 #include <QString>
-#include <QWidget>
 
+#include "Source/Commmand.h"
+
+class QWidget;
+
+// TODO: create a basic GUI object to contain all of these.
 class WidgetHelper {
 public:
     static QString toString(double value);
 
     static void showUp(QWidget *widget);
+
+	static void placeCommand(ICommmand *);
 
 };
 

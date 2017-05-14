@@ -24,7 +24,6 @@
 
 int main(int argc, char *argv[]) {
     QApplication application(argc, argv);
-    MainWindow window;
-    window.show();
+    MainWindow::instance().show();
     return application.exec();
 }

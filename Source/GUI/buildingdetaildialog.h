@@ -33,7 +33,7 @@ class BuildingDetailDialog : public QDialog {
     Q_OBJECT
 
 public:
-    BuildingDetailDialog(QWidget *parent = nullptr);
+    BuildingDetailDialog(Land *object, QWidget *parent = nullptr);
 
     ~BuildingDetailDialog();
 
@@ -75,9 +75,9 @@ private:
     void signalSlotConfig();
 
 private:
-    Land *building_;
+    Land *building_ = nullptr;
 
-    Machine *selectMachine_;
+    Machine *selectedMachine_ = nullptr;
 
     Ui::BuildingDetailDialog *ui;
 };

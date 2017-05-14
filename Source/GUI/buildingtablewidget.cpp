@@ -26,10 +26,12 @@
 
 #include "Source/Managers/buildingmanager.h"
 #include "Source/Managers/companymanager.h"
+#include "Source/Objects/government.h"
 
 #include "Source/gameconstants.h"
 
-#include "tablewidgetpushbutton.h"
+#include "commandpushbutton.h"
+#include "mainwindow.h"
 #include "widgethelper.h"
 
 BuildingTableWidget::BuildingTableWidget(QWidget *parent) :
@@ -78,23 +80,18 @@ void BuildingTableWidget::displayAccordingToVisitor(int index, Land *building) {
 
     using namespace gameconstants;
 
-    TableWidgetPushButton *optionBtn = 
+	CommandPushButton *optionBtn =
         (building->owner() != playerCompany) ?
-        new TableWidgetPushButton(tr("Buy"),  BuyBuilding) :
-        new TableWidgetPushButton(tr("Sell"), SellBuilding);
-    optionBtn->setIndex(index);
-    connect(optionBtn,  SIGNAL(sendData(int, int)),
-            this,       SLOT(receiveCommand(int, int)));
+        new CommandPushButton(tr("Buy"), new TransactionCommand(&Government::instance(), building->owner(), building, &MainWindow::instance())) :
+        new CommandPushButton(tr("Sell"), new TransactionCommand(CompanyManager::instance().playerCompany(), building->owner(), building, &MainWindow::instance()));
+    connect(optionBtn, 
+			&CommandPushButton::sendCommand,
+            &WidgetHelper::placeCommand);
     setCellWidget(index, 4, optionBtn);
 
-    TableWidgetPushButton *detailBtn = new TableWidgetPushButton(tr("Details"), ShowDetail);
-    detailBtn->setIndex(index);
-    connect(detailBtn,  SIGNAL(sendData(int, int)),
-            this,       SLOT(receiveCommand(int, int)));
+    CommandPushButton *detailBtn = new CommandPushButton(tr("Details"), new ShowDetailCommand(building));
+    connect(detailBtn, 
+			&CommandPushButton::sendCommand,
+			&WidgetHelper::placeCommand);
     setCellWidget(index, 5, detailBtn);
-}
-
-void BuildingTableWidget::receiveCommand(int index, int command) {
-    Land *building = BuildingManager::instance().getById(index);
-    emit sendCommand(command, building);
 }

@@ -41,12 +41,7 @@ public:
 
     void setTarget(Land *building);
 
-signals:
-    void sendCommand(ICommmand *command);
-
 public slots:
-    void receiveCommand(ICommmand *);
-
     void showBuildingInfo(Land *building);
 
     void updateDisplay();

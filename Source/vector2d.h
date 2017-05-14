@@ -25,9 +25,9 @@
 class Vector2D {
     friend bool operator==(const Vector2D &v1, const Vector2D &v2);
     friend bool operator!=(const Vector2D &v1, const Vector2D &v2);
-    friend const Vector2D operator+(const Vector2D &v1, const Vector2D &v2);
-    friend const Vector2D operator-(const Vector2D &v1, const Vector2D &v2);
-    friend const Vector2D operator-(const Vector2D &vector);
+    friend Vector2D operator+(const Vector2D &v1, const Vector2D &v2);
+    friend Vector2D operator-(const Vector2D &v1, const Vector2D &v2);
+    friend Vector2D operator-(const Vector2D &vector);
 
 public:
     Vector2D(double x = 0.0, double y = 0.0);
@@ -45,7 +45,7 @@ public:
 
     double distanceToPoint(const Vector2D &) const;
 
-    const QString toString() const;
+    QString toString() const;
 
 public:
     void setX(double x) { this->x_ = x; }
@@ -87,15 +87,15 @@ inline bool operator!=(const Vector2D &v1, const Vector2D &v2) {
     return v1.x_ != v2.x_ || v1.y_ != v2.y_;
 }
 
-inline const Vector2D operator+(const Vector2D &v1, const Vector2D &v2) {
+inline Vector2D operator+(const Vector2D &v1, const Vector2D &v2) {
     return Vector2D(v1.x_ + v2.x_, v1.y_ + v2.y_);
 }
 
-inline const Vector2D operator-(const Vector2D &v1, const Vector2D &v2) {
+inline Vector2D operator-(const Vector2D &v1, const Vector2D &v2) {
     return Vector2D(v1.x_ - v2.x_, v1.y_ - v2.y_);
 }
 
-inline const Vector2D operator-(const Vector2D &vector) {
+inline Vector2D operator-(const Vector2D &vector) {
     return Vector2D(-vector.x_, -vector.y_);
 }
 

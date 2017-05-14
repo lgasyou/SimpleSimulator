@@ -2,8 +2,10 @@
 #define COMMAND_H
 
 #include "Interface.h"
-#include "Objects/land.h"
-#include "GUI/mainwindow.h"
+
+class Land;
+class LegalPerson;
+class MainWindow;
 
 enum Commands {
     BUILD_BANK,
@@ -28,16 +30,6 @@ enum Commands {
 class ICommmand : public Interface {
 public:
     virtual void execute() = 0;
-};
-
-class CommandInvoker {
-public:
-	void takeCommand(ICommmand *command);
-
-	void placeCommands();
-
-private:
-	std::list<ICommmand *> commmandList_;
 };
 
 // Build structure Commands.
@@ -114,10 +106,11 @@ public:
 // Sell structure command.
 class TransactionCommand : public ICommmand {
 public:
-    TransactionCommand(LegalPerson *firstParty, LegalPerson *secondParty, Land *object)
+    TransactionCommand(LegalPerson *firstParty, LegalPerson *secondParty, Land *object, MainWindow *mainWindow)
         : firstParty_(firstParty),
           secondParty_(secondParty),
-          object_(object) {
+          object_(object),
+		  mainWindow_(mainWindow) {
     }
 
     void execute() override;
@@ -126,6 +119,7 @@ private:
     LegalPerson *firstParty_;
     LegalPerson *secondParty_;
     Land *object_;
+	MainWindow *mainWindow_;
 };
 
 // Bank Commands.
@@ -138,17 +132,16 @@ protected:
 
 };
 
-// Others
 class ShowDetailCommand : public ICommmand {
 public:
-    ShowDetailCommand(MainWindow *mainWindow)
-        : mainWindow_(mainWindow) {
-    }
+	ShowDetailCommand(Land *object)
+		: object_(object) {
+	}
 
-    void execute() override;
+	void execute() override;
 
-protected:
-    MainWindow *mainWindow_;
+private:
+	Land *object_;
 };
 
 #endif

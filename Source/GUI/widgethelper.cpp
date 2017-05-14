@@ -19,6 +19,8 @@
 
 #include "widgethelper.h"
 
+#include <QWidget>
+
 QString WidgetHelper::toString(double value) {
     return QString::number(value, 10, 2);
 }
@@ -27,4 +29,8 @@ void WidgetHelper::showUp(QWidget *widget) {
     widget->show();
     widget->raise();
     widget->activateWindow();
+}
+
+void WidgetHelper::placeCommand(ICommmand *commmand) {
+	commmand->execute();
 }

@@ -20,26 +20,27 @@
 #include "buildinginfowidget.h"
 
 #include "Source/Objects/company.h"
+#include "Source/Objects/government.h"
+#include "Source/Commmand.h"
 
 #include "Source/Managers/companymanager.h"
 
-#include "Source/gameconstants.h"
-
 #include "ui_buildinginfowidget.h"
 #include "tablewidgetpushbutton.h"
+#include "mainwindow.h"
+#include "widgethelper.h"
 
-BuildingInfoWidget::BuildingInfoWidget(QWidget *parent) : 
-    QWidget(parent) {
+BuildingInfoWidget::BuildingInfoWidget(QWidget *parent)
+	: QWidget(parent) {
     ui = new Ui::BuildingInfoWidget;
     ui->setupUi(this);
 
-    connect(ui->detailsPushButton,      SIGNAL(sendCommand(ICommmand *)),
-            this,                       SLOT(receiveCommand(ICommmand *)));
-    ui->detailsPushButton->setCommand(new ShowDetailCommand(parent));
+    connect(ui->detailsPushButton, &CommandPushButton::sendCommand,
+            WidgetHelper::placeCommand);
     ui->detailsPushButton->hide();
 
-    connect(ui->buyOrSellpushButton,    SIGNAL(sendCommand(ICommmand *)),
-            this,                       SLOT(receiveCommand(ICommmand *)));
+    connect(ui->buyOrSellpushButton, &CommandPushButton::sendCommand,
+			WidgetHelper::placeCommand);
     ui->buyOrSellpushButton->hide();
 }
 
@@ -49,10 +50,7 @@ BuildingInfoWidget::~BuildingInfoWidget() {
 
 void BuildingInfoWidget::setTarget(Land *building) {
     this->displayedBuilding_ = building;
-}
-
-void BuildingInfoWidget::receiveCommand(ICommmand *command) {
-    emit sendCommand(command, displayedBuilding_);
+	ui->detailsPushButton->setCommand(new ShowDetailCommand(building));
 }
 
 void BuildingInfoWidget::showBuildingInfo(Land *building) {
@@ -72,14 +70,16 @@ void BuildingInfoWidget::showBuildingInfo(Land *building) {
 
 void BuildingInfoWidget::updateDisplay() {
     if (displayedBuilding_) {
-        const QString &name = displayedBuilding_->name();
+        auto &name = displayedBuilding_->name();
         ui->buildingNameLabel->setText(name);
-        const QString &owner = displayedBuilding_->owner()->name();
+        auto &owner = displayedBuilding_->owner()->name();
         ui->buildingOwnerLabel->setText("Owner:\n\n" + owner);
 
         bool owned = (displayedBuilding_->owner() == CompanyManager::instance().playerCompany());
         const QString buttonText = owned ? tr("Sell") : tr("Buy");
-        ui->buyOrSellpushButton->setCommand(owned ? gameconstants::SellBuilding : gameconstants::BuyBuilding);
+        ui->buyOrSellpushButton->setCommand(owned ?
+			new TransactionCommand(&Government::instance(), displayedBuilding_->owner(), displayedBuilding_, &MainWindow::instance()) :
+			new TransactionCommand(CompanyManager::instance().playerCompany(), displayedBuilding_->owner(), displayedBuilding_, &MainWindow::instance()));
         ui->buyOrSellpushButton->setText(buttonText);
     }
 }

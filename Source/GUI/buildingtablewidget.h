@@ -23,6 +23,7 @@
 #include <QTableWidget>
 
 #include "Source/Objects/land.h"
+#include "Source/Commmand.h"
 
 // This class is used for showing information of Buildings.
 // Set Company before use it.
@@ -40,15 +41,6 @@ private:
     void displayBasicInfo(int index, Land *building);
 
     void displayAccordingToVisitor(int index, Land *building);
-
-signals:
-    void sendCommand(int command, Land *building);
-
-private slots:
-    // Gets command and index of building,
-    // sends command and pointer of building.
-    void receiveCommand(int command, int index);
-
 };
 
 #endif // BUILDINGINFOLIST_H

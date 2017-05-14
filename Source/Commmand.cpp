@@ -1,16 +1,9 @@
 ﻿#include "Commmand.h"
 #include "Managers/buildingmanager.h"
-
-void CommandInvoker::takeCommand(ICommmand *command) {
-	commmandList_.push_back(command);
-}
-
-void CommandInvoker::placeCommands() {
-	for(auto command : commmandList_) {
-		command->execute();
-	}
-	commmandList_.clear();
-}
+#include "Objects/land.h"
+#include "GUI/buildingdetaildialog.h"
+#include "GUI/widgethelper.h"
+#include "GUI/mainwindow.h"
 
 void BuildBank::execute() {
     auto newBuilding = BuildingManager::instance().changeType(building_, BANK);
@@ -56,9 +49,12 @@ void TransactionCommand::execute() {
     double objectValue = object_->value();
     firstParty_->setCash(firstParty_->cash() - objectValue);
     secondParty_->setCash(secondParty_->cash() + objectValue);
-    object_->setOwner(firstParty_);
+	object_->setOwner(firstParty_); 
+	mainWindow_->setDirty();
 }
 
 void ShowDetailCommand::execute() {
-
+	auto buildingDetailDialog = new BuildingDetailDialog(object_);
+	WidgetHelper::showUp(buildingDetailDialog);
+	buildingDetailDialog->updateDisplay();
 }
