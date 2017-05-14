@@ -25,9 +25,6 @@
 #include "Source/Objects/land.h"
 #include "Source/Objects/baseindustry.h"
 #include "Source/Objects/machine.h"
-#include "Source/Objects/route.h"
-
-#include "tablewidgetpushbutton.h"
 
 class MachineTableWidget : public QTableWidget {
     Q_OBJECT

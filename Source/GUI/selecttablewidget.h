@@ -49,10 +49,10 @@ public:
 
     // Sets type(s) which will be displayed later.
     // Uses '|' to store multiple objects.
-    void setSelector(int type);
+    void setFilter(int type);
 
 public slots:
-    void getDestAndSendBuilding(int index);
+    void getDestAndSendBuilding(int filter);
 
 signals:
     void sendBuilding(Land *);

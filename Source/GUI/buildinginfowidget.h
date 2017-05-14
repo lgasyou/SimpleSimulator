@@ -20,7 +20,6 @@
 #ifndef BUILDINGINFOWIDGET_H
 #define BUILDINGINFOWIDGET_H
 
-#include <QString>
 #include <QWidget>
 
 #include "Source/Objects/land.h"

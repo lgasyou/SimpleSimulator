@@ -26,11 +26,6 @@
 #include "Source/Objects/land.h"
 #include "Source/Objects/company.h"
 
-#include "buildingtablewidget.h"
-#include "buildingdetaildialog.h"
-#include "companydetaildialog.h"
-#include "helpdialog.h"
-
 class ICommmand;
 
 namespace Ui {
@@ -60,35 +55,23 @@ private slots:
 
     void showBuildingTableWidget();
 
-    void showCompanyDetail();
+    void showCompanyDetail() const ;
 
     void showHelp();
 
     void getBuildingByPos(int x, int y);
 
-    void updateDisplay();
-
-    void processCommand(ICommmand *command);
+    void updateDisplay() const;
 
 private:
 	explicit MainWindow(QWidget *parent = nullptr);
 
 	~MainWindow();
 
-    void updateStatusBar(const QString &msg);
-
     void signalSlotConfig();
 
 private:
     Company *playerCompany_;
-
-    BuildingDetailDialog *buildingDetailDialog_;
-
-    BuildingTableWidget *buildingInfoList_;
-
-    CompanyDetailDialog *companyDetailDialog_;
-
-    HelpDialog *helpDialog_;
 
     Ui::MainWindow *ui;
 };

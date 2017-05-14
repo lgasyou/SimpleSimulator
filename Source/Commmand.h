@@ -7,44 +7,24 @@ class Land;
 class LegalPerson;
 class MainWindow;
 
-enum Commands {
-    BUILD_BANK,
-    BUILD_FACTORY,
-    BUILD_FARM,
-    BUILD_GARAGE,
-    BUILD_MINE,
-    BUILD_SUPERMARKET,
-    BUILD_VILLA,
-    BUY_BUILDING,
-    CLOSE_AN_ACCOUNT,
-    DEPOSIT,
-    DISMANTLE_BUILDING,
-    LOAN,
-    OPEN_AN_ACCOUNT,
-    REPAY,
-    SELL_BUILDING,
-    SHOW_DETAIL,
-    WITHDRAW,
-};
-
 class ICommmand : public Interface {
 public:
     virtual void execute() = 0;
+	
+	virtual ~ICommmand() = default;
 };
 
 // Build structure Commands.
 abstract class BuildCommand : public ICommmand {
 public:
-    BuildCommand(Land *building, MainWindow *mainWindow)
-        : building_(building),
-          mainWindow_(mainWindow) {
+    BuildCommand(Land *building)
+        : building_(building) {
     }
 
     void execute() override = 0;
 
 protected:
     Land *building_;
-    MainWindow *mainWindow_;
 };
 
 class BuildBank : public BuildCommand {
@@ -103,14 +83,13 @@ public:
     void execute() override;
 };
 
-// Sell structure command.
+// Transaction command of Land.
 class TransactionCommand : public ICommmand {
 public:
-    TransactionCommand(LegalPerson *firstParty, LegalPerson *secondParty, Land *object, MainWindow *mainWindow)
+    TransactionCommand(LegalPerson *firstParty, LegalPerson *secondParty, Land *object)
         : firstParty_(firstParty),
           secondParty_(secondParty),
-          object_(object),
-		  mainWindow_(mainWindow) {
+          object_(object) {
     }
 
     void execute() override;
@@ -119,17 +98,6 @@ private:
     LegalPerson *firstParty_;
     LegalPerson *secondParty_;
     Land *object_;
-	MainWindow *mainWindow_;
-};
-
-// Bank Commands.
-// TODO: Finish this.
-abstract class BankCommand : public ICommmand {
-public:
-    void execute() override = 0;
-
-protected:
-
 };
 
 class ShowDetailCommand : public ICommmand {

@@ -28,8 +28,6 @@
 #include "Source/Managers/companymanager.h"
 #include "Source/Objects/government.h"
 
-#include "Source/gameconstants.h"
-
 #include "commandpushbutton.h"
 #include "mainwindow.h"
 #include "widgethelper.h"
@@ -78,20 +76,22 @@ void BuildingTableWidget::displayBasicInfo(int index, Land *building) {
 void BuildingTableWidget::displayAccordingToVisitor(int index, Land *building) {
     Company *playerCompany = CompanyManager::instance().playerCompany();
 
-    using namespace gameconstants;
-
 	CommandPushButton *optionBtn =
         (building->owner() != playerCompany) ?
-        new CommandPushButton(tr("Buy"), new TransactionCommand(&Government::instance(), building->owner(), building, &MainWindow::instance())) :
-        new CommandPushButton(tr("Sell"), new TransactionCommand(CompanyManager::instance().playerCompany(), building->owner(), building, &MainWindow::instance()));
-    connect(optionBtn, 
-			&CommandPushButton::sendCommand,
+        new CommandPushButton(tr("Buy"), std::make_shared<TransactionCommand>(
+			&Government::instance(), 
+			building->owner(), 
+			building)) :
+        new CommandPushButton(tr("Sell"), std::make_shared<TransactionCommand>(
+			CompanyManager::instance().playerCompany(), 
+			building->owner(), 
+			building));
+    connect(optionBtn, &CommandPushButton::sendCommand,
             &WidgetHelper::placeCommand);
     setCellWidget(index, 4, optionBtn);
 
-    CommandPushButton *detailBtn = new CommandPushButton(tr("Details"), new ShowDetailCommand(building));
-    connect(detailBtn, 
-			&CommandPushButton::sendCommand,
+    CommandPushButton *detailBtn = new CommandPushButton(tr("Details"), std::make_shared<ShowDetailCommand>(building));
+    connect(detailBtn, &CommandPushButton::sendCommand,
 			&WidgetHelper::placeCommand);
     setCellWidget(index, 5, detailBtn);
 }

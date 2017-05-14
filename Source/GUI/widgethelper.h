@@ -23,6 +23,7 @@
 #include <QString>
 
 #include "Source/Commmand.h"
+#include <memory>
 
 class QWidget;
 
@@ -33,7 +34,7 @@ public:
 
     static void showUp(QWidget *widget);
 
-	static void placeCommand(ICommmand *);
+	static void placeCommand(std::shared_ptr<ICommmand> command);
 
 };
 

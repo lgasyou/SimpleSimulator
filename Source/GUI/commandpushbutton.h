@@ -20,6 +20,7 @@
 #ifndef COMMANDPUSHBUTTON_H
 #define COMMANDPUSHBUTTON_H
 
+#include <memory>
 #include <QPushButton>
 #include "Source/Commmand.h"
 
@@ -28,24 +29,26 @@ class CommandPushButton : public QPushButton {
     Q_OBJECT
 
 public:
-    CommandPushButton(QWidget *parent = nullptr, ICommmand *command = nullptr);
+    CommandPushButton(QWidget *parent = nullptr, std::shared_ptr<ICommmand> command = nullptr);
 
-    CommandPushButton(const QString &text, ICommmand *command = nullptr, QWidget *parent = nullptr);
+    CommandPushButton(const QString &text, std::shared_ptr<ICommmand> command = nullptr, QWidget *parent = nullptr);
 
     ~CommandPushButton();
 
     void init();
 
-    void setCommand(ICommmand *command) { this->command = command; }
+    void setCommand(std::shared_ptr<ICommmand> command) {
+		this->command = command;
+    }
 
 public slots:
     virtual void repeater();
 
 signals:
-    void sendCommand(ICommmand *);
+    void sendCommand(std::shared_ptr<ICommmand> command);
 
 protected:
-	ICommmand *command;
+	std::shared_ptr<ICommmand> command;
 };
 
 #endif // COMMANDPUSHBUTTON_H

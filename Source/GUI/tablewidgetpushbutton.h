@@ -27,9 +27,9 @@ class TableWidgetPushButton : public CommandPushButton {
     Q_OBJECT
 
 public:
-    TableWidgetPushButton(QWidget *parent = nullptr, ICommmand *command = nullptr);
+    TableWidgetPushButton(QWidget *parent = nullptr, std::shared_ptr<ICommmand> command = nullptr);
 
-    TableWidgetPushButton(const QString &text, ICommmand *command = nullptr, QWidget *parent = nullptr);
+    TableWidgetPushButton(const QString &text, std::shared_ptr<ICommmand> command = nullptr, QWidget *parent = nullptr);
 
     void setIndex(int index) { this->index = index; }
 
@@ -37,7 +37,7 @@ public slots:
     void repeater() override;
 
 signals:
-    void sendData(int index, ICommmand *command);
+    void sendData(int index, std::shared_ptr<ICommmand> command);
 
 private:
     int index = -1;

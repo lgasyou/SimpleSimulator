@@ -69,14 +69,14 @@ void SelectTableWidget::updateEachLine(int indexInWidget, int indexInManager, co
             this,            SLOT(getDestAndSendBuilding(int)));
 }
 
-void SelectTableWidget::setSelector(int type) {
+void SelectTableWidget::setFilter(int filter) {
     typeNames_.clear();
-    if (type) {
-        if (type & UnusedLand)
+    if (filter) {
+        if (filter & UnusedLand)
             typeNames_.push_back("Unused Land");
-        if (type & Factory)
+        if (filter & Factory)
             typeNames_.push_back("Factory");
-        if (type & Mine)
+        if (filter & Mine)
             typeNames_.push_back("Mine");
     }
 }

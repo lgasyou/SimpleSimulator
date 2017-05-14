@@ -19,36 +19,37 @@
 
 #include "uimanager.h"
 
-UIManager::UIManager() { }
+#include "Source/GUI/bankdialog.h"
+#include "Source/GUI/buildingdetaildialog.h"
+#include "Source/GUI/companydetaildialog.h"
+#include "Source/GUI/setroutedialog.h"
+#include "Source/GUI/buildingtablewidget.h"
+#include "Source/GUI/helpdialog.h"
 
-UIManager::~UIManager() { }
+std::map<QString, QWidget *> UIManager::uiMap_;
 
-UIManager &UIManager::instance() {
-    static UIManager uiManager;
-    return uiManager;
+UIManager::UIManager() {
+	init();
 }
 
-BankDialog *UIManager::bankDialog() {
-    if (!bankDialog_)
-        bankDialog_ = new BankDialog;
-    return bankDialog_;
+UIManager::~UIManager() {
+	for (auto pair : uiMap_)
+		delete pair.second;
 }
 
-BuildingDetailDialog *UIManager::buildingDetailDialog() {
-	// TODO: finish this.
-    if (!buildingDetailDialog_)
-        buildingDetailDialog_ = new BuildingDetailDialog(nullptr);
-    return buildingDetailDialog_;
+void UIManager::init() {
+	//put("BankDialog", new BankDialog);
+	put("BuildingDetailDialog", new BuildingDetailDialog);
+	put("BuildingTableWidget", new BuildingTableWidget);
+	put("CompanyDetailDialog", new CompanyDetailDialog);
+	put("HelpDialog", new HelpDialog);
+	put("SetRouteDialog", new SetRouteDialog);
 }
 
-CompanyDetailDialog *UIManager::companyDetailDialog() {
-    if (!companyDetailDialog_)
-        companyDetailDialog_ = new CompanyDetailDialog;
-    return companyDetailDialog_;
+void UIManager::put(const QString &key, QWidget *value) {
+	uiMap_.emplace(key, value);
 }
 
-SetRouteDialog *UIManager::setRouteDialog() {
-    if (!setRouteDialog_)
-        setRouteDialog_ = new SetRouteDialog;
-    return setRouteDialog_;
+QWidget *UIManager::get(const QString &key) {
+	return uiMap_.at(key);
 }

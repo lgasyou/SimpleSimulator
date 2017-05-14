@@ -19,7 +19,6 @@
 
 #include "setroutedialog.h"
 
-#include <QLabel>
 #include <QString>
 
 #include "Source/Objects/baseindustry.h"
@@ -38,12 +37,12 @@ SetRouteDialog::SetRouteDialog(QWidget *parent) :
     setWindowTitle("Set Route");
 
     selectOrigTableWidget_->setParent(this);
-    selectOrigTableWidget_->setSelector(SelectTableWidget::Mine | SelectTableWidget::Factory);
+    selectOrigTableWidget_->setFilter(SelectTableWidget::Mine | SelectTableWidget::Factory);
     connect(selectOrigTableWidget_, SIGNAL(sendBuilding(Land*)),
             this,                   SLOT(getOrig(Land*)));
 
     selectDestTableWidget_->setParent(this);
-    selectDestTableWidget_->setSelector(SelectTableWidget::Mine | SelectTableWidget::Factory);
+    selectDestTableWidget_->setFilter(SelectTableWidget::Mine | SelectTableWidget::Factory);
     connect(selectDestTableWidget_, SIGNAL(sendBuilding(Land*)),
             this,                   SLOT(getDest(Land*)));
 

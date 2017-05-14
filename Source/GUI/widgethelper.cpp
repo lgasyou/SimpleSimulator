@@ -31,6 +31,6 @@ void WidgetHelper::showUp(QWidget *widget) {
     widget->activateWindow();
 }
 
-void WidgetHelper::placeCommand(ICommmand *commmand) {
-	commmand->execute();
+void WidgetHelper::placeCommand(std::shared_ptr<ICommmand> command) {
+	command->execute();
 }

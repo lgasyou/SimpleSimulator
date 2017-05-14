@@ -104,7 +104,7 @@ void GarageTableWidget::buttonClicked(int index, int command) {
 void GarageTableWidget::showSetRouteDialog(int index) {
     selectedTruckId_ = index;
 
-    SetRouteDialog *setRouteDialog = UIManager::instance().setRouteDialog();
+    SetRouteDialog *setRouteDialog = dynamic_cast<SetRouteDialog *>(UIManager::get("SetRouteDialog"));
     setRouteDialog->createNewRoute();
     static bool isTheFirstTimeCall = true;
     if (isTheFirstTimeCall) {

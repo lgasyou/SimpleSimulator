@@ -64,7 +64,7 @@ void WarehouseTableWidget::goSelectIndustry() {
     if (!selectTableWidget_) {
         selectTableWidget_ = new SelectTableWidget;
         selectTableWidget_->setParent(this, Qt::Window);
-        selectTableWidget_->setSelector(SelectTableWidget::Factory | SelectTableWidget::Mine);
+        selectTableWidget_->setFilter(SelectTableWidget::Factory | SelectTableWidget::Mine);
         connect(selectTableWidget_, SIGNAL(sendBuilding(Land*)),
                 this,               SLOT(getDestAndSendPreroute(Land*)));
     }

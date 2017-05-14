@@ -23,7 +23,6 @@
 #include <QTableWidget>
 
 #include "Source/Objects/land.h"
-#include "Source/Commmand.h"
 
 // This class is used for showing information of Buildings.
 // Set Company before use it.

@@ -19,6 +19,8 @@
 
 #include "buildinginfowidget.h"
 
+#include <memory>
+
 #include "Source/Objects/company.h"
 #include "Source/Objects/government.h"
 #include "Source/Commmand.h"
@@ -50,7 +52,7 @@ BuildingInfoWidget::~BuildingInfoWidget() {
 
 void BuildingInfoWidget::setTarget(Land *building) {
     this->displayedBuilding_ = building;
-	ui->detailsPushButton->setCommand(new ShowDetailCommand(building));
+	ui->detailsPushButton->setCommand(std::make_shared<ShowDetailCommand>(building));
 }
 
 void BuildingInfoWidget::showBuildingInfo(Land *building) {
@@ -77,9 +79,17 @@ void BuildingInfoWidget::updateDisplay() {
 
         bool owned = (displayedBuilding_->owner() == CompanyManager::instance().playerCompany());
         const QString buttonText = owned ? tr("Sell") : tr("Buy");
-        ui->buyOrSellpushButton->setCommand(owned ?
-			new TransactionCommand(&Government::instance(), displayedBuilding_->owner(), displayedBuilding_, &MainWindow::instance()) :
-			new TransactionCommand(CompanyManager::instance().playerCompany(), displayedBuilding_->owner(), displayedBuilding_, &MainWindow::instance()));
-        ui->buyOrSellpushButton->setText(buttonText);
+        ui->buyOrSellpushButton->setCommand(
+			owned ?
+			std::make_shared<TransactionCommand>(
+				&Government::instance(), 
+				displayedBuilding_->owner(), 
+				displayedBuilding_) :
+			std::make_shared<TransactionCommand>(
+				CompanyManager::instance().playerCompany(), 
+				displayedBuilding_->owner(), 
+				displayedBuilding_)
+		);
+		ui->buyOrSellpushButton->setText(buttonText);
     }
 }

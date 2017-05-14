@@ -20,42 +20,25 @@
 #ifndef UIMANAGER_H
 #define UIMANAGER_H
 
-#include "Source/GUI/bankdialog.h"
-#include "Source/GUI/buildingdetaildialog.h"
-#include "Source/GUI/companydetaildialog.h"
-#include "Source/GUI/setroutedialog.h"
+#include <map>
 
-// For now this class is only the prototype of UIManager.
-// It returns the UI components by its methods.
-// But in fact, I don't understand what should it be used for.
-// @Deprecated
+class QString;
+class QWidget;
+
 class UIManager {
 public:
-    // Gets single instance.
-    static UIManager &instance();
+	UIManager();
 
-    BankDialog *bankDialog();
+	~UIManager();
 
-    BuildingDetailDialog *buildingDetailDialog();
+	static void init();
 
-    CompanyDetailDialog *companyDetailDialog();
+	static void put(const QString &key, QWidget *value);
 
-    SetRouteDialog *setRouteDialog();
-
-private:
-    // Hides constructor and destructor.
-    UIManager();
-
-    ~UIManager();
+	static QWidget *get(const QString &key);
 
 private:
-    BankDialog *bankDialog_ = nullptr;
-
-    BuildingDetailDialog *buildingDetailDialog_ = nullptr;
-
-    CompanyDetailDialog *companyDetailDialog_ = nullptr;
-
-    SetRouteDialog *setRouteDialog_ = nullptr;
+	static std::map<QString, QWidget *> uiMap_;
 };
 
 #endif // !UIMANAGER_H

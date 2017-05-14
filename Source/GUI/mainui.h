@@ -23,7 +23,6 @@
 #include <QWidget>
 #include <QImage>
 
-#include "Source/gameconstants.h"
 #include "Source/Objects/land.h"
 
 namespace Ui { 

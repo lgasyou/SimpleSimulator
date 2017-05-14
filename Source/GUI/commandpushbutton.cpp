@@ -19,23 +19,23 @@
 
 #include "commandpushbutton.h"
 
-CommandPushButton::CommandPushButton(QWidget *parent, ICommmand *command) 
+CommandPushButton::CommandPushButton(QWidget *parent, std::shared_ptr<ICommmand> command)
 	: QPushButton(parent),
       command(command) {
     init();
 }
 
-CommandPushButton::CommandPushButton(const QString &text, ICommmand *command, QWidget *parent) :
+CommandPushButton::CommandPushButton(const QString &text, std::shared_ptr<ICommmand> _command, QWidget *parent) :
     QPushButton(text, parent),
-    command(command) {
+    command(_command) {
     init();
 }
 
 CommandPushButton::~CommandPushButton() { }
 
 void CommandPushButton::init() {
-    connect(this,   SIGNAL(clicked()),
-            this,   SLOT(repeater()));
+    connect(this,   &CommandPushButton::clicked,
+            this,   &CommandPushButton::repeater);
 }
 
 void CommandPushButton::repeater() {

@@ -49,7 +49,7 @@ public:
     
     void withdraw(LegalPerson *client, double amount);
     
-    virtual void update() override;
+    void update() override;
 
 public:    
     void setDepositInterestRate(double depositInterestRate) { this->depositInterestRate_ = depositInterestRate; }

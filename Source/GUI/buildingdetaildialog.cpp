@@ -29,7 +29,6 @@
 #include "Source/Objects/mine.h"
 #include "Source/Commmand.h"
 
-#include "Source/gameconstants.h"
 #include "Source/defaultmachinebuilder.h"
 
 #include "Source/Managers/buildingmanager.h"
@@ -39,7 +38,8 @@
 #include "garagetablewidget.h"
 #include "ui_buildingdetaildialog.h"
 #include "widgethelper.h"
-#include "mainwindow.h"
+
+#include <QDebug>
 
 BuildingDetailDialog::BuildingDetailDialog(Land *object, QWidget *parent)
 	: QDialog(parent),
@@ -50,10 +50,13 @@ BuildingDetailDialog::BuildingDetailDialog(Land *object, QWidget *parent)
     signalSlotConfig();
 
     ui->expandStackedWidget->hide();
+
+	qDebug() << "BuildingDetailDialog()";
 }
 
 BuildingDetailDialog::~BuildingDetailDialog() {
     delete ui;
+	qDebug() << "~BuildingDetailDialog()";
 }
 
 void BuildingDetailDialog::updateDisplay() {
@@ -194,22 +197,15 @@ void BuildingDetailDialog::displayAccordingToBuildingType() {
 }
 
 void BuildingDetailDialog::signalSlotConfig() {
-    using namespace gameconstants;
-
     /* ---------------------------------- Basic Config ---------------------------------------------- */
     connect(ui->buyPushButton,                          SIGNAL(sendCommand(int)),
             this,                                       SLOT(receiveCommand(int)));
-    ui->buyPushButton->setCommand(new TransactionCommand(CompanyManager::instance().playerCompany(), building_->owner(),
-														 building_, &MainWindow::instance()));
 
     connect(ui->sellPushButton,							&CommandPushButton::sendCommand,
 			&WidgetHelper::placeCommand);
-    ui->sellPushButton->setCommand(new TransactionCommand(&Government::instance(), building_->owner(),
-														  building_, &MainWindow::instance()));
 
     connect(ui->dismantlePushButton,					&CommandPushButton::sendCommand,
 			&WidgetHelper::placeCommand);
-    ui->dismantlePushButton->setCommand(new DismantleBuilding(building_, &MainWindow::instance()));
     /* ---------------------------------------------------------------------------------------------- */
 
     /* ----------------------------------- Bank Config ---------------------------------------------- */
@@ -261,35 +257,60 @@ void BuildingDetailDialog::signalSlotConfig() {
     /* -------------------------------- UnusedLand Config ------------------------------------------- */
     connect(ui->buildBankPushButton,                    &CommandPushButton::sendCommand,
             WidgetHelper::placeCommand);
-	ui->buildBankPushButton->setCommand(new BuildBank(building_, &MainWindow::instance()));
 
     connect(ui->buildFactoryPushButton,					&CommandPushButton::sendCommand,
 			WidgetHelper::placeCommand);
-    ui->buildFactoryPushButton->setCommand(new BuildFactory(building_, &MainWindow::instance()));
 
     connect(ui->buildFarmPushButton,					&CommandPushButton::sendCommand,
 			WidgetHelper::placeCommand);
-    ui->buildFarmPushButton->setCommand(new BuildFarm(building_, &MainWindow::instance()));
 
     connect(ui->buildGaragePushButton,					&CommandPushButton::sendCommand,
 			WidgetHelper::placeCommand);
-    ui->buildGaragePushButton->setCommand(new BuildGarage(building_, &MainWindow::instance()));
 
     connect(ui->buildMinePushButton,					&CommandPushButton::sendCommand,
 			WidgetHelper::placeCommand);
-    ui->buildMinePushButton->setCommand(new BuildMine(building_, &MainWindow::instance()));
 
     connect(ui->buildSupermarketPushButton,				&CommandPushButton::sendCommand,
 			WidgetHelper::placeCommand);
-    ui->buildSupermarketPushButton->setCommand(new BuildSupermarket(building_, &MainWindow::instance()));
 
     connect(ui->buildVillaPushButton,					&CommandPushButton::sendCommand,
 			WidgetHelper::placeCommand);
-    ui->buildVillaPushButton->setCommand(new BuildVilla(building_, &MainWindow::instance()));
     /* ---------------------------------------------------------------------------------------------- */
 
     /* ---------------------------------- Display Config -------------------------------------------- */
     connect(this,                                       SIGNAL(dataChanged()),
             this,                                       SLOT(updateDisplay()));
     /* ---------------------------------------------------------------------------------------------- */
+}
+
+void BuildingDetailDialog::setBuilding(Land *building) {
+	this->building_ = building;
+
+	ui->buyPushButton->setCommand(std::make_shared<TransactionCommand>(
+		CompanyManager::instance().playerCompany(), 
+		building->owner(),
+		building));
+
+	ui->sellPushButton->setCommand(std::make_shared<TransactionCommand>(
+		&Government::instance(),
+		building->owner(),
+		building));
+
+	ui->dismantlePushButton->setCommand(
+		std::make_shared<DismantleBuilding>(building));
+
+	ui->buildBankPushButton->setCommand(
+		std::make_shared<BuildBank>(building));
+	ui->buildFactoryPushButton->setCommand(
+		std::make_shared<BuildFactory>(building));
+	ui->buildFarmPushButton->setCommand(
+		std::make_shared<BuildFarm>(building));
+	ui->buildGaragePushButton->setCommand(
+		std::make_shared<BuildGarage>(building));
+	ui->buildMinePushButton->setCommand(
+		std::make_shared<BuildMine>(building));
+	ui->buildSupermarketPushButton->setCommand(
+		std::make_shared<BuildSupermarket>(building));
+	ui->buildVillaPushButton->setCommand(
+		std::make_shared<BuildVilla>(building));
 }

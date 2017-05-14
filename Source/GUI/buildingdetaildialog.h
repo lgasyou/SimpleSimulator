@@ -33,12 +33,12 @@ class BuildingDetailDialog : public QDialog {
     Q_OBJECT
 
 public:
-    BuildingDetailDialog(Land *object, QWidget *parent = nullptr);
+    BuildingDetailDialog(Land *object = nullptr, QWidget *parent = nullptr);
 
     ~BuildingDetailDialog();
 
 public:
-    void setBuilding(Land *building) { this->building_ = building; }
+	void setBuilding(Land *building);
 
 public slots:
     void updateDisplay();

@@ -55,11 +55,11 @@ void MachineTableWidget::updateDisplay() {
             const QString &productivity = QString::number(percentage) + "%";
             setItem(i, 1, new QTableWidgetItem(productivity));
 
-            TableWidgetPushButton *detailButton = new TableWidgetPushButton(tr("Details"));
-            setCellWidget(i, 2, detailButton);
-            connect(detailButton,    SIGNAL(sendData(int, int)),
-                    this,            SLOT(receiveShowDetailSignal(int)));
-            detailButton->setIndex(i);
+            //TableWidgetPushButton *detailButton = new TableWidgetPushButton(tr("Details"));
+            //setCellWidget(i, 2, detailButton);
+            //connect(detailButton,    SIGNAL(sendData(int, int)),
+            //        this,            SLOT(receiveShowDetailSignal(int)));
+            //detailButton->setIndex(i);
         }
     }
 }
