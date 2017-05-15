@@ -22,7 +22,7 @@
 #include <cmath>
 
 Vector2D::Vector2D(double x, double y)
-	: x_(x),
+    : x_(x),
       y_(y) {
 }
 

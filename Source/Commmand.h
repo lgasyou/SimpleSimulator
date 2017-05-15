@@ -10,8 +10,8 @@ class MainWindow;
 class ICommmand : public Interface {
 public:
     virtual void execute() = 0;
-	
-	virtual ~ICommmand() = default;
+    
+    virtual ~ICommmand() = default;
 };
 
 // Build structure Commands.
@@ -102,14 +102,14 @@ private:
 
 class ShowDetailCommand : public ICommmand {
 public:
-	ShowDetailCommand(Land *object)
-		: object_(object) {
-	}
+    ShowDetailCommand(Land *object)
+        : object_(object) {
+    }
 
-	void execute() override;
+    void execute() override;
 
 private:
-	Land *object_;
+    Land *object_;
 };
 
 #endif

@@ -24,8 +24,6 @@
 
 #include "Source/Objects/land.h"
 
-class ICommmand;
-
 namespace Ui { 
 class BuildingInfoWidget; 
 }
@@ -46,7 +44,7 @@ public slots:
     void updateDisplay();
 
 private:
-    Land *displayedBuilding_ = nullptr;
+    Land *displayingObject_ = nullptr;
 
     Ui::BuildingInfoWidget *ui;
 };

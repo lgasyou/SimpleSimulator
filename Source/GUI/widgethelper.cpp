@@ -32,5 +32,5 @@ void WidgetHelper::showUp(QWidget *widget) {
 }
 
 void WidgetHelper::placeCommand(std::shared_ptr<ICommmand> command) {
-	command->execute();
+    command->execute();
 }

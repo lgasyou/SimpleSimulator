@@ -20,7 +20,7 @@
 #include "commandpushbutton.h"
 
 CommandPushButton::CommandPushButton(QWidget *parent, std::shared_ptr<ICommmand> command)
-	: QPushButton(parent),
+    : QPushButton(parent),
       command(command) {
     init();
 }

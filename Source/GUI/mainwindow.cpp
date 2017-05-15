@@ -36,14 +36,14 @@
 #include "widgethelper.h"
 
 MainWindow &MainWindow::instance() {
-	static MainWindow mainWindow;
-	return mainWindow;
+    static MainWindow mainWindow;
+    return mainWindow;
 }
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow) {
-	ui->setupUi(this);
+    ui->setupUi(this);
 }
 
 MainWindow::~MainWindow() {
@@ -54,18 +54,18 @@ void MainWindow::init() {
     playerCompany_ = CompanyManager::instance().playerCompany();
 
     signalSlotConfig();
-	updateDisplay();
+    updateDisplay();
     ui->userInterface->updateDisplay();
 }
 
 void MainWindow::redirectData(Land *object) {
     ui->buildingInfoWidget->setTarget(object);
-	dynamic_cast<BuildingDetailDialog *>(UIManager::get("BuildingDetailDialog"))->setBuilding(object);
+    dynamic_cast<BuildingDetailDialog *>(UIManager::get("BuildingDetailDialog"))->setBuilding(object);
     emit dataChanged();
 }
 
 void MainWindow::setDirty() {
-	emit dataChanged();
+    emit dataChanged();
 }
 
 void MainWindow::endTurns() {
@@ -78,22 +78,22 @@ void MainWindow::endTurns() {
 }
 
 void MainWindow::showBuildingTableWidget() {
-	dynamic_cast<BuildingTableWidget *>(UIManager::get("BuildingTableWidget"))->show();
+    dynamic_cast<BuildingTableWidget *>(UIManager::get("BuildingTableWidget"))->show();
 }
 
 void MainWindow::showHelp() {
-	dynamic_cast<HelpDialog *>(UIManager::get("HelpDialog"))->show();
+    dynamic_cast<HelpDialog *>(UIManager::get("HelpDialog"))->show();
 }
 
 void MainWindow::showCompanyDetail() const {
-	CompanyDetailDialog *dialog = dynamic_cast<CompanyDetailDialog *>(UIManager::get("CompanyDetailDialog"));
-	dialog->setCompany(playerCompany_);
+    CompanyDetailDialog *dialog = dynamic_cast<CompanyDetailDialog *>(UIManager::get("CompanyDetailDialog"));
+    dialog->setCompany(playerCompany_);
     WidgetHelper::showUp(dialog);
-	dialog->updateDisplay();
+    dialog->updateDisplay();
 }
 
 void MainWindow::getBuildingByPos(int x, int y) {
-	auto building = BuildingManager::instance().getByPos(x, y);
+    auto building = BuildingManager::instance().getByPos(x, y);
     emit sendSelectedBuilding(building);
 }
 
@@ -103,18 +103,18 @@ void MainWindow::updateDisplay() const {
     const QString &cashText = tr("Cash: $") + WidgetHelper::toString(playerCompany_->cash());
     ui->label_CompanyCash->setText(cashText);
 
-	dynamic_cast<BuildingTableWidget *>(UIManager::get("BuildingTableWidget"))->updateDisplay();
+    dynamic_cast<BuildingTableWidget *>(UIManager::get("BuildingTableWidget"))->updateDisplay();
 }
 
 void MainWindow::signalSlotConfig() {
     /* ------------------------------ Main Functions Config ----------------------------------------- */
     connect(ui->buildingListPushButton, &QPushButton::clicked,
-            this,						&MainWindow::showBuildingTableWidget);
-    connect(ui->companyPushButton,		&QPushButton::clicked,
+            this,                        &MainWindow::showBuildingTableWidget);
+    connect(ui->companyPushButton,        &QPushButton::clicked,
             this,                       &MainWindow::showCompanyDetail);
-    connect(ui->endTurnPushButton,		&QPushButton::clicked,
+    connect(ui->endTurnPushButton,        &QPushButton::clicked,
             this,                       &MainWindow::endTurns);
-    connect(ui->helpPushButton,			&QPushButton::clicked,
+    connect(ui->helpPushButton,            &QPushButton::clicked,
             this,                       &MainWindow::showHelp);
     /* ---------------------------------------------------------------------------------------------- */
 

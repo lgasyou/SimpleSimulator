@@ -29,27 +29,27 @@
 std::map<QString, QWidget *> UIManager::uiMap_;
 
 UIManager::UIManager() {
-	init();
+    init();
 }
 
 UIManager::~UIManager() {
-	for (auto pair : uiMap_)
-		delete pair.second;
+    for (auto pair : uiMap_)
+        delete pair.second;
 }
 
 void UIManager::init() {
-	//put("BankDialog", new BankDialog);
-	put("BuildingDetailDialog", new BuildingDetailDialog);
-	put("BuildingTableWidget", new BuildingTableWidget);
-	put("CompanyDetailDialog", new CompanyDetailDialog);
-	put("HelpDialog", new HelpDialog);
-	put("SetRouteDialog", new SetRouteDialog);
+    //put("BankDialog", new BankDialog);
+    put("BuildingDetailDialog", new BuildingDetailDialog);
+    put("BuildingTableWidget", new BuildingTableWidget);
+    put("CompanyDetailDialog", new CompanyDetailDialog);
+    put("HelpDialog", new HelpDialog);
+    put("SetRouteDialog", new SetRouteDialog);
 }
 
 void UIManager::put(const QString &key, QWidget *value) {
-	uiMap_.emplace(key, value);
+    uiMap_.emplace(key, value);
 }
 
 QWidget *UIManager::get(const QString &key) {
-	return uiMap_.at(key);
+    return uiMap_.at(key);
 }

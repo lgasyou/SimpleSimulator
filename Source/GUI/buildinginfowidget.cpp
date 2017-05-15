@@ -33,7 +33,7 @@
 #include "widgethelper.h"
 
 BuildingInfoWidget::BuildingInfoWidget(QWidget *parent)
-	: QWidget(parent) {
+    : QWidget(parent) {
     ui = new Ui::BuildingInfoWidget;
     ui->setupUi(this);
 
@@ -42,7 +42,7 @@ BuildingInfoWidget::BuildingInfoWidget(QWidget *parent)
     ui->detailsPushButton->hide();
 
     connect(ui->buyOrSellpushButton, &CommandPushButton::sendCommand,
-			WidgetHelper::placeCommand);
+            WidgetHelper::placeCommand);
     ui->buyOrSellpushButton->hide();
 }
 
@@ -51,12 +51,12 @@ BuildingInfoWidget::~BuildingInfoWidget() {
 }
 
 void BuildingInfoWidget::setTarget(Land *building) {
-    this->displayedBuilding_ = building;
-	ui->detailsPushButton->setCommand(std::make_shared<ShowDetailCommand>(building));
+    this->displayingObject_ = building;
+    ui->detailsPushButton->setCommand(std::make_shared<ShowDetailCommand>(building));
 }
 
 void BuildingInfoWidget::showBuildingInfo(Land *building) {
-    if (building != displayedBuilding_) {
+    if (building != displayingObject_) {
         setTarget(building);
 
         if (building) {
@@ -71,25 +71,25 @@ void BuildingInfoWidget::showBuildingInfo(Land *building) {
 }
 
 void BuildingInfoWidget::updateDisplay() {
-    if (displayedBuilding_) {
-        auto &name = displayedBuilding_->name();
+    if (displayingObject_) {
+        auto &name = displayingObject_->name();
         ui->buildingNameLabel->setText(name);
-        auto &owner = displayedBuilding_->owner()->name();
+        auto &owner = displayingObject_->owner()->name();
         ui->buildingOwnerLabel->setText("Owner:\n\n" + owner);
 
-        bool owned = (displayedBuilding_->owner() == CompanyManager::instance().playerCompany());
+        bool owned = (displayingObject_->owner() == CompanyManager::instance().playerCompany());
         const QString buttonText = owned ? tr("Sell") : tr("Buy");
         ui->buyOrSellpushButton->setCommand(
-			owned ?
-			std::make_shared<TransactionCommand>(
-				&Government::instance(), 
-				displayedBuilding_->owner(), 
-				displayedBuilding_) :
-			std::make_shared<TransactionCommand>(
-				CompanyManager::instance().playerCompany(), 
-				displayedBuilding_->owner(), 
-				displayedBuilding_)
-		);
-		ui->buyOrSellpushButton->setText(buttonText);
+            owned ?
+            std::make_shared<TransactionCommand>(
+                &Government::instance(), 
+                displayingObject_->owner(), 
+                displayingObject_) :
+            std::make_shared<TransactionCommand>(
+                CompanyManager::instance().playerCompany(), 
+                displayingObject_->owner(), 
+                displayingObject_)
+        );
+        ui->buyOrSellpushButton->setText(buttonText);
     }
 }

@@ -38,7 +38,7 @@ public:
     void init();
 
     void setCommand(std::shared_ptr<ICommmand> command) {
-		this->command = command;
+        this->command = command;
     }
 
 public slots:
@@ -48,7 +48,7 @@ signals:
     void sendCommand(std::shared_ptr<ICommmand> command);
 
 protected:
-	std::shared_ptr<ICommmand> command;
+    std::shared_ptr<ICommmand> command;
 };
 
 #endif // COMMANDPUSHBUTTON_H

@@ -76,22 +76,22 @@ void BuildingTableWidget::displayBasicInfo(int index, Land *building) {
 void BuildingTableWidget::displayAccordingToVisitor(int index, Land *building) {
     Company *playerCompany = CompanyManager::instance().playerCompany();
 
-	CommandPushButton *optionBtn =
+    CommandPushButton *optionBtn =
         (building->owner() != playerCompany) ?
         new CommandPushButton(tr("Buy"), std::make_shared<TransactionCommand>(
-			&Government::instance(), 
-			building->owner(), 
-			building)) :
+            &Government::instance(), 
+            building->owner(), 
+            building)) :
         new CommandPushButton(tr("Sell"), std::make_shared<TransactionCommand>(
-			CompanyManager::instance().playerCompany(), 
-			building->owner(), 
-			building));
+            CompanyManager::instance().playerCompany(), 
+            building->owner(), 
+            building));
     connect(optionBtn, &CommandPushButton::sendCommand,
             &WidgetHelper::placeCommand);
     setCellWidget(index, 4, optionBtn);
 
     CommandPushButton *detailBtn = new CommandPushButton(tr("Details"), std::make_shared<ShowDetailCommand>(building));
     connect(detailBtn, &CommandPushButton::sendCommand,
-			&WidgetHelper::placeCommand);
+            &WidgetHelper::placeCommand);
     setCellWidget(index, 5, detailBtn);
 }

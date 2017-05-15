@@ -28,7 +28,8 @@
 namespace Ui {
 class BuildingDetailDialog;
 }
-
+ 
+// This dialog will be deleted when it receives a closeEvent. Don't delete it manually.
 class BuildingDetailDialog : public QDialog {
     Q_OBJECT
 
@@ -38,7 +39,7 @@ public:
     ~BuildingDetailDialog();
 
 public:
-	void setBuilding(Land *building);
+    void setBuilding(Land *building);
 
 public slots:
     void updateDisplay();

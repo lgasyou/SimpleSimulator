@@ -26,14 +26,14 @@
 #include "Source/Managers/mapmanager.h"
 
 struct LandInitialParameter {
-	LandInitialParameter(StructureType type = UNUSED_LAND, const Vector2D &position = Vector2D(-1, -1), double basicValue = 0.0, double deltaValue = 0.0, LegalPerson *owner = nullptr, const QString &resource = "Unallocated")
-		: type(type),
-		  position(position),
-		  basicValue(basicValue),
-		  deltaValue(deltaValue),
-		  owner(owner),
-		  resource(resource) {
-	}
+    LandInitialParameter(StructureType type = UNUSED_LAND, const Vector2D &position = Vector2D(-1, -1), double basicValue = 0.0, double deltaValue = 0.0, LegalPerson *owner = nullptr, const QString &resource = "Unallocated")
+        : type(type),
+          position(position),
+          basicValue(basicValue),
+          deltaValue(deltaValue),
+          owner(owner),
+          resource(resource) {
+    }
 
     StructureType type;
     Vector2D position;
@@ -46,7 +46,7 @@ struct LandInitialParameter {
 
 class BuildingFactory {
 public:
-	BuildingFactory() = default;
+    BuildingFactory() = default;
 
     // Creates a new object use LandInitialParameter
     Land *create(const LandInitialParameter &landParameter);

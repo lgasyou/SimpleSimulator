@@ -27,18 +27,18 @@ class QWidget;
 
 class UIManager {
 public:
-	UIManager();
+    UIManager();
 
-	~UIManager();
+    ~UIManager();
 
-	static void init();
+    static void init();
 
-	static void put(const QString &key, QWidget *value);
+    static void put(const QString &key, QWidget *value);
 
-	static QWidget *get(const QString &key);
+    static QWidget *get(const QString &key);
 
 private:
-	static std::map<QString, QWidget *> uiMap_;
+    static std::map<QString, QWidget *> uiMap_;
 };
 
 #endif // !UIMANAGER_H

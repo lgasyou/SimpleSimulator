@@ -34,7 +34,7 @@ public:
 
     static void showUp(QWidget *widget);
 
-	static void placeCommand(std::shared_ptr<ICommmand> command);
+    static void placeCommand(std::shared_ptr<ICommmand> command);
 
 };
 
