@@ -31,8 +31,8 @@
 #include "ui_mainwindow.h"
 #include "buildingdetaildialog.h"
 #include "helpdialog.h"
-#include "companydetaildialog.h"
 #include "buildingtablewidget.h"
+#include "companydetaildialog.h"
 #include "widgethelper.h"
 
 MainWindow &MainWindow::instance() {
@@ -40,9 +40,9 @@ MainWindow &MainWindow::instance() {
     return mainWindow;
 }
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow) {
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent),
+      ui(new Ui::MainWindow) {
     ui->setupUi(this);
 }
 
@@ -58,9 +58,10 @@ void MainWindow::init() {
     ui->userInterface->updateDisplay();
 }
 
+// TODO: manages BuildingDetailDialog in a pool.
 void MainWindow::redirectData(Land *object) {
     ui->buildingInfoWidget->setTarget(object);
-    dynamic_cast<BuildingDetailDialog *>(UIManager::get("BuildingDetailDialog"))->setBuilding(object);
+    UIManager<BuildingDetailDialog>::get()->setBuilding(object);
     emit dataChanged();
 }
 
@@ -78,15 +79,15 @@ void MainWindow::endTurns() {
 }
 
 void MainWindow::showBuildingTableWidget() {
-    dynamic_cast<BuildingTableWidget *>(UIManager::get("BuildingTableWidget"))->show();
+    UIManager<BuildingTableWidget>::get()->show();
 }
 
 void MainWindow::showHelp() {
-    dynamic_cast<HelpDialog *>(UIManager::get("HelpDialog"))->show();
+    UIManager<HelpDialog>::get()->show();
 }
 
 void MainWindow::showCompanyDetail() const {
-    CompanyDetailDialog *dialog = dynamic_cast<CompanyDetailDialog *>(UIManager::get("CompanyDetailDialog"));
+    auto dialog = UIManager<CompanyDetailDialog>::get();
     dialog->setCompany(playerCompany_);
     WidgetHelper::showUp(dialog);
     dialog->updateDisplay();
@@ -103,18 +104,18 @@ void MainWindow::updateDisplay() const {
     const QString &cashText = tr("Cash: $") + WidgetHelper::toString(playerCompany_->cash());
     ui->label_CompanyCash->setText(cashText);
 
-    dynamic_cast<BuildingTableWidget *>(UIManager::get("BuildingTableWidget"))->updateDisplay();
+    UIManager<BuildingTableWidget>::get()->updateDisplay();
 }
 
 void MainWindow::signalSlotConfig() {
     /* ------------------------------ Main Functions Config ----------------------------------------- */
     connect(ui->buildingListPushButton, &QPushButton::clicked,
-            this,                        &MainWindow::showBuildingTableWidget);
-    connect(ui->companyPushButton,        &QPushButton::clicked,
+            this,                       &MainWindow::showBuildingTableWidget);
+    connect(ui->companyPushButton,      &QPushButton::clicked,
             this,                       &MainWindow::showCompanyDetail);
-    connect(ui->endTurnPushButton,        &QPushButton::clicked,
+    connect(ui->endTurnPushButton,      &QPushButton::clicked,
             this,                       &MainWindow::endTurns);
-    connect(ui->helpPushButton,            &QPushButton::clicked,
+    connect(ui->helpPushButton,         &QPushButton::clicked,
             this,                       &MainWindow::showHelp);
     /* ---------------------------------------------------------------------------------------------- */
 

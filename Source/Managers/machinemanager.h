@@ -22,7 +22,7 @@
 
 #include "Source/Objects/machine.h"
 
-#include "Source/machinebuilder.h"
+#include "Source/MachineBuilders.h"
 
 class MachineManager {
 public:

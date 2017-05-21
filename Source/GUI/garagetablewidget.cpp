@@ -27,6 +27,7 @@
 #include "setroutedialog.h"
 #include "tablewidgetpushbutton.h"
 #include "widgethelper.h"
+#include "ui_setroutedialog.h"
 
 GarageTableWidget::GarageTableWidget(QWidget *parent) : 
     QTableWidget(parent) {
@@ -104,7 +105,7 @@ void GarageTableWidget::buttonClicked(int index, int command) {
 void GarageTableWidget::showSetRouteDialog(int index) {
     selectedTruckId_ = index;
 
-    SetRouteDialog *setRouteDialog = dynamic_cast<SetRouteDialog *>(UIManager::get("SetRouteDialog"));
+    SetRouteDialog *setRouteDialog = UIManager<SetRouteDialog>::get();
     setRouteDialog->createNewRoute();
     static bool isTheFirstTimeCall = true;
     if (isTheFirstTimeCall) {

@@ -17,7 +17,7 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "bankdialog.h"
+#include "BankDialog.h"
 
 #include <QString>
 

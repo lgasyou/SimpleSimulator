@@ -17,7 +17,7 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "buildingdetaildialog.h"
+#include "BuildingDetailDialog.h"
 
 #include "Source/Objects/land.h"
 #include "Source/Objects/baseindustry.h"
@@ -29,17 +29,14 @@
 #include "Source/Objects/mine.h"
 #include "Source/Commmand.h"
 
-#include "Source/defaultmachinebuilder.h"
+#include "Source/MachineBuilders.h"
 
 #include "Source/Managers/buildingmanager.h"
 #include "Source/Managers/companymanager.h"
 #include "Source/Managers/machinemanager.h"
 
-#include "garagetablewidget.h"
 #include "ui_buildingdetaildialog.h"
 #include "widgethelper.h"
-
-#include <QDebug>
 
 BuildingDetailDialog::BuildingDetailDialog(Land *object, QWidget *parent)
     : QDialog(parent),
@@ -47,18 +44,13 @@ BuildingDetailDialog::BuildingDetailDialog(Land *object, QWidget *parent)
       ui(new Ui::BuildingDetailDialog) {
     ui->setupUi(this);
 
-    setAttribute(Qt::WA_DeleteOnClose);
-
     signalSlotConfig();
 
     ui->expandStackedWidget->hide();
-
-    qDebug() << "BuildingDetailDialog()";
 }
 
 BuildingDetailDialog::~BuildingDetailDialog() {
     delete ui;
-    qDebug() << "~BuildingDetailDialog()";
 }
 
 void BuildingDetailDialog::updateDisplay() {
@@ -85,7 +77,7 @@ void BuildingDetailDialog::updateDisplay() {
 }
 
 void BuildingDetailDialog::closeEvent(QCloseEvent *) {
-    ui->expandStackedWidget->hide();
+
 }
 
 //void BuildingDetailDialog::deliverGoods(const Goods &goods, BaseIndustry *dest) {
@@ -200,10 +192,10 @@ void BuildingDetailDialog::displayAccordingToBuildingType() {
 
 void BuildingDetailDialog::signalSlotConfig() {
     /* ---------------------------------- Basic Config ---------------------------------------------- */
-    connect(ui->buyPushButton,                          SIGNAL(sendCommand(int)),
-            this,                                       SLOT(receiveCommand(int)));
+    connect(ui->buyPushButton,                          &CommandPushButton::sendCommand,
+            &WidgetHelper::placeCommand);
 
-    connect(ui->sellPushButton,                            &CommandPushButton::sendCommand,
+    connect(ui->sellPushButton,                         &CommandPushButton::sendCommand,
             &WidgetHelper::placeCommand);
 
     connect(ui->dismantlePushButton,                    &CommandPushButton::sendCommand,
@@ -280,8 +272,8 @@ void BuildingDetailDialog::signalSlotConfig() {
     /* ---------------------------------------------------------------------------------------------- */
 
     /* ---------------------------------- Display Config -------------------------------------------- */
-    connect(this,                                       SIGNAL(dataChanged()),
-            this,                                       SLOT(updateDisplay()));
+    connect(this,                                       &BuildingDetailDialog::dataChanged,
+            this,                                       &BuildingDetailDialog::updateDisplay);
     /* ---------------------------------------------------------------------------------------------- */
 }
 

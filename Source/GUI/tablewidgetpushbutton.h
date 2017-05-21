@@ -20,6 +20,7 @@
 #ifndef TABLEWIDGETPUSHBUTTON_H
 #define TABLEWIDGETPUSHBUTTON_H
 
+#include "BuildingDetailDialog.h"
 #include "commandpushbutton.h"
 
 // This PushButton is specialized to send index of this button in table widget while clicked.

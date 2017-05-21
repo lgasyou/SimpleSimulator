@@ -18,38 +18,3 @@
  */
 
 #include "uimanager.h"
-
-#include "Source/GUI/bankdialog.h"
-#include "Source/GUI/buildingdetaildialog.h"
-#include "Source/GUI/companydetaildialog.h"
-#include "Source/GUI/setroutedialog.h"
-#include "Source/GUI/buildingtablewidget.h"
-#include "Source/GUI/helpdialog.h"
-
-std::map<QString, QWidget *> UIManager::uiMap_;
-
-UIManager::UIManager() {
-    init();
-}
-
-UIManager::~UIManager() {
-    for (auto pair : uiMap_)
-        delete pair.second;
-}
-
-void UIManager::init() {
-    //put("BankDialog", new BankDialog);
-    put("BuildingDetailDialog", new BuildingDetailDialog);
-    put("BuildingTableWidget", new BuildingTableWidget);
-    put("CompanyDetailDialog", new CompanyDetailDialog);
-    put("HelpDialog", new HelpDialog);
-    put("SetRouteDialog", new SetRouteDialog);
-}
-
-void UIManager::put(const QString &key, QWidget *value) {
-    uiMap_.emplace(key, value);
-}
-
-QWidget *UIManager::get(const QString &key) {
-    return uiMap_.at(key);
-}

@@ -29,7 +29,6 @@ namespace Ui {
 class BuildingDetailDialog;
 }
  
-// This dialog will be deleted when it receives a closeEvent. Don't delete it manually.
 class BuildingDetailDialog : public QDialog {
     Q_OBJECT
 
@@ -82,5 +81,7 @@ private:
 
     Ui::BuildingDetailDialog *ui;
 };
+
+
 
 #endif // !BUILDINGDETAILDIALOG_H

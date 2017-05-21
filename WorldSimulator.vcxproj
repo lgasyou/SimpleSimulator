@@ -162,7 +162,6 @@
     <ClCompile Include="Source\Objects\company.cpp" />
     <ClCompile Include="Source\GUI\companydetaildialog.cpp" />
     <ClCompile Include="Source\Managers\companymanager.cpp" />
-    <ClCompile Include="Source\defaultmachinebuilder.cpp" />
     <ClCompile Include="Source\Objects\factory.cpp" />
     <ClCompile Include="Source\Objects\farm.cpp" />
     <ClCompile Include="Source\gameconstants.cpp" />
@@ -274,7 +273,7 @@
     <ClCompile Include="Source\Managers\industrychainmanager.cpp" />
     <ClCompile Include="Source\Objects\legalperson.cpp" />
     <ClCompile Include="Source\Objects\machine.cpp" />
-    <ClCompile Include="Source\machinebuilder.cpp" />
+    <ClCompile Include="Source\MachineBuilders.cpp" />
     <ClCompile Include="Source\Managers\machinemanager.cpp" />
     <ClCompile Include="Source\GUI\machinetablewidget.cpp" />
     <ClCompile Include="Source\main.cpp" />
@@ -304,6 +303,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Commmand.h" />
+    <ClInclude Include="Source\GUI\DialogWithObjPtr.h" />
     <ClInclude Include="Source\Interface.h" />
     <ClInclude Include="Source\Objects\bank.h" />
     <ClInclude Include="Source\Objects\bankaccount.h" />
@@ -332,7 +332,6 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
     <ClInclude Include="Source\GUI\widgethelper.h" />
-    <ClInclude Include="Source\defaultmachinebuilder.h" />
     <ClInclude Include="GeneratedFiles\ui_bankdialog.h" />
     <ClInclude Include="GeneratedFiles\ui_buildingdetaildialog.h" />
     <ClInclude Include="GeneratedFiles\ui_companydetaildialog.h" />
@@ -347,7 +346,7 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -D_WINDOWS -DUNICODE -DWIN32 -DWIN64 -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DNDEBUG -DQT_DLL -DQT_CORE_LIB "-I." "-I$(QTDIR)\include" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtANGLE" "-I.\release" "-I$(QTDIR)\mkspecs\win32-msvc2015" "-I.\GeneratedFiles" "-I$(QTDIR)\include\QtCore"</Command>
     </CustomBuild>
     <ClInclude Include="Source\Objects\legalperson.h" />
-    <ClInclude Include="Source\machinebuilder.h" />
+    <ClInclude Include="Source\MachineBuilders.h" />
     <ClInclude Include="Source\Managers\machinemanager.h" />
     <ClInclude Include="Source\Objects\person.h" />
     <ClInclude Include="Source\Managers\personmanager.h" />

@@ -2,9 +2,10 @@
 
 #include "Managers/buildingmanager.h"
 #include "Objects/land.h"
-#include "GUI/buildingdetaildialog.h"
+#include "GUI/BuildingDetailDialog.h"
 #include "GUI/widgethelper.h"
 #include "GUI/mainwindow.h"
+#include "Managers/uimanager.h"
 
 void BuildBank::execute() {
     auto newBuilding = BuildingManager::instance().changeType(building_, BANK);
@@ -55,7 +56,8 @@ void TransactionCommand::execute() {
 }
 
 void ShowDetailCommand::execute() {
-    auto buildingDetailDialog = new BuildingDetailDialog(object_);
-    WidgetHelper::showUp(buildingDetailDialog);
-    buildingDetailDialog->updateDisplay();
+    auto dlg = UIManager<BuildingDetailDialog>::get();
+    dlg->setBuilding(object_);
+    WidgetHelper::showUp(dlg);
+    dlg->updateDisplay();
 }

@@ -29,7 +29,6 @@
 #include "Source/Objects/government.h"
 
 #include "commandpushbutton.h"
-#include "mainwindow.h"
 #include "widgethelper.h"
 
 BuildingTableWidget::BuildingTableWidget(QWidget *parent) :
@@ -45,6 +44,8 @@ void BuildingTableWidget::init() {
     this->setColumnCount(6);
     QStringList header{ tr("Name"),tr("Value"),tr("Type"), tr("Ownership"),tr("Option"), tr("Option") };
     this->setHorizontalHeaderLabels(header);
+
+    updateDisplay();
 }
 
 void BuildingTableWidget::updateDisplay() {
@@ -79,11 +80,11 @@ void BuildingTableWidget::displayAccordingToVisitor(int index, Land *building) {
     CommandPushButton *optionBtn =
         (building->owner() != playerCompany) ?
         new CommandPushButton(tr("Buy"), std::make_shared<TransactionCommand>(
-            &Government::instance(), 
+            CompanyManager::instance().playerCompany(),
             building->owner(), 
             building)) :
         new CommandPushButton(tr("Sell"), std::make_shared<TransactionCommand>(
-            CompanyManager::instance().playerCompany(), 
+            &Government::instance(),
             building->owner(), 
             building));
     connect(optionBtn, &CommandPushButton::sendCommand,

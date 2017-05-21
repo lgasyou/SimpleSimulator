@@ -20,25 +20,39 @@
 #ifndef UIMANAGER_H
 #define UIMANAGER_H
 
-#include <map>
-
-class QString;
-class QWidget;
-
+template<typename Widget>
 class UIManager {
 public:
-    UIManager();
+    static Widget *get();
+
+private:
+    UIManager() = default;
 
     ~UIManager();
 
-    static void init();
-
-    static void put(const QString &key, QWidget *value);
-
-    static QWidget *get(const QString &key);
+    static UIManager &instance();
 
 private:
-    static std::map<QString, QWidget *> uiMap_;
+    Widget *widget_ = nullptr;
 };
+
+template<typename W>
+UIManager<W>::~UIManager() {
+    delete widget_;
+}
+
+template<typename Widget>
+Widget *UIManager<Widget>::get() {
+    auto widget = instance().widget_;
+    if (widget == nullptr)
+        widget = new Widget;
+    return widget;
+}
+
+template<typename W>
+UIManager<W> &UIManager<W>::instance() {
+    static UIManager<W> uiManager;
+    return uiManager;
+}
 
 #endif // !UIMANAGER_H

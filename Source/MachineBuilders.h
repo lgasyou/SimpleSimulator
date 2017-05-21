@@ -17,20 +17,35 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "defaultmachinebuilder.h"
+#ifndef MACHINEBUILDER_H
+#define MACHINEBUILDER_H
 
-DefaultMachineBuilder::DefaultMachineBuilder() {
-    machine = new Machine;
-}
+#include "Interface.h"
+#include "Source/Objects/machine.h"
 
-void DefaultMachineBuilder::setMaximumProductivity() {
-    machine->setMaximalProductivity(1.0);
-}
+abstract class MachineBuilder : public Interface {
+public:
+    virtual ~MachineBuilder() = default;
 
-void DefaultMachineBuilder::setProducts() {
-    machine->setProducts({ { "Coal", 1 } });
-}
+    virtual void setMaximumProductivity() = 0;
 
-Machine *DefaultMachineBuilder::getMachine() {
-    return machine;
-}
+    virtual void setProducts() = 0;
+
+    virtual Machine *getMachine() = 0;
+
+protected:
+    Machine *machine = nullptr;
+};
+
+class DefaultMachineBuilder : public MachineBuilder {
+public:
+    DefaultMachineBuilder();
+
+    void setMaximumProductivity() override;
+
+    void setProducts() override;
+
+    Machine *getMachine() override;
+};
+
+#endif // !MACHINEBUILDER_H

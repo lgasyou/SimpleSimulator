@@ -37,7 +37,6 @@ int main(int argc, char *argv[]) {
     IndustryChainManager::instance().init();
     PriceManager::instance().init();
     TimeManager::instance().init();
-    UIManager::init();
     MainWindow::instance().init();
     MainWindow::instance().show();
     return application.exec();

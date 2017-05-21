@@ -17,7 +17,7 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "buildinginfowidget.h"
+#include "BuildingInfoWidget.h"
 
 #include <memory>
 
@@ -27,10 +27,9 @@
 
 #include "Source/Managers/companymanager.h"
 
-#include "ui_buildinginfowidget.h"
-#include "tablewidgetpushbutton.h"
 #include "mainwindow.h"
 #include "widgethelper.h"
+#include "ui_buildinginfowidget.h"
 
 BuildingInfoWidget::BuildingInfoWidget(QWidget *parent)
     : QWidget(parent) {

@@ -330,14 +330,8 @@
     <ClCompile Include="Source\random.cpp">
       <Filter>Source Files\Utilities</Filter>
     </ClCompile>
-    <ClCompile Include="Source\machinebuilder.cpp">
-      <Filter>Source Files\Builders</Filter>
-    </ClCompile>
     <ClCompile Include="Source\gameconstants.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\defaultmachinebuilder.cpp">
-      <Filter>Source Files\Builders</Filter>
     </ClCompile>
     <ClCompile Include="Source\main.cpp">
       <Filter>Source Files</Filter>
@@ -377,6 +371,9 @@
     </ClCompile>
     <ClCompile Include="Source\Commmand.cpp">
       <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MachineBuilders.cpp">
+      <Filter>Source Files\Builders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -568,14 +565,8 @@
     <ClInclude Include="Source\random.h">
       <Filter>Header Files\Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="Source\machinebuilder.h">
-      <Filter>Header Files\Builders</Filter>
-    </ClInclude>
     <ClInclude Include="Source\gameconstants.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\defaultmachinebuilder.h">
-      <Filter>Header Files\Builders</Filter>
     </ClInclude>
     <ClInclude Include="Source\Managers\buildingmanager.h">
       <Filter>Header Files\Managers</Filter>
@@ -615,6 +606,12 @@
     </ClInclude>
     <ClInclude Include="Source\Commmand.h">
       <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MachineBuilders.h">
+      <Filter>Header Files\Builders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\DialogWithObjPtr.h">
+      <Filter>Header Files\GUIComponents</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

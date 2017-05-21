@@ -17,10 +17,11 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "companydetaildialog.h"
+#include "BuildingDetailDialog.h"
 
 #include "ui_companydetaildialog.h"
 #include "widgethelper.h"
+#include "companydetaildialog.h"
 
 CompanyDetailDialog::CompanyDetailDialog(QWidget *parent) :
     QDialog(parent),
