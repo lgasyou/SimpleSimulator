@@ -7,6 +7,8 @@
 #include "GUI/MainWindow.h"
 #include "Managers/UIManager.h"
 
+std::unordered_set<QWidget *> WriteCommand::cachedWidgets_;
+
 void WriteCommand::execute() {
     for (auto widget : cachedWidgets_) {
         // TODO: change this into updateDisplay rather than update().
