@@ -17,11 +17,9 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "machine.h"
+#include "Machine.h"
 
-#include "Source/Managers/industrychainmanager.h"
-
-#include "Source/gameconstants.h"
+#include "Source/Managers/IndustryChainManager.h"
 
 Machine::Machine() { }
 

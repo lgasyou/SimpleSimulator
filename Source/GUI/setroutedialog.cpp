@@ -17,12 +17,12 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "setroutedialog.h"
+#include "SetRouteDialog.h"
 
 #include <QString>
 
-#include "Source/Objects/baseindustry.h"
-#include "Source/Objects/route.h"
+#include "Source/Objects/Industry.h"
+#include "Source/Objects/Route.h"
 
 #include "ui_setroutedialog.h"
 
@@ -102,13 +102,13 @@ void SetRouteDialog::getGoodsVolume(double eachVolume) {
     emit dataChanged();
 }
 
-void SetRouteDialog::getOrig(Land *origin) {
-    route_->orig = (BaseIndustry *)origin;
+void SetRouteDialog::getOrig(LandParcel *origin) {
+    route_->orig = (Industry *)origin;
     emit dataChanged();
 }
 
-void SetRouteDialog::getDest(Land *dest) {
-    route_->dest = (BaseIndustry *)dest;
+void SetRouteDialog::getDest(LandParcel *dest) {
+    route_->dest = (Industry *)dest;
     emit dataChanged();
 }
 

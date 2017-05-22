@@ -17,13 +17,11 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LAND_H
-#define LAND_H
+#ifndef LAND_PARCEL_H
+#define LAND_PARCEL_H
 
-#include <QString>
-
-#include "legalperson.h"
-#include "Source/vector2d.h"
+#include "LegalPerson.h"
+#include "Source/Vector2D.h"
 
 #define abstract 
 
@@ -38,13 +36,12 @@ enum StructureType {
     VILLA
 };
 
-// The base of building classes.
-// This class cannot be instantiated.
-abstract class Land {
+// The base of LandPaacel classes.
+abstract class LandParcel {
 public:
-    Land(const QString &name, const QString &type);
+    LandParcel(const QString &name, const QString &type);
 
-    virtual ~Land() = default;
+    virtual ~LandParcel() = default;
 
     virtual void update() = 0;
 
@@ -96,4 +93,4 @@ private:
     Vector2D position_;
 };
 
-#endif // LAND_H
+#endif // !LAND_PARCEL_H

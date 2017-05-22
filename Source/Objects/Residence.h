@@ -17,4 +17,32 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "uimanager.h"
+#ifndef RESIDENCE_H
+#define RESIDENCE_H
+
+#include <list>
+
+#include "LandParcel.h"
+#include "Person.h"
+
+abstract class Residence : public LandParcel {
+public:
+    Residence(const QString &name, const QString &type);
+
+    virtual ~Residence();
+
+    // updates data after each turn
+    void update() override;
+
+    void checkin(Person *resident);
+
+    void checkout(Person *resident);
+
+public:
+    const std::list<Person *> &residents() const { return residents_; }
+
+private:
+    std::list<Person *> residents_;
+};
+
+#endif // !RESIDENCE_H

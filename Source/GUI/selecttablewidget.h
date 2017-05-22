@@ -24,9 +24,9 @@
 #include <QString>
 #include <vector>
 
-#include "Source/Objects/land.h"
+#include "Source/Objects/LandParcel.h"
 
-#include "tablewidgetpushbutton.h"
+#include "TableWidgetPushButton.h"
 
 class SelectTableWidget : public QTableWidget {
     Q_OBJECT
@@ -45,7 +45,7 @@ public:
 
     void updateDisplay();
 
-    void updateEachLine(int indexInWidget, int indexInManager, const Land *);
+    void updateEachLine(int indexInWidget, int indexInManager, const LandParcel *);
 
     // Sets type(s) which will be displayed later.
     // Uses '|' to store multiple objects.
@@ -55,7 +55,7 @@ public slots:
     void getDestAndSendBuilding(int filter);
 
 signals:
-    void sendBuilding(Land *);
+    void sendBuilding(LandParcel *);
 
 private:
     std::vector<QString> typeNames_;

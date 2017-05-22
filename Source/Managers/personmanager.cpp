@@ -17,14 +17,12 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "personmanager.h"
+#include "PersonManager.h"
 
 PersonManager &PersonManager::instance() {
     static PersonManager personManager;
     return personManager;
 }
-
-void PersonManager::init() { }
 
 void PersonManager::add(Person *person) {
     persons_.push_back(person);

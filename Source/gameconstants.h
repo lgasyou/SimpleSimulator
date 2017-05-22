@@ -17,8 +17,8 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GAMECONSTANTS_H
-#define GAMECONSTANTS_H
+#ifndef GAME_CONSTANTS_H
+#define GAME_CONSTANTS_H
 
 // TODO: Move all of those into a file.
 namespace gameconstants {
@@ -31,4 +31,4 @@ const int mapWeight = 16;
 
 }
 
-#endif // !GAMECONSTANTS_H
+#endif // !GAME_CONSTANTS_H

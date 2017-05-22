@@ -17,13 +17,12 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PRICEMANAGER_H
-#define PRICEMANAGER_H
+#ifndef PRICE_MANAGER_H
+#define PRICE_MANAGER_H
 
 #include <map>
-#include <QString>
 
-#include "Source/Objects/goods.h"
+#include "Source/Objects/Goods.h"
 
 // Item of Price
 struct PriceItem {
@@ -60,5 +59,5 @@ inline double PriceManager::currentPrice(const GoodsLabel &label) const {
     return priceMap_.find(label)->second.price;
 }
 
-#endif // !PRICEMANAGER_H
+#endif // !PRICE_MANAGER_H
 

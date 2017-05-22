@@ -17,16 +17,14 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TIMEMANAGER_H
-#define TIMEMANAGER_H
+#ifndef TIME_MANAGER_H
+#define TIME_MANAGER_H
 
 // This class controls the time of this game.
 class TimeManager {
 public:
     // Gets single instance.
     static TimeManager &instance();
-
-    void init();
 
     void setDeltaTime(double deltaTime) { this->deltaTime_ = deltaTime; }
     double deltaTime() const { return deltaTime_; }
@@ -52,4 +50,4 @@ private:
     double frequence_ = 1.0;
 };
 
-#endif // TIMEMANAGER_H
+#endif // !TIME_MANAGER_H

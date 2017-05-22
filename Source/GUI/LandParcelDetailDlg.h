@@ -17,35 +17,36 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BUILDINGDETAILDIALOG_H
-#define BUILDINGDETAILDIALOG_H
+#ifndef LAND_PARCEL_DETAIL_DLG_H
+#define LAND_PARCEL_DETAIL_DLG_H
 
 #include <QDialog>
 
-#include "Source/Objects/land.h"
-#include "Source/Objects/machine.h"
+#include "Source/Objects/LandParcel.h"
+#include "Source/Objects/Machine.h"
 
 namespace Ui {
-class BuildingDetailDialog;
+class LandParcelDetailDlg;
 }
  
-class BuildingDetailDialog : public QDialog {
+// TODO: Set this class as the base of GUI of other land derived classes.
+class LandParcelDetailDlg : public QDialog {
     Q_OBJECT
 
 public:
-    BuildingDetailDialog(Land *object = nullptr, QWidget *parent = nullptr);
+    LandParcelDetailDlg(LandParcel *object = nullptr, QWidget *parent = nullptr);
 
-    ~BuildingDetailDialog();
+    ~LandParcelDetailDlg();
 
 public:
-    void setBuilding(Land *building);
+    void setBuilding(LandParcel *building);
 
 public slots:
     void updateDisplay();
 
     // Receives the data comes from WarehouseTableWidget or GarageTableWidget.
-    // Send information to model BaseIndustry.
-    //void deliverGoods(const Goods &goods, BaseIndustry *dest);
+    // Send information to model Industry.
+    //void deliverGoods(const Goods &goods, Industry *dest);
 
 protected:
     void closeEvent(QCloseEvent *) override;
@@ -53,7 +54,7 @@ protected:
 signals:
     void dataChanged();
 
-    void sendCommand(int command, Land *building);
+    void sendCommand(int command, LandParcel *building);
 
 private slots:
     void addNewMachine();
@@ -75,13 +76,11 @@ private:
     void signalSlotConfig();
 
 private:
-    Land *building_ = nullptr;
+    LandParcel *building_ = nullptr;
 
     Machine *selectedMachine_ = nullptr;
 
-    Ui::BuildingDetailDialog *ui;
+    Ui::LandParcelDetailDlg *ui;
 };
 
-
-
-#endif // !BUILDINGDETAILDIALOG_H
+#endif // !LAND_PARCEL_DETAIL_DLG_H

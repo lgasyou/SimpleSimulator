@@ -17,7 +17,7 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "industrychainmanager.h"
+#include "IndustryChainManager.h"
 
 IndustryChainManager::IndustryChainManager() { }
 

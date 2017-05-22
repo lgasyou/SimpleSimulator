@@ -1,6 +1,6 @@
 /*
  *  Copyright 2017 Li Zeqing
- *
+ *  
  *  This file is part of World Simulator.
  *  
  *  World Simulator is free software: you can redistribute it and/or modify
@@ -17,10 +17,15 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "basetransportation.h"
+#include "Agriculture.h"
 
-BaseTransportation::BaseTransportation(const QString &name, const QString &type) :
-    Land(name, type)
-{ }
+Agriculture::Agriculture(const QString &name, const QString &type)
+    : LandParcel(name, type) {
+    
+}
 
-BaseTransportation::~BaseTransportation() { }
+Agriculture::~Agriculture() { }
+
+void Agriculture::update() {
+    
+}

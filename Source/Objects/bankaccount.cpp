@@ -17,9 +17,9 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "bankaccount.h"
+#include "BankAccount.h"
 
-#include "bank.h"
+#include "Bank.h"
 
 BankAccount::BankAccount() { }
 

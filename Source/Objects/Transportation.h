@@ -17,23 +17,19 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "baseresidence.h"
+#ifndef TRANSPORTATION_H
+#define TRANSPORTATION_H
 
-BaseResidence::BaseResidence(const QString &name, const QString &type) :
-    Land(name, type)
-{ }
+#include "LandParcel.h"
 
-BaseResidence::~BaseResidence() { }
+abstract class Transportation : public LandParcel {
+public:
+    Transportation(const QString &name, const QString &type);
 
-void BaseResidence::update() {
-    changeBaseValue();
-}
+    virtual ~Transportation();
 
-void BaseResidence::checkin(Person *resident) {
-    residents_.push_back(resident);
-}
+private:
 
-void BaseResidence::checkout(Person *resident) {
-    auto iter = std::find(residents_.begin(), residents_.end(), resident);
-    residents_.erase(iter);
-}
+};
+
+#endif // !TRANSPORTATION_H

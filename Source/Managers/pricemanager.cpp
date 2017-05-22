@@ -17,9 +17,7 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <algorithm>
-
-#include "pricemanager.h"
+#include "PriceManager.h"
 
 PriceManager::PriceManager() { }
 

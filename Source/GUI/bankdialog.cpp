@@ -22,12 +22,12 @@
 #include <QString>
 
 #include "ui_bankdialog.h"
-#include "widgethelper.h"
+#include "WidgetHelper.h"
 
-BankDialog::BankDialog(QWidget *parent) :
-    QDialog(parent),
-    client_(nullptr),
-    ui(new Ui::BankDialog) {
+BankDialog::BankDialog(QWidget *parent)
+    : QDialog(parent),
+      client_(nullptr),
+      ui(new Ui::BankDialog) {
     ui->setupUi(this);
     setWindowTitle(tr("Welcome to the Bank!"));
     connect(ui->horizontalSlider_Borrow,    SIGNAL(valueChanged(int)),

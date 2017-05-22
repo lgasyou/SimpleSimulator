@@ -17,10 +17,10 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "machinetablewidget.h"
+#include "MachineTableWidget.h"
 
-MachineTableWidget::MachineTableWidget(QWidget *parent) : 
-    QTableWidget(parent) {
+MachineTableWidget::MachineTableWidget(QWidget *parent)
+    : QTableWidget(parent) {
     init();
 }
 
@@ -33,8 +33,8 @@ void MachineTableWidget::init() {
     this->setHorizontalHeaderLabels(header);
 }
 
-void MachineTableWidget::setIndustry(Land *industry) {
-    this->industry_ = dynamic_cast<BaseIndustry *>(industry);
+void MachineTableWidget::setIndustry(LandParcel *industry) {
+    this->industry_ = dynamic_cast<Industry *>(industry);
 }
 
 void MachineTableWidget::receiveShowDetailSignal(int index) {
@@ -43,7 +43,7 @@ void MachineTableWidget::receiveShowDetailSignal(int index) {
 }
 
 void MachineTableWidget::updateDisplay() {
-    if (BaseIndustry *industry = industry_) {
+    if (Industry *industry = industry_) {
         const auto &machines = industry->machines();
         int machineNumber = (int)machines.size();
         setRowCount(static_cast<int>(machineNumber));

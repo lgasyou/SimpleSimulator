@@ -17,27 +17,27 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef COMMANDPUSHBUTTON_H
-#define COMMANDPUSHBUTTON_H
+#ifndef COMMAND_PUSH_BUTTON_H
+#define COMMAND_PUSH_BUTTON_H
 
 #include <memory>
 #include <QPushButton>
-#include "Source/Commmand.h"
+#include "Source/Commmands.h"
 
 // The PushButton is specialized to send command when clicked.
 class CommandPushButton : public QPushButton {
     Q_OBJECT
 
 public:
-    CommandPushButton(QWidget *parent = nullptr, std::shared_ptr<ICommmand> command = nullptr);
+    CommandPushButton(QWidget *parent = nullptr, std::shared_ptr<ICommand> command = nullptr);
 
-    CommandPushButton(const QString &text, std::shared_ptr<ICommmand> command = nullptr, QWidget *parent = nullptr);
+    CommandPushButton(const QString &text, std::shared_ptr<ICommand> command = nullptr, QWidget *parent = nullptr);
 
     ~CommandPushButton();
 
     void init();
 
-    void setCommand(std::shared_ptr<ICommmand> command) {
+    void setCommand(std::shared_ptr<ICommand> command) {
         this->command = command;
     }
 
@@ -45,10 +45,10 @@ public slots:
     virtual void repeater();
 
 signals:
-    void sendCommand(std::shared_ptr<ICommmand> command);
+    void sendCommand(std::shared_ptr<ICommand> command);
 
 protected:
-    std::shared_ptr<ICommmand> command;
+    std::shared_ptr<ICommand> command;
 };
 
-#endif // COMMANDPUSHBUTTON_H
+#endif // !COMMAND_PUSH_BUTTON_H

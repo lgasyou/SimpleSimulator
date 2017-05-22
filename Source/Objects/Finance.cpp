@@ -17,21 +17,13 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BASETRANSPORTATION_H
-#define BASETRANSPORTATION_H
+#include "Finance.h"
 
-#include <QString>
+Finance::Finance(const QString &name, const QString &type)
+    : LandParcel(name, type) {
+    
+}
 
-#include "land.h"
+Finance::~Finance() { }
 
-class BaseTransportation : public Land {
-public:
-    BaseTransportation(const QString &name, const QString &type);
-
-    virtual ~BaseTransportation();
-
-private:
-
-};
-
-#endif // !BASETRANSPORTATION_H
+void Finance::update() { }

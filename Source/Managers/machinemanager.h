@@ -17,10 +17,10 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MACHINEMANAGER_H
-#define MACHINEMANAGER_H
+#ifndef MACHINE_MANAGER_H
+#define MACHINE_MANAGER_H
 
-#include "Source/Objects/machine.h"
+#include "Source/Objects/Machine.h"
 
 #include "Source/MachineBuilders.h"
 
@@ -36,4 +36,4 @@ private:
     ~MachineManager();
 };
 
-#endif // !MACHINEMANAGER_H
+#endif // !MACHINE_MANAGER_H

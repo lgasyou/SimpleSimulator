@@ -17,33 +17,24 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BASECOMMERCE_H
-#define BASECOMMERCE_H
+#include "Commerce.h"
 
-#include <QString>
+Commerce::Commerce(const QString &name, const QString &type)
+    : LandParcel(name, type),
+      warehouse_(new Warehouse) {
+    
+}
 
-#include "land.h"
-#include "baseindustry.h"
-#include "goods.h"
-#include "person.h"
-#include "warehouse.h"
+Commerce::~Commerce() { }
 
-// This class should not be instantiated.
-class BaseCommerce : public Land {
-public:
-    BaseCommerce(const QString &name, const QString &type);
+void Commerce::restock(Industry *factory, const Goods &goods) {
+    factory->fetch(goods);
+}
 
-    virtual ~BaseCommerce();
+void Commerce::sellTo(Person *consumer, const Goods &goods) {
+    consumer->store(goods);
+}
 
-    void restock(BaseIndustry *factory, const Goods &goods);
-
-    void sellTo(Person *consumer, const Goods &goods);
-
-    // update data after each turn
-    virtual void update() override;
-
-private:
-    Warehouse *warehouse_ = nullptr;
-};
-
-#endif // BASECOMMERCE_H
+void Commerce::update() {
+    changeBaseValue();
+}

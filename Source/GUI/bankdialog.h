@@ -22,7 +22,7 @@
 
 #include <QDialog>
 
-#include "Source/Objects/company.h"
+#include "Source/Objects/Company.h"
 
 namespace Ui {
 class BankDialog;

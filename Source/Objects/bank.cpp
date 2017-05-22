@@ -17,11 +17,13 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "bank.h"
+#include "Bank.h"
 
-Bank::Bank(const QString &name) :
-    BaseFinance(name, "Bank")
-{ }
+Bank::Bank(const QString &name)
+    : Finance(name, "Bank"),
+      depositInterestRate_(0.003),
+      loanInterestRate_(0.008) {
+}
 
 Bank::~Bank() { }
 

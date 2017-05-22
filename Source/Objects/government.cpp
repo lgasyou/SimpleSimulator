@@ -17,13 +17,12 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "government.h"
+#include "Government.h"
 
-#include "Source/gameconstants.h"
+#include "Source/GameConstants.h"
 
-Government::Government() :
-    LegalPerson("Government") {
-    update();
+Government::Government()
+    : LegalPerson("Government") {
 }
 
 Government &Government::instance() {

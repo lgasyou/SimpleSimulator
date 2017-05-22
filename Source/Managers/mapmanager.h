@@ -22,9 +22,9 @@
 
 #include <array>
 
-#include "Source/gameconstants.h"
-#include "Source/Objects/land.h"
-#include "Source/vector2d.h"
+#include "Source/GameConstants.h"
+#include "Source/Objects/LandParcel.h"
+#include "Source/Vector2D.h"
 
 // This class creates a map which contains all buildings.
 // This class is designed for working with transportations modules.

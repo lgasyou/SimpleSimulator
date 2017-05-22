@@ -17,13 +17,12 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GOODSCONTAINER_H
-#define GOODSCONTAINER_H
+#ifndef GOODS_CONTAINER_H
+#define GOODS_CONTAINER_H
 
 #include <QList>
-#include <QString>
 
-#include "goods.h"
+#include "Goods.h"
 
 class GoodsContainer {
 public:
@@ -77,4 +76,4 @@ inline Goods *GoodsContainer::getById(int id) {
     return container_[id];
 }
 
-#endif // !GOODSCONTAINER_H
+#endif // !GOODS_CONTAINER_H

@@ -1,4 +1,5 @@
 /*
+/*
  *  Copyright 2017 Li Zeqing
  *
  *  This file is part of World Simulator.
@@ -17,11 +18,12 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "unusedland.h"
+#include "UnusedLand.h"
 
-UnusedLand::UnusedLand(const QString &name) :
-    Land(name, "Unused Land")
-{ }
+UnusedLand::UnusedLand(const QString &name)
+    : LandParcel(name, "Unused Land") {
+    
+}
 
 void UnusedLand::update() {
     changeBaseValue();

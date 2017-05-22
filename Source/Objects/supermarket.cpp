@@ -17,8 +17,8 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "supermarket.h"
+#include "Supermarket.h"
 
-Supermarket::Supermarket(const QString &name) :
-    BaseCommerce(name, "Supermarket")
-{ }
+Supermarket::Supermarket(const QString &name)
+    : Commerce(name, "Supermarket") {
+}

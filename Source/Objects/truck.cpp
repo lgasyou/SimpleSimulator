@@ -19,8 +19,9 @@
 
 #include <algorithm>
 
-#include "truck.h"
-#include "warehouse.h"
+#include "Truck.h"
+#include "Industry.h"
+#include "Warehouse.h"
 
 Truck::Truck() :
     Vihicle(),

@@ -17,21 +17,21 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "baseindustry.h"
+#include "Industry.h"
 
-#include <algorithm>
+#include "Source/Managers/IndustryChainManager.h"
 
-#include "Source/Managers/industrychainmanager.h"
+Industry::Industry(const QString &name, const QString &type)
+    : LandParcel(name, type),
+      warehouse_(new Warehouse) {
+    
+}
 
-BaseIndustry::BaseIndustry(const QString &name, const QString &type) :
-    Land(name, type),
-    warehouse_(new Warehouse) { }
-
-BaseIndustry::~BaseIndustry() {
+Industry::~Industry() {
     delete warehouse_;
 }
 
-void BaseIndustry::setMaterialsAccordingToMachine(Machine *machine) {
+void Industry::setMaterialsAccordingToMachine(Machine *machine) {
     for (const auto &material : machine->materials()) {
         if (std::find(materials_.cbegin(), materials_.cend(), material.label) == materials_.cend()) {
             materials_.push_back(material.label);
@@ -39,7 +39,7 @@ void BaseIndustry::setMaterialsAccordingToMachine(Machine *machine) {
     }
 }
 
-void BaseIndustry::setProductsAccordingToMachine(Machine *machine) {
+void Industry::setProductsAccordingToMachine(Machine *machine) {
     for (const auto &product : machine->products()) {
         if (std::find(products_.cbegin(), products_.cend(), product.label) == products_.cend()) {
             products_.push_back(product.label);

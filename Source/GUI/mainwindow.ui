@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
@@ -54,7 +54,7 @@
     <item>
      <layout class="QHBoxLayout" name="mainLayout">
       <item>
-       <widget class="MainUI" name="userInterface" native="true"/>
+       <widget class="MapUi" name="userInterface" native="true"/>
       </item>
       <item>
        <widget class="BuildingInfoWidget" name="buildingInfoWidget" native="true"/>
@@ -123,15 +123,15 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>MainUI</class>
+   <class>MapUi</class>
    <extends>QWidget</extends>
-   <header>mainui.h</header>
+   <header>MapUi.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
    <class>BuildingInfoWidget</class>
    <extends>QWidget</extends>
-   <header>buildinginfowidget.h</header>
+   <header>BuildingInfoWidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -1,6 +1,6 @@
 /*
  *  Copyright 2017 Li Zeqing
- *  
+ *
  *  This file is part of World Simulator.
  *  
  *  World Simulator is free software: you can redistribute it and/or modify
@@ -17,16 +17,18 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "land.h"
+#ifndef FINANCE_H
+#define FINANCE_H
 
-#include "Source/random.h"
+#include "LandParcel.h"
 
-Land::Land(const QString &name, const QString &type) :
-    name_(name),
-    type_(type) { }
+abstract class Finance : public LandParcel {
+public:
+    Finance(const QString &name, const QString &type);
 
-void Land::changeBaseValue() {
-    double sigma = value_ * 0.1 / 3;
-    deltaValue_ = Random::instance().normalDistribution(0, sigma);
-    value_ += deltaValue_;
-}
+    virtual ~Finance();
+
+    void update() override;
+};
+
+#endif // !FINANCE_H

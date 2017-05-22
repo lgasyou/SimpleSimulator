@@ -21,27 +21,24 @@
 #define BANK_H
 
 #include <map>
-#include <QString>
 
-#include "basefinance.h"
-#include "bankaccount.h"
-#include "legalperson.h"
+#include "Finance.h"
+#include "BankAccount.h"
+#include "LegalPerson.h"
 
-class Bank : public BaseFinance {
+class Bank : public Finance {
 public:
     Bank(const QString &name = "Bank");
     
     ~Bank();
     
-    void init();
-    
-    void closeAnAccount(LegalPerson *client);
+    void closeAccount(LegalPerson *client);
     
     void deposit(LegalPerson *client, double amount);
     
     void loan(LegalPerson *client, double amount);
     
-    void openAnAccount(LegalPerson *client);
+    void openAccount(LegalPerson *client);
     
     void repay(LegalPerson *client, double amount);
     
@@ -66,44 +63,37 @@ private:
     double loanInterestRate_;
 };
 
-inline void Bank::init() {
-    depositInterestRate_ = 0.003;
-    loanInterestRate_ = 0.008;
-}
-
-inline void Bank::closeAnAccount(LegalPerson *client) {
-    const BankAccount &bankAccount = clientMap_[client];
-    double finalCash = client->cash() + bankAccount.deposit() - bankAccount.debt();
-    if (finalCash >= 0) {
-        client->setCash(finalCash);
-        clientMap_.erase(client);
-    }
+inline void Bank::closeAccount(LegalPerson *client) {
+    auto &bankAccount = clientMap_[client];
+    auto finalCash = client->cash() + bankAccount.deposit() - bankAccount.debt();
+    client->setCash(finalCash);
+    clientMap_.erase(client);
 }
 
 inline void Bank::deposit(LegalPerson *client, double amount) {
-    BankAccount &bankAccount = clientMap_[client];
-    double finalCash = client->cash() - amount;
-    double finalDeposit = bankAccount.deposit() + amount;
+    auto &bankAccount = clientMap_[client];
+    auto finalCash = client->cash() - amount;
+    auto finalDeposit = bankAccount.deposit() + amount;
     bankAccount.setDeposit(finalDeposit);
     client->setCash(finalCash);
 }
 
 inline void Bank::loan(LegalPerson *client, double amount) {
-    BankAccount &bankAccount = clientMap_[client];
-    double finalCash = client->cash() + amount;
-    double finalDebt = bankAccount.debt() + amount;
+    auto &bankAccount = clientMap_[client];
+    auto finalCash = client->cash() + amount;
+    auto finalDebt = bankAccount.debt() + amount;
     bankAccount.setDeposit(finalDebt);
     client->setCash(finalCash);
 }
 
-inline void Bank::openAnAccount(LegalPerson *client) {
+inline void Bank::openAccount(LegalPerson *client) {
     clientMap_[client].setBank(this);
 }
 
 inline void Bank::repay(LegalPerson *client, double amount) {
-    BankAccount &bankAccount = clientMap_[client];
-    double finalCash = client->cash() - amount;
-    double finalDebt = bankAccount.debt() - amount;
+    auto &bankAccount = clientMap_[client];
+    auto finalCash = client->cash() - amount;
+    auto finalDebt = bankAccount.debt() - amount;
     bankAccount.setDeposit(finalDebt);
     client->setCash(finalCash);
 }
@@ -113,9 +103,9 @@ inline const BankAccount &Bank::accountOf(LegalPerson *client) const {
 }
 
 inline void Bank::withdraw(LegalPerson *client, double amount) {
-    BankAccount &bankAccount = clientMap_[client];
-    double finalCash = client->cash() + amount;
-    double finalDeposit = bankAccount.deposit() - amount;
+    auto &bankAccount = clientMap_[client];
+    auto finalCash = client->cash() + amount;
+    auto finalDeposit = bankAccount.deposit() - amount;
     bankAccount.setDeposit(finalDeposit);
     client->setCash(finalCash);
 }

@@ -1,6 +1,6 @@
 /*
  *  Copyright 2017 Li Zeqing
- *
+ *  
  *  This file is part of World Simulator.
  *  
  *  World Simulator is free software: you can redistribute it and/or modify
@@ -17,34 +17,18 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BASERESIDENCE_H
-#define BASERESIDENCE_H
+#include "LandParcel.h"
 
-#include <list>
-#include <QString>
+#include "Source/Random.h"
 
-#include "land.h"
-#include "person.h"
+LandParcel::LandParcel(const QString &name, const QString &type)
+    : name_(name),
+      type_(type) {
+    
+}
 
-// This class should not be instantiated.
-class BaseResidence : public Land {
-public:
-    BaseResidence(const QString &name, const QString &type);
-
-    virtual ~BaseResidence();
-
-    // updates data after each turn
-    virtual void update() override;
-
-    void checkin(Person *resident);
-
-    void checkout(Person *resident);
-
-public:
-    const std::list<Person *> &residents() const { return residents_; }
-
-private:
-    std::list<Person *> residents_;
-};
-
-#endif // BASERESIDENCE_H
+void LandParcel::changeBaseValue() {
+    double sigma = value_ * 0.1 / 3;
+    deltaValue_ = Random::instance().normalDistribution(0, sigma);
+    value_ += deltaValue_;
+}

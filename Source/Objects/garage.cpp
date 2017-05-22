@@ -17,15 +17,13 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <algorithm>
+#include "Garage.h"
 
-#include "garage.h"
+#include "Truck.h"
+#include "Industry.h"
 
-#include "truck.h"
-#include "baseindustry.h"
-
-Garage::Garage(const QString &name) :
-    BaseTransportation(name, "Garage") {
+Garage::Garage(const QString &name)
+    : Transportation(name, "Garage") {
     addNewVihicle("Truck");
     addNewVihicle("Truck");
 }

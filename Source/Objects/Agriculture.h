@@ -1,6 +1,6 @@
 /*
  *  Copyright 2017 Li Zeqing
- *
+ *  
  *  This file is part of World Simulator.
  *  
  *  World Simulator is free software: you can redistribute it and/or modify
@@ -17,23 +17,18 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "basecommerce.h"
+#ifndef AGRICULTURE_H
+#define AGRICULTURE_H
 
-BaseCommerce::BaseCommerce(const QString &name, const QString &type) :
-    Land(name, type),
-    warehouse_(new Warehouse)
-{ }
+#include "LandParcel.h"
 
-BaseCommerce::~BaseCommerce() { }
+abstract class Agriculture : public LandParcel {
+public:
+    Agriculture(const QString &name, const QString &type);
 
-void BaseCommerce::restock(BaseIndustry *factory, const Goods &goods) {
-    factory->fetch(goods);
-}
+    virtual ~Agriculture();
 
-void BaseCommerce::sellTo(Person *consumer, const Goods &goods) {
-    consumer->store(goods);
-}
+    void update() override;
+};
 
-void BaseCommerce::update() {
-    changeBaseValue();
-}
+#endif // !AGRICULTURE_H

@@ -17,16 +17,15 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "warehousetablewidget.h"
+#include "WarehouseTableWidget.h"
 
-#include "Source/Managers/buildingmanager.h"
-#include "Source/Managers/uimanager.h"
+#include "Source/Managers/LandParcelManager.h"
 
-#include "widgethelper.h"
+#include "WidgetHelper.h"
 
-WarehouseTableWidget::WarehouseTableWidget(QWidget *parent, Warehouse *warehouse) :
-    QTableWidget(parent),
-    warehouse_(warehouse) {
+WarehouseTableWidget::WarehouseTableWidget(QWidget *parent, Warehouse *warehouse)
+    : QTableWidget(parent),
+      warehouse_(warehouse) {
     init();
 }
 
@@ -76,10 +75,10 @@ void WarehouseTableWidget::getGoods(int index) {
     goods_ = warehouse_->getById(index);
 }
 
-void WarehouseTableWidget::getDestAndSendPreroute(Land *building) {
+void WarehouseTableWidget::getDestAndSendPreroute(LandParcel *building) {
     selectTableWidget_->hide();
 
-    BaseIndustry *industry = dynamic_cast<BaseIndustry *>(building);
+    Industry *industry = dynamic_cast<Industry *>(building);
     emit sendPreroute(*goods_, industry);
     emit dataChanged();
 }

@@ -20,11 +20,9 @@
 #ifndef FARM_H
 #define FARM_H
 
-#include <QString>
+#include "Agriculture.h"
 
-#include "baseagriculture.h"
-
-class Farm : public BaseAgriculture {
+class Farm : public Agriculture {
 public:
     Farm(const QString &name = "Farm");
 

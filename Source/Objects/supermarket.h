@@ -20,11 +20,9 @@
 #ifndef SUPERMARKET_H
 #define SUPERMARKET_H
 
-#include <QString>
+#include "Commerce.h"
 
-#include "basecommerce.h"
-
-class Supermarket : public BaseCommerce {
+class Supermarket : public Commerce {
 public:
     Supermarket(const QString &name = "Supermarket");
 };

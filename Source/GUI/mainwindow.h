@@ -17,16 +17,16 @@
  *    along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef MAIN_WINDOW_H
+#define MAIN_WINDOW_H
 
 #include <QMainWindow>
 #include <QString>
 
-#include "Source/Objects/land.h"
-#include "Source/Objects/company.h"
+#include "Source/Objects/LandParcel.h"
+#include "Source/Objects/Company.h"
 
-class ICommmand;
+class ICommand;
 
 namespace Ui {
 class MainWindow;
@@ -40,14 +40,14 @@ public:
 
     void init();
 
-    void redirectData(Land *);
+    void redirectData(LandParcel *);
 
     void setDirty();
 
 signals:
     void dataChanged();
 
-    void sendSelectedBuilding(Land *);
+    void sendSelectedBuilding(LandParcel *);
 
 private slots:
     // Calls function update() of every variable objects.
@@ -76,4 +76,4 @@ private:
     Ui::MainWindow *ui;
 };
 
-#endif // MAINWINDOW_H
+#endif // !MAIN_WINDOW_H

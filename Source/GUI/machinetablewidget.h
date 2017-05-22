@@ -17,14 +17,14 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MACHINETABLEWIDGET_H
-#define MACHINETABLEWIDGET_H
+#ifndef MACHINE_TABLE_WIDGET_H
+#define MACHINE_TABLE_WIDGET_H
 
 #include <QTableWidget>
 
-#include "Source/Objects/land.h"
-#include "Source/Objects/baseindustry.h"
-#include "Source/Objects/machine.h"
+#include "Source/Objects/LandParcel.h"
+#include "Source/Objects/Industry.h"
+#include "Source/Objects/Machine.h"
 
 class MachineTableWidget : public QTableWidget {
     Q_OBJECT
@@ -36,7 +36,7 @@ public:
 
     void init();
 
-    void setIndustry(Land *industry);
+    void setIndustry(LandParcel *industry);
     
 public slots:
     void receiveShowDetailSignal(int);
@@ -47,7 +47,7 @@ signals:
     void sendSelectedMachine(Machine *);
 
 private:
-    BaseIndustry *industry_ = nullptr;
+    Industry *industry_ = nullptr;
 };
 
-#endif // MACHINETABLEWIDGET_H
+#endif // !MACHINE_TABLE_WIDGET_H

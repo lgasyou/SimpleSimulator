@@ -17,15 +17,16 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "helpdialog.h"
+#include "HelpDialog.h"
 
 #include <QStringList>
 
-#include "Source/Managers/industrychainmanager.h"
+#include "Source/Managers/IndustryChainManager.h"
 
 #include "ui_helpdialog.h"
 
-HelpDialog::HelpDialog(QDialog *parent) : QDialog(parent) {
+HelpDialog::HelpDialog(QDialog *parent) 
+    : QDialog(parent) {
     ui = new Ui::HelpDialog;
     ui->setupUi(this); 
     setWindowTitle(tr("Help"));

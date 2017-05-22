@@ -17,12 +17,12 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef COMPANYDETAILDIALOG_H
-#define COMPANYDETAILDIALOG_H
+#ifndef COMPANY_DETAIL_DIALOG_H
+#define COMPANY_DETAIL_DIALOG_H
 
 #include <QDialog>
 
-#include "Source/Objects/company.h"
+#include "Source/Objects/Company.h"
 
 namespace Ui {
 class CompanyDetailDialog;
@@ -48,4 +48,4 @@ private:
     Ui::CompanyDetailDialog *ui;
 };
 
-#endif // COMPANYDETAILDIALOG_H
+#endif // !COMPANY_DETAIL_DIALOG_H

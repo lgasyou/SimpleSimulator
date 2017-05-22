@@ -17,13 +17,11 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "timemanager.h"
+#include "TimeManager.h"
 
 TimeManager &TimeManager::instance() {
     static TimeManager gameTimer;
     return gameTimer;
 }
-
-void TimeManager::init() { }
 
 TimeManager::TimeManager() { }

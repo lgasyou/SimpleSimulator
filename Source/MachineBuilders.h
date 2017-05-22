@@ -21,12 +21,11 @@
 #define MACHINEBUILDER_H
 
 #include "Interface.h"
-#include "Source/Objects/machine.h"
+
+#include "Source/Objects/Machine.h"
 
 abstract class MachineBuilder : public Interface {
 public:
-    virtual ~MachineBuilder() = default;
-
     virtual void setMaximumProductivity() = 0;
 
     virtual void setProducts() = 0;

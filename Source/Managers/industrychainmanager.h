@@ -17,14 +17,12 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef INDUSTRYCHAINMANAGER_H
-#define INDUSTRYCHAINMANAGER_H
+#ifndef INDUSTRY_CHAIN_MANAGER_H
+#define INDUSTRY_CHAIN_MANAGER_H
 
 #include <vector>
-#include <QString>
 
-#include "Source/Objects/land.h"
-#include "Source/Objects/goods.h"
+#include "Source/Objects/Goods.h"
 
 #include "Source/graph.h"
 
@@ -53,4 +51,4 @@ private:
     Graph industryChain_;
 
 };
-#endif // !INDUSTRYCHAINMANAGER_H
+#endif // !INDUSTRY_CHAIN_MANAGER_H

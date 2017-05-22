@@ -17,13 +17,11 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BUILDINGFACTORY_H
-#define BUILDINGFACTORY_H
+#ifndef BUILDING_FACTORY_H
+#define BUILDING_FACTORY_H
 
-#include <QString>
-
-#include "Source/Objects/land.h"
-#include "Source/Managers/mapmanager.h"
+#include "Source/Objects/LandParcel.h"
+#include "Source/Managers/MapManager.h"
 
 struct LandInitialParameter {
     LandInitialParameter(StructureType type = UNUSED_LAND, const Vector2D &position = Vector2D(-1, -1), double basicValue = 0.0, double deltaValue = 0.0, LegalPerson *owner = nullptr, const QString &resource = "Unallocated")
@@ -49,7 +47,7 @@ public:
     BuildingFactory() = default;
 
     // Creates a new object use LandInitialParameter
-    Land *create(const LandInitialParameter &landParameter);
+    LandParcel *create(const LandInitialParameter &landParameter);
 
 private:
     // Creates an instance according to buildingType;
@@ -65,7 +63,7 @@ private:
     void setResource();
 
 private:
-    Land *building = nullptr;
+    LandParcel *building = nullptr;
 
     LandInitialParameter parameter;
 
@@ -79,4 +77,4 @@ inline void BuildingFactory::allocatePosition() const {
     building->setPosition(position);
 }
 
-#endif // !BUILDINGFACTORY_H
+#endif // !BUILDING_FACTORY_H

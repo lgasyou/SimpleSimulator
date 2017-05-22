@@ -21,20 +21,17 @@
 #define GRAPH_H
 
 #include <vector>
-#include <QString>
 
-#include "Source/Objects/goods.h"
+#include "Source/Objects/Goods.h"
 
 /* Arc of Graph */
 struct Arc {
     double volume;
-    
+
     int headVertex;
-    
     int tailVertex;
     
     Arc *headArc;
-    
     Arc *tailArc;
 };
 
@@ -44,7 +41,6 @@ struct Vertex {
     QString item;
     
     Arc *firstIn;
-    
     Arc *firstOut;
 };
 

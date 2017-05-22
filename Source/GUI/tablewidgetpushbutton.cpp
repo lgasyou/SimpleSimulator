@@ -17,12 +17,12 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "tablewidgetpushbutton.h"
+#include "TableWidgetPushButton.h"
 
-TableWidgetPushButton::TableWidgetPushButton(QWidget *parent, std::shared_ptr<ICommmand> command) :
+TableWidgetPushButton::TableWidgetPushButton(QWidget *parent, std::shared_ptr<ICommand> command) :
     CommandPushButton(parent, command) { }
 
-TableWidgetPushButton::TableWidgetPushButton(const QString &text, std::shared_ptr<ICommmand> command, QWidget *parent) :
+TableWidgetPushButton::TableWidgetPushButton(const QString &text, std::shared_ptr<ICommand> command, QWidget *parent) :
     CommandPushButton(text, command, parent) { }
 
 void TableWidgetPushButton::repeater() {

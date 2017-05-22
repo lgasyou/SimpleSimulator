@@ -1,6 +1,6 @@
 /*
  *  Copyright 2017 Li Zeqing
- *  
+ *
  *  This file is part of World Simulator.
  *  
  *  World Simulator is free software: you can redistribute it and/or modify
@@ -17,21 +17,30 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BASEAGRICULTURE_H
-#define BASEAGRICULTURE_H
+#ifndef COMMERCE_H
+#define COMMERCE_H
 
-#include <QString>
+#include "LandParcel.h"
+#include "Industry.h"
+#include "Goods.h"
+#include "Person.h"
+#include "Warehouse.h"
 
-#include "land.h"
-
-//  This class should not be instantiated.
-class BaseAgriculture : public Land {
+abstract class Commerce : public LandParcel {
 public:
-    BaseAgriculture(const QString &name, const QString &type);
+    Commerce(const QString &name, const QString &type);
 
-    virtual ~BaseAgriculture();
+    virtual ~Commerce();
 
-    virtual void update() override;
+    void restock(Industry *factory, const Goods &goods);
+
+    void sellTo(Person *consumer, const Goods &goods);
+
+    // update data after each turn
+    void update() override;
+
+private:
+    Warehouse *warehouse_ = nullptr;
 };
 
-#endif // !BASEAGRICULTURE_H
+#endif // !COMMERCE_H

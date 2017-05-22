@@ -17,8 +17,8 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mine.h"
+#include "Mine.h"
 
-Mine::Mine(const QString &name) :
-    BaseIndustry(name, "Mine")
-{ }
+Mine::Mine(const QString &name)
+    : Industry(name, "Mine") {
+}

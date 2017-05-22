@@ -17,17 +17,16 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GARAGETABLEWIDGET_H
-#define GARAGETABLEWIDGET_H
+#ifndef GARAGE_TABLE_WIDGET_H
+#define GARAGE_TABLE_WIDGET_H
 
 #include <QTableWidget>
 
-#include "Source/Objects/land.h"
-#include "Source/Objects/garage.h"
-#include "Source/Objects/truck.h"
-#include "Source/Objects/route.h"
+#include "Source/Objects/LandParcel.h"
+#include "Source/Objects/Garage.h"
+#include "Source/Objects/Route.h"
 
-#include "tablewidgetpushbutton.h"
+#include "TableWidgetPushButton.h"
 
 class GarageTableWidget : public QTableWidget {
     Q_OBJECT
@@ -41,7 +40,7 @@ public:
 
     void updateEachRow(int index, Truck *);
 
-    void setGarage(Land *garage);
+    void setGarage(LandParcel *garage);
 
 public slots:
     void updateDisplay();
@@ -61,4 +60,4 @@ private:
     int selectedTruckId_ = -1;
 };
 
-#endif // !GARAGETABLEWIDGET_H
+#endif // !GARAGE_TABLE_WIDGET_H

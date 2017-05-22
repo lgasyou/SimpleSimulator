@@ -17,8 +17,8 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LEGALPERSON_H
-#define LEGALPERSON_H
+#ifndef LEGAL_PERSON_H
+#define LEGAL_PERSON_H
 
 #include <QString>
 
@@ -61,4 +61,4 @@ private:
     double totalValue_ = 1000.0;
 };
 
-#endif // !LEGALPERSON_H
+#endif // !LEGAL_PERSON_H

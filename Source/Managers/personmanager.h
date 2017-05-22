@@ -17,18 +17,16 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PERSONMANAGER_H
-#define PERSONMANAGER_H
+#ifndef PERSON_MANAGER_H
+#define PERSON_MANAGER_H
 
 #include <list>
 
-#include "Source/Objects/person.h"
+#include "Source/Objects/Person.h"
 
 class PersonManager {
 public:
     static PersonManager &instance();
-
-    void init();
 
     void add(Person *person);
 
@@ -45,4 +43,4 @@ private:
     std::list<Person *> persons_;
 };
 
-#endif // !PERSONMANAGER_H
+#endif // !PERSON_MANAGER_H

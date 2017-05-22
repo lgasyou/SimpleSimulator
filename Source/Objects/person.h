@@ -20,11 +20,11 @@
 #ifndef PERSON_H
 #define PERSON_H
 
-#include "legalperson.h"
-#include "goodscontainer.h"
+#include "LegalPerson.h"
+#include "GoodsContainer.h"
 
-class Land;
-class BaseResidence;
+class LandParcel;
+class Residence;
 
 class Person : public LegalPerson {
 public:
@@ -39,16 +39,16 @@ public:
     void fetch(const Goods &goods);
 
 public:
-    const BaseResidence *home() const { return home_; }
+    const Residence *home() const { return home_; }
 
-    const Land *workplace() const { return workplace_; }
+    const LandParcel *workplace() const { return workplace_; }
 
     const GoodsContainer &properties() const { return properties_; }
 
 private:
-    BaseResidence *home_ = nullptr;
+    Residence *home_ = nullptr;
 
-    Land *workplace_ = nullptr;
+    LandParcel *workplace_ = nullptr;
 
     GoodsContainer properties_;
 

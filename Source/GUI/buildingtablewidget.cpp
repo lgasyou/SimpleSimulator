@@ -17,22 +17,22 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "buildingtablewidget.h"
+#include "BuildingTableWidget.h"
 
 #include <QFile>
 #include <QApplication>
 
-#include "Source/Objects/company.h"
+#include "Source/Objects/Company.h"
 
-#include "Source/Managers/buildingmanager.h"
-#include "Source/Managers/companymanager.h"
-#include "Source/Objects/government.h"
+#include "Source/Managers/LandParcelManager.h"
+#include "Source/Managers/CompanyManager.h"
+#include "Source/Objects/Government.h"
 
-#include "commandpushbutton.h"
-#include "widgethelper.h"
+#include "CommandPushButton.h"
+#include "WidgetHelper.h"
 
-BuildingTableWidget::BuildingTableWidget(QWidget *parent) :
-    QTableWidget(parent) {
+BuildingTableWidget::BuildingTableWidget(QWidget *parent)
+    : QTableWidget(parent) {
     init();
 }
 
@@ -49,7 +49,7 @@ void BuildingTableWidget::init() {
 }
 
 void BuildingTableWidget::updateDisplay() {
-    auto &buildingManager = BuildingManager::instance();
+    auto &buildingManager = LandParcelManager::instance();
     int buildingNumber = (int)buildingManager.buildingNumber();
     this->setRowCount(buildingNumber);
 
@@ -62,7 +62,7 @@ void BuildingTableWidget::updateDisplay() {
     }
 }
 
-void BuildingTableWidget::displayBasicInfo(int index, Land *building) {
+void BuildingTableWidget::displayBasicInfo(int index, LandParcel *building) {
     const QString &name = building->name();
     const QString &deltaValue = " " + WidgetHelper::toString(building->deltaValue());
     const QString &value = "$" + WidgetHelper::toString(building->value()) + deltaValue;
@@ -74,16 +74,18 @@ void BuildingTableWidget::displayBasicInfo(int index, Land *building) {
     setItem(index, 3, new QTableWidgetItem(owner));
 }
 
-void BuildingTableWidget::displayAccordingToVisitor(int index, Land *building) {
+void BuildingTableWidget::displayAccordingToVisitor(int index, LandParcel *building) {
     Company *playerCompany = CompanyManager::instance().playerCompany();
 
     CommandPushButton *optionBtn =
         (building->owner() != playerCompany) ?
         new CommandPushButton(tr("Buy"), std::make_shared<TransactionCommand>(
+            this,
             CompanyManager::instance().playerCompany(),
             building->owner(), 
             building)) :
         new CommandPushButton(tr("Sell"), std::make_shared<TransactionCommand>(
+            this,
             &Government::instance(),
             building->owner(), 
             building));

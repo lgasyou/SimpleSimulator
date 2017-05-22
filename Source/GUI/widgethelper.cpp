@@ -17,7 +17,7 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "widgethelper.h"
+#include "WidgetHelper.h"
 
 #include <QWidget>
 
@@ -31,6 +31,6 @@ void WidgetHelper::showUp(QWidget *widget) {
     widget->activateWindow();
 }
 
-void WidgetHelper::placeCommand(std::shared_ptr<ICommmand> command) {
+void WidgetHelper::placeCommand(std::shared_ptr<ICommand> command) {
     command->execute();
 }

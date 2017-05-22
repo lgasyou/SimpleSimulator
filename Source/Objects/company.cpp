@@ -17,19 +17,21 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "company.h"
+#include "Company.h"
 
-#include "government.h"
+#include "LandParcel.h"
+#include "Government.h"
 
-#include "Source/Managers/buildingmanager.h"
+#include "Source/Managers/LandParcelManager.h"
 
-Company::Company(const QString &name) :
-    LegalPerson(name)
-{ }
+Company::Company(const QString &name)
+    : LegalPerson(name) {
+    
+}
 
 Company::~Company() { }
 
-bool Company::phrchase(Land *building) {
+bool Company::phrchase(LandParcel *building) {
     double buildingValue = building->value();
     if (buildingValue > cash())
         return false;
@@ -41,7 +43,7 @@ bool Company::phrchase(Land *building) {
     return true;
 }
 
-bool Company::sell(Land *building) {
+bool Company::sell(LandParcel *building) {
     Government *buyer = &Government::instance();
     buyer->setCash(buyer->cash() - building->value());
     setCash(cash() + building->value());
@@ -50,6 +52,6 @@ bool Company::sell(Land *building) {
 }
 
 void Company::update() {
-    double deltaValue = BuildingManager::instance().deltaValueOfCompanyProperties(this);
+    double deltaValue = LandParcelManager::instance().deltaValueOfCompanyProperties(this);
     setTotalValue(totalValue() + deltaValue);
 }

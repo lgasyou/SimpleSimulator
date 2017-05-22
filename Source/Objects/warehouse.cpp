@@ -17,14 +17,13 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "warehouse.h"
+#include "Warehouse.h"
 
-#include "goodscontainer.h"
+#include "GoodsContainer.h"
 
-#include "Source/gameconstants.h"
-
-Warehouse::Warehouse() :
-    GoodsContainer()
-{ }
+Warehouse::Warehouse()
+    : GoodsContainer() {
+    
+}
 
 Warehouse::~Warehouse() { }

@@ -17,14 +17,14 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "selecttablewidget.h"
+#include "SelectTableWidget.h"
 
-#include "Source/Objects/land.h"
+#include "Source/Objects/LandParcel.h"
 
-#include "Source/Managers/buildingmanager.h"
+#include "Source/Managers/LandParcelManager.h"
 
-SelectTableWidget::SelectTableWidget(QWidget *parent) :
-    QTableWidget(parent) {    
+SelectTableWidget::SelectTableWidget(QWidget *parent)
+    : QTableWidget(parent) {    
     init();
 }
 
@@ -38,7 +38,7 @@ void SelectTableWidget::init() {
 }
 
 void SelectTableWidget::updateDisplay() {
-    const auto &buildingManager = BuildingManager::instance();
+    const auto &buildingManager = LandParcelManager::instance();
     auto &buildings = buildingManager.buildings();
     setRowCount((int)buildingManager.buildingNumber());
     clearContents();
@@ -56,9 +56,9 @@ void SelectTableWidget::updateDisplay() {
     setRowCount(indexOfChosen);
 }
 
-void SelectTableWidget::updateEachLine(int indexInWidget, int indexInManager, const Land *building) {
-    const QString &name = building->name();
-    const QString &type = building->type();
+void SelectTableWidget::updateEachLine(int indexInWidget, int indexInManager, const LandParcel *building) {
+    auto &name = building->name();
+    auto &type = building->type();
     setItem(indexInWidget, 0, new QTableWidgetItem(name));
     setItem(indexInWidget, 1, new QTableWidgetItem(type));
 
@@ -82,6 +82,6 @@ void SelectTableWidget::setFilter(int filter) {
 }
 
 void SelectTableWidget::getDestAndSendBuilding(int index) {
-    Land *building = BuildingManager::instance().getById(index);
+    LandParcel *building = LandParcelManager::instance().getById(index);
     emit sendBuilding(building);
 }

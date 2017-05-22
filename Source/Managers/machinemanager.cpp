@@ -17,7 +17,7 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "machinemanager.h"
+#include "MachineManager.h"
 
 MachineManager::MachineManager() { }
 

@@ -17,12 +17,12 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef COMPANYMANAGER_H
-#define COMPANYMANAGER_H
+#ifndef COMPANY_MANAGER_H
+#define COMPANY_MANAGER_H
 
 #include <list>
 
-#include "Source/Objects/company.h"
+#include "Source/Objects/Company.h"
 
 class CompanyManager {
 public:
@@ -35,7 +35,7 @@ public:
 
     Company *playerCompany() const { return playerCompany_; }
 
-    const std::list<Company *> &AICompanies() const { return AICompanies_; }
+    const std::list<Company *> &AICompanies() const { return aiCompanies_; }
 
 private:
     // Hides constructor and destructor.
@@ -47,7 +47,7 @@ private:
 private:
     Company *playerCompany_ = nullptr;
 
-    std::list<Company *> AICompanies_;
+    std::list<Company *> aiCompanies_;
 };
 
-#endif // !COMPANYMANAGER_H
+#endif // !COMPANY_MANAGER_H

@@ -17,24 +17,22 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BASEINDUSTRY_H
-#define BASEINDUSTRY_H
+#ifndef INDUSTRY_H
+#define INDUSTRY_H
 
 #include <vector>
-#include <QString>
 
-#include "land.h"
-#include "warehouse.h"
-#include "garage.h"
-#include "goods.h"
-#include "machine.h"
+#include "LandParcel.h"
+#include "Warehouse.h"
+#include "Garage.h"
+#include "Goods.h"
+#include "Machine.h"
 
-// This class should not be instantiated.
-class BaseIndustry : public Land {
+abstract class Industry : public LandParcel {
 public:
-    BaseIndustry(const QString &name, const QString &type);
+    Industry(const QString &name, const QString &type);
 
-    virtual ~BaseIndustry();
+    virtual ~Industry();
 
     // Adds a new Machine and update products and materials of this building.
     void addMachine(Machine *);
@@ -74,32 +72,32 @@ private:
     std::vector<GoodsLabel> materials_;
 };
 
-inline void BaseIndustry::addMachine(Machine *machine) {
+inline void Industry::addMachine(Machine *machine) {
     machines_.push_back(machine);
     setMaterialsAccordingToMachine(machine);
     setProductsAccordingToMachine(machine);
 }
 
-inline void BaseIndustry::removeMachine(Machine *machine) {
+inline void Industry::removeMachine(Machine *machine) {
     auto iter = std::find(machines_.begin(), machines_.end(), machine);
     machines_.erase(iter);
 }
 
-inline void BaseIndustry::update() {
+inline void Industry::update() {
     changeBaseValue();
     manufacture();
 }
 
-inline void BaseIndustry::manufacture() {
+inline void Industry::manufacture() {
     std::for_each(machines_.begin(), machines_.end(), [](Machine *m) { m->produce(); });
 }
 
-inline double BaseIndustry::store(const Goods &goods) {
+inline double Industry::store(const Goods &goods) {
     return warehouse_->store(goods);
 }
 
-inline double BaseIndustry::fetch(const Goods &goods) {
+inline double Industry::fetch(const Goods &goods) {
     return warehouse_->fetch(goods);
 }
 
-#endif // BASEINDUSTRY_H
+#endif // !INDUSTRY_H

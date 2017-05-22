@@ -17,9 +17,9 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mapmanager.h"
+#include "MapManager.h"
 
-#include "Source/random.h"
+#include "Source/Random.h"
 
 using namespace gameconstants;
 

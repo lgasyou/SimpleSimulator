@@ -20,11 +20,9 @@
 #ifndef MINE_H
 #define MINE_H
 
-#include <QString>
+#include "Industry.h"
 
-#include "baseindustry.h"
-
-class Mine : public BaseIndustry {
+class Mine : public Industry {
 public:
     Mine(const QString &name = "Mine");
 

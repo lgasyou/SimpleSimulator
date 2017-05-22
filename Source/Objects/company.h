@@ -20,8 +20,9 @@
 #ifndef COMPANY_H
 #define COMPANY_H
 
-#include "land.h"
-#include "legalperson.h"
+#include "LegalPerson.h"
+
+class LandParcel;
 
 class Company : public LegalPerson {
 public:
@@ -29,16 +30,17 @@ public:
 
     ~Company();
 
+    // TODO: Remove those old functions.
     // Buys building if company's money is enough:
     // Changes building's owner as this company.
     // Deducts company's cash.
-    bool phrchase(Land *building);
+    bool phrchase(LandParcel *building);
 
     // Changes building's owner as government's pointer.
     // Adds company's cash.
-    bool sell(Land *building);
+    bool sell(LandParcel *building);
 
-    virtual void update() override;
+    void update() override;
 
 };
 

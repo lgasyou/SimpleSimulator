@@ -22,14 +22,13 @@
 
 #include <vector>
 #include <list>
-#include <QString>
 
-#include "basetransportation.h"
-#include "route.h"
+#include "Transportation.h"
+#include "Route.h"
 
 class Truck;
 
-class Garage : public BaseTransportation {
+class Garage : public Transportation {
 public:
     Garage(const QString &name = "Garage");
 
@@ -47,7 +46,7 @@ public:
 
     void stopVihicle(Truck *);
 
-    virtual void update() override;
+    void update() override;
 
 public:
     const std::vector<Truck *> &vihicleList() const { return vihicleList_; }

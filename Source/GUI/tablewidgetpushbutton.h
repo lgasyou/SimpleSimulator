@@ -20,17 +20,17 @@
 #ifndef TABLEWIDGETPUSHBUTTON_H
 #define TABLEWIDGETPUSHBUTTON_H
 
-#include "BuildingDetailDialog.h"
-#include "commandpushbutton.h"
+#include "LandParcelDetailDlg.h"
+#include "CommandPushButton.h"
 
 // This PushButton is specialized to send index of this button in table widget while clicked.
 class TableWidgetPushButton : public CommandPushButton {
     Q_OBJECT
 
 public:
-    TableWidgetPushButton(QWidget *parent = nullptr, std::shared_ptr<ICommmand> command = nullptr);
+    TableWidgetPushButton(QWidget *parent = nullptr, std::shared_ptr<ICommand> command = nullptr);
 
-    TableWidgetPushButton(const QString &text, std::shared_ptr<ICommmand> command = nullptr, QWidget *parent = nullptr);
+    TableWidgetPushButton(const QString &text, std::shared_ptr<ICommand> command = nullptr, QWidget *parent = nullptr);
 
     void setIndex(int index) { this->index = index; }
 
@@ -38,7 +38,7 @@ public slots:
     void repeater() override;
 
 signals:
-    void sendData(int index, std::shared_ptr<ICommmand> command);
+    void sendData(int index, std::shared_ptr<ICommand> command);
 
 private:
     int index = -1;

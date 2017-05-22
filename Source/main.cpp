@@ -20,23 +20,20 @@
  */
 
 #include <QApplication>
-#include "GUI/mainwindow.h"
-#include "Managers/timemanager.h"
-#include "Managers/pricemanager.h"
-#include "Managers/industrychainmanager.h"
-#include "Managers/companymanager.h"
-#include "Managers/buildingmanager.h"
-#include "Managers/mapmanager.h"
-#include "Managers/uimanager.h"
+#include "GUI/MainWindow.h"
+#include "Managers/PriceManager.h"
+#include "Managers/IndustryChainManager.h"
+#include "Managers/CompanyManager.h"
+#include "Managers/LandParcelManager.h"
+#include "Managers/MapManager.h"
 
 int main(int argc, char *argv[]) {
     QApplication application(argc, argv);
     MapManager::instance().init();
-    BuildingManager::instance().init();
+    LandParcelManager::instance().init();
     CompanyManager::instance().init();
     IndustryChainManager::instance().init();
     PriceManager::instance().init();
-    TimeManager::instance().init();
     MainWindow::instance().init();
     MainWindow::instance().show();
     return application.exec();

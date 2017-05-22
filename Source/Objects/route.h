@@ -20,16 +20,16 @@
 #ifndef ROUTE_H
 #define ROUTE_H
 
-#include "goods.h"
+#include "Goods.h"
 
-class BaseIndustry;
+class Industry;
 
 struct Route {
     Goods goods;
 
-    BaseIndustry *dest = nullptr;
+    Industry *dest = nullptr;
 
-    BaseIndustry *orig = nullptr;
+    Industry *orig = nullptr;
 
     bool repeated = false;
 };

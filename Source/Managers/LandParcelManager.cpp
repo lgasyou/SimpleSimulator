@@ -17,28 +17,28 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "buildingmanager.h"
+#include "LandParcelManager.h"
 
 #include <map>
 
-#include "Source/buildingfactory.h"
+#include "Source/BuildingFactory.h"
 
 using namespace gameconstants;
 
-BuildingManager::BuildingManager() { }
+LandParcelManager::LandParcelManager() { }
 
-BuildingManager::~BuildingManager() {
+LandParcelManager::~LandParcelManager() {
     for (auto building : buildings()) {
         delete building;
     }
 }
 
-BuildingManager &BuildingManager::instance() {
-    static BuildingManager buildingManager;
+LandParcelManager &LandParcelManager::instance() {
+    static LandParcelManager buildingManager;
     return buildingManager;
 }
 
-void BuildingManager::init() {
+void LandParcelManager::init() {
     add(MINE);
     add(MINE);
     add(FACTORY);
@@ -58,7 +58,7 @@ void BuildingManager::init() {
     }
 }
 
-StructureType BuildingManager::stringToEnum(const QString &type) {
+StructureType LandParcelManager::stringToEnum(const QString &type) {
     static std::map<QString, StructureType> stringToEnumMap{
         {"Bank", BANK },
         {"Factory", FACTORY },
@@ -71,9 +71,9 @@ StructureType BuildingManager::stringToEnum(const QString &type) {
     return stringToEnumMap[type];
 }
 
-void BuildingManager::add(StructureType buildingType) {
+void LandParcelManager::add(StructureType buildingType) {
     BuildingFactory factory;
-    Land *newBuilding = factory.create(LandInitialParameter{ buildingType });
+    LandParcel *newBuilding = factory.create(LandInitialParameter{ buildingType });
     
     int x = newBuilding->position().x();
     int y = newBuilding->position().y();
@@ -81,12 +81,12 @@ void BuildingManager::add(StructureType buildingType) {
     dataChanged_ = true;
 }
 
-const std::vector<Land *> &BuildingManager::buildings() const {
-    static std::vector<Land *> buildingsBuffer;
+const std::vector<LandParcel *> &LandParcelManager::buildings() const {
+    static std::vector<LandParcel *> buildingsBuffer;
     if (dataChanged_) {
         buildingsBuffer.clear();
         for (const auto &row : buildings_) {
-            for (Land *building : row) {
+            for (LandParcel *building : row) {
                 if (building->type() != "Unused Land")
                     buildingsBuffer.push_back(building);
             }
@@ -96,7 +96,7 @@ const std::vector<Land *> &BuildingManager::buildings() const {
     return buildingsBuffer;
 }
 
-double BuildingManager::deltaValueOfCompanyProperties(Company *company) const {
+double LandParcelManager::deltaValueOfCompanyProperties(Company *company) const {
     double totalDeltaValue = 0.0;
     for (const auto building : buildings()) {
         if (building->owner() == company)
@@ -105,17 +105,17 @@ double BuildingManager::deltaValueOfCompanyProperties(Company *company) const {
     return totalDeltaValue;
 }
 
-std::size_t BuildingManager::buildingNumber() const {
+std::size_t LandParcelManager::buildingNumber() const {
     return buildings().size();
 }
 
-Land *BuildingManager::getById(int id) const {
+LandParcel *LandParcelManager::getById(int id) const {
     return buildings()[id];
 }
 
-Land *BuildingManager::changeType(Land *building, StructureType type) {
+LandParcel *LandParcelManager::changeType(LandParcel *building, StructureType type) {
     BuildingFactory buildingFactory;
-    Land *buildingCopy = buildingFactory.create(LandInitialParameter{
+    auto buildingCopy = buildingFactory.create(LandInitialParameter{
         type,
         building->position(),
         building->value(),
@@ -132,6 +132,6 @@ Land *BuildingManager::changeType(Land *building, StructureType type) {
     return buildings_[x][y] = buildingCopy;
 }
 
-void BuildingManager::update() {
-    std::for_each(buildings().begin(), buildings().end(), [](Land *b) { b->update(); });
+void LandParcelManager::update() {
+    std::for_each(buildings().begin(), buildings().end(), [](LandParcel *b) { b->update(); });
 }

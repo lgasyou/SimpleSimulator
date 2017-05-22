@@ -17,8 +17,8 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "factory.h"
+#include "Factory.h"
 
-Factory::Factory(const QString &name):
-    BaseIndustry(name, "Factory")
+Factory::Factory(const QString &name)
+    : Industry(name, "Factory")
 { }

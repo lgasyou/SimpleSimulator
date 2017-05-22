@@ -17,4 +17,4 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gameconstants.h"
+#include "GameConstants.h"

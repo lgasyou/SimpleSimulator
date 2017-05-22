@@ -17,21 +17,11 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BASEFINANCE_H
-#define BASEFINANCE_H
+#include "Transportation.h"
 
-#include <QString>
+Transportation::Transportation(const QString &name, const QString &type)
+    : LandParcel(name, type) {
+    
+}
 
-#include "land.h"
-
-// This class should not be instantiated.
-class BaseFinance : public Land {
-public:
-    BaseFinance(const QString &name, const QString &type);
-
-    virtual ~BaseFinance();
-
-    virtual void update() override;
-};
-
-#endif // !BASEFINANCE_H
+Transportation::~Transportation() { }

@@ -23,10 +23,10 @@
 #include <QDialog>
 #include <QString>
 
-#include "Source/Objects/land.h"
-#include "Source/Objects/route.h"
+#include "Source/Objects/LandParcel.h"
+#include "Source/Objects/Route.h"
 
-#include "selecttablewidget.h"
+#include "SelectTableWidget.h"
 
 namespace Ui {
 class SetRouteDialog;
@@ -51,9 +51,9 @@ private slots:
 
     void getGoodsVolume(double);
 
-    void getOrig(Land *);
+    void getOrig(LandParcel *);
     
-    void getDest(Land *);
+    void getDest(LandParcel *);
 
     // Summarizes all informations and sends Route to Garage.
     void finishSetting();

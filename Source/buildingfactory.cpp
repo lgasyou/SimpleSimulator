@@ -17,21 +17,21 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "buildingfactory.h"
+#include "BuildingFactory.h"
 
-#include "Source/Objects/unusedland.h"  
-#include "Source/Objects/factory.h"
-#include "Source/Objects/mine.h"    
-#include "Source/Objects/supermarket.h"    
-#include "Source/Objects/bank.h"
-#include "Source/Objects/villa.h"
-#include "Source/Objects/farm.h"
-#include "Source/Objects/garage.h"
-#include "Source/Objects/government.h"
+#include "Source/Objects/UnusedLand.h"  
+#include "Source/Objects/Factory.h"
+#include "Source/Objects/Mine.h"    
+#include "Source/Objects/Supermarket.h"    
+#include "Source/Objects/Bank.h"
+#include "Source/Objects/Villa.h"
+#include "Source/Objects/Farm.h"
+#include "Source/Objects/Garage.h"
+#include "Source/Objects/Government.h"
 
-#include "Source/random.h"
+#include "Source/Random.h"
 
-Land *BuildingFactory::create(const LandInitialParameter &landParameter) {
+LandParcel *BuildingFactory::create(const LandInitialParameter &landParameter) {
     parameter = landParameter;
     createInstance();
 

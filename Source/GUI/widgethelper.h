@@ -17,12 +17,12 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef WIDGETHELPER_H
-#define WIDGETHELPER_H
+#ifndef WIDGET_HELPER_H
+#define WIDGET_HELPER_H
 
 #include <QString>
 
-#include "Source/Commmand.h"
+#include "Source/Commmands.h"
 #include <memory>
 
 class QWidget;
@@ -34,8 +34,8 @@ public:
 
     static void showUp(QWidget *widget);
 
-    static void placeCommand(std::shared_ptr<ICommmand> command);
+    static void placeCommand(std::shared_ptr<ICommand> command);
 
 };
 
-#endif // !WIDGETHELPER_H
+#endif // !WIDGET_HELPER_H

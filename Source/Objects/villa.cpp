@@ -17,10 +17,11 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "villa.h"
+#include "Villa.h"
 
-Villa::Villa(const QString &name) :
-    BaseResidence(name, "Villa")
-{ }
+Villa::Villa(const QString &name)
+    : Residence(name, "Villa") {
+    
+}
 
 Villa::~Villa() { }

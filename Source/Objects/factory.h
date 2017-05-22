@@ -20,11 +20,9 @@
 #ifndef FACTORY_H
 #define FACTORY_H
 
-#include <QString>
+#include "Industry.h"
 
-#include "baseindustry.h"
-
-class Factory : public BaseIndustry {
+class Factory : public Industry {
 public:
     Factory(const QString &name = "Factory");
 };

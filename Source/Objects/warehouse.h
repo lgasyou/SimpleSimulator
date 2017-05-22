@@ -20,7 +20,7 @@
 #ifndef WAREHOUSE_H
 #define WAREHOUSE_H
 
-#include "goodscontainer.h"
+#include "GoodsContainer.h"
 
 class Warehouse : public GoodsContainer {
 public:

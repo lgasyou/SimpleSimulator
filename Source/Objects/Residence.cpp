@@ -17,12 +17,24 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "basefinance.h"
+#include "Residence.h"
 
-BaseFinance::BaseFinance(const QString &name, const QString &type) :
-    Land(name, type)
-{ }
+Residence::Residence(const QString &name, const QString &type)
+    : LandParcel(name, type) {
+    
+}
 
-BaseFinance::~BaseFinance() { }
+Residence::~Residence() { }
 
-void BaseFinance::update() { }
+void Residence::update() {
+    changeBaseValue();
+}
+
+void Residence::checkin(Person *resident) {
+    residents_.push_back(resident);
+}
+
+void Residence::checkout(Person *resident) {
+    auto iter = std::find(residents_.begin(), residents_.end(), resident);
+    residents_.erase(iter);
+}

@@ -20,10 +20,9 @@
 #ifndef TRUCK_H
 #define TRUCK_H
 
-#include "vihicle.h"
-#include "route.h"
-#include "goodscontainer.h"
-#include "baseindustry.h"
+#include "Vihicle.h"
+#include "Route.h"
+#include "GoodsContainer.h"
 
 class Truck : public Vihicle {
 public:
@@ -54,7 +53,7 @@ public:
     bool isWorking() const;
 
     void setRoute(Route *route);
-    Route *const route() const { return route_; }
+    Route *route() const { return route_; }
 
     bool loaded() const { return loaded_; }
 

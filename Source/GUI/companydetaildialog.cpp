@@ -17,16 +17,16 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "BuildingDetailDialog.h"
+#include "LandParcelDetailDlg.h"
 
 #include "ui_companydetaildialog.h"
-#include "widgethelper.h"
-#include "companydetaildialog.h"
+#include "WidgetHelper.h"
+#include "CompanyDetailDialog.h"
 
-CompanyDetailDialog::CompanyDetailDialog(QWidget *parent) :
-    QDialog(parent),
-    company_(nullptr),
-    ui(new Ui::CompanyDetailDialog) {
+CompanyDetailDialog::CompanyDetailDialog(QWidget *parent)
+    : QDialog(parent),
+      company_(nullptr),
+      ui(new Ui::CompanyDetailDialog) {
     ui->setupUi(this);
 }
 

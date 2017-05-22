@@ -1,6 +1,6 @@
 /*
  *  Copyright 2017 Li Zeqing
- *  
+ *
  *  This file is part of World Simulator.
  *  
  *  World Simulator is free software: you can redistribute it and/or modify
@@ -17,14 +17,4 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "baseagriculture.h"
-
-BaseAgriculture::BaseAgriculture(const QString &name, const QString &type) :
-    Land(name, type)
-{ }
-
-BaseAgriculture::~BaseAgriculture() { }
-
-void BaseAgriculture::update() {
-    
-}
+#include "UIManager.h"

@@ -17,8 +17,8 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UIMANAGER_H
-#define UIMANAGER_H
+#ifndef UI_MANAGER_H
+#define UI_MANAGER_H
 
 template<typename Widget>
 class UIManager {
@@ -43,7 +43,7 @@ UIManager<W>::~UIManager() {
 
 template<typename Widget>
 Widget *UIManager<Widget>::get() {
-    auto widget = instance().widget_;
+    auto &widget = instance().widget_;
     if (widget == nullptr)
         widget = new Widget;
     return widget;
@@ -55,4 +55,4 @@ UIManager<W> &UIManager<W>::instance() {
     return uiManager;
 }
 
-#endif // !UIMANAGER_H
+#endif // !UI_MANAGER_H

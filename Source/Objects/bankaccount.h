@@ -17,10 +17,10 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BANKCLIENT_H
-#define BANKCLIENT_H
+#ifndef BANK_ACCOUNT_H
+#define BANK_ACCOUNT_H
 
-#include "legalperson.h"
+#include "LegalPerson.h"
 
 class Bank;
 
@@ -54,4 +54,4 @@ private:
     LegalPerson *client_ = nullptr;
 };
 
-#endif // !BANKCLIENT_H
+#endif // !BANK_ACCOUNT_H

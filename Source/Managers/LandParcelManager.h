@@ -17,34 +17,34 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BUILDINGMANAGER_H
-#define BUILDINGMANAGER_H
+#ifndef LAND_PARCEL_MANAGER_H
+#define LAND_PARCEL_MANAGER_H
 
 #include <array>
 #include <vector>
 
-#include "Source/Objects/land.h"
-#include "Source/Objects/company.h"
+#include "Source/Objects/LandParcel.h"
+#include "Source/Objects/Company.h"
 
-#include "Source/gameconstants.h"
+#include "Source/GameConstants.h"
 
-// Owns and manages the pointers of buildings.
-// Updates the data of buildings.
-class BuildingManager {
+// Owns and manages the pointers of LandParcel.
+// Updates the data of LandParcel.
+class LandParcelManager {
 public:
-    typedef std::array<std::array<Land *, gameconstants::mapWeight>, gameconstants::mapHeight> BuildingsArray;
+    typedef std::array<std::array<LandParcel *, gameconstants::mapWeight>, gameconstants::mapHeight> ParcelArray;
 
     // Converts type of building from QString to enum.
     static StructureType stringToEnum(const QString &type);
 
     // Gets single instance.
-    static BuildingManager &instance();
+    static LandParcelManager &instance();
 
     void init();
 
     void add(StructureType);
 
-    const std::vector<Land *> &buildings() const;
+    const std::vector<LandParcel *> &buildings() const;
 
     // In order to get the balance of Company.
     double deltaValueOfCompanyProperties(Company *) const;
@@ -53,26 +53,26 @@ public:
     std::size_t buildingNumber() const;
 
     // The range of id is [0, buildingNumber() - 1).
-    Land *getById(int id) const;
+    LandParcel *getById(int id) const;
 
-    Land *getByPos(int x, int y) const { return buildings_[x][y]; }
+    LandParcel *getByPos(int x, int y) const { return buildings_[x][y]; }
 
     // Gets building's pointer and type.
     // Returns a pointer which is arg "type" asked.
     // If arg "type" isn't a standard type, returns "Unused Land".
-    Land *changeType(Land *, StructureType type);
+    LandParcel *changeType(LandParcel *, StructureType type);
 
     void update();
 
 private:
     // Hides constructor and destructor.
-    BuildingManager();
+    LandParcelManager();
 
     // Deletes all pointers while destructing.
-    ~BuildingManager();
+    ~LandParcelManager();
 
 private:
-    BuildingsArray buildings_;
+    ParcelArray buildings_;
 
 private:
     // Detects whether buildings_ has been modified.
@@ -80,4 +80,4 @@ private:
 
 };
 
-#endif // BUILDINGMANAGER_H
+#endif // !LAND_PARCEL_MANAGER_H

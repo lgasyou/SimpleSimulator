@@ -159,18 +159,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_helpdialog.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_mainui.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_mainui.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_buildingdetaildialog.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_buildingdetaildialog.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_machinetablewidget.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
@@ -195,259 +183,271 @@
     <ClCompile Include="GeneratedFiles\Release\moc_tablewidgetpushbutton.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GUI\bankdialog.cpp">
-      <Filter>Source Files\GUIComponents\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\buildingdetaildialog.cpp">
-      <Filter>Source Files\GUIComponents\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\buildinginfowidget.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\buildingtablewidget.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\commandpushbutton.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\companydetaildialog.cpp">
-      <Filter>Source Files\GUIComponents\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\garagetablewidget.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\helpdialog.cpp">
-      <Filter>Source Files\GUIComponents\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\machinetablewidget.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\mainui.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\mainwindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\selecttablewidget.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\setroutedialog.cpp">
-      <Filter>Source Files\GUIComponents\Dialogs</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\tablewidgetpushbutton.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\warehousetablewidget.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\GUI\widgethelper.cpp">
-      <Filter>Source Files\GUIComponents</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\bank.cpp">
-      <Filter>Source Files\Buildings\Instances</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\bankaccount.cpp">
-      <Filter>Source Files\Groups</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\baseagriculture.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\basecommerce.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\basefinance.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\baseindustry.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\baseresidence.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\basetransportation.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\company.cpp">
-      <Filter>Source Files\Groups</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\factory.cpp">
-      <Filter>Source Files\Buildings\Instances</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\farm.cpp">
-      <Filter>Source Files\Buildings\Instances</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\garage.cpp">
-      <Filter>Source Files\Buildings\Instances</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\goods.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\goodscontainer.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\government.cpp">
-      <Filter>Source Files\Groups</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\legalperson.cpp">
-      <Filter>Source Files\Groups</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\machine.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\mine.cpp">
-      <Filter>Source Files\Buildings\Instances</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\person.cpp">
-      <Filter>Source Files\Groups</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\route.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\supermarket.cpp">
-      <Filter>Source Files\Buildings\Instances</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\truck.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\unusedland.cpp">
-      <Filter>Source Files\Buildings\Instances</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\vihicle.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\villa.cpp">
-      <Filter>Source Files\Buildings\Instances</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\warehouse.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\buildingfactory.cpp">
-      <Filter>Source Files\Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\vector2d.cpp">
-      <Filter>Source Files\Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\random.cpp">
-      <Filter>Source Files\Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\gameconstants.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\main.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Managers\buildingmanager.cpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Managers\companymanager.cpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Managers\industrychainmanager.cpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Managers\machinemanager.cpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Managers\mapmanager.cpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Managers\personmanager.cpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Managers\pricemanager.cpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Managers\timemanager.cpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Managers\uimanager.cpp">
-      <Filter>Source Files\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\graph.cpp">
-      <Filter>Source Files\Utilities</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Objects\land.cpp">
-      <Filter>Source Files\Buildings</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Commmand.cpp">
-      <Filter>Source Files\Utilities</Filter>
     </ClCompile>
     <ClCompile Include="Source\MachineBuilders.cpp">
       <Filter>Source Files\Builders</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Objects\LandParcel.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Managers\LandParcelManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Agriculture.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Commerce.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Finance.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Industry.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Residence.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Transportation.cpp">
+      <Filter>Source Files\Buildings</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Bank.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\LandParcelDetailDlg.cpp">
+      <Filter>Source Files\GUIComponents\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_LandParcelDetailDlg.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_LandParcelDetailDlg.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\MapUi.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_MapUi.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_MapUi.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Factory.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Farm.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Garage.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Mine.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Supermarket.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\UnusedLand.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Villa.cpp">
+      <Filter>Source Files\Buildings\Instances</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\BankAccount.cpp">
+      <Filter>Source Files\Groups</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Company.cpp">
+      <Filter>Source Files\Groups</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Government.cpp">
+      <Filter>Source Files\Groups</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\LegalPerson.cpp">
+      <Filter>Source Files\Groups</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Person.cpp">
+      <Filter>Source Files\Groups</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\BankDialog.cpp">
+      <Filter>Source Files\GUIComponents\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\CompanyDetailDialog.cpp">
+      <Filter>Source Files\GUIComponents\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\HelpDialog.cpp">
+      <Filter>Source Files\GUIComponents\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\SetRouteDialog.cpp">
+      <Filter>Source Files\GUIComponents\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\BuildingInfoWidget.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\BuildingTableWidget.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\CommandPushButton.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\GarageTableWidget.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\MachineTableWidget.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\SelectTableWidget.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\TableWidgetPushButton.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\WarehouseTableWidget.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\WidgetHelper.cpp">
+      <Filter>Source Files\GUIComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Managers\CompanyManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Managers\IndustryChainManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Managers\MachineManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Managers\MapManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Managers\PersonManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Managers\PriceManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Managers\TimeManager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Managers\UIMmanager.cpp">
+      <Filter>Source Files\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Goods.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\GoodsContainer.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Machine.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Route.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Truck.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Vihicle.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Objects\Warehouse.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\BuildingFactory.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Commmands.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Graph.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Random.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Vector2D.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameConstants.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GUI\MainWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="Source\GUI\bankdialog.h">
-      <Filter>Header Files\GUIComponents\Dialogs</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\bankdialog.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\buildingdetaildialog.h">
-      <Filter>Header Files\GUIComponents\Dialogs</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\buildingdetaildialog.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\buildinginfowidget.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\buildinginfowidget.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\buildingtablewidget.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\commandpushbutton.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\companydetaildialog.h">
-      <Filter>Header Files\GUIComponents\Dialogs</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\companydetaildialog.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\garagetablewidget.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\helpdialog.h">
-      <Filter>Header Files\GUIComponents\Dialogs</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\helpdialog.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\machinetablewidget.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\mainui.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\mainui.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\mainwindow.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\mainwindow.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\selecttablewidget.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\setroutedialog.h">
-      <Filter>Header Files\GUIComponents\Dialogs</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\setroutedialog.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\tablewidgetpushbutton.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </CustomBuild>
-    <CustomBuild Include="Source\GUI\warehousetablewidget.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </CustomBuild>
     <CustomBuild Include="Source\resource.qrc">
       <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\LandParcelDetailDlg.h">
+      <Filter>Header Files\GUIComponents\Dialogs</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\LandParcelDetailDlg.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\BankDialog.h">
+      <Filter>Header Files\GUIComponents\Dialogs</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\CompanyDetailDialog.h">
+      <Filter>Header Files\GUIComponents\Dialogs</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\HelpDialog.h">
+      <Filter>Header Files\GUIComponents\Dialogs</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\SetRouteDialog.h">
+      <Filter>Header Files\GUIComponents\Dialogs</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\BuildingInfoWidget.h">
+      <Filter>Header Files\GUIComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\BuildingTableWidget.h">
+      <Filter>Header Files\GUIComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\CommandPushButton.h">
+      <Filter>Header Files\GUIComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\GarageTableWidget.h">
+      <Filter>Header Files\GUIComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\MachineTableWidget.h">
+      <Filter>Header Files\GUIComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\MapUi.h">
+      <Filter>Header Files\GUIComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\MapUi.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\SelectTableWidget.h">
+      <Filter>Header Files\GUIComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\TableWidgetPushButton.h">
+      <Filter>Header Files\GUIComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\WarehouseTableWidget.h">
+      <Filter>Header Files\GUIComponents</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\MainWindow.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\BankDialog.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\BuildingInfoWidget.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\CompanyDetailDialog.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\HelpDialog.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\MainWindow.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\SetRouteDialog.ui">
+      <Filter>Form Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -463,155 +463,149 @@
     <ClInclude Include="GeneratedFiles\ui_helpdialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_mainui.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_buildingdetaildialog.h">
-      <Filter>Generated Files</Filter>
-    </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_bankdialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_companydetaildialog.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GUI\widgethelper.h">
-      <Filter>Header Files\GUIComponents</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\bank.h">
-      <Filter>Header Files\Buildings\Instances</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\bankaccount.h">
-      <Filter>Header Files\Groups</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\baseagriculture.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\basecommerce.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\basefinance.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\baseindustry.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\baseresidence.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\basetransportation.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\company.h">
-      <Filter>Header Files\Groups</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\factory.h">
-      <Filter>Header Files\Buildings\Instances</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\farm.h">
-      <Filter>Header Files\Buildings\Instances</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\garage.h">
-      <Filter>Header Files\Buildings\Instances</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\goods.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\goodscontainer.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\government.h">
-      <Filter>Header Files\Groups</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\legalperson.h">
-      <Filter>Header Files\Groups</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\machine.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\mine.h">
-      <Filter>Header Files\Buildings\Instances</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\person.h">
-      <Filter>Header Files\Groups</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\route.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\supermarket.h">
-      <Filter>Header Files\Buildings\Instances</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\truck.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\unusedland.h">
-      <Filter>Header Files\Buildings\Instances</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\vihicle.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\villa.h">
-      <Filter>Header Files\Buildings\Instances</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\warehouse.h">
-      <Filter>Header Files\Objects</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\buildingfactory.h">
-      <Filter>Header Files\Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\vector2d.h">
-      <Filter>Header Files\Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\random.h">
-      <Filter>Header Files\Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\gameconstants.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Managers\buildingmanager.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Managers\companymanager.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Managers\industrychainmanager.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Managers\machinemanager.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Managers\mapmanager.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Managers\personmanager.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Managers\pricemanager.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Managers\timemanager.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Managers\uimanager.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\graph.h">
-      <Filter>Header Files\Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Objects\land.h">
-      <Filter>Header Files\Buildings</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Interface.h">
-      <Filter>Header Files\Utilities</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Commmand.h">
       <Filter>Header Files\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="Source\MachineBuilders.h">
       <Filter>Header Files\Builders</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GUI\DialogWithObjPtr.h">
+    <ClInclude Include="Source\Objects\LandParcel.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Managers\LandParcelManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Managers\CompanyManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Managers\IndustryChainManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Finance.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Agriculture.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Commerce.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Industry.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Residence.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Transportation.h">
+      <Filter>Header Files\Buildings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Bank.h">
+      <Filter>Header Files\Buildings\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Factory.h">
+      <Filter>Header Files\Buildings\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Farm.h">
+      <Filter>Header Files\Buildings\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Garage.h">
+      <Filter>Header Files\Buildings\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Mine.h">
+      <Filter>Header Files\Buildings\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Supermarket.h">
+      <Filter>Header Files\Buildings\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\UnusedLand.h">
+      <Filter>Header Files\Buildings\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Villa.h">
+      <Filter>Header Files\Buildings\Instances</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\BankAccount.h">
+      <Filter>Header Files\Groups</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Company.h">
+      <Filter>Header Files\Groups</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Government.h">
+      <Filter>Header Files\Groups</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\LegalPerson.h">
+      <Filter>Header Files\Groups</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Person.h">
+      <Filter>Header Files\Groups</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_MapUi.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\WidgetHelper.h">
       <Filter>Header Files\GUIComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameConstants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Managers\MachineManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Managers\MapManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Managers\PersonManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Managers\PriceManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Managers\TimeManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Managers\UIManager.h">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Goods.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\GoodsContainer.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Machine.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Route.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Truck.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Vihicle.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Objects\Warehouse.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BuildingFactory.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Commmands.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Graph.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Random.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Vector2D.h">
+      <Filter>Header Files\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

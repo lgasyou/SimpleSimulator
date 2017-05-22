@@ -17,11 +17,12 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "legalperson.h"
+#include "LegalPerson.h"
 
-LegalPerson::LegalPerson(const QString &name) :
-    name_(name)
-{ }
+LegalPerson::LegalPerson(const QString &name)
+    : name_(name) {
+    
+}
 
 LegalPerson::~LegalPerson() { }
 

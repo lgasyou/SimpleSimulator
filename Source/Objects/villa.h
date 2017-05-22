@@ -20,11 +20,9 @@
 #ifndef VILLA_H
 #define VILLA_H
 
-#include <QString>
+#include "Residence.h"
 
-#include "baseresidence.h"
-
-class Villa : public BaseResidence {
+class Villa : public Residence {
 public:
     Villa(const QString &name = "Villa");
 

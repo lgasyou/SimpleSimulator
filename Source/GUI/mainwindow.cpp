@@ -17,23 +17,23 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mainwindow.h"
+#include "MainWindow.h"
 
-#include "Source/Objects/government.h"
+#include "Source/Objects/Government.h"
 
-#include "Source/Managers/buildingmanager.h"
-#include "Source/Managers/companymanager.h"
-#include "Source/Managers/mapmanager.h"
-#include "Source/Managers/timemanager.h"
-#include "Source/Managers/uimanager.h"
+#include "Source/Managers/LandParcelManager.h"
+#include "Source/Managers/CompanyManager.h"
+#include "Source/Managers/MapManager.h"
+#include "Source/Managers/TimeManager.h"
+#include "Source/Managers/UIManager.h"
 
-#include "mainui.h"
+#include "MapUi.h"
 #include "ui_mainwindow.h"
-#include "buildingdetaildialog.h"
-#include "helpdialog.h"
-#include "buildingtablewidget.h"
-#include "companydetaildialog.h"
-#include "widgethelper.h"
+#include "LandParcelDetailDlg.h"
+#include "HelpDialog.h"
+#include "BuildingTableWidget.h"
+#include "CompanyDetailDialog.h"
+#include "WidgetHelper.h"
 
 MainWindow &MainWindow::instance() {
     static MainWindow mainWindow;
@@ -58,10 +58,9 @@ void MainWindow::init() {
     ui->userInterface->updateDisplay();
 }
 
-// TODO: manages BuildingDetailDialog in a pool.
-void MainWindow::redirectData(Land *object) {
+void MainWindow::redirectData(LandParcel *object) {
     ui->buildingInfoWidget->setTarget(object);
-    UIManager<BuildingDetailDialog>::get()->setBuilding(object);
+    UIManager<LandParcelDetailDlg>::get()->setBuilding(object);
     emit dataChanged();
 }
 
@@ -70,7 +69,7 @@ void MainWindow::setDirty() {
 }
 
 void MainWindow::endTurns() {
-    BuildingManager::instance().update();
+    LandParcelManager::instance().update();
     CompanyManager::instance().update();
     Government::instance().update();
 
@@ -94,7 +93,7 @@ void MainWindow::showCompanyDetail() const {
 }
 
 void MainWindow::getBuildingByPos(int x, int y) {
-    auto building = BuildingManager::instance().getByPos(x, y);
+    auto building = LandParcelManager::instance().getByPos(x, y);
     emit sendSelectedBuilding(building);
 }
 
@@ -120,7 +119,7 @@ void MainWindow::signalSlotConfig() {
     /* ---------------------------------------------------------------------------------------------- */
 
     /* ---------------------------------- Display Config -------------------------------------------- */
-    connect(ui->userInterface,          &MainUI::sendPosition,    
+    connect(ui->userInterface,          &MapUi::sendPosition,    
             this,                       &MainWindow::getBuildingByPos);
     connect(this,                       &MainWindow::sendSelectedBuilding,
             ui->buildingInfoWidget,     &BuildingInfoWidget::showBuildingInfo);
@@ -131,10 +130,6 @@ void MainWindow::signalSlotConfig() {
             this,                       SLOT(updateDisplay()));
     connect(this,                       SIGNAL(dataChanged()),
             ui->buildingInfoWidget,     SLOT(updateDisplay()));
-    //connect(this,                       SIGNAL(dataChanged()),
-    //        buildingDetailDialog_,      SLOT(updateDisplay()));
-    //connect(this,                       SIGNAL(dataChanged()),
-    //        companyDetailDialog_,       SLOT(updateDisplay()));
     connect(this,                       SIGNAL(dataChanged()),
             ui->userInterface,          SLOT(updateDisplay()));
     /* ---------------------------------------------------------------------------------------------- */

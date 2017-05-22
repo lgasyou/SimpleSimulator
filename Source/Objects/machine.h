@@ -21,10 +21,9 @@
 #define MACHINE_H
 
 #include <vector>
-#include <QString>
 
-#include "warehouse.h"
-#include "goods.h"
+#include "Warehouse.h"
+#include "Goods.h"
 
 class Machine {
 public:

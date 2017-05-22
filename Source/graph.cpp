@@ -19,7 +19,7 @@
 
 #include "graph.h"
 
-#include "Source/Objects/goods.h"
+#include "Source/Objects/Goods.h"
 
 void Graph::addVertex(const QString &item) {
     graph_.push_back(Vertex{ item, nullptr, nullptr });

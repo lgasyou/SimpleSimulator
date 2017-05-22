@@ -17,15 +17,15 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "commandpushbutton.h"
+#include "CommandPushButton.h"
 
-CommandPushButton::CommandPushButton(QWidget *parent, std::shared_ptr<ICommmand> command)
+CommandPushButton::CommandPushButton(QWidget *parent, std::shared_ptr<ICommand> command)
     : QPushButton(parent),
       command(command) {
     init();
 }
 
-CommandPushButton::CommandPushButton(const QString &text, std::shared_ptr<ICommmand> _command, QWidget *parent) :
+CommandPushButton::CommandPushButton(const QString &text, std::shared_ptr<ICommand> _command, QWidget *parent) :
     QPushButton(text, parent),
     command(_command) {
     init();

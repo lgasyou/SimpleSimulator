@@ -17,14 +17,14 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "companymanager.h"
+#include "CompanyManager.h"
 
 CompanyManager::CompanyManager() { }
 
 CompanyManager::~CompanyManager() {
     delete playerCompany_;
-    for (Company *AICompany : AICompanies_) {
-        delete AICompany;
+    for (auto aiCompany : aiCompanies_) {
+        delete aiCompany;
     }
 }
 
@@ -39,5 +39,5 @@ void CompanyManager::init() {
 
 void CompanyManager::update() {
     playerCompany_->update();
-    std::for_each(AICompanies_.begin(), AICompanies_.end(), [](Company *company) { company->update(); });
+    std::for_each(aiCompanies_.begin(), aiCompanies_.end(), [](Company *company) { company->update(); });
 }

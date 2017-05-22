@@ -21,14 +21,14 @@
 
 #include <memory>
 
-#include "Source/Objects/company.h"
-#include "Source/Objects/government.h"
-#include "Source/Commmand.h"
+#include "Source/Objects/Company.h"
+#include "Source/Objects/Government.h"
+#include "Source/Commmands.h"
 
-#include "Source/Managers/companymanager.h"
+#include "Source/Managers/CompanyManager.h"
 
-#include "mainwindow.h"
-#include "widgethelper.h"
+#include "MainWindow.h"
+#include "WidgetHelper.h"
 #include "ui_buildinginfowidget.h"
 
 BuildingInfoWidget::BuildingInfoWidget(QWidget *parent)
@@ -49,12 +49,12 @@ BuildingInfoWidget::~BuildingInfoWidget() {
     delete ui;
 }
 
-void BuildingInfoWidget::setTarget(Land *building) {
+void BuildingInfoWidget::setTarget(LandParcel *building) {
     this->displayingObject_ = building;
     ui->detailsPushButton->setCommand(std::make_shared<ShowDetailCommand>(building));
 }
 
-void BuildingInfoWidget::showBuildingInfo(Land *building) {
+void BuildingInfoWidget::showBuildingInfo(LandParcel *building) {
     if (building != displayingObject_) {
         setTarget(building);
 
@@ -76,15 +76,17 @@ void BuildingInfoWidget::updateDisplay() {
         auto &owner = displayingObject_->owner()->name();
         ui->buildingOwnerLabel->setText("Owner:\n\n" + owner);
 
-        bool owned = (displayingObject_->owner() == CompanyManager::instance().playerCompany());
+        bool owned = displayingObject_->owner() == CompanyManager::instance().playerCompany();
         const QString buttonText = owned ? tr("Sell") : tr("Buy");
         ui->buyOrSellpushButton->setCommand(
             owned ?
             std::make_shared<TransactionCommand>(
+                this,
                 &Government::instance(), 
                 displayingObject_->owner(), 
                 displayingObject_) :
             std::make_shared<TransactionCommand>(
+                this,
                 CompanyManager::instance().playerCompany(), 
                 displayingObject_->owner(), 
                 displayingObject_)

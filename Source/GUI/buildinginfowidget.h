@@ -17,12 +17,12 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BUILDINGINFOWIDGET_H
-#define BUILDINGINFOWIDGET_H
+#ifndef BUILDING_INFO_WIDGET_H
+#define BUILDING_INFO_WIDGET_H
 
 #include <QWidget>
 
-#include "Source/Objects/land.h"
+#include "Source/Objects/LandParcel.h"
 
 namespace Ui { 
 class BuildingInfoWidget; 
@@ -36,17 +36,17 @@ public:
 
     ~BuildingInfoWidget();
 
-    void setTarget(Land *building);
+    void setTarget(LandParcel *building);
 
 public slots:
-    void showBuildingInfo(Land *building);
+    void showBuildingInfo(LandParcel *building);
 
     void updateDisplay();
 
 private:
-    Land *displayingObject_ = nullptr;
+    LandParcel *displayingObject_ = nullptr;
 
     Ui::BuildingInfoWidget *ui;
 };
 
-#endif // !BUILDINGINFOWIDGET_H
+#endif // !BUILDING_INFO_WIDGET_H

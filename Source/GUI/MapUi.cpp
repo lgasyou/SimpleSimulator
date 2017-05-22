@@ -17,21 +17,21 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "mainui.h"
+#include "MapUi.h"
 
 #include <QPainter>
 #include <QMouseEvent>
 
-#include "Source/Managers/mapmanager.h"
+#include "Source/Managers/MapManager.h"
 
-#include "Source/gameconstants.h"
+#include "Source/GameConstants.h"
 
-#include "ui_mainui.h"
+#include "ui_MapUi.h"
 
 using namespace gameconstants;
 
-MainUI::MainUI(QWidget *parent) : 
-    QWidget(parent) {
+MapUi::MapUi(QWidget *parent)
+    : QWidget(parent) {
     image_ = QImage(mapWeight, mapHeight, QImage::Format_ARGB32);
     image_.fill(qRgba(0, 0, 0, 0));
 
@@ -42,28 +42,28 @@ MainUI::MainUI(QWidget *parent) :
     this->setMinimumSize(sizeHint());
     this->setMaximumSize(sizeHint());
 
-    ui = new Ui::MainUI;
+    ui = new Ui::MapUi;
     ui->setupUi(this);
 }
 
-MainUI::~MainUI() {
+MapUi::~MapUi() {
     delete ui;
 }
 
-QSize MainUI::sizeHint() const {
+QSize MapUi::sizeHint() const {
     QSize size = image_.size() * zoom_;
     size += QSize(1, 1);
     return size;
 }
 
-void MainUI::setMode(int mode) {
+void MapUi::setMode(int mode) {
     if (mode_ != mode) {
         mode_ = mode;
         update();
     }
 }
 
-void MainUI::updateDisplay() {
+void MapUi::updateDisplay() {
     auto map = MapManager::instance().gameMap();
     QColor penColor;
     for (int i = 0; i != mapHeight; ++i) {
@@ -75,7 +75,7 @@ void MainUI::updateDisplay() {
     update();
 }
 
-void MainUI::mousePressEvent(QMouseEvent *event) {
+void MapUi::mousePressEvent(QMouseEvent *event) {
     if (event->button() == Qt::LeftButton) {
         QPoint pos = event->pos();
         int x = pos.x() / zoom_;
@@ -87,7 +87,7 @@ void MainUI::mousePressEvent(QMouseEvent *event) {
     }
 }
 
-void MainUI::paintEvent(QPaintEvent *event) {
+void MapUi::paintEvent(QPaintEvent *event) {
     switch (mode_) {
     case PaintMode::Map:
         paintMap(event);
@@ -102,11 +102,11 @@ void MainUI::paintEvent(QPaintEvent *event) {
     }
 }
 
-QRect MainUI::pixelRect(int i, int j) const {
+QRect MapUi::pixelRect(int i, int j) const {
     return QRect(zoom_ * i + 1, zoom_ * j + 1, zoom_ - 1, zoom_ - 1);
 }
 
-void MainUI::paintMap(QPaintEvent *event) {
+void MapUi::paintMap(QPaintEvent *event) {
     QPainter painter(this);
 
     for (int i = 0; i <= image_.width(); ++i)
@@ -127,11 +127,11 @@ void MainUI::paintMap(QPaintEvent *event) {
     }
 }
 
-void MainUI::paintBuilding(QPaintEvent *) {
+void MapUi::paintBuilding(QPaintEvent *) {
     QPainter painter(this);
 }
 
-QColor MainUI::getNodeColorByType(StructureType type) {
+QColor MapUi::getNodeColorByType(StructureType type) {
     switch (type) {
     case BANK:
         return Qt::red;

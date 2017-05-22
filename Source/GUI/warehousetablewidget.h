@@ -17,18 +17,18 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef WAREHOUSETABLEWIDGET_H
-#define WAREHOUSETABLEWIDGET_H
+#ifndef WAREHOUSE_TABLE_WIDGET_H
+#define WAREHOUSE_TABLE_WIDGET_H
 
 #include <QTableWidget>
 
-#include "Source/Objects/land.h"
-#include "Source/Objects/baseindustry.h"
-#include "Source/Objects/goods.h"
-#include "Source/Objects/warehouse.h"
+#include "Source/Objects/LandParcel.h"
+#include "Source/Objects/Industry.h"
+#include "Source/Objects/Goods.h"
+#include "Source/Objects/Warehouse.h"
 
-#include "tablewidgetpushbutton.h"
-#include "selecttablewidget.h"
+#include "TableWidgetPushButton.h"
+#include "SelectTableWidget.h"
 
 class WarehouseTableWidget : public QTableWidget {
     Q_OBJECT
@@ -45,12 +45,12 @@ public slots:
 
     void getGoods(int index);
 
-    void getDestAndSendPreroute(Land *dest);
+    void getDestAndSendPreroute(LandParcel *dest);
 
     void updateDisplay();
 
 signals:
-    void sendPreroute(const Goods &goods, BaseIndustry *dest);
+    void sendPreroute(const Goods &goods, Industry *dest);
 
     void dataChanged();
 
@@ -62,4 +62,4 @@ private:
     SelectTableWidget *selectTableWidget_ = nullptr;
 };
 
-#endif // WAREHOUSETABLEWIDGET_H
+#endif // !WAREHOUSE_TABLE_WIDGET_H

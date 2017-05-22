@@ -53,7 +53,7 @@
   <customwidget>
    <class>CommandPushButton</class>
    <extends>QPushButton</extends>
-   <header>commandpushbutton.h</header>
+   <header>CommandPushButton.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

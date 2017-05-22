@@ -17,12 +17,12 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef BUILDINGINFOLIST_H
-#define BUILDINGINFOLIST_H
+#ifndef BUILDING_TABLE_WIDGET_H
+#define BUILDING_TABLE_WIDGET_H
 
 #include <QTableWidget>
 
-#include "Source/Objects/land.h"
+#include "Source/Objects/LandParcel.h"
 
 // This class is used for showing information of Buildings.
 // Set Company before use it.
@@ -37,9 +37,9 @@ public:
     void updateDisplay();
 
 private:
-    void displayBasicInfo(int index, Land *building);
+    void displayBasicInfo(int index, LandParcel *building);
 
-    void displayAccordingToVisitor(int index, Land *building);
+    void displayAccordingToVisitor(int index, LandParcel *building);
 };
 
-#endif // BUILDINGINFOLIST_H
+#endif // !BUILDING_TABLE_WIDGET_H

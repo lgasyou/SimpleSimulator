@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>BuildingDetailDialog</class>
- <widget class="QWidget" name="BuildingDetailDialog">
+ <class>LandParcelDetailDlg</class>
+ <widget class="QWidget" name="LandParcelDetailDlg">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -360,17 +360,17 @@
   <customwidget>
    <class>GarageTableWidget</class>
    <extends>QTableWidget</extends>
-   <header>garagetablewidget.h</header>
+   <header>GarageTableWidget.h</header>
   </customwidget>
   <customwidget>
    <class>MachineTableWidget</class>
    <extends>QTableWidget</extends>
-   <header>machinetablewidget.h</header>
+   <header>MachineTableWidget.h</header>
   </customwidget>
   <customwidget>
    <class>CommandPushButton</class>
    <extends>QPushButton</extends>
-   <header>commandpushbutton.h</header>
+   <header>CommandPushButton.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

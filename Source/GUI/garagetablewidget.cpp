@@ -17,20 +17,21 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "garagetablewidget.h"
+#include "GarageTableWidget.h"
 
-#include "Source/Objects/baseindustry.h"
-#include "Source/Objects/goodscontainer.h"
+#include "Source/Objects/Industry.h"
+#include "Source/Objects/Truck.h"
+#include "Source/Objects/GoodsContainer.h"
 
-#include "Source/Managers/uimanager.h"
+#include "Source/Managers/UIManager.h"
 
-#include "setroutedialog.h"
-#include "tablewidgetpushbutton.h"
-#include "widgethelper.h"
+#include "SetRouteDialog.h"
+#include "TableWidgetPushButton.h"
+#include "WidgetHelper.h"
 #include "ui_setroutedialog.h"
 
-GarageTableWidget::GarageTableWidget(QWidget *parent) : 
-    QTableWidget(parent) {
+GarageTableWidget::GarageTableWidget(QWidget *parent)
+    : QTableWidget(parent) {
     init();
 }
 
@@ -79,7 +80,7 @@ void GarageTableWidget::updateEachRow(int index, Truck *truck) {
             this,        SLOT(buttonClicked(int, int)));
 }
 
-void GarageTableWidget::setGarage(Land *garage) {
+void GarageTableWidget::setGarage(LandParcel *garage) {
     this->garage_ = dynamic_cast<Garage *>(garage);
 }
 

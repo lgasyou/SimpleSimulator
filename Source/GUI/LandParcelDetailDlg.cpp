@@ -17,31 +17,31 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "BuildingDetailDialog.h"
+#include "LandParcelDetailDlg.h"
 
-#include "Source/Objects/land.h"
-#include "Source/Objects/baseindustry.h"
-#include "Source/Objects/company.h"
-#include "Source/Objects/garage.h"
-#include "Source/Objects/goods.h"
-#include "Source/Objects/government.h"
-#include "Source/Objects/machine.h"
-#include "Source/Objects/mine.h"
-#include "Source/Commmand.h"
+#include "Source/Objects/LandParcel.h"
+#include "Source/Objects/Industry.h"
+#include "Source/Objects/Company.h"
+#include "Source/Objects/Garage.h"
+#include "Source/Objects/Goods.h"
+#include "Source/Objects/Government.h"
+#include "Source/Objects/Machine.h"
+#include "Source/Objects/Mine.h"
+#include "Source/Commmands.h"
 
 #include "Source/MachineBuilders.h"
 
-#include "Source/Managers/buildingmanager.h"
-#include "Source/Managers/companymanager.h"
-#include "Source/Managers/machinemanager.h"
+#include "Source/Managers/LandParcelManager.h"
+#include "Source/Managers/CompanyManager.h"
+#include "Source/Managers/MachineManager.h"
 
-#include "ui_buildingdetaildialog.h"
-#include "widgethelper.h"
+#include "ui_LandParcelDetailDlg.h"
+#include "WidgetHelper.h"
 
-BuildingDetailDialog::BuildingDetailDialog(Land *object, QWidget *parent)
+LandParcelDetailDlg::LandParcelDetailDlg(LandParcel *object, QWidget *parent)
     : QDialog(parent),
       building_(object),
-      ui(new Ui::BuildingDetailDialog) {
+      ui(new Ui::LandParcelDetailDlg) {
     ui->setupUi(this);
 
     signalSlotConfig();
@@ -49,11 +49,11 @@ BuildingDetailDialog::BuildingDetailDialog(Land *object, QWidget *parent)
     ui->expandStackedWidget->hide();
 }
 
-BuildingDetailDialog::~BuildingDetailDialog() {
+LandParcelDetailDlg::~LandParcelDetailDlg() {
     delete ui;
 }
 
-void BuildingDetailDialog::updateDisplay() {
+void LandParcelDetailDlg::updateDisplay() {
     // Returns if this window isn't showing.
     if (this->isHidden() || !building_)    return;
 
@@ -76,18 +76,18 @@ void BuildingDetailDialog::updateDisplay() {
     displayAccordingToBuildingType();
 }
 
-void BuildingDetailDialog::closeEvent(QCloseEvent *) {
+void LandParcelDetailDlg::closeEvent(QCloseEvent *) {
 
 }
 
-//void BuildingDetailDialog::deliverGoods(const Goods &goods, BaseIndustry *dest) {
-// BaseIndustry *industry = dynamic_cast<BaseIndustry *>(building_);
+//void LandParcelDetailDlg::deliverGoods(const Goods &goods, Industry *dest) {
+// Industry *industry = dynamic_cast<Industry *>(building_);
 // industry->deliverGoods(goods, dest);
 // emit dataChanged();
 //}
 
-void BuildingDetailDialog::addNewMachine() {
-    if (BaseIndustry *industry = dynamic_cast<BaseIndustry *>(building_)) {
+void LandParcelDetailDlg::addNewMachine() {
+    if (Industry *industry = dynamic_cast<Industry *>(building_)) {
         MachineBuilder *builder = new DefaultMachineBuilder;
         Machine *machine = MachineManager::instance().machine(builder);
         machine->setWarehouse(industry->warehouse());
@@ -98,19 +98,19 @@ void BuildingDetailDialog::addNewMachine() {
     }
 }
 
-void BuildingDetailDialog::addNewVihicle() {
+void LandParcelDetailDlg::addNewVihicle() {
     if (Garage *garage = dynamic_cast<Garage *>(building_)) {
         garage->addNewVihicle("Truck");
         emit dataChanged();
     }
 }
 
-void BuildingDetailDialog::setNextMachineProduct(const QString &product) {
+void LandParcelDetailDlg::setNextMachineProduct(const QString &product) {
     selectedMachine_->setCurrentProduct(product);
     emit dataChanged();
 }
 
-void BuildingDetailDialog::showMachineDetail(Machine *machine) {
+void LandParcelDetailDlg::showMachineDetail(Machine *machine) {
     ui->expandStackedWidget->show();
     selectedMachine_ = machine;
 
@@ -122,7 +122,7 @@ void BuildingDetailDialog::showMachineDetail(Machine *machine) {
     updateMachineDetail(machine);
 }
 
-void BuildingDetailDialog::updateMachineDetail(Machine *machine) {
+void LandParcelDetailDlg::updateMachineDetail(Machine *machine) {
     const QString &machineCurrentProductivity = WidgetHelper::toString(machine->currentProductivity());
     ui->machineCurrentProductivity->setText("Current Productivity: " + machineCurrentProductivity);
 
@@ -130,17 +130,17 @@ void BuildingDetailDialog::updateMachineDetail(Machine *machine) {
     ui->machineMaximumProductivity->setText("Maximum Productivity: " + machineMaximumProductivity);
 }
 
-void BuildingDetailDialog::receiveCommand(int command) {
+void LandParcelDetailDlg::receiveCommand(int command) {
     emit sendCommand(command, building_);
     emit dataChanged();
 }
 
-void BuildingDetailDialog::displayAccordingToBuildingType() {
+void LandParcelDetailDlg::displayAccordingToBuildingType() {
     bool isVisitorOwner = (building_->owner() == CompanyManager::instance().playerCompany());
     ui->basicOperationStackedWidget->setCurrentIndex(isVisitorOwner);
 
     const QString &type = building_->type();
-    auto buildingType = BuildingManager::stringToEnum(type);
+    auto buildingType = LandParcelManager::stringToEnum(type);
     ui->detailStackedWidget->setCurrentIndex(buildingType);
     switch (buildingType) {
     case BANK:
@@ -190,7 +190,7 @@ void BuildingDetailDialog::displayAccordingToBuildingType() {
     }
 }
 
-void BuildingDetailDialog::signalSlotConfig() {
+void LandParcelDetailDlg::signalSlotConfig() {
     /* ---------------------------------- Basic Config ---------------------------------------------- */
     connect(ui->buyPushButton,                          &CommandPushButton::sendCommand,
             &WidgetHelper::placeCommand);
@@ -272,39 +272,41 @@ void BuildingDetailDialog::signalSlotConfig() {
     /* ---------------------------------------------------------------------------------------------- */
 
     /* ---------------------------------- Display Config -------------------------------------------- */
-    connect(this,                                       &BuildingDetailDialog::dataChanged,
-            this,                                       &BuildingDetailDialog::updateDisplay);
+    connect(this,                                       &LandParcelDetailDlg::dataChanged,
+            this,                                       &LandParcelDetailDlg::updateDisplay);
     /* ---------------------------------------------------------------------------------------------- */
 }
 
-void BuildingDetailDialog::setBuilding(Land *building) {
+void LandParcelDetailDlg::setBuilding(LandParcel *building) {
     this->building_ = building;
 
     ui->buyPushButton->setCommand(std::make_shared<TransactionCommand>(
+        this,
         CompanyManager::instance().playerCompany(), 
         building->owner(),
         building));
 
     ui->sellPushButton->setCommand(std::make_shared<TransactionCommand>(
+        this,
         &Government::instance(),
         building->owner(),
         building));
 
     ui->dismantlePushButton->setCommand(
-        std::make_shared<DismantleBuilding>(building));
+        std::make_shared<DismantleBuilding>(this, building));
 
     ui->buildBankPushButton->setCommand(
-        std::make_shared<BuildBank>(building));
+        std::make_shared<BuildBank>(this, building));
     ui->buildFactoryPushButton->setCommand(
-        std::make_shared<BuildFactory>(building));
+        std::make_shared<BuildFactory>(this, building));
     ui->buildFarmPushButton->setCommand(
-        std::make_shared<BuildFarm>(building));
+        std::make_shared<BuildFarm>(this, building));
     ui->buildGaragePushButton->setCommand(
-        std::make_shared<BuildGarage>(building));
+        std::make_shared<BuildGarage>(this, building));
     ui->buildMinePushButton->setCommand(
-        std::make_shared<BuildMine>(building));
+        std::make_shared<BuildMine>(this, building));
     ui->buildSupermarketPushButton->setCommand(
-        std::make_shared<BuildSupermarket>(building));
+        std::make_shared<BuildSupermarket>(this, building));
     ui->buildVillaPushButton->setCommand(
-        std::make_shared<BuildVilla>(building));
+        std::make_shared<BuildVilla>(this, building));
 }

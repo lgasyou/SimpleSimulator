@@ -17,6 +17,6 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "vihicle.h"
+#include "Vihicle.h"
 
 Vihicle::~Vihicle() { }

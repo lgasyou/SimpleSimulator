@@ -17,10 +17,10 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "farm.h"
+#include "Farm.h"
 
-Farm::Farm(const QString &name) :
-    BaseAgriculture(name, "Farm")
-{ }
+Farm::Farm(const QString &name)
+    : Agriculture(name, "Farm") {
+}
 
 Farm::~Farm() { }

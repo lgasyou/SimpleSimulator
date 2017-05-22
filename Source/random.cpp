@@ -17,7 +17,7 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "random.h"
+#include "Random.h"
 
 #include <ctime>
 

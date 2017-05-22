@@ -17,18 +17,16 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef UNUSEDLAND_H
-#define UNUSEDLAND_H
+#ifndef UNUSED_LAND_H
+#define UNUSED_LAND_H
 
-#include <QString>
+#include "LandParcel.h"
 
-#include "land.h"
-
-class UnusedLand : public Land {
+class UnusedLand : public LandParcel {
 public:
     UnusedLand(const QString &name = "Unused Land");
 
-    virtual void update() override;
+    void update() override;
 };
 
-#endif // !UNUSEDLAND_H
+#endif // !UNUSED_LAND_H

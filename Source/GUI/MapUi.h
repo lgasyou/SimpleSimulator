@@ -17,25 +17,25 @@
  *  along with World Simulator. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MAPUI_H
-#define MAPUI_H
+#ifndef MAP_UI_H
+#define MAP_UI_H
 
 #include <QWidget>
 #include <QImage>
 
-#include "Source/Objects/land.h"
+#include "Source/Objects/LandParcel.h"
 
 namespace Ui { 
-class MainUI; 
+class MapUi; 
 }
 
-class MainUI : public QWidget {
+class MapUi : public QWidget {
     Q_OBJECT
 
 public:
-    MainUI(QWidget *parent = nullptr);
+    MapUi(QWidget *parent = nullptr);
 
-    ~MainUI();
+    ~MapUi();
 
     enum PaintMode{ Map, Building };
 
@@ -76,7 +76,7 @@ private:
 
     int zoom_;
 
-    Ui::MainUI *ui;
+    Ui::MapUi *ui;
 };
 
-#endif // !MAPUI_H
+#endif // !MAP_UI_H
