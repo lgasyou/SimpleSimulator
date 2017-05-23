@@ -78,12 +78,12 @@ void LandParcelManager::add(StructureType buildingType) {
     int x = newBuilding->position().x();
     int y = newBuilding->position().y();
     buildings_[x][y] = newBuilding;
-    dataChanged_ = true;
+    cachedIsDirty_ = true;
 }
 
 const std::vector<LandParcel *> &LandParcelManager::buildings() const {
     static std::vector<LandParcel *> buildingsBuffer;
-    if (dataChanged_) {
+    if (cachedIsDirty_) {
         buildingsBuffer.clear();
         for (const auto &row : buildings_) {
             for (LandParcel *building : row) {
@@ -91,7 +91,7 @@ const std::vector<LandParcel *> &LandParcelManager::buildings() const {
                     buildingsBuffer.push_back(building);
             }
         }
-        dataChanged_ = false;
+        cachedIsDirty_ = false;
     }
     return buildingsBuffer;
 }
@@ -115,20 +115,20 @@ LandParcel *LandParcelManager::getById(int id) const {
 
 LandParcel *LandParcelManager::changeType(LandParcel *building, StructureType type) {
     BuildingFactory buildingFactory;
-    auto buildingCopy = buildingFactory.create(LandInitialParameter{
+    auto buildingCopy = buildingFactory.create(LandInitialParameter(
         type,
         building->position(),
         building->value(),
         building->deltaValue(),
         building->owner(),
         building->resource()
-    });
+    ));
 
     int x = building->position().x();
     int y = building->position().y();
     
     delete building;
-    dataChanged_ = true;
+    cachedIsDirty_ = true;
     return buildings_[x][y] = buildingCopy;
 }
 

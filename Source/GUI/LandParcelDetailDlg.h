@@ -48,14 +48,6 @@ public slots:
     // Send information to model Industry.
     //void deliverGoods(const Goods &goods, Industry *dest);
 
-protected:
-    void closeEvent(QCloseEvent *) override;
-
-signals:
-    void dataChanged();
-
-    void sendCommand(int command, LandParcel *building);
-
 private slots:
     void addNewMachine();
 
@@ -66,8 +58,6 @@ private slots:
     void showMachineDetail(Machine *);
 
     void updateMachineDetail(Machine *);
-
-    void receiveCommand(int);
 
 private:
     // Displays according to the type of building.

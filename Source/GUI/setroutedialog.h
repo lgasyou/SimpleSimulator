@@ -32,6 +32,7 @@ namespace Ui {
 class SetRouteDialog;
 }
 
+// Need to be updated.
 class SetRouteDialog : public QDialog {
     Q_OBJECT
 
@@ -60,8 +61,6 @@ private slots:
 
 signals:
     void sendRoute(Route *);
-
-    void dataChanged();
 
 private:
     Route *route_;

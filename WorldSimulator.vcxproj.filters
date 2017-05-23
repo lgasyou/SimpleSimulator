@@ -375,6 +375,15 @@
     <ClCompile Include="Source\GUI\MainWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GUI\BankDetailDialog.cpp">
+      <Filter>Source Files\GUIComponents\Dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_BankDetailDialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_BankDetailDialog.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="Source\resource.qrc">
@@ -447,6 +456,12 @@
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="Source\GUI\SetRouteDialog.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\BankDetailDialog.h">
+      <Filter>Generated Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Source\GUI\BankDetailDialog.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -606,6 +621,9 @@
     </ClInclude>
     <ClInclude Include="Source\Vector2D.h">
       <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GUI\BankDetailDialog.h">
+      <Filter>Header Files\GUIComponents\Dialogs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

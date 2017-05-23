@@ -94,7 +94,6 @@ void GarageTableWidget::buttonClicked(int index, int command) {
     case 2: { // Stop
         Truck *truck = garage_->getById(index);
         garage_->stopVihicle(truck);
-        emit dataChanged();
         break;
     }
 
@@ -121,5 +120,4 @@ void GarageTableWidget::showSetRouteDialog(int index) {
 
 void GarageTableWidget::setRoute(Route *route) {
     garage_->sendVihicle(route, selectedTruckId_);
-    emit dataChanged();
 }

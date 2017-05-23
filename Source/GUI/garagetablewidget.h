@@ -51,9 +51,6 @@ public slots:
 
     void setRoute(Route *);
 
-signals:
-    void dataChanged();
-
 private:
     Garage *garage_ = nullptr;
 

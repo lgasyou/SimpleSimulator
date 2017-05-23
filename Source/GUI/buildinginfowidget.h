@@ -38,10 +38,10 @@ public:
 
     void setTarget(LandParcel *building);
 
+    void updateDisplay() ;
+
 public slots:
     void showBuildingInfo(LandParcel *building);
-
-    void updateDisplay();
 
 private:
     LandParcel *displayingObject_ = nullptr;

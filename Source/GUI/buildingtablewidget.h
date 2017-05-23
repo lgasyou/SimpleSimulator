@@ -36,6 +36,9 @@ public:
 
     void updateDisplay();
 
+protected:
+    void changeEvent(QEvent *) override;
+
 private:
     void displayBasicInfo(int index, LandParcel *building);
 

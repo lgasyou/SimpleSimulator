@@ -62,6 +62,10 @@ void BuildingTableWidget::updateDisplay() {
     }
 }
 
+void BuildingTableWidget::changeEvent(QEvent *) {
+    updateDisplay();
+}
+
 void BuildingTableWidget::displayBasicInfo(int index, LandParcel *building) {
     const QString &name = building->name();
     const QString &deltaValue = " " + WidgetHelper::toString(building->deltaValue());

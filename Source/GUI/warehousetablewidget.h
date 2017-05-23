@@ -52,8 +52,6 @@ public slots:
 signals:
     void sendPreroute(const Goods &goods, Industry *dest);
 
-    void dataChanged();
-
 private:
     Goods *goods_ = nullptr;
 

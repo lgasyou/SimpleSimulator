@@ -57,11 +57,11 @@ void LandParcelDetailDlg::updateDisplay() {
     // Returns if this window isn't showing.
     if (this->isHidden() || !building_)    return;
 
-    const QString &name = building_->name();
-    const QString &value = WidgetHelper::toString(building_->value());
-    const QString &type = building_->type();
-    const QString &owner = building_->owner()->name();
-    const QString &position = building_->position().toString();
+    auto &name = building_->name();
+    auto value = WidgetHelper::toString(building_->value());
+    auto &type = building_->type();
+    auto &owner = building_->owner()->name();
+    auto position = building_->position().toString();
     setWindowTitle(name);
     ui->nameLabel->setText(tr("Name:  ") + name);
     ui->valueLabel->setText(tr("Value: $") + value);
@@ -74,10 +74,6 @@ void LandParcelDetailDlg::updateDisplay() {
     }
 
     displayAccordingToBuildingType();
-}
-
-void LandParcelDetailDlg::closeEvent(QCloseEvent *) {
-
 }
 
 //void LandParcelDetailDlg::deliverGoods(const Goods &goods, Industry *dest) {
@@ -93,21 +89,17 @@ void LandParcelDetailDlg::addNewMachine() {
         machine->setWarehouse(industry->warehouse());
         industry->addMachine(machine);
         delete builder;
-
-        emit dataChanged();
     }
 }
 
 void LandParcelDetailDlg::addNewVihicle() {
     if (Garage *garage = dynamic_cast<Garage *>(building_)) {
         garage->addNewVihicle("Truck");
-        emit dataChanged();
     }
 }
 
 void LandParcelDetailDlg::setNextMachineProduct(const QString &product) {
     selectedMachine_->setCurrentProduct(product);
-    emit dataChanged();
 }
 
 void LandParcelDetailDlg::showMachineDetail(Machine *machine) {
@@ -128,11 +120,6 @@ void LandParcelDetailDlg::updateMachineDetail(Machine *machine) {
 
     const QString &machineMaximumProductivity = WidgetHelper::toString(machine->maximalProductivity());
     ui->machineMaximumProductivity->setText("Maximum Productivity: " + machineMaximumProductivity);
-}
-
-void LandParcelDetailDlg::receiveCommand(int command) {
-    emit sendCommand(command, building_);
-    emit dataChanged();
 }
 
 void LandParcelDetailDlg::displayAccordingToBuildingType() {
@@ -202,32 +189,6 @@ void LandParcelDetailDlg::signalSlotConfig() {
             &WidgetHelper::placeCommand);
     /* ---------------------------------------------------------------------------------------------- */
 
-    /* ----------------------------------- Bank Config ---------------------------------------------- */
-    //connect(ui->closeAnAccountPushButton,               SIGNAL(sendCommand(int)),
-    //        this,                                       SLOT(receiveCommand(int)));
-    //ui->closeAnAccountPushButton->setCommand(CLOSE_AN_ACCOUNT);
-
-    //connect(ui->depositPushButton,                      SIGNAL(sendCommand(int)),
-    //        this,                                       SLOT(receiveCommand(int)));
-    //ui->depositPushButton->setCommand(DEPOSIT);
-
-    //connect(ui->loanPushButton,                         SIGNAL(sendCommand(int)),
-    //        this,                                       SLOT(receiveCommand(int)));
-    //ui->loanPushButton->setCommand(LOAN);
-
-    //connect(ui->openAnAccountPushButton,                SIGNAL(sendCommand(int)),
-    //        this,                                       SLOT(receiveCommand(int)));
-    //ui->openAnAccountPushButton->setCommand(OPEN_AN_ACCOUNT);
-
-    //connect(ui->repayPushButton,                        SIGNAL(sendCommand(int)),
-    //        this,                                       SLOT(receiveCommand(int)));
-    //ui->repayPushButton->setCommand(REPAY);
-
-    //connect(ui->withdrawPushButton,                     SIGNAL(sendCommand(int)),
-    //        this,                                       SLOT(receiveCommand(int)));
-    //ui->withdrawPushButton->setCommand(WITHDRAW);
-    /* ---------------------------------------------------------------------------------------------- */
-
     /* ---------------------------------- Garage Config --------------------------------------------- */
     connect(ui->purchaseNewVihiclePushButton,           SIGNAL(clicked()),
             this,                                       SLOT(addNewVihicle()));
@@ -269,11 +230,6 @@ void LandParcelDetailDlg::signalSlotConfig() {
 
     connect(ui->buildVillaPushButton,                   &CommandPushButton::sendCommand,
             WidgetHelper::placeCommand);
-    /* ---------------------------------------------------------------------------------------------- */
-
-    /* ---------------------------------- Display Config -------------------------------------------- */
-    connect(this,                                       &LandParcelDetailDlg::dataChanged,
-            this,                                       &LandParcelDetailDlg::updateDisplay);
     /* ---------------------------------------------------------------------------------------------- */
 }
 

@@ -26,9 +26,18 @@
 #include "Managers/CompanyManager.h"
 #include "Managers/LandParcelManager.h"
 #include "Managers/MapManager.h"
+#include <QFontDatabase>
+
+#define NO_DEBUG
+#ifndef DEBUG
 
 int main(int argc, char *argv[]) {
     QApplication application(argc, argv);
+    int fontId = QFontDatabase::addApplicationFont("Resources/consola.ttf");
+    QString consola = QFontDatabase::applicationFontFamilies(fontId).at(0);
+    QFont font(consola, 11);
+    application.setFont(font);
+
     MapManager::instance().init();
     LandParcelManager::instance().init();
     CompanyManager::instance().init();
@@ -38,3 +47,32 @@ int main(int argc, char *argv[]) {
     MainWindow::instance().show();
     return application.exec();
 }
+
+#else
+#include "GUI/BankDetailDialog.h"
+
+
+int fcn1(int argc, char *argv[]) {
+    QApplication application(argc, argv);
+
+    BankDetailDialog dialog;
+    dialog.show();
+    return application.exec();
+}
+
+#include "GUI/Widget.h"
+
+int fcn2(int argc, char *argv[]) {
+    QApplication application(argc, argv);
+    Widget dialog(nullptr);
+    dialog.show();
+    return application.exec();
+}
+
+int main(int argc, char *argv[]) {
+    return fcn1(argc, argv);
+}
+
+
+
+#endif

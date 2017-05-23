@@ -57,9 +57,6 @@ public:
 
     LandParcel *getByPos(int x, int y) const { return buildings_[x][y]; }
 
-    // Gets building's pointer and type.
-    // Returns a pointer which is arg "type" asked.
-    // If arg "type" isn't a standard type, returns "Unused Land".
     LandParcel *changeType(LandParcel *, StructureType type);
 
     void update();
@@ -76,7 +73,7 @@ private:
 
 private:
     // Detects whether buildings_ has been modified.
-    mutable bool dataChanged_ = true;
+    mutable bool cachedIsDirty_ = true;
 
 };
 

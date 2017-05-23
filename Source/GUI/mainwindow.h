@@ -23,7 +23,6 @@
 #include <QMainWindow>
 #include <QString>
 
-#include "Source/Objects/LandParcel.h"
 #include "Source/Objects/Company.h"
 
 class ICommand;
@@ -42,11 +41,7 @@ public:
 
     void redirectData(LandParcel *);
 
-    void setDirty();
-
 signals:
-    void dataChanged();
-
     void sendSelectedBuilding(LandParcel *);
 
 private slots:
@@ -55,7 +50,7 @@ private slots:
 
     void showBuildingTableWidget();
 
-    void showCompanyDetail() const ;
+    void showCompanyDetail() const;
 
     void showHelp();
 

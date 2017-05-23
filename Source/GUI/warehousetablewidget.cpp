@@ -80,5 +80,4 @@ void WarehouseTableWidget::getDestAndSendPreroute(LandParcel *building) {
 
     Industry *industry = dynamic_cast<Industry *>(building);
     emit sendPreroute(*goods_, industry);
-    emit dataChanged();
 }

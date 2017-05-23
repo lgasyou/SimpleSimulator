@@ -56,9 +56,6 @@ SetRouteDialog::SetRouteDialog(QWidget *parent) :
     connect(ui->pushButton,         SIGNAL(clicked()),
             this,                   SLOT(finishSetting()));
 
-    connect(this,                   SIGNAL(dataChanged()),
-            this,                   SLOT(updateDisplay()));
-
     route_ = new Route;
 }
 
@@ -94,22 +91,18 @@ void SetRouteDialog::updateDisplay() {
 
 void SetRouteDialog::getGoodsName(const QString &goodsName) {
     route_->goods.label = goodsName;
-    emit dataChanged();
 }
 
 void SetRouteDialog::getGoodsVolume(double eachVolume) {
     route_->goods.volume = eachVolume;
-    emit dataChanged();
 }
 
 void SetRouteDialog::getOrig(LandParcel *origin) {
     route_->orig = (Industry *)origin;
-    emit dataChanged();
 }
 
 void SetRouteDialog::getDest(LandParcel *dest) {
     route_->dest = (Industry *)dest;
-    emit dataChanged();
 }
 
 void SetRouteDialog::finishSetting() {

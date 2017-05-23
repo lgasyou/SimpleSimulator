@@ -61,11 +61,6 @@ void MainWindow::init() {
 void MainWindow::redirectData(LandParcel *object) {
     ui->buildingInfoWidget->setTarget(object);
     UIManager<LandParcelDetailDlg>::get()->setBuilding(object);
-    emit dataChanged();
-}
-
-void MainWindow::setDirty() {
-    emit dataChanged();
 }
 
 void MainWindow::endTurns() {
@@ -74,7 +69,6 @@ void MainWindow::endTurns() {
     Government::instance().update();
 
     TimeManager::instance().increaseTime();
-    emit dataChanged();
 }
 
 void MainWindow::showBuildingTableWidget() {
@@ -98,12 +92,10 @@ void MainWindow::getBuildingByPos(int x, int y) {
 }
 
 void MainWindow::updateDisplay() const {
-    const QString &turnText = tr("Turn ") + QString::number(TimeManager::instance().currentTime());
+    auto &turnText = tr("Turn ") + QString::number(TimeManager::instance().currentTime());
     ui->label_Turns->setText(turnText);
-    const QString &cashText = tr("Cash: $") + WidgetHelper::toString(playerCompany_->cash());
+    auto &cashText = tr("Cash: $") + WidgetHelper::toString(playerCompany_->cash());
     ui->label_CompanyCash->setText(cashText);
-
-    UIManager<BuildingTableWidget>::get()->updateDisplay();
 }
 
 void MainWindow::signalSlotConfig() {
@@ -123,14 +115,5 @@ void MainWindow::signalSlotConfig() {
             this,                       &MainWindow::getBuildingByPos);
     connect(this,                       &MainWindow::sendSelectedBuilding,
             ui->buildingInfoWidget,     &BuildingInfoWidget::showBuildingInfo);
-    /* ---------------------------------------------------------------------------------------------- */
-
-    /* ------------------------------- Update Display Config ---------------------------------------- */
-    connect(this,                       SIGNAL(dataChanged()),
-            this,                       SLOT(updateDisplay()));
-    connect(this,                       SIGNAL(dataChanged()),
-            ui->buildingInfoWidget,     SLOT(updateDisplay()));
-    connect(this,                       SIGNAL(dataChanged()),
-            ui->userInterface,          SLOT(updateDisplay()));
     /* ---------------------------------------------------------------------------------------------- */
 }
